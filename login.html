@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#F47B20"
+    >
+
+    <meta
+        name="description"
+        content="تسجيل الدخول إلى حسابك في Si7a"
+    >
+
+    <title>Si7a | تسجيل الدخول</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <style>
+
+        *{
+            box-sizing:border-box;
+            margin:0;
+            padding:0;
+        }
+
+        body{
+            min-height:100vh;
+            font-family:"Tajawal",sans-serif;
+            background:
+                radial-gradient(
+                    circle at top right,
+                    #fff1e6 0%,
+                    #ffffff 42%,
+                    #f7f8fa 100%
+                );
+            color:#202124;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:25px 15px;
+        }
+
+        .page{
+            width:100%;
+            max-width:1100px;
+            min-height:650px;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            background:#fff;
+            border-radius:28px;
+            overflow:hidden;
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.10);
+        }
+
+        /* =========================
+           الجانب التعريفي
+        ========================== */
+
+        .intro{
+            background:
+                linear-gradient(
+                    145deg,
+                    #F47B20,
+                    #DF6810
+                );
+            color:#fff;
+            padding:55px 45px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .intro::before{
+            content:"";
+            position:absolute;
+            width:280px;
+            height:280px;
+            border-radius:50%;
+            background:rgba(255,255,255,.08);
+            top:-120px;
+            left:-100px;
+        }
+
+        .intro::after{
+            content:"";
+            position:absolute;
+            width:230px;
+            height:230px;
+            border-radius:50%;
+            background:rgba(255,255,255,.06);
+            bottom:-110px;
+            right:-90px;
+        }
+
+        .logo{
+            width:82px;
+            height:82px;
+            border-radius:24px;
+            background:rgba(255,255,255,.16);
+            border:1px solid rgba(255,255,255,.25);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin-bottom:28px;
+            position:relative;
+            z-index:2;
+        }
+
+        .logo i{
+            font-size:40px;
+        }
+
+        .intro h1{
+            font-size:42px;
+            font-weight:800;
+            margin-bottom:14px;
+            position:relative;
+            z-index:2;
+        }
+
+        .subtitle{
+            font-size:19px;
+            line-height:1.9;
+            opacity:.94;
+            max-width:420px;
+            position:relative;
+            z-index:2;
+        }
+
+        .features{
+            margin-top:35px;
+            display:flex;
+            flex-direction:column;
+            gap:17px;
+            position:relative;
+            z-index:2;
+        }
+
+        .feature{
+            display:flex;
+            align-items:center;
+            gap:13px;
+            font-size:16px;
+        }
+
+        .feature-icon{
+            width:38px;
+            height:38px;
+            flex-shrink:0;
+            border-radius:12px;
+            background:rgba(255,255,255,.15);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+
+        /* =========================
+           تسجيل الدخول
+        ========================== */
+
+        .login-area{
+            padding:45px 42px;
+            display:flex;
+            align-items:center;
+        }
+
+        .login-box{
+            width:100%;
+            max-width:470px;
+            margin:auto;
+        }
+
+        .mobile-logo{
+            display:none;
+        }
+
+        .login-box h2{
+            font-size:30px;
+            font-weight:800;
+            margin-bottom:8px;
+            color:#202124;
+        }
+
+        .login-description{
+            color:#777;
+            font-size:15px;
+            margin-bottom:28px;
+        }
+
+
+        /* =========================
+           الرسالة
+        ========================== */
+
+        .message{
+            display:none;
+            padding:13px 15px;
+            border-radius:12px;
+            margin-bottom:18px;
+            font-size:13px;
+            line-height:1.7;
+        }
+
+        .message.error{
+            background:#fff0f0;
+            color:#c62828;
+            border:1px solid #ffd5d5;
+        }
+
+        .message.success{
+            background:#effaf2;
+            color:#188038;
+            border:1px solid #ccebd3;
+        }
+
+        .message.show{
+            display:block;
+        }
+
+
+        /* =========================
+           الحقول
+        ========================== */
+
+        .form-group{
+            margin-bottom:19px;
+        }
+
+        .form-group label{
+            display:block;
+            margin-bottom:8px;
+            font-size:14px;
+            font-weight:700;
+            color:#333;
+        }
+
+        .input-wrapper{
+            position:relative;
+        }
+
+        .input-wrapper > i{
+            position:absolute;
+            right:16px;
+            top:50%;
+            transform:translateY(-50%);
+            color:#999;
+            font-size:16px;
+            pointer-events:none;
+        }
+
+        .input-wrapper input{
+            width:100%;
+            height:53px;
+            border:1px solid #e2e2e2;
+            border-radius:14px;
+            padding:
+                0 46px
+                0 46px;
+            outline:none;
+            font-family:inherit;
+            font-size:15px;
+            background:#fafafa;
+            transition:.2s;
+        }
+
+        .input-wrapper input:focus{
+            border-color:#F47B20;
+            background:#fff;
+            box-shadow:
+                0 0 0 4px rgba(244,123,32,.10);
+        }
+
+
+        /* =========================
+           إظهار كلمة المرور
+        ========================== */
+
+        .password-toggle{
+            position:absolute;
+            left:15px;
+            top:50%;
+            transform:translateY(-50%);
+            border:0;
+            background:none;
+            cursor:pointer;
+            color:#888;
+            font-size:16px;
+            padding:5px;
+        }
+
+        .password-toggle:hover{
+            color:#F47B20;
+        }
+
+
+        /* =========================
+           تذكرني + نسيت
+        ========================== */
+
+        .login-options{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:10px;
+            margin:5px 0 22px;
+            font-size:13px;
+        }
+
+        .remember{
+            display:flex;
+            align-items:center;
+            gap:7px;
+            color:#666;
+            cursor:pointer;
+        }
+
+        .remember input{
+            width:16px;
+            height:16px;
+            accent-color:#F47B20;
+            cursor:pointer;
+        }
+
+        .forgot{
+            color:#F47B20;
+            text-decoration:none;
+            font-weight:700;
+            cursor:pointer;
+        }
+
+        .forgot:hover{
+            text-decoration:underline;
+        }
+
+
+        /* =========================
+           زر الدخول
+        ========================== */
+
+        .login-btn{
+            width:100%;
+            height:54px;
+            border:0;
+            border-radius:15px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #F47B20,
+                    #DF6810
+                );
+            color:white;
+            font-family:inherit;
+            font-size:16px;
+            font-weight:800;
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:10px;
+            transition:.2s;
+            box-shadow:
+                0 8px 20px rgba(244,123,32,.20);
+        }
+
+        .login-btn:hover{
+            transform:translateY(-1px);
+            box-shadow:
+                0 11px 25px rgba(244,123,32,.28);
+        }
+
+        .login-btn:disabled{
+            opacity:.7;
+            cursor:not-allowed;
+            transform:none;
+        }
+
+
+        /* =========================
+           رابط التسجيل
+        ========================== */
+
+        .register-link{
+            text-align:center;
+            margin-top:23px;
+            color:#777;
+            font-size:14px;
+        }
+
+        .register-link a{
+            color:#F47B20;
+            text-decoration:none;
+            font-weight:800;
+        }
+
+        .register-link a:hover{
+            text-decoration:underline;
+        }
+
+
+        /* =========================
+           Spinner
+        ========================== */
+
+        .loading-spinner{
+            width:18px;
+            height:18px;
+            border:2px solid rgba(255,255,255,.4);
+            border-top-color:#fff;
+            border-radius:50%;
+            animation:spin .7s linear infinite;
+        }
+
+        @keyframes spin{
+            to{
+                transform:rotate(360deg);
+            }
+        }
+
+
+        /* =========================
+           Responsive
+        ========================== */
+
+        @media(max-width:850px){
+
+            .page{
+                max-width:600px;
+                min-height:auto;
+                grid-template-columns:1fr;
+                border-radius:22px;
+            }
+
+            .intro{
+                display:none;
+            }
+
+            .login-area{
+                padding:38px 25px;
+            }
+
+            .mobile-logo{
+                display:flex;
+                width:70px;
+                height:70px;
+                border-radius:20px;
+                background:#FFF1E6;
+                color:#F47B20;
+                align-items:center;
+                justify-content:center;
+                margin:0 auto 20px;
+            }
+
+            .mobile-logo i{
+                font-size:32px;
+            }
+
+            .login-box h2{
+                text-align:center;
+                font-size:27px;
+            }
+
+            .login-description{
+                text-align:center;
+            }
+
+        }
+
+
+        @media(max-width:450px){
+
+            body{
+                padding:0;
+                background:#fff;
+            }
+
+            .page{
+                min-height:100vh;
+                border-radius:0;
+                box-shadow:none;
+            }
+
+            .login-area{
+                padding:30px 18px;
+            }
+
+            .login-box h2{
+                font-size:25px;
+            }
+
+            .input-wrapper input{
+                height:50px;
+            }
+
+            .login-btn{
+                height:52px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- =========================
+         الجانب التعريفي
+    ========================== -->
+
+    <section class="intro">
+
+        <div class="logo">
+            <i class="fa-solid fa-heart-pulse"></i>
+        </div>
+
+        <h1>Si7a</h1>
+
+        <p class="subtitle">
+            مرحبًا بك من جديد.
+            سجّل الدخول للوصول إلى مساحتك الصحية الشخصية.
+        </p>
+
+
+        <div class="features">
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <span>
+                    بياناتك تبقى خاصة
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+
+                <span>
+                    تابع تقدمك الصحي
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+
+                <span>
+                    الوصول من هاتفك بسهولة
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-user-lock"></i>
+                </div>
+
+                <span>
+                    حساب شخصي وآمن
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         Login
+    ========================== -->
+
+    <section class="login-area">
+
+        <div class="login-box">
+
+
+            <div class="mobile-logo">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+
+            <h2>
+                تسجيل الدخول
+            </h2>
+
+            <p class="login-description">
+                أدخل بيانات حسابك للوصول إلى مساحتك الشخصية.
+            </p>
+
+
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+
+            <form id="loginForm">
+
+
+                <!-- البريد -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        البريد الإلكتروني
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="example@email.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- كلمة المرور -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        كلمة المرور
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="أدخل كلمة المرور"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="togglePassword"
+                            aria-label="إظهار كلمة المرور"
+                        >
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- الخيارات -->
+
+                <div class="login-options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            id="remember"
+                        >
+
+                        <span>
+                            تذكرني
+                        </span>
+
+                    </label>
+
+
+                    <a
+                        href="#"
+                        class="forgot"
+                        id="forgotPassword"
+                    >
+                        نسيت كلمة المرور؟
+                    </a>
+
+                </div>
+
+
+
+                <!-- زر الدخول -->
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                    id="loginBtn"
+                >
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                    <span>
+                        تسجيل الدخول
+                    </span>
+
+                </button>
+
+
+            </form>
+
+
+            <div class="register-link">
+
+                ليس لديك حساب؟
+
+                <a href="register.html">
+                    إنشاء حساب جديد
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
+
+<script type="module">
+
+    import {
+        auth
+    } from "./js/firebase.js";
+
+    import {
+        signInWithEmailAndPassword,
+        sendPasswordResetEmail
+    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+
+    /* =========================
+       العناصر
+    ========================== */
+
+    const form =
+        document.getElementById("loginForm");
+
+    const emailInput =
+        document.getElementById("email");
+
+    const passwordInput =
+        document.getElementById("password");
+
+    const loginBtn =
+        document.getElementById("loginBtn");
+
+    const message =
+        document.getElementById("message");
+
+    const forgotPassword =
+        document.getElementById("forgotPassword");
+
+
+
+    /* =========================
+       الرسائل
+    ========================== */
+
+    function showMessage(
+        text,
+        type = "error"
+    ){
+
+        message.textContent = text;
+
+        message.className =
+            "message " +
+            type +
+            " show";
+
+    }
+
+
+    function hideMessage(){
+
+        message.className =
+            "message";
+
+        message.textContent = "";
+
+    }
+
+
+
+    /* =========================
+       إظهار كلمة المرور
+    ========================== */
+
+    document
+        .getElementById("togglePassword")
+        .addEventListener(
+            "click",
+            () => {
+
+                const button =
+                    document.getElementById(
+                        "togglePassword"
+                    );
+
+                const icon =
+                    button.querySelector("i");
+
+
+                if(
+                    passwordInput.type ===
+                    "password"
+                ){
+
+                    passwordInput.type =
+                        "text";
+
+                    icon.classList.remove(
+                        "fa-eye"
+                    );
+
+                    icon.classList.add(
+                        "fa-eye-slash"
+                    );
+
+                }else{
+
+                    passwordInput.type =
+                        "password";
+
+                    icon.classList.remove(
+                        "fa-eye-slash"
+                    );
+
+                    icon.classList.add(
+                        "fa-eye"
+                    );
+
+                }
+
+            }
+        );
+
+
+
+    /* =========================
+       تسجيل الدخول
+    ========================== */
+
+    form.addEventListener(
+        "submit",
+        async (event) => {
+
+            event.preventDefault();
+
+            hideMessage();
+
+
+            const email =
+                emailInput.value
+                .trim()
+                .toLowerCase();
+
+            const password =
+                passwordInput.value;
+
+
+            if(!email){
+
+                showMessage(
+                    "يرجى إدخال البريد الإلكتروني."
+                );
+
+                emailInput.focus();
+
+                return;
+
+            }
+
+
+            if(!password){
+
+                showMessage(
+                    "يرجى إدخال كلمة المرور."
+                );
+
+                passwordInput.focus();
+
+                return;
+
+            }
+
+
+            loginBtn.disabled = true;
+
+            loginBtn.innerHTML = `
+                <span class="loading-spinner"></span>
+                <span>جاري تسجيل الدخول...</span>
+            `;
+
+
+            try{
+
+                await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+
+                showMessage(
+                    "تم تسجيل الدخول بنجاح. جاري تحويلك...",
+                    "success"
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        window.location.href =
+                            "dashboard.html";
+
+                    },
+                    700
+                );
+
+
+            }catch(error){
+
+                console.error(
+                    "Login error:",
+                    error
+                );
+
+
+                let errorMessage =
+                    "تعذر تسجيل الدخول. تحقق من بياناتك.";
+
+
+                switch(error.code){
+
+                    case "auth/invalid-credential":
+
+                        errorMessage =
+                            "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
+
+                        break;
+
+
+                    case "auth/wrong-password":
+
+                        errorMessage =
+                            "كلمة المرور غير صحيحة.";
+
+                        break;
+
+
+                    case "auth/user-not-found":
+
+                        errorMessage =
+                            "لا يوجد حساب بهذا البريد الإلكتروني.";
+
+                        break;
+
+
+                    case "auth/invalid-email":
+
+                        errorMessage =
+                            "البريد الإلكتروني غير صالح.";
+
+                        break;
+
+
+                    case "auth/too-many-requests":
+
+                        errorMessage =
+                            "تمت محاولات كثيرة. انتظر قليلًا ثم حاول مرة أخرى.";
+
+                        break;
+
+
+                    case "auth/network-request-failed":
+
+                        errorMessage =
+                            "تعذر الاتصال بالإنترنت.";
+
+                        break;
+
+                }
+
+
+                showMessage(
+                    errorMessage
+                );
+
+
+                loginBtn.disabled =
+                    false;
+
+                loginBtn.innerHTML = `
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    <span>تسجيل الدخول</span>
+                `;
+
+            }
+
+        }
+    );
+
+
+
+    /* =========================
+       استعادة كلمة المرور
+    ========================== */
+
+    forgotPassword.addEventListener(
+        "click",
+        async (event) => {
+
+            event.preventDefault();
+
+            hideMessage();
+
+
+            const email =
+                emailInput.value
+                .trim()
+                .toLowerCase();
+
+
+            if(!email){
+
+                showMessage(
+                    "أدخل بريدك الإلكتروني أولًا، ثم اضغط على «نسيت كلمة المرور؟»."
+                );
+
+                emailInput.focus();
+
+                return;
+
+            }
+
+
+            try{
+
+                await sendPasswordResetEmail(
+                    auth,
+                    email
+                );
+
+
+                showMessage(
+                    "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني.",
+                    "success"
+                );
+
+
+            }catch(error){
+
+                console.error(
+                    "Password reset error:",
+                    error
+                );
+
+
+                let errorMessage =
+                    "تعذر إرسال رابط إعادة تعيين كلمة المرور.";
+
+
+                switch(error.code){
+
+                    case "auth/user-not-found":
+
+                        errorMessage =
+                            "لا يوجد حساب بهذا البريد الإلكتروني.";
+
+                        break;
+
+
+                    case "auth/invalid-email":
+
+                        errorMessage =
+                            "البريد الإلكتروني غير صالح.";
+
+                        break;
+
+
+                    case "auth/network-request-failed":
+
+                        errorMessage =
+                            "تعذر الاتصال بالإنترنت.";
+
+                        break;
+
+                }
+
+
+                showMessage(
+                    errorMessage
+                );
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
