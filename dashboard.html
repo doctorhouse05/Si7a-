@@ -1,0 +1,1960 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="theme-color"
+    content="#F47B20"
+>
+
+<title>Si7a | لوحة التحكم</title>
+
+<!-- Google Font -->
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+<!-- Font Awesome -->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+>
+
+<style>
+
+    *{
+        box-sizing:border-box;
+        margin:0;
+        padding:0;
+    }
+
+    :root{
+        --orange:#F47B20;
+        --orange-dark:#DF6810;
+        --orange-light:#FFF1E6;
+        --text:#202124;
+        --muted:#777;
+        --bg:#F7F8FA;
+        --white:#FFFFFF;
+        --border:#E8E8E8;
+        --green:#20A464;
+        --blue:#3788E5;
+        --purple:#7657D8;
+        --red:#E64C4C;
+        --shadow:0 8px 25px rgba(0,0,0,.06);
+    }
+
+    body{
+        font-family:"Tajawal",Arial,sans-serif;
+        background:var(--bg);
+        color:var(--text);
+        min-height:100vh;
+    }
+
+    button,
+    input{
+        font-family:inherit;
+    }
+
+    button{
+        cursor:pointer;
+    }
+
+    a{
+        text-decoration:none;
+        color:inherit;
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    header{
+        background:var(--white);
+        border-bottom:1px solid var(--border);
+        position:sticky;
+        top:0;
+        z-index:100;
+    }
+
+    .header-inner{
+        max-width:1200px;
+        margin:auto;
+        min-height:72px;
+        padding:12px 20px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:15px;
+    }
+
+    .brand{
+        display:flex;
+        align-items:center;
+        gap:10px;
+    }
+
+    .brand-icon{
+        width:44px;
+        height:44px;
+        border-radius:13px;
+        background:linear-gradient(
+            135deg,
+            var(--orange),
+            var(--orange-dark)
+        );
+        color:white;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:21px;
+        box-shadow:0 5px 15px rgba(244,123,32,.25);
+    }
+
+    .brand-text h1{
+        font-size:20px;
+        font-weight:800;
+    }
+
+    .brand-text span{
+        display:block;
+        color:var(--muted);
+        font-size:12px;
+        margin-top:1px;
+    }
+
+    .header-actions{
+        display:flex;
+        align-items:center;
+        gap:10px;
+    }
+
+    .user-mini{
+        display:flex;
+        align-items:center;
+        gap:9px;
+        padding:7px 10px;
+        border:1px solid var(--border);
+        border-radius:12px;
+        background:#fff;
+    }
+
+    .user-avatar{
+        width:34px;
+        height:34px;
+        border-radius:50%;
+        background:var(--orange-light);
+        color:var(--orange-dark);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-weight:800;
+    }
+
+    .user-info{
+        line-height:1.2;
+    }
+
+    .user-info strong{
+        display:block;
+        font-size:13px;
+    }
+
+    .user-info span{
+        display:block;
+        font-size:10px;
+        color:var(--muted);
+        max-width:150px;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+    }
+
+    .logout-btn{
+        width:42px;
+        height:42px;
+        border:1px solid #FFD9C0;
+        background:#FFF7F2;
+        color:#D75D0C;
+        border-radius:12px;
+        font-size:16px;
+    }
+
+    .logout-btn:hover{
+        background:#FFEADF;
+    }
+
+    /* =========================
+       MAIN
+    ========================== */
+
+    main{
+        max-width:1200px;
+        margin:auto;
+        padding:30px 20px 50px;
+    }
+
+    .welcome{
+        margin-bottom:25px;
+    }
+
+    .welcome h2{
+        font-size:27px;
+        font-weight:800;
+        margin-bottom:6px;
+    }
+
+    .welcome p{
+        color:var(--muted);
+        font-size:14px;
+    }
+
+    /* =========================
+       QUICK STATS
+    ========================== */
+
+    .stats{
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        gap:16px;
+        margin-bottom:25px;
+    }
+
+    .stat-card{
+        background:var(--white);
+        border:1px solid var(--border);
+        border-radius:18px;
+        padding:18px;
+        box-shadow:var(--shadow);
+        display:flex;
+        align-items:center;
+        gap:14px;
+    }
+
+    .stat-icon{
+        width:50px;
+        height:50px;
+        border-radius:15px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:20px;
+        flex-shrink:0;
+    }
+
+    .stat-water .stat-icon{
+        background:#EAF6FF;
+        color:var(--blue);
+    }
+
+    .stat-walk .stat-icon{
+        background:#EAF9F1;
+        color:var(--green);
+    }
+
+    .stat-sleep .stat-icon{
+        background:#F0EBFF;
+        color:var(--purple);
+    }
+
+    .stat-wake .stat-icon{
+        background:var(--orange-light);
+        color:var(--orange-dark);
+    }
+
+    .stat-text small{
+        color:var(--muted);
+        display:block;
+        font-size:12px;
+        margin-bottom:4px;
+    }
+
+    .stat-text strong{
+        font-size:21px;
+        font-weight:800;
+    }
+
+    /* =========================
+       SECTION
+    ========================== */
+
+    .section-title{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+        margin:28px 0 15px;
+    }
+
+    .section-title h3{
+        font-size:20px;
+        font-weight:800;
+    }
+
+    .section-title span{
+        color:var(--muted);
+        font-size:12px;
+    }
+
+    /* =========================
+       HABITS
+    ========================== */
+
+    .habits-grid{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:18px;
+    }
+
+    .habit-card{
+        background:var(--white);
+        border:1px solid var(--border);
+        border-radius:20px;
+        padding:20px;
+        box-shadow:var(--shadow);
+    }
+
+    .habit-header{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        margin-bottom:18px;
+    }
+
+    .habit-title{
+        display:flex;
+        align-items:center;
+        gap:12px;
+    }
+
+    .habit-icon{
+        width:46px;
+        height:46px;
+        border-radius:14px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:19px;
+    }
+
+    .water-icon{
+        background:#EAF6FF;
+        color:var(--blue);
+    }
+
+    .walk-icon{
+        background:#EAF9F1;
+        color:var(--green);
+    }
+
+    .sleep-icon{
+        background:#F0EBFF;
+        color:var(--purple);
+    }
+
+    .wake-icon{
+        background:var(--orange-light);
+        color:var(--orange-dark);
+    }
+
+    .habit-title h4{
+        font-size:17px;
+        font-weight:800;
+    }
+
+    .habit-title p{
+        color:var(--muted);
+        font-size:11px;
+        margin-top:2px;
+    }
+
+    .habit-value{
+        font-size:24px;
+        font-weight:800;
+    }
+
+    .habit-content{
+        display:flex;
+        flex-direction:column;
+        gap:13px;
+    }
+
+    .progress{
+        width:100%;
+        height:9px;
+        background:#F0F1F3;
+        border-radius:20px;
+        overflow:hidden;
+    }
+
+    .progress-bar{
+        height:100%;
+        border-radius:20px;
+        transition:.3s;
+    }
+
+    .water-progress{
+        background:var(--blue);
+    }
+
+    .walk-progress{
+        background:var(--green);
+    }
+
+    .sleep-progress{
+        background:var(--purple);
+    }
+
+    .wake-progress{
+        background:var(--orange);
+    }
+
+    .habit-bottom{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+    }
+
+    .habit-bottom span{
+        color:var(--muted);
+        font-size:12px;
+    }
+
+    .track-btn{
+        border:0;
+        background:var(--orange);
+        color:white;
+        border-radius:10px;
+        padding:9px 14px;
+        font-size:12px;
+        font-weight:700;
+    }
+
+    .track-btn:hover{
+        background:var(--orange-dark);
+    }
+
+    /* =========================
+       MONTHLY TRACKING
+    ========================== */
+
+    .monthly-card{
+        background:white;
+        border:1px solid var(--border);
+        border-radius:20px;
+        box-shadow:var(--shadow);
+        padding:20px;
+    }
+
+    .monthly-top{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+        margin-bottom:18px;
+    }
+
+    .monthly-top h4{
+        font-size:17px;
+    }
+
+    .month-select{
+        border:1px solid var(--border);
+        background:#fff;
+        border-radius:10px;
+        padding:9px 12px;
+        font-family:inherit;
+        outline:none;
+    }
+
+    .month-info{
+        background:var(--orange-light);
+        border-radius:14px;
+        padding:14px;
+        display:flex;
+        align-items:center;
+        gap:12px;
+        margin-bottom:15px;
+    }
+
+    .month-info i{
+        color:var(--orange);
+        font-size:20px;
+    }
+
+    .month-info p{
+        font-size:12px;
+        color:#6D4B35;
+        line-height:1.7;
+    }
+
+    .tracking-items{
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        gap:10px;
+    }
+
+    .tracking-item{
+        border:1px solid var(--border);
+        border-radius:14px;
+        padding:14px;
+        text-align:center;
+    }
+
+    .tracking-item i{
+        font-size:18px;
+        margin-bottom:7px;
+    }
+
+    .tracking-item strong{
+        display:block;
+        font-size:16px;
+        margin-bottom:2px;
+    }
+
+    .tracking-item span{
+        color:var(--muted);
+        font-size:10px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer{
+        text-align:center;
+        color:#999;
+        font-size:11px;
+        padding:20px;
+    }
+
+    /* =========================
+       LOADING
+    ========================== */
+
+    .loading-screen{
+        position:fixed;
+        inset:0;
+        background:white;
+        z-index:1000;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .loader{
+        width:42px;
+        height:42px;
+        border:4px solid #FFE0CA;
+        border-top-color:var(--orange);
+        border-radius:50%;
+        animation:spin .8s linear infinite;
+    }
+
+    .loading-screen p{
+        color:#777;
+        font-size:13px;
+    }
+
+    @keyframes spin{
+        to{
+            transform:rotate(360deg);
+        }
+    }
+
+    /* =========================
+       TOAST
+    ========================== */
+
+    .toast{
+        position:fixed;
+        bottom:25px;
+        right:20px;
+        left:20px;
+        max-width:400px;
+        margin:auto;
+        background:#222;
+        color:white;
+        padding:13px 16px;
+        border-radius:12px;
+        font-size:13px;
+        text-align:center;
+        transform:translateY(100px);
+        opacity:0;
+        pointer-events:none;
+        transition:.3s;
+        z-index:2000;
+    }
+
+    .toast.show{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media(max-width:900px){
+
+        .stats{
+            grid-template-columns:repeat(2,1fr);
+        }
+
+        .tracking-items{
+            grid-template-columns:repeat(2,1fr);
+        }
+
+    }
+
+    @media(max-width:700px){
+
+        .header-inner{
+            padding:10px 14px;
+        }
+
+        .user-info{
+            display:none;
+        }
+
+        .brand-text span{
+            display:none;
+        }
+
+        main{
+            padding:22px 14px 40px;
+        }
+
+        .welcome h2{
+            font-size:23px;
+        }
+
+        .stats{
+            gap:10px;
+        }
+
+        .stat-card{
+            padding:14px;
+            gap:10px;
+        }
+
+        .stat-icon{
+            width:42px;
+            height:42px;
+            border-radius:12px;
+        }
+
+        .stat-text strong{
+            font-size:18px;
+        }
+
+        .habits-grid{
+            grid-template-columns:1fr;
+        }
+
+        .monthly-card{
+            padding:15px;
+        }
+
+    }
+
+    @media(max-width:430px){
+
+        .stats{
+            grid-template-columns:1fr 1fr;
+        }
+
+        .stat-card{
+            flex-direction:column;
+            align-items:flex-start;
+        }
+
+        .stat-text strong{
+            font-size:17px;
+        }
+
+        .habit-card{
+            padding:16px;
+        }
+
+        .monthly-top{
+            align-items:flex-start;
+            flex-direction:column;
+        }
+
+        .month-select{
+            width:100%;
+        }
+
+    }
+
+</style>
+
+</head><body><!-- Loading -->
+<div
+    class="loading-screen"
+    id="loadingScreen"
+>
+
+    <div class="loader"></div>
+
+    <p>جاري تحميل حسابك...</p>
+
+</div>
+
+
+<!-- Header -->
+<header>
+
+    <div class="header-inner">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <div class="brand-text">
+
+                <h1>Si7a</h1>
+
+                <span>
+                    صحتك في مكان واحد
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <div class="user-mini">
+
+                <div
+                    class="user-avatar"
+                    id="userAvatar"
+                >
+                    ؟
+                </div>
+
+                <div class="user-info">
+
+                    <strong id="userName">
+                        المستخدم
+                    </strong>
+
+                    <span id="userEmail">
+                        ...
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="logout-btn"
+                id="logoutBtn"
+                title="تسجيل الخروج"
+            >
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- Main -->
+<main>
+
+    <section class="welcome">
+
+        <h2>
+            أهلاً بك، <span id="welcomeName">...</span> 👋
+        </h2>
+
+        <p>
+            تابع عاداتك الصحية اليومية وسجّل تقدمك بسهولة.
+        </p>
+
+    </section>
+
+
+    <!-- Stats -->
+    <section class="stats">
+
+        <div class="stat-card stat-water">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-glass-water"></i>
+            </div>
+
+            <div class="stat-text">
+
+                <small>الماء اليوم</small>
+
+                <strong id="waterStat">
+                    0 كوب
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card stat-walk">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-person-walking"></i>
+            </div>
+
+            <div class="stat-text">
+
+                <small>المشي اليوم</small>
+
+                <strong id="walkStat">
+                    0 دقيقة
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card stat-sleep">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-bed"></i>
+            </div>
+
+            <div class="stat-text">
+
+                <small>النوم</small>
+
+                <strong id="sleepStat">
+                    0 ساعة
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card stat-wake">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-sun"></i>
+            </div>
+
+            <div class="stat-text">
+
+                <small>الاستيقاظ</small>
+
+                <strong id="wakeStat">
+                    --:--
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Habits -->
+    <div class="section-title">
+
+        <h3>
+            عاداتي الصحية
+        </h3>
+
+        <span>
+            اليوم
+        </span>
+
+    </div>
+
+
+    <section class="habits-grid">
+
+
+        <!-- Water -->
+
+        <div class="habit-card">
+
+            <div class="habit-header">
+
+                <div class="habit-title">
+
+                    <div class="habit-icon water-icon">
+                        <i class="fa-solid fa-glass-water"></i>
+                    </div>
+
+                    <div>
+
+                        <h4>شرب الماء</h4>
+
+                        <p>الهدف اليومي</p>
+
+                    </div>
+
+                </div>
+
+                <div class="habit-value">
+                    <span id="waterValue">0</span>
+                    <small style="font-size:11px;color:#777">
+                        / 8
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="habit-content">
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar water-progress"
+                        id="waterProgress"
+                        style="width:0%"
+                    ></div>
+
+                </div>
+
+
+                <div class="habit-bottom">
+
+                    <span>
+                        أكواب الماء
+                    </span>
+
+                    <button
+                        class="track-btn"
+                        id="addWaterBtn"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                        إضافة كوب
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Walking -->
+
+        <div class="habit-card">
+
+            <div class="habit-header">
+
+                <div class="habit-title">
+
+                    <div class="habit-icon walk-icon">
+                        <i class="fa-solid fa-person-walking"></i>
+                    </div>
+
+                    <div>
+
+                        <h4>المشي</h4>
+
+                        <p>الهدف اليومي</p>
+
+                    </div>
+
+                </div>
+
+                <div class="habit-value">
+                    <span id="walkValue">0</span>
+                    <small style="font-size:11px;color:#777">
+                        دقيقة
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="habit-content">
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar walk-progress"
+                        id="walkProgress"
+                        style="width:0%"
+                    ></div>
+
+                </div>
+
+
+                <div class="habit-bottom">
+
+                    <span>
+                        الهدف 30 دقيقة
+                    </span>
+
+                    <button
+                        class="track-btn"
+                        id="addWalkBtn"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                        إضافة 10 دقائق
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Sleep -->
+
+        <div class="habit-card">
+
+            <div class="habit-header">
+
+                <div class="habit-title">
+
+                    <div class="habit-icon sleep-icon">
+                        <i class="fa-solid fa-bed"></i>
+                    </div>
+
+                    <div>
+
+                        <h4>النوم</h4>
+
+                        <p>الهدف اليومي</p>
+
+                    </div>
+
+                </div>
+
+                <div class="habit-value">
+
+                    <span id="sleepValue">
+                        0
+                    </span>
+
+                    <small style="font-size:11px;color:#777">
+                        ساعات
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="habit-content">
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar sleep-progress"
+                        id="sleepProgress"
+                        style="width:0%"
+                    ></div>
+
+                </div>
+
+
+                <div class="habit-bottom">
+
+                    <span>
+                        الهدف 8 ساعات
+                    </span>
+
+                    <button
+                        class="track-btn"
+                        id="addSleepBtn"
+                    >
+                        <i class="fa-solid fa-pen"></i>
+                        تسجيل النوم
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Wake up -->
+
+        <div class="habit-card">
+
+            <div class="habit-header">
+
+                <div class="habit-title">
+
+                    <div class="habit-icon wake-icon">
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+
+                    <div>
+
+                        <h4>وقت الاستيقاظ</h4>
+
+                        <p>سجّل وقت استيقاظك</p>
+
+                    </div>
+
+                </div>
+
+                <div class="habit-value">
+
+                    <span id="wakeValue">
+                        --:--
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="habit-content">
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar wake-progress"
+                        id="wakeProgress"
+                        style="width:0%"
+                    ></div>
+
+                </div>
+
+
+                <div class="habit-bottom">
+
+                    <span>
+                        وقت الاستيقاظ اليوم
+                    </span>
+
+                    <button
+                        class="track-btn"
+                        id="addWakeBtn"
+                    >
+                        <i class="fa-solid fa-clock"></i>
+                        تسجيل الوقت
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Monthly -->
+    <div class="section-title">
+
+        <h3>
+            ملخص المتابعة
+        </h3>
+
+        <span>
+            بياناتك الخاصة
+        </span>
+
+    </div>
+
+
+    <section class="monthly-card">
+
+        <div class="monthly-top">
+
+            <h4>
+                متابعة العادات الصحية
+            </h4>
+
+            <select
+                class="month-select"
+                id="monthSelect"
+            >
+
+                <option value="0">يناير</option>
+                <option value="1">فبراير</option>
+                <option value="2">مارس</option>
+                <option value="3">أبريل</option>
+                <option value="4">ماي</option>
+                <option value="5">يونيو</option>
+                <option value="6">يوليو</option>
+                <option value="7">أغسطس</option>
+                <option value="8">سبتمبر</option>
+                <option value="9">أكتوبر</option>
+                <option value="10">نوفمبر</option>
+                <option value="11">ديسمبر</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="month-info">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            <p>
+                سيتم حفظ سجلاتك الصحية الخاصة بحسابك فقط.
+                يمكنك لاحقاً متابعة الماء والمشي والنوم
+                والاستيقاظ على شكل جدول يومي وشهري.
+            </p>
+
+        </div>
+
+
+        <div class="tracking-items">
+
+            <div class="tracking-item">
+
+                <i
+                    class="fa-solid fa-glass-water"
+                    style="color:#3788E5"
+                ></i>
+
+                <strong id="monthWater">
+                    0
+                </strong>
+
+                <span>
+                    كوب ماء
+                </span>
+
+            </div>
+
+
+            <div class="tracking-item">
+
+                <i
+                    class="fa-solid fa-person-walking"
+                    style="color:#20A464"
+                ></i>
+
+                <strong id="monthWalk">
+                    0
+                </strong>
+
+                <span>
+                    دقيقة مشي
+                </span>
+
+            </div>
+
+
+            <div class="tracking-item">
+
+                <i
+                    class="fa-solid fa-bed"
+                    style="color:#7657D8"
+                ></i>
+
+                <strong id="monthSleep">
+                    0
+                </strong>
+
+                <span>
+                    ساعات نوم
+                </span>
+
+            </div>
+
+
+            <div class="tracking-item">
+
+                <i
+                    class="fa-solid fa-calendar-check"
+                    style="color:#F47B20"
+                ></i>
+
+                <strong id="monthDays">
+                    0
+                </strong>
+
+                <span>
+                    أيام مسجلة
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    Si7a © 2026
+    <br>
+    بياناتك الصحية تخص حسابك فقط.
+
+</footer>
+
+
+<!-- Toast -->
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+<!-- Firebase -->
+
+<script type="module">
+
+    import {
+        auth,
+        db
+    } from "./js/firebase.js";
+
+
+    import {
+        onAuthStateChanged,
+        signOut
+    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+
+    import {
+        doc,
+        getDoc,
+        setDoc,
+        serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+
+    /* =========================
+       ELEMENTS
+    ========================== */
+
+    const loadingScreen =
+        document.getElementById("loadingScreen");
+
+    const userName =
+        document.getElementById("userName");
+
+    const welcomeName =
+        document.getElementById("welcomeName");
+
+    const userEmail =
+        document.getElementById("userEmail");
+
+    const userAvatar =
+        document.getElementById("userAvatar");
+
+    const logoutBtn =
+        document.getElementById("logoutBtn");
+
+    const toast =
+        document.getElementById("toast");
+
+
+    let currentUser = null;
+
+    let todayData = {
+        water: 0,
+        walking: 0,
+        sleep: 0,
+        wakeTime: ""
+    };
+
+
+    /* =========================
+       TOAST
+    ========================== */
+
+    function showToast(message){
+
+        toast.textContent = message;
+
+        toast.classList.add("show");
+
+        setTimeout(() => {
+
+            toast.classList.remove("show");
+
+        },2500);
+
+    }
+
+
+    /* =========================
+       TODAY
+    ========================== */
+
+    function getToday(){
+
+        const date = new Date();
+
+        const year =
+            date.getFullYear();
+
+        const month =
+            String(date.getMonth()+1)
+            .padStart(2,"0");
+
+        const day =
+            String(date.getDate())
+            .padStart(2,"0");
+
+        return `${year}-${month}-${day}`;
+
+    }
+
+
+    /* =========================
+       UPDATE UI
+    ========================== */
+
+    function updateUI(){
+
+        const water =
+            Number(todayData.water || 0);
+
+        const walking =
+            Number(todayData.walking || 0);
+
+        const sleep =
+            Number(todayData.sleep || 0);
+
+        const wake =
+            todayData.wakeTime || "--:--";
+
+
+        document.getElementById("waterValue")
+            .textContent = water;
+
+        document.getElementById("waterStat")
+            .textContent = `${water} كوب`;
+
+
+        document.getElementById("walkValue")
+            .textContent = walking;
+
+        document.getElementById("walkStat")
+            .textContent = `${walking} دقيقة`;
+
+
+        document.getElementById("sleepValue")
+            .textContent = sleep;
+
+        document.getElementById("sleepStat")
+            .textContent = `${sleep} ساعة`;
+
+
+        document.getElementById("wakeValue")
+            .textContent = wake;
+
+        document.getElementById("wakeStat")
+            .textContent = wake;
+
+
+        const waterPercent =
+            Math.min((water / 8) * 100,100);
+
+        const walkPercent =
+            Math.min((walking / 30) * 100,100);
+
+        const sleepPercent =
+            Math.min((sleep / 8) * 100,100);
+
+
+        document.getElementById("waterProgress")
+            .style.width = `${waterPercent}%`;
+
+        document.getElementById("walkProgress")
+            .style.width = `${walkPercent}%`;
+
+        document.getElementById("sleepProgress")
+            .style.width = `${sleepPercent}%`;
+
+
+        if(wake !== "--:--"){
+
+            document.getElementById("wakeProgress")
+                .style.width = "100%";
+
+        }
+
+    }
+
+
+    /* =========================
+       LOAD TODAY
+    ========================== */
+
+    async function loadTodayData(){
+
+        if(!currentUser){
+            return;
+        }
+
+
+        const today =
+            getToday();
+
+
+        const todayRef =
+            doc(
+                db,
+                "users",
+                currentUser.uid,
+                "dailyTracking",
+                today
+            );
+
+
+        try{
+
+            const snapshot =
+                await getDoc(todayRef);
+
+
+            if(snapshot.exists()){
+
+                todayData = {
+                    ...todayData,
+                    ...snapshot.data()
+                };
+
+            }
+
+
+            updateUI();
+
+        }catch(error){
+
+            console.error(error);
+
+            showToast(
+                "تعذر تحميل بيانات اليوم"
+            );
+
+        }
+
+    }
+
+
+    /* =========================
+       SAVE TODAY
+    ========================== */
+
+    async function saveTodayData(){
+
+        if(!currentUser){
+            return;
+        }
+
+
+        const today =
+            getToday();
+
+
+        const todayRef =
+            doc(
+                db,
+                "users",
+                currentUser.uid,
+                "dailyTracking",
+                today
+            );
+
+
+        try{
+
+            await setDoc(
+                todayRef,
+                {
+                    ...todayData,
+                    uid:currentUser.uid,
+                    date:today,
+                    updatedAt:serverTimestamp()
+                },
+                {
+                    merge:true
+                }
+            );
+
+            updateUI();
+
+        }catch(error){
+
+            console.error(error);
+
+            showToast(
+                "تعذر حفظ البيانات"
+            );
+
+        }
+
+    }
+
+
+    /* =========================
+       ADD WATER
+    ========================== */
+
+    document
+        .getElementById("addWaterBtn")
+        .addEventListener("click", async () => {
+
+            todayData.water =
+                Number(todayData.water || 0) + 1;
+
+            if(todayData.water > 8){
+
+                todayData.water = 0;
+
+                showToast(
+                    "تمت إعادة عداد الماء إلى الصفر"
+                );
+
+            }else{
+
+                showToast(
+                    "تمت إضافة كوب ماء 💧"
+                );
+
+            }
+
+            await saveTodayData();
+
+        });
+
+
+    /* =========================
+       ADD WALK
+    ========================== */
+
+    document
+        .getElementById("addWalkBtn")
+        .addEventListener("click", async () => {
+
+            todayData.walking =
+                Number(todayData.walking || 0) + 10;
+
+            if(todayData.walking > 30){
+
+                todayData.walking = 0;
+
+                showToast(
+                    "تمت إعادة عداد المشي إلى الصفر"
+                );
+
+            }else{
+
+                showToast(
+                    "تمت إضافة 10 دقائق مشي 🚶"
+                );
+
+            }
+
+            await saveTodayData();
+
+        });
+
+
+    /* =========================
+       SLEEP
+    ========================== */
+
+    document
+        .getElementById("addSleepBtn")
+        .addEventListener("click", async () => {
+
+            const value =
+                prompt(
+                    "كم ساعة نمت الليلة الماضية؟"
+                );
+
+
+            if(value === null){
+                return;
+            }
+
+
+            const hours =
+                Number(value);
+
+
+            if(
+                isNaN(hours) ||
+                hours < 0 ||
+                hours > 24
+            ){
+
+                showToast(
+                    "أدخل عدد ساعات صحيح"
+                );
+
+                return;
+
+            }
+
+
+            todayData.sleep =
+                hours;
+
+
+            await saveTodayData();
+
+
+            showToast(
+                "تم تسجيل ساعات النوم 🌙"
+            );
+
+        });
+
+
+    /* =========================
+       WAKE TIME
+    ========================== */
+
+    document
+        .getElementById("addWakeBtn")
+        .addEventListener("click", async () => {
+
+            const value =
+                prompt(
+                    "أدخل وقت الاستيقاظ، مثال: 07:30"
+                );
+
+
+            if(value === null){
+                return;
+            }
+
+
+            const pattern =
+                /^([01]\d|2[0-3]):([0-5]\d)$/;
+
+
+            if(!pattern.test(value)){
+
+                showToast(
+                    "صيغة الوقت غير صحيحة"
+                );
+
+                return;
+
+            }
+
+
+            todayData.wakeTime =
+                value;
+
+
+            await saveTodayData();
+
+
+            showToast(
+                "تم تسجيل وقت الاستيقاظ ☀️"
+            );
+
+        });
+
+
+    /* =========================
+       LOAD USER PROFILE
+    ========================== */
+
+    async function loadUserProfile(user){
+
+        const userRef =
+            doc(
+                db,
+                "users",
+                user.uid
+            );
+
+
+        try{
+
+            const snapshot =
+                await getDoc(userRef);
+
+
+            let name =
+                user.displayName ||
+                "المستخدم";
+
+
+            if(snapshot.exists()){
+
+                const data =
+                    snapshot.data();
+
+
+                if(data.name){
+
+                    name =
+                        data.name;
+
+                }
+
+            }
+
+
+            userName.textContent =
+                name;
+
+
+            welcomeName.textContent =
+                name;
+
+
+            userEmail.textContent =
+                user.email || "";
+
+
+            const firstLetter =
+                name.trim()
+                    .charAt(0)
+                    .toUpperCase();
+
+
+            userAvatar.textContent =
+                firstLetter || "؟";
+
+
+        }catch(error){
+
+            console.error(error);
+
+        }
+
+    }
+
+
+    /* =========================
+       AUTH
+    ========================== */
+
+    onAuthStateChanged(
+        auth,
+        async (user) => {
+
+            if(!user){
+
+                window.location.href =
+                    "login.html";
+
+                return;
+
+            }
+
+
+            currentUser =
+                user;
+
+
+            await loadUserProfile(user);
+
+            await loadTodayData();
+
+
+            loadingScreen.style.display =
+                "none";
+
+        }
+    );
+
+
+    /* =========================
+       LOGOUT
+    ========================== */
+
+    logoutBtn.addEventListener(
+        "click",
+        async () => {
+
+            const confirmed =
+                confirm(
+                    "هل تريد تسجيل الخروج؟"
+                );
+
+
+            if(!confirmed){
+                return;
+            }
+
+
+            try{
+
+                await signOut(auth);
+
+                window.location.href =
+                    "login.html";
+
+            }catch(error){
+
+                console.error(error);
+
+                showToast(
+                    "حدث خطأ أثناء تسجيل الخروج"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       MONTH SELECT
+    ========================== */
+
+    const monthSelect =
+        document.getElementById(
+            "monthSelect"
+        );
+
+
+    const currentMonth =
+        new Date().getMonth();
+
+
+    monthSelect.value =
+        currentMonth;
+
+
+    /*
+     * هذه الأرقام مؤقتة في الواجهة.
+     * في الخطوة القادمة سنربطها فعلياً
+     * بجدول الأيام الكامل في Firestore.
+     */
+
+</script>
+
+</body>
+</html>
