@@ -3,1396 +3,954 @@
 
 <head>
 
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="theme-color"
-        content="#1976D2"
-        id="themeColorMeta"
-    >
-
-    <meta
-        name="description"
-        content="Si7a - لوحة المتابعة الصحية الشخصية"
-    >
-
-    <title>Si7a | لوحة صحتي</title>
-
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
-
-    <style>
-
-        *{
-            box-sizing:border-box;
-            margin:0;
-            padding:0;
-        }
-
-        :root{
-
-            --primary:#1976D2;
-            --primary-dark:#0D47A1;
-            --primary-light:#E3F2FD;
-
-            --text:#17324D;
-            --muted:#6B7A90;
-
-            --bg:#F5FAFF;
-            --white:#FFFFFF;
-
-            --border:#DCE8F3;
-
-            --green:#20A464;
-            --green-light:#E8F7F0;
-
-            --orange:#F59E0B;
-            --orange-light:#FFF7E6;
-
-            --red:#E64C4C;
-            --red-light:#FFF0F0;
-
-            --purple:#7657D8;
-            --purple-light:#F1EEFF;
-
-            --teal:#0F9D8A;
-            --teal-light:#E8F8F5;
-
-            --shadow:0 8px 28px rgba(13,71,161,.07);
-
-            --radius:20px;
-        }
-
-        html{
-            scroll-behavior:smooth;
-        }
-
-        body{
-            font-family:"Tajawal",sans-serif;
-            background:var(--bg);
-            color:var(--text);
-            min-height:100vh;
-        }
-
-        button,
-        input,
-        select{
-            font-family:inherit;
-        }
-
-        button{
-            border:0;
-            cursor:pointer;
-        }
-
-        a{
-            text-decoration:none;
-            color:inherit;
-        }
-
-        /* =========================
-           LOADING
-        ========================== */
-
-        #loadingScreen{
-            position:fixed;
-            inset:0;
-            background:var(--bg);
-            z-index:9999;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            flex-direction:column;
-            gap:18px;
-        }
-
-        .loading-logo{
-            width:72px;
-            height:72px;
-            border-radius:22px;
-            background:linear-gradient(
-                135deg,
-                var(--primary),
-                var(--primary-dark)
-            );
-            color:white;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:30px;
-            box-shadow:0 12px 30px rgba(25,118,210,.25);
-        }
-
-        .loader{
-            width:38px;
-            height:38px;
-            border:4px solid var(--primary-light);
-            border-top-color:var(--primary);
-            border-radius:50%;
-            animation:spin .8s linear infinite;
-        }
-
-        @keyframes spin{
-            to{
-                transform:rotate(360deg);
-            }
-        }
-
-        #loadingScreen.hidden{
-            display:none;
-        }
-
-        /* =========================
-           HEADER
-        ========================== */
-
-        .topbar{
-            position:sticky;
-            top:0;
-            z-index:100;
-            background:rgba(255,255,255,.94);
-            backdrop-filter:blur(16px);
-            border-bottom:1px solid var(--border);
-        }
-
-        .topbar-inner{
-            max-width:1200px;
-            margin:auto;
-            min-height:74px;
-            padding:12px 20px;
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            gap:15px;
-        }
-
-        .brand{
-            display:flex;
-            align-items:center;
-            gap:12px;
-        }
-
-        .brand-icon{
-            width:48px;
-            height:48px;
-            border-radius:15px;
-            background:linear-gradient(
-                135deg,
-                var(--primary),
-                var(--primary-dark)
-            );
-            color:white;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:22px;
-            box-shadow:0 8px 20px rgba(25,118,210,.22);
-        }
-
-        .brand-title{
-            font-size:22px;
-            font-weight:800;
-            color:var(--primary-dark);
-        }
-
-        .brand-subtitle{
-            color:var(--muted);
-            font-size:12px;
-            margin-top:1px;
-        }
-
-        .top-actions{
-            display:flex;
-            align-items:center;
-            gap:9px;
-        }
-
-        .icon-button{
-            width:44px;
-            height:44px;
-            border-radius:14px;
-            background:var(--primary-light);
-            color:var(--primary-dark);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:17px;
-            position:relative;
-        }
-
-        .icon-button:hover{
-            background:#D5EAFB;
-        }
-
-        .notification-dot{
-            width:8px;
-            height:8px;
-            border-radius:50%;
-            background:var(--red);
-            position:absolute;
-            top:8px;
-            left:9px;
-            border:2px solid white;
-        }
-
-        .user-mini{
-            display:flex;
-            align-items:center;
-            gap:9px;
-            padding:5px 8px 5px 12px;
-            background:#F7FBFF;
-            border:1px solid var(--border);
-            border-radius:16px;
-        }
-
-        .avatar{
-            width:38px;
-            height:38px;
-            border-radius:12px;
-            background:var(--primary-light);
-            color:var(--primary-dark);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-weight:800;
-        }
-
-        .user-mini-info{
-            text-align:right;
-        }
-
-        .user-mini-name{
-            font-weight:700;
-            font-size:13px;
-        }
-
-        .user-mini-email{
-            color:var(--muted);
-            font-size:10px;
-            max-width:150px;
-            overflow:hidden;
-            text-overflow:ellipsis;
-            white-space:nowrap;
-        }
-
-        /* =========================
-           MAIN
-        ========================== */
-
-        .container{
-            width:min(1200px, calc(100% - 32px));
-            margin:0 auto;
-            padding:28px 0 100px;
-        }
-
-        /* =========================
-           WELCOME
-        ========================== */
-
-        .welcome{
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            gap:20px;
-            margin-bottom:22px;
-        }
-
-        .welcome-text h1{
-            font-size:30px;
-            font-weight:800;
-            margin-bottom:5px;
-        }
-
-        .welcome-text p{
-            color:var(--muted);
-            font-size:14px;
-        }
-
-        .date-card{
-            background:white;
-            border:1px solid var(--border);
-            box-shadow:var(--shadow);
-            border-radius:16px;
-            padding:12px 16px;
-            display:flex;
-            align-items:center;
-            gap:10px;
-            color:var(--muted);
-            font-size:13px;
-        }
-
-        .date-card i{
-            color:var(--primary);
-            font-size:18px;
-        }
-
-        /* =========================
-           DAILY SCORE
-        ========================== */
-
-        .daily-grid{
-            display:grid;
-            grid-template-columns:1.05fr 1.95fr;
-            gap:18px;
-            margin-bottom:18px;
-        }
-
-        .score-card{
-            background:
-                radial-gradient(
-                    circle at 20% 10%,
-                    rgba(255,255,255,.24),
-                    transparent 32%
-                ),
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--primary-dark)
-                );
-            border-radius:26px;
-            padding:25px;
-            color:white;
-            min-height:245px;
-            position:relative;
-            overflow:hidden;
-            box-shadow:0 15px 35px rgba(13,71,161,.18);
-        }
-
-        .score-card:after{
-            content:"";
-            position:absolute;
-            width:180px;
-            height:180px;
-            border:1px solid rgba(255,255,255,.12);
-            border-radius:50%;
-            left:-80px;
-            bottom:-80px;
-        }
-
-        .score-title{
-            font-size:14px;
-            opacity:.9;
-        }
-
-        .score-content{
-            display:flex;
-            align-items:center;
-            gap:24px;
-            margin-top:18px;
-        }
-
-        .score-circle{
-            width:130px;
-            height:130px;
-            border-radius:50%;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            position:relative;
-            background:
-                conic-gradient(
-                    #fff 0deg,
-                    #fff var(--score-angle,0deg),
-                    rgba(255,255,255,.18) var(--score-angle,0deg),
-                    rgba(255,255,255,.18) 360deg
-                );
-        }
-
-        .score-circle:before{
-            content:"";
-            position:absolute;
-            width:104px;
-            height:104px;
-            border-radius:50%;
-            background:var(--primary-dark);
-        }
-
-        .score-number{
-            position:relative;
-            z-index:2;
-            text-align:center;
-        }
-
-        .score-number strong{
-            display:block;
-            font-size:32px;
-            line-height:1;
-        }
-
-        .score-number span{
-            font-size:11px;
-            opacity:.85;
-        }
-
-        .score-message{
-            position:relative;
-            z-index:2;
-        }
-
-        .score-message strong{
-            display:block;
-            font-size:19px;
-            margin-bottom:7px;
-        }
-
-        .score-message p{
-            font-size:12px;
-            opacity:.85;
-            line-height:1.8;
-        }
-
-        /* =========================
-           HABIT SUMMARY
-        ========================== */
-
-        .habit-summary{
-            background:white;
-            border:1px solid var(--border);
-            box-shadow:var(--shadow);
-            border-radius:26px;
-            padding:20px;
-        }
-
-        .section-heading{
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            gap:10px;
-            margin-bottom:15px;
-        }
-
-        .section-heading h2{
-            font-size:18px;
-            font-weight:800;
-        }
-
-        .section-heading p{
-            color:var(--muted);
-            font-size:11px;
-            margin-top:3px;
-        }
-
-        .text-link{
-            color:var(--primary);
-            font-size:12px;
-            font-weight:700;
-            display:flex;
-            align-items:center;
-            gap:5px;
-        }
-
-        .habits{
-            display:grid;
-            grid-template-columns:repeat(2,1fr);
-            gap:11px;
-        }
-
-        .habit{
-            border:1px solid var(--border);
-            background:#FBFDFF;
-            border-radius:17px;
-            padding:13px;
-        }
-
-        .habit-top{
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            gap:8px;
-            margin-bottom:10px;
-        }
-
-        .habit-name{
-            display:flex;
-            align-items:center;
-            gap:8px;
-            font-weight:700;
-            font-size:13px;
-        }
-
-        .habit-icon{
-            width:34px;
-            height:34px;
-            border-radius:11px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            background:var(--primary-light);
-            color:var(--primary);
-        }
-
-        .habit-value{
-            font-size:11px;
-            color:var(--muted);
-        }
-
-        .progress{
-            height:7px;
-            background:#EAF2F8;
-            border-radius:20px;
-            overflow:hidden;
-        }
-
-        .progress-bar{
-            height:100%;
-            border-radius:20px;
-            width:0;
-            background:linear-gradient(
-                90deg,
-                var(--primary),
-                #42A5F5
-            );
-            transition:width .5s ease;
-        }
-
-        .habit-bottom{
-            display:flex;
-            justify-content:space-between;
-            margin-top:7px;
-            font-size:10px;
-            color:var(--muted);
-        }
-
-        /* =========================
-           SECTION
-        ========================== */
-
-        .section{
-            margin-top:18px;
-        }
-
-        /* =========================
-           HEALTH VITALS
-        ========================== */
-
-        .vitals-grid{
-            display:grid;
-            grid-template-columns:repeat(6,1fr);
-            gap:12px;
-        }
-
-        .vital-card{
-            background:white;
-            border:1px solid var(--border);
-            border-radius:18px;
-            padding:15px;
-            box-shadow:var(--shadow);
-            min-width:0;
-        }
-
-        .vital-icon{
-            width:38px;
-            height:38px;
-            border-radius:12px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            margin-bottom:10px;
-            font-size:16px;
-        }
-
-        .vital-card:nth-child(1) .vital-icon{
-            background:#E8F7F0;
-            color:var(--green);
-        }
-
-        .vital-card:nth-child(2) .vital-icon{
-            background:#FFF0F0;
-            color:var(--red);
-        }
-
-        .vital-card:nth-child(3) .vital-icon{
-            background:var(--primary-light);
-            color:var(--primary);
-        }
-
-        .vital-card:nth-child(4) .vital-icon{
-            background:#E8F8F5;
-            color:var(--teal);
-        }
-
-        .vital-card:nth-child(5) .vital-icon{
-            background:#FFF7E6;
-            color:var(--orange);
-        }
-
-        .vital-card:nth-child(6) .vital-icon{
-            background:var(--purple-light);
-            color:var(--purple);
-        }
-
-        .vital-name{
-            font-size:11px;
-            color:var(--muted);
-        }
-
-        .vital-value{
-            font-size:18px;
-            font-weight:800;
-            margin:5px 0 2px;
-            white-space:nowrap;
-            overflow:hidden;
-            text-overflow:ellipsis;
-        }
-
-        .vital-unit{
-            font-size:9px;
-            color:var(--muted);
-        }
-
-        .not-recorded{
-            color:#A5B2BF;
-            font-size:12px;
-            font-weight:500;
-        }
-
-        /* =========================
-           TWO COLUMNS
-        ========================== */
-
-        .two-columns{
-            display:grid;
-            grid-template-columns:1.35fr .65fr;
-            gap:18px;
-        }
-
-        .panel{
-            background:white;
-            border:1px solid var(--border);
-            border-radius:22px;
-            box-shadow:var(--shadow);
-            padding:20px;
-        }
-
-        /* =========================
-           HEALTH TREND
-        ========================== */
-
-        .chart-placeholder{
-            min-height:235px;
-            border-radius:17px;
-            background:#F8FBFE;
-            border:1px dashed var(--border);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            text-align:center;
-            padding:20px;
-            color:var(--muted);
-        }
-
-        .chart-placeholder i{
-            display:block;
-            font-size:32px;
-            color:var(--primary);
-            margin-bottom:10px;
-        }
-
-        .chart-placeholder strong{
-            display:block;
-            color:var(--text);
-            margin-bottom:4px;
-        }
-
-        .chart-placeholder span{
-            font-size:11px;
-        }
-
-        /* =========================
-           GOALS
-        ========================== */
-
-        .goal-list{
-            display:flex;
-            flex-direction:column;
-            gap:10px;
-        }
-
-        .goal-item{
-            display:flex;
-            align-items:center;
-            gap:11px;
-            border:1px solid var(--border);
-            border-radius:15px;
-            padding:11px;
-        }
-
-        .goal-icon{
-            width:36px;
-            height:36px;
-            border-radius:11px;
-            background:var(--primary-light);
-            color:var(--primary);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            flex-shrink:0;
-        }
-
-        .goal-info{
-            min-width:0;
-            flex:1;
-        }
-
-        .goal-name{
-            font-size:12px;
-            font-weight:700;
-        }
-
-        .goal-value{
-            color:var(--muted);
-            font-size:10px;
-            margin-top:2px;
-        }
-
-        .goal-status{
-            width:28px;
-            height:28px;
-            border-radius:50%;
-            background:var(--green-light);
-            color:var(--green);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:12px;
-        }
-
-        .empty-goals{
-            text-align:center;
-            padding:25px 10px;
-            color:var(--muted);
-        }
-
-        .empty-goals i{
-            font-size:30px;
-            color:var(--primary);
-            margin-bottom:10px;
-        }
-
-        .empty-goals p{
-            font-size:12px;
-            line-height:1.8;
-        }
-
-        .primary-button{
-            margin-top:13px;
-            width:100%;
-            background:var(--primary);
-            color:white;
-            border-radius:13px;
-            padding:11px 15px;
-            font-weight:700;
-            font-size:12px;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            gap:7px;
-        }
-
-        .primary-button:hover{
-            background:var(--primary-dark);
-        }
-
-        /* =========================
-           QUICK HEALTH SECTIONS
-        ========================== */
-
-        .health-modules{
-            display:grid;
-            grid-template-columns:repeat(4,1fr);
-            gap:13px;
-        }
-
-        .module-card{
-            background:white;
-            border:1px solid var(--border);
-            border-radius:19px;
-            padding:17px;
-            box-shadow:var(--shadow);
-            transition:.2s ease;
-        }
-
-        .module-card:hover{
-            transform:translateY(-2px);
-            box-shadow:0 12px 30px rgba(13,71,161,.10);
-        }
-
-        .module-icon{
-            width:42px;
-            height:42px;
-            border-radius:13px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            margin-bottom:12px;
-            font-size:18px;
-        }
-
-        .module-card:nth-child(1) .module-icon{
-            background:var(--purple-light);
-            color:var(--purple);
-        }
-
-        .module-card:nth-child(2) .module-icon{
-            background:var(--green-light);
-            color:var(--green);
-        }
-
-        .module-card:nth-child(3) .module-icon{
-            background:#FFF7E6;
-            color:var(--orange);
-        }
-
-        .module-card:nth-child(4) .module-icon{
-            background:var(--primary-light);
-            color:var(--primary);
-        }
-
-        .module-card:nth-child(5) .module-icon{
-            background:#FFF0F0;
-            color:var(--red);
-        }
-
-        .module-card:nth-child(6) .module-icon{
-            background:#E8F8F5;
-            color:var(--teal);
-        }
-
-        .module-card h3{
-            font-size:14px;
-            margin-bottom:4px;
-        }
-
-        .module-card p{
-            color:var(--muted);
-            font-size:10px;
-            line-height:1.7;
-        }
-
-        .module-arrow{
-            margin-top:11px;
-            color:var(--primary);
-            font-size:11px;
-            font-weight:700;
-        }
-
-        /* =========================
-           REMINDERS
-        ========================== */
-
-        .reminders{
-            display:flex;
-            flex-direction:column;
-            gap:10px;
-        }
-
-        .reminder{
-            display:flex;
-            align-items:center;
-            gap:11px;
-            padding:12px;
-            background:#FAFCFE;
-            border:1px solid var(--border);
-            border-radius:15px;
-        }
-
-        .reminder-icon{
-            width:37px;
-            height:37px;
-            border-radius:11px;
-            background:var(--primary-light);
-            color:var(--primary);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-        }
-
-        .reminder-info{
-            flex:1;
-        }
-
-        .reminder-info strong{
-            display:block;
-            font-size:12px;
-        }
-
-        .reminder-info span{
-            display:block;
-            color:var(--muted);
-            font-size:10px;
-            margin-top:2px;
-        }
-
-        .reminder-time{
-            font-size:11px;
-            font-weight:700;
-            color:var(--primary-dark);
-        }
-
-        /* =========================
-           ACHIEVEMENTS
-        ========================== */
-
-        .achievement-grid{
-            display:grid;
-            grid-template-columns:repeat(4,1fr);
-            gap:11px;
-        }
-
-        .achievement{
-            border:1px solid var(--border);
-            border-radius:17px;
-            padding:15px 10px;
-            text-align:center;
-            background:#FBFDFF;
-        }
-
-        .achievement-icon{
-            width:48px;
-            height:48px;
-            margin:0 auto 8px;
-            border-radius:50%;
-            background:var(--primary-light);
-            color:var(--primary);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:20px;
-        }
-
-        .achievement strong{
-            display:block;
-            font-size:11px;
-        }
-
-        .achievement span{
-            display:block;
-            font-size:9px;
-            color:var(--muted);
-            margin-top:3px;
-        }
-
-        /* =========================
-           PRIVACY
-        ========================== */
-
-        .privacy{
-            margin-top:18px;
-            background:linear-gradient(
-                135deg,
-                #EFF8FF,
-                #F7FCFF
-            );
-            border:1px solid #CFE5F7;
-            border-radius:21px;
-            padding:18px;
-            display:flex;
-            align-items:center;
-            gap:14px;
-        }
-
-        .privacy-icon{
-            width:46px;
-            height:46px;
-            flex-shrink:0;
-            border-radius:14px;
-            background:white;
-            color:var(--primary);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:20px;
-            box-shadow:0 5px 15px rgba(25,118,210,.08);
-        }
-
-        .privacy strong{
-            display:block;
-            font-size:13px;
-            margin-bottom:3px;
-        }
-
-        .privacy p{
-            color:var(--muted);
-            font-size:10px;
-            line-height:1.8;
-        }
-
-        /* =========================
-           FOOTER
-        ========================== */
-
-        footer{
-            text-align:center;
-            color:var(--muted);
-            font-size:10px;
-            margin-top:30px;
-        }
-
-        /* =========================
-           BOTTOM NAV
-        ========================== */
-
-        .bottom-nav{
-            position:fixed;
-            bottom:0;
-            left:0;
-            right:0;
-            z-index:90;
-            background:rgba(255,255,255,.96);
-            backdrop-filter:blur(15px);
-            border-top:1px solid var(--border);
-            display:none;
-        }
-
-        .bottom-nav-inner{
-            max-width:650px;
-            margin:auto;
-            display:grid;
-            grid-template-columns:repeat(5,1fr);
-            padding:7px 8px calc(7px + env(safe-area-inset-bottom));
-        }
-
-        .nav-item{
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            gap:4px;
-            color:#8A9AAF;
-            font-size:9px;
-            padding:6px 3px;
-            border-radius:12px;
-        }
-
-        .nav-item i{
-            font-size:17px;
-        }
-
-        .nav-item.active{
-            color:var(--primary);
-            background:var(--primary-light);
-        }
-
-        /* =========================
-           TOAST
-        ========================== */
-
-        #toast{
-            position:fixed;
-            bottom:25px;
-            left:50%;
-            transform:translateX(-50%) translateY(120px);
-            background:#17324D;
-            color:white;
-            padding:12px 18px;
-            border-radius:13px;
-            font-size:12px;
-            z-index:10000;
-            opacity:0;
-            transition:.3s ease;
-            box-shadow:0 10px 30px rgba(0,0,0,.15);
-            max-width:90%;
-            text-align:center;
-        }
-
-        #toast.show{
-            transform:translateX(-50%) translateY(0);
-            opacity:1;
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================== */
-
-        @media(max-width:1000px){
-
-            .vitals-grid{
-                grid-template-columns:repeat(3,1fr);
-            }
-
-            .health-modules{
-                grid-template-columns:repeat(3,1fr);
-            }
-
-        }
-
-        @media(max-width:800px){
-
-            .container{
-                width:min(100% - 22px,700px);
-                padding-top:20px;
-                padding-bottom:90px;
-            }
-
-            .topbar-inner{
-                padding:10px 12px;
-            }
-
-            .brand-title{
-                font-size:19px;
-            }
-
-            .brand-subtitle{
-                display:none;
-            }
-
-            .user-mini-info{
-                display:none;
-            }
-
-            .user-mini{
-                padding:4px;
-            }
-
-            .welcome{
-                align-items:flex-start;
-                flex-direction:column;
-            }
-
-            .welcome-text h1{
-                font-size:25px;
-            }
-
-            .date-card{
-                width:100%;
-                justify-content:center;
-            }
-
-            .daily-grid{
-                grid-template-columns:1fr;
-            }
-
-            .two-columns{
-                grid-template-columns:1fr;
-            }
-
-            .health-modules{
-                grid-template-columns:repeat(2,1fr);
-            }
-
-            .bottom-nav{
-                display:block;
-            }
-
-            .top-actions .icon-button:nth-child(1){
-                display:none;
-            }
-
-        }
-
-        @media(max-width:550px){
-
-            .brand-icon{
-                width:42px;
-                height:42px;
-                border-radius:13px;
-                font-size:19px;
-            }
-
-            .brand-title{
-                font-size:18px;
-            }
-
-            .top-actions{
-                gap:5px;
-            }
-
-            .icon-button{
-                width:40px;
-                height:40px;
-            }
-
-            .score-card{
-                padding:20px;
-                min-height:auto;
-            }
-
-            .score-content{
-                gap:16px;
-            }
-
-            .score-circle{
-                width:105px;
-                height:105px;
-                flex-shrink:0;
-            }
-
-            .score-circle:before{
-                width:83px;
-                height:83px;
-            }
-
-            .score-number strong{
-                font-size:26px;
-            }
-
-            .score-message strong{
-                font-size:16px;
-            }
-
-            .habits{
-                grid-template-columns:1fr 1fr;
-            }
-
-            .vitals-grid{
-                grid-template-columns:repeat(2,1fr);
-            }
-
-            .health-modules{
-                grid-template-columns:1fr 1fr;
-            }
-
-            .achievement-grid{
-                grid-template-columns:repeat(2,1fr);
-            }
-
-            .privacy{
-                align-items:flex-start;
-            }
-
-        }
-
-        @media(max-width:380px){
-
-            .habits{
-                grid-template-columns:1fr;
-            }
-
-            .health-modules{
-                grid-template-columns:1fr;
-            }
-
-            .score-content{
-                flex-direction:column;
-                align-items:flex-start;
-            }
-
-        }
-
-    </style>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="theme-color"
+    content="#1976D2"
+>
+
+<title>Si7a | لوحة صحتي</title>
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
+    rel="stylesheet"
+>
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+>
+
+<style>
+
+:root{
+    --primary:#1976D2;
+    --primary-dark:#0D47A1;
+    --primary-light:#E3F2FD;
+
+    --text:#17324D;
+    --muted:#6B7A90;
+
+    --bg:#F5FAFF;
+    --white:#FFFFFF;
+    --border:#DCE8F3;
+
+    --green:#20A464;
+    --green-light:#E8F7EF;
+
+    --orange:#F59E0B;
+    --orange-light:#FFF7E6;
+
+    --purple:#7657D8;
+    --purple-light:#F1EDFF;
+
+    --red:#E64C4C;
+    --red-light:#FFF0F0;
+
+    --shadow:0 8px 25px rgba(13,71,161,.07);
+
+    --radius:20px;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Tajawal",Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+#loadingScreen{
+    position:fixed;
+    inset:0;
+    background:var(--bg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+.loading-box{
+    text-align:center;
+}
+
+.loading-icon{
+    width:70px;
+    height:70px;
+    margin:auto;
+    border-radius:22px;
+    background:var(--primary);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    box-shadow:0 12px 30px rgba(25,118,210,.25);
+    animation:pulse 1.5s infinite;
+}
+
+.loading-box p{
+    margin-top:15px;
+    color:var(--muted);
+    font-weight:700;
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.07);
+    }
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:100;
+    backdrop-filter:blur(12px);
+}
+
+.header-inner{
+    max-width:1200px;
+    margin:auto;
+    min-height:72px;
+    padding:12px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.brand-icon{
+    width:44px;
+    height:44px;
+    border-radius:14px;
+    background:var(--primary);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+}
+
+.brand-text{
+    font-size:21px;
+    font-weight:800;
+    color:var(--primary-dark);
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.icon-btn{
+    width:42px;
+    height:42px;
+    border:1px solid var(--border);
+    border-radius:13px;
+    background:#fff;
+    color:var(--primary-dark);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:17px;
+}
+
+.icon-btn:hover{
+    background:var(--primary-light);
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+    width:min(1200px, calc(100% - 28px));
+    margin:auto;
+    padding:25px 0 50px;
+}
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome{
+    background:linear-gradient(
+        135deg,
+        var(--primary-dark),
+        var(--primary)
+    );
+
+    color:#fff;
+    border-radius:26px;
+    padding:24px;
+    box-shadow:0 15px 35px rgba(13,71,161,.18);
+    margin-bottom:22px;
+    position:relative;
+    overflow:hidden;
+}
+
+.welcome::after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:rgba(255,255,255,.07);
+    left:-50px;
+    top:-80px;
+}
+
+.welcome-content{
+    position:relative;
+    z-index:2;
+}
+
+.welcome small{
+    opacity:.85;
+}
+
+.welcome h1{
+    margin-top:6px;
+    font-size:27px;
+}
+
+.welcome p{
+    margin-top:8px;
+    opacity:.9;
+    line-height:1.7;
+}
+
+.date-box{
+    margin-top:17px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 13px;
+    background:rgba(255,255,255,.13);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:12px;
+    font-size:14px;
+}
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.quick-actions{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-bottom:25px;
+}
+
+.quick-btn{
+    min-height:52px;
+    border:1px solid var(--border);
+    background:#fff;
+    color:var(--text);
+    border-radius:15px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    box-shadow:var(--shadow);
+}
+
+.quick-btn.primary{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    margin-bottom:28px;
+}
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:13px;
+}
+
+.section-title h2{
+    font-size:20px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.section-title h2 i{
+    color:var(--primary);
+}
+
+.section-title span{
+    font-size:13px;
+    color:var(--muted);
+}
+
+/* =========================
+   GOAL CARDS
+========================= */
+
+.goals-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+.goal-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:17px;
+    box-shadow:var(--shadow);
+}
+
+.goal-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.goal-icon{
+    width:45px;
+    height:45px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:19px;
+    background:var(--primary-light);
+    color:var(--primary);
+}
+
+.goal-info{
+    flex:1;
+}
+
+.goal-info h3{
+    font-size:16px;
+    margin-bottom:3px;
+}
+
+.goal-info p{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.progress-percent{
+    font-weight:800;
+    color:var(--primary);
+}
+
+.progress{
+    width:100%;
+    height:9px;
+    background:#EDF3F8;
+    border-radius:99px;
+    overflow:hidden;
+    margin:16px 0 10px;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:var(--primary);
+    border-radius:99px;
+    transition:.4s;
+}
+
+.goal-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+}
+
+.goal-value{
+    font-weight:800;
+    font-size:14px;
+}
+
+.goal-unit{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.goal-actions{
+    display:flex;
+    gap:7px;
+}
+
+.small-action{
+    border:0;
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    background:var(--primary-light);
+    color:var(--primary-dark);
+}
+
+.small-action:hover{
+    background:#D2E8FB;
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+    background:#fff;
+    border:1px dashed var(--border);
+    border-radius:20px;
+    padding:28px 18px;
+    text-align:center;
+    color:var(--muted);
+}
+
+.empty i{
+    font-size:32px;
+    color:var(--primary);
+    margin-bottom:10px;
+}
+
+.empty h3{
+    color:var(--text);
+    margin-bottom:6px;
+}
+
+/* =========================
+   MEASUREMENTS
+========================= */
+
+.measure-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.measure-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:17px;
+    box-shadow:var(--shadow);
+}
+
+.measure-icon{
+    width:42px;
+    height:42px;
+    border-radius:13px;
+    background:var(--primary-light);
+    color:var(--primary);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:12px;
+}
+
+.measure-card h3{
+    font-size:14px;
+    margin-bottom:7px;
+}
+
+.measure-value{
+    font-size:21px;
+    font-weight:800;
+}
+
+.measure-value span{
+    color:var(--muted);
+    font-size:12px;
+    font-weight:500;
+}
+
+.measure-card button{
+    margin-top:12px;
+    width:100%;
+    border:0;
+    border-radius:10px;
+    padding:9px;
+    background:var(--primary-light);
+    color:var(--primary-dark);
+    font-weight:700;
+}
+
+/* =========================
+   HEALTH CATEGORIES
+========================= */
+
+.health-links{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.health-link{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:18px;
+    box-shadow:var(--shadow);
+    transition:.2s;
+}
+
+.health-link:hover{
+    transform:translateY(-2px);
+    border-color:#BCD9F1;
+}
+
+.health-link i{
+    width:43px;
+    height:43px;
+    border-radius:13px;
+    background:var(--primary-light);
+    color:var(--primary);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:12px;
+}
+
+.health-link h3{
+    font-size:15px;
+    margin-bottom:4px;
+}
+
+.health-link p{
+    font-size:12px;
+    color:var(--muted);
+    line-height:1.6;
+}
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:20px;
+    box-shadow:var(--shadow);
+}
+
+.summary-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.summary-item{
+    background:var(--bg);
+    border-radius:15px;
+    padding:15px;
+    text-align:center;
+}
+
+.summary-item i{
+    color:var(--primary);
+    font-size:19px;
+    margin-bottom:7px;
+}
+
+.summary-item strong{
+    display:block;
+    font-size:20px;
+}
+
+.summary-item span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* =========================
+   PRIVACY
+========================= */
+
+.privacy{
+    display:flex;
+    align-items:flex-start;
+    gap:13px;
+    background:var(--green-light);
+    border:1px solid #CDEDDD;
+    border-radius:18px;
+    padding:17px;
+    margin-top:25px;
+}
+
+.privacy i{
+    color:var(--green);
+    font-size:22px;
+    margin-top:2px;
+}
+
+.privacy h3{
+    font-size:15px;
+    margin-bottom:4px;
+}
+
+.privacy p{
+    font-size:12px;
+    color:#557061;
+    line-height:1.7;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+    padding:20px 10px 10px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(8,29,50,.48);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+    z-index:500;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:min(430px,100%);
+    max-height:90vh;
+    overflow:auto;
+    background:#fff;
+    border-radius:24px;
+    padding:21px;
+    box-shadow:0 20px 60px rgba(0,0,0,.2);
+}
+
+.modal-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.modal-head h3{
+    font-size:19px;
+}
+
+.close-modal{
+    border:0;
+    background:#F1F5F8;
+    width:37px;
+    height:37px;
+    border-radius:11px;
+}
+
+.form-group{
+    margin-bottom:13px;
+}
+
+.form-group label{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+.form-group input{
+    width:100%;
+    height:46px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:0 13px;
+    outline:none;
+    color:var(--text);
+    background:#fff;
+}
+
+.form-group input:focus{
+    border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(25,118,210,.08);
+}
+
+.modal-buttons{
+    display:flex;
+    gap:9px;
+    margin-top:18px;
+}
+
+.modal-buttons button{
+    flex:1;
+    height:46px;
+    border-radius:12px;
+    border:0;
+    font-weight:800;
+}
+
+.cancel-btn{
+    background:#F0F4F7;
+    color:var(--text);
+}
+
+.save-btn{
+    background:var(--primary);
+    color:#fff;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+    position:fixed;
+    bottom:22px;
+    right:50%;
+    transform:translateX(50%) translateY(100px);
+    background:#17324D;
+    color:#fff;
+    padding:12px 17px;
+    border-radius:13px;
+    z-index:1000;
+    opacity:0;
+    transition:.3s;
+    font-size:13px;
+    box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateX(50%) translateY(0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:950px){
+
+    .goals-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .measure-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .health-links{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .summary-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:650px){
+
+    .container{
+        width:min(100% - 20px,1200px);
+        padding-top:17px;
+    }
+
+    .header-inner{
+        padding:10px;
+    }
+
+    .brand-text{
+        font-size:18px;
+    }
+
+    .brand-icon{
+        width:40px;
+        height:40px;
+    }
+
+    .welcome{
+        padding:20px;
+        border-radius:22px;
+    }
+
+    .welcome h1{
+        font-size:23px;
+    }
+
+    .goals-grid{
+        grid-template-columns:1fr;
+    }
+
+    .measure-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .health-links{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .summary-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:420px){
+
+    .quick-actions{
+        grid-template-columns:1fr;
+    }
+
+    .health-links{
+        grid-template-columns:1fr;
+    }
+
+    .measure-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .goal-card{
+        padding:15px;
+    }
+
+    .summary{
+        padding:14px;
+    }
+}
+
+</style>
 
 </head>
 
-
 <body>
-
 
 <!-- =========================
      LOADING
-========================== -->
+========================= -->
 
 <div id="loadingScreen">
 
-    <div class="loading-logo">
-        <i class="fa-solid fa-heart-pulse"></i>
-    </div>
+    <div class="loading-box">
 
-    <div class="loader"></div>
+        <div class="loading-icon">
+            <i class="fa-solid fa-heart-pulse"></i>
+        </div>
 
-    <div style="
-        color:#6B7A90;
-        font-size:13px;
-    ">
-        جارٍ تحميل ملفك الصحي...
+        <p>جاري تحميل بياناتك الصحية...</p>
+
     </div>
 
 </div>
 
 
 <!-- =========================
-     TOP BAR
-========================== -->
+     HEADER
+========================= -->
 
-<header class="topbar">
+<header class="header">
 
-    <div class="topbar-inner">
+    <div class="header-inner">
 
-        <div class="brand">
+        <a href="dashboard.html" class="brand">
 
             <div class="brand-icon">
                 <i class="fa-solid fa-heart-pulse"></i>
             </div>
 
-            <div>
-                <div class="brand-title">
-                    Si7a
-                </div>
-
-                <div class="brand-subtitle">
-                    متابعتك الصحية الشخصية
-                </div>
+            <div class="brand-text">
+                Si7a
             </div>
 
-        </div>
+        </a>
 
 
-        <div class="top-actions">
+        <div class="header-actions">
 
             <button
-                class="icon-button"
-                id="notificationBtn"
-                title="الإشعارات"
+                class="icon-btn"
+                id="refreshBtn"
+                title="تحديث"
             >
-                <i class="fa-regular fa-bell"></i>
-                <span class="notification-dot"></span>
+                <i class="fa-solid fa-rotate"></i>
             </button>
 
-
             <button
-                class="icon-button"
+                class="icon-btn"
                 id="logoutBtn"
                 title="تسجيل الخروج"
             >
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <i class="fa-solid fa-right-from-bracket"></i>
             </button>
-
-
-            <div class="user-mini">
-
-                <div class="avatar" id="avatar">
-                    ؟
-                </div>
-
-                <div class="user-mini-info">
-
-                    <div
-                        class="user-mini-name"
-                        id="topUserName"
-                    >
-                        المستخدم
-                    </div>
-
-                    <div
-                        class="user-mini-email"
-                        id="topUserEmail"
-                    >
-                        ...
-                    </div>
-
-                </div>
-
-            </div>
 
         </div>
 
@@ -1403,7 +961,7 @@
 
 <!-- =========================
      MAIN
-========================== -->
+========================= -->
 
 <main class="container">
 
@@ -1412,962 +970,361 @@
 
     <section class="welcome">
 
-        <div class="welcome-text">
+        <div class="welcome-content">
+
+            <small>لوحتك الصحية الشخصية</small>
 
             <h1>
-                أهلاً بك، <span id="welcomeName">...</span> 👋
+                مرحبًا <span id="userName">بك</span> 👋
             </h1>
 
             <p>
-                تابع صحتك وعاداتك اليومية بخطوات بسيطة.
+                تابع عاداتك الصحية اليومية وحقق أهدافك خطوة بخطوة.
             </p>
+
+            <div class="date-box">
+
+                <i class="fa-regular fa-calendar"></i>
+
+                <span id="todayDate">
+                    اليوم
+                </span>
+
+            </div>
 
         </div>
 
+    </section>
 
-        <div class="date-card">
 
-            <i class="fa-regular fa-calendar-days"></i>
+    <!-- QUICK ACTIONS -->
 
-            <span id="currentDate">
-                ...
+    <div class="quick-actions">
+
+        <a
+            href="goals.html"
+            class="quick-btn primary"
+        >
+            <i class="fa-solid fa-bullseye"></i>
+            تعديل أهدافي
+        </a>
+
+        <button
+            class="quick-btn"
+            id="scrollMeasurementsBtn"
+        >
+            <i class="fa-solid fa-heart-pulse"></i>
+            القياسات الصحية
+        </button>
+
+    </div>
+
+
+    <!-- TODAY GOALS -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <h2>
+                <i class="fa-solid fa-chart-line"></i>
+                أهدافي اليوم
+            </h2>
+
+            <span id="goalCount">
+                0 أهداف
             </span>
 
         </div>
 
-    </section>
 
-
-    <!-- =========================
-         DAILY SUMMARY
-    ========================== -->
-
-    <section class="daily-grid">
-
-
-        <!-- SCORE -->
-
-        <div class="score-card">
-
-            <div class="score-title">
-                ❤️ ملخص صحتك اليوم
-            </div>
-
-
-            <div class="score-content">
-
-                <div
-                    class="score-circle"
-                    id="scoreCircle"
-                >
-
-                    <div class="score-number">
-
-                        <strong id="dailyScore">
-                            0%
-                        </strong>
-
-                        <span>
-                            إنجاز اليوم
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="score-message">
-
-                    <strong id="scoreMessage">
-                        ابدأ يومك 💙
-                    </strong>
-
-                    <p id="scoreDescription">
-                        سجّل عاداتك اليومية لنحسب تقدمك.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- HABITS -->
-
-        <div class="habit-summary">
-
-            <div class="section-heading">
-
-                <div>
-                    <h2>
-                        🎯 تحديات اليوم
-                    </h2>
-
-                    <p>
-                        حسب الأهداف التي حددتها لنفسك
-                    </p>
-                </div>
-
-                <a
-                    href="goals.html"
-                    class="text-link"
-                >
-                    تعديل الأهداف
-                    <i class="fa-solid fa-arrow-left"></i>
-                </a>
-
-            </div>
-
-
-            <div class="habits">
-
-
-                <!-- WATER -->
-
-                <div class="habit">
-
-                    <div class="habit-top">
-
-                        <div class="habit-name">
-
-                            <div class="habit-icon">
-                                <i class="fa-solid fa-droplet"></i>
-                            </div>
-
-                            الماء
-
-                        </div>
-
-                        <div
-                            class="habit-value"
-                            id="waterValue"
-                        >
-                            0 / 8
-                        </div>
-
-                    </div>
-
-
-                    <div class="progress">
-
-                        <div
-                            class="progress-bar"
-                            id="waterProgress"
-                        ></div>
-
-                    </div>
-
-
-                    <div class="habit-bottom">
-
-                        <span>
-                            أكواب
-                        </span>
-
-                        <span id="waterPercent">
-                            0%
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- WALKING -->
-
-                <div class="habit">
-
-                    <div class="habit-top">
-
-                        <div class="habit-name">
-
-                            <div class="habit-icon">
-                                <i class="fa-solid fa-person-walking"></i>
-                            </div>
-
-                            المشي
-
-                        </div>
-
-                        <div
-                            class="habit-value"
-                            id="walkingValue"
-                        >
-                            0 / 30 د
-                        </div>
-
-                    </div>
-
-
-                    <div class="progress">
-
-                        <div
-                            class="progress-bar"
-                            id="walkingProgress"
-                        ></div>
-
-                    </div>
-
-
-                    <div class="habit-bottom">
-
-                        <span>
-                            دقيقة
-                        </span>
-
-                        <span id="walkingPercent">
-                            0%
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- SLEEP -->
-
-                <div class="habit">
-
-                    <div class="habit-top">
-
-                        <div class="habit-name">
-
-                            <div class="habit-icon">
-                                <i class="fa-solid fa-bed"></i>
-                            </div>
-
-                            النوم
-
-                        </div>
-
-                        <div
-                            class="habit-value"
-                            id="sleepValue"
-                        >
-                            0 / 8 س
-                        </div>
-
-                    </div>
-
-
-                    <div class="progress">
-
-                        <div
-                            class="progress-bar"
-                            id="sleepProgress"
-                        ></div>
-
-                    </div>
-
-
-                    <div class="habit-bottom">
-
-                        <span>
-                            ساعات
-                        </span>
-
-                        <span id="sleepPercent">
-                            0%
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- WAKE -->
-
-                <div class="habit">
-
-                    <div class="habit-top">
-
-                        <div class="habit-name">
-
-                            <div class="habit-icon">
-                                <i class="fa-solid fa-sun"></i>
-                            </div>
-
-                            الاستيقاظ
-
-                        </div>
-
-                        <div
-                            class="habit-value"
-                            id="wakeValue"
-                        >
-                            لم يسجل
-                        </div>
-
-                    </div>
-
-
-                    <div class="progress">
-
-                        <div
-                            class="progress-bar"
-                            id="wakeProgress"
-                        ></div>
-
-                    </div>
-
-
-                    <div class="habit-bottom">
-
-                        <span>
-                            الهدف الشخصي
-                        </span>
-
-                        <span id="wakePercent">
-                            —
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-            </div>
+        <div
+            class="goals-grid"
+            id="goalsGrid"
+        ></div>
+
+
+        <div
+            class="empty"
+            id="noGoals"
+            style="display:none;"
+        >
+
+            <i class="fa-solid fa-bullseye"></i>
+
+            <h3>
+                لم تحدد أهدافك بعد
+            </h3>
+
+            <p>
+                اختر العادات والقياسات التي تريد متابعتها يوميًا.
+            </p>
+
+            <br>
+
+            <a
+                href="goals.html"
+                class="quick-btn primary"
+                style="display:inline-flex;padding:0 18px;"
+            >
+                <i class="fa-solid fa-plus"></i>
+                إعداد أهدافي
+            </a>
 
         </div>
 
     </section>
 
 
-    <!-- =========================
-         VITALS
-    ========================== -->
+    <!-- MEASUREMENTS -->
+
+    <section
+        class="section"
+        id="measurementsSection"
+    >
+
+        <div class="section-title">
+
+            <h2>
+                <i class="fa-solid fa-stethoscope"></i>
+                القياسات الصحية
+            </h2>
+
+            <span>
+                اختياري
+            </span>
+
+        </div>
+
+
+        <div
+            class="measure-grid"
+            id="measureGrid"
+        ></div>
+
+    </section>
+
+
+    <!-- HEALTH AREAS -->
 
     <section class="section">
 
-        <div class="section-heading">
+        <div class="section-title">
 
-            <div>
-                <h2>
-                    ❤️ مؤشراتك الصحية
-                </h2>
+            <h2>
+                <i class="fa-solid fa-layer-group"></i>
+                صحتي
+            </h2>
 
-                <p>
-                    آخر القياسات التي سجلتها
-                </p>
-            </div>
-
-            <a
-                href="health.html"
-                class="text-link"
-            >
-                عرض الكل
-                <i class="fa-solid fa-arrow-left"></i>
-            </a>
+            <span>
+                المتابعة القادمة
+            </span>
 
         </div>
 
 
-        <div class="vitals-grid">
+        <div class="health-links">
 
+            <a href="#" class="health-link">
 
-            <div class="vital-card">
-
-                <div class="vital-icon">
-                    <i class="fa-solid fa-weight-scale"></i>
-                </div>
-
-                <div class="vital-name">
-                    الوزن
-                </div>
-
-                <div
-                    class="vital-value"
-                    id="weightValue"
-                >
-                    <span class="not-recorded">
-                        لم يسجل
-                    </span>
-                </div>
-
-                <div class="vital-unit">
-                    kg
-                </div>
-
-            </div>
-
-
-            <div class="vital-card">
-
-                <div class="vital-icon">
-                    <i class="fa-solid fa-heart"></i>
-                </div>
-
-                <div class="vital-name">
-                    ضغط الدم
-                </div>
-
-                <div
-                    class="vital-value"
-                    id="bloodPressureValue"
-                >
-                    <span class="not-recorded">
-                        لم يسجل
-                    </span>
-                </div>
-
-                <div class="vital-unit">
-                    mmHg
-                </div>
-
-            </div>
-
-
-            <div class="vital-card">
-
-                <div class="vital-icon">
-                    <i class="fa-solid fa-heart-pulse"></i>
-                </div>
-
-                <div class="vital-name">
-                    النبض
-                </div>
-
-                <div
-                    class="vital-value"
-                    id="pulseValue"
-                >
-                    <span class="not-recorded">
-                        لم يسجل
-                    </span>
-                </div>
-
-                <div class="vital-unit">
-                    BPM
-                </div>
-
-            </div>
-
-
-            <div class="vital-card">
-
-                <div class="vital-icon">
-                    <i class="fa-solid fa-lungs"></i>
-                </div>
-
-                <div class="vital-name">
-                    SpO₂
-                </div>
-
-                <div
-                    class="vital-value"
-                    id="spo2Value"
-                >
-                    <span class="not-recorded">
-                        لم يسجل
-                    </span>
-                </div>
-
-                <div class="vital-unit">
-                    %
-                </div>
-
-            </div>
-
-
-            <div class="vital-card">
-
-                <div class="vital-icon">
-                    <i class="fa-solid fa-temperature-half"></i>
-                </div>
-
-                <div class="vital-name">
-                    الحرارة
-                </div>
-
-                <div
-                    class="vital-value"
-                    id="temperatureValue"
-                >
-                    <span class="not-recorded">
-                        لم يسجل
-                    </span>
-                </div>
-
-                <div class="vital-unit">
-                    °C
-                </div>
-
-            </div>
-
-
-            <div class="vital-card">
-
-                <div class="vital-icon">
-                    <i class="fa-solid fa-droplet"></i>
-                </div>
-
-                <div class="vital-name">
-                    سكر الدم
-                </div>
-
-                <div
-                    class="vital-value"
-                    id="glucoseValue"
-                >
-                    <span class="not-recorded">
-                        لم يسجل
-                    </span>
-                </div>
-
-                <div class="vital-unit">
-                    g/L
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         TREND + GOALS
-    ========================== -->
-
-    <section class="section two-columns">
-
-
-        <!-- TREND -->
-
-        <div class="panel">
-
-            <div class="section-heading">
-
-                <div>
-
-                    <h2>
-                        📈 تطور صحتك
-                    </h2>
-
-                    <p>
-                        متابعة القياسات والعادات عبر الوقت
-                    </p>
-
-                </div>
-
-                <a
-                    href="reports.html"
-                    class="text-link"
-                >
-                    التقارير
-                    <i class="fa-solid fa-arrow-left"></i>
-                </a>
-
-            </div>
-
-
-            <div class="chart-placeholder">
-
-                <div>
-
-                    <i class="fa-solid fa-chart-line"></i>
-
-                    <strong>
-                        التقارير البيانية قريباً
-                    </strong>
-
-                    <span>
-                        سيتم عرض تطور الوزن، النوم، الماء، المشي
-                        والقياسات الصحية هنا.
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- GOALS -->
-
-        <div class="panel">
-
-            <div class="section-heading">
-
-                <div>
-
-                    <h2>
-                        🎯 أهدافي
-                    </h2>
-
-                    <p>
-                        أهدافك الصحية الشخصية
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div
-                class="goal-list"
-                id="goalList"
-            >
-
-                <div class="empty-goals">
-
-                    <i class="fa-solid fa-bullseye"></i>
-
-                    <p>
-                        لم تحدد أهدافك بعد.
-                        <br>
-                        أنشئ أهدافك اليومية الخاصة بك.
-                    </p>
-
-                    <a
-                        href="goals.html"
-                        class="primary-button"
-                    >
-                        <i class="fa-solid fa-plus"></i>
-                        إنشاء أهدافي
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =========================
-         HEALTH MODULES
-    ========================== -->
-
-    <section class="section">
-
-        <div class="section-heading">
-
-            <div>
-
-                <h2>
-                    🩺 ملفي الصحي
-                </h2>
-
-                <p>
-                    الوصول السريع إلى مختلف أقسام صحتك
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="health-modules">
-
-
-            <a
-                href="health.html"
-                class="module-card"
-            >
-
-                <div class="module-icon">
-                    <i class="fa-solid fa-heart-pulse"></i>
-                </div>
-
-                <h3>
-                    المؤشرات الصحية
-                </h3>
-
-                <p>
-                    الوزن، الضغط، النبض، SpO₂، الحرارة وسكر الدم.
-                </p>
-
-                <div class="module-arrow">
-                    فتح القسم ←
-                </div>
-
-            </a>
-
-
-            <a
-                href="activity.html"
-                class="module-card"
-            >
-
-                <div class="module-icon">
-                    <i class="fa-solid fa-person-running"></i>
-                </div>
-
-                <h3>
-                    النشاط والحركة
-                </h3>
-
-                <p>
-                    المشي، الخطوات، الرياضة ومدة النشاط.
-                </p>
-
-                <div class="module-arrow">
-                    فتح القسم ←
-                </div>
-
-            </a>
-
-
-            <a
-                href="nutrition.html"
-                class="module-card"
-            >
-
-                <div class="module-icon">
-                    <i class="fa-solid fa-apple-whole"></i>
-                </div>
+                <i class="fa-solid fa-utensils"></i>
 
                 <h3>
                     التغذية
                 </h3>
 
                 <p>
-                    الوجبات، الماء، الفواكه والخضروات والعادات الغذائية.
+                    تابع الماء، الفواكه، الخضروات وعاداتك الغذائية.
                 </p>
-
-                <div class="module-arrow">
-                    فتح القسم ←
-                </div>
 
             </a>
 
 
-            <a
-                href="sleep.html"
-                class="module-card"
-            >
+            <a href="#" class="health-link">
 
-                <div class="module-icon">
-                    <i class="fa-solid fa-bed"></i>
-                </div>
+                <i class="fa-solid fa-person-walking"></i>
+
+                <h3>
+                    النشاط البدني
+                </h3>
+
+                <p>
+                    المشي، الخطوات والنشاط اليومي.
+                </p>
+
+            </a>
+
+
+            <a href="#" class="health-link">
+
+                <i class="fa-solid fa-bed"></i>
 
                 <h3>
                     النوم
                 </h3>
 
                 <p>
-                    وقت النوم والاستيقاظ، المدة وجودة النوم.
+                    مدة النوم ووقت النوم والاستيقاظ.
                 </p>
-
-                <div class="module-arrow">
-                    فتح القسم ←
-                </div>
 
             </a>
 
 
-            <a
-                href="labs.html"
-                class="module-card"
-            >
+            <a href="#" class="health-link">
 
-                <div class="module-icon">
-                    <i class="fa-solid fa-flask-vial"></i>
-                </div>
+                <i class="fa-solid fa-brain"></i>
+
+                <h3>
+                    الراحة النفسية
+                </h3>
+
+                <p>
+                    الاسترخاء، القراءة والعادات المساعدة على الراحة.
+                </p>
+
+            </a>
+
+
+            <a href="#" class="health-link">
+
+                <i class="fa-solid fa-file-medical"></i>
 
                 <h3>
                     التحاليل
                 </h3>
 
                 <p>
-                    حفظ نتائج التحاليل ومتابعة تغيرها مع الوقت.
+                    مساحة مستقبلية لحفظ ومتابعة نتائج التحاليل.
                 </p>
-
-                <div class="module-arrow">
-                    فتح القسم ←
-                </div>
 
             </a>
 
 
-            <a
-                href="medications.html"
-                class="module-card"
-            >
+            <a href="#" class="health-link">
 
-                <div class="module-icon">
-                    <i class="fa-solid fa-pills"></i>
-                </div>
+                <i class="fa-solid fa-capsules"></i>
 
                 <h3>
-                    الأدوية والمكملات
+                    الأدوية
                 </h3>
 
                 <p>
-                    تنظيم الأدوية والمكملات ومواعيد استخدامها.
+                    تنظيم الأدوية والمواعيد في مرحلة لاحقة.
                 </p>
-
-                <div class="module-arrow">
-                    فتح القسم ←
-                </div>
 
             </a>
 
 
-            <a
-                href="reports.html"
-                class="module-card"
-            >
+            <a href="#" class="health-link">
 
-                <div class="module-icon">
-                    <i class="fa-solid fa-chart-column"></i>
-                </div>
+                <i class="fa-solid fa-calendar-check"></i>
+
+                <h3>
+                    المواعيد
+                </h3>
+
+                <p>
+                    تنظيم المواعيد والمتابعات الصحية.
+                </p>
+
+            </a>
+
+
+            <a href="#" class="health-link">
+
+                <i class="fa-solid fa-chart-simple"></i>
 
                 <h3>
                     التقارير
                 </h3>
 
                 <p>
-                    تقارير أسبوعية وشهرية عن عاداتك وقياساتك.
+                    ملخصات وتطور بياناتك الصحية مع الوقت.
                 </p>
-
-                <div class="module-arrow">
-                    فتح القسم ←
-                </div>
 
             </a>
 
+        </div>
 
-            <a
-                href="goals.html"
-                class="module-card"
-            >
+    </section>
 
-                <div class="module-icon">
+
+    <!-- SUMMARY -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <h2>
+                <i class="fa-solid fa-calendar-days"></i>
+                ملخص اليوم
+            </h2>
+
+        </div>
+
+
+        <div class="summary">
+
+            <div class="summary-grid">
+
+                <div class="summary-item">
+
+                    <i class="fa-solid fa-droplet"></i>
+
+                    <strong id="summaryWater">
+                        0
+                    </strong>
+
+                    <span>
+                        كوب ماء
+                    </span>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <i class="fa-solid fa-person-walking"></i>
+
+                    <strong id="summaryWalking">
+                        0
+                    </strong>
+
+                    <span>
+                        دقيقة مشي
+                    </span>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <i class="fa-solid fa-bed"></i>
+
+                    <strong id="summarySleep">
+                        0
+                    </strong>
+
+                    <span>
+                        ساعات نوم
+                    </span>
+
+                </div>
+
+
+                <div class="summary-item">
+
                     <i class="fa-solid fa-bullseye"></i>
-                </div>
 
-                <h3>
-                    أهدافي
-                </h3>
+                    <strong id="summaryCompleted">
+                        0%
+                    </strong>
 
-                <p>
-                    حدد بنفسك ما تريد تحقيقه ومتابعته يومياً.
-                </p>
-
-                <div class="module-arrow">
-                    تعديل الأهداف ←
-                </div>
-
-            </a>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         REMINDERS
-    ========================== -->
-
-    <section class="section">
-
-        <div class="panel">
-
-            <div class="section-heading">
-
-                <div>
-
-                    <h2>
-                        🔔 التذكيرات
-                    </h2>
-
-                    <p>
-                        الأشياء التي تريد تذكرها خلال يومك
-                    </p>
+                    <span>
+                        متوسط الإنجاز
+                    </span>
 
                 </div>
-
-                <span class="text-link">
-                    قريباً
-                </span>
-
-            </div>
-
-
-            <div class="reminders">
-
-
-                <div class="reminder">
-
-                    <div class="reminder-icon">
-                        <i class="fa-solid fa-droplet"></i>
-                    </div>
-
-                    <div class="reminder-info">
-
-                        <strong>
-                            شرب الماء
-                        </strong>
-
-                        <span>
-                            تذكير بشرب الماء
-                        </span>
-
-                    </div>
-
-                    <div class="reminder-time">
-                        —
-                    </div>
-
-                </div>
-
-
-                <div class="reminder">
-
-                    <div class="reminder-icon">
-                        <i class="fa-solid fa-person-walking"></i>
-                    </div>
-
-                    <div class="reminder-info">
-
-                        <strong>
-                            وقت الحركة
-                        </strong>
-
-                        <span>
-                            حان وقت النشاط
-                        </span>
-
-                    </div>
-
-                    <div class="reminder-time">
-                        —
-                    </div>
-
-                </div>
-
-
-                <div class="reminder">
-
-                    <div class="reminder-icon">
-                        <i class="fa-solid fa-bed"></i>
-                    </div>
-
-                    <div class="reminder-info">
-
-                        <strong>
-                            الاستعداد للنوم
-                        </strong>
-
-                        <span>
-                            حسب وقت النوم الذي تحدده
-                        </span>
-
-                    </div>
-
-                    <div class="reminder-time">
-                        —
-                    </div>
-
-                </div>
-
 
             </div>
 
@@ -2376,129 +1333,21 @@
     </section>
 
 
-    <!-- =========================
-         ACHIEVEMENTS
-    ========================== -->
-
-    <section class="section">
-
-        <div class="panel">
-
-            <div class="section-heading">
-
-                <div>
-
-                    <h2>
-                        🏆 إنجازاتي
-                    </h2>
-
-                    <p>
-                        استمر في تحقيق أهدافك
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="achievement-grid">
-
-
-                <div class="achievement">
-
-                    <div class="achievement-icon">
-                        <i class="fa-solid fa-fire"></i>
-                    </div>
-
-                    <strong>
-                        أول يوم
-                    </strong>
-
-                    <span>
-                        بدأت رحلتك
-                    </span>
-
-                </div>
-
-
-                <div class="achievement">
-
-                    <div class="achievement-icon">
-                        <i class="fa-solid fa-droplet"></i>
-                    </div>
-
-                    <strong>
-                        محب الماء
-                    </strong>
-
-                    <span>
-                        قريباً
-                    </span>
-
-                </div>
-
-
-                <div class="achievement">
-
-                    <div class="achievement-icon">
-                        <i class="fa-solid fa-person-walking"></i>
-                    </div>
-
-                    <strong>
-                        نشيط
-                    </strong>
-
-                    <span>
-                        قريباً
-                    </span>
-
-                </div>
-
-
-                <div class="achievement">
-
-                    <div class="achievement-icon">
-                        <i class="fa-solid fa-moon"></i>
-                    </div>
-
-                    <strong>
-                        نوم منتظم
-                    </strong>
-
-                    <span>
-                        قريباً
-                    </span>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         PRIVACY
-    ========================== -->
+    <!-- PRIVACY -->
 
     <section class="privacy">
 
-        <div class="privacy-icon">
-            <i class="fa-solid fa-shield-heart"></i>
-        </div>
+        <i class="fa-solid fa-shield-halved"></i>
 
         <div>
 
-            <strong>
-                🔒 بياناتك الصحية خاصة
-            </strong>
+            <h3>
+                بياناتك الصحية خاصة
+            </h3>
 
             <p>
-                معلوماتك محفوظة ضمن حسابك الشخصي.
-                يتم ربط البيانات بحسابك عبر معرف Firebase الخاص بك،
-                ولا يتم عرض بيانات المستخدمين الآخرين لك.
+                يتم حفظ بياناتك داخل حسابك الشخصي المرتبط بمعرّفك الخاص.
+                لا يتم عرض بيانات المستخدمين لبعضهم البعض.
             </p>
 
         </div>
@@ -2506,1114 +1355,1904 @@
     </section>
 
 
-    <footer>
-
-        Si7a © 2026
-        <br>
-        متابعتك الصحية الشخصية
-
-    </footer>
-
-
 </main>
 
 
+<footer class="footer">
+
+    © 2026 Si7a — صحتك، عاداتك، متابعتك
+
+</footer>
+
+
 <!-- =========================
-     BOTTOM NAV
-========================== -->
+     MODAL
+========================= -->
 
-<nav class="bottom-nav">
+<div
+    class="modal"
+    id="inputModal"
+>
 
-    <div class="bottom-nav-inner">
+    <div class="modal-box">
 
-        <a
-            href="dashboard.html"
-            class="nav-item active"
-        >
-            <i class="fa-solid fa-house"></i>
-            <span>الرئيسية</span>
-        </a>
+        <div class="modal-head">
 
+            <h3 id="modalTitle">
+                تسجيل البيانات
+            </h3>
 
-        <a
-            href="health.html"
-            class="nav-item"
-        >
-            <i class="fa-solid fa-heart-pulse"></i>
-            <span>صحتي</span>
-        </a>
+            <button
+                class="close-modal"
+                id="closeModal"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
-
-        <a
-            href="goals.html"
-            class="nav-item"
-        >
-            <i class="fa-solid fa-bullseye"></i>
-            <span>أهدافي</span>
-        </a>
+        </div>
 
 
-        <a
-            href="reports.html"
-            class="nav-item"
-        >
-            <i class="fa-solid fa-chart-line"></i>
-            <span>التقارير</span>
-        </a>
+        <div id="modalContent"></div>
 
 
-        <a
-            href="profile.html"
-            class="nav-item"
-        >
-            <i class="fa-solid fa-user"></i>
-            <span>حسابي</span>
-        </a>
+        <div class="modal-buttons">
+
+            <button
+                class="cancel-btn"
+                id="cancelModal"
+            >
+                إلغاء
+            </button>
+
+            <button
+                class="save-btn"
+                id="saveModal"
+            >
+                حفظ
+            </button>
+
+        </div>
 
     </div>
 
-</nav>
+</div>
 
 
 <!-- TOAST -->
 
-<div id="toast"></div>
+<div
+    class="toast"
+    id="toast"
+></div>
 
 
 <!-- =========================
-     FIREBASE + JAVASCRIPT
-========================== -->
+     FIREBASE
+========================= -->
 
 <script type="module">
 
-    import {
-        auth,
-        db
-    } from "./js/firebase.js";
+import {
+    auth,
+    db
+} from "./js/firebase.js";
+
+import {
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+import {
+    doc,
+    getDoc,
+    setDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 
-    import {
-        onAuthStateChanged,
-        signOut
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+/* =========================
+   VARIABLES
+========================= */
+
+let currentUser = null;
+
+let goals = {};
+
+let todayData = {};
+
+let currentModalType = null;
 
 
-    import {
-        doc,
-        getDoc
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+/* =========================
+   DEFAULT DAILY DATA
+========================= */
+
+const defaultTodayData = {
+
+    water: 0,
+
+    walking: 0,
+
+    sleep: 0,
+
+    bedtime: "",
+
+    wakeTime: "",
+
+    steps: 0,
+
+    relaxation: 0,
+
+    reading: 0,
+
+    screenTime: 0,
+
+    fruit: 0,
+
+    vegetables: 0,
+
+    smoking: 0,
+
+    weight: "",
+
+    bloodPressure: "",
+
+    pulse: "",
+
+    spo2: "",
+
+    temperature: "",
+
+    glucose: ""
+
+};
 
 
-    /* =========================
-       ELEMENTS
-    ========================== */
+/* =========================
+   TODAY
+========================= */
 
-    const loadingScreen =
-        document.getElementById("loadingScreen");
+function getToday(){
 
-    const welcomeName =
-        document.getElementById("welcomeName");
+    const d = new Date();
 
-    const topUserName =
-        document.getElementById("topUserName");
+    const year = d.getFullYear();
 
-    const topUserEmail =
-        document.getElementById("topUserEmail");
+    const month = String(
+        d.getMonth() + 1
+    ).padStart(2,"0");
 
-    const avatar =
-        document.getElementById("avatar");
+    const day = String(
+        d.getDate()
+    ).padStart(2,"0");
 
-    const currentDate =
-        document.getElementById("currentDate");
-
-
-    /* =========================
-       DATE
-    ========================== */
-
-    function getLocalDate(){
-
-        const now = new Date();
-
-        const year =
-            now.getFullYear();
-
-        const month =
-            String(now.getMonth() + 1).padStart(2,"0");
-
-        const day =
-            String(now.getDate()).padStart(2,"0");
-
-        return `${year}-${month}-${day}`;
-
-    }
+    return `${year}-${month}-${day}`;
+}
 
 
-    function formatArabicDate(){
+const today = getToday();
 
-        const now = new Date();
 
-        return new Intl.DateTimeFormat(
+/* =========================
+   DATE DISPLAY
+========================= */
+
+function displayDate(){
+
+    const date = new Date();
+
+    const formatted =
+        date.toLocaleDateString(
             "ar-DZ",
             {
                 weekday:"long",
-                day:"numeric",
+                year:"numeric",
                 month:"long",
-                year:"numeric"
+                day:"numeric"
             }
-        ).format(now);
+        );
+
+    document.getElementById(
+        "todayDate"
+    ).textContent = formatted;
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    },2500);
+}
+
+
+/* =========================
+   AUTH
+========================= */
+
+onAuthStateChanged(
+    auth,
+    async user => {
+
+        if(!user){
+
+            window.location.href =
+                "login.html";
+
+            return;
+        }
+
+        currentUser = user;
+
+        displayDate();
+
+        await loadUserData();
+
+        document.getElementById(
+            "loadingScreen"
+        ).style.display = "none";
+
+    }
+);
+
+
+/* =========================
+   LOAD USER DATA
+========================= */
+
+async function loadUserData(){
+
+    try{
+
+        const userRef =
+            doc(
+                db,
+                "users",
+                currentUser.uid
+            );
+
+        const userSnap =
+            await getDoc(userRef);
+
+        if(userSnap.exists()){
+
+            const data =
+                userSnap.data();
+
+            document.getElementById(
+                "userName"
+            ).textContent =
+                data.name ||
+                "بك";
+
+        }else{
+
+            document.getElementById(
+                "userName"
+            ).textContent =
+                "بك";
+        }
+
+
+        /* =========================
+           GOALS
+        ========================= */
+
+        const goalsRef =
+            doc(
+                db,
+                "users",
+                currentUser.uid,
+                "goals",
+                "settings"
+            );
+
+        const goalsSnap =
+            await getDoc(goalsRef);
+
+        if(goalsSnap.exists()){
+
+            goals = goalsSnap.data();
+
+        }else{
+
+            goals = {};
+
+        }
+
+
+        /* =========================
+           TODAY DATA
+        ========================= */
+
+        const dailyRef =
+            doc(
+                db,
+                "users",
+                currentUser.uid,
+                "dailyTracking",
+                today
+            );
+
+        const dailySnap =
+            await getDoc(dailyRef);
+
+        todayData = {
+
+            ...defaultTodayData,
+
+            ...(dailySnap.exists()
+                ? dailySnap.data()
+                : {})
+
+        };
+
+
+        renderGoals();
+
+        renderMeasurements();
+
+        renderSummary();
+
+    }catch(error){
+
+        console.error(error);
+
+        showToast(
+            "حدث خطأ أثناء تحميل بياناتك"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   SAVE TODAY
+========================= */
+
+async function saveToday(){
+
+    if(!currentUser) return;
+
+    try{
+
+        const ref =
+            doc(
+                db,
+                "users",
+                currentUser.uid,
+                "dailyTracking",
+                today
+            );
+
+        await setDoc(
+            ref,
+            {
+                ...todayData,
+
+                uid:currentUser.uid,
+
+                date:today,
+
+                updatedAt:
+                    serverTimestamp()
+            },
+            {
+                merge:true
+            }
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        showToast(
+            "تعذر حفظ البيانات"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   GOAL DEFINITIONS
+========================= */
+
+const goalDefinitions = {
+
+    water:{
+        name:"الماء",
+        unit:"كوب",
+        icon:"fa-droplet"
+    },
+
+    walking:{
+        name:"المشي",
+        unit:"دقيقة",
+        icon:"fa-person-walking"
+    },
+
+    sleep:{
+        name:"النوم",
+        unit:"ساعة",
+        icon:"fa-bed"
+    },
+
+    bedtime:{
+        name:"وقت النوم",
+        unit:"",
+        icon:"fa-moon"
+    },
+
+    wakeTime:{
+        name:"وقت الاستيقاظ",
+        unit:"",
+        icon:"fa-sun"
+    },
+
+    steps:{
+        name:"الخطوات",
+        unit:"خطوة",
+        icon:"fa-shoe-prints"
+    },
+
+    relaxation:{
+        name:"الاسترخاء",
+        unit:"دقيقة",
+        icon:"fa-spa"
+    },
+
+    reading:{
+        name:"القراءة",
+        unit:"دقيقة",
+        icon:"fa-book-open"
+    },
+
+    screenTime:{
+        name:"وقت الشاشة",
+        unit:"دقيقة",
+        icon:"fa-mobile-screen"
+    },
+
+    fruit:{
+        name:"الفواكه",
+        unit:"حصة",
+        icon:"fa-apple-whole"
+    },
+
+    vegetables:{
+        name:"الخضروات",
+        unit:"حصة",
+        icon:"fa-carrot"
+    },
+
+    smoking:{
+        name:"التدخين",
+        unit:"سيجارة",
+        icon:"fa-smoking"
+    }
+
+};
+
+
+/* =========================
+   RENDER GOALS
+========================= */
+
+function renderGoals(){
+
+    const grid =
+        document.getElementById(
+            "goalsGrid"
+        );
+
+    const empty =
+        document.getElementById(
+            "noGoals"
+        );
+
+    grid.innerHTML = "";
+
+    let count = 0;
+
+    Object.keys(goalDefinitions)
+        .forEach(key => {
+
+            const enabledKey =
+                key + "Enabled";
+
+            if(
+                goals[enabledKey] !== true
+            ){
+
+                return;
+
+            }
+
+            if(
+                goals[key] === undefined ||
+                goals[key] === null
+            ){
+
+                return;
+
+            }
+
+            count++;
+
+            const definition =
+                goalDefinitions[key];
+
+            const target =
+                Number(goals[key]) || 0;
+
+            const current =
+                getCurrentValue(key);
+
+            let percent =
+                calculatePercent(
+                    key,
+                    current,
+                    target
+                );
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "goal-card";
+
+
+            const displayCurrent =
+                formatValue(
+                    key,
+                    current
+                );
+
+
+            const displayTarget =
+                formatValue(
+                    key,
+                    target
+                );
+
+
+            card.innerHTML = `
+
+                <div class="goal-top">
+
+                    <div class="goal-icon">
+                        <i class="fa-solid ${definition.icon}"></i>
+                    </div>
+
+                    <div class="goal-info">
+
+                        <h3>
+                            ${definition.name}
+                        </h3>
+
+                        <p>
+                            الهدف اليومي
+                        </p>
+
+                    </div>
+
+                    <div class="progress-percent">
+                        ${percent}%
+                    </div>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="width:${percent}%"
+                    ></div>
+
+                </div>
+
+
+                <div class="goal-bottom">
+
+                    <div class="goal-value">
+
+                        ${displayCurrent}
+
+                        <span class="goal-unit">
+                            ${definition.unit}
+                        </span>
+
+                        <span>
+                            /
+                            ${displayTarget}
+                        </span>
+
+                    </div>
+
+
+                    <div class="goal-actions">
+
+                        <button
+                            class="small-action"
+                            data-add="${key}"
+                            title="إضافة"
+                        >
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            grid.appendChild(card);
+
+        });
+
+
+    /* CUSTOM GOALS */
+
+    if(
+        Array.isArray(
+            goals.customGoals
+        )
+    ){
+
+        goals.customGoals
+            .forEach(custom => {
+
+                if(
+                    !custom ||
+                    !custom.name
+                ){
+
+                    return;
+
+                }
+
+                count++;
+
+                const target =
+                    Number(custom.value) || 0;
+
+                const current =
+                    Number(
+                        todayData[
+                            "custom_" +
+                            custom.id
+                        ]
+                    ) || 0;
+
+                const percent =
+                    Math.min(
+                        100,
+                        target > 0
+                            ? Math.round(
+                                current /
+                                target *
+                                100
+                            )
+                            : 0
+                    );
+
+
+                const card =
+                    document.createElement("div");
+
+                card.className =
+                    "goal-card";
+
+
+                card.innerHTML = `
+
+                    <div class="goal-top">
+
+                        <div class="goal-icon">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+
+                        <div class="goal-info">
+
+                            <h3>
+                                ${escapeHtml(custom.name)}
+                            </h3>
+
+                            <p>
+                                تحدي شخصي
+                            </p>
+
+                        </div>
+
+                        <div class="progress-percent">
+                            ${percent}%
+                        </div>
+
+                    </div>
+
+
+                    <div class="progress">
+
+                        <div
+                            class="progress-bar"
+                            style="width:${percent}%"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="goal-bottom">
+
+                        <div class="goal-value">
+
+                            ${current}
+
+                            <span class="goal-unit">
+                                ${escapeHtml(custom.unit || "")}
+                            </span>
+
+                            /
+                            ${target}
+
+                        </div>
+
+
+                        <div class="goal-actions">
+
+                            <button
+                                class="small-action"
+                                data-custom="${custom.id}"
+                                title="إضافة"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                grid.appendChild(card);
+
+            });
 
     }
 
 
-    currentDate.textContent =
-        formatArabicDate();
+    document.getElementById(
+        "goalCount"
+    ).textContent =
+        `${count} أهداف`;
 
 
-    /* =========================
-       TOAST
-    ========================== */
+    if(count === 0){
 
-    let toastTimer;
+        empty.style.display =
+            "block";
 
-    function showToast(message){
+    }else{
 
-        const toast =
-            document.getElementById("toast");
-
-        toast.textContent =
-            message;
-
-        toast.classList.add("show");
-
-        clearTimeout(toastTimer);
-
-        toastTimer =
-            setTimeout(() => {
-
-                toast.classList.remove("show");
-
-            },3000);
+        empty.style.display =
+            "none";
 
     }
 
 
-    /* =========================
-       HELPERS
-    ========================== */
+    attachGoalButtons();
 
-    function numberValue(value, fallback = 0){
+}
 
-        const n =
-            Number(value);
 
-        return Number.isFinite(n)
-            ? n
-            : fallback;
+/* =========================
+   CURRENT VALUE
+========================= */
+
+function getCurrentValue(key){
+
+    return todayData[key] ?? 0;
+
+}
+
+
+/* =========================
+   PERCENT
+========================= */
+
+function calculatePercent(
+    key,
+    current,
+    target
+){
+
+    if(
+        key === "bedtime" ||
+        key === "wakeTime"
+    ){
+
+        if(
+            !current ||
+            !target
+        ){
+
+            return 0;
+
+        }
+
+        return current === target
+            ? 100
+            : 0;
 
     }
 
 
-    function percentage(value, target){
-
-        value =
-            numberValue(value);
-
-        target =
-            numberValue(target);
+    if(
+        key === "smoking"
+    ){
 
         if(target <= 0){
-            return 0;
+
+            return current <= 0
+                ? 100
+                : 0;
+
         }
 
         return Math.min(
             100,
             Math.round(
-                (value / target) * 100
+                current /
+                target *
+                100
             )
         );
 
     }
 
 
-    function setProgress(
-        barId,
-        percent
+    if(target <= 0){
+
+        return 0;
+
+    }
+
+    return Math.min(
+        100,
+        Math.round(
+            Number(current) /
+            Number(target) *
+            100
+        )
+    );
+
+}
+
+
+/* =========================
+   FORMAT VALUE
+========================= */
+
+function formatValue(
+    key,
+    value
+){
+
+    if(
+        key === "bedtime" ||
+        key === "wakeTime"
     ){
 
-        const bar =
-            document.getElementById(barId);
+        return value || "--:--";
 
-        if(!bar){
-            return;
-        }
+    }
 
-        bar.style.width =
-            `${Math.max(0,Math.min(100,percent))}%`;
+    if(value === "" || value === null){
+
+        return 0;
+
+    }
+
+    return value;
+
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+function attachGoalButtons(){
+
+    document
+        .querySelectorAll(
+            "[data-add]"
+        )
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const key =
+                        button.dataset.add;
+
+                    handleGoalAction(key);
+
+                }
+            );
+
+        });
+
+
+    document
+        .querySelectorAll(
+            "[data-custom]"
+        )
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const id =
+                        button.dataset.custom;
+
+                    handleCustomGoal(id);
+
+                }
+            );
+
+        });
+
+}
+
+
+/* =========================
+   HANDLE GOAL
+========================= */
+
+async function handleGoalAction(key){
+
+    if(
+        key === "bedtime" ||
+        key === "wakeTime"
+    ){
+
+        openTimeModal(key);
+
+        return;
 
     }
 
 
-    /* =========================
-       DEFAULT GOALS
-    ========================== */
+    if(key === "sleep"){
 
-    const defaultGoals = {
-
-        water:8,
-
-        walking:30,
-
-        sleep:8,
-
-        bedtime:"23:00",
-
-        wakeTime:"07:00"
-
-    };
-
-
-    /* =========================
-       PROFILE
-    ========================== */
-
-    function getDisplayName(
-        user,
-        profile
-    ){
-
-        return (
-            profile?.name ||
-            user.displayName ||
-            user.email?.split("@")[0] ||
-            "مستخدم"
+        openNumberModal(
+            key,
+            "كم ساعة نمت اليوم؟",
+            0,
+            24,
+            "ساعة"
         );
 
-    }
-
-
-    /* =========================
-       UPDATE PROFILE UI
-    ========================== */
-
-    function updateProfileUI(
-        user,
-        profile
-    ){
-
-        const name =
-            getDisplayName(
-                user,
-                profile
-            );
-
-        welcomeName.textContent =
-            name;
-
-        topUserName.textContent =
-            name;
-
-        topUserEmail.textContent =
-            user.email || "";
-
-        avatar.textContent =
-            name.charAt(0).toUpperCase();
+        return;
 
     }
 
 
-    /* =========================
-       DAILY HABITS
-    ========================== */
+    if(key === "smoking"){
 
-    function updateHabitUI(
-        dailyData,
-        goals
-    ){
-
-        const water =
-            numberValue(
-                dailyData?.water
-            );
-
-        const walking =
-            numberValue(
-                dailyData?.walking
-            );
-
-        const sleep =
-            numberValue(
-                dailyData?.sleep
-            );
-
-        const waterGoal =
-            numberValue(
-                goals.water,
-                8
-            );
-
-        const walkingGoal =
-            numberValue(
-                goals.walking,
-                30
-            );
-
-        const sleepGoal =
-            numberValue(
-                goals.sleep,
-                8
-            );
-
-
-        const waterPercent =
-            percentage(
-                water,
-                waterGoal
-            );
-
-        const walkingPercent =
-            percentage(
-                walking,
-                walkingGoal
-            );
-
-        const sleepPercent =
-            percentage(
-                sleep,
-                sleepGoal
-            );
-
-
-        document.getElementById(
-            "waterValue"
-        ).textContent =
-            `${water} / ${waterGoal}`;
-
-
-        document.getElementById(
-            "walkingValue"
-        ).textContent =
-            `${walking} / ${walkingGoal} د`;
-
-
-        document.getElementById(
-            "sleepValue"
-        ).textContent =
-            `${sleep} / ${sleepGoal} س`;
-
-
-        document.getElementById(
-            "waterPercent"
-        ).textContent =
-            `${waterPercent}%`;
-
-
-        document.getElementById(
-            "walkingPercent"
-        ).textContent =
-            `${walkingPercent}%`;
-
-
-        document.getElementById(
-            "sleepPercent"
-        ).textContent =
-            `${sleepPercent}%`;
-
-
-        setProgress(
-            "waterProgress",
-            waterPercent
+        openNumberModal(
+            key,
+            "كم سيجارة اليوم؟",
+            0,
+            100,
+            "سيجارة"
         );
 
-        setProgress(
-            "walkingProgress",
-            walkingPercent
-        );
-
-        setProgress(
-            "sleepProgress",
-            sleepPercent
-        );
-
-
-        const wakeTime =
-            dailyData?.wakeTime || "";
-
-
-        const wakeElement =
-            document.getElementById(
-                "wakeValue"
-            );
-
-
-        if(wakeTime){
-
-            wakeElement.textContent =
-                wakeTime;
-
-            document.getElementById(
-                "wakePercent"
-            ).textContent =
-                "✓";
-
-            setProgress(
-                "wakeProgress",
-                100
-            );
-
-        }else{
-
-            wakeElement.textContent =
-                "لم يسجل";
-
-            document.getElementById(
-                "wakePercent"
-            ).textContent =
-                "—";
-
-            setProgress(
-                "wakeProgress",
-                0
-            );
-
-        }
-
-
-        /*
-         * Daily score.
-         *
-         * Water + walking + sleep
-         * + wake time.
-         */
-
-        let scoreTotal =
-            waterPercent +
-            walkingPercent +
-            sleepPercent;
-
-        let scoreCount = 3;
-
-        if(wakeTime){
-
-            scoreTotal += 100;
-
-            scoreCount++;
-
-        }
-
-
-        const score =
-            Math.round(
-                scoreTotal / scoreCount
-            );
-
-
-        document.getElementById(
-            "dailyScore"
-        ).textContent =
-            `${score}%`;
-
-
-        document
-            .getElementById("scoreCircle")
-            .style.setProperty(
-                "--score-angle",
-                `${score * 3.6}deg`
-            );
-
-
-        let message =
-            "ابدأ يومك 💙";
-
-        let description =
-            "سجّل عاداتك اليومية لنحسب تقدمك.";
-
-
-        if(score >= 90){
-
-            message =
-                "ممتاز جداً! 🏆";
-
-            description =
-                "أنت قريب جداً من إكمال أهدافك اليوم.";
-
-        }else if(score >= 70){
-
-            message =
-                "أداء رائع! 💪";
-
-            description =
-                "استمر، أنت تسير بشكل جيد نحو أهدافك.";
-
-        }else if(score >= 40){
-
-            message =
-                "واصل التقدم 🌱";
-
-            description =
-                "لديك وقت لإكمال المزيد من أهدافك اليوم.";
-
-        }
-
-
-        document.getElementById(
-            "scoreMessage"
-        ).textContent =
-            message;
-
-
-        document.getElementById(
-            "scoreDescription"
-        ).textContent =
-            description;
+        return;
 
     }
 
 
-    /* =========================
-       GOALS
-    ========================== */
+    let step = 1;
 
-    function renderGoals(
-        goals
+    if(key === "walking"){
+        step = 10;
+    }
+
+    if(key === "steps"){
+        step = 500;
+    }
+
+    if(key === "screenTime"){
+        step = 10;
+    }
+
+    if(
+        key === "relaxation" ||
+        key === "reading"
     ){
 
-        const goalList =
-            document.getElementById(
-                "goalList"
-            );
-
-
-        const items = [];
-
-
-        if(
-            goals.water !== undefined &&
-            goals.water !== null
-        ){
-
-            items.push({
-
-                icon:"fa-droplet",
-
-                name:"الماء",
-
-                value:`${goals.water} أكواب يومياً`
-
-            });
-
-        }
-
-
-        if(
-            goals.walking !== undefined &&
-            goals.walking !== null
-        ){
-
-            items.push({
-
-                icon:"fa-person-walking",
-
-                name:"المشي",
-
-                value:`${goals.walking} دقيقة يومياً`
-
-            });
-
-        }
-
-
-        if(
-            goals.sleep !== undefined &&
-            goals.sleep !== null
-        ){
-
-            items.push({
-
-                icon:"fa-bed",
-
-                name:"النوم",
-
-                value:`${goals.sleep} ساعات`
-
-            });
-
-        }
-
-
-        if(
-            goals.bedtime
-        ){
-
-            items.push({
-
-                icon:"fa-moon",
-
-                name:"وقت النوم",
-
-                value:`الهدف ${goals.bedtime}`
-
-            });
-
-        }
-
-
-        if(
-            goals.wakeTime
-        ){
-
-            items.push({
-
-                icon:"fa-sun",
-
-                name:"الاستيقاظ",
-
-                value:`الهدف ${goals.wakeTime}`
-
-            });
-
-        }
-
-
-        if(items.length === 0){
-
-            goalList.innerHTML = `
-
-                <div class="empty-goals">
-
-                    <i class="fa-solid fa-bullseye"></i>
-
-                    <p>
-                        لم تحدد أهدافك بعد.
-                        <br>
-                        أنشئ أهدافك اليومية الخاصة بك.
-                    </p>
-
-                    <a
-                        href="goals.html"
-                        class="primary-button"
-                    >
-                        <i class="fa-solid fa-plus"></i>
-                        إنشاء أهدافي
-                    </a>
-
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        goalList.innerHTML =
-            items
-            .slice(0,5)
-            .map(item => `
-
-                <div class="goal-item">
-
-                    <div class="goal-icon">
-
-                        <i class="fa-solid ${item.icon}"></i>
-
-                    </div>
-
-                    <div class="goal-info">
-
-                        <div class="goal-name">
-                            ${item.name}
-                        </div>
-
-                        <div class="goal-value">
-                            ${item.value}
-                        </div>
-
-                    </div>
-
-                    <div class="goal-status">
-
-                        <i class="fa-solid fa-check"></i>
-
-                    </div>
-
-                </div>
-
-            `)
-            .join("");
+        step = 5;
 
     }
 
 
-    /* =========================
-       LOAD VITALS
-    ========================== */
-
-    function updateVitals(
-        healthData
-    ){
-
-        if(!healthData){
-            return;
-        }
+    todayData[key] =
+        Number(
+            todayData[key] || 0
+        ) + step;
 
 
-        const weight =
-            healthData.weight;
+    await saveToday();
+
+    renderGoals();
+
+    renderSummary();
+
+    showToast(
+        "تم تحديث إنجازك اليومي ✓"
+    );
+
+}
 
 
-        const systolic =
-            healthData.systolic ??
-            healthData.bloodPressureSystolic;
+/* =========================
+   NUMBER MODAL
+========================= */
+
+function openNumberModal(
+    key,
+    title,
+    min,
+    max,
+    unit
+){
+
+    currentModalType = key;
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent = title;
 
 
-        const diastolic =
-            healthData.diastolic ??
-            healthData.bloodPressureDiastolic;
+    document.getElementById(
+        "modalContent"
+    ).innerHTML = `
+
+        <div class="form-group">
+
+            <label>
+                القيمة (${unit})
+            </label>
+
+            <input
+                id="modalInput"
+                type="number"
+                min="${min}"
+                max="${max}"
+                step="0.1"
+                value="${todayData[key] || ""}"
+                placeholder="أدخل القيمة"
+            >
+
+        </div>
+
+    `;
 
 
-        const pulse =
-            healthData.pulse ??
-            healthData.heartRate;
+    showModal();
+
+}
 
 
-        const spo2 =
-            healthData.spo2 ??
-            healthData.SpO2;
+/* =========================
+   TIME MODAL
+========================= */
+
+function openTimeModal(key){
+
+    currentModalType = key;
+
+    const title =
+        key === "bedtime"
+            ? "وقت النوم"
+            : "وقت الاستيقاظ";
 
 
-        const temperature =
-            healthData.temperature;
+    document.getElementById(
+        "modalTitle"
+    ).textContent = title;
 
 
-        const glucose =
-            healthData.glucose ??
-            healthData.bloodGlucose;
+    document.getElementById(
+        "modalContent"
+    ).innerHTML = `
+
+        <div class="form-group">
+
+            <label>
+                اختر الوقت
+            </label>
+
+            <input
+                id="modalInput"
+                type="time"
+                value="${todayData[key] || ""}"
+            >
+
+        </div>
+
+    `;
 
 
-        if(weight !== undefined){
+    showModal();
 
-            document.getElementById(
-                "weightValue"
-            ).textContent =
-                numberValue(weight);
-
-        }
+}
 
 
-        if(
-            systolic !== undefined &&
-            diastolic !== undefined
-        ){
+/* =========================
+   SHOW MODAL
+========================= */
 
-            document.getElementById(
-                "bloodPressureValue"
-            ).textContent =
-                `${systolic}/${diastolic}`;
+function showModal(){
 
-        }
+    document
+        .getElementById(
+            "inputModal"
+        )
+        .classList.add("show");
 
-
-        if(pulse !== undefined){
-
-            document.getElementById(
-                "pulseValue"
-            ).textContent =
-                numberValue(pulse);
-
-        }
+}
 
 
-        if(spo2 !== undefined){
+/* =========================
+   CLOSE MODAL
+========================= */
 
-            document.getElementById(
-                "spo2Value"
-            ).textContent =
-                numberValue(spo2);
+function closeModal(){
 
-        }
+    document
+        .getElementById(
+            "inputModal"
+        )
+        .classList.remove("show");
 
+    currentModalType = null;
 
-        if(temperature !== undefined){
-
-            document.getElementById(
-                "temperatureValue"
-            ).textContent =
-                numberValue(
-                    temperature
-                ).toFixed(1);
-
-        }
+}
 
 
-        if(glucose !== undefined){
+/* =========================
+   SAVE MODAL
+========================= */
 
-            document.getElementById(
-                "glucoseValue"
-            ).textContent =
-                numberValue(
-                    glucose
-                ).toFixed(2);
+document
+    .getElementById("saveModal")
+    .addEventListener(
+        "click",
+        async () => {
 
-        }
-
-    }
-
-
-    /* =========================
-       LOAD USER DATA
-    ========================== */
-
-    async function loadDashboard(
-        user
-    ){
-
-        try{
-
-            /*
-             * USER PROFILE
-             */
-
-            const userRef =
-                doc(
-                    db,
-                    "users",
-                    user.uid
+            const input =
+                document.getElementById(
+                    "modalInput"
                 );
 
-            const userSnap =
-                await getDoc(userRef);
-
-
-            const profile =
-                userSnap.exists()
-                    ? userSnap.data()
-                    : {};
-
-
-            updateProfileUI(
-                user,
-                profile
-            );
-
-
-            /*
-             * GOALS
-             *
-             * Expected document:
-             *
-             * users/{uid}/goals/settings
-             *
-             * This allows us to later build
-             * goals.html without changing
-             * this dashboard structure.
-             */
-
-            let goals = {
-                ...defaultGoals
-            };
-
-
-            const goalsRef =
-                doc(
-                    db,
-                    "users",
-                    user.uid,
-                    "goals",
-                    "settings"
-                );
-
-
-            const goalsSnap =
-                await getDoc(goalsRef);
-
-
-            if(goalsSnap.exists()){
-
-                goals = {
-
-                    ...defaultGoals,
-
-                    ...goalsSnap.data()
-
-                };
-
-            }
-
-
-            renderGoals(
-                goals
-            );
-
-
-            /*
-             * TODAY
-             *
-             * users/{uid}/dailyTracking/{date}
-             */
-
-            const today =
-                getLocalDate();
-
-
-            const dailyRef =
-                doc(
-                    db,
-                    "users",
-                    user.uid,
-                    "dailyTracking",
-                    today
-                );
-
-
-            const dailySnap =
-                await getDoc(dailyRef);
-
-
-            const dailyData =
-                dailySnap.exists()
-                    ? dailySnap.data()
-                    : {};
-
-
-            updateHabitUI(
-                dailyData,
-                goals
-            );
-
-
-            /*
-             * HEALTH
-             *
-             * Expected future document:
-             *
-             * users/{uid}/health/latest
-             */
-
-            const healthRef =
-                doc(
-                    db,
-                    "users",
-                    user.uid,
-                    "health",
-                    "latest"
-                );
-
-
-            const healthSnap =
-                await getDoc(healthRef);
-
-
-            if(healthSnap.exists()){
-
-                updateVitals(
-                    healthSnap.data()
-                );
-
-            }
-
-
-        }catch(error){
-
-            console.error(
-                "Dashboard loading error:",
-                error
-            );
-
-            showToast(
-                "حدث خطأ أثناء تحميل بعض البيانات."
-            );
-
-        }finally{
-
-            loadingScreen.classList.add(
-                "hidden"
-            );
-
-        }
-
-    }
-
-
-    /* =========================
-       AUTH
-    ========================== */
-
-    onAuthStateChanged(
-        auth,
-        async user => {
-
-            if(!user){
-
-                window.location.href =
-                    "login.html";
+            if(!input){
 
                 return;
 
             }
 
 
-            await loadDashboard(
-                user
+            let value =
+                input.value;
+
+
+            if(
+                currentModalType === "sleep" ||
+                currentModalType === "weight" ||
+                currentModalType === "temperature"
+            ){
+
+                value =
+                    Number(value);
+
+            }
+
+
+            if(
+                currentModalType === "pulse" ||
+                currentModalType === "spo2" ||
+                currentModalType === "glucose"
+            ){
+
+                value =
+                    Number(value);
+
+            }
+
+
+            if(
+                currentModalType === "bloodPressure"
+            ){
+
+                value =
+                    String(value);
+
+            }
+
+
+            if(
+                value === "" ||
+                value === null
+            ){
+
+                showToast(
+                    "أدخل قيمة صحيحة"
+                );
+
+                return;
+
+            }
+
+
+            todayData[
+                currentModalType
+            ] = value;
+
+
+            await saveToday();
+
+            closeModal();
+
+            renderGoals();
+
+            renderMeasurements();
+
+            renderSummary();
+
+            showToast(
+                "تم الحفظ بنجاح ✓"
             );
 
         }
     );
 
 
-    /* =========================
-       LOGOUT
-    ========================== */
+/* =========================
+   CUSTOM GOAL
+========================= */
+
+async function handleCustomGoal(id){
+
+    const custom =
+        Array.isArray(
+            goals.customGoals
+        )
+            ? goals.customGoals.find(
+                item =>
+                    item.id === id
+            )
+            : null;
+
+
+    if(!custom){
+
+        return;
+
+    }
+
+
+    const current =
+        Number(
+            todayData[
+                "custom_" + id
+            ] || 0
+        );
+
+
+    const value =
+        prompt(
+            `كم أنجزت من "${custom.name}" اليوم؟`,
+            current
+        );
+
+
+    if(value === null){
+
+        return;
+
+    }
+
+
+    const number =
+        Number(value);
+
+
+    if(
+        isNaN(number) ||
+        number < 0
+    ){
+
+        showToast(
+            "أدخل رقمًا صحيحًا"
+        );
+
+        return;
+
+    }
+
+
+    todayData[
+        "custom_" + id
+    ] = number;
+
+
+    await saveToday();
+
+    renderGoals();
+
+    renderSummary();
+
+    showToast(
+        "تم تحديث التحدي ✓"
+    );
+
+}
+
+
+/* =========================
+   MEASUREMENTS
+========================= */
+
+function renderMeasurements(){
+
+    const grid =
+        document.getElementById(
+            "measureGrid"
+        );
+
+    grid.innerHTML = "";
+
+
+    const measurements = [
+
+        {
+            key:"weight",
+            enabled:"weightEnabled",
+            name:"الوزن",
+            unit:"كغ",
+            icon:"fa-weight-scale"
+        },
+
+        {
+            key:"bloodPressure",
+            enabled:"bloodPressureEnabled",
+            name:"ضغط الدم",
+            unit:"mmHg",
+            icon:"fa-heart-pulse"
+        },
+
+        {
+            key:"pulse",
+            enabled:"pulseEnabled",
+            name:"النبض",
+            unit:"نبضة/د",
+            icon:"fa-heart"
+        },
+
+        {
+            key:"spo2",
+            enabled:"spo2Enabled",
+            name:"الأكسجين",
+            unit:"%",
+            icon:"fa-lungs"
+        },
+
+        {
+            key:"temperature",
+            enabled:"temperatureEnabled",
+            name:"الحرارة",
+            unit:"°C",
+            icon:"fa-temperature-half"
+        },
+
+        {
+            key:"glucose",
+            enabled:"glucoseEnabled",
+            name:"السكر",
+            unit:"mg/dL",
+            icon:"fa-droplet"
+        }
+
+    ];
+
+
+    measurements.forEach(item => {
+
+        if(
+            goals[item.enabled] !== true
+        ){
+
+            return;
+
+        }
+
+
+        const value =
+            todayData[item.key] ||
+            "--";
+
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "measure-card";
+
+
+        card.innerHTML = `
+
+            <div class="measure-icon">
+
+                <i class="fa-solid ${item.icon}"></i>
+
+            </div>
+
+            <h3>
+                ${item.name}
+            </h3>
+
+            <div class="measure-value">
+
+                ${escapeHtml(
+                    String(value)
+                )}
+
+                <span>
+                    ${item.unit}
+                </span>
+
+            </div>
+
+            <button
+                data-measure="${item.key}"
+            >
+                <i class="fa-solid fa-pen"></i>
+                تسجيل
+            </button>
+
+        `;
+
+
+        grid.appendChild(card);
+
+    });
+
 
     document
-        .getElementById("logoutBtn")
-        .addEventListener(
-            "click",
-            async () => {
+        .querySelectorAll(
+            "[data-measure]"
+        )
+        .forEach(button => {
 
-                try{
+            button.addEventListener(
+                "click",
+                () => {
 
-                    await signOut(auth);
-
-                    window.location.href =
-                        "login.html";
-
-                }catch(error){
-
-                    console.error(
-                        error
+                    openMeasurementModal(
+                        button.dataset.measure
                     );
 
-                    showToast(
-                        "تعذر تسجيل الخروج."
+                }
+            );
+
+        });
+
+}
+
+
+/* =========================
+   MEASUREMENT MODAL
+========================= */
+
+function openMeasurementModal(key){
+
+    const labels = {
+
+        weight:{
+            name:"الوزن",
+            unit:"كغ",
+            type:"number"
+        },
+
+        bloodPressure:{
+            name:"ضغط الدم",
+            unit:"مثال: 120/80",
+            type:"text"
+        },
+
+        pulse:{
+            name:"النبض",
+            unit:"نبضة/دقيقة",
+            type:"number"
+        },
+
+        spo2:{
+            name:"نسبة الأكسجين",
+            unit:"%",
+            type:"number"
+        },
+
+        temperature:{
+            name:"درجة الحرارة",
+            unit:"°C",
+            type:"number"
+        },
+
+        glucose:{
+            name:"سكر الدم",
+            unit:"mg/dL",
+            type:"number"
+        }
+
+    };
+
+
+    const item =
+        labels[key];
+
+
+    currentModalType = key;
+
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        item.name;
+
+
+    document.getElementById(
+        "modalContent"
+    ).innerHTML = `
+
+        <div class="form-group">
+
+            <label>
+                ${item.name}
+            </label>
+
+            <input
+                id="modalInput"
+                type="${item.type}"
+                step="0.1"
+                value="${todayData[key] || ""}"
+                placeholder="${item.unit}"
+            >
+
+        </div>
+
+    `;
+
+
+    showModal();
+
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+function renderSummary(){
+
+    document.getElementById(
+        "summaryWater"
+    ).textContent =
+        todayData.water || 0;
+
+
+    document.getElementById(
+        "summaryWalking"
+    ).textContent =
+        todayData.walking || 0;
+
+
+    document.getElementById(
+        "summarySleep"
+    ).textContent =
+        todayData.sleep || 0;
+
+
+    const percentages = [];
+
+
+    Object.keys(goalDefinitions)
+        .forEach(key => {
+
+            const enabled =
+                goals[key + "Enabled"];
+
+
+            if(enabled !== true){
+
+                return;
+
+            }
+
+
+            const target =
+                Number(
+                    goals[key]
+                ) || 0;
+
+
+            const current =
+                todayData[key] ?? 0;
+
+
+            if(
+                key === "bedtime" ||
+                key === "wakeTime"
+            ){
+
+                percentages.push(
+                    current &&
+                    current ===
+                    goals[key]
+                        ? 100
+                        : 0
+                );
+
+            }else if(
+                target > 0
+            ){
+
+                percentages.push(
+                    Math.min(
+                        100,
+                        Math.round(
+                            Number(current) /
+                            target *
+                            100
+                        )
+                    )
+                );
+
+            }
+
+        });
+
+
+    if(
+        Array.isArray(
+            goals.customGoals
+        )
+    ){
+
+        goals.customGoals
+            .forEach(custom => {
+
+                const target =
+                    Number(
+                        custom.value
+                    ) || 0;
+
+                const current =
+                    Number(
+                        todayData[
+                            "custom_" +
+                            custom.id
+                        ]
+                    ) || 0;
+
+                if(target > 0){
+
+                    percentages.push(
+                        Math.min(
+                            100,
+                            Math.round(
+                                current /
+                                target *
+                                100
+                            )
+                        )
                     );
 
                 }
 
+            });
+
+    }
+
+
+    let average = 0;
+
+
+    if(percentages.length){
+
+        average =
+            Math.round(
+                percentages.reduce(
+                    (a,b) => a+b,
+                    0
+                ) /
+                percentages.length
+            );
+
+    }
+
+
+    document.getElementById(
+        "summaryCompleted"
+    ).textContent =
+        average + "%";
+
+}
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHtml(value){
+
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================
+   MODAL EVENTS
+========================= */
+
+document
+    .getElementById("closeModal")
+    .addEventListener(
+        "click",
+        closeModal
+    );
+
+
+document
+    .getElementById("cancelModal")
+    .addEventListener(
+        "click",
+        closeModal
+    );
+
+
+document
+    .getElementById("inputModal")
+    .addEventListener(
+        "click",
+        event => {
+
+            if(
+                event.target.id ===
+                "inputModal"
+            ){
+
+                closeModal();
+
             }
-        );
+
+        }
+    );
 
 
-    /* =========================
-       NOTIFICATIONS
-    ========================== */
+/* =========================
+   REFRESH
+========================= */
 
-    document
-        .getElementById("notificationBtn")
-        .addEventListener(
-            "click",
-            () => {
+document
+    .getElementById("refreshBtn")
+    .addEventListener(
+        "click",
+        async () => {
+
+            const button =
+                document.getElementById(
+                    "refreshBtn"
+                );
+
+            button.innerHTML =
+                '<i class="fa-solid fa-spinner fa-spin"></i>';
+
+            await loadUserData();
+
+            button.innerHTML =
+                '<i class="fa-solid fa-rotate"></i>';
+
+            showToast(
+                "تم تحديث البيانات ✓"
+            );
+
+        }
+    );
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+document
+    .getElementById("logoutBtn")
+    .addEventListener(
+        "click",
+        async () => {
+
+            try{
+
+                await signOut(auth);
+
+                window.location.href =
+                    "login.html";
+
+            }catch(error){
+
+                console.error(error);
 
                 showToast(
-                    "نظام التذكيرات والإشعارات سيكون متاحاً قريباً 🔔"
+                    "تعذر تسجيل الخروج"
                 );
 
             }
-        );
 
+        }
+    );
+
+
+/* =========================
+   SCROLL
+========================= */
+
+document
+    .getElementById(
+        "scrollMeasurementsBtn"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            document
+                .getElementById(
+                    "measurementsSection"
+                )
+                .scrollIntoView({
+                    behavior:"smooth"
+                });
+
+        }
+    );
 
 </script>
-
 
 </body>
 
