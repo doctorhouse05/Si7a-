@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#F47B20"
+    >
+
+    <meta
+        name="description"
+        content="إنشاء حساب جديد في Si7a"
+    >
+
+    <title>Si7a | إنشاء حساب</title>
+
+    <!-- Google Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        *{
+            box-sizing:border-box;
+            margin:0;
+            padding:0;
+        }
+
+        body{
+            min-height:100vh;
+            font-family:"Tajawal",sans-serif;
+            background:
+                radial-gradient(
+                    circle at top right,
+                    #fff1e6 0%,
+                    #ffffff 42%,
+                    #f7f8fa 100%
+                );
+            color:#202124;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:25px 15px;
+        }
+
+        .page{
+            width:100%;
+            max-width:1100px;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            background:#ffffff;
+            border-radius:28px;
+            overflow:hidden;
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.10);
+        }
+
+        /* =========================
+           الجانب التعريفي
+        ========================= */
+
+        .intro{
+            background:
+                linear-gradient(
+                    145deg,
+                    #F47B20,
+                    #DF6810
+                );
+            color:white;
+            padding:55px 45px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .intro::before{
+            content:"";
+            position:absolute;
+            width:260px;
+            height:260px;
+            border-radius:50%;
+            background:rgba(255,255,255,.08);
+            top:-100px;
+            left:-90px;
+        }
+
+        .intro::after{
+            content:"";
+            position:absolute;
+            width:220px;
+            height:220px;
+            border-radius:50%;
+            background:rgba(255,255,255,.06);
+            bottom:-100px;
+            right:-80px;
+        }
+
+        .logo{
+            width:82px;
+            height:82px;
+            border-radius:24px;
+            background:rgba(255,255,255,.16);
+            border:1px solid rgba(255,255,255,.25);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin-bottom:28px;
+            position:relative;
+            z-index:2;
+        }
+
+        .logo i{
+            font-size:40px;
+        }
+
+        .intro h1{
+            font-size:42px;
+            font-weight:800;
+            margin-bottom:14px;
+            position:relative;
+            z-index:2;
+        }
+
+        .intro .subtitle{
+            font-size:19px;
+            line-height:1.9;
+            opacity:.94;
+            max-width:420px;
+            position:relative;
+            z-index:2;
+        }
+
+        .features{
+            margin-top:35px;
+            display:flex;
+            flex-direction:column;
+            gap:17px;
+            position:relative;
+            z-index:2;
+        }
+
+        .feature{
+            display:flex;
+            align-items:center;
+            gap:13px;
+            font-size:16px;
+        }
+
+        .feature-icon{
+            width:38px;
+            height:38px;
+            flex-shrink:0;
+            border-radius:12px;
+            background:rgba(255,255,255,.15);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        /* =========================
+           نموذج التسجيل
+        ========================= */
+
+        .register-area{
+            padding:45px 42px;
+            display:flex;
+            align-items:center;
+        }
+
+        .register-box{
+            width:100%;
+            max-width:470px;
+            margin:auto;
+        }
+
+        .mobile-logo{
+            display:none;
+        }
+
+        .register-box h2{
+            font-size:30px;
+            font-weight:800;
+            margin-bottom:8px;
+            color:#202124;
+        }
+
+        .register-description{
+            color:#777;
+            font-size:15px;
+            margin-bottom:28px;
+        }
+
+        .form-group{
+            margin-bottom:18px;
+        }
+
+        .form-group label{
+            display:block;
+            margin-bottom:8px;
+            font-size:14px;
+            font-weight:700;
+            color:#333;
+        }
+
+        .input-wrapper{
+            position:relative;
+        }
+
+        .input-wrapper > i{
+            position:absolute;
+            right:16px;
+            top:50%;
+            transform:translateY(-50%);
+            color:#9a9a9a;
+            font-size:16px;
+            pointer-events:none;
+        }
+
+        .input-wrapper input{
+            width:100%;
+            height:52px;
+            border:1px solid #e2e2e2;
+            border-radius:14px;
+            padding:
+                0 46px
+                0 46px;
+            outline:none;
+            font-family:inherit;
+            font-size:15px;
+            background:#fafafa;
+            transition:.2s;
+        }
+
+        .input-wrapper input:focus{
+            border-color:#F47B20;
+            background:#fff;
+            box-shadow:
+                0 0 0 4px rgba(244,123,32,.10);
+        }
+
+        .password-toggle{
+            position:absolute;
+            left:15px;
+            top:50%;
+            transform:translateY(-50%);
+            border:0;
+            background:none;
+            cursor:pointer;
+            color:#888;
+            font-size:16px;
+            padding:5px;
+        }
+
+        .password-toggle:hover{
+            color:#F47B20;
+        }
+
+        .password-strength{
+            margin-top:8px;
+            display:none;
+        }
+
+        .strength-bar{
+            height:5px;
+            background:#eee;
+            border-radius:10px;
+            overflow:hidden;
+        }
+
+        .strength-progress{
+            width:0;
+            height:100%;
+            border-radius:10px;
+            transition:.3s;
+        }
+
+        .strength-text{
+            margin-top:5px;
+            font-size:12px;
+            color:#777;
+        }
+
+        .password-rules{
+            display:none;
+            margin-top:8px;
+            font-size:12px;
+            color:#777;
+            line-height:1.9;
+        }
+
+        .password-rules div{
+            display:flex;
+            align-items:center;
+            gap:6px;
+        }
+
+        .password-rules i{
+            font-size:9px;
+        }
+
+        .terms{
+            display:flex;
+            align-items:flex-start;
+            gap:9px;
+            margin:8px 0 20px;
+            font-size:13px;
+            line-height:1.7;
+            color:#666;
+        }
+
+        .terms input{
+            width:17px;
+            height:17px;
+            margin-top:3px;
+            accent-color:#F47B20;
+            flex-shrink:0;
+            cursor:pointer;
+        }
+
+        .terms a{
+            color:#F47B20;
+            text-decoration:none;
+            font-weight:700;
+        }
+
+        .terms a:hover{
+            text-decoration:underline;
+        }
+
+        .register-btn{
+            width:100%;
+            height:54px;
+            border:0;
+            border-radius:15px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #F47B20,
+                    #DF6810
+                );
+            color:white;
+            font-family:inherit;
+            font-size:16px;
+            font-weight:800;
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:10px;
+            transition:.2s;
+            box-shadow:
+                0 8px 20px rgba(244,123,32,.20);
+        }
+
+        .register-btn:hover{
+            transform:translateY(-1px);
+            box-shadow:
+                0 11px 25px rgba(244,123,32,.28);
+        }
+
+        .register-btn:disabled{
+            opacity:.7;
+            cursor:not-allowed;
+            transform:none;
+        }
+
+        .login-link{
+            text-align:center;
+            margin-top:22px;
+            color:#777;
+            font-size:14px;
+        }
+
+        .login-link a{
+            color:#F47B20;
+            text-decoration:none;
+            font-weight:800;
+        }
+
+        /* =========================
+           الرسائل
+        ========================= */
+
+        .message{
+            display:none;
+            padding:13px 15px;
+            border-radius:12px;
+            margin-bottom:18px;
+            font-size:13px;
+            line-height:1.7;
+        }
+
+        .message.error{
+            background:#fff0f0;
+            color:#c62828;
+            border:1px solid #ffd5d5;
+        }
+
+        .message.success{
+            background:#effaf2;
+            color:#188038;
+            border:1px solid #ccebd3;
+        }
+
+        .message.show{
+            display:block;
+        }
+
+        .loading-spinner{
+            width:18px;
+            height:18px;
+            border:2px solid rgba(255,255,255,.4);
+            border-top-color:#fff;
+            border-radius:50%;
+            animation:spin .7s linear infinite;
+        }
+
+        @keyframes spin{
+            to{
+                transform:rotate(360deg);
+            }
+        }
+
+        /* =========================
+           Responsive
+        ========================= */
+
+        @media(max-width:850px){
+
+            .page{
+                max-width:600px;
+                grid-template-columns:1fr;
+                border-radius:22px;
+            }
+
+            .intro{
+                display:none;
+            }
+
+            .register-area{
+                padding:38px 25px;
+            }
+
+            .mobile-logo{
+                display:flex;
+                width:70px;
+                height:70px;
+                border-radius:20px;
+                background:#FFF1E6;
+                color:#F47B20;
+                align-items:center;
+                justify-content:center;
+                margin:0 auto 20px;
+            }
+
+            .mobile-logo i{
+                font-size:32px;
+            }
+
+            .register-box h2{
+                text-align:center;
+                font-size:27px;
+            }
+
+            .register-description{
+                text-align:center;
+            }
+        }
+
+        @media(max-width:450px){
+
+            body{
+                padding:0;
+                background:#fff;
+            }
+
+            .page{
+                min-height:100vh;
+                border-radius:0;
+                box-shadow:none;
+            }
+
+            .register-area{
+                padding:30px 18px;
+            }
+
+            .register-box h2{
+                font-size:25px;
+            }
+
+            .input-wrapper input{
+                height:50px;
+            }
+
+            .register-btn{
+                height:52px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- =========================
+         Intro
+    ========================== -->
+
+    <section class="intro">
+
+        <div class="logo">
+            <i class="fa-solid fa-heart-pulse"></i>
+        </div>
+
+        <h1>Si7a</h1>
+
+        <p class="subtitle">
+            منصتك الصحية الشخصية لمتابعة عاداتك اليومية
+            وتنظيم معلوماتك الصحية بطريقة بسيطة.
+        </p>
+
+        <div class="features">
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <span>
+                    بياناتك الشخصية محمية
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+
+                <span>
+                    متابعة تقدمك وعاداتك الصحية
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+
+                <span>
+                    يعمل بسهولة على الهاتف
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-user-lock"></i>
+                </div>
+
+                <span>
+                    حساب شخصي لكل مستخدم
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         Register
+    ========================== -->
+
+    <section class="register-area">
+
+        <div class="register-box">
+
+
+            <div class="mobile-logo">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+
+            <h2>
+                إنشاء حساب جديد
+            </h2>
+
+            <p class="register-description">
+                أنشئ حسابك وابدأ في متابعة عاداتك الصحية.
+            </p>
+
+
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+
+            <form id="registerForm">
+
+
+                <!-- الاسم -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        الاسم
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="أدخل اسمك"
+                            autocomplete="name"
+                            maxlength="80"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- البريد -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        البريد الإلكتروني
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="example@email.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- كلمة المرور -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        كلمة المرور
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="أنشئ كلمة مرور قوية"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="togglePassword"
+                            aria-label="إظهار كلمة المرور"
+                        >
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="password-strength"
+                        id="passwordStrength"
+                    >
+
+                        <div class="strength-bar">
+
+                            <div
+                                class="strength-progress"
+                                id="strengthProgress"
+                            ></div>
+
+                        </div>
+
+                        <div
+                            class="strength-text"
+                            id="strengthText"
+                        ></div>
+
+                    </div>
+
+
+                    <div
+                        class="password-rules"
+                        id="passwordRules"
+                    >
+
+                        <div id="ruleLength">
+                            <i class="fa-solid fa-circle"></i>
+                            6 أحرف على الأقل
+                        </div>
+
+                        <div id="ruleNumber">
+                            <i class="fa-solid fa-circle"></i>
+                            يفضل إضافة رقم
+                        </div>
+
+                        <div id="ruleUpper">
+                            <i class="fa-solid fa-circle"></i>
+                            يفضل إضافة حرف كبير
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- تأكيد كلمة المرور -->
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        تأكيد كلمة المرور
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="أعد كتابة كلمة المرور"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="toggleConfirmPassword"
+                            aria-label="إظهار كلمة المرور"
+                        >
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- الشروط -->
+
+                <label class="terms">
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        required
+                    >
+
+                    <span>
+                        أوافق على استخدام المنصة وفق شروط الاستخدام
+                        وسياسة الخصوصية.
+                    </span>
+
+                </label>
+
+
+
+                <!-- الزر -->
+
+                <button
+                    type="submit"
+                    class="register-btn"
+                    id="registerBtn"
+                >
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    <span>
+                        إنشاء الحساب
+                    </span>
+
+                </button>
+
+
+            </form>
+
+
+
+            <div class="login-link">
+
+                لديك حساب بالفعل؟
+
+                <a href="login.html">
+                    تسجيل الدخول
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
+
+<!-- =========================
+     Firebase
+========================== -->
+
+<script type="module">
+
+    import {
+        auth,
+        db
+    } from "./js/firebase.js";
+
+    import {
+        createUserWithEmailAndPassword,
+        updateProfile
+    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+    import {
+        doc,
+        setDoc,
+        serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+
+    /* =========================
+       العناصر
+    ========================== */
+
+    const form =
+        document.getElementById("registerForm");
+
+    const nameInput =
+        document.getElementById("name");
+
+    const emailInput =
+        document.getElementById("email");
+
+    const passwordInput =
+        document.getElementById("password");
+
+    const confirmPasswordInput =
+        document.getElementById("confirmPassword");
+
+    const termsInput =
+        document.getElementById("terms");
+
+    const message =
+        document.getElementById("message");
+
+    const registerBtn =
+        document.getElementById("registerBtn");
+
+
+
+    /* =========================
+       الرسائل
+    ========================== */
+
+    function showMessage(
+        text,
+        type = "error"
+    ){
+
+        message.textContent = text;
+
+        message.className =
+            "message " +
+            type +
+            " show";
+
+    }
+
+
+    function hideMessage(){
+
+        message.className =
+            "message";
+
+        message.textContent = "";
+
+    }
+
+
+
+    /* =========================
+       إظهار / إخفاء كلمة المرور
+    ========================== */
+
+    function setupPasswordToggle(
+        input,
+        button
+    ){
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const icon =
+                    button.querySelector("i");
+
+                if(
+                    input.type === "password"
+                ){
+
+                    input.type = "text";
+
+                    icon.classList.remove(
+                        "fa-eye"
+                    );
+
+                    icon.classList.add(
+                        "fa-eye-slash"
+                    );
+
+                }else{
+
+                    input.type = "password";
+
+                    icon.classList.remove(
+                        "fa-eye-slash"
+                    );
+
+                    icon.classList.add(
+                        "fa-eye"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    setupPasswordToggle(
+        passwordInput,
+        document.getElementById(
+            "togglePassword"
+        )
+    );
+
+
+    setupPasswordToggle(
+        confirmPasswordInput,
+        document.getElementById(
+            "toggleConfirmPassword"
+        )
+    );
+
+
+
+    /* =========================
+       قوة كلمة المرور
+    ========================== */
+
+    const passwordStrength =
+        document.getElementById(
+            "passwordStrength"
+        );
+
+    const strengthProgress =
+        document.getElementById(
+            "strengthProgress"
+        );
+
+    const strengthText =
+        document.getElementById(
+            "strengthText"
+        );
+
+    const passwordRules =
+        document.getElementById(
+            "passwordRules"
+        );
+
+
+    passwordInput.addEventListener(
+        "input",
+        () => {
+
+            const password =
+                passwordInput.value;
+
+            if(!password){
+
+                passwordStrength.style.display =
+                    "none";
+
+                passwordRules.style.display =
+                    "none";
+
+                return;
+
+            }
+
+            passwordStrength.style.display =
+                "block";
+
+            passwordRules.style.display =
+                "block";
+
+
+            let score = 0;
+
+
+            if(password.length >= 6){
+                score++;
+            }
+
+            if(password.length >= 10){
+                score++;
+            }
+
+            if(/[0-9]/.test(password)){
+                score++;
+            }
+
+            if(/[A-Z]/.test(password)){
+                score++;
+            }
+
+            if(/[^A-Za-z0-9]/.test(password)){
+                score++;
+            }
+
+
+            const percentage =
+                Math.min(
+                    100,
+                    score * 20
+                );
+
+
+            strengthProgress.style.width =
+                percentage + "%";
+
+
+            if(score <= 1){
+
+                strengthText.textContent =
+                    "كلمة مرور ضعيفة";
+
+            }else if(score <= 3){
+
+                strengthText.textContent =
+                    "كلمة مرور متوسطة";
+
+            }else{
+
+                strengthText.textContent =
+                    "كلمة مرور قوية";
+
+            }
+
+
+            const ruleLength =
+                document.getElementById(
+                    "ruleLength"
+                );
+
+            const ruleNumber =
+                document.getElementById(
+                    "ruleNumber"
+                );
+
+            const ruleUpper =
+                document.getElementById(
+                    "ruleUpper"
+                );
+
+
+            ruleLength.style.color =
+                password.length >= 6
+                    ? "#188038"
+                    : "#777";
+
+
+            ruleNumber.style.color =
+                /[0-9]/.test(password)
+                    ? "#188038"
+                    : "#777";
+
+
+            ruleUpper.style.color =
+                /[A-Z]/.test(password)
+                    ? "#188038"
+                    : "#777";
+
+        }
+    );
+
+
+
+    /* =========================
+       التسجيل
+    ========================== */
+
+    form.addEventListener(
+        "submit",
+        async (event) => {
+
+            event.preventDefault();
+
+            hideMessage();
+
+
+            const name =
+                nameInput.value.trim();
+
+            const email =
+                emailInput.value.trim()
+                .toLowerCase();
+
+            const password =
+                passwordInput.value;
+
+            const confirmPassword =
+                confirmPasswordInput.value;
+
+
+
+            /* التحقق من الاسم */
+
+            if(name.length < 2){
+
+                showMessage(
+                    "يرجى إدخال اسم صحيح."
+                );
+
+                nameInput.focus();
+
+                return;
+
+            }
+
+
+
+            /* التحقق من كلمة المرور */
+
+            if(password.length < 6){
+
+                showMessage(
+                    "كلمة المرور يجب أن تحتوي على 6 أحرف على الأقل."
+                );
+
+                passwordInput.focus();
+
+                return;
+
+            }
+
+
+
+            /* تأكيد كلمة المرور */
+
+            if(password !== confirmPassword){
+
+                showMessage(
+                    "كلمتا المرور غير متطابقتين."
+                );
+
+                confirmPasswordInput.focus();
+
+                return;
+
+            }
+
+
+
+            /* الشروط */
+
+            if(!termsInput.checked){
+
+                showMessage(
+                    "يرجى الموافقة على شروط الاستخدام وسياسة الخصوصية."
+                );
+
+                return;
+
+            }
+
+
+
+            /* حالة التحميل */
+
+            registerBtn.disabled = true;
+
+            registerBtn.innerHTML = `
+                <span class="loading-spinner"></span>
+                <span>جاري إنشاء الحساب...</span>
+            `;
+
+
+            try{
+
+
+                /* =========================
+                   إنشاء حساب Firebase Auth
+                ========================== */
+
+                const userCredential =
+                    await createUserWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+
+                const user =
+                    userCredential.user;
+
+
+
+                /* =========================
+                   تحديث اسم المستخدم
+                ========================== */
+
+                await updateProfile(
+                    user,
+                    {
+                        displayName: name
+                    }
+                );
+
+
+
+                /* =========================
+                   إنشاء ملف المستخدم
+                   UID هو المفتاح الأساسي
+                ========================== */
+
+                await setDoc(
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    ),
+                    {
+
+                        uid: user.uid,
+
+                        name: name,
+
+                        email: user.email,
+
+                        createdAt:
+                            serverTimestamp(),
+
+                        updatedAt:
+                            serverTimestamp(),
+
+                        profileCompleted:
+                            false
+
+                    }
+                );
+
+
+
+                /* =========================
+                   نجاح
+                ========================== */
+
+                showMessage(
+                    "تم إنشاء حسابك بنجاح. جاري تحويلك...",
+                    "success"
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        window.location.href =
+                            "dashboard.html";
+
+                    },
+                    1000
+                );
+
+
+            }catch(error){
+
+                console.error(
+                    "Registration error:",
+                    error
+                );
+
+
+                let errorMessage =
+                    "حدث خطأ أثناء إنشاء الحساب. حاول مرة أخرى.";
+
+
+                switch(error.code){
+
+                    case "auth/email-already-in-use":
+
+                        errorMessage =
+                            "هذا البريد الإلكتروني مستخدم بالفعل.";
+
+                        break;
+
+
+                    case "auth/invalid-email":
+
+                        errorMessage =
+                            "البريد الإلكتروني غير صالح.";
+
+                        break;
+
+
+                    case "auth/weak-password":
+
+                        errorMessage =
+                            "كلمة المرور ضعيفة جدًا.";
+
+                        break;
+
+
+                    case "auth/operation-not-allowed":
+
+                        errorMessage =
+                            "تسجيل البريد الإلكتروني غير مفعّل في Firebase.";
+
+                        break;
+
+
+                    case "auth/network-request-failed":
+
+                        errorMessage =
+                            "تعذر الاتصال بالإنترنت. تحقق من الاتصال وحاول مرة أخرى.";
+
+                        break;
+
+                }
+
+
+                showMessage(
+                    errorMessage
+                );
+
+
+                registerBtn.disabled =
+                    false;
+
+
+                registerBtn.innerHTML = `
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>إنشاء الحساب</span>
+                `;
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
