@@ -1,0 +1,4305 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="theme-color"
+    content="#1976D2"
+>
+
+<meta
+    name="description"
+    content="Si7a - أهدافي الصحية الشخصية"
+>
+
+<title>Si7a | أهدافي الصحية</title>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+>
+
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+
+    --primary:#1976D2;
+    --primary-dark:#0D47A1;
+    --primary-light:#E3F2FD;
+
+    --text:#17324D;
+    --muted:#6B7A90;
+
+    --bg:#F5FAFF;
+    --white:#FFFFFF;
+
+    --border:#DCE8F3;
+
+    --green:#20A464;
+    --green-light:#E8F7F0;
+
+    --orange:#F59E0B;
+    --orange-light:#FFF7E6;
+
+    --purple:#7657D8;
+    --purple-light:#F1EEFF;
+
+    --red:#E64C4C;
+    --red-light:#FFF0F0;
+
+    --teal:#0F9D8A;
+    --teal-light:#E8F8F5;
+
+    --shadow:
+        0 8px 28px rgba(13,71,161,.07);
+
+    --radius:20px;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:"Tajawal",sans-serif;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    min-height:100vh;
+}
+
+button,
+input,
+select{
+
+    font-family:inherit;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+#loadingScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:var(--bg);
+
+    z-index:9999;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+    gap:18px;
+}
+
+.loading-logo{
+
+    width:70px;
+    height:70px;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-dark)
+        );
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:29px;
+
+    box-shadow:
+        0 12px 30px rgba(25,118,210,.22);
+}
+
+.loader{
+
+    width:38px;
+    height:38px;
+
+    border:4px solid var(--primary-light);
+
+    border-top-color:var(--primary);
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+#loadingScreen.hidden{
+    display:none;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.topbar{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    background:
+        rgba(255,255,255,.95);
+
+    backdrop-filter:blur(16px);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.topbar-inner{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    min-height:72px;
+
+    padding:10px 18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+}
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+}
+
+.brand-icon{
+
+    width:45px;
+    height:45px;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-dark)
+        );
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:20px;
+}
+
+.brand-title{
+
+    font-size:20px;
+
+    font-weight:800;
+
+    color:var(--primary-dark);
+}
+
+.brand-subtitle{
+
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+.back-button{
+
+    height:42px;
+
+    padding:0 14px;
+
+    border-radius:13px;
+
+    background:var(--primary-light);
+
+    color:var(--primary-dark);
+
+    font-size:12px;
+
+    font-weight:700;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+}
+
+.back-button:hover{
+    background:#D6EBFB;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+
+    width:min(
+        1050px,
+        calc(100% - 28px)
+    );
+
+    margin:auto;
+
+    padding:28px 0 110px;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+
+    background:
+
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(255,255,255,.20),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-dark)
+        );
+
+    color:white;
+
+    border-radius:25px;
+
+    padding:28px;
+
+    margin-bottom:20px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 15px 35px rgba(13,71,161,.16);
+}
+
+.intro:after{
+
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    border:1px solid
+        rgba(255,255,255,.10);
+
+    border-radius:50%;
+
+    left:-100px;
+    bottom:-120px;
+}
+
+.intro h1{
+
+    font-size:27px;
+
+    font-weight:800;
+
+    margin-bottom:7px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.intro p{
+
+    font-size:13px;
+
+    line-height:1.9;
+
+    opacity:.9;
+
+    max-width:680px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.intro-note{
+
+    margin-top:15px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    background:
+        rgba(255,255,255,.13);
+
+    border:
+        1px solid rgba(255,255,255,.16);
+
+    padding:8px 12px;
+
+    border-radius:12px;
+
+    font-size:11px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+
+    background:white;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:22px;
+
+    box-shadow:var(--shadow);
+
+    padding:20px;
+
+    margin-bottom:18px;
+}
+
+.section-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+    margin-bottom:17px;
+}
+
+.section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.section-title-icon{
+
+    width:42px;
+    height:42px;
+
+    border-radius:13px;
+
+    background:var(--primary-light);
+
+    color:var(--primary);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:18px;
+}
+
+.section-title h2{
+
+    font-size:17px;
+
+    font-weight:800;
+}
+
+.section-title p{
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    margin-top:3px;
+}
+
+
+/* =========================
+   GOAL CARDS
+========================= */
+
+.goals-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:13px;
+}
+
+.goal-card{
+
+    border:
+        1px solid var(--border);
+
+    background:#FBFDFF;
+
+    border-radius:18px;
+
+    padding:16px;
+
+    transition:.2s ease;
+}
+
+.goal-card:hover{
+
+    border-color:#BCD8EF;
+
+    transform:translateY(-1px);
+}
+
+.goal-card.active{
+
+    border-color:
+        rgba(25,118,210,.45);
+
+    background:#F9FCFF;
+}
+
+.goal-head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:13px;
+}
+
+.goal-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.goal-icon{
+
+    width:42px;
+    height:42px;
+
+    border-radius:13px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:var(--primary-light);
+
+    color:var(--primary);
+
+    font-size:17px;
+
+    flex-shrink:0;
+}
+
+.goal-name{
+
+    font-size:14px;
+
+    font-weight:800;
+}
+
+.goal-description{
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    margin-top:3px;
+}
+
+
+/* =========================
+   SWITCH
+========================= */
+
+.switch{
+
+    position:relative;
+
+    width:46px;
+    height:25px;
+
+    flex-shrink:0;
+}
+
+.switch input{
+
+    opacity:0;
+
+    width:0;
+    height:0;
+}
+
+.slider{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#CBD8E4;
+
+    border-radius:30px;
+
+    transition:.2s;
+}
+
+.slider:before{
+
+    content:"";
+
+    position:absolute;
+
+    width:19px;
+    height:19px;
+
+    top:3px;
+
+    right:3px;
+
+    background:white;
+
+    border-radius:50%;
+
+    transition:.2s;
+
+    box-shadow:
+        0 2px 5px rgba(0,0,0,.15);
+}
+
+.switch input:checked + .slider{
+
+    background:var(--primary);
+}
+
+.switch input:checked + .slider:before{
+
+    transform:
+        translateX(-21px);
+}
+
+
+/* =========================
+   INPUT AREA
+========================= */
+
+.goal-input-area{
+
+    display:none;
+
+    border-top:
+        1px dashed var(--border);
+
+    padding-top:13px;
+
+    margin-top:5px;
+}
+
+.goal-card.active
+.goal-input-area{
+
+    display:block;
+}
+
+.field-row{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:10px;
+}
+
+.field label{
+
+    display:block;
+
+    font-size:10px;
+
+    color:var(--muted);
+
+    margin-bottom:6px;
+}
+
+.input-wrap{
+
+    position:relative;
+}
+
+.input-wrap input,
+.input-wrap select{
+
+    width:100%;
+
+    height:43px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:12px;
+
+    outline:none;
+
+    background:white;
+
+    padding:
+        0 12px;
+
+    color:var(--text);
+
+    font-size:12px;
+}
+
+.input-wrap input:focus,
+.input-wrap select:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(25,118,210,.08);
+}
+
+.unit{
+
+    position:absolute;
+
+    left:11px;
+
+    top:50%;
+
+    transform:
+        translateY(-50%);
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    pointer-events:none;
+}
+
+.has-unit input{
+    padding-left:55px;
+}
+
+
+/* =========================
+   TIME
+========================= */
+
+.time-row{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:10px;
+}
+
+.time-card{
+
+    padding:12px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:14px;
+
+    background:#FBFDFF;
+}
+
+.time-card label{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    margin-bottom:7px;
+}
+
+.time-card input{
+
+    width:100%;
+
+    height:42px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:11px;
+
+    padding:0 10px;
+
+    color:var(--text);
+
+    background:white;
+
+    font-size:13px;
+
+    outline:none;
+}
+
+.time-card input:focus{
+
+    border-color:var(--primary);
+
+}
+
+
+/* =========================
+   CUSTOM HABIT
+========================= */
+
+.custom-form{
+
+    display:grid;
+
+    grid-template-columns:
+        1.4fr .8fr .8fr auto;
+
+    gap:10px;
+
+    align-items:end;
+}
+
+.custom-form label{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    margin-bottom:6px;
+}
+
+.custom-form input,
+.custom-form select{
+
+    width:100%;
+
+    height:43px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:12px;
+
+    background:white;
+
+    outline:none;
+
+    padding:0 11px;
+
+    font-size:12px;
+
+    color:var(--text);
+}
+
+.add-button{
+
+    height:43px;
+
+    border-radius:12px;
+
+    padding:0 16px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-weight:700;
+
+    font-size:11px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:6px;
+}
+
+.add-button:hover{
+
+    background:var(--primary-dark);
+}
+
+.custom-list{
+
+    margin-top:14px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+}
+
+.custom-item{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:14px;
+
+    padding:11px 13px;
+
+    background:#FBFDFF;
+}
+
+.custom-item-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    min-width:0;
+}
+
+.custom-item-icon{
+
+    width:35px;
+    height:35px;
+
+    border-radius:10px;
+
+    background:var(--primary-light);
+
+    color:var(--primary);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.custom-item-name{
+
+    font-size:12px;
+
+    font-weight:700;
+}
+
+.custom-item-goal{
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    margin-top:2px;
+}
+
+.delete-custom{
+
+    width:32px;
+    height:32px;
+
+    border-radius:10px;
+
+    background:var(--red-light);
+
+    color:var(--red);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary{
+
+    background:
+        linear-gradient(
+            135deg,
+            #F4FAFF,
+            #FFFFFF
+        );
+
+    border:
+        1px solid #CFE3F5;
+
+    border-radius:20px;
+
+    padding:18px;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr auto;
+
+    align-items:center;
+
+    gap:15px;
+}
+
+.summary h3{
+
+    font-size:16px;
+
+    margin-bottom:5px;
+}
+
+.summary p{
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    line-height:1.8;
+}
+
+.summary-count{
+
+    width:75px;
+    height:75px;
+
+    border-radius:50%;
+
+    background:var(--primary-light);
+
+    color:var(--primary-dark);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-shrink:0;
+}
+
+.summary-count strong{
+
+    font-size:23px;
+
+    line-height:1;
+}
+
+.summary-count span{
+
+    font-size:9px;
+
+    margin-top:3px;
+}
+
+
+/* =========================
+   SAVE
+========================= */
+
+.save-area{
+
+    position:sticky;
+
+    bottom:10px;
+
+    z-index:20;
+
+    margin-top:5px;
+
+    background:
+        rgba(245,250,255,.88);
+
+    backdrop-filter:blur(12px);
+
+    padding:8px;
+
+    border-radius:18px;
+}
+
+.save-button{
+
+    width:100%;
+
+    height:52px;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-dark)
+        );
+
+    color:white;
+
+    font-size:14px;
+
+    font-weight:800;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    box-shadow:
+        0 10px 25px
+        rgba(25,118,210,.20);
+
+    transition:.2s;
+}
+
+.save-button:hover{
+
+    transform:translateY(-1px);
+
+    box-shadow:
+        0 13px 30px
+        rgba(25,118,210,.25);
+}
+
+.save-button:disabled{
+
+    opacity:.65;
+
+    cursor:not-allowed;
+
+    transform:none;
+}
+
+
+/* =========================
+   PRIVACY
+========================= */
+
+.privacy{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:15px;
+
+    margin-top:16px;
+
+    background:#F7FCFF;
+
+    border:
+        1px solid #D7EAF7;
+
+    border-radius:17px;
+}
+
+.privacy-icon{
+
+    width:42px;
+    height:42px;
+
+    flex-shrink:0;
+
+    border-radius:12px;
+
+    background:white;
+
+    color:var(--primary);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.privacy strong{
+
+    display:block;
+
+    font-size:12px;
+
+    margin-bottom:3px;
+}
+
+.privacy p{
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    line-height:1.8;
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+#toast{
+
+    position:fixed;
+
+    bottom:25px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%)
+        translateY(120px);
+
+    background:#17324D;
+
+    color:white;
+
+    padding:12px 18px;
+
+    border-radius:13px;
+
+    font-size:12px;
+
+    z-index:10000;
+
+    opacity:0;
+
+    transition:.3s;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.15);
+
+    max-width:90%;
+
+    text-align:center;
+}
+
+#toast.show{
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+
+    opacity:1;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:750px){
+
+    .container{
+
+        width:
+            calc(100% - 20px);
+
+        padding-top:18px;
+
+        padding-bottom:100px;
+    }
+
+    .intro{
+
+        padding:22px;
+
+        border-radius:21px;
+    }
+
+    .intro h1{
+
+        font-size:23px;
+    }
+
+    .goals-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .custom-form{
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .custom-form > div:first-child{
+
+        grid-column:
+            1 / -1;
+    }
+
+    .custom-form .add-button{
+
+        grid-column:
+            1 / -1;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .topbar-inner{
+
+        padding:
+            9px 10px;
+    }
+
+    .brand-subtitle{
+
+        display:none;
+    }
+
+    .back-button span{
+
+        display:none;
+    }
+
+    .back-button{
+
+        width:42px;
+
+        padding:0;
+
+        justify-content:center;
+    }
+
+    .section{
+
+        padding:15px;
+
+        border-radius:19px;
+    }
+
+    .section-header{
+
+        align-items:center;
+    }
+
+    .field-row,
+    .time-row{
+
+        grid-template-columns:1fr;
+    }
+
+    .custom-form{
+
+        grid-template-columns:1fr;
+    }
+
+    .custom-form > div:first-child,
+    .custom-form .add-button{
+
+        grid-column:auto;
+    }
+
+    .summary{
+
+        grid-template-columns:1fr auto;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     LOADING
+========================== -->
+
+<div id="loadingScreen">
+
+    <div class="loading-logo">
+
+        <i class="fa-solid fa-bullseye"></i>
+
+    </div>
+
+    <div class="loader"></div>
+
+    <div
+        style="
+            color:#6B7A90;
+            font-size:13px;
+        "
+    >
+        جارٍ تحميل أهدافك...
+    </div>
+
+</div>
+
+
+<!-- =========================
+     HEADER
+========================== -->
+
+<header class="topbar">
+
+    <div class="topbar-inner">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+
+                <i class="fa-solid fa-heart-pulse"></i>
+
+            </div>
+
+            <div>
+
+                <div class="brand-title">
+                    Si7a
+                </div>
+
+                <div class="brand-subtitle">
+                    أهدافي الصحية
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <a
+            href="dashboard.html"
+            class="back-button"
+        >
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span>
+                العودة إلى الرئيسية
+            </span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     MAIN
+========================== -->
+
+<main class="container">
+
+
+    <!-- INTRO -->
+
+    <section class="intro">
+
+        <h1>
+            🎯 لنحدد أهدافك الصحية
+        </h1>
+
+        <p>
+            أنت من يحدد ما تريد تحقيقه.
+            اختر العادات والمؤشرات التي تريد متابعتها،
+            وحدد الهدف المناسب لك. يمكنك تعديل أهدافك
+            في أي وقت.
+        </p>
+
+        <div class="intro-note">
+
+            <i class="fa-solid fa-sliders"></i>
+
+            أهدافك شخصية ويمكن تغييرها متى شئت.
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DAILY HABITS
+    ========================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <div class="section-title">
+
+                <div class="section-title-icon">
+                    <i class="fa-solid fa-calendar-day"></i>
+                </div>
+
+                <div>
+
+                    <h2>
+                        عاداتي اليومية
+                    </h2>
+
+                    <p>
+                        حدد العادات التي تريد الالتزام بها يومياً
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="goals-grid">
+
+
+            <!-- WATER -->
+
+            <div
+                class="goal-card"
+                data-goal="water"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div class="goal-icon">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                شرب الماء
+                            </div>
+
+                            <div class="goal-description">
+                                حدد عدد الأكواب التي تريدها يومياً
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="waterEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="goal-input-area">
+
+                    <div class="field">
+
+                        <label>
+                            هدفي اليومي
+                        </label>
+
+                        <div class="input-wrap has-unit">
+
+                            <input
+                                type="number"
+                                id="waterGoal"
+                                min="1"
+                                max="30"
+                                step="1"
+                                value="8"
+                            >
+
+                            <span class="unit">
+                                أكواب
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- WALKING -->
+
+            <div
+                class="goal-card"
+                data-goal="walking"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div class="goal-icon">
+                            <i class="fa-solid fa-person-walking"></i>
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                المشي
+                            </div>
+
+                            <div class="goal-description">
+                                حدد مدة المشي اليومية التي تناسبك
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="walkingEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="goal-input-area">
+
+                    <div class="field">
+
+                        <label>
+                            هدفي اليومي
+                        </label>
+
+                        <div class="input-wrap has-unit">
+
+                            <input
+                                type="number"
+                                id="walkingGoal"
+                                min="1"
+                                max="600"
+                                step="5"
+                                value="30"
+                            >
+
+                            <span class="unit">
+                                دقيقة
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SLEEP -->
+
+            <div
+                class="goal-card"
+                data-goal="sleep"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div class="goal-icon">
+                            <i class="fa-solid fa-bed"></i>
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                مدة النوم
+                            </div>
+
+                            <div class="goal-description">
+                                حدد مدة النوم التي تريد تحقيقها
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="sleepEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="goal-input-area">
+
+                    <div class="field">
+
+                        <label>
+                            هدف النوم
+                        </label>
+
+                        <div class="input-wrap has-unit">
+
+                            <input
+                                type="number"
+                                id="sleepGoal"
+                                min="1"
+                                max="24"
+                                step="0.5"
+                                value="8"
+                            >
+
+                            <span class="unit">
+                                ساعات
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BEDTIME -->
+
+            <div
+                class="goal-card"
+                data-goal="bedtime"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div class="goal-icon">
+                            <i class="fa-solid fa-moon"></i>
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                وقت النوم
+                            </div>
+
+                            <div class="goal-description">
+                                حدد الوقت الذي تريد النوم فيه
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="bedtimeEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="goal-input-area">
+
+                    <div class="field">
+
+                        <label>
+                            وقت النوم المستهدف
+                        </label>
+
+                        <div class="input-wrap">
+
+                            <input
+                                type="time"
+                                id="bedtimeGoal"
+                                value="23:00"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- WAKE -->
+
+            <div
+                class="goal-card"
+                data-goal="wakeTime"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div class="goal-icon">
+                            <i class="fa-solid fa-sun"></i>
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                وقت الاستيقاظ
+                            </div>
+
+                            <div class="goal-description">
+                                حدد الوقت الذي تريد الاستيقاظ فيه
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="wakeTimeEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="goal-input-area">
+
+                    <div class="field">
+
+                        <label>
+                            وقت الاستيقاظ المستهدف
+                        </label>
+
+                        <div class="input-wrap">
+
+                            <input
+                                type="time"
+                                id="wakeTimeGoal"
+                                value="07:00"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEPS -->
+
+            <div
+                class="goal-card"
+                data-goal="steps"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div class="goal-icon">
+                            <i class="fa-solid fa-shoe-prints"></i>
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                الخطوات
+                            </div>
+
+                            <div class="goal-description">
+                                حدد عدد الخطوات التي تريد تحقيقها
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="stepsEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="goal-input-area">
+
+                    <div class="field">
+
+                        <label>
+                            هدف الخطوات
+                        </label>
+
+                        <div class="input-wrap has-unit">
+
+                            <input
+                                type="number"
+                                id="stepsGoal"
+                                min="1"
+                                max="100000"
+                                step="100"
+                                value="6000"
+                            >
+
+                            <span class="unit">
+                                خطوة
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RELAXATION -->
+
+            <div
+                class="goal-card"
+                data-goal="relaxation"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div class="goal-icon">
+                            <i class="fa-solid fa-spa"></i>
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                الاسترخاء
+                            </div>
+
+                            <div class="goal-description">
+                                وقت يومي للراحة أو التأمل
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="relaxationEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="goal-input-area">
+
+                    <div class="field">
+
+                        <label>
+                            الهدف اليومي
+                        </label>
+
+                        <div class="input-wrap has-unit">
+
+                            <input
+                                type="number"
+                                id="relaxationGoal"
+                                min="1"
+                                max="300"
+                                step="5"
+                                value="15"
+                            >
+
+                            <span class="unit">
+                                دقيقة
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- READING -->
+
+            <div
+                class="goal-card"
+                data-goal="reading"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div class="goal-icon">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                القراءة
+                            </div>
+
+                            <div class="goal-description">
+                                وقت يومي للقراءة
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="readingEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="goal-input-area">
+
+                    <div class="field">
+
+                        <label>
+                            الهدف اليومي
+                        </label>
+
+                        <div class="input-wrap has-unit">
+
+                            <input
+                                type="number"
+                                id="readingGoal"
+                                min="1"
+                                max="600"
+                                step="5"
+                                value="20"
+                            >
+
+                            <span class="unit">
+                                دقيقة
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         HEALTH MEASUREMENTS
+    ========================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <div class="section-title">
+
+                <div
+                    class="section-title-icon"
+                    style="
+                        background:#E8F8F5;
+                        color:#0F9D8A;
+                    "
+                >
+
+                    <i class="fa-solid fa-heart-pulse"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>
+                        مؤشرات أريد متابعتها
+                    </h2>
+
+                    <p>
+                        اختر القياسات الصحية التي تريد تسجيلها
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="goals-grid">
+
+
+            <!-- WEIGHT -->
+
+            <div
+                class="goal-card"
+                data-goal="weight"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div
+                            class="goal-icon"
+                            style="
+                                background:#F1EEFF;
+                                color:#7657D8;
+                            "
+                        >
+
+                            <i class="fa-solid fa-weight-scale"></i>
+
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                الوزن
+                            </div>
+
+                            <div class="goal-description">
+                                تسجيل الوزن ومتابعة تطوره
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="weightEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- BLOOD PRESSURE -->
+
+            <div
+                class="goal-card"
+                data-goal="bloodPressure"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div
+                            class="goal-icon"
+                            style="
+                                background:#FFF0F0;
+                                color:#E64C4C;
+                            "
+                        >
+
+                            <i class="fa-solid fa-heart"></i>
+
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                ضغط الدم
+                            </div>
+
+                            <div class="goal-description">
+                                تسجيل ضغط الدم الانقباضي والانبساطي
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="bloodPressureEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- PULSE -->
+
+            <div
+                class="goal-card"
+                data-goal="pulse"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div class="goal-icon">
+
+                            <i class="fa-solid fa-heart-pulse"></i>
+
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                النبض
+                            </div>
+
+                            <div class="goal-description">
+                                تسجيل معدل ضربات القلب
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="pulseEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- SPO2 -->
+
+            <div
+                class="goal-card"
+                data-goal="spo2"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div
+                            class="goal-icon"
+                            style="
+                                background:#E8F8F5;
+                                color:#0F9D8A;
+                            "
+                        >
+
+                            <i class="fa-solid fa-lungs"></i>
+
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                SpO₂
+                            </div>
+
+                            <div class="goal-description">
+                                تسجيل نسبة تشبع الأكسجين
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="spo2Enabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- TEMPERATURE -->
+
+            <div
+                class="goal-card"
+                data-goal="temperature"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div
+                            class="goal-icon"
+                            style="
+                                background:#FFF7E6;
+                                color:#F59E0B;
+                            "
+                        >
+
+                            <i class="fa-solid fa-temperature-half"></i>
+
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                درجة الحرارة
+                            </div>
+
+                            <div class="goal-description">
+                                تسجيل درجة حرارة الجسم
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="temperatureEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- GLUCOSE -->
+
+            <div
+                class="goal-card"
+                data-goal="glucose"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div
+                            class="goal-icon"
+                            style="
+                                background:#FFF7E6;
+                                color:#F59E0B;
+                            "
+                        >
+
+                            <i class="fa-solid fa-droplet"></i>
+
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                سكر الدم
+                            </div>
+
+                            <div class="goal-description">
+                                تسجيل قياسات سكر الدم
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="glucoseEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         LIFESTYLE
+    ========================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <div class="section-title">
+
+                <div
+                    class="section-title-icon"
+                    style="
+                        background:#F1EEFF;
+                        color:#7657D8;
+                    "
+                >
+
+                    <i class="fa-solid fa-leaf"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>
+                        نمط حياتي
+                    </h2>
+
+                    <p>
+                        اختر العادات الإضافية التي تريد متابعتها
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="goals-grid">
+
+
+            <!-- SCREEN -->
+
+            <div
+                class="goal-card"
+                data-goal="screenTime"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div
+                            class="goal-icon"
+                            style="
+                                background:#F1EEFF;
+                                color:#7657D8;
+                            "
+                        >
+
+                            <i class="fa-solid fa-mobile-screen"></i>
+
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                وقت الشاشة
+                            </div>
+
+                            <div class="goal-description">
+                                متابعة الوقت الذي تقضيه أمام الشاشة
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="screenTimeEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="goal-input-area">
+
+                    <div class="field">
+
+                        <label>
+                            الحد اليومي
+                        </label>
+
+                        <div class="input-wrap has-unit">
+
+                            <input
+                                type="number"
+                                id="screenTimeGoal"
+                                min="1"
+                                max="1440"
+                                value="120"
+                            >
+
+                            <span class="unit">
+                                دقيقة
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FRUIT -->
+
+            <div
+                class="goal-card"
+                data-goal="fruit"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div
+                            class="goal-icon"
+                            style="
+                                background:#E8F7F0;
+                                color:#20A464;
+                            "
+                        >
+
+                            <i class="fa-solid fa-apple-whole"></i>
+
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                الفواكه
+                            </div>
+
+                            <div class="goal-description">
+                                متابعة حصص الفواكه اليومية
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="fruitEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="goal-input-area">
+
+                    <div class="field">
+
+                        <label>
+                            الهدف اليومي
+                        </label>
+
+                        <div class="input-wrap has-unit">
+
+                            <input
+                                type="number"
+                                id="fruitGoal"
+                                min="1"
+                                max="20"
+                                value="2"
+                            >
+
+                            <span class="unit">
+                                حصص
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- VEGETABLES -->
+
+            <div
+                class="goal-card"
+                data-goal="vegetables"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div
+                            class="goal-icon"
+                            style="
+                                background:#E8F7F0;
+                                color:#20A464;
+                            "
+                        >
+
+                            <i class="fa-solid fa-carrot"></i>
+
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                الخضروات
+                            </div>
+
+                            <div class="goal-description">
+                                متابعة حصص الخضروات
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="vegetablesEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="goal-input-area">
+
+                    <div class="field">
+
+                        <label>
+                            الهدف اليومي
+                        </label>
+
+                        <div class="input-wrap has-unit">
+
+                            <input
+                                type="number"
+                                id="vegetablesGoal"
+                                min="1"
+                                max="20"
+                                value="3"
+                            >
+
+                            <span class="unit">
+                                حصص
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SMOKING -->
+
+            <div
+                class="goal-card"
+                data-goal="smoking"
+            >
+
+                <div class="goal-head">
+
+                    <div class="goal-info">
+
+                        <div
+                            class="goal-icon"
+                            style="
+                                background:#FFF0F0;
+                                color:#E64C4C;
+                            "
+                        >
+
+                            <i class="fa-solid fa-ban-smoking"></i>
+
+                        </div>
+
+                        <div>
+
+                            <div class="goal-name">
+                                التدخين
+                            </div>
+
+                            <div class="goal-description">
+                                متابعة عدد السجائر أو الأيام بدون تدخين
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="smokingEnabled"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CUSTOM GOALS
+    ========================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <div class="section-title">
+
+                <div
+                    class="section-title-icon"
+                    style="
+                        background:#FFF7E6;
+                        color:#F59E0B;
+                    "
+                >
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>
+                        تحديات خاصة بي
+                    </h2>
+
+                    <p>
+                        أضف أي عادة أو هدف تريد متابعته
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="custom-form">
+
+
+            <div>
+
+                <label>
+                    اسم التحدي
+                </label>
+
+                <input
+                    type="text"
+                    id="customName"
+                    placeholder="مثال: تمارين التمدد"
+                    maxlength="50"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    الهدف
+                </label>
+
+                <input
+                    type="number"
+                    id="customValue"
+                    min="1"
+                    placeholder="10"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    الوحدة
+                </label>
+
+                <select id="customUnit">
+
+                    <option value="دقيقة">
+                        دقيقة
+                    </option>
+
+                    <option value="ساعة">
+                        ساعة
+                    </option>
+
+                    <option value="كوب">
+                        كوب
+                    </option>
+
+                    <option value="مرة">
+                        مرة
+                    </option>
+
+                    <option value="خطوة">
+                        خطوة
+                    </option>
+
+                    <option value="صفحة">
+                        صفحة
+                    </option>
+
+                    <option value="يوم">
+                        يوم
+                    </option>
+
+                    <option value="مخصص">
+                        مخصص
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                class="add-button"
+                id="addCustomBtn"
+                type="button"
+            >
+
+                <i class="fa-solid fa-plus"></i>
+
+                إضافة
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="custom-list"
+            id="customList"
+        ></div>
+
+    </section>
+
+
+    <!-- =========================
+         SUMMARY
+    ========================== -->
+
+    <section class="section">
+
+        <div class="summary">
+
+            <div>
+
+                <h3>
+                    🎯 ملخص أهدافك
+                </h3>
+
+                <p>
+                    سيتم استخدام اختياراتك لتخصيص لوحة Si7a
+                    وحساب تقدمك اليومي.
+                    يمكنك تعديل هذه الأهداف لاحقاً في أي وقت.
+                </p>
+
+            </div>
+
+
+            <div class="summary-count">
+
+                <strong id="activeCount">
+                    0
+                </strong>
+
+                <span>
+                    أهداف مفعلة
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SAVE
+    ========================== -->
+
+    <div class="save-area">
+
+        <button
+            class="save-button"
+            id="saveBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+            حفظ أهدافي
+
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         PRIVACY
+    ========================== -->
+
+    <div class="privacy">
+
+        <div class="privacy-icon">
+
+            <i class="fa-solid fa-shield-heart"></i>
+
+        </div>
+
+        <div>
+
+            <strong>
+                🔒 أهدافك خاصة بك
+            </strong>
+
+            <p>
+                يتم حفظ أهدافك داخل حسابك الشخصي باستخدام
+                معرف Firebase الخاص بك. لا يمكن للمستخدمين
+                الآخرين الوصول إلى أهدافك أو بياناتك الصحية.
+            </p>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+<div id="toast"></div>
+
+
+<!-- =========================
+     FIREBASE
+========================== -->
+
+<script type="module">
+
+import {
+    auth,
+    db
+} from "./js/firebase.js";
+
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+
+import {
+    doc,
+    getDoc,
+    setDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const loadingScreen =
+    document.getElementById(
+        "loadingScreen"
+    );
+
+const saveBtn =
+    document.getElementById(
+        "saveBtn"
+    );
+
+const activeCount =
+    document.getElementById(
+        "activeCount"
+    );
+
+const customList =
+    document.getElementById(
+        "customList"
+    );
+
+
+let currentUser = null;
+
+let customGoals = [];
+
+
+/* =========================
+   DEFAULT VALUES
+========================= */
+
+const defaultSettings = {
+
+    waterEnabled:true,
+    water:8,
+
+    walkingEnabled:true,
+    walking:30,
+
+    sleepEnabled:true,
+    sleep:8,
+
+    bedtimeEnabled:true,
+    bedtime:"23:00",
+
+    wakeTimeEnabled:true,
+    wakeTime:"07:00",
+
+    stepsEnabled:false,
+    steps:6000,
+
+    relaxationEnabled:false,
+    relaxation:15,
+
+    readingEnabled:false,
+    reading:20,
+
+    weightEnabled:false,
+
+    bloodPressureEnabled:false,
+
+    pulseEnabled:false,
+
+    spo2Enabled:false,
+
+    temperatureEnabled:false,
+
+    glucoseEnabled:false,
+
+    screenTimeEnabled:false,
+    screenTime:120,
+
+    fruitEnabled:false,
+    fruit:2,
+
+    vegetablesEnabled:false,
+    vegetables:3,
+
+    smokingEnabled:false,
+
+    customGoals:[]
+
+};
+
+
+/* =========================
+   TOAST
+========================= */
+
+let toastTimer;
+
+function showToast(message){
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+    toast.textContent =
+        message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+        setTimeout(() => {
+
+            toast.classList.remove("show");
+
+        },3000);
+
+}
+
+
+/* =========================
+   TOGGLE CARDS
+========================= */
+
+document
+    .querySelectorAll(
+        ".goal-card .switch input"
+    )
+    .forEach(input => {
+
+        input.addEventListener(
+            "change",
+            () => {
+
+                const card =
+                    input.closest(
+                        ".goal-card"
+                    );
+
+                if(!card){
+                    return;
+                }
+
+                card.classList.toggle(
+                    "active",
+                    input.checked
+                );
+
+                updateActiveCount();
+
+            }
+        );
+
+    });
+
+
+/* =========================
+   ACTIVE COUNT
+========================= */
+
+function updateActiveCount(){
+
+    const checked =
+        document.querySelectorAll(
+            ".goal-card .switch input:checked"
+        ).length;
+
+    const customCount =
+        customGoals.length;
+
+    activeCount.textContent =
+        checked + customCount;
+
+}
+
+
+/* =========================
+   SET INPUT
+========================= */
+
+function setValue(
+    id,
+    value
+){
+
+    const element =
+        document.getElementById(id);
+
+    if(!element){
+        return;
+    }
+
+    if(value !== undefined &&
+       value !== null){
+
+        element.value =
+            value;
+
+    }
+
+}
+
+
+/* =========================
+   SET CHECKBOX
+========================= */
+
+function setCheckbox(
+    id,
+    value
+){
+
+    const element =
+        document.getElementById(id);
+
+    if(!element){
+        return;
+    }
+
+    element.checked =
+        Boolean(value);
+
+    const card =
+        element.closest(
+            ".goal-card"
+        );
+
+    if(card){
+
+        card.classList.toggle(
+            "active",
+            element.checked
+        );
+
+    }
+
+}
+
+
+/* =========================
+   LOAD SETTINGS
+========================= */
+
+async function loadSettings(){
+
+    if(!currentUser){
+        return;
+    }
+
+
+    try{
+
+        const ref =
+            doc(
+                db,
+                "users",
+                currentUser.uid,
+                "goals",
+                "settings"
+            );
+
+
+        const snapshot =
+            await getDoc(ref);
+
+
+        let data = {
+            ...defaultSettings
+        };
+
+
+        if(snapshot.exists()){
+
+            data = {
+                ...defaultSettings,
+                ...snapshot.data()
+            };
+
+        }
+
+
+        /*
+         * CHECKBOXES
+         */
+
+        setCheckbox(
+            "waterEnabled",
+            data.waterEnabled
+        );
+
+        setCheckbox(
+            "walkingEnabled",
+            data.walkingEnabled
+        );
+
+        setCheckbox(
+            "sleepEnabled",
+            data.sleepEnabled
+        );
+
+        setCheckbox(
+            "bedtimeEnabled",
+            data.bedtimeEnabled
+        );
+
+        setCheckbox(
+            "wakeTimeEnabled",
+            data.wakeTimeEnabled
+        );
+
+        setCheckbox(
+            "stepsEnabled",
+            data.stepsEnabled
+        );
+
+        setCheckbox(
+            "relaxationEnabled",
+            data.relaxationEnabled
+        );
+
+        setCheckbox(
+            "readingEnabled",
+            data.readingEnabled
+        );
+
+        setCheckbox(
+            "weightEnabled",
+            data.weightEnabled
+        );
+
+        setCheckbox(
+            "bloodPressureEnabled",
+            data.bloodPressureEnabled
+        );
+
+        setCheckbox(
+            "pulseEnabled",
+            data.pulseEnabled
+        );
+
+        setCheckbox(
+            "spo2Enabled",
+            data.spo2Enabled
+        );
+
+        setCheckbox(
+            "temperatureEnabled",
+            data.temperatureEnabled
+        );
+
+        setCheckbox(
+            "glucoseEnabled",
+            data.glucoseEnabled
+        );
+
+        setCheckbox(
+            "screenTimeEnabled",
+            data.screenTimeEnabled
+        );
+
+        setCheckbox(
+            "fruitEnabled",
+            data.fruitEnabled
+        );
+
+        setCheckbox(
+            "vegetablesEnabled",
+            data.vegetablesEnabled
+        );
+
+        setCheckbox(
+            "smokingEnabled",
+            data.smokingEnabled
+        );
+
+
+        /*
+         * VALUES
+         */
+
+        setValue(
+            "waterGoal",
+            data.water
+        );
+
+        setValue(
+            "walkingGoal",
+            data.walking
+        );
+
+        setValue(
+            "sleepGoal",
+            data.sleep
+        );
+
+        setValue(
+            "bedtimeGoal",
+            data.bedtime
+        );
+
+        setValue(
+            "wakeTimeGoal",
+            data.wakeTime
+        );
+
+        setValue(
+            "stepsGoal",
+            data.steps
+        );
+
+        setValue(
+            "relaxationGoal",
+            data.relaxation
+        );
+
+        setValue(
+            "readingGoal",
+            data.reading
+        );
+
+        setValue(
+            "screenTimeGoal",
+            data.screenTime
+        );
+
+        setValue(
+            "fruitGoal",
+            data.fruit
+        );
+
+        setValue(
+            "vegetablesGoal",
+            data.vegetables
+        );
+
+
+        /*
+         * CUSTOM
+         */
+
+        customGoals =
+            Array.isArray(
+                data.customGoals
+            )
+                ? data.customGoals
+                : [];
+
+
+        renderCustomGoals();
+
+        updateActiveCount();
+
+
+    }catch(error){
+
+        console.error(
+            "Load goals error:",
+            error
+        );
+
+        showToast(
+            "تعذر تحميل أهدافك."
+        );
+
+    }finally{
+
+        loadingScreen.classList.add(
+            "hidden"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   CUSTOM GOALS
+========================= */
+
+function renderCustomGoals(){
+
+    customList.innerHTML = "";
+
+
+    if(
+        !customGoals.length
+    ){
+
+        return;
+
+    }
+
+
+    customGoals.forEach(
+        (goal,index) => {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+            item.className =
+                "custom-item";
+
+
+            item.innerHTML = `
+
+                <div class="custom-item-info">
+
+                    <div class="custom-item-icon">
+
+                        <i class="fa-solid fa-star"></i>
+
+                    </div>
+
+                    <div>
+
+                        <div class="custom-item-name">
+                            ${escapeHtml(goal.name)}
+                        </div>
+
+                        <div class="custom-item-goal">
+                            ${goal.value} ${escapeHtml(goal.unit)}
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="delete-custom"
+                    data-index="${index}"
+                    title="حذف"
+                >
+
+                    <i class="fa-solid fa-trash"></i>
+
+                </button>
+
+            `;
+
+
+            customList.appendChild(
+                item
+            );
+
+        }
+    );
+
+
+    document
+        .querySelectorAll(
+            ".delete-custom"
+        )
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const index =
+                        Number(
+                            button.dataset.index
+                        );
+
+                    customGoals.splice(
+                        index,
+                        1
+                    );
+
+                    renderCustomGoals();
+
+                    updateActiveCount();
+
+                }
+            );
+
+        });
+
+}
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHtml(
+    value
+){
+
+    return String(value)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================
+   ADD CUSTOM
+========================= */
+
+document
+    .getElementById(
+        "addCustomBtn"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            const name =
+                document
+                    .getElementById(
+                        "customName"
+                    )
+                    .value
+                    .trim();
+
+
+            const value =
+                Number(
+                    document
+                        .getElementById(
+                            "customValue"
+                        )
+                        .value
+                );
+
+
+            const unit =
+                document
+                    .getElementById(
+                        "customUnit"
+                    )
+                    .value;
+
+
+            if(!name){
+
+                showToast(
+                    "اكتب اسم التحدي أولاً."
+                );
+
+                return;
+
+            }
+
+
+            if(
+                !Number.isFinite(value) ||
+                value <= 0
+            ){
+
+                showToast(
+                    "أدخل هدفاً صحيحاً."
+                );
+
+                return;
+
+            }
+
+
+            customGoals.push({
+
+                id:
+                    Date.now()
+                    .toString(),
+
+                name,
+
+                value,
+
+                unit
+
+            });
+
+
+            document
+                .getElementById(
+                    "customName"
+                )
+                .value = "";
+
+
+            document
+                .getElementById(
+                    "customValue"
+                )
+                .value = "";
+
+
+            renderCustomGoals();
+
+            updateActiveCount();
+
+            showToast(
+                "تمت إضافة التحدي."
+            );
+
+        }
+    );
+
+
+/* =========================
+   COLLECT SETTINGS
+========================= */
+
+function collectSettings(){
+
+    return {
+
+        waterEnabled:
+            document
+                .getElementById(
+                    "waterEnabled"
+                )
+                .checked,
+
+        water:
+            Number(
+                document
+                    .getElementById(
+                        "waterGoal"
+                    )
+                    .value
+            ),
+
+
+        walkingEnabled:
+            document
+                .getElementById(
+                    "walkingEnabled"
+                )
+                .checked,
+
+        walking:
+            Number(
+                document
+                    .getElementById(
+                        "walkingGoal"
+                    )
+                    .value
+            ),
+
+
+        sleepEnabled:
+            document
+                .getElementById(
+                    "sleepEnabled"
+                )
+                .checked,
+
+        sleep:
+            Number(
+                document
+                    .getElementById(
+                        "sleepGoal"
+                    )
+                    .value
+            ),
+
+
+        bedtimeEnabled:
+            document
+                .getElementById(
+                    "bedtimeEnabled"
+                )
+                .checked,
+
+        bedtime:
+            document
+                .getElementById(
+                    "bedtimeGoal"
+                )
+                .value,
+
+
+        wakeTimeEnabled:
+            document
+                .getElementById(
+                    "wakeTimeEnabled"
+                )
+                .checked,
+
+        wakeTime:
+            document
+                .getElementById(
+                    "wakeTimeGoal"
+                )
+                .value,
+
+
+        stepsEnabled:
+            document
+                .getElementById(
+                    "stepsEnabled"
+                )
+                .checked,
+
+        steps:
+            Number(
+                document
+                    .getElementById(
+                        "stepsGoal"
+                    )
+                    .value
+            ),
+
+
+        relaxationEnabled:
+            document
+                .getElementById(
+                    "relaxationEnabled"
+                )
+                .checked,
+
+        relaxation:
+            Number(
+                document
+                    .getElementById(
+                        "relaxationGoal"
+                    )
+                    .value
+            ),
+
+
+        readingEnabled:
+            document
+                .getElementById(
+                    "readingEnabled"
+                )
+                .checked,
+
+        reading:
+            Number(
+                document
+                    .getElementById(
+                        "readingGoal"
+                    )
+                    .value
+            ),
+
+
+        weightEnabled:
+            document
+                .getElementById(
+                    "weightEnabled"
+                )
+                .checked,
+
+
+        bloodPressureEnabled:
+            document
+                .getElementById(
+                    "bloodPressureEnabled"
+                )
+                .checked,
+
+
+        pulseEnabled:
+            document
+                .getElementById(
+                    "pulseEnabled"
+                )
+                .checked,
+
+
+        spo2Enabled:
+            document
+                .getElementById(
+                    "spo2Enabled"
+                )
+                .checked,
+
+
+        temperatureEnabled:
+            document
+                .getElementById(
+                    "temperatureEnabled"
+                )
+                .checked,
+
+
+        glucoseEnabled:
+            document
+                .getElementById(
+                    "glucoseEnabled"
+                )
+                .checked,
+
+
+        screenTimeEnabled:
+            document
+                .getElementById(
+                    "screenTimeEnabled"
+                )
+                .checked,
+
+        screenTime:
+            Number(
+                document
+                    .getElementById(
+                        "screenTimeGoal"
+                    )
+                    .value
+            ),
+
+
+        fruitEnabled:
+            document
+                .getElementById(
+                    "fruitEnabled"
+                )
+                .checked,
+
+        fruit:
+            Number(
+                document
+                    .getElementById(
+                        "fruitGoal"
+                    )
+                    .value
+            ),
+
+
+        vegetablesEnabled:
+            document
+                .getElementById(
+                    "vegetablesEnabled"
+                )
+                .checked,
+
+        vegetables:
+            Number(
+                document
+                    .getElementById(
+                        "vegetablesGoal"
+                    )
+                    .value
+            ),
+
+
+        smokingEnabled:
+            document
+                .getElementById(
+                    "smokingEnabled"
+                )
+                .checked,
+
+
+        customGoals:
+            customGoals
+
+    };
+
+}
+
+
+/* =========================
+   SAVE
+========================= */
+
+saveBtn.addEventListener(
+    "click",
+    async () => {
+
+        if(!currentUser){
+
+            showToast(
+                "يجب تسجيل الدخول أولاً."
+            );
+
+            return;
+
+        }
+
+
+        const settings =
+            collectSettings();
+
+
+        saveBtn.disabled =
+            true;
+
+
+        saveBtn.innerHTML = `
+
+            <i
+                class="fa-solid fa-spinner fa-spin"
+            ></i>
+
+            جارٍ الحفظ...
+
+        `;
+
+
+        try{
+
+            const ref =
+                doc(
+                    db,
+                    "users",
+                    currentUser.uid,
+                    "goals",
+                    "settings"
+                );
+
+
+            await setDoc(
+                ref,
+                {
+
+                    ...settings,
+
+                    uid:
+                        currentUser.uid,
+
+                    updatedAt:
+                        serverTimestamp(),
+
+                    createdAt:
+                        serverTimestamp()
+
+                },
+                {
+                    merge:true
+                }
+            );
+
+
+            showToast(
+                "تم حفظ أهدافك بنجاح 🎯"
+            );
+
+
+            setTimeout(
+                () => {
+
+                    window.location.href =
+                        "dashboard.html";
+
+                },
+                900
+            );
+
+
+        }catch(error){
+
+            console.error(
+                "Save goals error:",
+                error
+            );
+
+
+            let message =
+                "تعذر حفظ الأهداف.";
+
+
+            if(
+                error.code ===
+                "permission-denied"
+            ){
+
+                message =
+                    "ليس لديك صلاحية حفظ هذه البيانات. تحقق من قواعد Firestore.";
+
+            }
+
+
+            showToast(
+                message
+            );
+
+
+        }finally{
+
+            saveBtn.disabled =
+                false;
+
+
+            saveBtn.innerHTML = `
+
+                <i
+                    class="fa-solid fa-cloud-arrow-up"
+                ></i>
+
+                حفظ أهدافي
+
+            `;
+
+        }
+
+    }
+);
+
+
+/* =========================
+   AUTH
+========================= */
+
+onAuthStateChanged(
+    auth,
+    async user => {
+
+        if(!user){
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        currentUser =
+            user;
+
+
+        await loadSettings();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
