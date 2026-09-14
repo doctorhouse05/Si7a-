@@ -1,2570 +1,1961 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    <meta charset="UTF-8">
 
-<meta
-    name="theme-color"
-    content="#F47B20"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<meta
-    name="description"
-    content="Si7a - منصة شخصية لمتابعة العادات الصحية اليومية"
->
+    <meta
+        name="theme-color"
+        content="#1976D2"
+        id="themeColorMeta"
+    >
 
-<title>Si7a | صحتك في مكان واحد</title>
+    <meta
+        name="description"
+        content="Si7a - منصة بسيطة لمتابعة العادات الصحية اليومية"
+    >
 
-<!-- Google Font -->
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
->
+    <title>Si7a | صحتك تبدأ بخطوة</title>
 
-<link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
->
+    <!-- Google Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
-<link
-    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
->
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-<!-- Font Awesome -->
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
+        rel="stylesheet"
+    >
 
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
 
-<style>
+    <style>
 
-    *{
-        box-sizing:border-box;
-        margin:0;
-        padding:0;
-    }
+        /* =========================
+           RESET
+        ========================= */
 
-    :root{
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        --orange:#F47B20;
-        --orange-dark:#DF6810;
-        --orange-light:#FFF1E6;
+        html {
+            scroll-behavior: smooth;
+        }
 
-        --text:#202124;
-        --muted:#70757A;
+        body {
+            font-family: "Tajawal", sans-serif;
+            background: #F7FBFF;
+            color: #263238;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
 
-        --background:#FFFDFC;
-        --white:#FFFFFF;
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-        --border:#ECECEC;
+        button {
+            font-family: inherit;
+        }
 
-        --blue:#3788E5;
-        --green:#20A464;
-        --purple:#7657D8;
 
-        --shadow:
-            0 15px 45px rgba(0,0,0,.07);
+        /* =========================
+           COLORS
+        ========================= */
 
-    }
+        :root {
 
+            --primary: #1976D2;
+            --primary-dark: #0D47A1;
+            --primary-light: #E3F2FD;
 
-    html{
-        scroll-behavior:smooth;
-    }
+            --blue-soft: #F7FBFF;
+            --blue-border: #D6E9FA;
 
+            --text: #263238;
+            --text-light: #607D8B;
 
-    body{
+            --white: #FFFFFF;
 
-        font-family:
-            "Tajawal",
-            Arial,
-            sans-serif;
+            --success: #2E7D32;
+            --success-light: #E8F5E9;
 
-        background:
-            var(--background);
+            --shadow:
+                0 10px 30px rgba(25, 118, 210, 0.10);
 
-        color:
-            var(--text);
+            --shadow-hover:
+                0 18px 45px rgba(25, 118, 210, 0.16);
+        }
 
-        line-height:1.6;
 
-        overflow-x:hidden;
+        /* =========================
+           CONTAINER
+        ========================= */
 
-    }
+        .container {
+            width: min(1120px, calc(100% - 32px));
+            margin: auto;
+        }
 
 
-    button,
-    a{
+        /* =========================
+           HEADER
+        ========================= */
 
-        font-family:inherit;
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
 
-    }
+            background: rgba(255, 255, 255, 0.94);
 
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
 
-    a{
-        text-decoration:none;
-        color:inherit;
-    }
+            border-bottom: 1px solid #E5EEF7;
+        }
 
+        .navbar {
+            min-height: 72px;
 
-    button{
-        cursor:pointer;
-    }
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
+            gap: 15px;
+        }
 
-    .container{
 
-        width:
-            min(1120px, calc(100% - 32px));
+        /* LOGO */
 
-        margin:auto;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
 
-    }
+            font-size: 23px;
+            font-weight: 800;
 
+            color: var(--primary-dark);
+        }
 
-    /* =========================
-       HEADER
-    ========================== */
+        .logo-icon {
+            width: 43px;
+            height: 43px;
 
-    header{
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-        position:
-            sticky;
-
-        top:0;
-
-        z-index:1000;
-
-        background:
-            rgba(255,255,255,.94);
-
-        backdrop-filter:
-            blur(14px);
-
-        border-bottom:
-            1px solid rgba(0,0,0,.06);
-
-    }
-
-
-    .navbar{
-
-        height:72px;
-
-        display:flex;
-
-        align-items:center;
-
-        justify-content:space-between;
-
-        gap:20px;
-
-    }
-
-
-    .logo{
-
-        display:flex;
-
-        align-items:center;
-
-        gap:10px;
-
-    }
-
-
-    .logo-icon{
-
-        width:44px;
-
-        height:44px;
-
-        border-radius:14px;
-
-        background:
-            linear-gradient(
+            background: linear-gradient(
                 135deg,
-                var(--orange),
-                var(--orange-dark)
+                var(--primary),
+                var(--primary-dark)
             );
 
-        color:white;
+            color: white;
 
-        display:flex;
+            border-radius: 13px;
 
-        align-items:center;
-
-        justify-content:center;
-
-        font-size:20px;
-
-        box-shadow:
-            0 7px 20px
-            rgba(244,123,32,.25);
-
-    }
-
-
-    .logo-text{
-
-        font-size:23px;
-
-        font-weight:900;
-
-        letter-spacing:-.5px;
-
-    }
-
-
-    .logo-text span{
-
-        color:
-            var(--orange);
-
-    }
-
-
-    .nav-actions{
-
-        display:flex;
-
-        align-items:center;
-
-        gap:9px;
-
-    }
-
-
-    .nav-btn{
-
-        border:0;
-
-        border-radius:11px;
-
-        padding:
-            10px 15px;
-
-        font-size:13px;
-
-        font-weight:700;
-
-    }
-
-
-    .login-btn{
-
-        background:
-            var(--orange-light);
-
-        color:
-            var(--orange-dark);
-
-    }
-
-
-    .register-btn{
-
-        background:
-            var(--orange);
-
-        color:white;
-
-        box-shadow:
-            0 5px 16px
-            rgba(244,123,32,.2);
-
-    }
-
-
-    .dashboard-btn{
-
-        display:none;
-
-        background:
-            var(--orange);
-
-        color:white;
-
-    }
-
-
-    /* =========================
-       HERO
-    ========================== */
-
-    .hero{
-
-        position:relative;
-
-        padding:
-            75px 0 65px;
-
-        overflow:hidden;
-
-    }
-
-
-    .hero::before{
-
-        content:"";
-
-        position:absolute;
-
-        width:320px;
-
-        height:320px;
-
-        border-radius:50%;
-
-        background:
-            var(--orange-light);
-
-        top:-130px;
-
-        right:-100px;
-
-        opacity:.7;
-
-    }
-
-
-    .hero::after{
-
-        content:"";
-
-        position:absolute;
-
-        width:230px;
-
-        height:230px;
-
-        border-radius:50%;
-
-        background:#FFF7F0;
-
-        bottom:-120px;
-
-        left:-80px;
-
-    }
-
-
-    .hero-content{
-
-        position:relative;
-
-        z-index:2;
-
-        display:grid;
-
-        grid-template-columns:
-            1.05fr .95fr;
-
-        align-items:center;
-
-        gap:55px;
-
-    }
-
-
-    .hero-text{
-
-        text-align:right;
-
-    }
-
-
-    .hero-badge{
-
-        display:inline-flex;
-
-        align-items:center;
-
-        gap:8px;
-
-        background:
-            var(--orange-light);
-
-        color:
-            var(--orange-dark);
-
-        border-radius:30px;
-
-        padding:
-            8px 13px;
-
-        font-size:12px;
-
-        font-weight:700;
-
-        margin-bottom:18px;
-
-    }
-
-
-    .hero-badge i{
-
-        font-size:13px;
-
-    }
-
-
-    .hero h1{
-
-        font-size:
-            clamp(34px,5vw,58px);
-
-        line-height:
-            1.15;
-
-        font-weight:900;
-
-        letter-spacing:-1.5px;
-
-        margin-bottom:18px;
-
-    }
-
-
-    .hero h1 span{
-
-        color:
-            var(--orange);
-
-    }
-
-
-    .hero-description{
-
-        color:
-            var(--muted);
-
-        font-size:
-            clamp(15px,2vw,18px);
-
-        line-height:1.9;
-
-        max-width:590px;
-
-        margin-bottom:27px;
-
-    }
-
-
-    .hero-buttons{
-
-        display:flex;
-
-        align-items:center;
-
-        gap:11px;
-
-        flex-wrap:wrap;
-
-    }
-
-
-    .primary-btn,
-    .secondary-btn{
-
-        min-height:49px;
-
-        padding:
-            0 21px;
-
-        border-radius:13px;
-
-        display:inline-flex;
-
-        align-items:center;
-
-        justify-content:center;
-
-        gap:9px;
-
-        font-size:14px;
-
-        font-weight:800;
-
-    }
-
-
-    .primary-btn{
-
-        background:
-            var(--orange);
-
-        color:white;
-
-        box-shadow:
-            0 10px 25px
-            rgba(244,123,32,.23);
-
-    }
-
-
-    .primary-btn:hover{
-
-        background:
-            var(--orange-dark);
-
-    }
-
-
-    .secondary-btn{
-
-        background:white;
-
-        color:var(--text);
-
-        border:
-            1px solid var(--border);
-
-    }
-
-
-    /* =========================
-       HERO VISUAL
-    ========================== */
-
-    .hero-visual{
-
-        position:relative;
-
-        min-height:390px;
-
-        display:flex;
-
-        align-items:center;
-
-        justify-content:center;
-
-    }
-
-
-    .phone{
-
-        width:255px;
-
-        min-height:470px;
-
-        background:#171717;
-
-        border-radius:35px;
-
-        padding:9px;
-
-        box-shadow:
-            0 30px 70px
-            rgba(0,0,0,.18);
-
-        transform:
-            rotate(2deg);
-
-        position:relative;
-
-        z-index:3;
-
-    }
-
-
-    .phone-screen{
-
-        height:452px;
-
-        border-radius:27px;
-
-        overflow:hidden;
-
-        background:
-            #F7F8FA;
-
-    }
-
-
-    .phone-top{
-
-        background:white;
-
-        padding:
-            17px 14px 13px;
-
-    }
-
-
-    .phone-top small{
-
-        color:#888;
-
-        font-size:9px;
-
-    }
-
-
-    .phone-top strong{
-
-        display:block;
-
-        font-size:16px;
-
-        margin-top:2px;
-
-    }
-
-
-    .phone-stats{
-
-        padding:10px;
-
-        display:grid;
-
-        grid-template-columns:1fr 1fr;
-
-        gap:8px;
-
-    }
-
-
-    .phone-stat{
-
-        background:white;
-
-        border-radius:13px;
-
-        padding:11px;
-
-    }
-
-
-    .phone-stat i{
-
-        font-size:15px;
-
-        margin-bottom:6px;
-
-    }
-
-
-    .phone-stat strong{
-
-        display:block;
-
-        font-size:14px;
-
-    }
-
-
-    .phone-stat span{
-
-        font-size:8px;
-
-        color:#888;
-
-    }
-
-
-    .water-color{
-
-        color:var(--blue);
-
-    }
-
-
-    .walk-color{
-
-        color:var(--green);
-
-    }
-
-
-    .sleep-color{
-
-        color:var(--purple);
-
-    }
-
-
-    .sun-color{
-
-        color:var(--orange);
-
-    }
-
-
-    .phone-card{
-
-        background:white;
-
-        margin:
-            0 10px 9px;
-
-        border-radius:14px;
-
-        padding:12px;
-
-    }
-
-
-    .phone-card-title{
-
-        display:flex;
-
-        align-items:center;
-
-        justify-content:space-between;
-
-        margin-bottom:10px;
-
-    }
-
-
-    .phone-card-title strong{
-
-        font-size:11px;
-
-    }
-
-
-    .phone-card-title span{
-
-        color:var(--orange);
-
-        font-size:9px;
-
-    }
-
-
-    .mini-progress{
-
-        height:7px;
-
-        border-radius:20px;
-
-        background:#F0F1F3;
-
-        overflow:hidden;
-
-    }
-
-
-    .mini-progress div{
-
-        width:72%;
-
-        height:100%;
-
-        border-radius:20px;
-
-        background:var(--orange);
-
-    }
-
-
-    .mini-days{
-
-        display:grid;
-
-        grid-template-columns:
-            repeat(7,1fr);
-
-        gap:5px;
-
-    }
-
-
-    .mini-day{
-
-        aspect-ratio:1;
-
-        border-radius:7px;
-
-        background:#F2F3F4;
-
-        display:flex;
-
-        align-items:center;
-
-        justify-content:center;
-
-        font-size:7px;
-
-        color:#777;
-
-    }
-
-
-    .mini-day.active{
-
-        background:
-            var(--orange-light);
-
-        color:
-            var(--orange-dark);
-
-        font-weight:800;
-
-    }
-
-
-    .floating-card{
-
-        position:absolute;
-
-        background:white;
-
-        border:
-            1px solid rgba(0,0,0,.05);
-
-        box-shadow:
-            var(--shadow);
-
-        border-radius:16px;
-
-        padding:13px;
-
-        display:flex;
-
-        align-items:center;
-
-        gap:10px;
-
-        z-index:4;
-
-    }
-
-
-    .floating-icon{
-
-        width:37px;
-
-        height:37px;
-
-        border-radius:11px;
-
-        display:flex;
-
-        align-items:center;
-
-        justify-content:center;
-
-    }
-
-
-    .floating-card strong{
-
-        display:block;
-
-        font-size:12px;
-
-    }
-
-
-    .floating-card span{
-
-        display:block;
-
-        font-size:9px;
-
-        color:#888;
-
-    }
-
-
-    .floating-water{
-
-        top:50px;
-
-        right:0;
-
-    }
-
-
-    .floating-water .floating-icon{
-
-        background:#EAF6FF;
-
-        color:var(--blue);
-
-    }
-
-
-    .floating-sleep{
-
-        bottom:42px;
-
-        left:0;
-
-    }
-
-
-    .floating-sleep .floating-icon{
-
-        background:#F0EBFF;
-
-        color:var(--purple);
-
-    }
-
-
-    /* =========================
-       FEATURES
-    ========================== */
-
-    .features{
-
-        padding:
-            65px 0;
-
-        background:white;
-
-    }
-
-
-    .section-heading{
-
-        text-align:center;
-
-        max-width:650px;
-
-        margin:
-            0 auto 35px;
-
-    }
-
-
-    .section-heading .eyebrow{
-
-        color:
-            var(--orange);
-
-        font-size:12px;
-
-        font-weight:800;
-
-        margin-bottom:7px;
-
-    }
-
-
-    .section-heading h2{
-
-        font-size:
-            clamp(25px,4vw,36px);
-
-        font-weight:900;
-
-        margin-bottom:8px;
-
-    }
-
-
-    .section-heading p{
-
-        color:
-            var(--muted);
-
-        font-size:14px;
-
-    }
-
-
-    .features-grid{
-
-        display:grid;
-
-        grid-template-columns:
-            repeat(4,1fr);
-
-        gap:15px;
-
-    }
-
-
-    .feature-card{
-
-        border:
-            1px solid var(--border);
-
-        border-radius:20px;
-
-        padding:23px 18px;
-
-        background:white;
-
-        transition:
-            transform .25s,
-            box-shadow .25s;
-
-    }
-
-
-    .feature-card:hover{
-
-        transform:
-            translateY(-4px);
-
-        box-shadow:
-            var(--shadow);
-
-    }
-
-
-    .feature-icon{
-
-        width:50px;
-
-        height:50px;
-
-        border-radius:15px;
-
-        display:flex;
-
-        align-items:center;
-
-        justify-content:center;
-
-        font-size:20px;
-
-        margin-bottom:15px;
-
-    }
-
-
-    .feature-card:nth-child(1)
-    .feature-icon{
-
-        background:#EAF6FF;
-        color:var(--blue);
-
-    }
-
-
-    .feature-card:nth-child(2)
-    .feature-icon{
-
-        background:#EAF9F1;
-        color:var(--green);
-
-    }
-
-
-    .feature-card:nth-child(3)
-    .feature-icon{
-
-        background:#F0EBFF;
-        color:var(--purple);
-
-    }
-
-
-    .feature-card:nth-child(4)
-    .feature-icon{
-
-        background:var(--orange-light);
-        color:var(--orange-dark);
-
-    }
-
-
-    .feature-card h3{
-
-        font-size:16px;
-
-        margin-bottom:6px;
-
-    }
-
-
-    .feature-card p{
-
-        color:#777;
-
-        font-size:12px;
-
-        line-height:1.8;
-
-    }
-
-
-    /* =========================
-       HOW IT WORKS
-    ========================== */
-
-    .how{
-
-        padding:
-            70px 0;
-
-        background:
-            #FFF9F5;
-
-    }
-
-
-    .steps{
-
-        display:grid;
-
-        grid-template-columns:
-            repeat(3,1fr);
-
-        gap:18px;
-
-        max-width:900px;
-
-        margin:auto;
-
-    }
-
-
-    .step{
-
-        background:white;
-
-        border-radius:20px;
-
-        padding:25px 20px;
-
-        text-align:center;
-
-        border:
-            1px solid #F2E8E0;
-
-    }
-
-
-    .step-number{
-
-        width:43px;
-
-        height:43px;
-
-        border-radius:50%;
-
-        background:
-            var(--orange);
-
-        color:white;
-
-        display:flex;
-
-        align-items:center;
-
-        justify-content:center;
-
-        font-weight:900;
-
-        margin:
-            0 auto 14px;
-
-    }
-
-
-    .step h3{
-
-        font-size:16px;
-
-        margin-bottom:6px;
-
-    }
-
-
-    .step p{
-
-        color:#777;
-
-        font-size:12px;
-
-        line-height:1.8;
-
-    }
-
-
-    /* =========================
-       PRIVACY
-    ========================== */
-
-    .privacy{
-
-        padding:
-            65px 0;
-
-        background:white;
-
-    }
-
-
-    .privacy-box{
-
-        max-width:900px;
-
-        margin:auto;
-
-        background:
-            linear-gradient(
-                135deg,
-                #FFF5EC,
-                #FFFDFC
-            );
-
-        border:
-            1px solid #FFE4CF;
-
-        border-radius:24px;
-
-        padding:
-            28px;
-
-        display:flex;
-
-        align-items:center;
-
-        gap:20px;
-
-    }
-
-
-    .privacy-icon{
-
-        width:58px;
-
-        height:58px;
-
-        flex-shrink:0;
-
-        border-radius:17px;
-
-        background:white;
-
-        color:var(--orange);
-
-        display:flex;
-
-        align-items:center;
-
-        justify-content:center;
-
-        font-size:22px;
-
-        box-shadow:
-            0 5px 20px rgba(0,0,0,.05);
-
-    }
-
-
-    .privacy-box h3{
-
-        font-size:18px;
-
-        margin-bottom:5px;
-
-    }
-
-
-    .privacy-box p{
-
-        color:#777;
-
-        font-size:13px;
-
-        line-height:1.9;
-
-    }
-
-
-    /* =========================
-       CTA
-    ========================== */
-
-    .cta{
-
-        padding:
-            75px 0;
-
-        background:
-            var(--orange);
-
-        color:white;
-
-        text-align:center;
-
-        position:relative;
-
-        overflow:hidden;
-
-    }
-
-
-    .cta::before,
-    .cta::after{
-
-        content:"";
-
-        position:absolute;
-
-        width:200px;
-
-        height:200px;
-
-        border-radius:50%;
-
-        border:
-            1px solid
-            rgba(255,255,255,.16);
-
-    }
-
-
-    .cta::before{
-
-        top:-100px;
-
-        right:-60px;
-
-    }
-
-
-    .cta::after{
-
-        bottom:-110px;
-
-        left:-60px;
-
-    }
-
-
-    .cta-content{
-
-        position:relative;
-
-        z-index:2;
-
-    }
-
-
-    .cta h2{
-
-        font-size:
-            clamp(27px,4vw,38px);
-
-        font-weight:900;
-
-        margin-bottom:8px;
-
-    }
-
-
-    .cta p{
-
-        opacity:.9;
-
-        font-size:14px;
-
-        margin-bottom:22px;
-
-    }
-
-
-    .cta-btn{
-
-        display:inline-flex;
-
-        align-items:center;
-
-        justify-content:center;
-
-        gap:9px;
-
-        background:white;
-
-        color:
-            var(--orange-dark);
-
-        border-radius:13px;
-
-        min-height:49px;
-
-        padding:
-            0 23px;
-
-        font-size:14px;
-
-        font-weight:900;
-
-    }
-
-
-    /* =========================
-       FOOTER
-    ========================== */
-
-    footer{
-
-        background:#171717;
-
-        color:white;
-
-        padding:
-            30px 0 20px;
-
-    }
-
-
-    .footer-content{
-
-        display:flex;
-
-        align-items:center;
-
-        justify-content:space-between;
-
-        gap:20px;
-
-    }
-
-
-    .footer-brand{
-
-        display:flex;
-
-        align-items:center;
-
-        gap:9px;
-
-    }
-
-
-    .footer-brand-icon{
-
-        width:35px;
-
-        height:35px;
-
-        border-radius:10px;
-
-        background:var(--orange);
-
-        display:flex;
-
-        align-items:center;
-
-        justify-content:center;
-
-    }
-
-
-    .footer-brand strong{
-
-        font-size:17px;
-
-    }
-
-
-    .footer-copy{
-
-        color:#999;
-
-        font-size:11px;
-
-        text-align:center;
-
-    }
-
-
-    .footer-links{
-
-        display:flex;
-
-        gap:15px;
-
-        color:#aaa;
-
-        font-size:11px;
-
-    }
-
-
-    /* =========================
-       RESPONSIVE
-    ========================== */
-
-    @media(max-width:900px){
-
-        .hero-content{
-
-            grid-template-columns:1fr;
-
-            text-align:center;
-
+            box-shadow:
+                0 7px 18px rgba(25, 118, 210, 0.25);
         }
 
 
-        .hero-text{
+        /* HEADER BUTTONS */
 
-            text-align:center;
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
+        .nav-btn {
+            min-height: 42px;
+
+            padding: 8px 15px;
+
+            border-radius: 11px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 7px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition: 0.25s ease;
+        }
+
+        .login-btn {
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .login-btn:hover {
+            background: var(--primary-light);
+        }
+
+        .register-btn,
+        .dashboard-btn {
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--primary-dark)
+                );
+
+            box-shadow:
+                0 6px 18px rgba(25, 118, 210, 0.20);
+        }
+
+        .register-btn:hover,
+        .dashboard-btn:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 10px 25px rgba(25, 118, 210, 0.27);
         }
 
 
-        .hero-description{
+        /* =========================
+           HERO
+        ========================= */
 
-            margin-left:auto;
+        .hero {
+            position: relative;
 
-            margin-right:auto;
+            padding:
+                65px 0
+                70px;
 
+            overflow: hidden;
         }
 
+        .hero::before {
+            content: "";
 
-        .hero-buttons{
+            position: absolute;
 
-            justify-content:center;
+            width: 300px;
+            height: 300px;
 
+            background: #E3F2FD;
+
+            border-radius: 50%;
+
+            top: -120px;
+            right: -120px;
+
+            z-index: -1;
         }
 
+        .hero::after {
+            content: "";
 
-        .hero-visual{
+            position: absolute;
 
-            min-height:430px;
+            width: 220px;
+            height: 220px;
 
+            background: #EAF4FC;
+
+            border-radius: 50%;
+
+            bottom: -110px;
+            left: -90px;
+
+            z-index: -1;
         }
 
-
-        .features-grid{
+        .hero-content {
+            display: grid;
 
             grid-template-columns:
-                repeat(2,1fr);
+                1.05fr
+                0.95fr;
 
-        }
+            align-items: center;
 
-    }
-
-
-    @media(max-width:650px){
-
-        .container{
-
-            width:
-                min(100% - 24px,1120px);
-
+            gap: 55px;
         }
 
 
-        .navbar{
+        /* HERO TEXT */
 
-            height:64px;
+        .hero-badge {
+            display: inline-flex;
 
+            align-items: center;
+
+            gap: 8px;
+
+            background: var(--primary-light);
+
+            color: var(--primary-dark);
+
+            border: 1px solid #C9E2F8;
+
+            padding: 7px 13px;
+
+            border-radius: 50px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            margin-bottom: 17px;
+        }
+
+        .hero-badge i {
+            color: var(--primary);
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 5vw, 56px);
+
+            line-height: 1.25;
+
+            color: #123A5A;
+
+            margin-bottom: 18px;
+
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero-description {
+            font-size: 17px;
+
+            color: var(--text-light);
+
+            max-width: 580px;
+
+            margin-bottom: 27px;
+        }
+
+        .hero-actions {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+        .primary-btn {
+            min-height: 52px;
+
+            padding: 12px 23px;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 9px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--primary-dark)
+                );
+
+            border-radius: 13px;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            box-shadow:
+                0 9px 25px rgba(25, 118, 210, 0.22);
+
+            transition: 0.25s ease;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 14px 30px rgba(25, 118, 210, 0.30);
+        }
+
+        .secondary-btn {
+            min-height: 52px;
+
+            padding: 12px 23px;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 9px;
+
+            color: var(--primary-dark);
+
+            background: white;
+
+            border: 1px solid var(--blue-border);
+
+            border-radius: 13px;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            transition: 0.25s ease;
+        }
+
+        .secondary-btn:hover {
+            background: var(--primary-light);
+
+            border-color: #B8D8F2;
         }
 
 
-        .logo-text{
+        /* =========================
+           PHONE MOCKUP
+        ========================= */
 
-            font-size:20px;
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+        }
 
+        .phone {
+            width: min(310px, 85vw);
+
+            background: #FFFFFF;
+
+            border:
+                8px solid
+                #163B59;
+
+            border-radius: 38px;
+
+            padding: 12px;
+
+            box-shadow:
+                0 30px 65px rgba(13, 71, 161, 0.20);
+
+            position: relative;
+
+            transform: rotate(1deg);
+        }
+
+        .phone-notch {
+            width: 95px;
+            height: 20px;
+
+            background: #163B59;
+
+            border-radius: 0 0 15px 15px;
+
+            margin:
+                -12px
+                auto
+                12px;
+        }
+
+        .phone-header {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 15px;
+        }
+
+        .phone-logo {
+            font-weight: 800;
+
+            color: var(--primary-dark);
+        }
+
+        .phone-user {
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--primary-light);
+
+            color: var(--primary);
+
+            border-radius: 50%;
+        }
+
+        .phone-welcome {
+            color: #78909C;
+
+            font-size: 12px;
+        }
+
+        .phone-title {
+            font-size: 19px;
+
+            font-weight: 800;
+
+            color: #123A5A;
+
+            margin-bottom: 15px;
         }
 
 
-        .logo-icon{
+        /* PHONE CARDS */
 
-            width:39px;
+        .phone-cards {
+            display: grid;
 
-            height:39px;
+            grid-template-columns:
+                1fr
+                1fr;
 
+            gap: 10px;
+        }
+
+        .phone-card {
+            padding: 13px 10px;
+
+            background: #F8FBFE;
+
+            border:
+                1px solid
+                #E3EEF7;
+
+            border-radius: 15px;
+        }
+
+        .phone-card-icon {
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: var(--primary-light);
+
+            color: var(--primary);
+
+            border-radius: 10px;
+
+            margin-bottom: 7px;
+        }
+
+        .phone-card strong {
+            display: block;
+
+            font-size: 17px;
+
+            color: #263238;
+        }
+
+        .phone-card small {
+            color: #78909C;
+
+            font-size: 10px;
         }
 
 
-        .nav-btn{
+        /* PHONE PROGRESS */
 
-            padding:
-                8px 10px;
+        .phone-progress {
+            margin-top: 12px;
 
-            font-size:11px;
+            padding: 14px;
 
+            background:
+                linear-gradient(
+                    135deg,
+                    #1976D2,
+                    #0D47A1
+                );
+
+            color: white;
+
+            border-radius: 16px;
+        }
+
+        .phone-progress-title {
+            font-size: 11px;
+
+            opacity: 0.9;
+
+            margin-bottom: 5px;
+        }
+
+        .phone-progress strong {
+            font-size: 20px;
+        }
+
+        .progress-line {
+            height: 7px;
+
+            background: rgba(255,255,255,0.25);
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            margin-top: 9px;
+        }
+
+        .progress-line span {
+            display: block;
+
+            width: 72%;
+            height: 100%;
+
+            background: white;
+
+            border-radius: inherit;
         }
 
 
-        .hero{
+        /* =========================
+           SECTION
+        ========================= */
 
-            padding:
-                52px 0 35px;
+        .section {
+            padding: 75px 0;
+        }
 
+        .section-header {
+            text-align: center;
+
+            max-width: 680px;
+
+            margin:
+                0
+                auto
+                40px;
+        }
+
+        .section-label {
+            display: inline-block;
+
+            color: var(--primary);
+
+            background: var(--primary-light);
+
+            padding: 5px 13px;
+
+            border-radius: 50px;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            color: #123A5A;
+
+            font-size: clamp(27px, 4vw, 38px);
+
+            line-height: 1.35;
+
+            margin-bottom: 10px;
+
+            font-weight: 800;
+        }
+
+        .section-description {
+            color: var(--text-light);
+
+            font-size: 15px;
         }
 
 
-        .hero h1{
+        /* =========================
+           FEATURES
+        ========================= */
 
-            font-size:36px;
+        .features {
+            background: white;
+        }
 
-            letter-spacing:-1px;
+        .features-grid {
+            display: grid;
 
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 17px;
+        }
+
+        .feature-card {
+            padding: 24px 18px;
+
+            background: #FFFFFF;
+
+            border:
+                1px solid
+                #E2EDF6;
+
+            border-radius: 20px;
+
+            text-align: center;
+
+            transition: 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow: var(--shadow-hover);
+
+            border-color: #C9E2F8;
+        }
+
+        .feature-icon {
+            width: 58px;
+            height: 58px;
+
+            margin:
+                0
+                auto
+                15px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            color: var(--primary);
+
+            background: var(--primary-light);
+
+            border-radius: 17px;
+
+            font-size: 23px;
+        }
+
+        .feature-card h3 {
+            color: #123A5A;
+
+            font-size: 17px;
+
+            margin-bottom: 7px;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+
+            font-size: 13px;
         }
 
 
-        .hero-description{
+        /* =========================
+           HOW IT WORKS
+        ========================= */
 
-            font-size:14px;
+        .steps-section {
+            background: #F3F9FE;
+        }
 
-            line-height:1.9;
+        .steps {
+            display: grid;
 
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .step {
+            background: white;
+
+            border:
+                1px solid
+                #DFECF7;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            position: relative;
+        }
+
+        .step-number {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--primary-dark)
+                );
+
+            color: white;
+
+            border-radius: 13px;
+
+            font-weight: 800;
+
+            margin-bottom: 17px;
+        }
+
+        .step h3 {
+            color: #123A5A;
+
+            font-size: 18px;
+
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: var(--text-light);
+
+            font-size: 14px;
         }
 
 
-        .hero-buttons{
+        /* =========================
+           PRIVACY
+        ========================= */
 
-            flex-direction:column;
+        .privacy-box {
+            background:
+                linear-gradient(
+                    135deg,
+                    #E3F2FD,
+                    #F8FCFF
+                );
 
+            border:
+                1px solid
+                #CDE5F8;
+
+            border-radius: 26px;
+
+            padding: 35px;
+
+            display: grid;
+
+            grid-template-columns:
+                70px
+                1fr;
+
+            gap: 20px;
+
+            align-items: center;
+        }
+
+        .privacy-icon {
+            width: 65px;
+            height: 65px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: white;
+
+            color: var(--primary);
+
+            border-radius: 19px;
+
+            font-size: 26px;
+
+            box-shadow:
+                0 7px 20px rgba(25,118,210,0.10);
+        }
+
+        .privacy-box h2 {
+            color: #123A5A;
+
+            font-size: 24px;
+
+            margin-bottom: 7px;
+        }
+
+        .privacy-box p {
+            color: var(--text-light);
+
+            font-size: 14px;
         }
 
 
-        .primary-btn,
-        .secondary-btn{
+        /* =========================
+           CTA
+        ========================= */
 
-            width:100%;
+        .cta-section {
+            padding: 75px 0;
+        }
 
+        .cta {
+            position: relative;
+
+            overflow: hidden;
+
+            text-align: center;
+
+            padding: 55px 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1976D2,
+                    #0D47A1
+                );
+
+            color: white;
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 20px 50px rgba(13,71,161,0.20);
+        }
+
+        .cta::before {
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            border:
+                35px solid
+                rgba(255,255,255,0.07);
+
+            border-radius: 50%;
+
+            top: -100px;
+            right: -70px;
+        }
+
+        .cta::after {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            border:
+                25px solid
+                rgba(255,255,255,0.06);
+
+            border-radius: 50%;
+
+            bottom: -100px;
+            left: -50px;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta h2 {
+            font-size: clamp(27px, 4vw, 38px);
+
+            line-height: 1.35;
+
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            opacity: 0.9;
+
+            font-size: 15px;
+
+            margin-bottom: 25px;
+        }
+
+        .cta .primary-btn {
+            background: white;
+
+            color: var(--primary-dark);
+
+            box-shadow: none;
+        }
+
+        .cta .primary-btn:hover {
+            background: #F5FAFE;
         }
 
 
-        .hero-visual{
+        /* =========================
+           FOOTER
+        ========================= */
 
-            min-height:405px;
+        footer {
+            background: #0C2942;
 
+            color: white;
+
+            padding: 35px 0 22px;
+        }
+
+        .footer-content {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding-bottom: 22px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.10);
+        }
+
+        .footer-logo {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 21px;
+
+            font-weight: 800;
+        }
+
+        .footer-logo-icon {
+            width: 39px;
+            height: 39px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                rgba(255,255,255,0.12);
+
+            border-radius: 11px;
+        }
+
+        .footer-description {
+            color: #B5C9D8;
+
+            font-size: 12px;
+
+            margin-top: 5px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            gap: 17px;
+
+            color: #D8E6F0;
+
+            font-size: 13px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+
+            color: #91AABC;
+
+            font-size: 11px;
+
+            padding-top: 18px;
         }
 
 
-        .phone{
+        /* =========================
+           MOBILE
+        ========================= */
 
-            width:225px;
+        @media (max-width: 900px) {
 
-            min-height:420px;
+            .hero-content {
+                grid-template-columns: 1fr;
 
-            border-radius:31px;
+                text-align: center;
 
+                gap: 40px;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .features-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                order: 2;
+            }
         }
 
 
-        .phone-screen{
+        @media (max-width: 600px) {
 
-            height:402px;
+            .container {
+                width:
+                    calc(100% - 24px);
+            }
 
-            border-radius:24px;
+            .navbar {
+                min-height: 65px;
+            }
 
+            .logo {
+                font-size: 19px;
+            }
+
+            .logo-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .nav-btn {
+                min-height: 38px;
+
+                padding:
+                    7px 10px;
+
+                font-size: 12px;
+            }
+
+            .nav-btn i {
+                display: none;
+            }
+
+            .hero {
+                padding:
+                    45px 0
+                    55px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .primary-btn,
+            .secondary-btn {
+                width: 100%;
+            }
+
+            .phone {
+                width: min(285px, 86vw);
+            }
+
+            .section {
+                padding:
+                    55px 0;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                padding: 22px;
+            }
+
+            .privacy-box {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+
+                padding: 28px 20px;
+            }
+
+            .privacy-icon {
+                margin: auto;
+            }
+
+            .privacy-box h2 {
+                font-size: 21px;
+            }
+
+            .cta {
+                border-radius: 23px;
+
+                padding:
+                    43px 18px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
         }
 
+    </style>
 
-        .floating-water{
+</head>
 
-            right:-4px;
 
-            top:30px;
+<body>
 
-        }
 
+    <!-- =========================
+         HEADER
+    ========================== -->
 
-        .floating-sleep{
+    <header>
 
-            left:-4px;
-
-            bottom:35px;
-
-        }
-
-
-        .floating-card{
-
-            padding:10px;
-
-        }
-
-
-        .floating-icon{
-
-            width:33px;
-
-            height:33px;
-
-        }
-
-
-        .floating-card strong{
-
-            font-size:10px;
-
-        }
-
-
-        .floating-card span{
-
-            font-size:8px;
-
-        }
-
-
-        .features{
-
-            padding:50px 0;
-
-        }
-
-
-        .features-grid{
-
-            grid-template-columns:1fr;
-
-        }
-
-
-        .steps{
-
-            grid-template-columns:1fr;
-
-        }
-
-
-        .privacy-box{
-
-            flex-direction:column;
-
-            text-align:center;
-
-            padding:24px 18px;
-
-        }
-
-
-        .footer-content{
-
-            flex-direction:column;
-
-            text-align:center;
-
-        }
-
-
-        .footer-links{
-
-            justify-content:center;
-
-        }
-
-    }
-
-
-    @media(max-width:390px){
-
-        .login-btn{
-
-            display:none;
-
-        }
-
-
-        .hero h1{
-
-            font-size:32px;
-
-        }
-
-
-        .phone{
-
-            width:210px;
-
-        }
-
-
-    }
-
-</style>
-
-</head><body><!-- =========================
-     HEADER
-========================== -->
-
-<header>
-
-    <div class="container navbar">
-
-
-        <a
-            href="index.html"
-            class="logo"
-        >
-
-            <div class="logo-icon">
-
-                <i class="fa-solid fa-heart-pulse"></i>
-
-            </div>
-
-            <div class="logo-text">
-
-                Si<span>7a</span>
-
-            </div>
-
-        </a>
-
-
-        <div class="nav-actions">
+        <div class="container navbar">
 
             <a
-                href="login.html"
-                class="nav-btn login-btn"
-                id="loginBtn"
+                href="index.html"
+                class="logo"
             >
-                تسجيل الدخول
-            </a>
 
-
-            <a
-                href="register.html"
-                class="nav-btn register-btn"
-                id="registerBtn"
-            >
-                إنشاء حساب
-            </a>
-
-
-            <a
-                href="dashboard.html"
-                class="nav-btn dashboard-btn"
-                id="dashboardBtn"
-            >
-                لوحة التحكم
-            </a>
-
-        </div>
-
-    </div>
-
-</header>
-
-
-<!-- =========================
-     HERO
-========================== -->
-
-<section class="hero">
-
-    <div class="container hero-content">
-
-
-        <div class="hero-text">
-
-
-            <div class="hero-badge">
-
-                <i class="fa-solid fa-heart"></i>
-
-                عادات صحية أفضل، يومًا بعد يوم
-
-            </div>
-
-
-            <h1>
-
-                اعتنِ بصحتك
-
-                <br>
-
-                <span>
-                    بخطوات بسيطة
+                <span class="logo-icon">
+                    <i class="fa-solid fa-heart-pulse"></i>
                 </span>
 
-            </h1>
+                <span>Si7a</span>
+
+            </a>
 
 
-            <p class="hero-description">
+            <div class="nav-actions">
 
-                Si7a يساعدك على متابعة عاداتك الصحية اليومية
-                بطريقة بسيطة ومنظمة، مثل شرب الماء، المشي،
-                النوم ووقت الاستيقاظ، مع إمكانية متابعة تقدمك
-                يومًا بعد يوم.
-
-            </p>
-
-
-            <div class="hero-buttons">
+                <a
+                    href="login.html"
+                    class="nav-btn login-btn"
+                    id="loginBtn"
+                >
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    تسجيل الدخول
+                </a>
 
 
                 <a
                     href="register.html"
-                    class="primary-btn"
+                    class="nav-btn register-btn"
+                    id="registerBtn"
                 >
-
                     <i class="fa-solid fa-user-plus"></i>
-
-                    ابدأ الآن مجانًا
-
+                    إنشاء حساب
                 </a>
 
 
                 <a
-                    href="#features"
-                    class="secondary-btn"
+                    href="dashboard.html"
+                    class="nav-btn dashboard-btn"
+                    id="dashboardBtn"
+                    style="display:none;"
                 >
-
-                    <i class="fa-solid fa-circle-info"></i>
-
-                    اكتشف Si7a
-
+                    <i class="fa-solid fa-chart-line"></i>
+                    لوحة المتابعة
                 </a>
 
             </div>
 
-
         </div>
 
-
-        <!-- Visual -->
-
-        <div class="hero-visual">
+    </header>
 
 
-            <div class="floating-card floating-water">
 
-                <div class="floating-icon">
+    <!-- =========================
+         HERO
+    ========================== -->
 
-                    <i class="fa-solid fa-glass-water"></i>
+    <main>
+
+        <section class="hero">
+
+            <div class="container hero-content">
+
+
+                <div class="hero-text">
+
+                    <div class="hero-badge">
+
+                        <i class="fa-solid fa-shield-heart"></i>
+
+                        متابعة صحية بسيطة وآمنة
+
+                    </div>
+
+
+                    <h1>
+
+                        اعتنِ بصحتك
+                        <br>
+
+                        <span>بخطوات بسيطة</span>
+
+                    </h1>
+
+
+                    <p class="hero-description">
+
+                        Si7a يساعدك على متابعة عاداتك الصحية اليومية
+                        بطريقة بسيطة ومنظمة، مثل شرب الماء والمشي والنوم
+                        ووقت الاستيقاظ.
+
+                    </p>
+
+
+                    <div class="hero-actions">
+
+                        <a
+                            href="register.html"
+                            class="primary-btn"
+                        >
+
+                            <i class="fa-solid fa-user-plus"></i>
+
+                            ابدأ الآن مجانًا
+
+                        </a>
+
+
+                        <a
+                            href="#features"
+                            class="secondary-btn"
+                        >
+
+                            <i class="fa-solid fa-circle-info"></i>
+
+                            اكتشف Si7a
+
+                        </a>
+
+                    </div>
 
                 </div>
 
-                <div>
-
-                    <strong>
-                        شرب الماء
-                    </strong>
-
-                    <span>
-                        تابع أكوابك يوميًا
-                    </span>
-
-                </div>
-
-            </div>
 
 
-            <div class="phone">
+                <!-- PHONE -->
 
-                <div class="phone-screen">
+                <div class="hero-visual">
+
+                    <div class="phone">
+
+                        <div class="phone-notch"></div>
 
 
-                    <div class="phone-top">
+                        <div class="phone-header">
 
-                        <small>
-                            لوحة صحتي
-                        </small>
+                            <div class="phone-logo">
+                                Si7a
+                            </div>
 
-                        <strong>
+                            <div class="phone-user">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+
+                        </div>
+
+
+                        <div class="phone-welcome">
                             أهلاً بك 👋
-                        </strong>
-
-                    </div>
+                        </div>
 
 
-                    <div class="phone-stats">
+                        <div class="phone-title">
+                            عاداتك الصحية
+                        </div>
 
 
-                        <div class="phone-stat">
+                        <div class="phone-cards">
 
-                            <i class="fa-solid fa-glass-water water-color"></i>
 
-                            <strong>
-                                6 / 8
-                            </strong>
+                            <div class="phone-card">
 
-                            <span>
-                                أكواب ماء
-                            </span>
+                                <div class="phone-card-icon">
+                                    <i class="fa-solid fa-droplet"></i>
+                                </div>
+
+                                <strong>
+                                    6 / 8
+                                </strong>
+
+                                <small>
+                                    أكواب ماء
+                                </small>
+
+                            </div>
+
+
+                            <div class="phone-card">
+
+                                <div class="phone-card-icon">
+                                    <i class="fa-solid fa-person-walking"></i>
+                                </div>
+
+                                <strong>
+                                    25 د
+                                </strong>
+
+                                <small>
+                                    المشي
+                                </small>
+
+                            </div>
+
+
+                            <div class="phone-card">
+
+                                <div class="phone-card-icon">
+                                    <i class="fa-solid fa-moon"></i>
+                                </div>
+
+                                <strong>
+                                    7.5 س
+                                </strong>
+
+                                <small>
+                                    النوم
+                                </small>
+
+                            </div>
+
+
+                            <div class="phone-card">
+
+                                <div class="phone-card-icon">
+                                    <i class="fa-solid fa-sun"></i>
+                                </div>
+
+                                <strong>
+                                    07:00
+                                </strong>
+
+                                <small>
+                                    الاستيقاظ
+                                </small>
+
+                            </div>
 
                         </div>
 
 
-                        <div class="phone-stat">
+                        <div class="phone-progress">
 
-                            <i class="fa-solid fa-person-walking walk-color"></i>
-
-                            <strong>
-                                30 د
-                            </strong>
-
-                            <span>
-                                مشي
-                            </span>
-
-                        </div>
-
-
-                        <div class="phone-stat">
-
-                            <i class="fa-solid fa-bed sleep-color"></i>
-
-                            <strong>
-                                8 ساعات
-                            </strong>
-
-                            <span>
-                                نوم
-                            </span>
-
-                        </div>
-
-
-                        <div class="phone-stat">
-
-                            <i class="fa-solid fa-sun sun-color"></i>
-
-                            <strong>
-                                07:00
-                            </strong>
-
-                            <span>
-                                استيقاظ
-                            </span>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="phone-card">
-
-                        <div class="phone-card-title">
-
-                            <strong>
-                                شرب الماء
-                            </strong>
-
-                            <span>
-                                75%
-                            </span>
-
-                        </div>
-
-
-                        <div class="mini-progress">
-
-                            <div></div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="phone-card">
-
-                        <div class="phone-card-title">
-
-                            <strong>
-                                هذا الشهر
-                            </strong>
-
-                            <span>
-                                سبتمبر
-                            </span>
-
-                        </div>
-
-
-                        <div class="mini-days">
-
-                            <div class="mini-day active">1</div>
-                            <div class="mini-day active">2</div>
-                            <div class="mini-day">3</div>
-                            <div class="mini-day active">4</div>
-                            <div class="mini-day active">5</div>
-                            <div class="mini-day">6</div>
-                            <div class="mini-day active">7</div>
-
-                            <div class="mini-day active">8</div>
-                            <div class="mini-day">9</div>
-                            <div class="mini-day active">10</div>
-                            <div class="mini-day">11</div>
-                            <div class="mini-day active">12</div>
-                            <div class="mini-day active">13</div>
-                            <div class="mini-day">14</div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="phone-card">
-
-                        <div class="phone-card-title">
-
-                            <strong>
+                            <div class="phone-progress-title">
                                 تقدمك اليوم
+                            </div>
+
+                            <strong>
+                                72%
                             </strong>
 
-                            <span>
-                                جيد جدًا
-                            </span>
-
-                        </div>
-
-
-                        <div class="mini-progress">
-
-                            <div
-                                style="
-                                    width:85%;
-                                    background:#20A464;
-                                "
-                            ></div>
+                            <div class="progress-line">
+                                <span></span>
+                            </div>
 
                         </div>
 
                     </div>
 
-
                 </div>
 
             </div>
 
+        </section>
 
-            <div class="floating-card floating-sleep">
 
-                <div class="floating-icon">
 
-                    <i class="fa-solid fa-bed"></i>
+        <!-- =========================
+             FEATURES
+        ========================== -->
 
-                </div>
-
-                <div>
-
-                    <strong>
-                        نوم أفضل
-                    </strong>
-
-                    <span>
-                        تابع ساعات نومك
-                    </span>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     FEATURES
-========================== -->
-
-<section
-    class="features"
-    id="features"
->
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-            <div class="eyebrow">
-                ماذا يمكنك أن تتابع؟
-            </div>
-
-            <h2>
-                كل عاداتك الصحية في مكان واحد
-            </h2>
-
-            <p>
-                أنشئ سجلًا شخصيًا يساعدك على رؤية عاداتك
-                وتقدمك بطريقة واضحة وبسيطة.
-            </p>
-
-        </div>
-
-
-        <div class="features-grid">
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-
-                    <i class="fa-solid fa-glass-water"></i>
-
-                </div>
-
-                <h3>
-                    شرب الماء
-                </h3>
-
-                <p>
-                    سجّل كمية الماء التي تشربها يوميًا
-                    وتابع انتظامك خلال الشهر.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-
-                    <i class="fa-solid fa-person-walking"></i>
-
-                </div>
-
-                <h3>
-                    المشي والنشاط
-                </h3>
-
-                <p>
-                    تابع دقائق المشي والنشاط اليومي
-                    وشاهد تقدمك مع مرور الأيام.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-
-                    <i class="fa-solid fa-bed"></i>
-
-                </div>
-
-                <h3>
-                    النوم
-                </h3>
-
-                <p>
-                    سجّل ساعات نومك واحصل على صورة
-                    أوضح عن انتظام نومك.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-
-                    <i class="fa-solid fa-sun"></i>
-
-                </div>
-
-                <h3>
-                    الاستيقاظ
-                </h3>
-
-                <p>
-                    سجّل وقت الاستيقاظ وتابع روتينك
-                    اليومي بسهولة.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     HOW IT WORKS
-========================== -->
-
-<section class="how">
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-            <div class="eyebrow">
-                كيف تبدأ؟
-            </div>
-
-            <h2>
-                ثلاث خطوات بسيطة
-            </h2>
-
-            <p>
-                لا تحتاج إلى إعدادات معقدة.
-            </p>
-
-        </div>
-
-
-        <div class="steps">
-
-
-            <div class="step">
-
-                <div class="step-number">
-                    1
-                </div>
-
-                <h3>
-                    أنشئ حسابك
-                </h3>
-
-                <p>
-                    أنشئ حسابًا شخصيًا باستخدام بريدك
-                    الإلكتروني وكلمة مرور.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="step-number">
-                    2
-                </div>
-
-                <h3>
-                    سجّل عاداتك
-                </h3>
-
-                <p>
-                    أضف بيانات الماء والمشي والنوم
-                    والاستيقاظ بشكل يومي.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="step-number">
-                    3
-                </div>
-
-                <h3>
-                    تابع تقدمك
-                </h3>
-
-                <p>
-                    شاهد بياناتك في لوحة شخصية
-                    وتابع تقدمك خلال الأيام والشهور.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     PRIVACY
-========================== -->
-
-<section class="privacy">
-
-    <div class="container">
-
-
-        <div class="privacy-box">
-
-
-            <div class="privacy-icon">
-
-                <i class="fa-solid fa-shield-halved"></i>
-
-            </div>
-
-
-            <div>
-
-                <h3>
-                    خصوصيتك أولًا
-                </h3>
-
-                <p>
-                    حسابك شخصي، وبيانات المتابعة الخاصة بك
-                    مرتبطة بحسابك فقط. لا يتم عرض بياناتك
-                    الصحية للزوار أو للمستخدمين الآخرين.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     CTA
-========================== -->
-
-<section class="cta">
-
-    <div class="container cta-content">
-
-
-        <h2>
-            ابدأ متابعة عاداتك اليوم
-        </h2>
-
-
-        <p>
-            خطوة صغيرة اليوم يمكن أن تساعدك على بناء
-            روتين صحي أكثر انتظامًا.
-        </p>
-
-
-        <a
-            href="register.html"
-            class="cta-btn"
+        <section
+            class="section features"
+            id="features"
         >
 
-            <i class="fa-solid fa-user-plus"></i>
-
-            إنشاء حساب
-
-        </a>
+            <div class="container">
 
 
-    </div>
+                <div class="section-header">
 
-</section>
+                    <span class="section-label">
+                        ماذا يمكنك متابعة؟
+                    </span>
+
+                    <h2 class="section-title">
+                        عادات صغيرة تصنع فرقًا كبيرًا
+                    </h2>
+
+                    <p class="section-description">
+                        سجّل عاداتك اليومية وراقب تقدمك بطريقة واضحة
+                        ومنظمة.
+                    </p>
+
+                </div>
 
 
-<!-- =========================
-     FOOTER
-========================== -->
 
-<footer>
-
-    <div class="container footer-content">
+                <div class="features-grid">
 
 
-        <div class="footer-brand">
+                    <div class="feature-card">
 
-            <div class="footer-brand-icon">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
 
-                <i class="fa-solid fa-heart-pulse"></i>
+                        <h3>
+                            شرب الماء
+                        </h3>
+
+                        <p>
+                            تابع كمية الماء التي تشربها خلال اليوم
+                            وسجّل تقدمك بسهولة.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-person-walking"></i>
+                        </div>
+
+                        <h3>
+                            المشي
+                        </h3>
+
+                        <p>
+                            سجّل مدة المشي اليومية وحافظ على نشاطك
+                            بشكل منتظم.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-moon"></i>
+                        </div>
+
+                        <h3>
+                            النوم
+                        </h3>
+
+                        <p>
+                            سجّل ساعات نومك لمتابعة نمط نومك
+                            على مدار الأيام.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-sun"></i>
+                        </div>
+
+                        <h3>
+                            الاستيقاظ
+                        </h3>
+
+                        <p>
+                            دوّن وقت استيقاظك يوميًا وابنِ روتينًا
+                            أكثر انتظامًا.
+                        </p>
+
+                    </div>
+
+
+                </div>
 
             </div>
 
-            <strong>
-                Si7a
-            </strong>
+        </section>
+
+
+
+        <!-- =========================
+             HOW IT WORKS
+        ========================== -->
+
+        <section class="section steps-section">
+
+            <div class="container">
+
+
+                <div class="section-header">
+
+                    <span class="section-label">
+                        كيف تبدأ؟
+                    </span>
+
+                    <h2 class="section-title">
+                        ثلاث خطوات فقط
+                    </h2>
+
+                    <p class="section-description">
+                        لا تحتاج إلى إعدادات معقدة.
+                    </p>
+
+                </div>
+
+
+
+                <div class="steps">
+
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            1
+                        </div>
+
+                        <h3>
+                            أنشئ حسابك
+                        </h3>
+
+                        <p>
+                            أنشئ حسابًا مجانيًا باستخدام بريدك
+                            الإلكتروني وكلمة مرور خاصة بك.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            2
+                        </div>
+
+                        <h3>
+                            سجّل عاداتك
+                        </h3>
+
+                        <p>
+                            أضف بياناتك اليومية مثل الماء والمشي
+                            والنوم ووقت الاستيقاظ.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            3
+                        </div>
+
+                        <h3>
+                            تابع تقدمك
+                        </h3>
+
+                        <p>
+                            راقب عاداتك وتنظيمك الصحي مع مرور الأيام
+                            والأشهر.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PRIVACY
+        ========================== -->
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="privacy-box">
+
+
+                    <div class="privacy-icon">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h2>
+                            بياناتك الشخصية تبقى خاصة
+                        </h2>
+
+                        <p>
+                            كل حساب مرتبط بمستخدمه بشكل مستقل.
+                            بياناتك الصحية التي تسجلها في Si7a
+                            ليست معروضة للمستخدمين الآخرين.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CTA
+        ========================== -->
+
+        <section class="cta-section">
+
+            <div class="container">
+
+                <div class="cta">
+
+                    <div class="cta-content">
+
+                        <h2>
+                            ابدأ الاهتمام بعاداتك اليوم
+                        </h2>
+
+                        <p>
+                            أنشئ حسابك وابدأ تسجيل تقدمك الصحي
+                            بطريقة بسيطة.
+                        </p>
+
+
+                        <a
+                            href="register.html"
+                            class="primary-btn"
+                        >
+
+                            <i class="fa-solid fa-arrow-left"></i>
+
+                            إنشاء حساب مجاني
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="container">
+
+
+            <div class="footer-content">
+
+
+                <div>
+
+                    <div class="footer-logo">
+
+                        <span class="footer-logo-icon">
+
+                            <i class="fa-solid fa-heart-pulse"></i>
+
+                        </span>
+
+                        Si7a
+
+                    </div>
+
+
+                    <div class="footer-description">
+
+                        منصة بسيطة لمتابعة العادات الصحية اليومية.
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="footer-links">
+
+                    <a href="index.html">
+                        الرئيسية
+                    </a>
+
+                    <a href="login.html">
+                        تسجيل الدخول
+                    </a>
+
+                    <a href="register.html">
+                        إنشاء حساب
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="copyright">
+
+                © 2026 Si7a — جميع الحقوق محفوظة
+
+            </div>
+
 
         </div>
 
-
-        <div class="footer-copy">
-
-            © 2026 Si7a
-            <br>
-            منصة شخصية لمتابعة العادات الصحية
-
-        </div>
+    </footer>
 
 
-        <div class="footer-links">
 
-            <a href="login.html">
-                تسجيل الدخول
-            </a>
+    <!-- =========================
+         FIREBASE AUTH
+    ========================== -->
 
-            <a href="register.html">
-                إنشاء حساب
-            </a>
+    <script type="module">
 
-        </div>
+        import { auth } from "./js/firebase.js";
 
-
-    </div>
-
-</footer>
+        import {
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
 
-<!-- =========================
-     FIREBASE AUTH CHECK
-========================== -->
+        const loginBtn =
+            document.getElementById("loginBtn");
 
-<script type="module">
+        const registerBtn =
+            document.getElementById("registerBtn");
 
-    import {
-        auth
-    } from "./js/firebase.js";
-
-
-    import {
-        onAuthStateChanged
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+        const dashboardBtn =
+            document.getElementById("dashboardBtn");
 
 
-    const loginBtn =
-        document.getElementById("loginBtn");
+        onAuthStateChanged(
+            auth,
+            (user) => {
 
-    const registerBtn =
-        document.getElementById("registerBtn");
+                if (user) {
 
-    const dashboardBtn =
-        document.getElementById("dashboardBtn");
+                    /*
+                     * المستخدم مسجل الدخول
+                     */
 
+                    loginBtn.style.display =
+                        "none";
 
-    /*
-     * الصفحة الرئيسية لا تعرض أي بيانات صحية.
-     *
-     * إذا كان المستخدم مسجل الدخول:
-     * نعرض له زر لوحة التحكم.
-     *
-     * إذا لم يكن مسجل الدخول:
-     * تظهر أزرار الدخول وإنشاء الحساب.
-     */
+                    registerBtn.style.display =
+                        "none";
 
-    onAuthStateChanged(
-        auth,
-        (user) => {
+                    dashboardBtn.style.display =
+                        "inline-flex";
 
-            if(user){
+                } else {
 
-                loginBtn.style.display =
-                    "none";
+                    /*
+                     * لا يوجد مستخدم مسجل
+                     */
 
-                registerBtn.style.display =
-                    "none";
+                    loginBtn.style.display =
+                        "inline-flex";
 
-                dashboardBtn.style.display =
-                    "inline-flex";
+                    registerBtn.style.display =
+                        "inline-flex";
 
-            }else{
+                    dashboardBtn.style.display =
+                        "none";
 
-                loginBtn.style.display =
-                    "inline-flex";
-
-                registerBtn.style.display =
-                    "inline-flex";
-
-                dashboardBtn.style.display =
-                    "none";
+                }
 
             }
+        );
 
-        }
-    );
+    </script>
 
-</script>
 
 </body>
+
 </html>
