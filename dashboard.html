@@ -2,23 +2,17 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<meta name="theme-color"
-      content="#2563EB">
+<meta name="theme-color" content="#2563EB">
 
 <title>صحتي | الرئيسية</title>
 
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap"
       rel="stylesheet">
@@ -28,24 +22,26 @@
 
 <style>
 
-/* =====================================================
-   VARIABLES
-===================================================== */
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
 
 :root{
-
-    --blue:#2563EB;
-    --blue-dark:#1D4ED8;
-    --blue-light:#EFF6FF;
+    --primary:#2563EB;
+    --primary-dark:#1D4ED8;
+    --primary-light:#EFF6FF;
 
     --green:#16A34A;
-    --green-light:#F0FDF4;
-
-    --pink:#DB2777;
-    --pink-light:#FDF2F8;
+    --green-light:#ECFDF3;
 
     --purple:#7C3AED;
     --purple-light:#F5F3FF;
+
+    --pink:#DB2777;
+    --pink-light:#FDF2F8;
 
     --orange:#F97316;
     --orange-light:#FFF7ED;
@@ -55,1486 +51,1260 @@
 
     --text:#172033;
     --muted:#718096;
+    --border:#E8EDF5;
 
-    --background:#F5F8FC;
+    --bg:#F5F8FC;
     --white:#FFFFFF;
 
-    --border:#E6EBF2;
-
     --shadow:
-        0 8px 25px rgba(37,99,235,.07);
-
-}
-
-
-/* =====================================================
-   RESET
-===================================================== */
-
-*{
-
-    margin:0;
-    padding:0;
-
-    box-sizing:border-box;
-
-}
-
-html{
-
-    scroll-behavior:smooth;
-
+        0 8px 30px rgba(37,99,235,.07);
 }
 
 body{
-
-    font-family:'Tajawal',sans-serif;
-
-    background:var(--background);
-
+    font-family:"Tajawal",sans-serif;
+    background:var(--bg);
     color:var(--text);
-
     min-height:100vh;
-
-    padding-bottom:90px;
-
+    padding-bottom:88px;
 }
 
 button{
-
     font-family:inherit;
-
-    border:none;
-
+    border:0;
     cursor:pointer;
-
 }
 
 a{
-
-    text-decoration:none;
-
     color:inherit;
-
+    text-decoration:none;
 }
 
+/* =========================
+   APP
+========================= */
 
-/* =====================================================
-   PAGE
-===================================================== */
-
-.page{
-
+.app{
     width:100%;
+    max-width:600px;
+    margin:auto;
+}
 
-    max-width:650px;
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    background:linear-gradient(
+        145deg,
+        #2563EB 0%,
+        #3B82F6 55%,
+        #60A5FA 100%
+    );
+
+    padding:
+        24px
+        18px
+        28px;
+
+    border-radius:0 0 28px 28px;
+
+    color:white;
+
+    box-shadow:
+        0 10px 35px rgba(37,99,235,.18);
+}
+
+.header-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.greeting{
+    flex:1;
+}
+
+.greeting-small{
+    font-size:13px;
+    opacity:.85;
+    margin-bottom:5px;
+}
+
+.greeting h1{
+    font-size:23px;
+    font-weight:800;
+    line-height:1.4;
+}
+
+.header-profile{
+    width:48px;
+    height:48px;
+    border-radius:16px;
+
+    background:rgba(255,255,255,.18);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid rgba(255,255,255,.22);
+
+    backdrop-filter:blur(8px);
+
+    font-size:20px;
+}
+
+.header-date{
+    margin-top:8px;
+    font-size:12px;
+    opacity:.85;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+    padding:18px;
+}
+
+/* =========================
+   SECTION HEADER
+========================= */
+
+.section-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:12px;
+}
+
+.section-title{
+    font-size:17px;
+    font-weight:800;
+}
+
+.section-link{
+    color:var(--primary);
+    font-size:13px;
+    font-weight:700;
+
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+/* =========================
+   MINI CALENDAR
+========================= */
+
+.calendar-card{
+    background:var(--white);
+    border-radius:22px;
+    padding:15px;
+
+    box-shadow:var(--shadow);
+
+    border:1px solid rgba(232,237,245,.8);
+}
+
+.week{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:5px;
+}
+
+.day{
+    min-width:0;
+    text-align:center;
+
+    padding:9px 3px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.day-name{
+    font-size:10px;
+    color:var(--muted);
+    margin-bottom:7px;
+}
+
+.day-number{
+    width:32px;
+    height:32px;
 
     margin:auto;
 
-    padding:0 16px;
-
-}
-
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-.header{
-
-    padding:
-
-        24px
-
-        16px
-
-        12px;
-
-}
-
-.welcome{
-
-    font-size:25px;
-
-    font-weight:800;
-
-    line-height:1.4;
-
-}
-
-.user-name{
-
-    color:var(--blue);
-
-}
-
-.date-text{
-
-    color:var(--muted);
-
-    font-size:13px;
-
-    margin-top:3px;
-
-}
-
-
-/* =====================================================
-   CALENDAR
-===================================================== */
-
-.calendar-section{
-
-    margin-top:4px;
-
-}
-
-.calendar-top{
+    border-radius:11px;
 
     display:flex;
-
     align-items:center;
+    justify-content:center;
 
-    justify-content:space-between;
-
-    margin-bottom:10px;
-
-}
-
-.calendar-title{
-
-    font-size:17px;
-
-    font-weight:800;
-
-}
-
-.calendar-full{
-
-    background:none;
-
-    color:var(--blue);
-
-    font-size:12px;
-
+    font-size:13px;
     font-weight:700;
 
+    color:var(--text);
 }
 
-.calendar-card{
+.day.selected{
+    background:var(--primary-light);
+}
 
-    background:var(--white);
+.day.selected .day-name{
+    color:var(--primary);
+    font-weight:700;
+}
+
+.day.selected .day-number{
+    background:var(--primary);
+    color:white;
+    box-shadow:0 5px 12px rgba(37,99,235,.25);
+}
+
+/* =========================
+   DAY INFO
+========================= */
+
+.day-info{
+    margin-top:14px;
+
+    background:#F8FAFD;
+
+    border-radius:17px;
+
+    padding:13px;
+
+    border:1px solid var(--border);
+}
+
+.day-info-top{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:12px;
+}
+
+.calendar-icon{
+    width:38px;
+    height:38px;
+
+    border-radius:12px;
+
+    background:var(--primary-light);
+    color:var(--primary);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:17px;
+}
+
+.day-info-title{
+    font-size:13px;
+    font-weight:800;
+}
+
+.day-info-date{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:2px;
+}
+
+.day-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+}
+
+.day-stat{
+    background:white;
+    border-radius:13px;
+    padding:10px 6px;
+    text-align:center;
+    border:1px solid var(--border);
+}
+
+.day-stat i{
+    font-size:13px;
+    margin-bottom:5px;
+}
+
+.day-stat strong{
+    display:block;
+    font-size:13px;
+}
+
+.day-stat span{
+    display:block;
+    font-size:9px;
+    color:var(--muted);
+    margin-top:2px;
+}
+
+/* =========================
+   TODAY SUMMARY
+========================= */
+
+.today-card{
+    margin-top:20px;
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:18px;
+
+    box-shadow:var(--shadow);
+
+    border:1px solid var(--border);
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.today-card:active{
+    transform:scale(.985);
+}
+
+.today-card-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:16px;
+}
+
+.today-title-area{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.today-icon{
+    width:43px;
+    height:43px;
+
+    border-radius:14px;
+
+    background:var(--green-light);
+    color:var(--green);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+}
+
+.today-title{
+    font-size:16px;
+    font-weight:800;
+}
+
+.today-subtitle{
+    font-size:11px;
+    color:var(--muted);
+    margin-top:3px;
+}
+
+.arrow{
+    width:32px;
+    height:32px;
+
+    border-radius:10px;
+
+    background:#F5F7FB;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:var(--muted);
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-area{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.progress-ring{
+    position:relative;
+
+    width:118px;
+    height:118px;
+
+    flex-shrink:0;
+}
+
+.progress-ring svg{
+    width:118px;
+    height:118px;
+
+    transform:rotate(-90deg);
+}
+
+.progress-bg{
+    fill:none;
+    stroke:#EAF0F8;
+    stroke-width:9;
+}
+
+.progress-value{
+    fill:none;
+    stroke:var(--primary);
+    stroke-width:9;
+
+    stroke-linecap:round;
+
+    stroke-dasharray:326;
+    stroke-dashoffset:72;
+
+    transition:1s;
+}
+
+.progress-center{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.progress-number{
+    font-size:24px;
+    font-weight:800;
+    color:var(--text);
+}
+
+.progress-label{
+    font-size:10px;
+    color:var(--muted);
+}
+
+.progress-info{
+    flex:1;
+}
+
+.progress-info h3{
+    font-size:14px;
+    font-weight:800;
+    margin-bottom:7px;
+}
+
+.progress-info p{
+    color:var(--muted);
+    font-size:11px;
+    line-height:1.7;
+}
+
+.add-info{
+    margin-top:10px;
+
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+
+    color:var(--primary);
+
+    font-size:11px;
+    font-weight:700;
+}
+
+/* =========================
+   QUICK ACCESS
+========================= */
+
+.quick-section{
+    margin-top:23px;
+}
+
+.quick-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:11px;
+}
+
+.quick-card{
+    background:white;
 
     border:1px solid var(--border);
 
     border-radius:20px;
 
-    padding:13px;
-
-    box-shadow:var(--shadow);
-
-}
-
-.week-row{
-
-    display:grid;
-
-    grid-template-columns:
-
-        repeat(7,1fr);
-
-    gap:5px;
-
-}
-
-.week-day{
-
-    text-align:center;
-
-    color:var(--muted);
-
-    font-size:10px;
-
-    margin-bottom:5px;
-
-}
-
-.calendar-day{
-
-    height:44px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:13px;
-
-    font-size:13px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.2s;
-
-}
-
-.calendar-day:hover{
-
-    background:var(--blue-light);
-
-}
-
-.calendar-day.today{
-
-    background:var(--blue);
-
-    color:white;
-
-    box-shadow:
-
-        0 5px 12px
-
-        rgba(37,99,235,.25);
-
-}
-
-.calendar-day.selected{
-
-    outline:
-
-        2px solid var(--blue);
-
-    outline-offset:
-
-        2px;
-
-}
-
-
-/* =====================================================
-   DAY INFORMATION
-===================================================== */
-
-.day-information{
-
-    margin-top:10px;
-
-    background:white;
-
-    border:1px solid var(--border);
-
-    border-radius:18px;
-
     padding:15px;
 
-    display:none;
+    min-height:105px;
 
-}
-
-.day-information.show{
-
-    display:block;
-
-}
-
-.day-info-title{
-
-    font-size:15px;
-
-    font-weight:800;
-
-    margin-bottom:12px;
-
-}
-
-.day-info-grid{
-
-    display:grid;
-
-    grid-template-columns:
-
-        repeat(2,1fr);
-
-    gap:8px;
-
-}
-
-.day-info-item{
-
-    background:var(--background);
-
-    border-radius:12px;
-
-    padding:10px;
-
-}
-
-.day-info-item span{
-
-    display:block;
-
-    color:var(--muted);
-
-    font-size:10px;
-
-    margin-bottom:4px;
-
-}
-
-.day-info-item strong{
-
-    font-size:13px;
-
-}
-
-
-/* =====================================================
-   TODAY SUMMARY
-===================================================== */
-
-.today-section{
-
-    margin-top:23px;
-
-}
-
-.section-title{
-
-    font-size:18px;
-
-    font-weight:800;
-
-    margin-bottom:11px;
-
-}
-
-
-/* =====================================================
-   SUMMARY CARD
-===================================================== */
-
-.summary-card{
-
-    background:white;
-
-    border:
-
-        1px solid
-
-        var(--border);
-
-    border-radius:24px;
-
-    box-shadow:
-
-        var(--shadow);
-
-    padding:18px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:20px;
-
-    cursor:pointer;
+    box-shadow:0 5px 20px rgba(20,40,80,.035);
 
     transition:.2s;
-
-}
-
-.summary-card:active{
-
-    transform:scale(.98);
-
-}
-
-
-/* =====================================================
-   PROGRESS CIRCLE
-===================================================== */
-
-.progress-circle{
-
-    width:135px;
-
-    height:135px;
-
-    position:relative;
-
-    flex-shrink:0;
-
-}
-
-.progress-circle svg{
-
-    width:100%;
-
-    height:100%;
-
-    transform:
-
-        rotate(-90deg);
-
-}
-
-.progress-circle circle{
-
-    fill:none;
-
-    stroke-width:10;
-
-}
-
-.circle-background{
-
-    stroke:#EAF0F7;
-
-}
-
-.circle-progress{
-
-    stroke:var(--blue);
-
-    stroke-linecap:round;
-
-    stroke-dasharray:
-
-        345.6;
-
-    stroke-dashoffset:
-
-        76;
-
-    transition:1s;
-
-}
-
-.circle-content{
-
-    position:absolute;
-
-    inset:0;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-}
-
-.percent{
-
-    color:var(--blue);
-
-    font-size:28px;
-
-    font-weight:800;
-
-}
-
-.percent-label{
-
-    color:var(--muted);
-
-    font-size:10px;
-
-}
-
-
-/* =====================================================
-   SUMMARY TEXT
-===================================================== */
-
-.summary-info{
-
-    flex:1;
-
-}
-
-.summary-info h3{
-
-    font-size:16px;
-
-    font-weight:800;
-
-    margin-bottom:7px;
-
-}
-
-.summary-info p{
-
-    color:var(--muted);
-
-    font-size:12px;
-
-    line-height:1.7;
-
-}
-
-.summary-arrow{
-
-    color:var(--blue);
-
-    font-size:14px;
-
-    margin-top:10px;
-
-}
-
-
-/* =====================================================
-   QUICK ACCESS
-===================================================== */
-
-.quick-section{
-
-    margin-top:25px;
-
-}
-
-.quick-grid{
-
-    display:grid;
-
-    grid-template-columns:
-
-        repeat(2,1fr);
-
-    gap:11px;
-
-}
-
-.quick-card{
-
-    background:white;
-
-    border:
-
-        1px solid
-
-        var(--border);
-
-    border-radius:19px;
-
-    padding:16px;
-
-    cursor:pointer;
-
-    transition:.2s;
-
 }
 
 .quick-card:active{
-
     transform:scale(.97);
-
 }
 
 .quick-icon{
+    width:40px;
+    height:40px;
 
-    width:43px;
-
-    height:43px;
-
-    border-radius:14px;
+    border-radius:13px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
-    margin-bottom:11px;
+    font-size:17px;
 
-    font-size:18px;
-
-}
-
-.icon-health{
-
-    background:var(--green-light);
-
-    color:var(--green);
-
-}
-
-.icon-period{
-
-    background:var(--pink-light);
-
-    color:var(--pink);
-
-}
-
-.icon-pregnancy{
-
-    background:var(--orange-light);
-
-    color:var(--orange);
-
-}
-
-.icon-stats{
-
-    background:var(--purple-light);
-
-    color:var(--purple);
-
+    margin-bottom:12px;
 }
 
 .quick-card h3{
-
-    font-size:14px;
-
+    font-size:13px;
     font-weight:800;
-
-    margin-bottom:3px;
-
 }
 
 .quick-card p{
-
-    color:var(--muted);
-
     font-size:10px;
-
+    color:var(--muted);
+    margin-top:4px;
 }
 
+/* COLORS */
 
-/* =====================================================
-   TODAY DETAILS BUTTON
-===================================================== */
-
-.details-button{
-
-    width:100%;
-
-    margin-top:12px;
-
-    padding:13px;
-
-    background:var(--blue-light);
-
-    color:var(--blue);
-
-    border-radius:14px;
-
-    font-weight:700;
-
-    font-size:13px;
-
+.health .quick-icon{
+    background:var(--primary-light);
+    color:var(--primary);
 }
 
+.period .quick-icon{
+    background:var(--pink-light);
+    color:var(--pink);
+}
 
-/* =====================================================
-   BOTTOM NAVIGATION
-===================================================== */
+.pregnancy .quick-icon{
+    background:var(--purple-light);
+    color:var(--purple);
+}
 
-.bottom-navigation{
+.stats .quick-icon{
+    background:var(--cyan-light);
+    color:var(--cyan);
+}
 
+/* =========================
+   BOTTOM NAV
+========================= */
+
+.bottom-nav{
     position:fixed;
 
-    right:0;
-
     left:0;
-
+    right:0;
     bottom:0;
-
-    height:76px;
-
-    background:
-
-        rgba(255,255,255,.96);
-
-    backdrop-filter:
-
-        blur(15px);
-
-    border-top:
-
-        1px solid
-
-        var(--border);
 
     z-index:100;
 
-}
+    background:rgba(255,255,255,.94);
 
-.bottom-inner{
+    backdrop-filter:blur(16px);
 
-    width:100%;
+    border-top:1px solid #E7ECF4;
 
-    max-width:650px;
-
-    height:100%;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-
-        repeat(4,1fr);
-
-}
-
-.nav-button{
-
-    background:none;
-
-    color:#8B96A7;
+    padding:
+        8px
+        max(10px, env(safe-area-inset-right))
+        calc(8px + env(safe-area-inset-bottom))
+        max(10px, env(safe-area-inset-left));
 
     display:flex;
+    justify-content:center;
+}
 
+.nav-inner{
+    width:100%;
+    max-width:600px;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+}
+
+.nav-item{
+    display:flex;
     flex-direction:column;
-
     align-items:center;
-
     justify-content:center;
 
     gap:5px;
 
+    height:58px;
+
+    color:#8A95A7;
+
     font-size:10px;
+    font-weight:600;
 
-    font-weight:700;
-
+    position:relative;
 }
 
-.nav-button i{
-
-    font-size:19px;
-
+.nav-item i{
+    font-size:18px;
 }
 
-.nav-button.active{
-
-    color:var(--blue);
-
+.nav-item.active{
+    color:var(--primary);
 }
 
+.nav-item.active::before{
+    content:"";
 
-/* =====================================================
+    position:absolute;
+
+    top:0;
+
+    width:30px;
+    height:3px;
+
+    border-radius:0 0 5px 5px;
+
+    background:var(--primary);
+}
+
+/* =========================
    FULL CALENDAR MODAL
-===================================================== */
+========================= */
 
 .modal{
-
     position:fixed;
-
     inset:0;
 
-    background:
+    background:rgba(15,23,42,.48);
 
-        rgba(15,23,42,.45);
-
-    backdrop-filter:
-
-        blur(5px);
-
-    z-index:300;
+    z-index:200;
 
     display:none;
 
     align-items:flex-end;
 
+    backdrop-filter:blur(4px);
 }
 
 .modal.show{
-
     display:flex;
-
 }
 
-.modal-box{
-
+.modal-content{
     width:100%;
+    max-width:600px;
 
-    max-width:650px;
-
-    margin:auto;
+    margin:auto auto 0;
 
     background:white;
 
-    border-radius:
+    border-radius:28px 28px 0 0;
 
-        27px
+    padding:20px;
 
-        27px
+    max-height:85vh;
 
-        0
+    overflow-y:auto;
 
-        0;
-
-    padding:18px;
-
-    max-height:90vh;
-
-    overflow:auto;
-
-    animation:
-
-        slideUp .25s ease;
-
+    animation:slideUp .25s ease;
 }
 
 @keyframes slideUp{
-
     from{
-
-        transform:
-
-            translateY(100%);
-
+        transform:translateY(100%);
     }
 
     to{
-
-        transform:
-
-            translateY(0);
-
+        transform:translateY(0);
     }
-
 }
 
 .modal-header{
-
     display:flex;
-
+    align-items:center;
     justify-content:space-between;
 
-    align-items:center;
-
     margin-bottom:18px;
-
 }
 
 .modal-title{
-
-    font-size:19px;
-
+    font-size:18px;
     font-weight:800;
-
 }
 
-.close-button{
-
+.close-btn{
     width:38px;
-
     height:38px;
 
     border-radius:12px;
 
-    background:var(--background);
-
-}
-
-.modal-month{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    margin-bottom:14px;
-
-}
-
-.month-name{
-
-    font-size:17px;
-
-    font-weight:800;
-
-}
-
-.month-arrow{
-
-    width:35px;
-
-    height:35px;
-
-    border-radius:11px;
-
-    background:var(--blue-light);
-
-    color:var(--blue);
-
-}
-
-.full-calendar-grid{
-
-    display:grid;
-
-    grid-template-columns:
-
-        repeat(7,1fr);
-
-    gap:6px;
-
-}
-
-.full-week-day{
-
-    text-align:center;
+    background:#F3F6FA;
 
     color:var(--muted);
 
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.month-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:15px;
+}
+
+.month-name{
+    font-size:15px;
+    font-weight:800;
+}
+
+.month-arrow{
+    width:36px;
+    height:36px;
+
+    border-radius:11px;
+
+    background:var(--primary-light);
+
+    color:var(--primary);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.full-week{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+
+    margin-bottom:7px;
+}
+
+.full-week div{
+    text-align:center;
+
     font-size:10px;
 
-    padding-bottom:4px;
+    color:var(--muted);
 
+    padding:7px 0;
+}
+
+.full-days{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:5px;
 }
 
 .full-day{
-
-    height:43px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
+    aspect-ratio:1;
 
     border-radius:12px;
 
-    font-size:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    font-weight:700;
+    font-size:12px;
+    font-weight:600;
 
     cursor:pointer;
-
 }
 
 .full-day:hover{
-
-    background:var(--blue-light);
-
+    background:var(--primary-light);
 }
 
 .full-day.today{
+    color:var(--primary);
+    background:var(--primary-light);
+    font-weight:800;
+}
 
-    background:var(--blue);
-
+.full-day.selected{
+    background:var(--primary);
     color:white;
-
 }
 
 .full-day.empty{
-
     cursor:default;
-
 }
 
+/* =========================
+   DESKTOP
+========================= */
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+@media(min-width:700px){
 
-@media(max-width:380px){
-
-    .welcome{
-
-        font-size:22px;
-
+    body{
+        padding-bottom:30px;
     }
 
-    .summary-card{
-
-        gap:12px;
-
-        padding:14px;
-
+    .app{
+        max-width:600px;
     }
 
-    .progress-circle{
+    .bottom-nav{
+        position:relative;
+        margin-top:20px;
 
-        width:115px;
-
-        height:115px;
-
+        background:transparent;
+        border:0;
+        backdrop-filter:none;
     }
 
-    .percent{
-
-        font-size:24px;
-
+    .nav-inner{
+        background:white;
+        border-radius:20px;
+        box-shadow:var(--shadow);
+        border:1px solid var(--border);
     }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
+<div class="app">
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+    <!-- ================= HEADER ================= -->
 
-<header class="header">
+    <header class="header">
 
-    <div class="page">
+        <div class="header-top">
 
-        <div class="welcome">
+            <div class="greeting">
 
-            أهلاً بك،
-            <span class="user-name"
-                  id="userName">
-
-                مستخدم
-
-            </span>
-            👋
-
-        </div>
-
-        <div class="date-text"
-             id="todayText">
-
-        </div>
-
-    </div>
-
-</header>
-
-
-
-<main class="page">
-
-
-<!-- =====================================================
-     CALENDAR
-===================================================== -->
-
-<section class="calendar-section">
-
-    <div class="calendar-top">
-
-        <div class="calendar-title">
-
-            📅 رزنامتك
-
-        </div>
-
-        <button class="calendar-full"
-                onclick="openCalendar()">
-
-            عرض كاملة
-            <i class="fa-solid fa-chevron-left"></i>
-
-        </button>
-
-    </div>
-
-
-    <div class="calendar-card">
-
-        <div class="week-row"
-             id="miniCalendar">
-
-        </div>
-
-    </div>
-
-
-    <!-- DAY INFORMATION -->
-
-    <div class="day-information"
-         id="dayInformation">
-
-        <div class="day-info-title"
-             id="dayInfoTitle">
-
-            معلومات اليوم
-
-        </div>
-
-
-        <div class="day-info-grid">
-
-
-            <div class="day-info-item">
-
-                <span>
-                    التحديات
-                </span>
-
-                <strong>
-                    3 / 4
-                </strong>
-
-            </div>
-
-
-            <div class="day-info-item">
-
-                <span>
-                    الإنجاز
-                </span>
-
-                <strong>
-                    75%
-                </strong>
-
-            </div>
-
-
-            <div class="day-info-item">
-
-                <span>
-                    الماء
-                </span>
-
-                <strong>
-                    6 / 8
-                </strong>
-
-            </div>
-
-
-            <div class="day-info-item">
-
-                <span>
-                    المشي
-                </span>
-
-                <strong>
-                    4,820 خطوة
-                </strong>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     TODAY SUMMARY
-===================================================== -->
-
-<section class="today-section">
-
-    <div class="section-title">
-
-        📊 ملخص اليوم
-
-    </div>
-
-
-    <div class="summary-card"
-         onclick="openTodayDetails()">
-
-
-        <!-- CIRCLE -->
-
-        <div class="progress-circle">
-
-            <svg viewBox="0 0 120 120">
-
-                <circle
-                    class="circle-background"
-                    cx="60"
-                    cy="60"
-                    r="55">
-
-                </circle>
-
-
-                <circle
-                    class="circle-progress"
-                    cx="60"
-                    cy="60"
-                    r="55">
-
-                </circle>
-
-            </svg>
-
-
-            <div class="circle-content">
-
-                <div class="percent">
-
-                    78%
-
+                <div class="greeting-small">
+                    لوحة التحكم الصحية
                 </div>
 
-                <div class="percent-label">
+                <h1>
+                    أهلاً بك، <span id="userName">مستخدم</span>
+                </h1>
 
-                    إنجازك
+                <div class="header-date" id="headerDate">
+                    اليوم
+                </div>
+
+            </div>
+
+            <div class="header-profile">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- ================= CALENDAR ================= -->
+
+        <section>
+
+            <div class="section-head">
+
+                <h2 class="section-title">
+                    التقويم
+                </h2>
+
+                <button class="section-link" onclick="openCalendar()">
+                    عرض كاملة
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+            </div>
+
+
+            <div class="calendar-card">
+
+                <div class="week" id="week"></div>
+
+
+                <div class="day-info">
+
+                    <div class="day-info-top">
+
+                        <div class="calendar-icon">
+                            <i class="fa-regular fa-calendar"></i>
+                        </div>
+
+                        <div>
+                            <div class="day-info-title">
+                                معلومات اليوم
+                            </div>
+
+                            <div class="day-info-date"
+                                 id="selectedDateText">
+                                اليوم
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="day-stats">
+
+                        <div class="day-stat">
+
+                            <i class="fa-solid fa-flag"
+                               style="color:#2563EB"></i>
+
+                            <strong>3 / 4</strong>
+
+                            <span>
+                                التحديات
+                            </span>
+
+                        </div>
+
+
+                        <div class="day-stat">
+
+                            <i class="fa-solid fa-droplet"
+                               style="color:#0891B2"></i>
+
+                            <strong>6 / 8</strong>
+
+                            <span>
+                                الماء
+                            </span>
+
+                        </div>
+
+
+                        <div class="day-stat">
+
+                            <i class="fa-solid fa-person-walking"
+                               style="color:#16A34A"></i>
+
+                            <strong>4,820</strong>
+
+                            <span>
+                                خطوة
+                            </span>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
             </div>
 
-        </div>
+        </section>
 
 
-        <!-- TEXT -->
+        <!-- ================= TODAY ================= -->
 
-        <div class="summary-info">
+        <section class="today-card"
+                 onclick="openTodayDetails()">
 
-            <h3>
+            <div class="today-card-top">
 
-                إنجازك اليوم رائع 🎉
+                <div class="today-title-area">
 
-            </h3>
+                    <div class="today-icon">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
 
-            <p>
+                    <div>
 
-                أكملت 7 من 9 من أهدافك
-                وتبقى لك القليل للوصول
-                إلى 100%.
+                        <div class="today-title">
+                            ملخص اليوم
+                        </div>
 
-            </p>
+                        <div class="today-subtitle">
+                            مستوى إنجاز تحدياتك اليومية
+                        </div>
 
+                    </div>
 
-            <div class="summary-arrow">
+                </div>
 
-                اضغط لإضافة معلوماتك
-
-                <i class="fa-solid fa-arrow-left"></i>
+                <div class="arrow">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
 
             </div>
 
-        </div>
+
+            <div class="progress-area">
+
+                <div class="progress-ring">
+
+                    <svg viewBox="0 0 120 120">
+
+                        <circle
+                            class="progress-bg"
+                            cx="60"
+                            cy="60"
+                            r="52">
+                        </circle>
+
+                        <circle
+                            class="progress-value"
+                            cx="60"
+                            cy="60"
+                            r="52">
+                        </circle>
+
+                    </svg>
+
+                    <div class="progress-center">
+
+                        <div class="progress-number">
+                            78%
+                        </div>
+
+                        <div class="progress-label">
+                            مكتمل
+                        </div>
+
+                    </div>
+
+                </div>
 
 
-    </div>
+                <div class="progress-info">
 
-</section>
+                    <h3>
+                        تقدم جيد اليوم
+                    </h3>
+
+                    <p>
+                        نسبة الإنجاز محسوبة حسب التحديات
+                        والأهداف التي حددتها لنفسك.
+                    </p>
+
+                    <div class="add-info">
+
+                        <i class="fa-solid fa-pen"></i>
+
+                        اضغط لإضافة معلوماتك
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
 
 
+        <!-- ================= QUICK ACCESS ================= -->
 
-<!-- =====================================================
-     QUICK ACCESS
-===================================================== -->
+        <section class="quick-section">
 
-<section class="quick-section">
+            <div class="section-head">
 
-    <div class="section-title">
+                <h2 class="section-title">
+                    الوصول السريع
+                </h2>
 
-        ⚡ الوصول السريع
-
-    </div>
-
-
-    <div class="quick-grid">
+            </div>
 
 
-        <!-- HEALTH -->
+            <div class="quick-grid">
 
-        <div class="quick-card"
-             onclick="go('health.html')">
 
-            <div class="quick-icon icon-health">
+                <!-- HEALTH -->
+
+                <a href="health.html"
+                   class="quick-card health">
+
+                    <div class="quick-icon">
+
+                        <i class="fa-solid fa-heart-pulse"></i>
+
+                    </div>
+
+                    <h3>
+                        قياساتي الصحية
+                    </h3>
+
+                    <p>
+                        الوزن، الضغط، السكر والمزيد
+                    </p>
+
+                </a>
+
+
+                <!-- PERIOD -->
+
+                <a href="period.html"
+                   class="quick-card period">
+
+                    <div class="quick-icon">
+
+                        <i class="fa-regular fa-calendar-days"></i>
+
+                    </div>
+
+                    <h3>
+                        دورتي الشهرية
+                    </h3>
+
+                    <p>
+                        متابعة الدورة والتقويم
+                    </p>
+
+                </a>
+
+
+                <!-- PREGNANCY -->
+
+                <a href="pregnancy.html"
+                   class="quick-card pregnancy">
+
+                    <div class="quick-icon">
+
+                        <i class="fa-solid fa-person-pregnant"></i>
+
+                    </div>
+
+                    <h3>
+                        الحمل
+                    </h3>
+
+                    <p>
+                        عمر الحمل والموعد المتوقع
+                    </p>
+
+                </a>
+
+
+                <!-- STATS -->
+
+                <a href="stats.html"
+                   class="quick-card stats">
+
+                    <div class="quick-icon">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                    </div>
+
+                    <h3>
+                        إحصائياتي
+                    </h3>
+
+                    <p>
+                        تطورك الصحي بمرور الوقت
+                    </p>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= BOTTOM NAV ================= -->
+
+    <nav class="bottom-nav">
+
+        <div class="nav-inner">
+
+            <a href="dashboard.html"
+               class="nav-item active">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>
+                    الرئيسية
+                </span>
+
+            </a>
+
+
+            <a href="challenges.html"
+               class="nav-item">
+
+                <i class="fa-solid fa-flag-checkered"></i>
+
+                <span>
+                    تحدياتي
+                </span>
+
+            </a>
+
+
+            <a href="health.html"
+               class="nav-item">
 
                 <i class="fa-solid fa-heart-pulse"></i>
 
-            </div>
+                <span>
+                    صحتي
+                </span>
 
-            <h3>
-
-                قياساتي الصحية
-
-            </h3>
-
-            <p>
-
-                الوزن، الضغط، السكر وغيرها
-
-            </p>
-
-        </div>
+            </a>
 
 
-        <!-- PERIOD -->
+            <a href="more.html"
+               class="nav-item">
 
-        <div class="quick-card"
-             onclick="go('period.html')">
+                <i class="fa-solid fa-grid-2"></i>
 
-            <div class="quick-icon icon-period">
+                <span>
+                    المزيد
+                </span>
 
-                <i class="fa-solid fa-calendar-days"></i>
-
-            </div>
-
-            <h3>
-
-                دورتي الشهرية
-
-            </h3>
-
-            <p>
-
-                الدورة وأيام الإباضة
-
-            </p>
+            </a>
 
         </div>
 
+    </nav>
 
-        <!-- PREGNANCY -->
-
-        <div class="quick-card"
-             onclick="go('pregnancy.html')">
-
-            <div class="quick-icon icon-pregnancy">
-
-                <i class="fa-solid fa-baby"></i>
-
-            </div>
-
-            <h3>
-
-                الحمل
-
-            </h3>
-
-            <p>
-
-                عمر الحمل والمتابعة
-
-            </p>
-
-        </div>
+</div>
 
 
-        <!-- STATISTICS -->
-
-        <div class="quick-card"
-             onclick="go('stats.html')">
-
-            <div class="quick-icon icon-stats">
-
-                <i class="fa-solid fa-chart-line"></i>
-
-            </div>
-
-            <h3>
-
-                إحصائياتي
-
-            </h3>
-
-            <p>
-
-                تطورك وإحصائياتك
-
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-</main>
-
-
-
-<!-- =====================================================
-     BOTTOM NAV
-===================================================== -->
-
-<nav class="bottom-navigation">
-
-    <div class="bottom-inner">
-
-
-        <button class="nav-button active"
-                onclick="go('dashboard.html')">
-
-            <i class="fa-solid fa-house"></i>
-
-            <span>
-                الرئيسية
-            </span>
-
-        </button>
-
-
-        <button class="nav-button"
-                onclick="go('challenges.html')">
-
-            <i class="fa-solid fa-bullseye"></i>
-
-            <span>
-                تحدياتي
-            </span>
-
-        </button>
-
-
-        <button class="nav-button"
-                onclick="go('health.html')">
-
-            <i class="fa-solid fa-heart-pulse"></i>
-
-            <span>
-                صحتي
-            </span>
-
-        </button>
-
-
-        <button class="nav-button"
-                onclick="go('more.html')">
-
-            <i class="fa-solid fa-grid-2"></i>
-
-            <span>
-                المزيد
-            </span>
-
-        </button>
-
-
-    </div>
-
-</nav>
-
-
-
-<!-- =====================================================
-     FULL CALENDAR
-===================================================== -->
+<!-- ================= FULL CALENDAR ================= -->
 
 <div class="modal"
      id="calendarModal"
-     onclick="outsideClose(event)">
+     onclick="closeCalendarOutside(event)">
 
-
-    <div class="modal-box">
-
+    <div class="modal-content">
 
         <div class="modal-header">
 
             <div class="modal-title">
-
-                📅 الرزنامة
-
+                التقويم الصحي
             </div>
 
-            <button class="close-button"
+            <button class="close-btn"
                     onclick="closeCalendar()">
 
                 <i class="fa-solid fa-xmark"></i>
@@ -1544,10 +1314,10 @@ a{
         </div>
 
 
-        <div class="modal-month">
+        <div class="month-header">
 
             <button class="month-arrow"
-                    onclick="changeFullMonth(-1)">
+                    onclick="changeMonth(-1)">
 
                 <i class="fa-solid fa-chevron-right"></i>
 
@@ -1555,13 +1325,13 @@ a{
 
 
             <div class="month-name"
-                 id="fullMonthTitle">
-
+                 id="monthName">
+                الشهر
             </div>
 
 
             <button class="month-arrow"
-                    onclick="changeFullMonth(1)">
+                    onclick="changeMonth(1)">
 
                 <i class="fa-solid fa-chevron-left"></i>
 
@@ -1570,64 +1340,60 @@ a{
         </div>
 
 
-        <div class="full-calendar-grid"
-             id="fullCalendar">
+        <div class="full-week">
+
+            <div>الأحد</div>
+            <div>الإثنين</div>
+            <div>الثلاثاء</div>
+            <div>الأربعاء</div>
+            <div>الخميس</div>
+            <div>الجمعة</div>
+            <div>السبت</div>
 
         </div>
 
+
+        <div class="full-days"
+             id="fullDays">
+        </div>
 
     </div>
 
 </div>
 
 
-
 <script>
 
-/* =====================================================
+/* =========================
    USER NAME
-===================================================== */
+========================= */
 
 const savedName =
     localStorage.getItem("userName");
 
 if(savedName){
-
-    document
-        .getElementById("userName")
-        .textContent = savedName;
-
+    document.getElementById("userName").textContent =
+        savedName;
 }
 
 
-
-/* =====================================================
-   DATE
-===================================================== */
+/* =========================
+   DATES
+========================= */
 
 const today = new Date();
 
-let year =
-    today.getFullYear();
+let selectedDate = new Date(today);
 
-let month =
-    today.getMonth();
-
-
-let fullYear =
-    year;
-
-let fullMonth =
-    month;
+let calendarMonth =
+    new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        1
+    );
 
 
-
-/* =====================================================
-   ARABIC MONTHS
-===================================================== */
-
-const months = [
-
+const arabicMonths = [
     "يناير",
     "فبراير",
     "مارس",
@@ -1640,12 +1406,10 @@ const months = [
     "أكتوبر",
     "نوفمبر",
     "ديسمبر"
-
 ];
 
 
-const weekDays = [
-
+const arabicDays = [
     "الأحد",
     "الإثنين",
     "الثلاثاء",
@@ -1653,69 +1417,207 @@ const weekDays = [
     "الخميس",
     "الجمعة",
     "السبت"
-
 ];
 
 
-const shortDays = [
+/* =========================
+   HEADER DATE
+========================= */
 
-    "أحد",
-    "إثن",
-    "ثلا",
-    "أرب",
-    "خمي",
-    "جمع",
-    "سبت"
+function formatDate(date){
 
-];
+    return date.toLocaleDateString(
+        "ar-DZ",
+        {
+            weekday:"long",
+            day:"numeric",
+            month:"long",
+            year:"numeric"
+        }
+    );
 
+}
 
-
-/* =====================================================
-   TODAY TEXT
-===================================================== */
-
-document
-    .getElementById("todayText")
-    .textContent =
-
-    `${weekDays[today.getDay()]}، ${today.getDate()} ${months[today.getMonth()]} ${today.getFullYear()}`;
+document.getElementById("headerDate").textContent =
+    formatDate(today);
 
 
+/* =========================
+   MINI WEEK
+========================= */
 
-/* =====================================================
-   MINI CALENDAR
-===================================================== */
-
-function renderMiniCalendar(){
+function renderWeek(){
 
     const container =
-        document.getElementById("miniCalendar");
+        document.getElementById("week");
 
     container.innerHTML = "";
 
 
-    let startDay;
+    const start = new Date(selectedDate);
+
+    start.setDate(
+        selectedDate.getDate() - 3
+    );
 
 
-    if(
+    for(let i=0;i<7;i++){
 
-        year === today.getFullYear() &&
-        month === today.getMonth()
+        const date =
+            new Date(start);
 
-    ){
+        date.setDate(
+            start.getDate() + i
+        );
 
-        startDay =
-            Math.max(
-                1,
-                today.getDate() - 3
-            );
 
-    }else{
+        const day =
+            document.createElement("div");
 
-        startDay = 1;
+        day.className = "day";
+
+
+        if(isSameDate(date,selectedDate)){
+            day.classList.add("selected");
+        }
+
+
+        day.innerHTML = `
+
+            <div class="day-name">
+                ${arabicDays[date.getDay()]}
+            </div>
+
+            <div class="day-number">
+                ${date.getDate()}
+            </div>
+
+        `;
+
+
+        day.onclick = function(){
+
+            selectedDate =
+                new Date(date);
+
+            renderWeek();
+
+            updateSelectedDate();
+
+        };
+
+
+        container.appendChild(day);
 
     }
+
+}
+
+
+/* =========================
+   SELECTED DATE
+========================= */
+
+function updateSelectedDate(){
+
+    document.getElementById(
+        "selectedDateText"
+    ).textContent =
+        formatDate(selectedDate);
+
+}
+
+
+/* =========================
+   SAME DATE
+========================= */
+
+function isSameDate(a,b){
+
+    return (
+        a.getFullYear() === b.getFullYear() &&
+        a.getMonth() === b.getMonth() &&
+        a.getDate() === b.getDate()
+    );
+
+}
+
+
+/* =========================
+   FULL CALENDAR
+========================= */
+
+function openCalendar(){
+
+    document
+        .getElementById("calendarModal")
+        .classList.add("show");
+
+    renderFullCalendar();
+
+}
+
+
+function closeCalendar(){
+
+    document
+        .getElementById("calendarModal")
+        .classList.remove("show");
+
+}
+
+
+function closeCalendarOutside(event){
+
+    if(event.target.id === "calendarModal"){
+        closeCalendar();
+    }
+
+}
+
+
+/* =========================
+   MONTH
+========================= */
+
+function changeMonth(direction){
+
+    calendarMonth.setMonth(
+        calendarMonth.getMonth() + direction
+    );
+
+    renderFullCalendar();
+
+}
+
+
+/* =========================
+   RENDER FULL CALENDAR
+========================= */
+
+function renderFullCalendar(){
+
+    const year =
+        calendarMonth.getFullYear();
+
+    const month =
+        calendarMonth.getMonth();
+
+
+    document.getElementById(
+        "monthName"
+    ).textContent =
+        `${arabicMonths[month]} ${year}`;
+
+
+    const container =
+        document.getElementById("fullDays");
+
+    container.innerHTML = "";
+
+
+    const firstDay =
+        new Date(year,month,1).getDay();
 
 
     const daysInMonth =
@@ -1726,449 +1628,98 @@ function renderMiniCalendar(){
         ).getDate();
 
 
-    for(
+    /* EMPTY DAYS */
 
-        let i = 0;
+    for(let i=0;i<firstDay;i++){
 
-        i < 7;
+        const empty =
+            document.createElement("div");
 
-        i++
+        empty.className =
+            "full-day empty";
 
-    ){
+        container.appendChild(empty);
 
-        let day =
-            startDay + i;
+    }
 
 
-        if(
-            day > daysInMonth
-        ){
+    /* DAYS */
 
-            break;
-
-        }
-
+    for(let dayNumber=1;
+        dayNumber<=daysInMonth;
+        dayNumber++){
 
         const date =
             new Date(
                 year,
                 month,
-                day
+                dayNumber
             );
 
 
-        const wrapper =
+        const element =
             document.createElement("div");
 
-
-        const dayName =
-            document.createElement("div");
-
-        dayName.className =
-            "week-day";
-
-        dayName.textContent =
-            shortDays[date.getDay()];
-
-
-        const number =
-            document.createElement("div");
-
-        number.className =
-            "calendar-day";
-
-        number.textContent =
-            day;
-
-
-        if(
-
-            year === today.getFullYear() &&
-            month === today.getMonth() &&
-            day === today.getDate()
-
-        ){
-
-            number.classList.add("today");
-
-        }
-
-
-        number.onclick = function(){
-
-            document
-                .querySelectorAll(
-                    ".calendar-day"
-                )
-                .forEach(
-                    el =>
-                    el.classList.remove(
-                        "selected"
-                    )
-                );
-
-
-            number.classList.add(
-                "selected"
-            );
-
-
-            showDayInformation(
-                date
-            );
-
-        };
-
-
-        wrapper.appendChild(
-            dayName
-        );
-
-        wrapper.appendChild(
-            number
-        );
-
-        container.appendChild(
-            wrapper
-        );
-
-    }
-
-}
-
-
-
-/* =====================================================
-   DAY INFORMATION
-===================================================== */
-
-function showDayInformation(date){
-
-    const box =
-        document.getElementById(
-            "dayInformation"
-        );
-
-
-    box.classList.add(
-        "show"
-    );
-
-
-    document
-        .getElementById(
-            "dayInfoTitle"
-        )
-        .textContent =
-
-        `📅 ${weekDays[date.getDay()]}، ${date.getDate()} ${months[date.getMonth()]}`;
-
-
-}
-
-
-
-/* =====================================================
-   FULL CALENDAR
-===================================================== */
-
-function openCalendar(){
-
-    fullYear =
-        year;
-
-    fullMonth =
-        month;
-
-
-    renderFullCalendar();
-
-
-    document
-        .getElementById(
-            "calendarModal"
-        )
-        .classList.add(
-            "show"
-        );
-
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-function closeCalendar(){
-
-    document
-        .getElementById(
-            "calendarModal"
-        )
-        .classList.remove(
-            "show"
-        );
-
-
-    document.body.style.overflow =
-        "";
-
-}
-
-
-function outsideClose(event){
-
-    if(
-        event.target.id ===
-        "calendarModal"
-    ){
-
-        closeCalendar();
-
-    }
-
-}
-
-
-function changeFullMonth(
-    direction
-){
-
-    fullMonth +=
-        direction;
-
-
-    if(fullMonth < 0){
-
-        fullMonth = 11;
-
-        fullYear--;
-
-    }
-
-
-    if(fullMonth > 11){
-
-        fullMonth = 0;
-
-        fullYear++;
-
-    }
-
-
-    renderFullCalendar();
-
-}
-
-
-
-/* =====================================================
-   RENDER FULL CALENDAR
-===================================================== */
-
-function renderFullCalendar(){
-
-    const calendar =
-        document.getElementById(
-            "fullCalendar"
-        );
-
-
-    calendar.innerHTML =
-        "";
-
-
-    document
-        .getElementById(
-            "fullMonthTitle"
-        )
-        .textContent =
-
-        `${months[fullMonth]} ${fullYear}`;
-
-
-    weekDays.forEach(
-        day => {
-
-            const el =
-                document.createElement(
-                    "div"
-                );
-
-            el.className =
-                "full-week-day";
-
-            el.textContent =
-                day.substring(
-                    0,
-                    3
-                );
-
-            calendar.appendChild(
-                el
-            );
-
-        }
-    );
-
-
-    const firstDay =
-        new Date(
-            fullYear,
-            fullMonth,
-            1
-        ).getDay();
-
-
-    const daysInMonth =
-        new Date(
-            fullYear,
-            fullMonth + 1,
-            0
-        ).getDate();
-
-
-    for(
-        let i = 0;
-        i < firstDay;
-        i++
-    ){
-
-        const empty =
-            document.createElement(
-                "div"
-            );
-
-        empty.className =
-            "full-day empty";
-
-        calendar.appendChild(
-            empty
-        );
-
-    }
-
-
-    for(
-        let day = 1;
-        day <= daysInMonth;
-        day++
-    ){
-
-        const el =
-            document.createElement(
-                "div"
-            );
-
-
-        el.className =
+        element.className =
             "full-day";
 
 
-        el.textContent =
-            day;
-
-
-        if(
-
-            fullYear ===
-                today.getFullYear() &&
-
-            fullMonth ===
-                today.getMonth() &&
-
-            day ===
-                today.getDate()
-
-        ){
-
-            el.classList.add(
-                "today"
-            );
-
+        if(isSameDate(date,today)){
+            element.classList.add("today");
         }
 
 
-        el.onclick = function(){
-
-            const selectedDate =
-                new Date(
-                    fullYear,
-                    fullMonth,
-                    day
-                );
+        if(isSameDate(date,selectedDate)){
+            element.classList.add("selected");
+        }
 
 
-            showDayInformation(
-                selectedDate
-            );
+        element.textContent =
+            dayNumber;
 
+
+        element.onclick = function(){
+
+            selectedDate =
+                new Date(date);
+
+            renderWeek();
+
+            updateSelectedDate();
 
             closeCalendar();
-
-
-            window.scrollTo({
-
-                top:120,
-
-                behavior:"smooth"
-
-            });
 
         };
 
 
-        calendar.appendChild(
-            el
-        );
+        container.appendChild(element);
 
     }
 
 }
 
 
-
-/* =====================================================
+/* =========================
    TODAY DETAILS
-===================================================== */
+========================= */
 
 function openTodayDetails(){
 
-    /*
-       لاحقًا سنربط هذه الصفحة
-       بصفحة إضافة المعلومات اليومية.
-    */
-
-    go(
-        "today.html"
-    );
-
-}
-
-
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-function go(page){
-
     window.location.href =
-        page;
+        "today.html";
 
 }
 
 
+/* =========================
+   INIT
+========================= */
 
-/* =====================================================
-   INITIALIZE
-===================================================== */
+renderWeek();
 
-renderMiniCalendar();
+updateSelectedDate();
 
 </script>
 
-
 </body>
-
 </html>
