@@ -2,1737 +2,996 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    >
-
-    <meta name="theme-color" content="#2563EB">
-
-    <title>Si7a | لوحة التحكم</title>
-
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
-
-    <style>
-
-        :root {
-
-            /* Main */
-            --blue: #2563EB;
-            --blue-dark: #1D4ED8;
-            --blue-light: #EFF6FF;
-            --blue-soft: #DBEAFE;
-
-            /* Colors */
-            --green: #16A34A;
-            --green-light: #ECFDF3;
-
-            --purple: #7C3AED;
-            --purple-light: #F5F3FF;
-
-            --orange: #F97316;
-            --orange-light: #FFF7ED;
-
-            --cyan: #0891B2;
-            --cyan-light: #ECFEFF;
-
-            --pink: #DB2777;
-            --pink-light: #FDF2F8;
-
-            --red: #DC2626;
-            --red-light: #FEF2F2;
-
-            --yellow: #D97706;
-            --yellow-light: #FFFBEB;
-
-            /* Neutral */
-            --bg: #F5F8FC;
-            --card: #FFFFFF;
-            --text: #172033;
-            --muted: #718096;
-            --border: #E7ECF3;
-
-            --shadow:
-                0 8px 30px rgba(30, 64, 175, 0.07);
-
-            --radius: 20px;
-
-            --nav-height: 76px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-
-            font-family: "Tajawal", sans-serif;
-
-            background:
-                linear-gradient(
-                    180deg,
-                    #F7FAFF 0%,
-                    #F5F8FC 45%,
-                    #F3F6FA 100%
-                );
-
-            color: var(--text);
-
-            min-height: 100vh;
-
-            padding-bottom: calc(
-                var(--nav-height) + 25px
-            );
-        }
-
-        button,
-        input {
-            font-family: inherit;
-        }
-
-        button {
-            cursor: pointer;
-        }
-
-        /* =========================
-           LOADING
-        ========================= */
-
-        #loadingScreen {
-
-            position: fixed;
-            inset: 0;
-
-            background: #F7FAFF;
-
-            z-index: 9999;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            flex-direction: column;
-
-            gap: 18px;
-        }
-
-        .loading-logo {
-
-            width: 68px;
-            height: 68px;
-
-            border-radius: 20px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #2563EB,
-                    #60A5FA
-                );
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            color: white;
-
-            font-size: 29px;
-
-            box-shadow:
-                0 12px 30px rgba(
-                    37,
-                    99,
-                    235,
-                    .25
-                );
-        }
-
-        .loader {
-
-            width: 35px;
-            height: 35px;
-
-            border: 3px solid #DBEAFE;
-            border-top-color: var(--blue);
-
-            border-radius: 50%;
-
-            animation:
-                spin .8s linear infinite;
-        }
-
-        @keyframes spin {
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* =========================
-           APP
-        ========================= */
-
-        .app {
-
-            width: 100%;
-            max-width: 920px;
-
-            margin: auto;
-
-            padding:
-                18px
-                18px
-                0;
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        .top-header {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            margin-bottom: 20px;
-        }
-
-        .greeting {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 12px;
-        }
-
-        .avatar {
-
-            width: 48px;
-            height: 48px;
-
-            border-radius: 16px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #2563EB,
-                    #60A5FA
-                );
-
-            color: white;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 19px;
-
-            box-shadow:
-                0 8px 20px
-                rgba(37, 99, 235, .20);
-        }
-
-        .greeting-text small {
-
-            display: block;
-
-            color: var(--muted);
-
-            font-size: 13px;
-
-            margin-bottom: 2px;
-        }
-
-        .greeting-text h1 {
-
-            font-size: 20px;
-
-            font-weight: 800;
-
-            color: #172033;
-        }
-
-        .header-actions {
-
-            display: flex;
-
-            gap: 8px;
-        }
-
-        .icon-button {
-
-            width: 43px;
-            height: 43px;
-
-            border: 1px solid var(--border);
-
-            background: white;
-
-            border-radius: 14px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            color: #52627A;
-
-            transition: .2s;
-        }
-
-        .icon-button:hover {
-
-            color: var(--blue);
-
-            border-color: var(--blue-soft);
-
-            background: var(--blue-light);
-        }
-
-        /* =========================
-           DATE
-        ========================= */
-
-        .date-line {
-
-            color: var(--muted);
-
-            font-size: 13px;
-
-            margin-bottom: 13px;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 7px;
-        }
-
-        .date-line i {
-
-            color: var(--blue);
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #1D4ED8 0%,
-                    #2563EB 50%,
-                    #3B82F6 100%
-                );
-
-            color: white;
-
-            border-radius: 27px;
-
-            padding: 23px;
-
-            min-height: 210px;
-
-            position: relative;
-
-            overflow: hidden;
-
-            box-shadow:
-                0 18px 45px
-                rgba(37, 99, 235, .22);
-
-            margin-bottom: 22px;
-        }
-
-        .hero::before {
-
-            content: "";
-
-            position: absolute;
-
-            width: 210px;
-            height: 210px;
-
-            border-radius: 50%;
-
-            background:
-                rgba(255,255,255,.07);
-
-            left: -80px;
-            top: -80px;
-        }
-
-        .hero::after {
-
-            content: "";
-
-            position: absolute;
-
-            width: 170px;
-            height: 170px;
-
-            border-radius: 50%;
-
-            background:
-                rgba(255,255,255,.06);
-
-            right: -70px;
-            bottom: -80px;
-        }
-
-        .hero-content {
-
-            position: relative;
-
-            z-index: 2;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 20px;
-        }
-
-        .hero-info {
-
-            flex: 1;
-        }
-
-        .hero-label {
-
-            font-size: 13px;
-
-            opacity: .82;
-
-            margin-bottom: 5px;
-        }
-
-        .hero-info h2 {
-
-            font-size: 25px;
-
-            font-weight: 800;
-
-            margin-bottom: 7px;
-        }
-
-        .hero-info p {
-
-            font-size: 13px;
-
-            line-height: 1.8;
-
-            opacity: .86;
-
-            max-width: 260px;
-        }
-
-        .hero-progress {
-
-            width: 125px;
-            height: 125px;
-
-            flex-shrink: 0;
-
-            border-radius: 50%;
-
-            background:
-                conic-gradient(
-                    #FFFFFF var(--progress),
-                    rgba(255,255,255,.18) 0
-                );
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            position: relative;
-        }
-
-        .hero-progress::before {
-
-            content: "";
-
-            position: absolute;
-
-            width: 99px;
-            height: 99px;
-
-            border-radius: 50%;
-
-            background: #2563EB;
-        }
-
-        .progress-number {
-
-            position: relative;
-
-            z-index: 2;
-
-            text-align: center;
-        }
-
-        .progress-number strong {
-
-            display: block;
-
-            font-size: 27px;
-
-            line-height: 1;
-        }
-
-        .progress-number span {
-
-            font-size: 11px;
-
-            opacity: .8;
-        }
-
-        /* =========================
-           SECTION HEADER
-        ========================= */
-
-        .section {
-
-            margin-bottom: 23px;
-        }
-
-        .section-header {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            margin-bottom: 12px;
-        }
-
-        .section-title {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 9px;
-        }
-
-        .section-title .title-icon {
-
-            width: 34px;
-            height: 34px;
-
-            border-radius: 11px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 14px;
-        }
-
-        .section-title h3 {
-
-            font-size: 17px;
-
-            font-weight: 800;
-        }
-
-        .section-subtitle {
-
-            color: var(--muted);
-
-            font-size: 12px;
-
-            margin-top: 1px;
-        }
-
-        .section-action {
-
-            border: none;
-
-            background: transparent;
-
-            color: var(--blue);
-
-            font-size: 12px;
-
-            font-weight: 700;
-        }
-
-        /* =========================
-           TODAY STATS
-        ========================= */
-
-        .stats-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 10px;
-        }
-
-        .stat-card {
-
-            background: white;
-
-            border: 1px solid var(--border);
-
-            border-radius: 18px;
-
-            padding: 14px 9px;
-
-            text-align: center;
-
-            box-shadow: 0 5px 18px
-                rgba(20,40,80,.035);
-
-            transition: .2s;
-        }
-
-        .stat-card:hover {
-
-            transform: translateY(-2px);
-
-            box-shadow: var(--shadow);
-        }
-
-        .stat-icon {
-
-            width: 38px;
-            height: 38px;
-
-            margin: 0 auto 8px;
-
-            border-radius: 12px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 15px;
-        }
-
-        .stat-water .stat-icon {
-
-            background: var(--cyan-light);
-            color: var(--cyan);
-        }
-
-        .stat-walk .stat-icon {
-
-            background: var(--green-light);
-            color: var(--green);
-        }
-
-        .stat-sleep .stat-icon {
-
-            background: var(--purple-light);
-            color: var(--purple);
-        }
-
-        .stat-steps .stat-icon {
-
-            background: var(--blue-light);
-            color: var(--blue);
-        }
-
-        .stat-value {
-
-            font-size: 16px;
-
-            font-weight: 800;
-
-            color: #1F2937;
-        }
-
-        .stat-name {
-
-            font-size: 10px;
-
-            color: var(--muted);
-
-            margin-top: 2px;
-        }
-
-        .stat-progress {
-
-            height: 4px;
-
-            background: #EDF1F6;
-
-            border-radius: 10px;
-
-            margin-top: 9px;
-
-            overflow: hidden;
-        }
-
-        .stat-progress span {
-
-            display: block;
-
-            height: 100%;
-
-            border-radius: inherit;
-
-            width: 0%;
-
-            transition: width .5s ease;
-        }
-
-        .stat-water .stat-progress span {
-            background: var(--cyan);
-        }
-
-        .stat-walk .stat-progress span {
-            background: var(--green);
-        }
-
-        .stat-sleep .stat-progress span {
-            background: var(--purple);
-        }
-
-        .stat-steps .stat-progress span {
-            background: var(--blue);
-        }
-
-        /* =========================
-           GOALS
-        ========================= */
-
-        .goals-list {
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 10px;
-        }
-
-        .goal-card {
-
-            background: white;
-
-            border: 1px solid var(--border);
-
-            border-radius: 18px;
-
-            padding: 14px;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 12px;
-
-            box-shadow:
-                0 5px 18px
-                rgba(20,40,80,.035);
-        }
-
-        .goal-icon {
-
-            width: 44px;
-            height: 44px;
-
-            border-radius: 14px;
-
-            flex-shrink: 0;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 17px;
-        }
-
-        .goal-main {
-
-            flex: 1;
-
-            min-width: 0;
-        }
-
-        .goal-top {
-
-            display: flex;
-
-            justify-content: space-between;
-
-            gap: 10px;
-
-            margin-bottom: 7px;
-        }
-
-        .goal-name {
-
-            font-size: 14px;
-
-            font-weight: 700;
-        }
-
-        .goal-percent {
-
-            font-size: 12px;
-
-            font-weight: 800;
-
-            color: var(--blue);
-        }
-
-        .goal-bar {
-
-            height: 6px;
-
-            background: #EEF2F7;
-
-            border-radius: 10px;
-
-            overflow: hidden;
-        }
-
-        .goal-bar span {
-
-            display: block;
-
-            height: 100%;
-
-            border-radius: inherit;
-
-            transition: width .5s ease;
-        }
-
-        .goal-bottom {
-
-            display: flex;
-
-            justify-content: space-between;
-
-            margin-top: 6px;
-
-            font-size: 11px;
-
-            color: var(--muted);
-        }
-
-        .goal-done {
-
-            color: var(--green);
-
-            font-weight: 700;
-        }
-
-        .empty-goals {
-
-            background: white;
-
-            border: 1px dashed #D6DEE9;
-
-            border-radius: 18px;
-
-            padding: 25px 18px;
-
-            text-align: center;
-
-            color: var(--muted);
-        }
-
-        .empty-goals i {
-
-            font-size: 28px;
-
-            color: #B7C5D8;
-
-            margin-bottom: 9px;
-        }
-
-        .empty-goals h4 {
-
-            color: #344054;
-
-            font-size: 14px;
-
-            margin-bottom: 4px;
-        }
-
-        .empty-goals p {
-
-            font-size: 12px;
-
-            line-height: 1.7;
-        }
-
-        /* =========================
-           MEASUREMENTS
-        ========================= */
-
-        .measurements {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 10px;
-        }
-
-        .measurement-card {
-
-            background: white;
-
-            border: 1px solid var(--border);
-
-            border-radius: 17px;
-
-            padding: 14px;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 11px;
-        }
-
-        .measurement-icon {
-
-            width: 40px;
-            height: 40px;
-
-            border-radius: 12px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            flex-shrink: 0;
-        }
-
-        .measurement-info {
-
-            min-width: 0;
-        }
-
-        .measurement-name {
-
-            color: var(--muted);
-
-            font-size: 11px;
-
-            margin-bottom: 2px;
-        }
-
-        .measurement-value {
-
-            font-size: 15px;
-
-            font-weight: 800;
-        }
-
-        .no-measurements {
-
-            grid-column: 1 / -1;
-
-            background: white;
-
-            border: 1px dashed #D6DEE9;
-
-            border-radius: 18px;
-
-            padding: 22px;
-
-            text-align: center;
-
-            color: var(--muted);
-
-            font-size: 12px;
-        }
-
-        /* =========================
-           QUICK ACTION
-        ========================= */
-
-        .record-card {
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #EFF6FF,
-                    #F8FBFF
-                );
-
-            border:
-                1px solid #D9E8FF;
-
-            border-radius: 21px;
-
-            padding: 17px;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 13px;
-        }
-
-        .record-icon {
-
-            width: 47px;
-            height: 47px;
-
-            border-radius: 15px;
-
-            background: var(--blue);
-
-            color: white;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            font-size: 18px;
-
-            box-shadow:
-                0 8px 18px
-                rgba(37,99,235,.2);
-        }
-
-        .record-text {
-
-            flex: 1;
-        }
-
-        .record-text h4 {
-
-            font-size: 14px;
-
-            margin-bottom: 3px;
-        }
-
-        .record-text p {
-
-            color: var(--muted);
-
-            font-size: 11px;
-
-            line-height: 1.6;
-        }
-
-        .record-button {
-
-            border: none;
-
-            background: var(--blue);
-
-            color: white;
-
-            border-radius: 12px;
-
-            padding: 10px 13px;
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-            white-space: nowrap;
-        }
-
-        /* =========================
-           PRIVACY
-        ========================= */
-
-        .privacy {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 9px;
-
-            color: #8290A5;
-
-            font-size: 10px;
-
-            line-height: 1.6;
-
-            padding: 5px 3px 15px;
-        }
-
-        .privacy i {
-
-            color: var(--green);
-
-            font-size: 14px;
-        }
-
-        /* =========================
-           BOTTOM NAV
-        ========================= */
-
-        .bottom-nav {
-
-            position: fixed;
-
-            left: 0;
-            right: 0;
-            bottom: 0;
-
-            height: var(--nav-height);
-
-            background:
-                rgba(255,255,255,.96);
-
-            backdrop-filter: blur(18px);
-
-            -webkit-backdrop-filter: blur(18px);
-
-            border-top:
-                1px solid rgba(
-                    220,
-                    227,
-                    237,
-                    .9
-                );
-
-            z-index: 1000;
-
-            display: flex;
-
-            justify-content: center;
-        }
-
-        .nav-inner {
-
-            width: 100%;
-
-            max-width: 650px;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(5, 1fr);
-
-            padding:
-                7px
-                8px
-                env(safe-area-inset-bottom);
-        }
-
-        .nav-item {
-
-            border: none;
-
-            background: transparent;
-
-            color: #8491A5;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 4px;
-
-            font-size: 10px;
-
-            position: relative;
-        }
-
-        .nav-item i {
-
-            font-size: 18px;
-
-            transition: .2s;
-        }
-
-        .nav-item.active {
-
-            color: var(--blue);
-
-            font-weight: 700;
-        }
-
-        .nav-item.active i {
-
-            transform: translateY(-1px);
-        }
-
-        .nav-center {
-
-            position: relative;
-
-            top: -17px;
-        }
-
-        .nav-center .nav-circle {
-
-            width: 52px;
-            height: 52px;
-
-            border-radius: 18px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #2563EB,
-                    #3B82F6
-                );
-
-            color: white;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            font-size: 20px;
-
-            box-shadow:
-                0 8px 20px
-                rgba(37,99,235,.25);
-
-            border: 5px solid #F5F8FC;
-        }
-
-        .nav-center span {
-
-            margin-top: 2px;
-        }
-
-        /* =========================
-           MODAL
-        ========================= */
-
-        .modal {
-
-            position: fixed;
-
-            inset: 0;
-
-            background:
-                rgba(15, 23, 42, .48);
-
-            z-index: 3000;
-
-            display: none;
-
-            align-items: flex-end;
-
-            justify-content: center;
-
-            padding: 0;
-        }
-
-        .modal.show {
-
-            display: flex;
-        }
-
-        .modal-box {
-
-            width: 100%;
-
-            max-width: 600px;
-
-            background: white;
-
-            border-radius:
-                27px
-                27px
-                0
-                0;
-
-            padding: 22px;
-
-            animation:
-                slideUp .25s ease;
-        }
-
-        @keyframes slideUp {
-
-            from {
-                transform: translateY(100%);
-            }
-
-            to {
-                transform: translateY(0);
-            }
-        }
-
-        .modal-head {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            margin-bottom: 18px;
-        }
-
-        .modal-head h3 {
-
-            font-size: 18px;
-        }
-
-        .close-modal {
-
-            width: 37px;
-            height: 37px;
-
-            border: none;
-
-            background: #F1F5F9;
-
-            color: #64748B;
-
-            border-radius: 12px;
-        }
-
-        .input-group {
-
-            margin-bottom: 14px;
-        }
-
-        .input-group label {
-
-            display: block;
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-            margin-bottom: 7px;
-
-            color: #475569;
-        }
-
-        .input-group input {
-
-            width: 100%;
-
-            height: 48px;
-
-            border:
-                1px solid #DCE3EC;
-
-            border-radius: 14px;
-
-            padding: 0 14px;
-
-            outline: none;
-
-            font-size: 15px;
-
-            color: var(--text);
-
-            background: #FAFCFF;
-        }
-
-        .input-group input:focus {
-
-            border-color: var(--blue);
-
-            box-shadow:
-                0 0 0 3px
-                rgba(37,99,235,.09);
-        }
-
-        .modal-save {
-
-            width: 100%;
-
-            height: 50px;
-
-            border: none;
-
-            border-radius: 15px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #2563EB,
-                    #3B82F6
-                );
-
-            color: white;
-
-            font-size: 14px;
-
-            font-weight: 800;
-
-            margin-top: 5px;
-        }
-
-        /* =========================
-           TOAST
-        ========================= */
-
-        #toast {
-
-            position: fixed;
-
-            left: 50%;
-
-            bottom: 92px;
-
-            transform:
-                translateX(-50%)
-                translateY(20px);
-
-            background:
-                #172033;
-
-            color: white;
-
-            padding:
-                11px
-                16px;
-
-            border-radius: 13px;
-
-            font-size: 12px;
-
-            z-index: 5000;
-
-            opacity: 0;
-
-            pointer-events: none;
-
-            transition: .25s;
-
-            max-width: 85%;
-
-            text-align: center;
-        }
-
-        #toast.show {
-
-            opacity: 1;
-
-            transform:
-                translateX(-50%)
-                translateY(0);
-        }
-
-        /* =========================
-           DESKTOP
-        ========================= */
-
-        @media (min-width: 700px) {
-
-            body {
-                padding-bottom: 30px;
-            }
-
-            .app {
-
-                padding-top: 28px;
-
-                max-width: 950px;
-            }
-
-            .bottom-nav {
-
-                position: sticky;
-
-                top: auto;
-
-                bottom: auto;
-
-                width: fit-content;
-
-                margin: 0 auto 20px;
-
-                border:
-                    1px solid var(--border);
-
-                border-radius: 22px;
-
-                height: 68px;
-
-                box-shadow: var(--shadow);
-            }
-
-            .nav-inner {
-
-                width: 620px;
-            }
-
-            .nav-center {
-
-                top: -9px;
-            }
-
-            .nav-center .nav-circle {
-
-                border-color: white;
-            }
-
-            .modal {
-
-                align-items: center;
-
-                padding: 20px;
-            }
-
-            .modal-box {
-
-                border-radius: 25px;
-
-                max-width: 480px;
-            }
-        }
-
-        /* =========================
-           SMALL MOBILE
-        ========================= */
-
-        @media (max-width: 390px) {
-
-            .app {
-
-                padding-left: 13px;
-                padding-right: 13px;
-            }
-
-            .stats-grid {
-
-                gap: 7px;
-            }
-
-            .stat-card {
-
-                padding:
-                    12px
-                    5px;
-            }
-
-            .stat-icon {
-
-                width: 34px;
-                height: 34px;
-            }
-
-            .hero {
-
-                padding: 19px;
-            }
-
-            .hero-progress {
-
-                width: 108px;
-                height: 108px;
-            }
-
-            .hero-progress::before {
-
-                width: 86px;
-                height: 86px;
-            }
-        }
-
-    </style>
+<meta name="theme-color" content="#2563EB">
+
+<title>صحتي | الرئيسية</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
+      rel="stylesheet">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+:root{
+    --primary:#2563EB;
+    --primary-dark:#1D4ED8;
+    --primary-light:#EFF6FF;
+
+    --green:#16A34A;
+    --green-light:#F0FDF4;
+
+    --orange:#F97316;
+    --orange-light:#FFF7ED;
+
+    --purple:#7C3AED;
+    --purple-light:#F5F3FF;
+
+    --pink:#DB2777;
+    --pink-light:#FDF2F8;
+
+    --text:#172033;
+    --muted:#718096;
+
+    --bg:#F5F8FC;
+    --card:#FFFFFF;
+    --border:#E7ECF3;
+
+    --danger:#EF4444;
+
+    --shadow:0 8px 25px rgba(30,64,175,.07);
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:'Tajawal',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    padding-bottom:90px;
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+}
+
+/* =========================
+   TOP
+========================= */
+
+.top{
+    padding:22px 18px 16px;
+    background:
+        linear-gradient(135deg,#2563EB,#3B82F6);
+    color:white;
+    border-radius:0 0 28px 28px;
+}
+
+.top-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.welcome h1{
+    font-size:23px;
+    font-weight:800;
+    margin-bottom:4px;
+}
+
+.welcome p{
+    font-size:13px;
+    opacity:.88;
+}
+
+.profile-btn{
+    width:46px;
+    height:46px;
+    border-radius:15px;
+    background:rgba(255,255,255,.18);
+    color:white;
+    font-size:19px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+    width:100%;
+    max-width:650px;
+    margin:auto;
+    padding:0 15px;
+}
+
+.section{
+    margin-top:20px;
+}
+
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+.section-title{
+    font-size:18px;
+    font-weight:800;
+}
+
+.section-link{
+    color:var(--primary);
+    font-size:13px;
+    font-weight:700;
+    background:none;
+}
+
+/* =========================
+   CALENDAR MINI
+========================= */
+
+.calendar-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:16px;
+    box-shadow:var(--shadow);
+}
+
+.calendar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:14px;
+}
+
+.month-title{
+    font-size:17px;
+    font-weight:800;
+}
+
+.month-arrows{
+    display:flex;
+    gap:6px;
+}
+
+.month-arrows button{
+    width:34px;
+    height:34px;
+    border-radius:11px;
+    background:var(--primary-light);
+    color:var(--primary);
+}
+
+.days-row{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:5px;
+}
+
+.day{
+    min-width:0;
+    text-align:center;
+}
+
+.day-name{
+    color:var(--muted);
+    font-size:10px;
+    margin-bottom:6px;
+}
+
+.day-number{
+    width:36px;
+    height:42px;
+    margin:auto;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.day-number:hover{
+    background:var(--primary-light);
+}
+
+.day-number.today{
+    background:var(--primary);
+    color:white;
+    box-shadow:0 5px 12px rgba(37,99,235,.25);
+}
+
+.day-number.selected{
+    outline:2px solid var(--primary);
+    outline-offset:2px;
+}
+
+.calendar-full-btn{
+    width:100%;
+    margin-top:15px;
+    padding:12px;
+    border-radius:13px;
+    background:var(--primary-light);
+    color:var(--primary);
+    font-weight:700;
+}
+
+/* =========================
+   DAY DETAILS
+========================= */
+
+.day-details{
+    margin-top:12px;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:15px;
+    display:none;
+}
+
+.day-details.show{
+    display:block;
+}
+
+.day-details-title{
+    font-size:16px;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.detail-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:9px;
+}
+
+.detail-item{
+    background:var(--bg);
+    border-radius:13px;
+    padding:11px;
+}
+
+.detail-item span{
+    display:block;
+    color:var(--muted);
+    font-size:11px;
+    margin-bottom:4px;
+}
+
+.detail-item strong{
+    font-size:14px;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-card{
+    background:white;
+    border-radius:24px;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    padding:20px 16px;
+    text-align:center;
+}
+
+.progress-ring{
+    width:165px;
+    height:165px;
+    margin:5px auto 14px;
+    position:relative;
+}
+
+.progress-ring svg{
+    width:100%;
+    height:100%;
+    transform:rotate(-90deg);
+}
+
+.progress-ring circle{
+    fill:none;
+    stroke-width:12;
+}
+
+.progress-bg{
+    stroke:#EAF0F8;
+}
+
+.progress-value{
+    stroke:var(--primary);
+    stroke-linecap:round;
+    stroke-dasharray:439.8;
+    stroke-dashoffset:96.7;
+    transition:1s;
+}
+
+.progress-center{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.progress-number{
+    font-size:34px;
+    font-weight:800;
+    color:var(--primary);
+}
+
+.progress-label{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.progress-summary{
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.mini-progress{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.progress-item{
+    background:var(--bg);
+    border-radius:14px;
+    padding:11px;
+    text-align:right;
+}
+
+.progress-item-top{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    margin-bottom:7px;
+}
+
+.bar{
+    height:6px;
+    background:#E7EDF5;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.bar span{
+    display:block;
+    height:100%;
+    border-radius:10px;
+    background:var(--primary);
+}
+
+.bar.green span{
+    background:var(--green);
+}
+
+.bar.orange span{
+    background:var(--orange);
+}
+
+.bar.purple span{
+    background:var(--purple);
+}
+
+/* =========================
+   CHALLENGES
+========================= */
+
+.challenge-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.challenge{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:13px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.challenge-icon{
+    width:44px;
+    height:44px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+.water{
+    background:#EFF6FF;
+    color:#2563EB;
+}
+
+.walk{
+    background:#F0FDF4;
+    color:#16A34A;
+}
+
+.sleep{
+    background:#F5F3FF;
+    color:#7C3AED;
+}
+
+.challenge-info{
+    flex:1;
+}
+
+.challenge-title{
+    font-size:14px;
+    font-weight:800;
+    margin-bottom:7px;
+}
+
+.challenge-meta{
+    display:flex;
+    justify-content:space-between;
+    font-size:11px;
+    color:var(--muted);
+    margin-bottom:6px;
+}
+
+.challenge-progress{
+    height:6px;
+    background:#EDF1F6;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.challenge-progress span{
+    display:block;
+    height:100%;
+    border-radius:10px;
+}
+
+.water-progress{
+    width:80%;
+    background:#2563EB;
+}
+
+.walk-progress{
+    width:60%;
+    background:#16A34A;
+}
+
+.sleep-progress{
+    width:100%;
+    background:#7C3AED;
+}
+
+/* =========================
+   SUGGESTION
+========================= */
+
+.suggestion{
+    background:linear-gradient(135deg,#EFF6FF,#F5F3FF);
+    border:1px solid #DCE7FA;
+    border-radius:21px;
+    padding:17px;
+    display:flex;
+    gap:13px;
+    align-items:flex-start;
+}
+
+.suggestion-icon{
+    width:44px;
+    height:44px;
+    border-radius:14px;
+    background:white;
+    color:var(--orange);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-shrink:0;
+}
+
+.suggestion h3{
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+.suggestion p{
+    font-size:12px;
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* =========================
+   QUICK CARDS
+========================= */
+
+.quick-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:11px;
+}
+
+.quick-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:15px;
+    text-align:right;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.quick-card:active{
+    transform:scale(.97);
+}
+
+.quick-icon{
+    width:40px;
+    height:40px;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:10px;
+    font-size:17px;
+}
+
+.health{
+    background:#F0FDF4;
+    color:#16A34A;
+}
+
+.period{
+    background:#FDF2F8;
+    color:#DB2777;
+}
+
+.pregnancy{
+    background:#FFF7ED;
+    color:#F97316;
+}
+
+.stats{
+    background:#EFF6FF;
+    color:#2563EB;
+}
+
+.quick-card h3{
+    font-size:14px;
+    margin-bottom:3px;
+}
+
+.quick-card p{
+    font-size:11px;
+    color:var(--muted);
+}
+
+/* =========================
+   BOTTOM NAV
+========================= */
+
+.bottom-nav{
+    position:fixed;
+    z-index:100;
+    bottom:0;
+    right:0;
+    left:0;
+    height:76px;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(15px);
+    border-top:1px solid var(--border);
+    display:flex;
+    justify-content:center;
+}
+
+.nav-inner{
+    width:100%;
+    max-width:650px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+}
+
+.nav-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    color:#8A96A8;
+    background:none;
+    font-size:10px;
+    font-weight:700;
+}
+
+.nav-item i{
+    font-size:18px;
+}
+
+.nav-item.active{
+    color:var(--primary);
+}
+
+.nav-item.active i{
+    transform:translateY(-1px);
+}
+
+/* =========================
+   FULL CALENDAR MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    background:rgba(15,23,42,.45);
+    backdrop-filter:blur(5px);
+    display:none;
+    align-items:flex-end;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:650px;
+    margin:auto;
+    background:white;
+    border-radius:27px 27px 0 0;
+    max-height:90vh;
+    overflow:auto;
+    padding:18px;
+    animation:slideUp .25s ease;
+}
+
+@keyframes slideUp{
+    from{
+        transform:translateY(100%);
+    }
+    to{
+        transform:translateY(0);
+    }
+}
+
+.modal-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:18px;
+}
+
+.modal-title{
+    font-size:19px;
+    font-weight:800;
+}
+
+.close{
+    width:38px;
+    height:38px;
+    border-radius:12px;
+    background:var(--bg);
+    color:var(--text);
+}
+
+.full-calendar{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:7px;
+}
+
+.full-week{
+    text-align:center;
+    color:var(--muted);
+    font-size:10px;
+    font-weight:700;
+    padding-bottom:4px;
+}
+
+.full-day{
+    height:43px;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.full-day:hover{
+    background:var(--primary-light);
+}
+
+.full-day.today{
+    background:var(--primary);
+    color:white;
+}
+
+.full-day.empty{
+    cursor:default;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:370px){
+
+    .day-number{
+        width:31px;
+        height:39px;
+    }
+
+    .progress-ring{
+        width:145px;
+        height:145px;
+    }
+
+    .progress-number{
+        font-size:30px;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
-    <!-- =========================
-         LOADING
-    ========================= -->
+<!-- =========================
+     HEADER
+========================= -->
 
-    <div id="loadingScreen">
+<header class="top">
 
-        <div class="loading-logo">
-            <i class="fa-solid fa-heart-pulse"></i>
+    <div class="top-row">
+
+        <div class="welcome">
+
+            <h1>
+                صباح الخير، <span id="userName">مستخدم</span> 👋
+            </h1>
+
+            <p id="todayText">
+                الثلاثاء، 15 سبتمبر 2026
+            </p>
+
         </div>
 
-        <div class="loader"></div>
+        <button class="profile-btn"
+                onclick="openPage('profile.html')">
+
+            <i class="fa-solid fa-user"></i>
+
+        </button>
 
     </div>
 
+</header>
+
+
+<main class="container">
+
 
     <!-- =========================
-         APP
+         MINI CALENDAR
     ========================= -->
 
-    <main class="app">
+    <section class="section">
 
-        <!-- HEADER -->
+        <div class="section-head">
 
-        <header class="top-header">
+            <h2 class="section-title">
+                📅 هذا الشهر
+            </h2>
 
-            <div class="greeting">
+            <button class="section-link"
+                    onclick="openCalendar()">
 
-                <div class="avatar">
-                    <i class="fa-solid fa-user"></i>
-                </div>
+                الرزنامة كاملة
 
-                <div class="greeting-text">
-
-                    <small id="greetingText">
-                        مرحباً بك
-                    </small>
-
-                    <h1 id="userName">
-                        مستخدم Si7a
-                    </h1>
-
-                </div>
-
-            </div>
-
-            <div class="header-actions">
-
-                <button
-                    class="icon-button"
-                    id="refreshBtn"
-                    aria-label="تحديث"
-                >
-                    <i class="fa-solid fa-rotate"></i>
-                </button>
-
-                <button
-                    class="icon-button"
-                    id="logoutBtn"
-                    aria-label="تسجيل الخروج"
-                >
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                </button>
-
-            </div>
-
-        </header>
-
-
-        <!-- DATE -->
-
-        <div class="date-line">
-
-            <i class="fa-regular fa-calendar"></i>
-
-            <span id="todayDate">
-                اليوم
-            </span>
+            </button>
 
         </div>
 
 
-        <!-- =========================
-             TODAY HERO
-        ========================= -->
+        <div class="calendar-card">
 
-        <section class="hero">
+            <div class="calendar-header">
 
-            <div class="hero-content">
+                <button class="month-arrows"
+                        style="background:none;color:var(--primary);font-size:0"
+                        onclick="changeMonth(-1)">
 
-                <div class="hero-info">
+                    <i class="fa-solid fa-chevron-right"
+                       style="font-size:14px"></i>
 
-                    <div class="hero-label">
-                        ملخص يومك
+                </button>
+
+
+                <div class="month-title"
+                     id="monthTitle">
+
+                    سبتمبر 2026
+
+                </div>
+
+
+                <button class="month-arrows"
+                        style="background:none;color:var(--primary);font-size:0"
+                        onclick="changeMonth(1)">
+
+                    <i class="fa-solid fa-chevron-left"
+                       style="font-size:14px"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="days-row"
+                 id="miniCalendar">
+
+            </div>
+
+
+            <button class="calendar-full-btn"
+                    onclick="openCalendar()">
+
+                <i class="fa-regular fa-calendar"></i>
+
+                عرض الرزنامة كاملة
+
+            </button>
+
+        </div>
+
+
+        <div class="day-details"
+             id="dayDetails">
+
+            <div class="day-details-title"
+                 id="selectedDayTitle">
+
+                معلومات اليوم
+
+            </div>
+
+
+            <div class="detail-grid">
+
+                <div class="detail-item">
+
+                    <span>التحديات المكتملة</span>
+
+                    <strong id="dayChallenges">
+                        3 / 4
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>نسبة الإنجاز</span>
+
+                    <strong id="dayProgress">
+                        75%
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>الماء</span>
+
+                    <strong id="dayWater">
+                        6 / 8 أكواب
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>المشي</span>
+
+                    <strong id="dayWalk">
+                        4,820 خطوة
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN PROGRESS
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-head">
+
+            <h2 class="section-title">
+                🎯 ملخص اليوم
+            </h2>
+
+        </div>
+
+
+        <div class="progress-card">
+
+            <div class="progress-ring">
+
+                <svg viewBox="0 0 160 160">
+
+                    <circle
+                        class="progress-bg"
+                        cx="80"
+                        cy="80"
+                        r="70">
+                    </circle>
+
+                    <circle
+                        class="progress-value"
+                        cx="80"
+                        cy="80"
+                        r="70">
+                    </circle>
+
+                </svg>
+
+
+                <div class="progress-center">
+
+                    <div class="progress-number"
+                         id="mainProgress">
+
+                        78%
+
                     </div>
 
-                    <h2>
+                    <div class="progress-label">
                         إنجاز اليوم
-                    </h2>
-
-                    <p id="heroMessage">
-                        ابدأ بتسجيل عاداتك الصحية اليوم.
-                    </p>
-
-                </div>
-
-                <div
-                    class="hero-progress"
-                    id="heroProgress"
-                    style="--progress: 0deg;"
-                >
-
-                    <div class="progress-number">
-
-                        <strong id="completionPercent">
-                            0%
-                        </strong>
-
-                        <span>
-                            مكتمل
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             TODAY QUICK STATS
-        ========================= -->
-
-        <section class="section">
-
-            <div class="section-header">
-
-                <div class="section-title">
-
-                    <div
-                        class="title-icon"
-                        style="
-                            background:#EFF6FF;
-                            color:#2563EB;
-                        "
-                    >
-                        <i class="fa-solid fa-chart-simple"></i>
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            اليوم
-                        </h3>
-
-                        <div class="section-subtitle">
-                            نظرة سريعة على عاداتك
-                        </div>
-
                     </div>
 
                 </div>
@@ -1740,216 +999,214 @@
             </div>
 
 
-            <div class="stats-grid">
+            <div class="progress-summary">
 
-                <!-- WATER -->
+                أكملت <strong>7</strong> من
+                <strong>9</strong> تحديات اليوم 🎉
 
-                <div
-                    class="stat-card stat-water"
-                    data-quick="water"
-                >
+            </div>
 
-                    <div class="stat-icon">
-                        <i class="fa-solid fa-droplet"></i>
+
+            <div class="mini-progress">
+
+                <div class="progress-item">
+
+                    <div class="progress-item-top">
+
+                        <span>💧 الماء</span>
+
+                        <strong>75%</strong>
+
                     </div>
 
-                    <div
-                        class="stat-value"
-                        id="waterValue"
-                    >
-                        0 كوب
-                    </div>
+                    <div class="bar">
 
-                    <div class="stat-name">
-                        الماء
-                    </div>
+                        <span style="width:75%"></span>
 
-                    <div class="stat-progress">
-                        <span id="waterBar"></span>
                     </div>
 
                 </div>
 
 
-                <!-- WALKING -->
+                <div class="progress-item">
 
-                <div
-                    class="stat-card stat-walk"
-                    data-quick="walking"
-                >
+                    <div class="progress-item-top">
 
-                    <div class="stat-icon">
-                        <i class="fa-solid fa-person-walking"></i>
+                        <span>🚶 المشي</span>
+
+                        <strong>80%</strong>
+
                     </div>
 
-                    <div
-                        class="stat-value"
-                        id="walkingValue"
-                    >
-                        0 د
+                    <div class="bar green">
+
+                        <span style="width:80%"></span>
+
                     </div>
 
-                    <div class="stat-name">
+                </div>
+
+
+                <div class="progress-item">
+
+                    <div class="progress-item-top">
+
+                        <span>😴 النوم</span>
+
+                        <strong>90%</strong>
+
+                    </div>
+
+                    <div class="bar purple">
+
+                        <span style="width:90%"></span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="progress-item">
+
+                    <div class="progress-item-top">
+
+                        <span>🏋️ الرياضة</span>
+
+                        <strong>60%</strong>
+
+                    </div>
+
+                    <div class="bar orange">
+
+                        <span style="width:60%"></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CHALLENGES
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-head">
+
+            <h2 class="section-title">
+                🎯 تحدياتي اليوم
+            </h2>
+
+            <button class="section-link"
+                    onclick="openPage('challenges.html')">
+
+                عرض الكل
+
+            </button>
+
+        </div>
+
+
+        <div class="challenge-list">
+
+
+            <div class="challenge">
+
+                <div class="challenge-icon water">
+
+                    <i class="fa-solid fa-droplet"></i>
+
+                </div>
+
+                <div class="challenge-info">
+
+                    <div class="challenge-title">
+                        شرب الماء
+                    </div>
+
+                    <div class="challenge-meta">
+
+                        <span>6 من 8 أكواب</span>
+
+                        <strong>75%</strong>
+
+                    </div>
+
+                    <div class="challenge-progress">
+
+                        <span class="water-progress"></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="challenge">
+
+                <div class="challenge-icon walk">
+
+                    <i class="fa-solid fa-person-walking"></i>
+
+                </div>
+
+                <div class="challenge-info">
+
+                    <div class="challenge-title">
                         المشي
                     </div>
 
-                    <div class="stat-progress">
-                        <span id="walkingBar"></span>
+                    <div class="challenge-meta">
+
+                        <span>4,820 / 6,000 خطوة</span>
+
+                        <strong>80%</strong>
+
+                    </div>
+
+                    <div class="challenge-progress">
+
+                        <span class="walk-progress"></span>
+
                     </div>
 
                 </div>
 
+            </div>
 
-                <!-- SLEEP -->
 
-                <div
-                    class="stat-card stat-sleep"
-                    data-quick="sleep"
-                >
+            <div class="challenge">
 
-                    <div class="stat-icon">
-                        <i class="fa-solid fa-moon"></i>
-                    </div>
+                <div class="challenge-icon sleep">
 
-                    <div
-                        class="stat-value"
-                        id="sleepValue"
-                    >
-                        0 س
-                    </div>
+                    <i class="fa-solid fa-moon"></i>
 
-                    <div class="stat-name">
+                </div>
+
+                <div class="challenge-info">
+
+                    <div class="challenge-title">
                         النوم
                     </div>
 
-                    <div class="stat-progress">
-                        <span id="sleepBar"></span>
-                    </div>
+                    <div class="challenge-meta">
 
-                </div>
+                        <span>7س 12د / 8 ساعات</span>
 
-
-                <!-- STEPS -->
-
-                <div
-                    class="stat-card stat-steps"
-                    data-quick="steps"
-                >
-
-                    <div class="stat-icon">
-                        <i class="fa-solid fa-shoe-prints"></i>
-                    </div>
-
-                    <div
-                        class="stat-value"
-                        id="stepsValue"
-                    >
-                        0
-                    </div>
-
-                    <div class="stat-name">
-                        الخطوات
-                    </div>
-
-                    <div class="stat-progress">
-                        <span id="stepsBar"></span>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             GOALS
-        ========================= -->
-
-        <section class="section">
-
-            <div class="section-header">
-
-                <div class="section-title">
-
-                    <div
-                        class="title-icon"
-                        style="
-                            background:#F5F3FF;
-                            color:#7C3AED;
-                        "
-                    >
-                        <i class="fa-solid fa-bullseye"></i>
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            تحدياتي اليوم
-                        </h3>
-
-                        <div
-                            class="section-subtitle"
-                            id="goalsSubtitle"
-                        >
-                            أهدافك التي اخترتها بنفسك
-                        </div>
+                        <strong>90%</strong>
 
                     </div>
 
-                </div>
+                    <div class="challenge-progress">
 
-                <button
-                    class="section-action"
-                    id="goalsButton"
-                >
-                    إدارة الأهداف
-                </button>
-
-            </div>
-
-
-            <div
-                class="goals-list"
-                id="goalsList"
-            >
-
-                <!-- JS -->
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             MEASUREMENTS
-        ========================= -->
-
-        <section class="section">
-
-            <div class="section-header">
-
-                <div class="section-title">
-
-                    <div
-                        class="title-icon"
-                        style="
-                            background:#FFF7ED;
-                            color:#F97316;
-                        "
-                    >
-                        <i class="fa-solid fa-heart-pulse"></i>
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            قياساتي
-                        </h3>
-
-                        <div class="section-subtitle">
-                            آخر القياسات المسجلة اليوم
-                        </div>
+                        <span class="sleep-progress"></span>
 
                     </div>
 
@@ -1957,1997 +1214,711 @@
 
             </div>
 
-
-            <div
-                class="measurements"
-                id="measurements"
-            >
-
-                <!-- JS -->
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             RECORD
-        ========================= -->
-
-        <section class="section">
-
-            <div class="record-card">
-
-                <div class="record-icon">
-
-                    <i class="fa-solid fa-plus"></i>
-
-                </div>
-
-                <div class="record-text">
-
-                    <h4>
-                        سجل بيانات اليوم
-                    </h4>
-
-                    <p>
-                        أضف الماء، المشي، النوم، القياسات
-                        وباقي معلوماتك الصحية.
-                    </p>
-
-                </div>
-
-                <button
-                    class="record-button"
-                    id="recordButton"
-                >
-                    تسجيل
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             PRIVACY
-        ========================= -->
-
-        <div class="privacy">
-
-            <i class="fa-solid fa-shield-halved"></i>
-
-            <span>
-                بياناتك الصحية خاصة بحسابك ويتم ربطها
-                بمعرّف حسابك فقط.
-            </span>
 
         </div>
 
-    </main>
+    </section>
 
 
     <!-- =========================
-         BOTTOM NAV
+         SUGGESTION
     ========================= -->
 
-    <nav class="bottom-nav">
+    <section class="section">
 
-        <div class="nav-inner">
+        <div class="suggestion">
 
-            <button
-                class="nav-item active"
-                data-nav="home"
-            >
+            <div class="suggestion-icon">
 
-                <i class="fa-solid fa-house"></i>
+                <i class="fa-solid fa-lightbulb"></i>
 
-                <span>
-                    الرئيسية
-                </span>
-
-            </button>
+            </div>
 
 
-            <button
-                class="nav-item"
-                data-nav="goals"
-            >
+            <div>
 
-                <i class="fa-solid fa-bullseye"></i>
-
-                <span>
-                    أهدافي
-                </span>
-
-            </button>
-
-
-            <button
-                class="nav-item nav-center"
-                data-nav="record"
-            >
-
-                <div class="nav-circle">
-
-                    <i class="fa-solid fa-plus"></i>
-
-                </div>
-
-                <span>
-                    تسجيل
-                </span>
-
-            </button>
-
-
-            <button
-                class="nav-item"
-                data-nav="progress"
-            >
-
-                <i class="fa-solid fa-chart-line"></i>
-
-                <span>
-                    التقدم
-                </span>
-
-            </button>
-
-
-            <button
-                class="nav-item"
-                data-nav="profile"
-            >
-
-                <i class="fa-solid fa-user"></i>
-
-                <span>
-                    حسابي
-                </span>
-
-            </button>
-
-        </div>
-
-    </nav>
-
-
-    <!-- =========================
-         QUICK MODAL
-    ========================= -->
-
-    <div
-        class="modal"
-        id="quickModal"
-    >
-
-        <div class="modal-box">
-
-            <div class="modal-head">
-
-                <h3 id="modalTitle">
-                    تسجيل البيانات
+                <h3>
+                    ✨ اقتراح لك اليوم
                 </h3>
 
-                <button
-                    class="close-modal"
-                    id="closeModal"
-                >
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+                <p>
+                    بقي لك كوبان من الماء للوصول إلى هدفك اليومي.
+                    حاول توزيع الكمية على بقية اليوم.
+                </p>
 
             </div>
 
-            <div id="modalContent">
+        </div>
 
-                <!-- JS -->
+    </section>
+
+
+    <!-- =========================
+         QUICK ACCESS
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-head">
+
+            <h2 class="section-title">
+                الوصول السريع
+            </h2>
+
+        </div>
+
+
+        <div class="quick-grid">
+
+
+            <div class="quick-card"
+                 onclick="openPage('health.html')">
+
+                <div class="quick-icon health">
+
+                    <i class="fa-solid fa-heart-pulse"></i>
+
+                </div>
+
+                <h3>
+                    صحتي
+                </h3>
+
+                <p>
+                    قياساتك وتحاليلك
+                </p>
 
             </div>
+
+
+            <div class="quick-card"
+                 onclick="openPage('period.html')">
+
+                <div class="quick-icon period">
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+                </div>
+
+                <h3>
+                    دورتي
+                </h3>
+
+                <p>
+                    الدورة والإباضة
+                </p>
+
+            </div>
+
+
+            <div class="quick-card"
+                 onclick="openPage('pregnancy.html')">
+
+                <div class="quick-icon pregnancy">
+
+                    <i class="fa-solid fa-baby"></i>
+
+                </div>
+
+                <h3>
+                    الحمل
+                </h3>
+
+                <p>
+                    حساب عمر الحمل
+                </p>
+
+            </div>
+
+
+            <div class="quick-card"
+                 onclick="openPage('stats.html')">
+
+                <div class="quick-icon stats">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                </div>
+
+                <h3>
+                    إحصائياتي
+                </h3>
+
+                <p>
+                    تطورك وإحصائياتك
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =========================
+     BOTTOM NAV
+========================= -->
+
+<nav class="bottom-nav">
+
+    <div class="nav-inner">
+
+        <button class="nav-item active"
+                onclick="openPage('dashboard.html')">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>الرئيسية</span>
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="openPage('challenges.html')">
+
+            <i class="fa-solid fa-bullseye"></i>
+
+            <span>تحدياتي</span>
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="openPage('health.html')">
+
+            <i class="fa-solid fa-heart-pulse"></i>
+
+            <span>صحتي</span>
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="openPage('period.html')">
+
+            <i class="fa-solid fa-calendar-heart"></i>
+
+            <span>دورتي</span>
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="openPage('profile.html')">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>حسابي</span>
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     FULL CALENDAR MODAL
+========================= -->
+
+<div class="modal"
+     id="calendarModal"
+     onclick="closeCalendarOutside(event)">
+
+    <div class="modal-box">
+
+        <div class="modal-top">
+
+            <h2 class="modal-title">
+                📅 الرزنامة
+            </h2>
+
+            <button class="close"
+                    onclick="closeCalendar()">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <div class="calendar-header">
+
+            <button class="month-arrows"
+                    onclick="changeFullMonth(-1)">
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </button>
+
+
+            <div class="month-title"
+                 id="fullMonthTitle">
+
+                سبتمبر 2026
+
+            </div>
+
+
+            <button class="month-arrows"
+                    onclick="changeFullMonth(1)">
+
+                <i class="fa-solid fa-chevron-left"></i>
+
+            </button>
+
+        </div>
+
+
+        <div class="full-calendar"
+             id="fullCalendar">
 
         </div>
 
     </div>
 
+</div>
 
-    <!-- TOAST -->
 
-    <div id="toast"></div>
+<script>
 
+/* =========================
+   USER
+========================= */
 
-    <!-- =========================
-         FIREBASE
-    ========================= -->
+const userName = localStorage.getItem("userName");
 
-    <script type="module">
+if(userName){
+    document.getElementById("userName").textContent = userName;
+}
 
-        import {
-            auth,
-            db
-        } from "./js/firebase.js";
 
-        import {
-            onAuthStateChanged,
-            signOut
-        } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+/* =========================
+   DATE
+========================= */
 
-        import {
-            doc,
-            getDoc,
-            setDoc,
-            serverTimestamp
-        } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+const today = new Date();
 
+let currentYear = today.getFullYear();
+let currentMonth = today.getMonth();
 
-        /* =========================
-           GLOBAL
-        ========================= */
+let fullYear = currentYear;
+let fullMonth = currentMonth;
 
-        let currentUser = null;
 
-        let userData = {};
+/* =========================
+   ARABIC MONTHS
+========================= */
 
-        let goalsData = {};
+const arabicMonths = [
+    "يناير",
+    "فبراير",
+    "مارس",
+    "أبريل",
+    "مايو",
+    "يونيو",
+    "يوليو",
+    "أغسطس",
+    "سبتمبر",
+    "أكتوبر",
+    "نوفمبر",
+    "ديسمبر"
+];
 
-        let todayData = {};
+const arabicDays = [
+    "الأحد",
+    "الإثنين",
+    "الثلاثاء",
+    "الأربعاء",
+    "الخميس",
+    "الجمعة",
+    "السبت"
+];
 
-        const today = getTodayKey();
+const shortDays = [
+    "أحد",
+    "إثن",
+    "ثلا",
+    "أرب",
+    "خمي",
+    "جمع",
+    "سبت"
+];
 
 
-        /* =========================
-           HELPERS
-        ========================= */
+/* =========================
+   TODAY TEXT
+========================= */
 
-        function getTodayKey() {
+document.getElementById("todayText").textContent =
+    `${arabicDays[today.getDay()]}، ${today.getDate()} ${arabicMonths[today.getMonth()]} ${today.getFullYear()}`;
 
-            const date = new Date();
 
-            const year =
-                date.getFullYear();
+/* =========================
+   MINI CALENDAR
+========================= */
 
-            const month =
-                String(
-                    date.getMonth() + 1
-                ).padStart(2, "0");
+function renderMiniCalendar(){
 
-            const day =
-                String(
-                    date.getDate()
-                ).padStart(2, "0");
+    const container =
+        document.getElementById("miniCalendar");
 
-            return `${year}-${month}-${day}`;
-        }
+    container.innerHTML = "";
 
+    document.getElementById("monthTitle").textContent =
+        `${arabicMonths[currentMonth]} ${currentYear}`;
 
-        function getGreeting() {
 
-            const hour =
-                new Date().getHours();
+    const firstDay =
+        new Date(currentYear,currentMonth,1).getDay();
 
-            if (hour < 12) {
-                return "صباح الخير ☀️";
-            }
+    const daysInMonth =
+        new Date(currentYear,currentMonth + 1,0).getDate();
 
-            if (hour < 18) {
-                return "مساء الخير 🌤️";
-            }
 
-            return "مساء الخير 🌙";
-        }
+    /*
+       نعرض 7 أيام حول اليوم الحالي
+       مع إمكانية اختيار أي يوم.
+    */
 
+    let startDay;
 
-        function formatDate() {
+    if(
+        currentYear === today.getFullYear() &&
+        currentMonth === today.getMonth()
+    ){
 
-            return new Intl.DateTimeFormat(
-                "ar-DZ",
-                {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric"
-                }
-            ).format(new Date());
-        }
+        startDay = Math.max(1,today.getDate() - 3);
 
+    }else{
 
-        function number(value) {
+        startDay = 1;
 
-            const n =
-                Number(value);
+    }
 
-            return Number.isFinite(n)
-                ? n
-                : 0;
-        }
 
+    for(let i = 0; i < 7; i++){
 
-        function percent(
-            current,
-            target
-        ) {
+        let dayNumber = startDay + i;
 
-            current = number(current);
-            target = number(target);
+        if(dayNumber > daysInMonth) break;
 
-            if (target <= 0) {
-                return 0;
-            }
 
-            return Math.min(
-                100,
-                Math.round(
-                    (current / target) * 100
-                )
-            );
-        }
+        const date =
+            new Date(currentYear,currentMonth,dayNumber);
 
 
-        function escapeHTML(value) {
+        const wrapper =
+            document.createElement("div");
 
-            return String(value ?? "")
-                .replace(
-                    /[&<>"']/g,
-                    char => ({
-                        "&": "&amp;",
-                        "<": "&lt;",
-                        ">": "&gt;",
-                        '"': "&quot;",
-                        "'": "&#039;"
-                    }[char])
-                );
-        }
+        wrapper.className = "day";
 
 
-        /* =========================
-           TOAST
-        ========================= */
+        const name =
+            document.createElement("div");
 
-        function showToast(message) {
+        name.className = "day-name";
 
-            const toast =
-                document.getElementById(
-                    "toast"
-                );
+        name.textContent =
+            shortDays[date.getDay()];
 
-            toast.textContent =
-                message;
 
-            toast.classList.add("show");
+        const number =
+            document.createElement("div");
 
-            clearTimeout(
-                window.toastTimer
-            );
+        number.className = "day-number";
 
-            window.toastTimer =
-                setTimeout(() => {
+        number.textContent =
+            dayNumber;
 
-                    toast.classList.remove(
-                        "show"
-                    );
 
-                }, 2600);
-        }
+        if(
+            currentYear === today.getFullYear() &&
+            currentMonth === today.getMonth() &&
+            dayNumber === today.getDate()
+        ){
 
-
-        /* =========================
-           LOADING
-        ========================= */
-
-        function hideLoading() {
-
-            const loading =
-                document.getElementById(
-                    "loadingScreen"
-                );
-
-            loading.style.opacity = "0";
-
-            loading.style.transition =
-                "opacity .25s ease";
-
-            setTimeout(() => {
-
-                loading.style.display =
-                    "none";
-
-            }, 250);
-        }
-
-
-        /* =========================
-           LOAD USER
-        ========================= */
-
-        async function loadUserData() {
-
-            if (!currentUser) {
-                return;
-            }
-
-            const userRef =
-                doc(
-                    db,
-                    "users",
-                    currentUser.uid
-                );
-
-            const goalsRef =
-                doc(
-                    db,
-                    "users",
-                    currentUser.uid,
-                    "goals",
-                    "settings"
-                );
-
-            const dailyRef =
-                doc(
-                    db,
-                    "users",
-                    currentUser.uid,
-                    "dailyTracking",
-                    today
-                );
-
-
-            const [
-                userSnap,
-                goalsSnap,
-                dailySnap
-            ] = await Promise.all([
-
-                getDoc(userRef),
-
-                getDoc(goalsRef),
-
-                getDoc(dailyRef)
-
-            ]);
-
-
-            userData =
-                userSnap.exists()
-                    ? userSnap.data()
-                    : {};
-
-            goalsData =
-                goalsSnap.exists()
-                    ? goalsSnap.data()
-                    : {};
-
-            todayData =
-                dailySnap.exists()
-                    ? dailySnap.data()
-                    : {};
-
-
-            renderUser();
-
-            renderQuickStats();
-
-            renderGoals();
-
-            renderMeasurements();
-
-            calculateOverallProgress();
-        }
-
-
-        /* =========================
-           USER
-        ========================= */
-
-        function renderUser() {
-
-            const name =
-                userData.name ||
-                userData.fullName ||
-                userData.displayName ||
-                currentUser.displayName ||
-                "مستخدم Si7a";
-
-            document.getElementById(
-                "userName"
-            ).textContent =
-                name;
-
-            document.getElementById(
-                "greetingText"
-            ).textContent =
-                getGreeting();
-
-            document.getElementById(
-                "todayDate"
-            ).textContent =
-                formatDate();
-        }
-
-
-        /* =========================
-           QUICK STATS
-        ========================= */
-
-        function renderQuickStats() {
-
-            const water =
-                number(
-                    todayData.water
-                );
-
-            const walking =
-                number(
-                    todayData.walking
-                );
-
-            const sleep =
-                number(
-                    todayData.sleep
-                );
-
-            const steps =
-                number(
-                    todayData.steps
-                );
-
-
-            const waterTarget =
-                number(
-                    goalsData.water
-                ) || 8;
-
-            const walkingTarget =
-                number(
-                    goalsData.walking
-                ) || 30;
-
-            const sleepTarget =
-                number(
-                    goalsData.sleep
-                ) || 8;
-
-            const stepsTarget =
-                number(
-                    goalsData.steps
-                ) || 8000;
-
-
-            document.getElementById(
-                "waterValue"
-            ).textContent =
-                `${water} كوب`;
-
-            document.getElementById(
-                "walkingValue"
-            ).textContent =
-                `${walking} د`;
-
-            document.getElementById(
-                "sleepValue"
-            ).textContent =
-                `${sleep} س`;
-
-            document.getElementById(
-                "stepsValue"
-            ).textContent =
-                steps.toLocaleString("ar-DZ");
-
-
-            document.getElementById(
-                "waterBar"
-            ).style.width =
-                `${percent(
-                    water,
-                    waterTarget
-                )}%`;
-
-            document.getElementById(
-                "walkingBar"
-            ).style.width =
-                `${percent(
-                    walking,
-                    walkingTarget
-                )}%`;
-
-            document.getElementById(
-                "sleepBar"
-            ).style.width =
-                `${percent(
-                    sleep,
-                    sleepTarget
-                )}%`;
-
-            document.getElementById(
-                "stepsBar"
-            ).style.width =
-                `${percent(
-                    steps,
-                    stepsTarget
-                )}%`;
-        }
-
-
-        /* =========================
-           GOALS DEFINITIONS
-        ========================= */
-
-        const goalDefinitions = [
-
-            {
-                key: "water",
-                enabled: "waterEnabled",
-                name: "شرب الماء",
-                icon: "fa-droplet",
-                color: "#0891B2",
-                bg: "#ECFEFF",
-                unit: "كوب"
-            },
-
-            {
-                key: "walking",
-                enabled: "walkingEnabled",
-                name: "المشي",
-                icon: "fa-person-walking",
-                color: "#16A34A",
-                bg: "#ECFDF3",
-                unit: "دقيقة"
-            },
-
-            {
-                key: "sleep",
-                enabled: "sleepEnabled",
-                name: "النوم",
-                icon: "fa-moon",
-                color: "#7C3AED",
-                bg: "#F5F3FF",
-                unit: "ساعة"
-            },
-
-            {
-                key: "bedtime",
-                enabled: "bedtimeEnabled",
-                name: "وقت النوم",
-                icon: "fa-bed",
-                color: "#6366F1",
-                bg: "#EEF2FF",
-                unit: ""
-            },
-
-            {
-                key: "wakeTime",
-                enabled: "wakeTimeEnabled",
-                name: "وقت الاستيقاظ",
-                icon: "fa-sun",
-                color: "#D97706",
-                bg: "#FFFBEB",
-                unit: ""
-            },
-
-            {
-                key: "steps",
-                enabled: "stepsEnabled",
-                name: "الخطوات",
-                icon: "fa-shoe-prints",
-                color: "#2563EB",
-                bg: "#EFF6FF",
-                unit: "خطوة"
-            },
-
-            {
-                key: "relaxation",
-                enabled: "relaxationEnabled",
-                name: "الاسترخاء",
-                icon: "fa-spa",
-                color: "#0D9488",
-                bg: "#F0FDFA",
-                unit: "دقيقة"
-            },
-
-            {
-                key: "reading",
-                enabled: "readingEnabled",
-                name: "القراءة",
-                icon: "fa-book-open",
-                color: "#EA580C",
-                bg: "#FFF7ED",
-                unit: "دقيقة"
-            },
-
-            {
-                key: "screenTime",
-                enabled: "screenTimeEnabled",
-                name: "وقت الشاشة",
-                icon: "fa-mobile-screen",
-                color: "#DC2626",
-                bg: "#FEF2F2",
-                unit: "دقيقة"
-            },
-
-            {
-                key: "fruit",
-                enabled: "fruitEnabled",
-                name: "الفواكه",
-                icon: "fa-apple-whole",
-                color: "#E11D48",
-                bg: "#FFF1F2",
-                unit: "حصة"
-            },
-
-            {
-                key: "vegetables",
-                enabled: "vegetablesEnabled",
-                name: "الخضروات",
-                icon: "fa-carrot",
-                color: "#65A30D",
-                bg: "#F7FEE7",
-                unit: "حصة"
-            },
-
-            {
-                key: "smoking",
-                enabled: "smokingEnabled",
-                name: "التدخين",
-                icon: "fa-smoking",
-                color: "#64748B",
-                bg: "#F1F5F9",
-                unit: "سيجارة"
-            }
-
-        ];
-
-
-        /* =========================
-           RENDER GOALS
-        ========================= */
-
-        function renderGoals() {
-
-            const container =
-                document.getElementById(
-                    "goalsList"
-                );
-
-            container.innerHTML = "";
-
-            let enabledGoals = [];
-
-            goalDefinitions.forEach(
-                goal => {
-
-                    if (
-                        goalsData[
-                            goal.enabled
-                        ] === true
-                    ) {
-
-                        enabledGoals.push(
-                            goal
-                        );
-                    }
-
-                }
-            );
-
-
-            if (
-                Array.isArray(
-                    goalsData.customGoals
-                )
-            ) {
-
-                goalsData.customGoals
-                    .forEach(custom => {
-
-                        if (
-                            custom &&
-                            custom.name
-                        ) {
-
-                            enabledGoals.push({
-
-                                custom: true,
-
-                                id:
-                                    custom.id ||
-                                    Date.now(),
-
-                                key:
-                                    "custom",
-
-                                name:
-                                    custom.name,
-
-                                icon:
-                                    "fa-star",
-
-                                color:
-                                    "#7C3AED",
-
-                                bg:
-                                    "#F5F3FF",
-
-                                unit:
-                                    custom.unit ||
-                                    "",
-
-                                target:
-                                    custom.value
-
-                            });
-
-                        }
-
-                    });
-            }
-
-
-            document.getElementById(
-                "goalsSubtitle"
-            ).textContent =
-                enabledGoals.length
-                    ? `${enabledGoals.length} أهداف مفعلة`
-                    : "لم تضف أهدافك بعد";
-
-
-            if (!enabledGoals.length) {
-
-                container.innerHTML = `
-
-                    <div class="empty-goals">
-
-                        <i class="fa-regular fa-circle-check"></i>
-
-                        <h4>
-                            لم تضف أي تحديات بعد
-                        </h4>
-
-                        <p>
-                            اختر أهدافك الصحية بنفسك،
-                            مثل الماء والمشي والنوم وغيرها.
-                        </p>
-
-                    </div>
-
-                `;
-
-                return;
-            }
-
-
-            enabledGoals.forEach(
-                goal => {
-
-                    const current =
-                        number(
-                            todayData[
-                                goal.key
-                            ]
-                        );
-
-                    let target =
-                        goal.custom
-                            ? number(goal.target)
-                            : number(
-                                goalsData[
-                                    goal.key
-                                ]
-                            );
-
-
-                    if (target <= 0) {
-
-                        if (
-                            goal.key === "water"
-                        ) target = 8;
-
-                        else if (
-                            goal.key === "walking"
-                        ) target = 30;
-
-                        else if (
-                            goal.key === "sleep"
-                        ) target = 8;
-
-                        else if (
-                            goal.key === "steps"
-                        ) target = 8000;
-
-                        else target = 1;
-                    }
-
-
-                    let progress =
-                        percent(
-                            current,
-                            target
-                        );
-
-
-                    if (
-                        goal.key === "bedtime"
-                    ) {
-
-                        const targetTime =
-                            goalsData.bedtime;
-
-                        progress =
-                            todayData.bedtime &&
-                            targetTime &&
-                            todayData.bedtime ===
-                            targetTime
-                                ? 100
-                                : 0;
-                    }
-
-
-                    if (
-                        goal.key === "wakeTime"
-                    ) {
-
-                        const targetTime =
-                            goalsData.wakeTime;
-
-                        progress =
-                            todayData.wakeTime &&
-                            targetTime &&
-                            todayData.wakeTime ===
-                            targetTime
-                                ? 100
-                                : 0;
-                    }
-
-
-                    const currentText =
-                        (
-                            goal.key === "bedtime" ||
-                            goal.key === "wakeTime"
-                        )
-                            ? (
-                                todayData[
-                                    goal.key
-                                ] ||
-                                "لم يسجل"
-                            )
-                            : `${current} ${goal.unit}`;
-
-
-                    const targetText =
-                        (
-                            goal.key === "bedtime" ||
-                            goal.key === "wakeTime"
-                        )
-                            ? (
-                                goalsData[
-                                    goal.key
-                                ] ||
-                                "غير محدد"
-                            )
-                            : `${target} ${goal.unit}`;
-
-
-                    const card =
-                        document.createElement(
-                            "div"
-                        );
-
-                    card.className =
-                        "goal-card";
-
-
-                    card.innerHTML = `
-
-                        <div
-                            class="goal-icon"
-                            style="
-                                color:${goal.color};
-                                background:${goal.bg};
-                            "
-                        >
-
-                            <i
-                                class="fa-solid ${goal.icon}"
-                            ></i>
-
-                        </div>
-
-                        <div class="goal-main">
-
-                            <div class="goal-top">
-
-                                <span class="goal-name">
-                                    ${escapeHTML(
-                                        goal.name
-                                    )}
-                                </span>
-
-                                <span
-                                    class="goal-percent"
-                                    style="
-                                        color:${goal.color};
-                                    "
-                                >
-                                    ${progress}%
-                                </span>
-
-                            </div>
-
-                            <div class="goal-bar">
-
-                                <span
-                                    style="
-                                        width:${progress}%;
-                                        background:${goal.color};
-                                    "
-                                ></span>
-
-                            </div>
-
-                            <div class="goal-bottom">
-
-                                <span>
-                                    ${escapeHTML(
-                                        currentText
-                                    )}
-                                </span>
-
-                                <span>
-                                    الهدف:
-                                    ${escapeHTML(
-                                        targetText
-                                    )}
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    `;
-
-
-                    container.appendChild(card);
-
-                }
-            );
+            number.classList.add("today");
 
         }
 
 
-        /* =========================
-           MEASUREMENTS
-        ========================= */
-
-        function renderMeasurements() {
-
-            const container =
-                document.getElementById(
-                    "measurements"
-                );
-
-            container.innerHTML = "";
-
-
-            const measurements = [
-
-                {
-                    key: "weight",
-                    name: "الوزن",
-                    icon: "fa-weight-scale",
-                    color: "#7C3AED",
-                    bg: "#F5F3FF",
-                    unit: "كغ"
-                },
-
-                {
-                    key: "bloodPressure",
-                    name: "ضغط الدم",
-                    icon: "fa-heart-pulse",
-                    color: "#DC2626",
-                    bg: "#FEF2F2",
-                    unit: ""
-                },
-
-                {
-                    key: "pulse",
-                    name: "النبض",
-                    icon: "fa-heart",
-                    color: "#DB2777",
-                    bg: "#FDF2F8",
-                    unit: "نبضة/د"
-                },
-
-                {
-                    key: "spo2",
-                    name: "SpO₂",
-                    icon: "fa-lungs",
-                    color: "#0891B2",
-                    bg: "#ECFEFF",
-                    unit: "%"
-                },
-
-                {
-                    key: "temperature",
-                    name: "الحرارة",
-                    icon: "fa-temperature-half",
-                    color: "#F97316",
-                    bg: "#FFF7ED",
-                    unit: "°C"
-                },
-
-                {
-                    key: "glucose",
-                    name: "السكر",
-                    icon: "fa-droplet",
-                    color: "#2563EB",
-                    bg: "#EFF6FF",
-                    unit: "غ/ل"
-                }
-
-            ];
-
-
-            let found = 0;
-
-
-            measurements.forEach(
-                item => {
-
-                    const value =
-                        todayData[
-                            item.key
-                        ];
-
-
-                    if (
-                        value === undefined ||
-                        value === null ||
-                        value === ""
-                    ) {
-                        return;
-                    }
-
-
-                    found++;
-
-
-                    const card =
-                        document.createElement(
-                            "div"
-                        );
-
-                    card.className =
-                        "measurement-card";
-
-
-                    card.innerHTML = `
-
-                        <div
-                            class="measurement-icon"
-                            style="
-                                background:${item.bg};
-                                color:${item.color};
-                            "
-                        >
-
-                            <i
-                                class="fa-solid ${item.icon}"
-                            ></i>
-
-                        </div>
-
-                        <div class="measurement-info">
-
-                            <div class="measurement-name">
-                                ${item.name}
-                            </div>
-
-                            <div class="measurement-value">
-
-                                ${escapeHTML(
-                                    value
-                                )}
-
-                                ${item.unit
-                                    ? `<small style="
-                                            font-size:10px;
-                                            color:#718096;
-                                        ">
-                                        ${item.unit}
-                                       </small>`
-                                    : ""
-                                }
-
-                            </div>
-
-                        </div>
-
-                    `;
-
-
-                    container.appendChild(card);
-
-                }
-            );
-
-
-            if (!found) {
-
-                container.innerHTML = `
-
-                    <div class="no-measurements">
-
-                        <i
-                            class="fa-regular fa-clipboard"
-                            style="
-                                font-size:22px;
-                                margin-bottom:7px;
-                                color:#AAB7C8;
-                            "
-                        ></i>
-
-                        <div>
-                            لا توجد قياسات مسجلة اليوم
-                        </div>
-
-                    </div>
-
-                `;
-            }
-
-        }
-
-
-        /* =========================
-           OVERALL PROGRESS
-        ========================= */
-
-        function calculateOverallProgress() {
-
-            let total = 0;
-
-            let completed = 0;
-
-
-            goalDefinitions.forEach(
-                goal => {
-
-                    if (
-                        goalsData[
-                            goal.enabled
-                        ] !== true
-                    ) {
-                        return;
-                    }
-
-
-                    total++;
-
-
-                    let p = 0;
-
-
-                    if (
-                        goal.key === "bedtime" ||
-                        goal.key === "wakeTime"
-                    ) {
-
-                        if (
-                            todayData[
-                                goal.key
-                            ] &&
-                            goalsData[
-                                goal.key
-                            ] &&
-                            todayData[
-                                goal.key
-                            ] ===
-                            goalsData[
-                                goal.key
-                            ]
-                        ) {
-                            p = 100;
-                        }
-
-                    } else {
-
-                        p =
-                            percent(
-                                todayData[
-                                    goal.key
-                                ],
-                                goalsData[
-                                    goal.key
-                                ]
-                            );
-                    }
-
-
-                    if (p >= 100) {
-                        completed++;
-                    }
-
-                }
-            );
-
-
-            if (
-                Array.isArray(
-                    goalsData.customGoals
-                )
-            ) {
-
-                goalsData.customGoals
-                    .forEach(
-                        goal => {
-
-                            if (
-                                !goal ||
-                                !goal.name
-                            ) {
-                                return;
-                            }
-
-                            total++;
-
-                            const p =
-                                percent(
-                                    todayData[
-                                        "custom_" +
-                                        goal.id
-                                    ],
-                                    goal.value
-                                );
-
-                            if (
-                                p >= 100
-                            ) {
-                                completed++;
-                            }
-
-                        }
-                    );
-            }
-
-
-            const value =
-                total > 0
-                    ? Math.round(
-                        (completed / total) *
-                        100
-                    )
-                    : 0;
-
-
-            const degrees =
-                value * 3.6;
-
-
-            document.getElementById(
-                "completionPercent"
-            ).textContent =
-                `${value}%`;
-
-
-            document.getElementById(
-                "heroProgress"
-            ).style
-                .setProperty(
-                    "--progress",
-                    `${degrees}deg`
-                );
-
-
-            const message =
-                document.getElementById(
-                    "heroMessage"
-                );
-
-
-            if (value === 0) {
-
-                message.textContent =
-                    "ابدأ بخطوة بسيطة اليوم، وكل إنجاز صغير مهم.";
-
-            } else if (value < 40) {
-
-                message.textContent =
-                    "بداية جيدة! واصل تسجيل عاداتك الصحية.";
-
-            } else if (value < 70) {
-
-                message.textContent =
-                    "ممتاز! أنت في الطريق الصحيح.";
-
-            } else if (value < 100) {
-
-                message.textContent =
-                    "رائع! اقتربت من إكمال أهداف اليوم.";
-
-            } else {
-
-                message.textContent =
-                    "أحسنت! أكملت جميع أهدافك اليوم 🎉";
-            }
-
-        }
-
-
-        /* =========================
-           SAVE DAILY
-        ========================= */
-
-        async function saveDailyData(
-            updates
-        ) {
-
-            if (!currentUser) {
-                return;
-            }
-
-
-            const dailyRef =
-                doc(
-                    db,
-                    "users",
-                    currentUser.uid,
-                    "dailyTracking",
-                    today
-                );
-
-
-            todayData = {
-                ...todayData,
-                ...updates
-            };
-
-
-            await setDoc(
-                dailyRef,
-                {
-                    ...updates,
-
-                    uid:
-                        currentUser.uid,
-
-                    date:
-                        today,
-
-                    updatedAt:
-                        serverTimestamp()
-
-                },
-                {
-                    merge: true
-                }
-            );
-
-
-            renderQuickStats();
-
-            renderGoals();
-
-            renderMeasurements();
-
-            calculateOverallProgress();
-
-            showToast(
-                "تم حفظ البيانات بنجاح ✓"
-            );
-
-        }
-
-
-        /* =========================
-           QUICK MODAL
-        ========================= */
-
-        function openQuickModal(
-            type
-        ) {
-
-            const modal =
-                document.getElementById(
-                    "quickModal"
-                );
-
-            const title =
-                document.getElementById(
-                    "modalTitle"
-                );
-
-            const content =
-                document.getElementById(
-                    "modalContent"
-                );
-
-
-            let current = 0;
-
-            let label = "";
-
-            let unit = "";
-
-            let step = "1";
-
-            let inputType = "number";
-
-
-            if (type === "water") {
-
-                title.textContent =
-                    "تسجيل الماء";
-
-                current =
-                    number(
-                        todayData.water
-                    );
-
-                label =
-                    "عدد أكواب الماء";
-
-                unit =
-                    "كوب";
-
-                step = "1";
-
-            }
-
-
-            if (type === "walking") {
-
-                title.textContent =
-                    "تسجيل المشي";
-
-                current =
-                    number(
-                        todayData.walking
-                    );
-
-                label =
-                    "مدة المشي";
-
-                unit =
-                    "دقيقة";
-
-                step = "1";
-
-            }
-
-
-            if (type === "sleep") {
-
-                title.textContent =
-                    "تسجيل النوم";
-
-                current =
-                    number(
-                        todayData.sleep
-                    );
-
-                label =
-                    "عدد ساعات النوم";
-
-                unit =
-                    "ساعة";
-
-                step = "0.5";
-
-            }
-
-
-            if (type === "steps") {
-
-                title.textContent =
-                    "تسجيل الخطوات";
-
-                current =
-                    number(
-                        todayData.steps
-                    );
-
-                label =
-                    "عدد الخطوات";
-
-                unit =
-                    "خطوة";
-
-                step = "100";
-
-            }
-
-
-            content.innerHTML = `
-
-                <div class="input-group">
-
-                    <label>
-                        ${label}
-                    </label>
-
-                    <input
-                        id="quickInput"
-                        type="${inputType}"
-                        min="0"
-                        step="${step}"
-                        value="${current}"
-                        inputmode="decimal"
-                    >
-
-                    <div style="
-                        margin-top:6px;
-                        color:#94A3B8;
-                        font-size:10px;
-                    ">
-                        الوحدة: ${unit}
-                    </div>
-
-                </div>
-
-                <button
-                    class="modal-save"
-                    id="saveQuick"
-                >
-                    حفظ البيانات
-                </button>
-
-            `;
-
-
-            modal.classList.add("show");
-
+        number.onclick = () => {
 
             document
-                .getElementById("saveQuick")
-                .onclick =
-                async () => {
+                .querySelectorAll(".day-number")
+                .forEach(x => x.classList.remove("selected"));
 
-                    const input =
-                        document.getElementById(
-                            "quickInput"
-                        );
+            number.classList.add("selected");
 
-                    const value =
-                        Number(
-                            input.value
-                        );
+            showDayDetails(date);
+
+        };
 
 
-                    if (
-                        !Number.isFinite(value) ||
-                        value < 0
-                    ) {
+        wrapper.appendChild(name);
+        wrapper.appendChild(number);
 
-                        showToast(
-                            "أدخل قيمة صحيحة"
-                        );
+        container.appendChild(wrapper);
 
-                        return;
-                    }
+    }
+
+}
 
 
-                    await saveDailyData({
+/* =========================
+   CHANGE MONTH
+========================= */
 
-                        [type]:
-                            value
+function changeMonth(direction){
 
-                    });
+    currentMonth += direction;
+
+    if(currentMonth < 0){
+
+        currentMonth = 11;
+        currentYear--;
+
+    }
+
+    if(currentMonth > 11){
+
+        currentMonth = 0;
+        currentYear++;
+
+    }
+
+    renderMiniCalendar();
+
+}
 
 
-                    closeModal();
+/* =========================
+   DAY DETAILS
+========================= */
 
-                };
+function showDayDetails(date){
+
+    const box =
+        document.getElementById("dayDetails");
+
+    box.classList.add("show");
 
 
-            setTimeout(() => {
+    document.getElementById("selectedDayTitle").textContent =
+        `📅 ${arabicDays[date.getDay()]}، ${date.getDate()} ${arabicMonths[date.getMonth()]} ${date.getFullYear()}`;
 
-                document
-                    .getElementById(
-                        "quickInput"
-                    )
-                    ?.focus();
 
-            }, 100);
+    /*
+       بيانات تجريبية حاليًا.
+       لاحقًا سيتم جلبها من Firebase
+       حسب المستخدم واليوم.
+    */
+
+    document.getElementById("dayChallenges").textContent =
+        "3 / 4";
+
+    document.getElementById("dayProgress").textContent =
+        "75%";
+
+    document.getElementById("dayWater").textContent =
+        "6 / 8 أكواب";
+
+    document.getElementById("dayWalk").textContent =
+        "4,820 خطوة";
+
+}
+
+
+/* =========================
+   FULL CALENDAR
+========================= */
+
+function openCalendar(){
+
+    fullYear = currentYear;
+    fullMonth = currentMonth;
+
+    renderFullCalendar();
+
+    document
+        .getElementById("calendarModal")
+        .classList.add("show");
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+function closeCalendar(){
+
+    document
+        .getElementById("calendarModal")
+        .classList.remove("show");
+
+    document.body.style.overflow = "";
+
+}
+
+
+function closeCalendarOutside(event){
+
+    if(event.target.id === "calendarModal"){
+
+        closeCalendar();
+
+    }
+
+}
+
+
+function changeFullMonth(direction){
+
+    fullMonth += direction;
+
+    if(fullMonth < 0){
+
+        fullMonth = 11;
+        fullYear--;
+
+    }
+
+    if(fullMonth > 11){
+
+        fullMonth = 0;
+        fullYear++;
+
+    }
+
+    renderFullCalendar();
+
+}
+
+
+function renderFullCalendar(){
+
+    const calendar =
+        document.getElementById("fullCalendar");
+
+    calendar.innerHTML = "";
+
+
+    document.getElementById("fullMonthTitle").textContent =
+        `${arabicMonths[fullMonth]} ${fullYear}`;
+
+
+    arabicDays.forEach(day => {
+
+        const el =
+            document.createElement("div");
+
+        el.className = "full-week";
+
+        el.textContent =
+            day.substring(0,3);
+
+        calendar.appendChild(el);
+
+    });
+
+
+    const firstDay =
+        new Date(fullYear,fullMonth,1).getDay();
+
+    const daysInMonth =
+        new Date(fullYear,fullMonth + 1,0).getDate();
+
+
+    for(let i = 0; i < firstDay; i++){
+
+        const empty =
+            document.createElement("div");
+
+        empty.className =
+            "full-day empty";
+
+        calendar.appendChild(empty);
+
+    }
+
+
+    for(let day = 1; day <= daysInMonth; day++){
+
+        const date =
+            new Date(fullYear,fullMonth,day);
+
+
+        const el =
+            document.createElement("div");
+
+        el.className =
+            "full-day";
+
+        el.textContent =
+            day;
+
+
+        if(
+            fullYear === today.getFullYear() &&
+            fullMonth === today.getMonth() &&
+            day === today.getDate()
+        ){
+
+            el.classList.add("today");
 
         }
 
 
-        function closeModal() {
+        el.onclick = () => {
 
-            document
-                .getElementById(
-                    "quickModal"
-                )
-                .classList.remove(
-                    "show"
-                );
-        }
+            showDayDetails(date);
 
+            closeCalendar();
 
-        /* =========================
-           QUICK CARDS
-        ========================= */
-
-        document
-            .querySelectorAll(
-                "[data-quick]"
-            )
-            .forEach(card => {
-
-                card.addEventListener(
-                    "click",
-                    () => {
-
-                        openQuickModal(
-                            card.dataset.quick
-                        );
-
-                    }
-                );
-
+            window.scrollTo({
+                top:250,
+                behavior:"smooth"
             });
 
+        };
 
-        /* =========================
-           BUTTONS
-        ========================= */
 
-        document
-            .getElementById(
-                "closeModal"
-            )
-            .addEventListener(
-                "click",
-                closeModal
-            );
+        calendar.appendChild(el);
 
+    }
 
-        document
-            .getElementById(
-                "quickModal"
-            )
-            .addEventListener(
-                "click",
-                event => {
+}
 
-                    if (
-                        event.target.id ===
-                        "quickModal"
-                    ) {
-                        closeModal();
-                    }
 
-                }
-            );
+/* =========================
+   NAVIGATION
+========================= */
 
+function openPage(page){
 
-        document
-            .getElementById(
-                "recordButton"
-            )
-            .addEventListener(
-                "click",
-                () => {
+    /*
+       الصفحات ستربط لاحقًا.
+       حاليًا إذا لم تكن الصفحة موجودة
+       سيحاول المتصفح فتحها.
+    */
 
-                    openQuickModal(
-                        "water"
-                    );
+    window.location.href = page;
 
-                }
-            );
+}
 
 
-        document
-            .getElementById(
-                "goalsButton"
-            )
-            .addEventListener(
-                "click",
-                () => {
+/* =========================
+   INITIALIZE
+========================= */
 
-                    window.location.href =
-                        "goals.html";
+renderMiniCalendar();
 
-                }
-            );
-
-
-        document
-            .getElementById(
-                "refreshBtn"
-            )
-            .addEventListener(
-                "click",
-                async () => {
-
-                    if (!currentUser) {
-                        return;
-                    }
-
-                    const icon =
-                        document.querySelector(
-                            "#refreshBtn i"
-                        );
-
-                    icon.classList.add(
-                        "fa-spin"
-                    );
-
-                    try {
-
-                        await loadUserData();
-
-                        showToast(
-                            "تم تحديث البيانات ✓"
-                        );
-
-                    } catch (error) {
-
-                        console.error(error);
-
-                        showToast(
-                            "تعذر تحديث البيانات"
-                        );
-
-                    } finally {
-
-                        setTimeout(() => {
-
-                            icon.classList.remove(
-                                "fa-spin"
-                            );
-
-                        }, 500);
-
-                    }
-
-                }
-            );
-
-
-        /* =========================
-           LOGOUT
-        ========================= */
-
-        document
-            .getElementById(
-                "logoutBtn"
-            )
-            .addEventListener(
-                "click",
-                async () => {
-
-                    try {
-
-                        await signOut(auth);
-
-                        window.location.href =
-                            "login.html";
-
-                    } catch (error) {
-
-                        console.error(error);
-
-                        showToast(
-                            "تعذر تسجيل الخروج"
-                        );
-
-                    }
-
-                }
-            );
-
-
-        /* =========================
-           BOTTOM NAV
-        ========================= */
-
-        document
-            .querySelectorAll(
-                "[data-nav]"
-            )
-            .forEach(
-                item => {
-
-                    item.addEventListener(
-                        "click",
-                        () => {
-
-                            const nav =
-                                item.dataset.nav;
-
-
-                            if (
-                                nav === "home"
-                            ) {
-
-                                window.scrollTo({
-                                    top: 0,
-                                    behavior: "smooth"
-                                });
-
-                                return;
-                            }
-
-
-                            if (
-                                nav === "goals"
-                            ) {
-
-                                window.location.href =
-                                    "goals.html";
-
-                                return;
-                            }
-
-
-                            if (
-                                nav === "record"
-                            ) {
-
-                                openQuickModal(
-                                    "water"
-                                );
-
-                                return;
-                            }
-
-
-                            showToast(
-                                "هذا القسم سنضيفه في المرحلة التالية"
-                            );
-
-                        }
-                    );
-
-                }
-            );
-
-
-        /* =========================
-           AUTH
-        ========================= */
-
-        onAuthStateChanged(
-            auth,
-            async user => {
-
-                if (!user) {
-
-                    window.location.href =
-                        "login.html";
-
-                    return;
-                }
-
-
-                currentUser =
-                    user;
-
-
-                try {
-
-                    await loadUserData();
-
-                } catch (error) {
-
-                    console.error(
-                        "Dashboard error:",
-                        error
-                    );
-
-                    showToast(
-                        "حدث خطأ أثناء تحميل بياناتك"
-                    );
-
-                } finally {
-
-                    hideLoading();
-
-                }
-
-            }
-        );
-
-    </script>
+</script>
 
 </body>
-
 </html>
