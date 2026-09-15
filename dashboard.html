@@ -1,72 +1,50 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport"
+content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 
-<head>
+<meta name="theme-color" content="#1976D2" id="themeColorMeta"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Si7a"><title>Si7a | صحتي</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"><link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"><style>
 
-<meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<meta
-    name="theme-color"
-    content="#1976D2"
->
-
-<title>Si7a | لوحة صحتي</title>
-
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
->
-
-<link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
->
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
-    rel="stylesheet"
->
-
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
->
-
-<style>
+/* =========================================================
+   SI7A — MOBILE HEALTH APP
+========================================================= */
 
 :root{
+
     --primary:#1976D2;
     --primary-dark:#0D47A1;
-    --primary-light:#E3F2FD;
-
-    --text:#17324D;
-    --muted:#6B7A90;
-
-    --bg:#F5FAFF;
-    --white:#FFFFFF;
-    --border:#DCE8F3;
+    --primary-soft:#E8F3FC;
 
     --green:#20A464;
-    --green-light:#E8F7EF;
+    --green-soft:#EAF8F1;
 
     --orange:#F59E0B;
-    --orange-light:#FFF7E6;
+    --orange-soft:#FFF6DF;
 
     --purple:#7657D8;
-    --purple-light:#F1EDFF;
+    --purple-soft:#F1EDFF;
 
     --red:#E64C4C;
-    --red-light:#FFF0F0;
+    --red-soft:#FFF0F0;
 
-    --shadow:0 8px 25px rgba(13,71,161,.07);
+    --cyan:#0891B2;
+    --cyan-soft:#E6F8FC;
 
-    --radius:20px;
+    --text:#17324D;
+    --muted:#718096;
+
+    --bg:#F4F8FC;
+    --card:#FFFFFF;
+    --border:#E2EAF2;
+
+    --shadow:0 8px 28px rgba(24,67,105,.07);
+
+    --radius:22px;
+
+    --nav-height:76px;
+
 }
 
 *{
@@ -75,15 +53,38 @@
     padding:0;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
+
     font-family:"Tajawal",Arial,sans-serif;
-    background:var(--bg);
+
+    background:
+        linear-gradient(
+            180deg,
+            #F7FBFF 0%,
+            #F4F8FC 45%,
+            #F4F8FC 100%
+        );
+
     color:var(--text);
+
     min-height:100vh;
+
+    padding-bottom:
+        calc(
+            var(--nav-height) +
+            env(safe-area-inset-bottom) +
+            18px
+        );
+
 }
 
 button,
-input{
+input,
+select{
     font-family:inherit;
 }
 
@@ -92,1355 +93,3011 @@ button{
 }
 
 a{
-    text-decoration:none;
     color:inherit;
+    text-decoration:none;
 }
 
-/* =========================
+.hidden{
+    display:none!important;
+}
+
+
+/* =========================================================
    LOADING
-========================= */
+========================================================= */
 
 #loadingScreen{
+
     position:fixed;
     inset:0;
-    background:var(--bg);
+
+    background:#F7FBFF;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    z-index:9999;
+
+    z-index:99999;
+
 }
 
-.loading-box{
+.loading-content{
     text-align:center;
 }
 
-.loading-icon{
-    width:70px;
-    height:70px;
-    margin:auto;
-    border-radius:22px;
-    background:var(--primary);
-    color:#fff;
+.loading-logo{
+
+    width:76px;
+    height:76px;
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1976D2,
+            #0D47A1
+        );
+
+    color:white;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:30px;
-    box-shadow:0 12px 30px rgba(25,118,210,.25);
-    animation:pulse 1.5s infinite;
+
+    font-size:31px;
+
+    margin:auto;
+
+    box-shadow:
+        0 18px 35px rgba(25,118,210,.25);
+
+    animation:
+        loadingPulse 1.4s ease-in-out infinite;
+
 }
 
-.loading-box p{
-    margin-top:15px;
+.loading-content h2{
+
+    margin-top:18px;
+
+    font-size:21px;
+
+    font-weight:900;
+
+    color:var(--primary-dark);
+
+}
+
+.loading-content p{
+
+    margin-top:6px;
+
     color:var(--muted);
-    font-weight:700;
+
+    font-size:13px;
+
 }
 
-@keyframes pulse{
+@keyframes loadingPulse{
+
     0%,100%{
         transform:scale(1);
     }
 
     50%{
-        transform:scale(1.07);
+        transform:scale(1.08);
     }
+
 }
 
-/* =========================
-   HEADER
-========================= */
 
-.header{
-    background:rgba(255,255,255,.96);
-    border-bottom:1px solid var(--border);
+/* =========================================================
+   APP TOP BAR
+========================================================= */
+
+.app-topbar{
+
     position:sticky;
+
     top:0;
-    z-index:100;
-    backdrop-filter:blur(12px);
+
+    z-index:1000;
+
+    background:
+        rgba(247,251,255,.92);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(226,234,242,.8);
+
 }
 
-.header-inner{
-    max-width:1200px;
-    margin:auto;
-    min-height:72px;
-    padding:12px 18px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-}
+.topbar-inner{
 
-.brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.brand-icon{
-    width:44px;
-    height:44px;
-    border-radius:14px;
-    background:var(--primary);
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:21px;
-}
-
-.brand-text{
-    font-size:21px;
-    font-weight:800;
-    color:var(--primary-dark);
-}
-
-.header-actions{
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
-
-.icon-btn{
-    width:42px;
-    height:42px;
-    border:1px solid var(--border);
-    border-radius:13px;
-    background:#fff;
-    color:var(--primary-dark);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:17px;
-}
-
-.icon-btn:hover{
-    background:var(--primary-light);
-}
-
-/* =========================
-   MAIN
-========================= */
-
-.container{
-    width:min(1200px, calc(100% - 28px));
-    margin:auto;
-    padding:25px 0 50px;
-}
-
-/* =========================
-   WELCOME
-========================= */
-
-.welcome{
-    background:linear-gradient(
-        135deg,
-        var(--primary-dark),
-        var(--primary)
+    width:min(
+        1100px,
+        calc(100% - 28px)
     );
 
-    color:#fff;
-    border-radius:26px;
-    padding:24px;
-    box-shadow:0 15px 35px rgba(13,71,161,.18);
-    margin-bottom:22px;
-    position:relative;
-    overflow:hidden;
-}
+    min-height:70px;
 
-.welcome::after{
-    content:"";
-    position:absolute;
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    background:rgba(255,255,255,.07);
-    left:-50px;
-    top:-80px;
-}
+    margin:auto;
 
-.welcome-content{
-    position:relative;
-    z-index:2;
-}
-
-.welcome small{
-    opacity:.85;
-}
-
-.welcome h1{
-    margin-top:6px;
-    font-size:27px;
-}
-
-.welcome p{
-    margin-top:8px;
-    opacity:.9;
-    line-height:1.7;
-}
-
-.date-box{
-    margin-top:17px;
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:9px 13px;
-    background:rgba(255,255,255,.13);
-    border:1px solid rgba(255,255,255,.18);
-    border-radius:12px;
-    font-size:14px;
-}
-
-/* =========================
-   QUICK ACTIONS
-========================= */
-
-.quick-actions{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-    margin-bottom:25px;
-}
-
-.quick-btn{
-    min-height:52px;
-    border:1px solid var(--border);
-    background:#fff;
-    color:var(--text);
-    border-radius:15px;
-    font-weight:700;
     display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+}
+
+.app-brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.app-logo{
+
+    width:43px;
+    height:43px;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--primary),
+            var(--primary-dark)
+        );
+
+    color:#fff;
+
+    display:flex;
+
     align-items:center;
     justify-content:center;
+
+    font-size:19px;
+
+    box-shadow:
+        0 8px 20px rgba(25,118,210,.18);
+
+}
+
+.app-name{
+
+    font-size:20px;
+
+    font-weight:900;
+
+    color:var(--primary-dark);
+
+}
+
+.app-subtitle{
+
+    display:block;
+
+    font-size:10px;
+
+    color:var(--muted);
+
+    font-weight:600;
+
+    margin-top:-2px;
+
+}
+
+.top-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+}
+
+.top-icon{
+
+    width:42px;
+    height:42px;
+
+    border:1px solid var(--border);
+
+    background:#fff;
+
+    border-radius:14px;
+
+    color:var(--primary-dark);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:16px;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.03);
+
+}
+
+.top-icon:active{
+
+    transform:scale(.95);
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.app-container{
+
+    width:min(
+        1100px,
+        calc(100% - 24px)
+    );
+
+    margin:auto;
+
+    padding-top:17px;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+
+    position:relative;
+
+    overflow:hidden;
+
+    color:white;
+
+    border-radius:28px;
+
+    padding:23px;
+
+    min-height:210px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0D47A1 0%,
+            #1976D2 55%,
+            #2196F3 100%
+        );
+
+    box-shadow:
+        0 18px 40px rgba(13,71,161,.20);
+
+}
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:210px;
+    height:210px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.07);
+
+    left:-75px;
+    top:-95px;
+
+}
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.06);
+
+    right:-65px;
+    bottom:-75px;
+
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.hero-small{
+
+    font-size:12px;
+
+    opacity:.83;
+
+}
+
+.hero h1{
+
+    margin-top:6px;
+
+    font-size:26px;
+
+    font-weight:900;
+
+}
+
+.hero-text{
+
+    margin-top:7px;
+
+    font-size:13px;
+
+    line-height:1.7;
+
+    max-width:600px;
+
+    opacity:.91;
+
+}
+
+.hero-date{
+
+    margin-top:17px;
+
+    display:inline-flex;
+
+    align-items:center;
+
     gap:8px;
-    box-shadow:var(--shadow);
+
+    padding:9px 13px;
+
+    border-radius:13px;
+
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.14);
+
+    font-size:12px;
+
 }
 
-.quick-btn.primary{
-    background:var(--primary);
-    color:#fff;
-    border-color:var(--primary);
+
+/* =========================================================
+   DAILY SCORE
+========================================================= */
+
+.daily-score{
+
+    margin-top:-45px;
+
+    position:relative;
+
+    z-index:10;
+
+    width:calc(100% - 28px);
+
+    margin-left:auto;
+    margin-right:auto;
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    padding:16px;
+
+    box-shadow:
+        0 15px 35px rgba(24,67,105,.09);
+
 }
 
-/* =========================
+.score-row{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.score-circle{
+
+    width:73px;
+    height:73px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:
+        conic-gradient(
+            var(--primary) var(--score,0%),
+            #EAF1F7 0
+        );
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+
+}
+
+.score-circle::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:57px;
+    height:57px;
+
+    background:#fff;
+
+    border-radius:50%;
+
+}
+
+.score-number{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:18px;
+
+    font-weight:900;
+
+    color:var(--primary-dark);
+
+}
+
+.score-info{
+
+    flex:1;
+
+}
+
+.score-info h3{
+
+    font-size:16px;
+
+    font-weight:900;
+
+}
+
+.score-info p{
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    margin-top:3px;
+
+}
+
+.score-status{
+
+    margin-top:8px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+}
+
+
+/* =========================================================
    SECTION
-========================= */
+========================================================= */
 
 .section{
-    margin-bottom:28px;
+
+    margin-top:28px;
+
+}
+
+.section-head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:13px;
+
 }
 
 .section-title{
+
     display:flex;
-    justify-content:space-between;
+
     align-items:center;
-    gap:10px;
-    margin-bottom:13px;
+
+    gap:9px;
+
+}
+
+.section-title-icon{
+
+    width:34px;
+    height:34px;
+
+    border-radius:11px;
+
+    background:var(--primary-soft);
+
+    color:var(--primary);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:14px;
+
 }
 
 .section-title h2{
-    font-size:20px;
-    display:flex;
-    align-items:center;
-    gap:9px;
+
+    font-size:18px;
+
+    font-weight:900;
+
 }
 
-.section-title h2 i{
+.section-more{
+
+    border:0;
+
+    background:transparent;
+
+    color:var(--primary);
+
+    font-size:12px;
+
+    font-weight:800;
+
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
+.quick-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:10px;
+
+}
+
+.quick-card{
+
+    min-height:92px;
+
+    background:#fff;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:13px 9px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:.2s;
+
+}
+
+.quick-card:active{
+
+    transform:scale(.97);
+
+}
+
+.quick-icon{
+
+    width:39px;
+    height:39px;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:16px;
+
+    margin-bottom:7px;
+
+}
+
+.quick-card span{
+
+    font-size:11px;
+
+    font-weight:800;
+
+}
+
+
+/* =========================================================
+   COLORS
+========================================================= */
+
+.blue .quick-icon{
+    background:var(--primary-soft);
     color:var(--primary);
 }
 
-.section-title span{
-    font-size:13px;
-    color:var(--muted);
+.green .quick-icon{
+    background:var(--green-soft);
+    color:var(--green);
 }
 
-/* =========================
-   GOAL CARDS
-========================= */
+.orange .quick-icon{
+    background:var(--orange-soft);
+    color:var(--orange);
+}
 
-.goals-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:14px;
+.purple .quick-icon{
+    background:var(--purple-soft);
+    color:var(--purple);
+}
+
+.red .quick-icon{
+    background:var(--red-soft);
+    color:var(--red);
+}
+
+
+/* =========================================================
+   GOALS
+========================================================= */
+
+.goals-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:11px;
+
 }
 
 .goal-card{
+
     background:#fff;
+
     border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:17px;
+
+    border-radius:20px;
+
+    padding:15px;
+
     box-shadow:var(--shadow);
+
 }
 
-.goal-top{
+.goal-main{
+
     display:flex;
+
     align-items:center;
-    justify-content:space-between;
-    gap:10px;
+
+    gap:11px;
+
 }
 
 .goal-icon{
+
     width:45px;
     height:45px;
+
+    flex-shrink:0;
+
     border-radius:14px;
+
+    background:var(--primary-soft);
+
+    color:var(--primary);
+
     display:flex;
+
     align-items:center;
     justify-content:center;
-    font-size:19px;
-    background:var(--primary-light);
-    color:var(--primary);
+
 }
 
 .goal-info{
+
     flex:1;
+
+    min-width:0;
+
 }
 
 .goal-info h3{
-    font-size:16px;
-    margin-bottom:3px;
+
+    font-size:14px;
+
+    font-weight:900;
+
 }
 
 .goal-info p{
+
+    font-size:11px;
+
     color:var(--muted);
-    font-size:12px;
+
+    margin-top:2px;
+
 }
 
-.progress-percent{
-    font-weight:800;
+.goal-percent{
+
+    font-size:14px;
+
     color:var(--primary);
+
+    font-weight:900;
+
 }
 
-.progress{
-    width:100%;
-    height:9px;
+.goal-progress{
+
+    height:8px;
+
+    margin-top:14px;
+
     background:#EDF3F8;
+
     border-radius:99px;
+
     overflow:hidden;
-    margin:16px 0 10px;
+
 }
 
-.progress-bar{
+.goal-progress-bar{
+
     height:100%;
-    width:0%;
-    background:var(--primary);
+
+    width:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            #42A5F5
+        );
+
     border-radius:99px;
-    transition:.4s;
+
+    transition:.5s;
+
 }
 
 .goal-bottom{
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
-    gap:8px;
+
+    margin-top:9px;
+
 }
 
 .goal-value{
-    font-weight:800;
-    font-size:14px;
-}
 
-.goal-unit{
-    color:var(--muted);
     font-size:12px;
-}
 
-.goal-actions{
-    display:flex;
-    gap:7px;
-}
-
-.small-action{
-    border:0;
-    width:34px;
-    height:34px;
-    border-radius:10px;
-    background:var(--primary-light);
-    color:var(--primary-dark);
-}
-
-.small-action:hover{
-    background:#D2E8FB;
-}
-
-/* =========================
-   EMPTY
-========================= */
-
-.empty{
-    background:#fff;
-    border:1px dashed var(--border);
-    border-radius:20px;
-    padding:28px 18px;
-    text-align:center;
     color:var(--muted);
+
 }
 
-.empty i{
-    font-size:32px;
-    color:var(--primary);
-    margin-bottom:10px;
-}
+.goal-value strong{
 
-.empty h3{
     color:var(--text);
-    margin-bottom:6px;
+
+    font-size:13px;
+
 }
 
-/* =========================
+.goal-add{
+
+    width:33px;
+    height:33px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:var(--primary-soft);
+
+    color:var(--primary-dark);
+
+}
+
+.goal-add:active{
+
+    transform:scale(.92);
+
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty-card{
+
+    background:#fff;
+
+    border:1px dashed #CBDCEB;
+
+    border-radius:20px;
+
+    padding:28px 18px;
+
+    text-align:center;
+
+}
+
+.empty-card i{
+
+    font-size:30px;
+
+    color:var(--primary);
+
+    margin-bottom:10px;
+
+}
+
+.empty-card h3{
+
+    font-size:16px;
+
+    font-weight:900;
+
+}
+
+.empty-card p{
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    line-height:1.7;
+
+    margin-top:5px;
+
+}
+
+.primary-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:7px;
+
+    min-height:43px;
+
+    padding:0 18px;
+
+    border:0;
+
+    border-radius:13px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    font-weight:800;
+
+    margin-top:15px;
+
+}
+
+
+/* =========================================================
    MEASUREMENTS
-========================= */
+========================================================= */
 
 .measure-grid{
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:10px;
+
 }
 
 .measure-card{
+
     background:#fff;
+
     border:1px solid var(--border);
-    border-radius:18px;
-    padding:17px;
+
+    border-radius:19px;
+
+    padding:15px;
+
     box-shadow:var(--shadow);
+
+}
+
+.measure-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
 }
 
 .measure-icon{
-    width:42px;
-    height:42px;
-    border-radius:13px;
-    background:var(--primary-light);
+
+    width:40px;
+    height:40px;
+
+    border-radius:12px;
+
+    background:var(--primary-soft);
+
     color:var(--primary);
+
     display:flex;
+
     align-items:center;
     justify-content:center;
-    margin-bottom:12px;
+
+}
+
+.measure-edit{
+
+    border:0;
+
+    width:31px;
+    height:31px;
+
+    border-radius:9px;
+
+    background:#F2F6F9;
+
+    color:var(--muted);
+
 }
 
 .measure-card h3{
-    font-size:14px;
-    margin-bottom:7px;
+
+    font-size:13px;
+
+    margin-top:11px;
+
+    font-weight:800;
+
 }
 
 .measure-value{
+
+    margin-top:4px;
+
     font-size:21px;
-    font-weight:800;
+
+    font-weight:900;
+
 }
 
 .measure-value span{
+
     color:var(--muted);
-    font-size:12px;
+
+    font-size:10px;
+
     font-weight:500;
+
 }
 
-.measure-card button{
-    margin-top:12px;
-    width:100%;
-    border:0;
-    border-radius:10px;
-    padding:9px;
-    background:var(--primary-light);
-    color:var(--primary-dark);
-    font-weight:700;
-}
 
-/* =========================
-   HEALTH CATEGORIES
-========================= */
+/* =========================================================
+   HEALTH MODULES
+========================================================= */
 
-.health-links{
+.modules-grid{
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:10px;
+
 }
 
-.health-link{
+.module{
+
     background:#fff;
+
     border:1px solid var(--border);
-    border-radius:18px;
-    padding:18px;
+
+    border-radius:19px;
+
+    padding:16px;
+
     box-shadow:var(--shadow);
-    transition:.2s;
+
+    min-height:126px;
+
+    position:relative;
+
+    overflow:hidden;
+
 }
 
-.health-link:hover{
-    transform:translateY(-2px);
-    border-color:#BCD9F1;
+.module::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    left:-28px;
+    bottom:-35px;
+
+    background:rgba(25,118,210,.04);
+
 }
 
-.health-link i{
-    width:43px;
-    height:43px;
+.module-icon{
+
+    width:42px;
+    height:42px;
+
     border-radius:13px;
-    background:var(--primary-light);
-    color:var(--primary);
+
     display:flex;
+
     align-items:center;
     justify-content:center;
-    margin-bottom:12px;
+
+    margin-bottom:10px;
+
 }
 
-.health-link h3{
-    font-size:15px;
-    margin-bottom:4px;
+.module h3{
+
+    font-size:14px;
+
+    font-weight:900;
+
 }
 
-.health-link p{
-    font-size:12px;
+.module p{
+
+    font-size:11px;
+
     color:var(--muted);
+
     line-height:1.6;
+
+    margin-top:4px;
+
 }
 
-/* =========================
-   SUMMARY
-========================= */
+.module-lock{
 
-.summary{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:22px;
-    padding:20px;
-    box-shadow:var(--shadow);
-}
+    position:absolute;
 
-.summary-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-}
+    left:11px;
 
-.summary-item{
-    background:var(--bg);
-    border-radius:15px;
-    padding:15px;
-    text-align:center;
-}
+    top:11px;
 
-.summary-item i{
-    color:var(--primary);
-    font-size:19px;
-    margin-bottom:7px;
-}
+    width:27px;
+    height:27px;
 
-.summary-item strong{
-    display:block;
-    font-size:20px;
-}
+    border-radius:8px;
 
-.summary-item span{
-    color:var(--muted);
-    font-size:12px;
-}
+    background:#F5F7FA;
 
-/* =========================
-   PRIVACY
-========================= */
+    color:#8A98A8;
 
-.privacy{
     display:flex;
-    align-items:flex-start;
-    gap:13px;
-    background:var(--green-light);
-    border:1px solid #CDEDDD;
-    border-radius:18px;
-    padding:17px;
-    margin-top:25px;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:10px;
+
 }
 
-.privacy i{
-    color:var(--green);
-    font-size:22px;
-    margin-top:2px;
+
+/* =========================================================
+   PREMIUM
+========================================================= */
+
+.premium{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #17324D,
+            #315B7F
+        );
+
+    color:#fff;
+
+    border-radius:24px;
+
+    padding:21px;
+
+    box-shadow:
+        0 17px 35px rgba(23,50,77,.16);
+
 }
 
-.privacy h3{
-    font-size:15px;
-    margin-bottom:4px;
+.premium::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    left:-60px;
+    top:-70px;
+
+    background:rgba(255,255,255,.06);
+
 }
 
-.privacy p{
+.premium-content{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.premium-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    background:rgba(255,255,255,.11);
+
+    border:1px solid rgba(255,255,255,.13);
+
+    border-radius:10px;
+
+    padding:6px 9px;
+
+    font-size:10px;
+
+    font-weight:800;
+
+}
+
+.premium h2{
+
+    margin-top:10px;
+
+    font-size:20px;
+
+    font-weight:900;
+
+}
+
+.premium p{
+
+    margin-top:5px;
+
     font-size:12px;
-    color:#557061;
+
     line-height:1.7;
+
+    opacity:.85;
+
 }
 
-/* =========================
-   FOOTER
-========================= */
+.premium-list{
 
-.footer{
-    text-align:center;
-    padding:20px 10px 10px;
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:6px 15px;
+
+    margin-top:13px;
+
+}
+
+.premium-list span{
+
+    font-size:11px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+}
+
+.premium-list i{
+
+    color:#8ED1FF;
+
+}
+
+.premium-price{
+
+    margin-top:16px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+}
+
+.price strong{
+
+    font-size:22px;
+
+    font-weight:900;
+
+}
+
+.price small{
+
+    font-size:11px;
+
+    opacity:.75;
+
+}
+
+.premium-btn{
+
+    border:0;
+
+    background:#fff;
+
+    color:var(--primary-dark);
+
+    min-height:43px;
+
+    padding:0 15px;
+
+    border-radius:13px;
+
+    font-weight:900;
+
+}
+
+
+/* =========================================================
+   CHALLENGES
+========================================================= */
+
+.challenge-card{
+
+    background:#fff;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:16px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.challenge-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+}
+
+.challenge-icon{
+
+    width:45px;
+    height:45px;
+
+    border-radius:14px;
+
+    background:var(--orange-soft);
+
+    color:var(--orange);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+}
+
+.challenge-info{
+
+    flex:1;
+
+}
+
+.challenge-info h3{
+
+    font-size:14px;
+
+    font-weight:900;
+
+}
+
+.challenge-info p{
+
     color:var(--muted);
-    font-size:12px;
+
+    font-size:11px;
+
+    margin-top:2px;
+
 }
 
-/* =========================
+.challenge-percent{
+
+    font-size:13px;
+
+    font-weight:900;
+
+    color:var(--orange);
+
+}
+
+.challenge-bar{
+
+    height:8px;
+
+    margin-top:13px;
+
+    background:#F3F3F3;
+
+    border-radius:99px;
+
+    overflow:hidden;
+
+}
+
+.challenge-bar div{
+
+    height:100%;
+
+    width:60%;
+
+    background:var(--orange);
+
+    border-radius:99px;
+
+}
+
+
+/* =========================================================
+   PRIVACY
+========================================================= */
+
+.privacy-card{
+
+    margin-top:25px;
+
+    background:var(--green-soft);
+
+    border:1px solid #D0EBDD;
+
+    border-radius:20px;
+
+    padding:15px;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:11px;
+
+}
+
+.privacy-icon{
+
+    width:38px;
+    height:38px;
+
+    flex-shrink:0;
+
+    border-radius:12px;
+
+    background:#fff;
+
+    color:var(--green);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+}
+
+.privacy-card h3{
+
+    font-size:13px;
+
+    font-weight:900;
+
+}
+
+.privacy-card p{
+
+    margin-top:3px;
+
+    color:#587365;
+
+    font-size:11px;
+
+    line-height:1.7;
+
+}
+
+
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
+
+.bottom-nav{
+
+    position:fixed;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    z-index:5000;
+
+    height:
+        calc(
+            var(--nav-height) +
+            env(safe-area-inset-bottom)
+        );
+
+    padding:
+        7px 10px
+        env(safe-area-inset-bottom);
+
+    background:
+        rgba(255,255,255,.96);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border-top:1px solid var(--border);
+
+    box-shadow:
+        0 -8px 25px rgba(20,60,100,.06);
+
+}
+
+.bottom-nav-inner{
+
+    width:min(
+        600px,
+        100%
+    );
+
+    height:100%;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    align-items:center;
+
+}
+
+.nav-item{
+
+    border:0;
+
+    background:transparent;
+
+    color:#8795A5;
+
+    height:58px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:4px;
+
+    font-size:10px;
+
+    font-weight:700;
+
+}
+
+.nav-item i{
+
+    font-size:17px;
+
+}
+
+.nav-item.active{
+
+    color:var(--primary);
+
+}
+
+.nav-item.active i{
+
+    transform:translateY(-1px);
+
+}
+
+
+/* =========================================================
+   FLOATING ADD
+========================================================= */
+
+.floating-add{
+
+    position:fixed;
+
+    z-index:4900;
+
+    bottom:
+        calc(
+            var(--nav-height) +
+            env(safe-area-inset-bottom) +
+            13px
+        );
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:53px;
+    height:53px;
+
+    border:5px solid #F4F8FC;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--primary),
+            var(--primary-dark)
+        );
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:19px;
+
+    box-shadow:
+        0 10px 25px rgba(25,118,210,.30);
+
+}
+
+.floating-add:active{
+
+    transform:
+        translateX(-50%)
+        scale(.92);
+
+}
+
+
+/* =========================================================
    MODAL
-========================= */
+========================================================= */
 
 .modal{
+
     position:fixed;
+
     inset:0;
-    background:rgba(8,29,50,.48);
+
+    background:
+        rgba(12,35,57,.55);
+
     display:none;
-    align-items:center;
+
+    align-items:flex-end;
+
     justify-content:center;
-    padding:18px;
-    z-index:500;
+
+    z-index:10000;
+
+    padding:0;
+
 }
 
 .modal.show{
+
     display:flex;
+
 }
 
 .modal-box{
-    width:min(430px,100%);
+
+    width:min(
+        520px,
+        100%
+    );
+
     max-height:90vh;
+
     overflow:auto;
+
     background:#fff;
-    border-radius:24px;
-    padding:21px;
-    box-shadow:0 20px 60px rgba(0,0,0,.2);
+
+    border-radius:
+        27px
+        27px
+        0
+        0;
+
+    padding:20px;
+
+    animation:
+        modalUp .25s ease;
+
+}
+
+@keyframes modalUp{
+
+    from{
+        transform:translateY(100%);
+    }
+
+    to{
+        transform:translateY(0);
+    }
+
+}
+
+.modal-handle{
+
+    width:40px;
+    height:4px;
+
+    background:#DCE5EC;
+
+    border-radius:99px;
+
+    margin:0 auto 17px;
+
 }
 
 .modal-head{
+
     display:flex;
-    justify-content:space-between;
+
     align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
     margin-bottom:18px;
+
 }
 
 .modal-head h3{
-    font-size:19px;
+
+    font-size:18px;
+
+    font-weight:900;
+
 }
 
-.close-modal{
+.modal-close{
+
     border:0;
-    background:#F1F5F8;
+
     width:37px;
     height:37px;
+
     border-radius:11px;
+
+    background:#F2F6F9;
+
+    color:var(--text);
+
 }
 
 .form-group{
-    margin-bottom:13px;
+
+    margin-bottom:14px;
+
 }
 
 .form-group label{
+
     display:block;
-    font-size:13px;
-    font-weight:700;
+
+    font-size:12px;
+
+    font-weight:800;
+
     margin-bottom:6px;
+
 }
 
 .form-group input{
+
     width:100%;
-    height:46px;
-    border:1px solid var(--border);
-    border-radius:12px;
+
+    height:48px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:13px;
+
     padding:0 13px;
+
     outline:none;
+
     color:var(--text);
+
     background:#fff;
+
 }
 
 .form-group input:focus{
+
     border-color:var(--primary);
-    box-shadow:0 0 0 3px rgba(25,118,210,.08);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(25,118,210,.08);
+
 }
 
-.modal-buttons{
-    display:flex;
+.modal-actions{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
     gap:9px;
+
     margin-top:18px;
+
 }
 
-.modal-buttons button{
-    flex:1;
-    height:46px;
-    border-radius:12px;
+.modal-actions button{
+
+    height:47px;
+
     border:0;
-    font-weight:800;
+
+    border-radius:13px;
+
+    font-weight:900;
+
 }
 
-.cancel-btn{
-    background:#F0F4F7;
+.modal-cancel{
+
+    background:#F1F5F8;
+
     color:var(--text);
+
 }
 
-.save-btn{
+.modal-save{
+
     background:var(--primary);
+
     color:#fff;
+
 }
 
-/* =========================
+
+/* =========================================================
    TOAST
-========================= */
+========================================================= */
 
 .toast{
+
     position:fixed;
-    bottom:22px;
-    right:50%;
-    transform:translateX(50%) translateY(100px);
+
+    z-index:20000;
+
+    left:50%;
+
+    bottom:
+        calc(
+            var(--nav-height) +
+            env(safe-area-inset-bottom) +
+            18px
+        );
+
+    transform:
+        translateX(-50%)
+        translateY(80px);
+
     background:#17324D;
+
     color:#fff;
-    padding:12px 17px;
-    border-radius:13px;
-    z-index:1000;
+
+    border-radius:14px;
+
+    padding:11px 16px;
+
+    font-size:12px;
+
+    font-weight:700;
+
     opacity:0;
+
+    pointer-events:none;
+
     transition:.3s;
-    font-size:13px;
-    box-shadow:0 10px 30px rgba(0,0,0,.18);
+
+    white-space:nowrap;
+
+    max-width:
+        calc(100% - 30px);
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
 }
 
 .toast.show{
+
     opacity:1;
-    transform:translateX(50%) translateY(0);
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 
-@media(max-width:950px){
+/* =========================================================
+   FOOTER
+========================================================= */
 
-    .goals-grid{
-        grid-template-columns:repeat(2,1fr);
+.footer{
+
+    text-align:center;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    padding:25px 10px 5px;
+
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media(min-width:700px){
+
+    body{
+
+        padding-bottom:20px;
+
+    }
+
+    .bottom-nav{
+
+        display:none;
+
+    }
+
+    .floating-add{
+
+        display:none;
+
+    }
+
+    .hero{
+
+        min-height:230px;
+
+        padding:30px;
+
+    }
+
+    .hero h1{
+
+        font-size:32px;
+
+    }
+
+    .quick-grid{
+
+        grid-template-columns:
+            repeat(4,1fr);
+
     }
 
     .measure-grid{
-        grid-template-columns:repeat(2,1fr);
+
+        grid-template-columns:
+            repeat(4,1fr);
+
     }
 
-    .health-links{
-        grid-template-columns:repeat(2,1fr);
+    .modules-grid{
+
+        grid-template-columns:
+            repeat(4,1fr);
+
     }
 
-    .summary-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
+    .goals-container{
 
-@media(max-width:650px){
+        display:grid;
 
-    .container{
-        width:min(100% - 20px,1200px);
-        padding-top:17px;
+        grid-template-columns:
+            repeat(2,1fr);
+
     }
 
-    .header-inner{
-        padding:10px;
-    }
+    .modal{
 
-    .brand-text{
-        font-size:18px;
-    }
+        align-items:center;
 
-    .brand-icon{
-        width:40px;
-        height:40px;
-    }
-
-    .welcome{
         padding:20px;
-        border-radius:22px;
+
     }
 
-    .welcome h1{
+    .modal-box{
+
+        border-radius:25px;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media(max-width:360px){
+
+    .app-container{
+
+        width:calc(100% - 18px);
+
+    }
+
+    .hero{
+
+        padding:19px;
+
+    }
+
+    .hero h1{
+
         font-size:23px;
+
     }
 
-    .goals-grid{
-        grid-template-columns:1fr;
+    .quick-card{
+
+        min-height:86px;
+
     }
 
-    .measure-grid{
-        grid-template-columns:repeat(2,1fr);
+    .quick-icon{
+
+        width:35px;
+        height:35px;
+
     }
 
-    .health-links{
-        grid-template-columns:1fr 1fr;
+    .quick-card span{
+
+        font-size:10px;
+
     }
 
-    .summary-grid{
-        grid-template-columns:1fr 1fr;
-    }
 }
 
-@media(max-width:420px){
-
-    .quick-actions{
-        grid-template-columns:1fr;
-    }
-
-    .health-links{
-        grid-template-columns:1fr;
-    }
-
-    .measure-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .goal-card{
-        padding:15px;
-    }
-
-    .summary{
-        padding:14px;
-    }
-}
-
-</style>
-
-</head>
-
-<body>
-
-<!-- =========================
+</style></head><body><!-- =======================================================
      LOADING
-========================= -->
+======================================================= --><div id="loadingScreen"><div class="loading-content">
 
-<div id="loadingScreen">
+    <div class="loading-logo">
 
-    <div class="loading-box">
+        <i class="fa-solid fa-heart-pulse"></i>
 
-        <div class="loading-icon">
+    </div>
+
+    <h2>Si7a</h2>
+
+    <p>جاري تحميل مساحتك الصحية...</p>
+
+</div>
+
+</div><!-- =======================================================
+     TOP BAR
+======================================================= --><header class="app-topbar"><div class="topbar-inner">
+
+    <a href="dashboard.html"
+       class="app-brand">
+
+        <div class="app-logo">
+
             <i class="fa-solid fa-heart-pulse"></i>
+
         </div>
 
-        <p>جاري تحميل بياناتك الصحية...</p>
+        <div>
+
+            <div class="app-name">
+                Si7a
+            </div>
+
+            <span class="app-subtitle">
+                صحتي في مكان واحد
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <div class="top-actions">
+
+        <button
+            class="top-icon"
+            id="refreshBtn"
+            aria-label="تحديث">
+
+            <i class="fa-solid fa-rotate"></i>
+
+        </button>
+
+        <button
+            class="top-icon"
+            id="logoutBtn"
+            aria-label="تسجيل الخروج">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+        </button>
+
+    </div>
+
+</div>
+
+</header><!-- =======================================================
+     MAIN
+======================================================= --><main class="app-container"><!-- =======================================================
+     HERO
+======================================================= --><section class="hero"><div class="hero-content">
+
+    <span class="hero-small">
+        لوحة صحتك الشخصية
+    </span>
+
+    <h1>
+        مرحبًا <span id="userName">بك</span> 👋
+    </h1>
+
+    <p class="hero-text">
+        تابع عاداتك الصحية، سجّل تقدمك،
+        وابنِ روتينًا يناسبك يومًا بعد يوم.
+    </p>
+
+    <div class="hero-date">
+
+        <i class="fa-regular fa-calendar"></i>
+
+        <span id="todayDate">
+            اليوم
+        </span>
+
+    </div>
+
+</div>
+
+</section><!-- =======================================================
+     DAILY SCORE
+======================================================= --><section class="daily-score"><div class="score-row">
+
+    <div
+        class="score-circle"
+        id="scoreCircle"
+        style="--score:0%;">
+
+        <span
+            class="score-number"
+            id="scoreNumber">
+            0%
+        </span>
+
+    </div>
+
+
+    <div class="score-info">
+
+        <h3>
+            إنجازك اليوم
+        </h3>
+
+        <p id="scoreDescription">
+            ابدأ بتسجيل أهدافك اليومية.
+        </p>
+
+        <div
+            class="score-status"
+            id="scoreStatus">
+
+            🌱 بداية جديدة
+
+        </div>
+
+    </div>
+
+</div>
+
+</section><!-- =======================================================
+     QUICK ACTIONS
+======================================================= --><section class="section"><div class="section-head">
+
+    <div class="section-title">
+
+        <div class="section-title-icon">
+            <i class="fa-solid fa-bolt"></i>
+        </div>
+
+        <h2>
+            وصول سريع
+        </h2>
 
     </div>
 
 </div>
 
 
-<!-- =========================
-     HEADER
-========================= -->
+<div class="quick-grid">
 
-<header class="header">
 
-    <div class="header-inner">
+    <a href="goals.html"
+       class="quick-card blue">
 
-        <a href="dashboard.html" class="brand">
+        <div class="quick-icon">
 
-            <div class="brand-icon">
-                <i class="fa-solid fa-heart-pulse"></i>
+            <i class="fa-solid fa-bullseye"></i>
+
+        </div>
+
+        <span>
+            أهدافي
+        </span>
+
+    </a>
+
+
+    <button
+        class="quick-card green"
+        id="waterQuick">
+
+        <div class="quick-icon">
+
+            <i class="fa-solid fa-droplet"></i>
+
+        </div>
+
+        <span>
+            إضافة ماء
+        </span>
+
+    </button>
+
+
+    <button
+        class="quick-card orange"
+        id="walkingQuick">
+
+        <div class="quick-icon">
+
+            <i class="fa-solid fa-person-walking"></i>
+
+        </div>
+
+        <span>
+            إضافة مشي
+        </span>
+
+    </button>
+
+
+    <button
+        class="quick-card purple"
+        id="measureQuick">
+
+        <div class="quick-icon">
+
+            <i class="fa-solid fa-heart-pulse"></i>
+
+        </div>
+
+        <span>
+            قياس صحي
+        </span>
+
+    </button>
+
+
+</div>
+
+</section><!-- =======================================================
+     TODAY GOALS
+======================================================= --><section class="section"><div class="section-head">
+
+    <div class="section-title">
+
+        <div class="section-title-icon">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+        </div>
+
+        <h2>
+            أهدافي اليوم
+        </h2>
+
+    </div>
+
+    <span
+        id="goalCount"
+        style="
+            color:var(--muted);
+            font-size:11px;
+            font-weight:700;
+        ">
+        0
+    </span>
+
+</div>
+
+
+<div
+    class="goals-container"
+    id="goalsGrid">
+</div>
+
+
+<div
+    class="empty-card"
+    id="noGoals"
+    style="display:none;">
+
+    <i class="fa-solid fa-bullseye"></i>
+
+    <h3>
+        لم تحدد أهدافك بعد
+    </h3>
+
+    <p>
+        اختر العادات التي تريد متابعتها
+        وحدد الهدف المناسب لك.
+    </p>
+
+    <a
+        href="goals.html"
+        class="primary-btn">
+
+        <i class="fa-solid fa-plus"></i>
+
+        إعداد أهدافي
+
+    </a>
+
+</div>
+
+</section><!-- =======================================================
+     MEASUREMENTS
+======================================================= --><section
+    class="section"
+    id="measurementsSection"><div class="section-head">
+
+    <div class="section-title">
+
+        <div class="section-title-icon">
+
+            <i class="fa-solid fa-stethoscope"></i>
+
+        </div>
+
+        <h2>
+            قياساتي
+        </h2>
+
+    </div>
+
+    <span
+        style="
+            color:var(--muted);
+            font-size:11px;
+        ">
+        اليوم
+    </span>
+
+</div>
+
+
+<div
+    class="measure-grid"
+    id="measureGrid">
+</div>
+
+</section><!-- =======================================================
+     HEALTH MODULES
+======================================================= --><section class="section"><div class="section-head">
+
+    <div class="section-title">
+
+        <div class="section-title-icon">
+
+            <i class="fa-solid fa-layer-group"></i>
+
+        </div>
+
+        <h2>
+            مجالات صحتي
+        </h2>
+
+    </div>
+
+</div>
+
+
+<div class="modules-grid">
+
+
+    <a href="#"
+       class="module">
+
+        <div
+            class="module-icon"
+            style="
+                background:var(--green-soft);
+                color:var(--green);
+            ">
+
+            <i class="fa-solid fa-utensils"></i>
+
+        </div>
+
+        <h3>
+            التغذية
+        </h3>
+
+        <p>
+            الماء، الفواكه،
+            الخضروات والعادات الغذائية.
+        </p>
+
+    </a>
+
+
+    <a href="#"
+       class="module">
+
+        <div
+            class="module-icon"
+            style="
+                background:var(--orange-soft);
+                color:var(--orange);
+            ">
+
+            <i class="fa-solid fa-person-running"></i>
+
+        </div>
+
+        <h3>
+            النشاط البدني
+        </h3>
+
+        <p>
+            المشي، الخطوات
+            والنشاط اليومي.
+        </p>
+
+    </a>
+
+
+    <a href="#"
+       class="module">
+
+        <div
+            class="module-icon"
+            style="
+                background:var(--purple-soft);
+                color:var(--purple);
+            ">
+
+            <i class="fa-solid fa-bed"></i>
+
+        </div>
+
+        <h3>
+            النوم
+        </h3>
+
+        <p>
+            وقت النوم،
+            الاستيقاظ ومدة النوم.
+        </p>
+
+    </a>
+
+
+    <a href="#"
+       class="module">
+
+        <div
+            class="module-icon"
+            style="
+                background:var(--cyan-soft);
+                color:var(--cyan);
+            ">
+
+            <i class="fa-solid fa-brain"></i>
+
+        </div>
+
+        <h3>
+            الراحة النفسية
+        </h3>
+
+        <p>
+            الاسترخاء، القراءة
+            والعادات اليومية.
+        </p>
+
+    </a>
+
+
+    <a href="#"
+       class="module">
+
+        <div
+            class="module-icon"
+            style="
+                background:var(--red-soft);
+                color:var(--red);
+            ">
+
+            <i class="fa-solid fa-file-medical"></i>
+
+        </div>
+
+        <h3>
+            التحاليل
+        </h3>
+
+        <p>
+            حفظ ومتابعة
+            نتائج التحاليل.
+        </p>
+
+        <div class="module-lock">
+            <i class="fa-solid fa-lock"></i>
+        </div>
+
+    </a>
+
+
+    <a href="#"
+       class="module">
+
+        <div
+            class="module-icon"
+            style="
+                background:var(--primary-soft);
+                color:var(--primary);
+            ">
+
+            <i class="fa-solid fa-capsules"></i>
+
+        </div>
+
+        <h3>
+            الأدوية
+        </h3>
+
+        <p>
+            تنظيم الأدوية
+            والتذكيرات.
+        </p>
+
+        <div class="module-lock">
+            <i class="fa-solid fa-lock"></i>
+        </div>
+
+    </a>
+
+
+    <a href="#"
+       class="module">
+
+        <div
+            class="module-icon"
+            style="
+                background:var(--orange-soft);
+                color:var(--orange);
+            ">
+
+            <i class="fa-solid fa-calendar-check"></i>
+
+        </div>
+
+        <h3>
+            المواعيد
+        </h3>
+
+        <p>
+            تنظيم المواعيد
+            والمتابعات.
+        </p>
+
+        <div class="module-lock">
+            <i class="fa-solid fa-lock"></i>
+        </div>
+
+    </a>
+
+
+    <a href="#"
+       class="module">
+
+        <div
+            class="module-icon"
+            style="
+                background:var(--purple-soft);
+                color:var(--purple);
+            ">
+
+            <i class="fa-solid fa-chart-simple"></i>
+
+        </div>
+
+        <h3>
+            التقارير
+        </h3>
+
+        <p>
+            اكتشف تطور
+            بياناتك مع الوقت.
+        </p>
+
+        <div class="module-lock">
+            <i class="fa-solid fa-lock"></i>
+        </div>
+
+    </a>
+
+
+</div>
+
+</section><!-- =======================================================
+     CHALLENGES
+======================================================= --><section class="section"><div class="section-head">
+
+    <div class="section-title">
+
+        <div class="section-title-icon">
+
+            <i class="fa-solid fa-trophy"></i>
+
+        </div>
+
+        <h2>
+            تحدياتي
+        </h2>
+
+    </div>
+
+    <a href="goals.html"
+       class="section-more">
+        إدارة
+    </a>
+
+</div>
+
+
+<div id="challengeContainer">
+
+    <div class="challenge-card">
+
+        <div class="challenge-top">
+
+            <div class="challenge-icon">
+
+                <i class="fa-solid fa-star"></i>
+
             </div>
 
-            <div class="brand-text">
-                Si7a
+            <div class="challenge-info">
+
+                <h3>
+                    تحدياتك الشخصية
+                </h3>
+
+                <p>
+                    أنشئ هدفًا يناسب أسلوب حياتك.
+                </p>
+
             </div>
 
-        </a>
+            <div class="challenge-percent">
+                +
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section><!-- =======================================================
+     PREMIUM
+======================================================= --><section class="section"><div class="premium">
+
+    <div class="premium-content">
+
+        <div class="premium-badge">
+
+            <i class="fa-solid fa-crown"></i>
+
+            Si7a Premium
+
+        </div>
+
+        <h2>
+            اكتشف كل إمكانيات Si7a
+        </h2>
+
+        <p>
+            أدوات إضافية لمساعدتك على متابعة
+            بياناتك وعاداتك الصحية بشكل أكثر تنظيمًا.
+        </p>
 
 
-        <div class="header-actions">
+        <div class="premium-list">
+
+            <span>
+                <i class="fa-solid fa-check"></i>
+                تقارير متقدمة
+            </span>
+
+            <span>
+                <i class="fa-solid fa-check"></i>
+                إحصائيات ورسوم
+            </span>
+
+            <span>
+                <i class="fa-solid fa-check"></i>
+                متابعة التحاليل
+            </span>
+
+            <span>
+                <i class="fa-solid fa-check"></i>
+                تذكيرات مخصصة
+            </span>
+
+        </div>
+
+
+        <div class="premium-price">
+
+            <div class="price">
+
+                <strong>
+                    700 دج
+                </strong>
+
+                <small>
+                    • فتح المزايا
+                </small>
+
+            </div>
 
             <button
-                class="icon-btn"
-                id="refreshBtn"
-                title="تحديث"
-            >
-                <i class="fa-solid fa-rotate"></i>
-            </button>
+                class="premium-btn"
+                id="premiumBtn">
 
-            <button
-                class="icon-btn"
-                id="logoutBtn"
-                title="تسجيل الخروج"
-            >
-                <i class="fa-solid fa-right-from-bracket"></i>
+                اكتشف Premium
+
             </button>
 
         </div>
 
     </div>
 
-</header>
+</div>
+
+</section><!-- =======================================================
+     PRIVACY
+======================================================= --><section class="privacy-card"><div class="privacy-icon">
+
+    <i class="fa-solid fa-shield-halved"></i>
+
+</div>
+
+<div>
+
+    <h3>
+        بياناتك الصحية خاصة
+    </h3>
+
+    <p>
+        بياناتك مرتبطة بحسابك الشخصي،
+        ولا يتم عرض بيانات مستخدم آخر لك.
+    </p>
+
+</div>
+
+</section><footer class="footer">© 2026 Si7a
+— صحتك، عاداتك، متابعتك
+
+</footer></main><!-- =======================================================
+     FLOATING ADD
+======================================================= --><button
+class="floating-add"
+id="floatingAdd"
+aria-label="إضافة بيانات">
+
+<i class="fa-solid fa-plus"></i>
+
+</button><!-- =======================================================
+     BOTTOM NAV
+======================================================= --><nav class="bottom-nav"><div class="bottom-nav-inner">
+
+    <button
+        class="nav-item active"
+        data-scroll="top">
+
+        <i class="fa-solid fa-house"></i>
+
+        <span>
+            الرئيسية
+        </span>
+
+    </button>
 
 
-<!-- =========================
-     MAIN
-========================= -->
+    <button
+        class="nav-item"
+        data-scroll="measurementsSection">
 
-<main class="container">
+        <i class="fa-solid fa-heart-pulse"></i>
 
+        <span>
+            المتابعة
+        </span>
 
-    <!-- WELCOME -->
-
-    <section class="welcome">
-
-        <div class="welcome-content">
-
-            <small>لوحتك الصحية الشخصية</small>
-
-            <h1>
-                مرحبًا <span id="userName">بك</span> 👋
-            </h1>
-
-            <p>
-                تابع عاداتك الصحية اليومية وحقق أهدافك خطوة بخطوة.
-            </p>
-
-            <div class="date-box">
-
-                <i class="fa-regular fa-calendar"></i>
-
-                <span id="todayDate">
-                    اليوم
-                </span>
-
-            </div>
-
-        </div>
-
-    </section>
+    </button>
 
 
-    <!-- QUICK ACTIONS -->
+    <button
+        class="nav-item"
+        data-scroll="challengeContainer">
 
-    <div class="quick-actions">
+        <i class="fa-solid fa-trophy"></i>
 
-        <a
-            href="goals.html"
-            class="quick-btn primary"
-        >
-            <i class="fa-solid fa-bullseye"></i>
-            تعديل أهدافي
-        </a>
+        <span>
+            التحديات
+        </span>
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        id="reportsNav">
+
+        <i class="fa-solid fa-chart-line"></i>
+
+        <span>
+            التقارير
+        </span>
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        id="accountNav">
+
+        <i class="fa-solid fa-user"></i>
+
+        <span>
+            حسابي
+        </span>
+
+    </button>
+
+</div>
+
+</nav><!-- =======================================================
+     INPUT MODAL
+======================================================= --><div
+    class="modal"
+    id="inputModal"><div class="modal-box">
+
+    <div class="modal-handle"></div>
+
+    <div class="modal-head">
+
+        <h3 id="modalTitle">
+            تسجيل البيانات
+        </h3>
 
         <button
-            class="quick-btn"
-            id="scrollMeasurementsBtn"
-        >
-            <i class="fa-solid fa-heart-pulse"></i>
-            القياسات الصحية
+            class="modal-close"
+            id="closeModal">
+
+            <i class="fa-solid fa-xmark"></i>
+
         </button>
 
     </div>
 
 
-    <!-- TODAY GOALS -->
+    <div id="modalContent"></div>
 
-    <section class="section">
 
-        <div class="section-title">
+    <div class="modal-actions">
 
-            <h2>
-                <i class="fa-solid fa-chart-line"></i>
-                أهدافي اليوم
-            </h2>
+        <button
+            class="modal-cancel"
+            id="cancelModal">
 
-            <span id="goalCount">
-                0 أهداف
-            </span>
+            إلغاء
 
-        </div>
+        </button>
 
+        <button
+            class="modal-save"
+            id="saveModal">
 
-        <div
-            class="goals-grid"
-            id="goalsGrid"
-        ></div>
+            حفظ
 
-
-        <div
-            class="empty"
-            id="noGoals"
-            style="display:none;"
-        >
-
-            <i class="fa-solid fa-bullseye"></i>
-
-            <h3>
-                لم تحدد أهدافك بعد
-            </h3>
-
-            <p>
-                اختر العادات والقياسات التي تريد متابعتها يوميًا.
-            </p>
-
-            <br>
-
-            <a
-                href="goals.html"
-                class="quick-btn primary"
-                style="display:inline-flex;padding:0 18px;"
-            >
-                <i class="fa-solid fa-plus"></i>
-                إعداد أهدافي
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- MEASUREMENTS -->
-
-    <section
-        class="section"
-        id="measurementsSection"
-    >
-
-        <div class="section-title">
-
-            <h2>
-                <i class="fa-solid fa-stethoscope"></i>
-                القياسات الصحية
-            </h2>
-
-            <span>
-                اختياري
-            </span>
-
-        </div>
-
-
-        <div
-            class="measure-grid"
-            id="measureGrid"
-        ></div>
-
-    </section>
-
-
-    <!-- HEALTH AREAS -->
-
-    <section class="section">
-
-        <div class="section-title">
-
-            <h2>
-                <i class="fa-solid fa-layer-group"></i>
-                صحتي
-            </h2>
-
-            <span>
-                المتابعة القادمة
-            </span>
-
-        </div>
-
-
-        <div class="health-links">
-
-            <a href="#" class="health-link">
-
-                <i class="fa-solid fa-utensils"></i>
-
-                <h3>
-                    التغذية
-                </h3>
-
-                <p>
-                    تابع الماء، الفواكه، الخضروات وعاداتك الغذائية.
-                </p>
-
-            </a>
-
-
-            <a href="#" class="health-link">
-
-                <i class="fa-solid fa-person-walking"></i>
-
-                <h3>
-                    النشاط البدني
-                </h3>
-
-                <p>
-                    المشي، الخطوات والنشاط اليومي.
-                </p>
-
-            </a>
-
-
-            <a href="#" class="health-link">
-
-                <i class="fa-solid fa-bed"></i>
-
-                <h3>
-                    النوم
-                </h3>
-
-                <p>
-                    مدة النوم ووقت النوم والاستيقاظ.
-                </p>
-
-            </a>
-
-
-            <a href="#" class="health-link">
-
-                <i class="fa-solid fa-brain"></i>
-
-                <h3>
-                    الراحة النفسية
-                </h3>
-
-                <p>
-                    الاسترخاء، القراءة والعادات المساعدة على الراحة.
-                </p>
-
-            </a>
-
-
-            <a href="#" class="health-link">
-
-                <i class="fa-solid fa-file-medical"></i>
-
-                <h3>
-                    التحاليل
-                </h3>
-
-                <p>
-                    مساحة مستقبلية لحفظ ومتابعة نتائج التحاليل.
-                </p>
-
-            </a>
-
-
-            <a href="#" class="health-link">
-
-                <i class="fa-solid fa-capsules"></i>
-
-                <h3>
-                    الأدوية
-                </h3>
-
-                <p>
-                    تنظيم الأدوية والمواعيد في مرحلة لاحقة.
-                </p>
-
-            </a>
-
-
-            <a href="#" class="health-link">
-
-                <i class="fa-solid fa-calendar-check"></i>
-
-                <h3>
-                    المواعيد
-                </h3>
-
-                <p>
-                    تنظيم المواعيد والمتابعات الصحية.
-                </p>
-
-            </a>
-
-
-            <a href="#" class="health-link">
-
-                <i class="fa-solid fa-chart-simple"></i>
-
-                <h3>
-                    التقارير
-                </h3>
-
-                <p>
-                    ملخصات وتطور بياناتك الصحية مع الوقت.
-                </p>
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- SUMMARY -->
-
-    <section class="section">
-
-        <div class="section-title">
-
-            <h2>
-                <i class="fa-solid fa-calendar-days"></i>
-                ملخص اليوم
-            </h2>
-
-        </div>
-
-
-        <div class="summary">
-
-            <div class="summary-grid">
-
-                <div class="summary-item">
-
-                    <i class="fa-solid fa-droplet"></i>
-
-                    <strong id="summaryWater">
-                        0
-                    </strong>
-
-                    <span>
-                        كوب ماء
-                    </span>
-
-                </div>
-
-
-                <div class="summary-item">
-
-                    <i class="fa-solid fa-person-walking"></i>
-
-                    <strong id="summaryWalking">
-                        0
-                    </strong>
-
-                    <span>
-                        دقيقة مشي
-                    </span>
-
-                </div>
-
-
-                <div class="summary-item">
-
-                    <i class="fa-solid fa-bed"></i>
-
-                    <strong id="summarySleep">
-                        0
-                    </strong>
-
-                    <span>
-                        ساعات نوم
-                    </span>
-
-                </div>
-
-
-                <div class="summary-item">
-
-                    <i class="fa-solid fa-bullseye"></i>
-
-                    <strong id="summaryCompleted">
-                        0%
-                    </strong>
-
-                    <span>
-                        متوسط الإنجاز
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PRIVACY -->
-
-    <section class="privacy">
-
-        <i class="fa-solid fa-shield-halved"></i>
-
-        <div>
-
-            <h3>
-                بياناتك الصحية خاصة
-            </h3>
-
-            <p>
-                يتم حفظ بياناتك داخل حسابك الشخصي المرتبط بمعرّفك الخاص.
-                لا يتم عرض بيانات المستخدمين لبعضهم البعض.
-            </p>
-
-        </div>
-
-    </section>
-
-
-</main>
-
-
-<footer class="footer">
-
-    © 2026 Si7a — صحتك، عاداتك، متابعتك
-
-</footer>
-
-
-<!-- =========================
-     MODAL
-========================= -->
-
-<div
-    class="modal"
-    id="inputModal"
->
-
-    <div class="modal-box">
-
-        <div class="modal-head">
-
-            <h3 id="modalTitle">
-                تسجيل البيانات
-            </h3>
-
-            <button
-                class="close-modal"
-                id="closeModal"
-            >
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-        </div>
-
-
-        <div id="modalContent"></div>
-
-
-        <div class="modal-buttons">
-
-            <button
-                class="cancel-btn"
-                id="cancelModal"
-            >
-                إلغاء
-            </button>
-
-            <button
-                class="save-btn"
-                id="saveModal"
-            >
-                حفظ
-            </button>
-
-        </div>
+        </button>
 
     </div>
 
 </div>
 
-
-<!-- TOAST -->
-
-<div
+</div><!-- =======================================================
+     TOAST
+======================================================= --><div
     class="toast"
-    id="toast"
-></div>
-
-
-<!-- =========================
+    id="toast">
+</div><!-- =======================================================
      FIREBASE
-========================= -->
+======================================================= --><script type="module">
 
-<script type="module">
 
 import {
     auth,
     db
 } from "./js/firebase.js";
 
+
 import {
     onAuthStateChanged,
     signOut
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
 
 import {
     doc,
@@ -1450,9 +3107,9 @@ import {
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 
-/* =========================
+/* =========================================================
    VARIABLES
-========================= */
+========================================================= */
 
 let currentUser = null;
 
@@ -1463,85 +3120,87 @@ let todayData = {};
 let currentModalType = null;
 
 
-/* =========================
-   DEFAULT DAILY DATA
-========================= */
+/* =========================================================
+   DEFAULT DATA
+========================================================= */
 
 const defaultTodayData = {
 
-    water: 0,
+    water:0,
 
-    walking: 0,
+    walking:0,
 
-    sleep: 0,
+    sleep:0,
 
-    bedtime: "",
+    bedtime:"",
 
-    wakeTime: "",
+    wakeTime:"",
 
-    steps: 0,
+    steps:0,
 
-    relaxation: 0,
+    relaxation:0,
 
-    reading: 0,
+    reading:0,
 
-    screenTime: 0,
+    screenTime:0,
 
-    fruit: 0,
+    fruit:0,
 
-    vegetables: 0,
+    vegetables:0,
 
-    smoking: 0,
+    smoking:0,
 
-    weight: "",
+    weight:"",
 
-    bloodPressure: "",
+    bloodPressure:"",
 
-    pulse: "",
+    pulse:"",
 
-    spo2: "",
+    spo2:"",
 
-    temperature: "",
+    temperature:"",
 
-    glucose: ""
+    glucose:""
 
 };
 
 
-/* =========================
-   TODAY
-========================= */
+/* =========================================================
+   DATE
+========================================================= */
 
 function getToday(){
 
     const d = new Date();
 
-    const year = d.getFullYear();
+    const year =
+        d.getFullYear();
 
-    const month = String(
-        d.getMonth() + 1
-    ).padStart(2,"0");
+    const month =
+        String(
+            d.getMonth()+1
+        ).padStart(2,"0");
 
-    const day = String(
-        d.getDate()
-    ).padStart(2,"0");
+    const day =
+        String(
+            d.getDate()
+        ).padStart(2,"0");
 
     return `${year}-${month}-${day}`;
+
 }
 
 
 const today = getToday();
 
 
-/* =========================
-   DATE DISPLAY
-========================= */
-
 function displayDate(){
 
     const date = new Date();
 
-    const formatted =
+    document.getElementById(
+        "todayDate"
+    ).textContent =
         date.toLocaleDateString(
             "ar-DZ",
             {
@@ -1552,36 +3211,40 @@ function displayDate(){
             }
         );
 
-    document.getElementById(
-        "todayDate"
-    ).textContent = formatted;
 }
 
 
-/* =========================
+/* =========================================================
    TOAST
-========================= */
+========================================================= */
 
 function showToast(message){
 
     const toast =
         document.getElementById("toast");
 
-    toast.textContent = message;
+    toast.textContent =
+        message;
 
     toast.classList.add("show");
 
-    setTimeout(() => {
+    setTimeout(
+        () => {
 
-        toast.classList.remove("show");
+            toast.classList.remove(
+                "show"
+            );
 
-    },2500);
+        },
+        2500
+    );
+
 }
 
 
-/* =========================
+/* =========================================================
    AUTH
-========================= */
+========================================================= */
 
 onAuthStateChanged(
     auth,
@@ -1593,6 +3256,7 @@ onAuthStateChanged(
                 "login.html";
 
             return;
+
         }
 
         currentUser = user;
@@ -1603,19 +3267,22 @@ onAuthStateChanged(
 
         document.getElementById(
             "loadingScreen"
-        ).style.display = "none";
+        ).style.display =
+            "none";
 
     }
 );
 
 
-/* =========================
-   LOAD USER DATA
-========================= */
+/* =========================================================
+   LOAD USER
+========================================================= */
 
 async function loadUserData(){
 
     try{
+
+        /* USER */
 
         const userRef =
             doc(
@@ -1627,7 +3294,10 @@ async function loadUserData(){
         const userSnap =
             await getDoc(userRef);
 
-        if(userSnap.exists()){
+
+        if(
+            userSnap.exists()
+        ){
 
             const data =
                 userSnap.data();
@@ -1644,12 +3314,11 @@ async function loadUserData(){
                 "userName"
             ).textContent =
                 "بك";
+
         }
 
 
-        /* =========================
-           GOALS
-        ========================= */
+        /* GOALS */
 
         const goalsRef =
             doc(
@@ -1661,22 +3330,18 @@ async function loadUserData(){
             );
 
         const goalsSnap =
-            await getDoc(goalsRef);
-
-        if(goalsSnap.exists()){
-
-            goals = goalsSnap.data();
-
-        }else{
-
-            goals = {};
-
-        }
+            await getDoc(
+                goalsRef
+            );
 
 
-        /* =========================
-           TODAY DATA
-        ========================= */
+        goals =
+            goalsSnap.exists()
+                ? goalsSnap.data()
+                : {};
+
+
+        /* TODAY */
 
         const dailyRef =
             doc(
@@ -1688,15 +3353,22 @@ async function loadUserData(){
             );
 
         const dailySnap =
-            await getDoc(dailyRef);
+            await getDoc(
+                dailyRef
+            );
+
 
         todayData = {
 
             ...defaultTodayData,
 
-            ...(dailySnap.exists()
-                ? dailySnap.data()
-                : {})
+            ...(
+
+                dailySnap.exists()
+                    ? dailySnap.data()
+                    : {}
+
+            )
 
         };
 
@@ -1705,11 +3377,17 @@ async function loadUserData(){
 
         renderMeasurements();
 
-        renderSummary();
+        renderScore();
+
+        renderChallenges();
+
 
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "LOAD ERROR:",
+            error
+        );
 
         showToast(
             "حدث خطأ أثناء تحميل بياناتك"
@@ -1720,13 +3398,15 @@ async function loadUserData(){
 }
 
 
-/* =========================
-   SAVE TODAY
-========================= */
+/* =========================================================
+   SAVE
+========================================================= */
 
 async function saveToday(){
 
-    if(!currentUser) return;
+    if(!currentUser)
+        return;
+
 
     try{
 
@@ -1739,26 +3419,35 @@ async function saveToday(){
                 today
             );
 
+
         await setDoc(
             ref,
             {
+
                 ...todayData,
 
-                uid:currentUser.uid,
+                uid:
+                    currentUser.uid,
 
-                date:today,
+                date:
+                    today,
 
                 updatedAt:
                     serverTimestamp()
+
             },
             {
                 merge:true
             }
         );
 
+
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "SAVE ERROR:",
+            error
+        );
 
         showToast(
             "تعذر حفظ البيانات"
@@ -1769,9 +3458,9 @@ async function saveToday(){
 }
 
 
-/* =========================
+/* =========================================================
    GOAL DEFINITIONS
-========================= */
+========================================================= */
 
 const goalDefinitions = {
 
@@ -1850,9 +3539,9 @@ const goalDefinitions = {
 };
 
 
-/* =========================
+/* =========================================================
    RENDER GOALS
-========================= */
+========================================================= */
 
 function renderGoals(){
 
@@ -1870,11 +3559,15 @@ function renderGoals(){
 
     let count = 0;
 
-    Object.keys(goalDefinitions)
-        .forEach(key => {
+
+    Object.keys(
+        goalDefinitions
+    ).forEach(
+        key => {
 
             const enabledKey =
                 key + "Enabled";
+
 
             if(
                 goals[enabledKey] !== true
@@ -1883,6 +3576,7 @@ function renderGoals(){
                 return;
 
             }
+
 
             if(
                 goals[key] === undefined ||
@@ -1893,52 +3587,51 @@ function renderGoals(){
 
             }
 
+
             count++;
+
 
             const definition =
                 goalDefinitions[key];
 
+
             const target =
-                Number(goals[key]) || 0;
+                Number(
+                    goals[key]
+                ) || 0;
+
 
             const current =
                 getCurrentValue(key);
 
-            let percent =
+
+            const percent =
                 calculatePercent(
                     key,
                     current,
                     target
                 );
 
+
             const card =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             card.className =
                 "goal-card";
 
 
-            const displayCurrent =
-                formatValue(
-                    key,
-                    current
-                );
-
-
-            const displayTarget =
-                formatValue(
-                    key,
-                    target
-                );
-
-
             card.innerHTML = `
 
-                <div class="goal-top">
+                <div class="goal-main">
 
                     <div class="goal-icon">
+
                         <i class="fa-solid ${definition.icon}"></i>
+
                     </div>
+
 
                     <div class="goal-info">
 
@@ -1947,24 +3640,25 @@ function renderGoals(){
                         </h3>
 
                         <p>
-                            الهدف اليومي
+                            هدفك اليومي
                         </p>
 
                     </div>
 
-                    <div class="progress-percent">
+
+                    <div class="goal-percent">
                         ${percent}%
                     </div>
 
                 </div>
 
 
-                <div class="progress">
+                <div class="goal-progress">
 
                     <div
-                        class="progress-bar"
-                        style="width:${percent}%"
-                    ></div>
+                        class="goal-progress-bar"
+                        style="width:${percent}%">
+                    </div>
 
                 </div>
 
@@ -1973,43 +3667,54 @@ function renderGoals(){
 
                     <div class="goal-value">
 
-                        ${displayCurrent}
+                        <strong>
+                            ${escapeHtml(
+                                String(
+                                    formatValue(
+                                        key,
+                                        current
+                                    )
+                                )
+                            )}
+                        </strong>
 
-                        <span class="goal-unit">
-                            ${definition.unit}
-                        </span>
+                        ${definition.unit}
 
-                        <span>
-                            /
-                            ${displayTarget}
-                        </span>
+                        /
+                        ${escapeHtml(
+                            String(
+                                formatValue(
+                                    key,
+                                    target
+                                )
+                            )
+                        )}
 
                     </div>
 
 
-                    <div class="goal-actions">
+                    <button
+                        class="goal-add"
+                        data-add="${key}">
 
-                        <button
-                            class="small-action"
-                            data-add="${key}"
-                            title="إضافة"
-                        >
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
+                        <i class="fa-solid fa-plus"></i>
 
-                    </div>
+                    </button>
 
                 </div>
 
             `;
 
 
-            grid.appendChild(card);
+            grid.appendChild(
+                card
+            );
 
-        });
+        }
+    );
 
 
-    /* CUSTOM GOALS */
+    /* CUSTOM */
 
     if(
         Array.isArray(
@@ -2017,8 +3722,8 @@ function renderGoals(){
         )
     ){
 
-        goals.customGoals
-            .forEach(custom => {
+        goals.customGoals.forEach(
+            custom => {
 
                 if(
                     !custom ||
@@ -2029,10 +3734,15 @@ function renderGoals(){
 
                 }
 
+
                 count++;
 
+
                 const target =
-                    Number(custom.value) || 0;
+                    Number(
+                        custom.value
+                    ) || 0;
+
 
                 const current =
                     Number(
@@ -2042,21 +3752,25 @@ function renderGoals(){
                         ]
                     ) || 0;
 
+
                 const percent =
-                    Math.min(
-                        100,
-                        target > 0
-                            ? Math.round(
+                    target > 0
+                        ? Math.min(
+                            100,
+                            Math.round(
                                 current /
                                 target *
                                 100
                             )
-                            : 0
-                    );
+                        )
+                        : 0;
 
 
                 const card =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
+
 
                 card.className =
                     "goal-card";
@@ -2064,16 +3778,26 @@ function renderGoals(){
 
                 card.innerHTML = `
 
-                    <div class="goal-top">
+                    <div class="goal-main">
 
-                        <div class="goal-icon">
+                        <div
+                            class="goal-icon"
+                            style="
+                                background:var(--orange-soft);
+                                color:var(--orange);
+                            ">
+
                             <i class="fa-solid fa-star"></i>
+
                         </div>
+
 
                         <div class="goal-info">
 
                             <h3>
-                                ${escapeHtml(custom.name)}
+                                ${escapeHtml(
+                                    custom.name
+                                )}
                             </h3>
 
                             <p>
@@ -2082,19 +3806,27 @@ function renderGoals(){
 
                         </div>
 
-                        <div class="progress-percent">
+
+                        <div
+                            class="goal-percent"
+                            style="color:var(--orange);">
+
                             ${percent}%
+
                         </div>
 
                     </div>
 
 
-                    <div class="progress">
+                    <div class="goal-progress">
 
                         <div
-                            class="progress-bar"
-                            style="width:${percent}%"
-                        ></div>
+                            class="goal-progress-bar"
+                            style="
+                                width:${percent}%;
+                                background:var(--orange);
+                            ">
+                        </div>
 
                     </div>
 
@@ -2103,11 +3835,13 @@ function renderGoals(){
 
                         <div class="goal-value">
 
-                            ${current}
+                            <strong>
+                                ${current}
+                            </strong>
 
-                            <span class="goal-unit">
-                                ${escapeHtml(custom.unit || "")}
-                            </span>
+                            ${escapeHtml(
+                                custom.unit || ""
+                            )}
 
                             /
                             ${target}
@@ -2115,26 +3849,29 @@ function renderGoals(){
                         </div>
 
 
-                        <div class="goal-actions">
+                        <button
+                            class="goal-add"
+                            data-custom="${custom.id}"
+                            style="
+                                background:var(--orange-soft);
+                                color:#B86D00;
+                            ">
 
-                            <button
-                                class="small-action"
-                                data-custom="${custom.id}"
-                                title="إضافة"
-                            >
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
+                            <i class="fa-solid fa-plus"></i>
 
-                        </div>
+                        </button>
 
                     </div>
 
                 `;
 
 
-                grid.appendChild(card);
+                grid.appendChild(
+                    card
+                );
 
-            });
+            }
+        );
 
     }
 
@@ -2145,17 +3882,10 @@ function renderGoals(){
         `${count} أهداف`;
 
 
-    if(count === 0){
-
-        empty.style.display =
-            "block";
-
-    }else{
-
-        empty.style.display =
-            "none";
-
-    }
+    empty.style.display =
+        count === 0
+            ? "block"
+            : "none";
 
 
     attachGoalButtons();
@@ -2163,9 +3893,9 @@ function renderGoals(){
 }
 
 
-/* =========================
-   CURRENT VALUE
-========================= */
+/* =========================================================
+   CURRENT
+========================================================= */
 
 function getCurrentValue(key){
 
@@ -2174,9 +3904,9 @@ function getCurrentValue(key){
 }
 
 
-/* =========================
+/* =========================================================
    PERCENT
-========================= */
+========================================================= */
 
 function calculatePercent(
     key,
@@ -2220,8 +3950,8 @@ function calculatePercent(
         return Math.min(
             100,
             Math.round(
-                current /
-                target *
+                Number(current) /
+                Number(target) *
                 100
             )
         );
@@ -2235,6 +3965,7 @@ function calculatePercent(
 
     }
 
+
     return Math.min(
         100,
         Math.round(
@@ -2247,9 +3978,9 @@ function calculatePercent(
 }
 
 
-/* =========================
-   FORMAT VALUE
-========================= */
+/* =========================================================
+   FORMAT
+========================================================= */
 
 function formatValue(
     key,
@@ -2265,20 +3996,25 @@ function formatValue(
 
     }
 
-    if(value === "" || value === null){
+
+    if(
+        value === "" ||
+        value === null
+    ){
 
         return 0;
 
     }
+
 
     return value;
 
 }
 
 
-/* =========================
-   BUTTONS
-========================= */
+/* =========================================================
+   GOAL BUTTONS
+========================================================= */
 
 function attachGoalButtons(){
 
@@ -2286,51 +4022,55 @@ function attachGoalButtons(){
         .querySelectorAll(
             "[data-add]"
         )
-        .forEach(button => {
+        .forEach(
+            button => {
 
-            button.addEventListener(
-                "click",
-                () => {
+                button.addEventListener(
+                    "click",
+                    () => {
 
-                    const key =
-                        button.dataset.add;
+                        handleGoalAction(
+                            button.dataset.add
+                        );
 
-                    handleGoalAction(key);
+                    }
+                );
 
-                }
-            );
-
-        });
+            }
+        );
 
 
     document
         .querySelectorAll(
             "[data-custom]"
         )
-        .forEach(button => {
+        .forEach(
+            button => {
 
-            button.addEventListener(
-                "click",
-                () => {
+                button.addEventListener(
+                    "click",
+                    () => {
 
-                    const id =
-                        button.dataset.custom;
+                        handleCustomGoal(
+                            button.dataset.custom
+                        );
 
-                    handleCustomGoal(id);
+                    }
+                );
 
-                }
-            );
-
-        });
+            }
+        );
 
 }
 
 
-/* =========================
+/* =========================================================
    HANDLE GOAL
-========================= */
+========================================================= */
 
-async function handleGoalAction(key){
+async function handleGoalAction(
+    key
+){
 
     if(
         key === "bedtime" ||
@@ -2363,7 +4103,7 @@ async function handleGoalAction(key){
 
         openNumberModal(
             key,
-            "كم سيجارة اليوم؟",
+            "عدد السجائر اليوم",
             0,
             100,
             "سيجارة"
@@ -2376,17 +4116,18 @@ async function handleGoalAction(key){
 
     let step = 1;
 
-    if(key === "walking"){
-        step = 10;
-    }
 
-    if(key === "steps"){
+    if(key === "walking")
+        step = 10;
+
+
+    if(key === "steps")
         step = 500;
-    }
 
-    if(key === "screenTime"){
+
+    if(key === "screenTime")
         step = 10;
-    }
+
 
     if(
         key === "relaxation" ||
@@ -2406,243 +4147,22 @@ async function handleGoalAction(key){
 
     await saveToday();
 
+
     renderGoals();
 
-    renderSummary();
+    renderScore();
+
 
     showToast(
-        "تم تحديث إنجازك اليومي ✓"
+        "تم تحديث إنجازك ✓"
     );
 
 }
 
 
-/* =========================
-   NUMBER MODAL
-========================= */
-
-function openNumberModal(
-    key,
-    title,
-    min,
-    max,
-    unit
-){
-
-    currentModalType = key;
-
-    document.getElementById(
-        "modalTitle"
-    ).textContent = title;
-
-
-    document.getElementById(
-        "modalContent"
-    ).innerHTML = `
-
-        <div class="form-group">
-
-            <label>
-                القيمة (${unit})
-            </label>
-
-            <input
-                id="modalInput"
-                type="number"
-                min="${min}"
-                max="${max}"
-                step="0.1"
-                value="${todayData[key] || ""}"
-                placeholder="أدخل القيمة"
-            >
-
-        </div>
-
-    `;
-
-
-    showModal();
-
-}
-
-
-/* =========================
-   TIME MODAL
-========================= */
-
-function openTimeModal(key){
-
-    currentModalType = key;
-
-    const title =
-        key === "bedtime"
-            ? "وقت النوم"
-            : "وقت الاستيقاظ";
-
-
-    document.getElementById(
-        "modalTitle"
-    ).textContent = title;
-
-
-    document.getElementById(
-        "modalContent"
-    ).innerHTML = `
-
-        <div class="form-group">
-
-            <label>
-                اختر الوقت
-            </label>
-
-            <input
-                id="modalInput"
-                type="time"
-                value="${todayData[key] || ""}"
-            >
-
-        </div>
-
-    `;
-
-
-    showModal();
-
-}
-
-
-/* =========================
-   SHOW MODAL
-========================= */
-
-function showModal(){
-
-    document
-        .getElementById(
-            "inputModal"
-        )
-        .classList.add("show");
-
-}
-
-
-/* =========================
-   CLOSE MODAL
-========================= */
-
-function closeModal(){
-
-    document
-        .getElementById(
-            "inputModal"
-        )
-        .classList.remove("show");
-
-    currentModalType = null;
-
-}
-
-
-/* =========================
-   SAVE MODAL
-========================= */
-
-document
-    .getElementById("saveModal")
-    .addEventListener(
-        "click",
-        async () => {
-
-            const input =
-                document.getElementById(
-                    "modalInput"
-                );
-
-            if(!input){
-
-                return;
-
-            }
-
-
-            let value =
-                input.value;
-
-
-            if(
-                currentModalType === "sleep" ||
-                currentModalType === "weight" ||
-                currentModalType === "temperature"
-            ){
-
-                value =
-                    Number(value);
-
-            }
-
-
-            if(
-                currentModalType === "pulse" ||
-                currentModalType === "spo2" ||
-                currentModalType === "glucose"
-            ){
-
-                value =
-                    Number(value);
-
-            }
-
-
-            if(
-                currentModalType === "bloodPressure"
-            ){
-
-                value =
-                    String(value);
-
-            }
-
-
-            if(
-                value === "" ||
-                value === null
-            ){
-
-                showToast(
-                    "أدخل قيمة صحيحة"
-                );
-
-                return;
-
-            }
-
-
-            todayData[
-                currentModalType
-            ] = value;
-
-
-            await saveToday();
-
-            closeModal();
-
-            renderGoals();
-
-            renderMeasurements();
-
-            renderSummary();
-
-            showToast(
-                "تم الحفظ بنجاح ✓"
-            );
-
-        }
-    );
-
-
-/* =========================
+/* =========================================================
    CUSTOM GOAL
-========================= */
+========================================================= */
 
 async function handleCustomGoal(id){
 
@@ -2657,11 +4177,8 @@ async function handleCustomGoal(id){
             : null;
 
 
-    if(!custom){
-
+    if(!custom)
         return;
-
-    }
 
 
     const current =
@@ -2679,11 +4196,8 @@ async function handleCustomGoal(id){
         );
 
 
-    if(value === null){
-
+    if(value === null)
         return;
-
-    }
 
 
     const number =
@@ -2691,7 +4205,7 @@ async function handleCustomGoal(id){
 
 
     if(
-        isNaN(number) ||
+        Number.isNaN(number) ||
         number < 0
     ){
 
@@ -2711,9 +4225,11 @@ async function handleCustomGoal(id){
 
     await saveToday();
 
+
     renderGoals();
 
-    renderSummary();
+    renderScore();
+
 
     showToast(
         "تم تحديث التحدي ✓"
@@ -2722,9 +4238,9 @@ async function handleCustomGoal(id){
 }
 
 
-/* =========================
+/* =========================================================
    MEASUREMENTS
-========================= */
+========================================================= */
 
 function renderMeasurements(){
 
@@ -2732,6 +4248,7 @@ function renderMeasurements(){
         document.getElementById(
             "measureGrid"
         );
+
 
     grid.innerHTML = "";
 
@@ -2789,95 +4306,114 @@ function renderMeasurements(){
     ];
 
 
-    measurements.forEach(item => {
+    measurements.forEach(
+        item => {
 
-        if(
-            goals[item.enabled] !== true
-        ){
+            if(
+                goals[item.enabled] !== true
+            ){
 
-            return;
+                return;
+
+            }
+
+
+            const value =
+                todayData[item.key] ||
+                "--";
+
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "measure-card";
+
+
+            card.innerHTML = `
+
+                <div class="measure-top">
+
+                    <div class="measure-icon">
+
+                        <i class="fa-solid ${item.icon}"></i>
+
+                    </div>
+
+
+                    <button
+                        class="measure-edit"
+                        data-measure="${item.key}">
+
+                        <i class="fa-solid fa-pen"></i>
+
+                    </button>
+
+                </div>
+
+
+                <h3>
+                    ${item.name}
+                </h3>
+
+
+                <div class="measure-value">
+
+                    ${escapeHtml(
+                        String(value)
+                    )}
+
+                    <span>
+                        ${item.unit}
+                    </span>
+
+                </div>
+
+            `;
+
+
+            grid.appendChild(
+                card
+            );
 
         }
-
-
-        const value =
-            todayData[item.key] ||
-            "--";
-
-
-        const card =
-            document.createElement("div");
-
-        card.className =
-            "measure-card";
-
-
-        card.innerHTML = `
-
-            <div class="measure-icon">
-
-                <i class="fa-solid ${item.icon}"></i>
-
-            </div>
-
-            <h3>
-                ${item.name}
-            </h3>
-
-            <div class="measure-value">
-
-                ${escapeHtml(
-                    String(value)
-                )}
-
-                <span>
-                    ${item.unit}
-                </span>
-
-            </div>
-
-            <button
-                data-measure="${item.key}"
-            >
-                <i class="fa-solid fa-pen"></i>
-                تسجيل
-            </button>
-
-        `;
-
-
-        grid.appendChild(card);
-
-    });
+    );
 
 
     document
         .querySelectorAll(
             "[data-measure]"
         )
-        .forEach(button => {
+        .forEach(
+            button => {
 
-            button.addEventListener(
-                "click",
-                () => {
+                button.addEventListener(
+                    "click",
+                    () => {
 
-                    openMeasurementModal(
-                        button.dataset.measure
-                    );
+                        openMeasurementModal(
+                            button.dataset.measure
+                        );
 
-                }
-            );
+                    }
+                );
 
-        });
+            }
+        );
 
 }
 
 
-/* =========================
+/* =========================================================
    MEASUREMENT MODAL
-========================= */
+========================================================= */
 
-function openMeasurementModal(key){
+function openMeasurementModal(
+    key
+){
 
     const labels = {
 
@@ -2924,7 +4460,12 @@ function openMeasurementModal(key){
         labels[key];
 
 
-    currentModalType = key;
+    if(!item)
+        return;
+
+
+    currentModalType =
+        key;
 
 
     document.getElementById(
@@ -2961,41 +4502,244 @@ function openMeasurementModal(key){
 }
 
 
-/* =========================
-   SUMMARY
-========================= */
+/* =========================================================
+   NUMBER MODAL
+========================================================= */
 
-function renderSummary(){
+function openNumberModal(
+    key,
+    title,
+    min,
+    max,
+    unit
+){
 
-    document.getElementById(
-        "summaryWater"
-    ).textContent =
-        todayData.water || 0;
-
-
-    document.getElementById(
-        "summaryWalking"
-    ).textContent =
-        todayData.walking || 0;
+    currentModalType =
+        key;
 
 
     document.getElementById(
-        "summarySleep"
+        "modalTitle"
     ).textContent =
-        todayData.sleep || 0;
+        title;
 
+
+    document.getElementById(
+        "modalContent"
+    ).innerHTML = `
+
+        <div class="form-group">
+
+            <label>
+                القيمة — ${unit}
+            </label>
+
+            <input
+                id="modalInput"
+                type="number"
+                min="${min}"
+                max="${max}"
+                step="0.1"
+                value="${todayData[key] || ""}"
+                placeholder="أدخل القيمة"
+            >
+
+        </div>
+
+    `;
+
+
+    showModal();
+
+}
+
+
+/* =========================================================
+   TIME MODAL
+========================================================= */
+
+function openTimeModal(key){
+
+    currentModalType =
+        key;
+
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        key === "bedtime"
+            ? "وقت النوم"
+            : "وقت الاستيقاظ";
+
+
+    document.getElementById(
+        "modalContent"
+    ).innerHTML = `
+
+        <div class="form-group">
+
+            <label>
+                اختر الوقت
+            </label>
+
+            <input
+                id="modalInput"
+                type="time"
+                value="${todayData[key] || ""}"
+            >
+
+        </div>
+
+    `;
+
+
+    showModal();
+
+}
+
+
+/* =========================================================
+   SHOW / CLOSE
+========================================================= */
+
+function showModal(){
+
+    document
+        .getElementById(
+            "inputModal"
+        )
+        .classList.add(
+            "show"
+        );
+
+}
+
+
+function closeModal(){
+
+    document
+        .getElementById(
+            "inputModal"
+        )
+        .classList.remove(
+            "show"
+        );
+
+    currentModalType =
+        null;
+
+}
+
+
+/* =========================================================
+   SAVE MODAL
+========================================================= */
+
+document
+    .getElementById(
+        "saveModal"
+    )
+    .addEventListener(
+        "click",
+        async () => {
+
+            const input =
+                document.getElementById(
+                    "modalInput"
+                );
+
+
+            if(!input)
+                return;
+
+
+            let value =
+                input.value;
+
+
+            if(
+                [
+                    "sleep",
+                    "weight",
+                    "temperature",
+                    "pulse",
+                    "spo2",
+                    "glucose"
+                ].includes(
+                    currentModalType
+                )
+            ){
+
+                value =
+                    Number(value);
+
+            }
+
+
+            if(
+                value === "" ||
+                value === null ||
+                (
+                    typeof value ===
+                    "number" &&
+                    Number.isNaN(value)
+                )
+            ){
+
+                showToast(
+                    "أدخل قيمة صحيحة"
+                );
+
+                return;
+
+            }
+
+
+            todayData[
+                currentModalType
+            ] = value;
+
+
+            await saveToday();
+
+
+            closeModal();
+
+
+            renderGoals();
+
+            renderMeasurements();
+
+            renderScore();
+
+
+            showToast(
+                "تم الحفظ بنجاح ✓"
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   SCORE
+========================================================= */
+
+function renderScore(){
 
     const percentages = [];
 
 
-    Object.keys(goalDefinitions)
-        .forEach(key => {
+    Object.keys(
+        goalDefinitions
+    ).forEach(
+        key => {
 
-            const enabled =
-                goals[key + "Enabled"];
-
-
-            if(enabled !== true){
+            if(
+                goals[
+                    key + "Enabled"
+                ] !== true
+            ){
 
                 return;
 
@@ -3019,15 +4763,17 @@ function renderSummary(){
 
                 percentages.push(
                     current &&
-                    current ===
-                    goals[key]
+                    current === goals[key]
                         ? 100
                         : 0
                 );
 
-            }else if(
-                target > 0
-            ){
+                return;
+
+            }
+
+
+            if(target > 0){
 
                 percentages.push(
                     Math.min(
@@ -3042,7 +4788,8 @@ function renderSummary(){
 
             }
 
-        });
+        }
+    );
 
 
     if(
@@ -3051,13 +4798,14 @@ function renderSummary(){
         )
     ){
 
-        goals.customGoals
-            .forEach(custom => {
+        goals.customGoals.forEach(
+            custom => {
 
                 const target =
                     Number(
                         custom.value
                     ) || 0;
+
 
                 const current =
                     Number(
@@ -3066,6 +4814,7 @@ function renderSummary(){
                             custom.id
                         ]
                     ) || 0;
+
 
                 if(target > 0){
 
@@ -3082,7 +4831,8 @@ function renderSummary(){
 
                 }
 
-            });
+            }
+        );
 
     }
 
@@ -3095,7 +4845,8 @@ function renderSummary(){
         average =
             Math.round(
                 percentages.reduce(
-                    (a,b) => a+b,
+                    (a,b) =>
+                        a+b,
                     0
                 ) /
                 percentages.length
@@ -3104,36 +4855,454 @@ function renderSummary(){
     }
 
 
-    document.getElementById(
-        "summaryCompleted"
-    ).textContent =
+    const circle =
+        document.getElementById(
+            "scoreCircle"
+        );
+
+
+    const number =
+        document.getElementById(
+            "scoreNumber"
+        );
+
+
+    const description =
+        document.getElementById(
+            "scoreDescription"
+        );
+
+
+    const status =
+        document.getElementById(
+            "scoreStatus"
+        );
+
+
+    circle.style
+        .setProperty(
+            "--score",
+            average + "%"
+        );
+
+
+    number.textContent =
         average + "%";
 
+
+    if(!percentages.length){
+
+        description.textContent =
+            "ابدأ بتسجيل أهدافك اليومية.";
+
+        status.textContent =
+            "🌱 بداية جديدة";
+
+        return;
+
+    }
+
+
+    if(average >= 100){
+
+        description.textContent =
+            "رائع! أكملت أهدافك اليومية.";
+
+        status.textContent =
+            "🏆 يوم مثالي";
+
+    }else if(average >= 75){
+
+        description.textContent =
+            "أداء ممتاز، اقتربت من إكمال أهدافك.";
+
+        status.textContent =
+            "🔥 استمر بهذا المستوى";
+
+    }else if(average >= 40){
+
+        description.textContent =
+            "تقدم جيد، ما زال لديك وقت اليوم.";
+
+        status.textContent =
+            "💪 واصل التقدم";
+
+    }else{
+
+        description.textContent =
+            "ابدأ بخطوة صغيرة اليوم.";
+
+        status.textContent =
+            "🌱 كل خطوة مهمة";
+
+    }
+
 }
 
 
-/* =========================
-   ESCAPE HTML
-========================= */
+/* =========================================================
+   CHALLENGES
+========================================================= */
 
-function escapeHtml(value){
+function renderChallenges(){
 
-    return String(value)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
+    const container =
+        document.getElementById(
+            "challengeContainer"
+        );
+
+
+    if(
+        !Array.isArray(
+            goals.customGoals
+        ) ||
+        goals.customGoals.length === 0
+    ){
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    goals.customGoals
+        .slice(0,4)
+        .forEach(
+            custom => {
+
+                const target =
+                    Number(
+                        custom.value
+                    ) || 0;
+
+
+                const current =
+                    Number(
+                        todayData[
+                            "custom_" +
+                            custom.id
+                        ]
+                    ) || 0;
+
+
+                const percent =
+                    target > 0
+                        ? Math.min(
+                            100,
+                            Math.round(
+                                current /
+                                target *
+                                100
+                            )
+                        )
+                        : 0;
+
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                card.className =
+                    "challenge-card";
+
+
+                card.innerHTML = `
+
+                    <div class="challenge-top">
+
+                        <div class="challenge-icon">
+
+                            <i class="fa-solid fa-star"></i>
+
+                        </div>
+
+
+                        <div class="challenge-info">
+
+                            <h3>
+                                ${escapeHtml(
+                                    custom.name
+                                )}
+                            </h3>
+
+                            <p>
+                                ${current}
+                                ${escapeHtml(
+                                    custom.unit || ""
+                                )}
+                                /
+                                ${target}
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="challenge-percent">
+
+                            ${percent}%
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="challenge-bar">
+
+                        <div
+                            style="
+                                width:${percent}%;
+                            ">
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(
+                    card
+                );
+
+            }
+        );
 
 }
 
 
-/* =========================
+/* =========================================================
+   QUICK WATER
+========================================================= */
+
+document
+    .getElementById(
+        "waterQuick"
+    )
+    .addEventListener(
+        "click",
+        async () => {
+
+            todayData.water =
+                Number(
+                    todayData.water || 0
+                ) + 1;
+
+
+            await saveToday();
+
+
+            renderGoals();
+
+            renderScore();
+
+
+            showToast(
+                "💧 تمت إضافة كوب ماء"
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   QUICK WALKING
+========================================================= */
+
+document
+    .getElementById(
+        "walkingQuick"
+    )
+    .addEventListener(
+        "click",
+        async () => {
+
+            todayData.walking =
+                Number(
+                    todayData.walking || 0
+                ) + 10;
+
+
+            await saveToday();
+
+
+            renderGoals();
+
+            renderScore();
+
+
+            showToast(
+                "🚶 تمت إضافة 10 دقائق مشي"
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   MEASUREMENT QUICK
+========================================================= */
+
+document
+    .getElementById(
+        "measureQuick"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            const first =
+                [
+                    "weight",
+                    "bloodPressure",
+                    "pulse",
+                    "spo2",
+                    "temperature",
+                    "glucose"
+                ]
+                .find(
+                    key =>
+                        goals[
+                            key +
+                            "Enabled"
+                        ] === true
+                );
+
+
+            if(first){
+
+                openMeasurementModal(
+                    first
+                );
+
+            }else{
+
+                document
+                    .getElementById(
+                        "measurementsSection"
+                    )
+                    .scrollIntoView({
+                        behavior:"smooth"
+                    });
+
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   FLOATING BUTTON
+========================================================= */
+
+document
+    .getElementById(
+        "floatingAdd"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            openNumberModal(
+                "water",
+                "إضافة الماء",
+                0,
+                100,
+                "كوب"
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   REFRESH
+========================================================= */
+
+document
+    .getElementById(
+        "refreshBtn"
+    )
+    .addEventListener(
+        "click",
+        async () => {
+
+            const button =
+                document.getElementById(
+                    "refreshBtn"
+                );
+
+
+            button.innerHTML =
+                '<i class="fa-solid fa-spinner fa-spin"></i>';
+
+
+            await loadUserData();
+
+
+            button.innerHTML =
+                '<i class="fa-solid fa-rotate"></i>';
+
+
+            showToast(
+                "تم تحديث بياناتك ✓"
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+document
+    .getElementById(
+        "logoutBtn"
+    )
+    .addEventListener(
+        "click",
+        async () => {
+
+            try{
+
+                await signOut(
+                    auth
+                );
+
+
+                window.location.href =
+                    "login.html";
+
+
+            }catch(error){
+
+                console.error(
+                    error
+                );
+
+
+                showToast(
+                    "تعذر تسجيل الخروج"
+                );
+
+            }
+
+        }
+    );
+
+
+/* =========================================================
    MODAL EVENTS
-========================= */
+========================================================= */
 
 document
-    .getElementById("closeModal")
+    .getElementById(
+        "closeModal"
+    )
     .addEventListener(
         "click",
         closeModal
@@ -3141,7 +5310,9 @@ document
 
 
 document
-    .getElementById("cancelModal")
+    .getElementById(
+        "cancelModal"
+    )
     .addEventListener(
         "click",
         closeModal
@@ -3149,7 +5320,9 @@ document
 
 
 document
-    .getElementById("inputModal")
+    .getElementById(
+        "inputModal"
+    )
     .addEventListener(
         "click",
         event => {
@@ -3167,93 +5340,169 @@ document
     );
 
 
-/* =========================
-   REFRESH
-========================= */
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
 
 document
-    .getElementById("refreshBtn")
-    .addEventListener(
-        "click",
-        async () => {
+    .querySelectorAll(
+        ".nav-item[data-scroll]"
+    )
+    .forEach(
+        item => {
 
-            const button =
-                document.getElementById(
-                    "refreshBtn"
-                );
+            item.addEventListener(
+                "click",
+                () => {
 
-            button.innerHTML =
-                '<i class="fa-solid fa-spinner fa-spin"></i>';
+                    document
+                        .querySelectorAll(
+                            ".nav-item"
+                        )
+                        .forEach(
+                            nav =>
+                                nav.classList
+                                    .remove(
+                                        "active"
+                                    )
+                        );
 
-            await loadUserData();
 
-            button.innerHTML =
-                '<i class="fa-solid fa-rotate"></i>';
+                    item.classList.add(
+                        "active"
+                    );
 
-            showToast(
-                "تم تحديث البيانات ✓"
+
+                    const target =
+                        item.dataset.scroll;
+
+
+                    if(target === "top"){
+
+                        window.scrollTo({
+                            top:0,
+                            behavior:"smooth"
+                        });
+
+                        return;
+
+                    }
+
+
+                    const element =
+                        document.getElementById(
+                            target
+                        );
+
+
+                    if(element){
+
+                        element.scrollIntoView({
+                            behavior:"smooth",
+                            block:"start"
+                        });
+
+                    }
+
+                }
             );
 
         }
     );
 
 
-/* =========================
-   LOGOUT
-========================= */
-
-document
-    .getElementById("logoutBtn")
-    .addEventListener(
-        "click",
-        async () => {
-
-            try{
-
-                await signOut(auth);
-
-                window.location.href =
-                    "login.html";
-
-            }catch(error){
-
-                console.error(error);
-
-                showToast(
-                    "تعذر تسجيل الخروج"
-                );
-
-            }
-
-        }
-    );
-
-
-/* =========================
-   SCROLL
-========================= */
+/* =========================================================
+   REPORTS / ACCOUNT
+========================================================= */
 
 document
     .getElementById(
-        "scrollMeasurementsBtn"
+        "reportsNav"
     )
     .addEventListener(
         "click",
         () => {
 
-            document
-                .getElementById(
-                    "measurementsSection"
-                )
-                .scrollIntoView({
-                    behavior:"smooth"
-                });
+            showToast(
+                "قسم التقارير سيكون متاحًا قريبًا 📊"
+            );
 
         }
     );
 
+
+document
+    .getElementById(
+        "accountNav"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            showToast(
+                "صفحة الحساب ستتم إضافتها لاحقًا 👤"
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   PREMIUM
+========================================================= */
+
+document
+    .getElementById(
+        "premiumBtn"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            showToast(
+                "صفحة Premium والدفع ستتم إضافتها في الخطوة القادمة ⭐"
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+function escapeHtml(value){
+
+    return String(value)
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
+}
+
+
 </script>
-
 </body>
-
 </html>
