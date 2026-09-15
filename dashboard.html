@@ -1,5508 +1,3953 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport"
-content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
-<meta name="theme-color" content="#1976D2" id="themeColorMeta"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Si7a"><title>Si7a | صحتي</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"><link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"><style>
+<head>
+    <meta charset="UTF-8">
 
-/* =========================================================
-   SI7A — MOBILE HEALTH APP
-========================================================= */
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
 
-:root{
+    <meta name="theme-color" content="#2563EB">
 
-    --primary:#1976D2;
-    --primary-dark:#0D47A1;
-    --primary-soft:#E8F3FC;
+    <title>Si7a | لوحة التحكم</title>
 
-    --green:#20A464;
-    --green-soft:#EAF8F1;
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    --orange:#F59E0B;
-    --orange-soft:#FFF6DF;
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
-    --purple:#7657D8;
-    --purple-soft:#F1EDFF;
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
 
-    --red:#E64C4C;
-    --red-soft:#FFF0F0;
+    <style>
 
-    --cyan:#0891B2;
-    --cyan-soft:#E6F8FC;
+        :root {
 
-    --text:#17324D;
-    --muted:#718096;
+            /* Main */
+            --blue: #2563EB;
+            --blue-dark: #1D4ED8;
+            --blue-light: #EFF6FF;
+            --blue-soft: #DBEAFE;
 
-    --bg:#F4F8FC;
-    --card:#FFFFFF;
-    --border:#E2EAF2;
+            /* Colors */
+            --green: #16A34A;
+            --green-light: #ECFDF3;
 
-    --shadow:0 8px 28px rgba(24,67,105,.07);
+            --purple: #7C3AED;
+            --purple-light: #F5F3FF;
 
-    --radius:22px;
+            --orange: #F97316;
+            --orange-light: #FFF7ED;
 
-    --nav-height:76px;
+            --cyan: #0891B2;
+            --cyan-light: #ECFEFF;
 
-}
+            --pink: #DB2777;
+            --pink-light: #FDF2F8;
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+            --red: #DC2626;
+            --red-light: #FEF2F2;
 
-html{
-    scroll-behavior:smooth;
-}
+            --yellow: #D97706;
+            --yellow-light: #FFFBEB;
 
-body{
+            /* Neutral */
+            --bg: #F5F8FC;
+            --card: #FFFFFF;
+            --text: #172033;
+            --muted: #718096;
+            --border: #E7ECF3;
 
-    font-family:"Tajawal",Arial,sans-serif;
+            --shadow:
+                0 8px 30px rgba(30, 64, 175, 0.07);
 
-    background:
-        linear-gradient(
-            180deg,
-            #F7FBFF 0%,
-            #F4F8FC 45%,
-            #F4F8FC 100%
-        );
+            --radius: 20px;
 
-    color:var(--text);
+            --nav-height: 76px;
+        }
 
-    min-height:100vh;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    padding-bottom:
-        calc(
-            var(--nav-height) +
-            env(safe-area-inset-bottom) +
-            18px
-        );
+        html {
+            scroll-behavior: smooth;
+        }
 
-}
+        body {
 
-button,
-input,
-select{
-    font-family:inherit;
-}
+            font-family: "Tajawal", sans-serif;
 
-button{
-    cursor:pointer;
-}
+            background:
+                linear-gradient(
+                    180deg,
+                    #F7FAFF 0%,
+                    #F5F8FC 45%,
+                    #F3F6FA 100%
+                );
 
-a{
-    color:inherit;
-    text-decoration:none;
-}
+            color: var(--text);
 
-.hidden{
-    display:none!important;
-}
+            min-height: 100vh;
 
+            padding-bottom: calc(
+                var(--nav-height) + 25px
+            );
+        }
 
-/* =========================================================
-   LOADING
-========================================================= */
+        button,
+        input {
+            font-family: inherit;
+        }
 
-#loadingScreen{
+        button {
+            cursor: pointer;
+        }
 
-    position:fixed;
-    inset:0;
+        /* =========================
+           LOADING
+        ========================= */
 
-    background:#F7FBFF;
+        #loadingScreen {
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+            position: fixed;
+            inset: 0;
 
-    z-index:99999;
+            background: #F7FAFF;
 
-}
+            z-index: 9999;
 
-.loading-content{
-    text-align:center;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-.loading-logo{
+            flex-direction: column;
 
-    width:76px;
-    height:76px;
+            gap: 18px;
+        }
 
-    border-radius:25px;
+        .loading-logo {
 
-    background:
-        linear-gradient(
-            145deg,
-            #1976D2,
-            #0D47A1
-        );
+            width: 68px;
+            height: 68px;
 
-    color:white;
+            border-radius: 20px;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563EB,
+                    #60A5FA
+                );
 
-    font-size:31px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    margin:auto;
+            color: white;
 
-    box-shadow:
-        0 18px 35px rgba(25,118,210,.25);
+            font-size: 29px;
 
-    animation:
-        loadingPulse 1.4s ease-in-out infinite;
+            box-shadow:
+                0 12px 30px rgba(
+                    37,
+                    99,
+                    235,
+                    .25
+                );
+        }
 
-}
+        .loader {
 
-.loading-content h2{
+            width: 35px;
+            height: 35px;
 
-    margin-top:18px;
+            border: 3px solid #DBEAFE;
+            border-top-color: var(--blue);
 
-    font-size:21px;
+            border-radius: 50%;
 
-    font-weight:900;
+            animation:
+                spin .8s linear infinite;
+        }
 
-    color:var(--primary-dark);
+        @keyframes spin {
 
-}
+            to {
+                transform: rotate(360deg);
+            }
+        }
 
-.loading-content p{
+        /* =========================
+           APP
+        ========================= */
 
-    margin-top:6px;
+        .app {
 
-    color:var(--muted);
+            width: 100%;
+            max-width: 920px;
 
-    font-size:13px;
+            margin: auto;
 
-}
+            padding:
+                18px
+                18px
+                0;
+        }
 
-@keyframes loadingPulse{
+        /* =========================
+           HEADER
+        ========================= */
 
-    0%,100%{
-        transform:scale(1);
-    }
+        .top-header {
 
-    50%{
-        transform:scale(1.08);
-    }
+            display: flex;
 
-}
+            align-items: center;
 
+            justify-content: space-between;
 
-/* =========================================================
-   APP TOP BAR
-========================================================= */
+            margin-bottom: 20px;
+        }
 
-.app-topbar{
+        .greeting {
 
-    position:sticky;
+            display: flex;
 
-    top:0;
+            align-items: center;
 
-    z-index:1000;
+            gap: 12px;
+        }
 
-    background:
-        rgba(247,251,255,.92);
+        .avatar {
 
-    backdrop-filter:blur(18px);
+            width: 48px;
+            height: 48px;
 
-    -webkit-backdrop-filter:blur(18px);
+            border-radius: 16px;
 
-    border-bottom:1px solid rgba(226,234,242,.8);
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563EB,
+                    #60A5FA
+                );
 
-}
+            color: white;
 
-.topbar-inner{
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    width:min(
-        1100px,
-        calc(100% - 28px)
-    );
+            font-size: 19px;
 
-    min-height:70px;
+            box-shadow:
+                0 8px 20px
+                rgba(37, 99, 235, .20);
+        }
 
-    margin:auto;
+        .greeting-text small {
 
-    display:flex;
+            display: block;
 
-    align-items:center;
+            color: var(--muted);
 
-    justify-content:space-between;
+            font-size: 13px;
 
-    gap:12px;
+            margin-bottom: 2px;
+        }
 
-}
+        .greeting-text h1 {
 
-.app-brand{
+            font-size: 20px;
 
-    display:flex;
+            font-weight: 800;
 
-    align-items:center;
+            color: #172033;
+        }
 
-    gap:10px;
+        .header-actions {
 
-}
+            display: flex;
 
-.app-logo{
+            gap: 8px;
+        }
 
-    width:43px;
-    height:43px;
+        .icon-button {
 
-    border-radius:14px;
+            width: 43px;
+            height: 43px;
 
-    background:
-        linear-gradient(
-            145deg,
-            var(--primary),
-            var(--primary-dark)
-        );
+            border: 1px solid var(--border);
 
-    color:#fff;
+            background: white;
 
-    display:flex;
+            border-radius: 14px;
 
-    align-items:center;
-    justify-content:center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    font-size:19px;
+            color: #52627A;
 
-    box-shadow:
-        0 8px 20px rgba(25,118,210,.18);
+            transition: .2s;
+        }
 
-}
+        .icon-button:hover {
 
-.app-name{
+            color: var(--blue);
 
-    font-size:20px;
+            border-color: var(--blue-soft);
 
-    font-weight:900;
+            background: var(--blue-light);
+        }
 
-    color:var(--primary-dark);
+        /* =========================
+           DATE
+        ========================= */
 
-}
+        .date-line {
 
-.app-subtitle{
+            color: var(--muted);
 
-    display:block;
+            font-size: 13px;
 
-    font-size:10px;
+            margin-bottom: 13px;
 
-    color:var(--muted);
+            display: flex;
 
-    font-weight:600;
+            align-items: center;
 
-    margin-top:-2px;
+            gap: 7px;
+        }
 
-}
+        .date-line i {
 
-.top-actions{
+            color: var(--blue);
+        }
 
-    display:flex;
+        /* =========================
+           HERO
+        ========================= */
 
-    align-items:center;
+        .hero {
 
-    gap:7px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #1D4ED8 0%,
+                    #2563EB 50%,
+                    #3B82F6 100%
+                );
 
-}
+            color: white;
 
-.top-icon{
+            border-radius: 27px;
 
-    width:42px;
-    height:42px;
+            padding: 23px;
 
-    border:1px solid var(--border);
+            min-height: 210px;
 
-    background:#fff;
+            position: relative;
 
-    border-radius:14px;
+            overflow: hidden;
 
-    color:var(--primary-dark);
+            box-shadow:
+                0 18px 45px
+                rgba(37, 99, 235, .22);
 
-    display:flex;
+            margin-bottom: 22px;
+        }
 
-    align-items:center;
-    justify-content:center;
+        .hero::before {
 
-    font-size:16px;
+            content: "";
 
-    box-shadow:
-        0 5px 15px rgba(0,0,0,.03);
+            position: absolute;
 
-}
+            width: 210px;
+            height: 210px;
 
-.top-icon:active{
+            border-radius: 50%;
 
-    transform:scale(.95);
+            background:
+                rgba(255,255,255,.07);
 
-}
+            left: -80px;
+            top: -80px;
+        }
 
+        .hero::after {
 
-/* =========================================================
-   MAIN
-========================================================= */
+            content: "";
 
-.app-container{
+            position: absolute;
 
-    width:min(
-        1100px,
-        calc(100% - 24px)
-    );
+            width: 170px;
+            height: 170px;
 
-    margin:auto;
+            border-radius: 50%;
 
-    padding-top:17px;
+            background:
+                rgba(255,255,255,.06);
 
-}
+            right: -70px;
+            bottom: -80px;
+        }
 
+        .hero-content {
 
-/* =========================================================
-   HERO
-========================================================= */
+            position: relative;
 
-.hero{
+            z-index: 2;
 
-    position:relative;
+            display: flex;
 
-    overflow:hidden;
+            align-items: center;
 
-    color:white;
+            justify-content: space-between;
 
-    border-radius:28px;
+            gap: 20px;
+        }
 
-    padding:23px;
+        .hero-info {
 
-    min-height:210px;
+            flex: 1;
+        }
 
-    background:
-        linear-gradient(
-            135deg,
-            #0D47A1 0%,
-            #1976D2 55%,
-            #2196F3 100%
-        );
+        .hero-label {
 
-    box-shadow:
-        0 18px 40px rgba(13,71,161,.20);
+            font-size: 13px;
 
-}
+            opacity: .82;
 
-.hero::before{
+            margin-bottom: 5px;
+        }
 
-    content:"";
+        .hero-info h2 {
 
-    position:absolute;
+            font-size: 25px;
 
-    width:210px;
-    height:210px;
+            font-weight: 800;
 
-    border-radius:50%;
+            margin-bottom: 7px;
+        }
 
-    background:
-        rgba(255,255,255,.07);
+        .hero-info p {
 
-    left:-75px;
-    top:-95px;
+            font-size: 13px;
 
-}
+            line-height: 1.8;
 
-.hero::after{
+            opacity: .86;
 
-    content:"";
+            max-width: 260px;
+        }
 
-    position:absolute;
+        .hero-progress {
 
-    width:150px;
-    height:150px;
+            width: 125px;
+            height: 125px;
 
-    border-radius:50%;
+            flex-shrink: 0;
 
-    background:
-        rgba(255,255,255,.06);
+            border-radius: 50%;
 
-    right:-65px;
-    bottom:-75px;
+            background:
+                conic-gradient(
+                    #FFFFFF var(--progress),
+                    rgba(255,255,255,.18) 0
+                );
 
-}
+            display: flex;
 
-.hero-content{
+            align-items: center;
+            justify-content: center;
 
-    position:relative;
+            position: relative;
+        }
 
-    z-index:2;
+        .hero-progress::before {
 
-}
+            content: "";
 
-.hero-small{
+            position: absolute;
 
-    font-size:12px;
+            width: 99px;
+            height: 99px;
 
-    opacity:.83;
+            border-radius: 50%;
 
-}
+            background: #2563EB;
+        }
 
-.hero h1{
+        .progress-number {
 
-    margin-top:6px;
+            position: relative;
 
-    font-size:26px;
+            z-index: 2;
 
-    font-weight:900;
+            text-align: center;
+        }
 
-}
+        .progress-number strong {
 
-.hero-text{
+            display: block;
 
-    margin-top:7px;
+            font-size: 27px;
 
-    font-size:13px;
+            line-height: 1;
+        }
 
-    line-height:1.7;
+        .progress-number span {
 
-    max-width:600px;
+            font-size: 11px;
 
-    opacity:.91;
+            opacity: .8;
+        }
 
-}
+        /* =========================
+           SECTION HEADER
+        ========================= */
 
-.hero-date{
+        .section {
 
-    margin-top:17px;
+            margin-bottom: 23px;
+        }
 
-    display:inline-flex;
+        .section-header {
 
-    align-items:center;
+            display: flex;
 
-    gap:8px;
+            align-items: center;
 
-    padding:9px 13px;
+            justify-content: space-between;
 
-    border-radius:13px;
+            margin-bottom: 12px;
+        }
 
-    background:rgba(255,255,255,.12);
+        .section-title {
 
-    border:1px solid rgba(255,255,255,.14);
+            display: flex;
 
-    font-size:12px;
+            align-items: center;
 
-}
+            gap: 9px;
+        }
 
+        .section-title .title-icon {
 
-/* =========================================================
-   DAILY SCORE
-========================================================= */
+            width: 34px;
+            height: 34px;
 
-.daily-score{
+            border-radius: 11px;
 
-    margin-top:-45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    position:relative;
+            font-size: 14px;
+        }
 
-    z-index:10;
+        .section-title h3 {
 
-    width:calc(100% - 28px);
+            font-size: 17px;
 
-    margin-left:auto;
-    margin-right:auto;
+            font-weight: 800;
+        }
 
-    background:white;
+        .section-subtitle {
 
-    border:1px solid var(--border);
+            color: var(--muted);
 
-    border-radius:22px;
+            font-size: 12px;
 
-    padding:16px;
+            margin-top: 1px;
+        }
 
-    box-shadow:
-        0 15px 35px rgba(24,67,105,.09);
+        .section-action {
 
-}
+            border: none;
 
-.score-row{
+            background: transparent;
 
-    display:flex;
+            color: var(--blue);
 
-    align-items:center;
+            font-size: 12px;
 
-    gap:15px;
+            font-weight: 700;
+        }
 
-}
+        /* =========================
+           TODAY STATS
+        ========================= */
 
-.score-circle{
+        .stats-grid {
 
-    width:73px;
-    height:73px;
+            display: grid;
 
-    flex-shrink:0;
+            grid-template-columns:
+                repeat(4, 1fr);
 
-    border-radius:50%;
+            gap: 10px;
+        }
 
-    background:
-        conic-gradient(
-            var(--primary) var(--score,0%),
-            #EAF1F7 0
-        );
+        .stat-card {
 
-    display:flex;
+            background: white;
 
-    align-items:center;
-    justify-content:center;
+            border: 1px solid var(--border);
 
-    position:relative;
+            border-radius: 18px;
 
-}
+            padding: 14px 9px;
 
-.score-circle::after{
+            text-align: center;
 
-    content:"";
+            box-shadow: 0 5px 18px
+                rgba(20,40,80,.035);
 
-    position:absolute;
+            transition: .2s;
+        }
 
-    width:57px;
-    height:57px;
+        .stat-card:hover {
 
-    background:#fff;
+            transform: translateY(-2px);
 
-    border-radius:50%;
+            box-shadow: var(--shadow);
+        }
 
-}
+        .stat-icon {
 
-.score-number{
+            width: 38px;
+            height: 38px;
 
-    position:relative;
+            margin: 0 auto 8px;
 
-    z-index:2;
+            border-radius: 12px;
 
-    font-size:18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    font-weight:900;
+            font-size: 15px;
+        }
 
-    color:var(--primary-dark);
+        .stat-water .stat-icon {
 
-}
+            background: var(--cyan-light);
+            color: var(--cyan);
+        }
 
-.score-info{
+        .stat-walk .stat-icon {
 
-    flex:1;
+            background: var(--green-light);
+            color: var(--green);
+        }
 
-}
+        .stat-sleep .stat-icon {
 
-.score-info h3{
+            background: var(--purple-light);
+            color: var(--purple);
+        }
 
-    font-size:16px;
+        .stat-steps .stat-icon {
 
-    font-weight:900;
+            background: var(--blue-light);
+            color: var(--blue);
+        }
 
-}
+        .stat-value {
 
-.score-info p{
+            font-size: 16px;
 
-    color:var(--muted);
+            font-weight: 800;
 
-    font-size:12px;
+            color: #1F2937;
+        }
 
-    margin-top:3px;
+        .stat-name {
 
-}
+            font-size: 10px;
 
-.score-status{
+            color: var(--muted);
 
-    margin-top:8px;
+            margin-top: 2px;
+        }
 
-    font-size:12px;
+        .stat-progress {
 
-    font-weight:700;
+            height: 4px;
 
-    color:var(--primary);
+            background: #EDF1F6;
 
-}
+            border-radius: 10px;
 
+            margin-top: 9px;
 
-/* =========================================================
-   SECTION
-========================================================= */
+            overflow: hidden;
+        }
 
-.section{
+        .stat-progress span {
 
-    margin-top:28px;
+            display: block;
 
-}
+            height: 100%;
 
-.section-head{
+            border-radius: inherit;
 
-    display:flex;
+            width: 0%;
 
-    align-items:center;
+            transition: width .5s ease;
+        }
 
-    justify-content:space-between;
+        .stat-water .stat-progress span {
+            background: var(--cyan);
+        }
 
-    gap:10px;
+        .stat-walk .stat-progress span {
+            background: var(--green);
+        }
 
-    margin-bottom:13px;
+        .stat-sleep .stat-progress span {
+            background: var(--purple);
+        }
 
-}
+        .stat-steps .stat-progress span {
+            background: var(--blue);
+        }
 
-.section-title{
+        /* =========================
+           GOALS
+        ========================= */
 
-    display:flex;
+        .goals-list {
 
-    align-items:center;
+            display: flex;
 
-    gap:9px;
+            flex-direction: column;
 
-}
+            gap: 10px;
+        }
 
-.section-title-icon{
+        .goal-card {
 
-    width:34px;
-    height:34px;
+            background: white;
 
-    border-radius:11px;
+            border: 1px solid var(--border);
 
-    background:var(--primary-soft);
+            border-radius: 18px;
 
-    color:var(--primary);
+            padding: 14px;
 
-    display:flex;
+            display: flex;
 
-    align-items:center;
-    justify-content:center;
+            align-items: center;
 
-    font-size:14px;
+            gap: 12px;
 
-}
+            box-shadow:
+                0 5px 18px
+                rgba(20,40,80,.035);
+        }
 
-.section-title h2{
+        .goal-icon {
 
-    font-size:18px;
+            width: 44px;
+            height: 44px;
 
-    font-weight:900;
+            border-radius: 14px;
 
-}
+            flex-shrink: 0;
 
-.section-more{
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    border:0;
+            font-size: 17px;
+        }
 
-    background:transparent;
+        .goal-main {
 
-    color:var(--primary);
+            flex: 1;
 
-    font-size:12px;
+            min-width: 0;
+        }
 
-    font-weight:800;
+        .goal-top {
 
-}
+            display: flex;
 
+            justify-content: space-between;
 
-/* =========================================================
-   QUICK ACTIONS
-========================================================= */
+            gap: 10px;
 
-.quick-grid{
+            margin-bottom: 7px;
+        }
 
-    display:grid;
+        .goal-name {
 
-    grid-template-columns:
-        repeat(4,1fr);
+            font-size: 14px;
 
-    gap:10px;
+            font-weight: 700;
+        }
 
-}
+        .goal-percent {
 
-.quick-card{
+            font-size: 12px;
 
-    min-height:92px;
+            font-weight: 800;
 
-    background:#fff;
+            color: var(--blue);
+        }
 
-    border:1px solid var(--border);
+        .goal-bar {
 
-    border-radius:18px;
+            height: 6px;
 
-    padding:13px 9px;
+            background: #EEF2F7;
 
-    display:flex;
+            border-radius: 10px;
 
-    flex-direction:column;
+            overflow: hidden;
+        }
 
-    align-items:center;
-    justify-content:center;
+        .goal-bar span {
 
-    text-align:center;
+            display: block;
 
-    box-shadow:var(--shadow);
+            height: 100%;
 
-    transition:.2s;
+            border-radius: inherit;
 
-}
+            transition: width .5s ease;
+        }
 
-.quick-card:active{
+        .goal-bottom {
 
-    transform:scale(.97);
+            display: flex;
 
-}
+            justify-content: space-between;
 
-.quick-icon{
+            margin-top: 6px;
 
-    width:39px;
-    height:39px;
+            font-size: 11px;
 
-    border-radius:12px;
+            color: var(--muted);
+        }
 
-    display:flex;
+        .goal-done {
 
-    align-items:center;
-    justify-content:center;
+            color: var(--green);
 
-    font-size:16px;
+            font-weight: 700;
+        }
 
-    margin-bottom:7px;
+        .empty-goals {
 
-}
+            background: white;
 
-.quick-card span{
+            border: 1px dashed #D6DEE9;
 
-    font-size:11px;
+            border-radius: 18px;
 
-    font-weight:800;
+            padding: 25px 18px;
 
-}
+            text-align: center;
 
+            color: var(--muted);
+        }
 
-/* =========================================================
-   COLORS
-========================================================= */
+        .empty-goals i {
 
-.blue .quick-icon{
-    background:var(--primary-soft);
-    color:var(--primary);
-}
+            font-size: 28px;
 
-.green .quick-icon{
-    background:var(--green-soft);
-    color:var(--green);
-}
+            color: #B7C5D8;
 
-.orange .quick-icon{
-    background:var(--orange-soft);
-    color:var(--orange);
-}
+            margin-bottom: 9px;
+        }
 
-.purple .quick-icon{
-    background:var(--purple-soft);
-    color:var(--purple);
-}
+        .empty-goals h4 {
 
-.red .quick-icon{
-    background:var(--red-soft);
-    color:var(--red);
-}
+            color: #344054;
 
+            font-size: 14px;
 
-/* =========================================================
-   GOALS
-========================================================= */
+            margin-bottom: 4px;
+        }
 
-.goals-container{
+        .empty-goals p {
 
-    display:flex;
+            font-size: 12px;
 
-    flex-direction:column;
+            line-height: 1.7;
+        }
 
-    gap:11px;
+        /* =========================
+           MEASUREMENTS
+        ========================= */
 
-}
+        .measurements {
 
-.goal-card{
+            display: grid;
 
-    background:#fff;
+            grid-template-columns:
+                repeat(2, 1fr);
 
-    border:1px solid var(--border);
+            gap: 10px;
+        }
 
-    border-radius:20px;
+        .measurement-card {
 
-    padding:15px;
+            background: white;
 
-    box-shadow:var(--shadow);
+            border: 1px solid var(--border);
 
-}
+            border-radius: 17px;
 
-.goal-main{
+            padding: 14px;
 
-    display:flex;
+            display: flex;
 
-    align-items:center;
+            align-items: center;
 
-    gap:11px;
+            gap: 11px;
+        }
 
-}
+        .measurement-icon {
 
-.goal-icon{
+            width: 40px;
+            height: 40px;
 
-    width:45px;
-    height:45px;
+            border-radius: 12px;
 
-    flex-shrink:0;
+            display: flex;
 
-    border-radius:14px;
+            align-items: center;
+            justify-content: center;
 
-    background:var(--primary-soft);
+            flex-shrink: 0;
+        }
 
-    color:var(--primary);
+        .measurement-info {
 
-    display:flex;
+            min-width: 0;
+        }
 
-    align-items:center;
-    justify-content:center;
+        .measurement-name {
 
-}
+            color: var(--muted);
 
-.goal-info{
+            font-size: 11px;
 
-    flex:1;
+            margin-bottom: 2px;
+        }
 
-    min-width:0;
+        .measurement-value {
 
-}
+            font-size: 15px;
 
-.goal-info h3{
+            font-weight: 800;
+        }
 
-    font-size:14px;
+        .no-measurements {
 
-    font-weight:900;
+            grid-column: 1 / -1;
 
-}
+            background: white;
 
-.goal-info p{
+            border: 1px dashed #D6DEE9;
 
-    font-size:11px;
+            border-radius: 18px;
 
-    color:var(--muted);
+            padding: 22px;
 
-    margin-top:2px;
+            text-align: center;
 
-}
+            color: var(--muted);
 
-.goal-percent{
+            font-size: 12px;
+        }
 
-    font-size:14px;
+        /* =========================
+           QUICK ACTION
+        ========================= */
 
-    color:var(--primary);
+        .record-card {
 
-    font-weight:900;
+            background:
+                linear-gradient(
+                    135deg,
+                    #EFF6FF,
+                    #F8FBFF
+                );
 
-}
+            border:
+                1px solid #D9E8FF;
 
-.goal-progress{
+            border-radius: 21px;
 
-    height:8px;
+            padding: 17px;
 
-    margin-top:14px;
+            display: flex;
 
-    background:#EDF3F8;
+            align-items: center;
 
-    border-radius:99px;
+            gap: 13px;
+        }
 
-    overflow:hidden;
+        .record-icon {
 
-}
+            width: 47px;
+            height: 47px;
 
-.goal-progress-bar{
+            border-radius: 15px;
 
-    height:100%;
+            background: var(--blue);
 
-    width:0;
+            color: white;
 
-    background:
-        linear-gradient(
-            90deg,
-            var(--primary),
-            #42A5F5
-        );
+            display: flex;
 
-    border-radius:99px;
+            align-items: center;
+            justify-content: center;
 
-    transition:.5s;
+            font-size: 18px;
 
-}
+            box-shadow:
+                0 8px 18px
+                rgba(37,99,235,.2);
+        }
 
-.goal-bottom{
+        .record-text {
 
-    display:flex;
+            flex: 1;
+        }
 
-    align-items:center;
+        .record-text h4 {
 
-    justify-content:space-between;
+            font-size: 14px;
 
-    margin-top:9px;
+            margin-bottom: 3px;
+        }
 
-}
+        .record-text p {
 
-.goal-value{
+            color: var(--muted);
 
-    font-size:12px;
+            font-size: 11px;
 
-    color:var(--muted);
+            line-height: 1.6;
+        }
 
-}
+        .record-button {
 
-.goal-value strong{
+            border: none;
 
-    color:var(--text);
+            background: var(--blue);
 
-    font-size:13px;
+            color: white;
 
-}
+            border-radius: 12px;
 
-.goal-add{
+            padding: 10px 13px;
 
-    width:33px;
-    height:33px;
+            font-size: 12px;
 
-    border:0;
+            font-weight: 700;
 
-    border-radius:10px;
+            white-space: nowrap;
+        }
 
-    background:var(--primary-soft);
+        /* =========================
+           PRIVACY
+        ========================= */
 
-    color:var(--primary-dark);
+        .privacy {
 
-}
+            display: flex;
 
-.goal-add:active{
+            align-items: center;
 
-    transform:scale(.92);
+            gap: 9px;
 
-}
+            color: #8290A5;
 
+            font-size: 10px;
 
-/* =========================================================
-   EMPTY
-========================================================= */
+            line-height: 1.6;
 
-.empty-card{
+            padding: 5px 3px 15px;
+        }
 
-    background:#fff;
+        .privacy i {
 
-    border:1px dashed #CBDCEB;
+            color: var(--green);
 
-    border-radius:20px;
+            font-size: 14px;
+        }
 
-    padding:28px 18px;
+        /* =========================
+           BOTTOM NAV
+        ========================= */
 
-    text-align:center;
+        .bottom-nav {
 
-}
+            position: fixed;
 
-.empty-card i{
+            left: 0;
+            right: 0;
+            bottom: 0;
 
-    font-size:30px;
+            height: var(--nav-height);
 
-    color:var(--primary);
+            background:
+                rgba(255,255,255,.96);
 
-    margin-bottom:10px;
+            backdrop-filter: blur(18px);
 
-}
+            -webkit-backdrop-filter: blur(18px);
 
-.empty-card h3{
+            border-top:
+                1px solid rgba(
+                    220,
+                    227,
+                    237,
+                    .9
+                );
 
-    font-size:16px;
+            z-index: 1000;
 
-    font-weight:900;
+            display: flex;
 
-}
+            justify-content: center;
+        }
 
-.empty-card p{
+        .nav-inner {
 
-    color:var(--muted);
+            width: 100%;
 
-    font-size:12px;
+            max-width: 650px;
 
-    line-height:1.7;
+            display: grid;
 
-    margin-top:5px;
+            grid-template-columns:
+                repeat(5, 1fr);
 
-}
+            padding:
+                7px
+                8px
+                env(safe-area-inset-bottom);
+        }
 
-.primary-btn{
+        .nav-item {
 
-    display:inline-flex;
+            border: none;
 
-    align-items:center;
+            background: transparent;
 
-    justify-content:center;
+            color: #8491A5;
 
-    gap:7px;
+            display: flex;
 
-    min-height:43px;
+            flex-direction: column;
 
-    padding:0 18px;
+            align-items: center;
 
-    border:0;
+            justify-content: center;
 
-    border-radius:13px;
+            gap: 4px;
 
-    background:var(--primary);
+            font-size: 10px;
 
-    color:#fff;
+            position: relative;
+        }
 
-    font-weight:800;
+        .nav-item i {
 
-    margin-top:15px;
+            font-size: 18px;
 
-}
+            transition: .2s;
+        }
 
+        .nav-item.active {
 
-/* =========================================================
-   MEASUREMENTS
-========================================================= */
+            color: var(--blue);
 
-.measure-grid{
+            font-weight: 700;
+        }
 
-    display:grid;
+        .nav-item.active i {
 
-    grid-template-columns:
-        repeat(2,1fr);
+            transform: translateY(-1px);
+        }
 
-    gap:10px;
+        .nav-center {
 
-}
+            position: relative;
 
-.measure-card{
+            top: -17px;
+        }
 
-    background:#fff;
+        .nav-center .nav-circle {
 
-    border:1px solid var(--border);
+            width: 52px;
+            height: 52px;
 
-    border-radius:19px;
+            border-radius: 18px;
 
-    padding:15px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563EB,
+                    #3B82F6
+                );
 
-    box-shadow:var(--shadow);
+            color: white;
 
-}
+            display: flex;
 
-.measure-top{
+            align-items: center;
+            justify-content: center;
 
-    display:flex;
+            font-size: 20px;
 
-    align-items:center;
+            box-shadow:
+                0 8px 20px
+                rgba(37,99,235,.25);
 
-    justify-content:space-between;
+            border: 5px solid #F5F8FC;
+        }
 
-}
+        .nav-center span {
 
-.measure-icon{
+            margin-top: 2px;
+        }
 
-    width:40px;
-    height:40px;
+        /* =========================
+           MODAL
+        ========================= */
 
-    border-radius:12px;
+        .modal {
 
-    background:var(--primary-soft);
+            position: fixed;
 
-    color:var(--primary);
+            inset: 0;
 
-    display:flex;
+            background:
+                rgba(15, 23, 42, .48);
 
-    align-items:center;
-    justify-content:center;
+            z-index: 3000;
 
-}
+            display: none;
 
-.measure-edit{
+            align-items: flex-end;
 
-    border:0;
+            justify-content: center;
 
-    width:31px;
-    height:31px;
+            padding: 0;
+        }
 
-    border-radius:9px;
+        .modal.show {
 
-    background:#F2F6F9;
+            display: flex;
+        }
 
-    color:var(--muted);
+        .modal-box {
 
-}
+            width: 100%;
 
-.measure-card h3{
+            max-width: 600px;
 
-    font-size:13px;
+            background: white;
 
-    margin-top:11px;
+            border-radius:
+                27px
+                27px
+                0
+                0;
 
-    font-weight:800;
+            padding: 22px;
 
-}
+            animation:
+                slideUp .25s ease;
+        }
 
-.measure-value{
+        @keyframes slideUp {
 
-    margin-top:4px;
+            from {
+                transform: translateY(100%);
+            }
 
-    font-size:21px;
+            to {
+                transform: translateY(0);
+            }
+        }
 
-    font-weight:900;
+        .modal-head {
 
-}
+            display: flex;
 
-.measure-value span{
+            align-items: center;
 
-    color:var(--muted);
+            justify-content: space-between;
 
-    font-size:10px;
+            margin-bottom: 18px;
+        }
 
-    font-weight:500;
+        .modal-head h3 {
 
-}
+            font-size: 18px;
+        }
 
+        .close-modal {
 
-/* =========================================================
-   HEALTH MODULES
-========================================================= */
+            width: 37px;
+            height: 37px;
 
-.modules-grid{
+            border: none;
 
-    display:grid;
+            background: #F1F5F9;
 
-    grid-template-columns:
-        repeat(2,1fr);
+            color: #64748B;
 
-    gap:10px;
+            border-radius: 12px;
+        }
 
-}
+        .input-group {
 
-.module{
+            margin-bottom: 14px;
+        }
 
-    background:#fff;
+        .input-group label {
 
-    border:1px solid var(--border);
+            display: block;
 
-    border-radius:19px;
+            font-size: 12px;
 
-    padding:16px;
+            font-weight: 700;
 
-    box-shadow:var(--shadow);
+            margin-bottom: 7px;
 
-    min-height:126px;
+            color: #475569;
+        }
 
-    position:relative;
+        .input-group input {
 
-    overflow:hidden;
+            width: 100%;
 
-}
+            height: 48px;
 
-.module::after{
+            border:
+                1px solid #DCE3EC;
 
-    content:"";
+            border-radius: 14px;
 
-    position:absolute;
+            padding: 0 14px;
 
-    width:70px;
-    height:70px;
+            outline: none;
 
-    border-radius:50%;
+            font-size: 15px;
 
-    left:-28px;
-    bottom:-35px;
+            color: var(--text);
 
-    background:rgba(25,118,210,.04);
+            background: #FAFCFF;
+        }
 
-}
+        .input-group input:focus {
 
-.module-icon{
+            border-color: var(--blue);
 
-    width:42px;
-    height:42px;
+            box-shadow:
+                0 0 0 3px
+                rgba(37,99,235,.09);
+        }
 
-    border-radius:13px;
+        .modal-save {
 
-    display:flex;
+            width: 100%;
 
-    align-items:center;
-    justify-content:center;
+            height: 50px;
 
-    margin-bottom:10px;
+            border: none;
 
-}
+            border-radius: 15px;
 
-.module h3{
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563EB,
+                    #3B82F6
+                );
 
-    font-size:14px;
+            color: white;
 
-    font-weight:900;
+            font-size: 14px;
 
-}
+            font-weight: 800;
 
-.module p{
+            margin-top: 5px;
+        }
 
-    font-size:11px;
+        /* =========================
+           TOAST
+        ========================= */
 
-    color:var(--muted);
+        #toast {
 
-    line-height:1.6;
+            position: fixed;
 
-    margin-top:4px;
+            left: 50%;
 
-}
+            bottom: 92px;
 
-.module-lock{
+            transform:
+                translateX(-50%)
+                translateY(20px);
 
-    position:absolute;
+            background:
+                #172033;
 
-    left:11px;
+            color: white;
 
-    top:11px;
+            padding:
+                11px
+                16px;
 
-    width:27px;
-    height:27px;
+            border-radius: 13px;
 
-    border-radius:8px;
+            font-size: 12px;
 
-    background:#F5F7FA;
+            z-index: 5000;
 
-    color:#8A98A8;
+            opacity: 0;
 
-    display:flex;
+            pointer-events: none;
 
-    align-items:center;
-    justify-content:center;
+            transition: .25s;
 
-    font-size:10px;
+            max-width: 85%;
 
-}
+            text-align: center;
+        }
 
+        #toast.show {
 
-/* =========================================================
-   PREMIUM
-========================================================= */
+            opacity: 1;
 
-.premium{
+            transform:
+                translateX(-50%)
+                translateY(0);
+        }
 
-    position:relative;
+        /* =========================
+           DESKTOP
+        ========================= */
 
-    overflow:hidden;
+        @media (min-width: 700px) {
 
-    background:
-        linear-gradient(
-            135deg,
-            #17324D,
-            #315B7F
-        );
+            body {
+                padding-bottom: 30px;
+            }
 
-    color:#fff;
+            .app {
 
-    border-radius:24px;
+                padding-top: 28px;
 
-    padding:21px;
+                max-width: 950px;
+            }
 
-    box-shadow:
-        0 17px 35px rgba(23,50,77,.16);
+            .bottom-nav {
 
-}
+                position: sticky;
 
-.premium::after{
+                top: auto;
 
-    content:"";
+                bottom: auto;
 
-    position:absolute;
+                width: fit-content;
 
-    width:150px;
-    height:150px;
+                margin: 0 auto 20px;
 
-    border-radius:50%;
+                border:
+                    1px solid var(--border);
 
-    left:-60px;
-    top:-70px;
+                border-radius: 22px;
 
-    background:rgba(255,255,255,.06);
+                height: 68px;
 
-}
+                box-shadow: var(--shadow);
+            }
 
-.premium-content{
+            .nav-inner {
 
-    position:relative;
+                width: 620px;
+            }
 
-    z-index:2;
+            .nav-center {
 
-}
+                top: -9px;
+            }
 
-.premium-badge{
+            .nav-center .nav-circle {
 
-    display:inline-flex;
+                border-color: white;
+            }
 
-    align-items:center;
+            .modal {
 
-    gap:6px;
+                align-items: center;
 
-    background:rgba(255,255,255,.11);
+                padding: 20px;
+            }
 
-    border:1px solid rgba(255,255,255,.13);
+            .modal-box {
 
-    border-radius:10px;
+                border-radius: 25px;
 
-    padding:6px 9px;
+                max-width: 480px;
+            }
+        }
 
-    font-size:10px;
+        /* =========================
+           SMALL MOBILE
+        ========================= */
 
-    font-weight:800;
+        @media (max-width: 390px) {
 
-}
+            .app {
 
-.premium h2{
+                padding-left: 13px;
+                padding-right: 13px;
+            }
 
-    margin-top:10px;
+            .stats-grid {
 
-    font-size:20px;
+                gap: 7px;
+            }
 
-    font-weight:900;
+            .stat-card {
 
-}
+                padding:
+                    12px
+                    5px;
+            }
 
-.premium p{
+            .stat-icon {
 
-    margin-top:5px;
+                width: 34px;
+                height: 34px;
+            }
 
-    font-size:12px;
+            .hero {
 
-    line-height:1.7;
+                padding: 19px;
+            }
 
-    opacity:.85;
+            .hero-progress {
 
-}
+                width: 108px;
+                height: 108px;
+            }
 
-.premium-list{
+            .hero-progress::before {
 
-    display:grid;
+                width: 86px;
+                height: 86px;
+            }
+        }
 
-    grid-template-columns:
-        repeat(2,1fr);
+    </style>
+</head>
 
-    gap:6px 15px;
+<body>
 
-    margin-top:13px;
+    <!-- =========================
+         LOADING
+    ========================= -->
 
-}
+    <div id="loadingScreen">
 
-.premium-list span{
-
-    font-size:11px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:6px;
-
-}
-
-.premium-list i{
-
-    color:#8ED1FF;
-
-}
-
-.premium-price{
-
-    margin-top:16px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:10px;
-
-}
-
-.price strong{
-
-    font-size:22px;
-
-    font-weight:900;
-
-}
-
-.price small{
-
-    font-size:11px;
-
-    opacity:.75;
-
-}
-
-.premium-btn{
-
-    border:0;
-
-    background:#fff;
-
-    color:var(--primary-dark);
-
-    min-height:43px;
-
-    padding:0 15px;
-
-    border-radius:13px;
-
-    font-weight:900;
-
-}
-
-
-/* =========================================================
-   CHALLENGES
-========================================================= */
-
-.challenge-card{
-
-    background:#fff;
-
-    border:1px solid var(--border);
-
-    border-radius:20px;
-
-    padding:16px;
-
-    box-shadow:var(--shadow);
-
-}
-
-.challenge-top{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:11px;
-
-}
-
-.challenge-icon{
-
-    width:45px;
-    height:45px;
-
-    border-radius:14px;
-
-    background:var(--orange-soft);
-
-    color:var(--orange);
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-}
-
-.challenge-info{
-
-    flex:1;
-
-}
-
-.challenge-info h3{
-
-    font-size:14px;
-
-    font-weight:900;
-
-}
-
-.challenge-info p{
-
-    color:var(--muted);
-
-    font-size:11px;
-
-    margin-top:2px;
-
-}
-
-.challenge-percent{
-
-    font-size:13px;
-
-    font-weight:900;
-
-    color:var(--orange);
-
-}
-
-.challenge-bar{
-
-    height:8px;
-
-    margin-top:13px;
-
-    background:#F3F3F3;
-
-    border-radius:99px;
-
-    overflow:hidden;
-
-}
-
-.challenge-bar div{
-
-    height:100%;
-
-    width:60%;
-
-    background:var(--orange);
-
-    border-radius:99px;
-
-}
-
-
-/* =========================================================
-   PRIVACY
-========================================================= */
-
-.privacy-card{
-
-    margin-top:25px;
-
-    background:var(--green-soft);
-
-    border:1px solid #D0EBDD;
-
-    border-radius:20px;
-
-    padding:15px;
-
-    display:flex;
-
-    align-items:flex-start;
-
-    gap:11px;
-
-}
-
-.privacy-icon{
-
-    width:38px;
-    height:38px;
-
-    flex-shrink:0;
-
-    border-radius:12px;
-
-    background:#fff;
-
-    color:var(--green);
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-}
-
-.privacy-card h3{
-
-    font-size:13px;
-
-    font-weight:900;
-
-}
-
-.privacy-card p{
-
-    margin-top:3px;
-
-    color:#587365;
-
-    font-size:11px;
-
-    line-height:1.7;
-
-}
-
-
-/* =========================================================
-   BOTTOM NAV
-========================================================= */
-
-.bottom-nav{
-
-    position:fixed;
-
-    left:0;
-    right:0;
-    bottom:0;
-
-    z-index:5000;
-
-    height:
-        calc(
-            var(--nav-height) +
-            env(safe-area-inset-bottom)
-        );
-
-    padding:
-        7px 10px
-        env(safe-area-inset-bottom);
-
-    background:
-        rgba(255,255,255,.96);
-
-    backdrop-filter:blur(18px);
-
-    -webkit-backdrop-filter:blur(18px);
-
-    border-top:1px solid var(--border);
-
-    box-shadow:
-        0 -8px 25px rgba(20,60,100,.06);
-
-}
-
-.bottom-nav-inner{
-
-    width:min(
-        600px,
-        100%
-    );
-
-    height:100%;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(5,1fr);
-
-    align-items:center;
-
-}
-
-.nav-item{
-
-    border:0;
-
-    background:transparent;
-
-    color:#8795A5;
-
-    height:58px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:4px;
-
-    font-size:10px;
-
-    font-weight:700;
-
-}
-
-.nav-item i{
-
-    font-size:17px;
-
-}
-
-.nav-item.active{
-
-    color:var(--primary);
-
-}
-
-.nav-item.active i{
-
-    transform:translateY(-1px);
-
-}
-
-
-/* =========================================================
-   FLOATING ADD
-========================================================= */
-
-.floating-add{
-
-    position:fixed;
-
-    z-index:4900;
-
-    bottom:
-        calc(
-            var(--nav-height) +
-            env(safe-area-inset-bottom) +
-            13px
-        );
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:53px;
-    height:53px;
-
-    border:5px solid #F4F8FC;
-
-    border-radius:50%;
-
-    background:
-        linear-gradient(
-            145deg,
-            var(--primary),
-            var(--primary-dark)
-        );
-
-    color:#fff;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    font-size:19px;
-
-    box-shadow:
-        0 10px 25px rgba(25,118,210,.30);
-
-}
-
-.floating-add:active{
-
-    transform:
-        translateX(-50%)
-        scale(.92);
-
-}
-
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-.modal{
-
-    position:fixed;
-
-    inset:0;
-
-    background:
-        rgba(12,35,57,.55);
-
-    display:none;
-
-    align-items:flex-end;
-
-    justify-content:center;
-
-    z-index:10000;
-
-    padding:0;
-
-}
-
-.modal.show{
-
-    display:flex;
-
-}
-
-.modal-box{
-
-    width:min(
-        520px,
-        100%
-    );
-
-    max-height:90vh;
-
-    overflow:auto;
-
-    background:#fff;
-
-    border-radius:
-        27px
-        27px
-        0
-        0;
-
-    padding:20px;
-
-    animation:
-        modalUp .25s ease;
-
-}
-
-@keyframes modalUp{
-
-    from{
-        transform:translateY(100%);
-    }
-
-    to{
-        transform:translateY(0);
-    }
-
-}
-
-.modal-handle{
-
-    width:40px;
-    height:4px;
-
-    background:#DCE5EC;
-
-    border-radius:99px;
-
-    margin:0 auto 17px;
-
-}
-
-.modal-head{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:10px;
-
-    margin-bottom:18px;
-
-}
-
-.modal-head h3{
-
-    font-size:18px;
-
-    font-weight:900;
-
-}
-
-.modal-close{
-
-    border:0;
-
-    width:37px;
-    height:37px;
-
-    border-radius:11px;
-
-    background:#F2F6F9;
-
-    color:var(--text);
-
-}
-
-.form-group{
-
-    margin-bottom:14px;
-
-}
-
-.form-group label{
-
-    display:block;
-
-    font-size:12px;
-
-    font-weight:800;
-
-    margin-bottom:6px;
-
-}
-
-.form-group input{
-
-    width:100%;
-
-    height:48px;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:13px;
-
-    padding:0 13px;
-
-    outline:none;
-
-    color:var(--text);
-
-    background:#fff;
-
-}
-
-.form-group input:focus{
-
-    border-color:var(--primary);
-
-    box-shadow:
-        0 0 0 3px
-        rgba(25,118,210,.08);
-
-}
-
-.modal-actions{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:9px;
-
-    margin-top:18px;
-
-}
-
-.modal-actions button{
-
-    height:47px;
-
-    border:0;
-
-    border-radius:13px;
-
-    font-weight:900;
-
-}
-
-.modal-cancel{
-
-    background:#F1F5F8;
-
-    color:var(--text);
-
-}
-
-.modal-save{
-
-    background:var(--primary);
-
-    color:#fff;
-
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-.toast{
-
-    position:fixed;
-
-    z-index:20000;
-
-    left:50%;
-
-    bottom:
-        calc(
-            var(--nav-height) +
-            env(safe-area-inset-bottom) +
-            18px
-        );
-
-    transform:
-        translateX(-50%)
-        translateY(80px);
-
-    background:#17324D;
-
-    color:#fff;
-
-    border-radius:14px;
-
-    padding:11px 16px;
-
-    font-size:12px;
-
-    font-weight:700;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transition:.3s;
-
-    white-space:nowrap;
-
-    max-width:
-        calc(100% - 30px);
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
-}
-
-.toast.show{
-
-    opacity:1;
-
-    transform:
-        translateX(-50%)
-        translateY(0);
-
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer{
-
-    text-align:center;
-
-    color:var(--muted);
-
-    font-size:10px;
-
-    padding:25px 10px 5px;
-
-}
-
-
-/* =========================================================
-   DESKTOP
-========================================================= */
-
-@media(min-width:700px){
-
-    body{
-
-        padding-bottom:20px;
-
-    }
-
-    .bottom-nav{
-
-        display:none;
-
-    }
-
-    .floating-add{
-
-        display:none;
-
-    }
-
-    .hero{
-
-        min-height:230px;
-
-        padding:30px;
-
-    }
-
-    .hero h1{
-
-        font-size:32px;
-
-    }
-
-    .quick-grid{
-
-        grid-template-columns:
-            repeat(4,1fr);
-
-    }
-
-    .measure-grid{
-
-        grid-template-columns:
-            repeat(4,1fr);
-
-    }
-
-    .modules-grid{
-
-        grid-template-columns:
-            repeat(4,1fr);
-
-    }
-
-    .goals-container{
-
-        display:grid;
-
-        grid-template-columns:
-            repeat(2,1fr);
-
-    }
-
-    .modal{
-
-        align-items:center;
-
-        padding:20px;
-
-    }
-
-    .modal-box{
-
-        border-radius:25px;
-
-    }
-
-}
-
-
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
-
-@media(max-width:360px){
-
-    .app-container{
-
-        width:calc(100% - 18px);
-
-    }
-
-    .hero{
-
-        padding:19px;
-
-    }
-
-    .hero h1{
-
-        font-size:23px;
-
-    }
-
-    .quick-card{
-
-        min-height:86px;
-
-    }
-
-    .quick-icon{
-
-        width:35px;
-        height:35px;
-
-    }
-
-    .quick-card span{
-
-        font-size:10px;
-
-    }
-
-}
-
-</style></head><body><!-- =======================================================
-     LOADING
-======================================================= --><div id="loadingScreen"><div class="loading-content">
-
-    <div class="loading-logo">
-
-        <i class="fa-solid fa-heart-pulse"></i>
-
-    </div>
-
-    <h2>Si7a</h2>
-
-    <p>جاري تحميل مساحتك الصحية...</p>
-
-</div>
-
-</div><!-- =======================================================
-     TOP BAR
-======================================================= --><header class="app-topbar"><div class="topbar-inner">
-
-    <a href="dashboard.html"
-       class="app-brand">
-
-        <div class="app-logo">
-
+        <div class="loading-logo">
             <i class="fa-solid fa-heart-pulse"></i>
-
         </div>
 
-        <div>
+        <div class="loader"></div>
 
-            <div class="app-name">
-                Si7a
+    </div>
+
+
+    <!-- =========================
+         APP
+    ========================= -->
+
+    <main class="app">
+
+        <!-- HEADER -->
+
+        <header class="top-header">
+
+            <div class="greeting">
+
+                <div class="avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div class="greeting-text">
+
+                    <small id="greetingText">
+                        مرحباً بك
+                    </small>
+
+                    <h1 id="userName">
+                        مستخدم Si7a
+                    </h1>
+
+                </div>
+
             </div>
 
-            <span class="app-subtitle">
-                صحتي في مكان واحد
+            <div class="header-actions">
+
+                <button
+                    class="icon-button"
+                    id="refreshBtn"
+                    aria-label="تحديث"
+                >
+                    <i class="fa-solid fa-rotate"></i>
+                </button>
+
+                <button
+                    class="icon-button"
+                    id="logoutBtn"
+                    aria-label="تسجيل الخروج"
+                >
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- DATE -->
+
+        <div class="date-line">
+
+            <i class="fa-regular fa-calendar"></i>
+
+            <span id="todayDate">
+                اليوم
             </span>
 
         </div>
 
-    </a>
 
+        <!-- =========================
+             TODAY HERO
+        ========================= -->
 
-    <div class="top-actions">
+        <section class="hero">
 
-        <button
-            class="top-icon"
-            id="refreshBtn"
-            aria-label="تحديث">
+            <div class="hero-content">
 
-            <i class="fa-solid fa-rotate"></i>
+                <div class="hero-info">
 
-        </button>
+                    <div class="hero-label">
+                        ملخص يومك
+                    </div>
 
-        <button
-            class="top-icon"
-            id="logoutBtn"
-            aria-label="تسجيل الخروج">
+                    <h2>
+                        إنجاز اليوم
+                    </h2>
 
-            <i class="fa-solid fa-right-from-bracket"></i>
+                    <p id="heroMessage">
+                        ابدأ بتسجيل عاداتك الصحية اليوم.
+                    </p>
 
-        </button>
+                </div>
 
-    </div>
+                <div
+                    class="hero-progress"
+                    id="heroProgress"
+                    style="--progress: 0deg;"
+                >
 
-</div>
+                    <div class="progress-number">
 
-</header><!-- =======================================================
-     MAIN
-======================================================= --><main class="app-container"><!-- =======================================================
-     HERO
-======================================================= --><section class="hero"><div class="hero-content">
+                        <strong id="completionPercent">
+                            0%
+                        </strong>
 
-    <span class="hero-small">
-        لوحة صحتك الشخصية
-    </span>
+                        <span>
+                            مكتمل
+                        </span>
 
-    <h1>
-        مرحبًا <span id="userName">بك</span> 👋
-    </h1>
+                    </div>
 
-    <p class="hero-text">
-        تابع عاداتك الصحية، سجّل تقدمك،
-        وابنِ روتينًا يناسبك يومًا بعد يوم.
-    </p>
-
-    <div class="hero-date">
-
-        <i class="fa-regular fa-calendar"></i>
-
-        <span id="todayDate">
-            اليوم
-        </span>
-
-    </div>
-
-</div>
-
-</section><!-- =======================================================
-     DAILY SCORE
-======================================================= --><section class="daily-score"><div class="score-row">
-
-    <div
-        class="score-circle"
-        id="scoreCircle"
-        style="--score:0%;">
-
-        <span
-            class="score-number"
-            id="scoreNumber">
-            0%
-        </span>
-
-    </div>
-
-
-    <div class="score-info">
-
-        <h3>
-            إنجازك اليوم
-        </h3>
-
-        <p id="scoreDescription">
-            ابدأ بتسجيل أهدافك اليومية.
-        </p>
-
-        <div
-            class="score-status"
-            id="scoreStatus">
-
-            🌱 بداية جديدة
-
-        </div>
-
-    </div>
-
-</div>
-
-</section><!-- =======================================================
-     QUICK ACTIONS
-======================================================= --><section class="section"><div class="section-head">
-
-    <div class="section-title">
-
-        <div class="section-title-icon">
-            <i class="fa-solid fa-bolt"></i>
-        </div>
-
-        <h2>
-            وصول سريع
-        </h2>
-
-    </div>
-
-</div>
-
-
-<div class="quick-grid">
-
-
-    <a href="goals.html"
-       class="quick-card blue">
-
-        <div class="quick-icon">
-
-            <i class="fa-solid fa-bullseye"></i>
-
-        </div>
-
-        <span>
-            أهدافي
-        </span>
-
-    </a>
-
-
-    <button
-        class="quick-card green"
-        id="waterQuick">
-
-        <div class="quick-icon">
-
-            <i class="fa-solid fa-droplet"></i>
-
-        </div>
-
-        <span>
-            إضافة ماء
-        </span>
-
-    </button>
-
-
-    <button
-        class="quick-card orange"
-        id="walkingQuick">
-
-        <div class="quick-icon">
-
-            <i class="fa-solid fa-person-walking"></i>
-
-        </div>
-
-        <span>
-            إضافة مشي
-        </span>
-
-    </button>
-
-
-    <button
-        class="quick-card purple"
-        id="measureQuick">
-
-        <div class="quick-icon">
-
-            <i class="fa-solid fa-heart-pulse"></i>
-
-        </div>
-
-        <span>
-            قياس صحي
-        </span>
-
-    </button>
-
-
-</div>
-
-</section><!-- =======================================================
-     TODAY GOALS
-======================================================= --><section class="section"><div class="section-head">
-
-    <div class="section-title">
-
-        <div class="section-title-icon">
-
-            <i class="fa-solid fa-chart-line"></i>
-
-        </div>
-
-        <h2>
-            أهدافي اليوم
-        </h2>
-
-    </div>
-
-    <span
-        id="goalCount"
-        style="
-            color:var(--muted);
-            font-size:11px;
-            font-weight:700;
-        ">
-        0
-    </span>
-
-</div>
-
-
-<div
-    class="goals-container"
-    id="goalsGrid">
-</div>
-
-
-<div
-    class="empty-card"
-    id="noGoals"
-    style="display:none;">
-
-    <i class="fa-solid fa-bullseye"></i>
-
-    <h3>
-        لم تحدد أهدافك بعد
-    </h3>
-
-    <p>
-        اختر العادات التي تريد متابعتها
-        وحدد الهدف المناسب لك.
-    </p>
-
-    <a
-        href="goals.html"
-        class="primary-btn">
-
-        <i class="fa-solid fa-plus"></i>
-
-        إعداد أهدافي
-
-    </a>
-
-</div>
-
-</section><!-- =======================================================
-     MEASUREMENTS
-======================================================= --><section
-    class="section"
-    id="measurementsSection"><div class="section-head">
-
-    <div class="section-title">
-
-        <div class="section-title-icon">
-
-            <i class="fa-solid fa-stethoscope"></i>
-
-        </div>
-
-        <h2>
-            قياساتي
-        </h2>
-
-    </div>
-
-    <span
-        style="
-            color:var(--muted);
-            font-size:11px;
-        ">
-        اليوم
-    </span>
-
-</div>
-
-
-<div
-    class="measure-grid"
-    id="measureGrid">
-</div>
-
-</section><!-- =======================================================
-     HEALTH MODULES
-======================================================= --><section class="section"><div class="section-head">
-
-    <div class="section-title">
-
-        <div class="section-title-icon">
-
-            <i class="fa-solid fa-layer-group"></i>
-
-        </div>
-
-        <h2>
-            مجالات صحتي
-        </h2>
-
-    </div>
-
-</div>
-
-
-<div class="modules-grid">
-
-
-    <a href="#"
-       class="module">
-
-        <div
-            class="module-icon"
-            style="
-                background:var(--green-soft);
-                color:var(--green);
-            ">
-
-            <i class="fa-solid fa-utensils"></i>
-
-        </div>
-
-        <h3>
-            التغذية
-        </h3>
-
-        <p>
-            الماء، الفواكه،
-            الخضروات والعادات الغذائية.
-        </p>
-
-    </a>
-
-
-    <a href="#"
-       class="module">
-
-        <div
-            class="module-icon"
-            style="
-                background:var(--orange-soft);
-                color:var(--orange);
-            ">
-
-            <i class="fa-solid fa-person-running"></i>
-
-        </div>
-
-        <h3>
-            النشاط البدني
-        </h3>
-
-        <p>
-            المشي، الخطوات
-            والنشاط اليومي.
-        </p>
-
-    </a>
-
-
-    <a href="#"
-       class="module">
-
-        <div
-            class="module-icon"
-            style="
-                background:var(--purple-soft);
-                color:var(--purple);
-            ">
-
-            <i class="fa-solid fa-bed"></i>
-
-        </div>
-
-        <h3>
-            النوم
-        </h3>
-
-        <p>
-            وقت النوم،
-            الاستيقاظ ومدة النوم.
-        </p>
-
-    </a>
-
-
-    <a href="#"
-       class="module">
-
-        <div
-            class="module-icon"
-            style="
-                background:var(--cyan-soft);
-                color:var(--cyan);
-            ">
-
-            <i class="fa-solid fa-brain"></i>
-
-        </div>
-
-        <h3>
-            الراحة النفسية
-        </h3>
-
-        <p>
-            الاسترخاء، القراءة
-            والعادات اليومية.
-        </p>
-
-    </a>
-
-
-    <a href="#"
-       class="module">
-
-        <div
-            class="module-icon"
-            style="
-                background:var(--red-soft);
-                color:var(--red);
-            ">
-
-            <i class="fa-solid fa-file-medical"></i>
-
-        </div>
-
-        <h3>
-            التحاليل
-        </h3>
-
-        <p>
-            حفظ ومتابعة
-            نتائج التحاليل.
-        </p>
-
-        <div class="module-lock">
-            <i class="fa-solid fa-lock"></i>
-        </div>
-
-    </a>
-
-
-    <a href="#"
-       class="module">
-
-        <div
-            class="module-icon"
-            style="
-                background:var(--primary-soft);
-                color:var(--primary);
-            ">
-
-            <i class="fa-solid fa-capsules"></i>
-
-        </div>
-
-        <h3>
-            الأدوية
-        </h3>
-
-        <p>
-            تنظيم الأدوية
-            والتذكيرات.
-        </p>
-
-        <div class="module-lock">
-            <i class="fa-solid fa-lock"></i>
-        </div>
-
-    </a>
-
-
-    <a href="#"
-       class="module">
-
-        <div
-            class="module-icon"
-            style="
-                background:var(--orange-soft);
-                color:var(--orange);
-            ">
-
-            <i class="fa-solid fa-calendar-check"></i>
-
-        </div>
-
-        <h3>
-            المواعيد
-        </h3>
-
-        <p>
-            تنظيم المواعيد
-            والمتابعات.
-        </p>
-
-        <div class="module-lock">
-            <i class="fa-solid fa-lock"></i>
-        </div>
-
-    </a>
-
-
-    <a href="#"
-       class="module">
-
-        <div
-            class="module-icon"
-            style="
-                background:var(--purple-soft);
-                color:var(--purple);
-            ">
-
-            <i class="fa-solid fa-chart-simple"></i>
-
-        </div>
-
-        <h3>
-            التقارير
-        </h3>
-
-        <p>
-            اكتشف تطور
-            بياناتك مع الوقت.
-        </p>
-
-        <div class="module-lock">
-            <i class="fa-solid fa-lock"></i>
-        </div>
-
-    </a>
-
-
-</div>
-
-</section><!-- =======================================================
-     CHALLENGES
-======================================================= --><section class="section"><div class="section-head">
-
-    <div class="section-title">
-
-        <div class="section-title-icon">
-
-            <i class="fa-solid fa-trophy"></i>
-
-        </div>
-
-        <h2>
-            تحدياتي
-        </h2>
-
-    </div>
-
-    <a href="goals.html"
-       class="section-more">
-        إدارة
-    </a>
-
-</div>
-
-
-<div id="challengeContainer">
-
-    <div class="challenge-card">
-
-        <div class="challenge-top">
-
-            <div class="challenge-icon">
-
-                <i class="fa-solid fa-star"></i>
+                </div>
 
             </div>
 
-            <div class="challenge-info">
+        </section>
 
-                <h3>
-                    تحدياتك الشخصية
-                </h3>
 
-                <p>
-                    أنشئ هدفًا يناسب أسلوب حياتك.
-                </p>
+        <!-- =========================
+             TODAY QUICK STATS
+        ========================= -->
+
+        <section class="section">
+
+            <div class="section-header">
+
+                <div class="section-title">
+
+                    <div
+                        class="title-icon"
+                        style="
+                            background:#EFF6FF;
+                            color:#2563EB;
+                        "
+                    >
+                        <i class="fa-solid fa-chart-simple"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            اليوم
+                        </h3>
+
+                        <div class="section-subtitle">
+                            نظرة سريعة على عاداتك
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
-            <div class="challenge-percent">
-                +
+
+            <div class="stats-grid">
+
+                <!-- WATER -->
+
+                <div
+                    class="stat-card stat-water"
+                    data-quick="water"
+                >
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+
+                    <div
+                        class="stat-value"
+                        id="waterValue"
+                    >
+                        0 كوب
+                    </div>
+
+                    <div class="stat-name">
+                        الماء
+                    </div>
+
+                    <div class="stat-progress">
+                        <span id="waterBar"></span>
+                    </div>
+
+                </div>
+
+
+                <!-- WALKING -->
+
+                <div
+                    class="stat-card stat-walk"
+                    data-quick="walking"
+                >
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-person-walking"></i>
+                    </div>
+
+                    <div
+                        class="stat-value"
+                        id="walkingValue"
+                    >
+                        0 د
+                    </div>
+
+                    <div class="stat-name">
+                        المشي
+                    </div>
+
+                    <div class="stat-progress">
+                        <span id="walkingBar"></span>
+                    </div>
+
+                </div>
+
+
+                <!-- SLEEP -->
+
+                <div
+                    class="stat-card stat-sleep"
+                    data-quick="sleep"
+                >
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-moon"></i>
+                    </div>
+
+                    <div
+                        class="stat-value"
+                        id="sleepValue"
+                    >
+                        0 س
+                    </div>
+
+                    <div class="stat-name">
+                        النوم
+                    </div>
+
+                    <div class="stat-progress">
+                        <span id="sleepBar"></span>
+                    </div>
+
+                </div>
+
+
+                <!-- STEPS -->
+
+                <div
+                    class="stat-card stat-steps"
+                    data-quick="steps"
+                >
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-shoe-prints"></i>
+                    </div>
+
+                    <div
+                        class="stat-value"
+                        id="stepsValue"
+                    >
+                        0
+                    </div>
+
+                    <div class="stat-name">
+                        الخطوات
+                    </div>
+
+                    <div class="stat-progress">
+                        <span id="stepsBar"></span>
+                    </div>
+
+                </div>
+
             </div>
 
-        </div>
-
-    </div>
-
-</div>
-
-</section><!-- =======================================================
-     PREMIUM
-======================================================= --><section class="section"><div class="premium">
-
-    <div class="premium-content">
-
-        <div class="premium-badge">
-
-            <i class="fa-solid fa-crown"></i>
-
-            Si7a Premium
-
-        </div>
-
-        <h2>
-            اكتشف كل إمكانيات Si7a
-        </h2>
-
-        <p>
-            أدوات إضافية لمساعدتك على متابعة
-            بياناتك وعاداتك الصحية بشكل أكثر تنظيمًا.
-        </p>
+        </section>
 
 
-        <div class="premium-list">
+        <!-- =========================
+             GOALS
+        ========================= -->
+
+        <section class="section">
+
+            <div class="section-header">
+
+                <div class="section-title">
+
+                    <div
+                        class="title-icon"
+                        style="
+                            background:#F5F3FF;
+                            color:#7C3AED;
+                        "
+                    >
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            تحدياتي اليوم
+                        </h3>
+
+                        <div
+                            class="section-subtitle"
+                            id="goalsSubtitle"
+                        >
+                            أهدافك التي اخترتها بنفسك
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="section-action"
+                    id="goalsButton"
+                >
+                    إدارة الأهداف
+                </button>
+
+            </div>
+
+
+            <div
+                class="goals-list"
+                id="goalsList"
+            >
+
+                <!-- JS -->
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MEASUREMENTS
+        ========================= -->
+
+        <section class="section">
+
+            <div class="section-header">
+
+                <div class="section-title">
+
+                    <div
+                        class="title-icon"
+                        style="
+                            background:#FFF7ED;
+                            color:#F97316;
+                        "
+                    >
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            قياساتي
+                        </h3>
+
+                        <div class="section-subtitle">
+                            آخر القياسات المسجلة اليوم
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="measurements"
+                id="measurements"
+            >
+
+                <!-- JS -->
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RECORD
+        ========================= -->
+
+        <section class="section">
+
+            <div class="record-card">
+
+                <div class="record-icon">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </div>
+
+                <div class="record-text">
+
+                    <h4>
+                        سجل بيانات اليوم
+                    </h4>
+
+                    <p>
+                        أضف الماء، المشي، النوم، القياسات
+                        وباقي معلوماتك الصحية.
+                    </p>
+
+                </div>
+
+                <button
+                    class="record-button"
+                    id="recordButton"
+                >
+                    تسجيل
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PRIVACY
+        ========================= -->
+
+        <div class="privacy">
+
+            <i class="fa-solid fa-shield-halved"></i>
 
             <span>
-                <i class="fa-solid fa-check"></i>
-                تقارير متقدمة
-            </span>
-
-            <span>
-                <i class="fa-solid fa-check"></i>
-                إحصائيات ورسوم
-            </span>
-
-            <span>
-                <i class="fa-solid fa-check"></i>
-                متابعة التحاليل
-            </span>
-
-            <span>
-                <i class="fa-solid fa-check"></i>
-                تذكيرات مخصصة
+                بياناتك الصحية خاصة بحسابك ويتم ربطها
+                بمعرّف حسابك فقط.
             </span>
 
         </div>
 
+    </main>
 
-        <div class="premium-price">
 
-            <div class="price">
+    <!-- =========================
+         BOTTOM NAV
+    ========================= -->
 
-                <strong>
-                    700 دج
-                </strong>
+    <nav class="bottom-nav">
 
-                <small>
-                    • فتح المزايا
-                </small>
-
-            </div>
+        <div class="nav-inner">
 
             <button
-                class="premium-btn"
-                id="premiumBtn">
+                class="nav-item active"
+                data-nav="home"
+            >
 
-                اكتشف Premium
+                <i class="fa-solid fa-house"></i>
+
+                <span>
+                    الرئيسية
+                </span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-nav="goals"
+            >
+
+                <i class="fa-solid fa-bullseye"></i>
+
+                <span>
+                    أهدافي
+                </span>
+
+            </button>
+
+
+            <button
+                class="nav-item nav-center"
+                data-nav="record"
+            >
+
+                <div class="nav-circle">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </div>
+
+                <span>
+                    تسجيل
+                </span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-nav="progress"
+            >
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>
+                    التقدم
+                </span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-nav="profile"
+            >
+
+                <i class="fa-solid fa-user"></i>
+
+                <span>
+                    حسابي
+                </span>
 
             </button>
 
         </div>
 
-    </div>
+    </nav>
 
-</div>
 
-</section><!-- =======================================================
-     PRIVACY
-======================================================= --><section class="privacy-card"><div class="privacy-icon">
+    <!-- =========================
+         QUICK MODAL
+    ========================= -->
 
-    <i class="fa-solid fa-shield-halved"></i>
+    <div
+        class="modal"
+        id="quickModal"
+    >
 
-</div>
+        <div class="modal-box">
 
-<div>
+            <div class="modal-head">
 
-    <h3>
-        بياناتك الصحية خاصة
-    </h3>
-
-    <p>
-        بياناتك مرتبطة بحسابك الشخصي،
-        ولا يتم عرض بيانات مستخدم آخر لك.
-    </p>
-
-</div>
-
-</section><footer class="footer">© 2026 Si7a
-— صحتك، عاداتك، متابعتك
-
-</footer></main><!-- =======================================================
-     FLOATING ADD
-======================================================= --><button
-class="floating-add"
-id="floatingAdd"
-aria-label="إضافة بيانات">
-
-<i class="fa-solid fa-plus"></i>
-
-</button><!-- =======================================================
-     BOTTOM NAV
-======================================================= --><nav class="bottom-nav"><div class="bottom-nav-inner">
-
-    <button
-        class="nav-item active"
-        data-scroll="top">
-
-        <i class="fa-solid fa-house"></i>
-
-        <span>
-            الرئيسية
-        </span>
-
-    </button>
-
-
-    <button
-        class="nav-item"
-        data-scroll="measurementsSection">
-
-        <i class="fa-solid fa-heart-pulse"></i>
-
-        <span>
-            المتابعة
-        </span>
-
-    </button>
-
-
-    <button
-        class="nav-item"
-        data-scroll="challengeContainer">
-
-        <i class="fa-solid fa-trophy"></i>
-
-        <span>
-            التحديات
-        </span>
-
-    </button>
-
-
-    <button
-        class="nav-item"
-        id="reportsNav">
-
-        <i class="fa-solid fa-chart-line"></i>
-
-        <span>
-            التقارير
-        </span>
-
-    </button>
-
-
-    <button
-        class="nav-item"
-        id="accountNav">
-
-        <i class="fa-solid fa-user"></i>
-
-        <span>
-            حسابي
-        </span>
-
-    </button>
-
-</div>
-
-</nav><!-- =======================================================
-     INPUT MODAL
-======================================================= --><div
-    class="modal"
-    id="inputModal"><div class="modal-box">
-
-    <div class="modal-handle"></div>
-
-    <div class="modal-head">
-
-        <h3 id="modalTitle">
-            تسجيل البيانات
-        </h3>
-
-        <button
-            class="modal-close"
-            id="closeModal">
-
-            <i class="fa-solid fa-xmark"></i>
-
-        </button>
-
-    </div>
-
-
-    <div id="modalContent"></div>
-
-
-    <div class="modal-actions">
-
-        <button
-            class="modal-cancel"
-            id="cancelModal">
-
-            إلغاء
-
-        </button>
-
-        <button
-            class="modal-save"
-            id="saveModal">
-
-            حفظ
-
-        </button>
-
-    </div>
-
-</div>
-
-</div><!-- =======================================================
-     TOAST
-======================================================= --><div
-    class="toast"
-    id="toast">
-</div><!-- =======================================================
-     FIREBASE
-======================================================= --><script type="module">
-
-
-import {
-    auth,
-    db
-} from "./js/firebase.js";
-
-
-import {
-    onAuthStateChanged,
-    signOut
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
-
-
-import {
-    doc,
-    getDoc,
-    setDoc,
-    serverTimestamp
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-let currentUser = null;
-
-let goals = {};
-
-let todayData = {};
-
-let currentModalType = null;
-
-
-/* =========================================================
-   DEFAULT DATA
-========================================================= */
-
-const defaultTodayData = {
-
-    water:0,
-
-    walking:0,
-
-    sleep:0,
-
-    bedtime:"",
-
-    wakeTime:"",
-
-    steps:0,
-
-    relaxation:0,
-
-    reading:0,
-
-    screenTime:0,
-
-    fruit:0,
-
-    vegetables:0,
-
-    smoking:0,
-
-    weight:"",
-
-    bloodPressure:"",
-
-    pulse:"",
-
-    spo2:"",
-
-    temperature:"",
-
-    glucose:""
-
-};
-
-
-/* =========================================================
-   DATE
-========================================================= */
-
-function getToday(){
-
-    const d = new Date();
-
-    const year =
-        d.getFullYear();
-
-    const month =
-        String(
-            d.getMonth()+1
-        ).padStart(2,"0");
-
-    const day =
-        String(
-            d.getDate()
-        ).padStart(2,"0");
-
-    return `${year}-${month}-${day}`;
-
-}
-
-
-const today = getToday();
-
-
-function displayDate(){
-
-    const date = new Date();
-
-    document.getElementById(
-        "todayDate"
-    ).textContent =
-        date.toLocaleDateString(
-            "ar-DZ",
-            {
-                weekday:"long",
-                year:"numeric",
-                month:"long",
-                day:"numeric"
-            }
-        );
-
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-function showToast(message){
-
-    const toast =
-        document.getElementById("toast");
-
-    toast.textContent =
-        message;
-
-    toast.classList.add("show");
-
-    setTimeout(
-        () => {
-
-            toast.classList.remove(
-                "show"
-            );
-
-        },
-        2500
-    );
-
-}
-
-
-/* =========================================================
-   AUTH
-========================================================= */
-
-onAuthStateChanged(
-    auth,
-    async user => {
-
-        if(!user){
-
-            window.location.href =
-                "login.html";
-
-            return;
-
-        }
-
-        currentUser = user;
-
-        displayDate();
-
-        await loadUserData();
-
-        document.getElementById(
-            "loadingScreen"
-        ).style.display =
-            "none";
-
-    }
-);
-
-
-/* =========================================================
-   LOAD USER
-========================================================= */
-
-async function loadUserData(){
-
-    try{
-
-        /* USER */
-
-        const userRef =
-            doc(
-                db,
-                "users",
-                currentUser.uid
-            );
-
-        const userSnap =
-            await getDoc(userRef);
-
-
-        if(
-            userSnap.exists()
-        ){
-
-            const data =
-                userSnap.data();
-
-            document.getElementById(
-                "userName"
-            ).textContent =
-                data.name ||
-                "بك";
-
-        }else{
-
-            document.getElementById(
-                "userName"
-            ).textContent =
-                "بك";
-
-        }
-
-
-        /* GOALS */
-
-        const goalsRef =
-            doc(
-                db,
-                "users",
-                currentUser.uid,
-                "goals",
-                "settings"
-            );
-
-        const goalsSnap =
-            await getDoc(
-                goalsRef
-            );
-
-
-        goals =
-            goalsSnap.exists()
-                ? goalsSnap.data()
-                : {};
-
-
-        /* TODAY */
-
-        const dailyRef =
-            doc(
-                db,
-                "users",
-                currentUser.uid,
-                "dailyTracking",
-                today
-            );
-
-        const dailySnap =
-            await getDoc(
-                dailyRef
-            );
-
-
-        todayData = {
-
-            ...defaultTodayData,
-
-            ...(
-
-                dailySnap.exists()
-                    ? dailySnap.data()
-                    : {}
-
-            )
-
-        };
-
-
-        renderGoals();
-
-        renderMeasurements();
-
-        renderScore();
-
-        renderChallenges();
-
-
-    }catch(error){
-
-        console.error(
-            "LOAD ERROR:",
-            error
-        );
-
-        showToast(
-            "حدث خطأ أثناء تحميل بياناتك"
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   SAVE
-========================================================= */
-
-async function saveToday(){
-
-    if(!currentUser)
-        return;
-
-
-    try{
-
-        const ref =
-            doc(
-                db,
-                "users",
-                currentUser.uid,
-                "dailyTracking",
-                today
-            );
-
-
-        await setDoc(
-            ref,
-            {
-
-                ...todayData,
-
-                uid:
-                    currentUser.uid,
-
-                date:
-                    today,
-
-                updatedAt:
-                    serverTimestamp()
-
-            },
-            {
-                merge:true
-            }
-        );
-
-
-    }catch(error){
-
-        console.error(
-            "SAVE ERROR:",
-            error
-        );
-
-        showToast(
-            "تعذر حفظ البيانات"
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   GOAL DEFINITIONS
-========================================================= */
-
-const goalDefinitions = {
-
-    water:{
-        name:"الماء",
-        unit:"كوب",
-        icon:"fa-droplet"
-    },
-
-    walking:{
-        name:"المشي",
-        unit:"دقيقة",
-        icon:"fa-person-walking"
-    },
-
-    sleep:{
-        name:"النوم",
-        unit:"ساعة",
-        icon:"fa-bed"
-    },
-
-    bedtime:{
-        name:"وقت النوم",
-        unit:"",
-        icon:"fa-moon"
-    },
-
-    wakeTime:{
-        name:"وقت الاستيقاظ",
-        unit:"",
-        icon:"fa-sun"
-    },
-
-    steps:{
-        name:"الخطوات",
-        unit:"خطوة",
-        icon:"fa-shoe-prints"
-    },
-
-    relaxation:{
-        name:"الاسترخاء",
-        unit:"دقيقة",
-        icon:"fa-spa"
-    },
-
-    reading:{
-        name:"القراءة",
-        unit:"دقيقة",
-        icon:"fa-book-open"
-    },
-
-    screenTime:{
-        name:"وقت الشاشة",
-        unit:"دقيقة",
-        icon:"fa-mobile-screen"
-    },
-
-    fruit:{
-        name:"الفواكه",
-        unit:"حصة",
-        icon:"fa-apple-whole"
-    },
-
-    vegetables:{
-        name:"الخضروات",
-        unit:"حصة",
-        icon:"fa-carrot"
-    },
-
-    smoking:{
-        name:"التدخين",
-        unit:"سيجارة",
-        icon:"fa-smoking"
-    }
-
-};
-
-
-/* =========================================================
-   RENDER GOALS
-========================================================= */
-
-function renderGoals(){
-
-    const grid =
-        document.getElementById(
-            "goalsGrid"
-        );
-
-    const empty =
-        document.getElementById(
-            "noGoals"
-        );
-
-    grid.innerHTML = "";
-
-    let count = 0;
-
-
-    Object.keys(
-        goalDefinitions
-    ).forEach(
-        key => {
-
-            const enabledKey =
-                key + "Enabled";
-
-
-            if(
-                goals[enabledKey] !== true
-            ){
-
-                return;
-
-            }
-
-
-            if(
-                goals[key] === undefined ||
-                goals[key] === null
-            ){
-
-                return;
-
-            }
-
-
-            count++;
-
-
-            const definition =
-                goalDefinitions[key];
-
-
-            const target =
-                Number(
-                    goals[key]
-                ) || 0;
-
-
-            const current =
-                getCurrentValue(key);
-
-
-            const percent =
-                calculatePercent(
-                    key,
-                    current,
-                    target
-                );
-
-
-            const card =
-                document.createElement(
-                    "div"
-                );
-
-            card.className =
-                "goal-card";
-
-
-            card.innerHTML = `
-
-                <div class="goal-main">
-
-                    <div class="goal-icon">
-
-                        <i class="fa-solid ${definition.icon}"></i>
-
-                    </div>
-
-
-                    <div class="goal-info">
-
-                        <h3>
-                            ${definition.name}
-                        </h3>
-
-                        <p>
-                            هدفك اليومي
-                        </p>
-
-                    </div>
-
-
-                    <div class="goal-percent">
-                        ${percent}%
-                    </div>
-
-                </div>
-
-
-                <div class="goal-progress">
-
-                    <div
-                        class="goal-progress-bar"
-                        style="width:${percent}%">
-                    </div>
-
-                </div>
-
-
-                <div class="goal-bottom">
-
-                    <div class="goal-value">
-
-                        <strong>
-                            ${escapeHtml(
-                                String(
-                                    formatValue(
-                                        key,
-                                        current
-                                    )
-                                )
-                            )}
-                        </strong>
-
-                        ${definition.unit}
-
-                        /
-                        ${escapeHtml(
-                            String(
-                                formatValue(
-                                    key,
-                                    target
-                                )
-                            )
-                        )}
-
-                    </div>
-
-
-                    <button
-                        class="goal-add"
-                        data-add="${key}">
-
-                        <i class="fa-solid fa-plus"></i>
-
-                    </button>
-
-                </div>
-
-            `;
-
-
-            grid.appendChild(
-                card
-            );
-
-        }
-    );
-
-
-    /* CUSTOM */
-
-    if(
-        Array.isArray(
-            goals.customGoals
-        )
-    ){
-
-        goals.customGoals.forEach(
-            custom => {
-
-                if(
-                    !custom ||
-                    !custom.name
-                ){
-
-                    return;
-
-                }
-
-
-                count++;
-
-
-                const target =
-                    Number(
-                        custom.value
-                    ) || 0;
-
-
-                const current =
-                    Number(
-                        todayData[
-                            "custom_" +
-                            custom.id
-                        ]
-                    ) || 0;
-
-
-                const percent =
-                    target > 0
-                        ? Math.min(
-                            100,
-                            Math.round(
-                                current /
-                                target *
-                                100
-                            )
-                        )
-                        : 0;
-
-
-                const card =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                card.className =
-                    "goal-card";
-
-
-                card.innerHTML = `
-
-                    <div class="goal-main">
-
-                        <div
-                            class="goal-icon"
-                            style="
-                                background:var(--orange-soft);
-                                color:var(--orange);
-                            ">
-
-                            <i class="fa-solid fa-star"></i>
-
-                        </div>
-
-
-                        <div class="goal-info">
-
-                            <h3>
-                                ${escapeHtml(
-                                    custom.name
-                                )}
-                            </h3>
-
-                            <p>
-                                تحدي شخصي
-                            </p>
-
-                        </div>
-
-
-                        <div
-                            class="goal-percent"
-                            style="color:var(--orange);">
-
-                            ${percent}%
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="goal-progress">
-
-                        <div
-                            class="goal-progress-bar"
-                            style="
-                                width:${percent}%;
-                                background:var(--orange);
-                            ">
-                        </div>
-
-                    </div>
-
-
-                    <div class="goal-bottom">
-
-                        <div class="goal-value">
-
-                            <strong>
-                                ${current}
-                            </strong>
-
-                            ${escapeHtml(
-                                custom.unit || ""
-                            )}
-
-                            /
-                            ${target}
-
-                        </div>
-
-
-                        <button
-                            class="goal-add"
-                            data-custom="${custom.id}"
-                            style="
-                                background:var(--orange-soft);
-                                color:#B86D00;
-                            ">
-
-                            <i class="fa-solid fa-plus"></i>
-
-                        </button>
-
-                    </div>
-
-                `;
-
-
-                grid.appendChild(
-                    card
-                );
-
-            }
-        );
-
-    }
-
-
-    document.getElementById(
-        "goalCount"
-    ).textContent =
-        `${count} أهداف`;
-
-
-    empty.style.display =
-        count === 0
-            ? "block"
-            : "none";
-
-
-    attachGoalButtons();
-
-}
-
-
-/* =========================================================
-   CURRENT
-========================================================= */
-
-function getCurrentValue(key){
-
-    return todayData[key] ?? 0;
-
-}
-
-
-/* =========================================================
-   PERCENT
-========================================================= */
-
-function calculatePercent(
-    key,
-    current,
-    target
-){
-
-    if(
-        key === "bedtime" ||
-        key === "wakeTime"
-    ){
-
-        if(
-            !current ||
-            !target
-        ){
-
-            return 0;
-
-        }
-
-        return current === target
-            ? 100
-            : 0;
-
-    }
-
-
-    if(
-        key === "smoking"
-    ){
-
-        if(target <= 0){
-
-            return current <= 0
-                ? 100
-                : 0;
-
-        }
-
-        return Math.min(
-            100,
-            Math.round(
-                Number(current) /
-                Number(target) *
-                100
-            )
-        );
-
-    }
-
-
-    if(target <= 0){
-
-        return 0;
-
-    }
-
-
-    return Math.min(
-        100,
-        Math.round(
-            Number(current) /
-            Number(target) *
-            100
-        )
-    );
-
-}
-
-
-/* =========================================================
-   FORMAT
-========================================================= */
-
-function formatValue(
-    key,
-    value
-){
-
-    if(
-        key === "bedtime" ||
-        key === "wakeTime"
-    ){
-
-        return value || "--:--";
-
-    }
-
-
-    if(
-        value === "" ||
-        value === null
-    ){
-
-        return 0;
-
-    }
-
-
-    return value;
-
-}
-
-
-/* =========================================================
-   GOAL BUTTONS
-========================================================= */
-
-function attachGoalButtons(){
-
-    document
-        .querySelectorAll(
-            "[data-add]"
-        )
-        .forEach(
-            button => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        handleGoalAction(
-                            button.dataset.add
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-
-    document
-        .querySelectorAll(
-            "[data-custom]"
-        )
-        .forEach(
-            button => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        handleCustomGoal(
-                            button.dataset.custom
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-}
-
-
-/* =========================================================
-   HANDLE GOAL
-========================================================= */
-
-async function handleGoalAction(
-    key
-){
-
-    if(
-        key === "bedtime" ||
-        key === "wakeTime"
-    ){
-
-        openTimeModal(key);
-
-        return;
-
-    }
-
-
-    if(key === "sleep"){
-
-        openNumberModal(
-            key,
-            "كم ساعة نمت اليوم؟",
-            0,
-            24,
-            "ساعة"
-        );
-
-        return;
-
-    }
-
-
-    if(key === "smoking"){
-
-        openNumberModal(
-            key,
-            "عدد السجائر اليوم",
-            0,
-            100,
-            "سيجارة"
-        );
-
-        return;
-
-    }
-
-
-    let step = 1;
-
-
-    if(key === "walking")
-        step = 10;
-
-
-    if(key === "steps")
-        step = 500;
-
-
-    if(key === "screenTime")
-        step = 10;
-
-
-    if(
-        key === "relaxation" ||
-        key === "reading"
-    ){
-
-        step = 5;
-
-    }
-
-
-    todayData[key] =
-        Number(
-            todayData[key] || 0
-        ) + step;
-
-
-    await saveToday();
-
-
-    renderGoals();
-
-    renderScore();
-
-
-    showToast(
-        "تم تحديث إنجازك ✓"
-    );
-
-}
-
-
-/* =========================================================
-   CUSTOM GOAL
-========================================================= */
-
-async function handleCustomGoal(id){
-
-    const custom =
-        Array.isArray(
-            goals.customGoals
-        )
-            ? goals.customGoals.find(
-                item =>
-                    item.id === id
-            )
-            : null;
-
-
-    if(!custom)
-        return;
-
-
-    const current =
-        Number(
-            todayData[
-                "custom_" + id
-            ] || 0
-        );
-
-
-    const value =
-        prompt(
-            `كم أنجزت من "${custom.name}" اليوم؟`,
-            current
-        );
-
-
-    if(value === null)
-        return;
-
-
-    const number =
-        Number(value);
-
-
-    if(
-        Number.isNaN(number) ||
-        number < 0
-    ){
-
-        showToast(
-            "أدخل رقمًا صحيحًا"
-        );
-
-        return;
-
-    }
-
-
-    todayData[
-        "custom_" + id
-    ] = number;
-
-
-    await saveToday();
-
-
-    renderGoals();
-
-    renderScore();
-
-
-    showToast(
-        "تم تحديث التحدي ✓"
-    );
-
-}
-
-
-/* =========================================================
-   MEASUREMENTS
-========================================================= */
-
-function renderMeasurements(){
-
-    const grid =
-        document.getElementById(
-            "measureGrid"
-        );
-
-
-    grid.innerHTML = "";
-
-
-    const measurements = [
-
-        {
-            key:"weight",
-            enabled:"weightEnabled",
-            name:"الوزن",
-            unit:"كغ",
-            icon:"fa-weight-scale"
-        },
-
-        {
-            key:"bloodPressure",
-            enabled:"bloodPressureEnabled",
-            name:"ضغط الدم",
-            unit:"mmHg",
-            icon:"fa-heart-pulse"
-        },
-
-        {
-            key:"pulse",
-            enabled:"pulseEnabled",
-            name:"النبض",
-            unit:"نبضة/د",
-            icon:"fa-heart"
-        },
-
-        {
-            key:"spo2",
-            enabled:"spo2Enabled",
-            name:"الأكسجين",
-            unit:"%",
-            icon:"fa-lungs"
-        },
-
-        {
-            key:"temperature",
-            enabled:"temperatureEnabled",
-            name:"الحرارة",
-            unit:"°C",
-            icon:"fa-temperature-half"
-        },
-
-        {
-            key:"glucose",
-            enabled:"glucoseEnabled",
-            name:"السكر",
-            unit:"mg/dL",
-            icon:"fa-droplet"
-        }
-
-    ];
-
-
-    measurements.forEach(
-        item => {
-
-            if(
-                goals[item.enabled] !== true
-            ){
-
-                return;
-
-            }
-
-
-            const value =
-                todayData[item.key] ||
-                "--";
-
-
-            const card =
-                document.createElement(
-                    "div"
-                );
-
-
-            card.className =
-                "measure-card";
-
-
-            card.innerHTML = `
-
-                <div class="measure-top">
-
-                    <div class="measure-icon">
-
-                        <i class="fa-solid ${item.icon}"></i>
-
-                    </div>
-
-
-                    <button
-                        class="measure-edit"
-                        data-measure="${item.key}">
-
-                        <i class="fa-solid fa-pen"></i>
-
-                    </button>
-
-                </div>
-
-
-                <h3>
-                    ${item.name}
+                <h3 id="modalTitle">
+                    تسجيل البيانات
                 </h3>
 
+                <button
+                    class="close-modal"
+                    id="closeModal"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
 
-                <div class="measure-value">
+            </div>
 
-                    ${escapeHtml(
-                        String(value)
-                    )}
+            <div id="modalContent">
 
-                    <span>
-                        ${item.unit}
-                    </span>
+                <!-- JS -->
 
-                </div>
+            </div>
 
-            `;
+        </div>
+
+    </div>
 
 
-            grid.appendChild(
-                card
+    <!-- TOAST -->
+
+    <div id="toast"></div>
+
+
+    <!-- =========================
+         FIREBASE
+    ========================= -->
+
+    <script type="module">
+
+        import {
+            auth,
+            db
+        } from "./js/firebase.js";
+
+        import {
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+        import {
+            doc,
+            getDoc,
+            setDoc,
+            serverTimestamp
+        } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+
+        /* =========================
+           GLOBAL
+        ========================= */
+
+        let currentUser = null;
+
+        let userData = {};
+
+        let goalsData = {};
+
+        let todayData = {};
+
+        const today = getTodayKey();
+
+
+        /* =========================
+           HELPERS
+        ========================= */
+
+        function getTodayKey() {
+
+            const date = new Date();
+
+            const year =
+                date.getFullYear();
+
+            const month =
+                String(
+                    date.getMonth() + 1
+                ).padStart(2, "0");
+
+            const day =
+                String(
+                    date.getDate()
+                ).padStart(2, "0");
+
+            return `${year}-${month}-${day}`;
+        }
+
+
+        function getGreeting() {
+
+            const hour =
+                new Date().getHours();
+
+            if (hour < 12) {
+                return "صباح الخير ☀️";
+            }
+
+            if (hour < 18) {
+                return "مساء الخير 🌤️";
+            }
+
+            return "مساء الخير 🌙";
+        }
+
+
+        function formatDate() {
+
+            return new Intl.DateTimeFormat(
+                "ar-DZ",
+                {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                }
+            ).format(new Date());
+        }
+
+
+        function number(value) {
+
+            const n =
+                Number(value);
+
+            return Number.isFinite(n)
+                ? n
+                : 0;
+        }
+
+
+        function percent(
+            current,
+            target
+        ) {
+
+            current = number(current);
+            target = number(target);
+
+            if (target <= 0) {
+                return 0;
+            }
+
+            return Math.min(
+                100,
+                Math.round(
+                    (current / target) * 100
+                )
+            );
+        }
+
+
+        function escapeHTML(value) {
+
+            return String(value ?? "")
+                .replace(
+                    /[&<>"']/g,
+                    char => ({
+                        "&": "&amp;",
+                        "<": "&lt;",
+                        ">": "&gt;",
+                        '"': "&quot;",
+                        "'": "&#039;"
+                    }[char])
+                );
+        }
+
+
+        /* =========================
+           TOAST
+        ========================= */
+
+        function showToast(message) {
+
+            const toast =
+                document.getElementById(
+                    "toast"
+                );
+
+            toast.textContent =
+                message;
+
+            toast.classList.add("show");
+
+            clearTimeout(
+                window.toastTimer
             );
 
-        }
-    );
+            window.toastTimer =
+                setTimeout(() => {
 
+                    toast.classList.remove(
+                        "show"
+                    );
 
-    document
-        .querySelectorAll(
-            "[data-measure]"
-        )
-        .forEach(
-            button => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        openMeasurementModal(
-                            button.dataset.measure
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-}
-
-
-/* =========================================================
-   MEASUREMENT MODAL
-========================================================= */
-
-function openMeasurementModal(
-    key
-){
-
-    const labels = {
-
-        weight:{
-            name:"الوزن",
-            unit:"كغ",
-            type:"number"
-        },
-
-        bloodPressure:{
-            name:"ضغط الدم",
-            unit:"مثال: 120/80",
-            type:"text"
-        },
-
-        pulse:{
-            name:"النبض",
-            unit:"نبضة/دقيقة",
-            type:"number"
-        },
-
-        spo2:{
-            name:"نسبة الأكسجين",
-            unit:"%",
-            type:"number"
-        },
-
-        temperature:{
-            name:"درجة الحرارة",
-            unit:"°C",
-            type:"number"
-        },
-
-        glucose:{
-            name:"سكر الدم",
-            unit:"mg/dL",
-            type:"number"
+                }, 2600);
         }
 
-    };
 
+        /* =========================
+           LOADING
+        ========================= */
 
-    const item =
-        labels[key];
+        function hideLoading() {
 
-
-    if(!item)
-        return;
-
-
-    currentModalType =
-        key;
-
-
-    document.getElementById(
-        "modalTitle"
-    ).textContent =
-        item.name;
-
-
-    document.getElementById(
-        "modalContent"
-    ).innerHTML = `
-
-        <div class="form-group">
-
-            <label>
-                ${item.name}
-            </label>
-
-            <input
-                id="modalInput"
-                type="${item.type}"
-                step="0.1"
-                value="${todayData[key] || ""}"
-                placeholder="${item.unit}"
-            >
-
-        </div>
-
-    `;
-
-
-    showModal();
-
-}
-
-
-/* =========================================================
-   NUMBER MODAL
-========================================================= */
-
-function openNumberModal(
-    key,
-    title,
-    min,
-    max,
-    unit
-){
-
-    currentModalType =
-        key;
-
-
-    document.getElementById(
-        "modalTitle"
-    ).textContent =
-        title;
-
-
-    document.getElementById(
-        "modalContent"
-    ).innerHTML = `
-
-        <div class="form-group">
-
-            <label>
-                القيمة — ${unit}
-            </label>
-
-            <input
-                id="modalInput"
-                type="number"
-                min="${min}"
-                max="${max}"
-                step="0.1"
-                value="${todayData[key] || ""}"
-                placeholder="أدخل القيمة"
-            >
-
-        </div>
-
-    `;
-
-
-    showModal();
-
-}
-
-
-/* =========================================================
-   TIME MODAL
-========================================================= */
-
-function openTimeModal(key){
-
-    currentModalType =
-        key;
-
-
-    document.getElementById(
-        "modalTitle"
-    ).textContent =
-        key === "bedtime"
-            ? "وقت النوم"
-            : "وقت الاستيقاظ";
-
-
-    document.getElementById(
-        "modalContent"
-    ).innerHTML = `
-
-        <div class="form-group">
-
-            <label>
-                اختر الوقت
-            </label>
-
-            <input
-                id="modalInput"
-                type="time"
-                value="${todayData[key] || ""}"
-            >
-
-        </div>
-
-    `;
-
-
-    showModal();
-
-}
-
-
-/* =========================================================
-   SHOW / CLOSE
-========================================================= */
-
-function showModal(){
-
-    document
-        .getElementById(
-            "inputModal"
-        )
-        .classList.add(
-            "show"
-        );
-
-}
-
-
-function closeModal(){
-
-    document
-        .getElementById(
-            "inputModal"
-        )
-        .classList.remove(
-            "show"
-        );
-
-    currentModalType =
-        null;
-
-}
-
-
-/* =========================================================
-   SAVE MODAL
-========================================================= */
-
-document
-    .getElementById(
-        "saveModal"
-    )
-    .addEventListener(
-        "click",
-        async () => {
-
-            const input =
+            const loading =
                 document.getElementById(
-                    "modalInput"
+                    "loadingScreen"
+                );
+
+            loading.style.opacity = "0";
+
+            loading.style.transition =
+                "opacity .25s ease";
+
+            setTimeout(() => {
+
+                loading.style.display =
+                    "none";
+
+            }, 250);
+        }
+
+
+        /* =========================
+           LOAD USER
+        ========================= */
+
+        async function loadUserData() {
+
+            if (!currentUser) {
+                return;
+            }
+
+            const userRef =
+                doc(
+                    db,
+                    "users",
+                    currentUser.uid
+                );
+
+            const goalsRef =
+                doc(
+                    db,
+                    "users",
+                    currentUser.uid,
+                    "goals",
+                    "settings"
+                );
+
+            const dailyRef =
+                doc(
+                    db,
+                    "users",
+                    currentUser.uid,
+                    "dailyTracking",
+                    today
                 );
 
 
-            if(!input)
-                return;
+            const [
+                userSnap,
+                goalsSnap,
+                dailySnap
+            ] = await Promise.all([
+
+                getDoc(userRef),
+
+                getDoc(goalsRef),
+
+                getDoc(dailyRef)
+
+            ]);
 
 
-            let value =
-                input.value;
+            userData =
+                userSnap.exists()
+                    ? userSnap.data()
+                    : {};
+
+            goalsData =
+                goalsSnap.exists()
+                    ? goalsSnap.data()
+                    : {};
+
+            todayData =
+                dailySnap.exists()
+                    ? dailySnap.data()
+                    : {};
 
 
-            if(
-                [
-                    "sleep",
-                    "weight",
-                    "temperature",
-                    "pulse",
-                    "spo2",
-                    "glucose"
-                ].includes(
-                    currentModalType
-                )
-            ){
+            renderUser();
 
-                value =
-                    Number(value);
-
-            }
-
-
-            if(
-                value === "" ||
-                value === null ||
-                (
-                    typeof value ===
-                    "number" &&
-                    Number.isNaN(value)
-                )
-            ){
-
-                showToast(
-                    "أدخل قيمة صحيحة"
-                );
-
-                return;
-
-            }
-
-
-            todayData[
-                currentModalType
-            ] = value;
-
-
-            await saveToday();
-
-
-            closeModal();
-
+            renderQuickStats();
 
             renderGoals();
 
             renderMeasurements();
 
-            renderScore();
-
-
-            showToast(
-                "تم الحفظ بنجاح ✓"
-            );
-
+            calculateOverallProgress();
         }
-    );
 
 
-/* =========================================================
-   SCORE
-========================================================= */
+        /* =========================
+           USER
+        ========================= */
 
-function renderScore(){
+        function renderUser() {
 
-    const percentages = [];
+            const name =
+                userData.name ||
+                userData.fullName ||
+                userData.displayName ||
+                currentUser.displayName ||
+                "مستخدم Si7a";
 
+            document.getElementById(
+                "userName"
+            ).textContent =
+                name;
 
-    Object.keys(
-        goalDefinitions
-    ).forEach(
-        key => {
+            document.getElementById(
+                "greetingText"
+            ).textContent =
+                getGreeting();
 
-            if(
-                goals[
-                    key + "Enabled"
-                ] !== true
-            ){
-
-                return;
-
-            }
-
-
-            const target =
-                Number(
-                    goals[key]
-                ) || 0;
-
-
-            const current =
-                todayData[key] ?? 0;
+            document.getElementById(
+                "todayDate"
+            ).textContent =
+                formatDate();
+        }
 
 
-            if(
-                key === "bedtime" ||
-                key === "wakeTime"
-            ){
+        /* =========================
+           QUICK STATS
+        ========================= */
 
-                percentages.push(
-                    current &&
-                    current === goals[key]
-                        ? 100
-                        : 0
+        function renderQuickStats() {
+
+            const water =
+                number(
+                    todayData.water
                 );
 
-                return;
-
-            }
-
-
-            if(target > 0){
-
-                percentages.push(
-                    Math.min(
-                        100,
-                        Math.round(
-                            Number(current) /
-                            target *
-                            100
-                        )
-                    )
+            const walking =
+                number(
+                    todayData.walking
                 );
 
+            const sleep =
+                number(
+                    todayData.sleep
+                );
+
+            const steps =
+                number(
+                    todayData.steps
+                );
+
+
+            const waterTarget =
+                number(
+                    goalsData.water
+                ) || 8;
+
+            const walkingTarget =
+                number(
+                    goalsData.walking
+                ) || 30;
+
+            const sleepTarget =
+                number(
+                    goalsData.sleep
+                ) || 8;
+
+            const stepsTarget =
+                number(
+                    goalsData.steps
+                ) || 8000;
+
+
+            document.getElementById(
+                "waterValue"
+            ).textContent =
+                `${water} كوب`;
+
+            document.getElementById(
+                "walkingValue"
+            ).textContent =
+                `${walking} د`;
+
+            document.getElementById(
+                "sleepValue"
+            ).textContent =
+                `${sleep} س`;
+
+            document.getElementById(
+                "stepsValue"
+            ).textContent =
+                steps.toLocaleString("ar-DZ");
+
+
+            document.getElementById(
+                "waterBar"
+            ).style.width =
+                `${percent(
+                    water,
+                    waterTarget
+                )}%`;
+
+            document.getElementById(
+                "walkingBar"
+            ).style.width =
+                `${percent(
+                    walking,
+                    walkingTarget
+                )}%`;
+
+            document.getElementById(
+                "sleepBar"
+            ).style.width =
+                `${percent(
+                    sleep,
+                    sleepTarget
+                )}%`;
+
+            document.getElementById(
+                "stepsBar"
+            ).style.width =
+                `${percent(
+                    steps,
+                    stepsTarget
+                )}%`;
+        }
+
+
+        /* =========================
+           GOALS DEFINITIONS
+        ========================= */
+
+        const goalDefinitions = [
+
+            {
+                key: "water",
+                enabled: "waterEnabled",
+                name: "شرب الماء",
+                icon: "fa-droplet",
+                color: "#0891B2",
+                bg: "#ECFEFF",
+                unit: "كوب"
+            },
+
+            {
+                key: "walking",
+                enabled: "walkingEnabled",
+                name: "المشي",
+                icon: "fa-person-walking",
+                color: "#16A34A",
+                bg: "#ECFDF3",
+                unit: "دقيقة"
+            },
+
+            {
+                key: "sleep",
+                enabled: "sleepEnabled",
+                name: "النوم",
+                icon: "fa-moon",
+                color: "#7C3AED",
+                bg: "#F5F3FF",
+                unit: "ساعة"
+            },
+
+            {
+                key: "bedtime",
+                enabled: "bedtimeEnabled",
+                name: "وقت النوم",
+                icon: "fa-bed",
+                color: "#6366F1",
+                bg: "#EEF2FF",
+                unit: ""
+            },
+
+            {
+                key: "wakeTime",
+                enabled: "wakeTimeEnabled",
+                name: "وقت الاستيقاظ",
+                icon: "fa-sun",
+                color: "#D97706",
+                bg: "#FFFBEB",
+                unit: ""
+            },
+
+            {
+                key: "steps",
+                enabled: "stepsEnabled",
+                name: "الخطوات",
+                icon: "fa-shoe-prints",
+                color: "#2563EB",
+                bg: "#EFF6FF",
+                unit: "خطوة"
+            },
+
+            {
+                key: "relaxation",
+                enabled: "relaxationEnabled",
+                name: "الاسترخاء",
+                icon: "fa-spa",
+                color: "#0D9488",
+                bg: "#F0FDFA",
+                unit: "دقيقة"
+            },
+
+            {
+                key: "reading",
+                enabled: "readingEnabled",
+                name: "القراءة",
+                icon: "fa-book-open",
+                color: "#EA580C",
+                bg: "#FFF7ED",
+                unit: "دقيقة"
+            },
+
+            {
+                key: "screenTime",
+                enabled: "screenTimeEnabled",
+                name: "وقت الشاشة",
+                icon: "fa-mobile-screen",
+                color: "#DC2626",
+                bg: "#FEF2F2",
+                unit: "دقيقة"
+            },
+
+            {
+                key: "fruit",
+                enabled: "fruitEnabled",
+                name: "الفواكه",
+                icon: "fa-apple-whole",
+                color: "#E11D48",
+                bg: "#FFF1F2",
+                unit: "حصة"
+            },
+
+            {
+                key: "vegetables",
+                enabled: "vegetablesEnabled",
+                name: "الخضروات",
+                icon: "fa-carrot",
+                color: "#65A30D",
+                bg: "#F7FEE7",
+                unit: "حصة"
+            },
+
+            {
+                key: "smoking",
+                enabled: "smokingEnabled",
+                name: "التدخين",
+                icon: "fa-smoking",
+                color: "#64748B",
+                bg: "#F1F5F9",
+                unit: "سيجارة"
             }
 
-        }
-    );
+        ];
 
 
-    if(
-        Array.isArray(
-            goals.customGoals
-        )
-    ){
+        /* =========================
+           RENDER GOALS
+        ========================= */
 
-        goals.customGoals.forEach(
-            custom => {
+        function renderGoals() {
 
-                const target =
-                    Number(
-                        custom.value
-                    ) || 0;
+            const container =
+                document.getElementById(
+                    "goalsList"
+                );
 
+            container.innerHTML = "";
 
-                const current =
-                    Number(
-                        todayData[
-                            "custom_" +
-                            custom.id
-                        ]
-                    ) || 0;
+            let enabledGoals = [];
 
+            goalDefinitions.forEach(
+                goal => {
 
-                if(target > 0){
+                    if (
+                        goalsData[
+                            goal.enabled
+                        ] === true
+                    ) {
 
-                    percentages.push(
-                        Math.min(
-                            100,
-                            Math.round(
-                                current /
-                                target *
-                                100
-                            )
-                        )
-                    );
+                        enabledGoals.push(
+                            goal
+                        );
+                    }
 
                 }
-
-            }
-        );
-
-    }
-
-
-    let average = 0;
-
-
-    if(percentages.length){
-
-        average =
-            Math.round(
-                percentages.reduce(
-                    (a,b) =>
-                        a+b,
-                    0
-                ) /
-                percentages.length
             );
 
-    }
 
+            if (
+                Array.isArray(
+                    goalsData.customGoals
+                )
+            ) {
 
-    const circle =
-        document.getElementById(
-            "scoreCircle"
-        );
+                goalsData.customGoals
+                    .forEach(custom => {
 
+                        if (
+                            custom &&
+                            custom.name
+                        ) {
 
-    const number =
-        document.getElementById(
-            "scoreNumber"
-        );
+                            enabledGoals.push({
 
+                                custom: true,
 
-    const description =
-        document.getElementById(
-            "scoreDescription"
-        );
+                                id:
+                                    custom.id ||
+                                    Date.now(),
 
+                                key:
+                                    "custom",
 
-    const status =
-        document.getElementById(
-            "scoreStatus"
-        );
+                                name:
+                                    custom.name,
 
+                                icon:
+                                    "fa-star",
 
-    circle.style
-        .setProperty(
-            "--score",
-            average + "%"
-        );
+                                color:
+                                    "#7C3AED",
 
+                                bg:
+                                    "#F5F3FF",
 
-    number.textContent =
-        average + "%";
+                                unit:
+                                    custom.unit ||
+                                    "",
 
+                                target:
+                                    custom.value
 
-    if(!percentages.length){
+                            });
 
-        description.textContent =
-            "ابدأ بتسجيل أهدافك اليومية.";
+                        }
 
-        status.textContent =
-            "🌱 بداية جديدة";
+                    });
+            }
 
-        return;
 
-    }
+            document.getElementById(
+                "goalsSubtitle"
+            ).textContent =
+                enabledGoals.length
+                    ? `${enabledGoals.length} أهداف مفعلة`
+                    : "لم تضف أهدافك بعد";
 
 
-    if(average >= 100){
+            if (!enabledGoals.length) {
 
-        description.textContent =
-            "رائع! أكملت أهدافك اليومية.";
+                container.innerHTML = `
 
-        status.textContent =
-            "🏆 يوم مثالي";
+                    <div class="empty-goals">
 
-    }else if(average >= 75){
+                        <i class="fa-regular fa-circle-check"></i>
 
-        description.textContent =
-            "أداء ممتاز، اقتربت من إكمال أهدافك.";
+                        <h4>
+                            لم تضف أي تحديات بعد
+                        </h4>
 
-        status.textContent =
-            "🔥 استمر بهذا المستوى";
-
-    }else if(average >= 40){
-
-        description.textContent =
-            "تقدم جيد، ما زال لديك وقت اليوم.";
-
-        status.textContent =
-            "💪 واصل التقدم";
-
-    }else{
-
-        description.textContent =
-            "ابدأ بخطوة صغيرة اليوم.";
-
-        status.textContent =
-            "🌱 كل خطوة مهمة";
-
-    }
-
-}
-
-
-/* =========================================================
-   CHALLENGES
-========================================================= */
-
-function renderChallenges(){
-
-    const container =
-        document.getElementById(
-            "challengeContainer"
-        );
-
-
-    if(
-        !Array.isArray(
-            goals.customGoals
-        ) ||
-        goals.customGoals.length === 0
-    ){
-
-        return;
-
-    }
-
-
-    container.innerHTML = "";
-
-
-    goals.customGoals
-        .slice(0,4)
-        .forEach(
-            custom => {
-
-                const target =
-                    Number(
-                        custom.value
-                    ) || 0;
-
-
-                const current =
-                    Number(
-                        todayData[
-                            "custom_" +
-                            custom.id
-                        ]
-                    ) || 0;
-
-
-                const percent =
-                    target > 0
-                        ? Math.min(
-                            100,
-                            Math.round(
-                                current /
-                                target *
-                                100
-                            )
-                        )
-                        : 0;
-
-
-                const card =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                card.className =
-                    "challenge-card";
-
-
-                card.innerHTML = `
-
-                    <div class="challenge-top">
-
-                        <div class="challenge-icon">
-
-                            <i class="fa-solid fa-star"></i>
-
-                        </div>
-
-
-                        <div class="challenge-info">
-
-                            <h3>
-                                ${escapeHtml(
-                                    custom.name
-                                )}
-                            </h3>
-
-                            <p>
-                                ${current}
-                                ${escapeHtml(
-                                    custom.unit || ""
-                                )}
-                                /
-                                ${target}
-                            </p>
-
-                        </div>
-
-
-                        <div
-                            class="challenge-percent">
-
-                            ${percent}%
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="challenge-bar">
-
-                        <div
-                            style="
-                                width:${percent}%;
-                            ">
-                        </div>
+                        <p>
+                            اختر أهدافك الصحية بنفسك،
+                            مثل الماء والمشي والنوم وغيرها.
+                        </p>
 
                     </div>
 
                 `;
 
-
-                container.appendChild(
-                    card
-                );
-
-            }
-        );
-
-}
-
-
-/* =========================================================
-   QUICK WATER
-========================================================= */
-
-document
-    .getElementById(
-        "waterQuick"
-    )
-    .addEventListener(
-        "click",
-        async () => {
-
-            todayData.water =
-                Number(
-                    todayData.water || 0
-                ) + 1;
-
-
-            await saveToday();
-
-
-            renderGoals();
-
-            renderScore();
-
-
-            showToast(
-                "💧 تمت إضافة كوب ماء"
-            );
-
-        }
-    );
-
-
-/* =========================================================
-   QUICK WALKING
-========================================================= */
-
-document
-    .getElementById(
-        "walkingQuick"
-    )
-    .addEventListener(
-        "click",
-        async () => {
-
-            todayData.walking =
-                Number(
-                    todayData.walking || 0
-                ) + 10;
-
-
-            await saveToday();
-
-
-            renderGoals();
-
-            renderScore();
-
-
-            showToast(
-                "🚶 تمت إضافة 10 دقائق مشي"
-            );
-
-        }
-    );
-
-
-/* =========================================================
-   MEASUREMENT QUICK
-========================================================= */
-
-document
-    .getElementById(
-        "measureQuick"
-    )
-    .addEventListener(
-        "click",
-        () => {
-
-            const first =
-                [
-                    "weight",
-                    "bloodPressure",
-                    "pulse",
-                    "spo2",
-                    "temperature",
-                    "glucose"
-                ]
-                .find(
-                    key =>
-                        goals[
-                            key +
-                            "Enabled"
-                        ] === true
-                );
-
-
-            if(first){
-
-                openMeasurementModal(
-                    first
-                );
-
-            }else{
-
-                document
-                    .getElementById(
-                        "measurementsSection"
-                    )
-                    .scrollIntoView({
-                        behavior:"smooth"
-                    });
-
+                return;
             }
 
-        }
-    );
 
+            enabledGoals.forEach(
+                goal => {
 
-/* =========================================================
-   FLOATING BUTTON
-========================================================= */
-
-document
-    .getElementById(
-        "floatingAdd"
-    )
-    .addEventListener(
-        "click",
-        () => {
-
-            openNumberModal(
-                "water",
-                "إضافة الماء",
-                0,
-                100,
-                "كوب"
-            );
-
-        }
-    );
-
-
-/* =========================================================
-   REFRESH
-========================================================= */
-
-document
-    .getElementById(
-        "refreshBtn"
-    )
-    .addEventListener(
-        "click",
-        async () => {
-
-            const button =
-                document.getElementById(
-                    "refreshBtn"
-                );
-
-
-            button.innerHTML =
-                '<i class="fa-solid fa-spinner fa-spin"></i>';
-
-
-            await loadUserData();
-
-
-            button.innerHTML =
-                '<i class="fa-solid fa-rotate"></i>';
-
-
-            showToast(
-                "تم تحديث بياناتك ✓"
-            );
-
-        }
-    );
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-document
-    .getElementById(
-        "logoutBtn"
-    )
-    .addEventListener(
-        "click",
-        async () => {
-
-            try{
-
-                await signOut(
-                    auth
-                );
-
-
-                window.location.href =
-                    "login.html";
-
-
-            }catch(error){
-
-                console.error(
-                    error
-                );
-
-
-                showToast(
-                    "تعذر تسجيل الخروج"
-                );
-
-            }
-
-        }
-    );
-
-
-/* =========================================================
-   MODAL EVENTS
-========================================================= */
-
-document
-    .getElementById(
-        "closeModal"
-    )
-    .addEventListener(
-        "click",
-        closeModal
-    );
-
-
-document
-    .getElementById(
-        "cancelModal"
-    )
-    .addEventListener(
-        "click",
-        closeModal
-    );
-
-
-document
-    .getElementById(
-        "inputModal"
-    )
-    .addEventListener(
-        "click",
-        event => {
-
-            if(
-                event.target.id ===
-                "inputModal"
-            ){
-
-                closeModal();
-
-            }
-
-        }
-    );
-
-
-/* =========================================================
-   BOTTOM NAV
-========================================================= */
-
-document
-    .querySelectorAll(
-        ".nav-item[data-scroll]"
-    )
-    .forEach(
-        item => {
-
-            item.addEventListener(
-                "click",
-                () => {
-
-                    document
-                        .querySelectorAll(
-                            ".nav-item"
-                        )
-                        .forEach(
-                            nav =>
-                                nav.classList
-                                    .remove(
-                                        "active"
-                                    )
+                    const current =
+                        number(
+                            todayData[
+                                goal.key
+                            ]
                         );
 
+                    let target =
+                        goal.custom
+                            ? number(goal.target)
+                            : number(
+                                goalsData[
+                                    goal.key
+                                ]
+                            );
 
-                    item.classList.add(
-                        "active"
-                    );
 
+                    if (target <= 0) {
 
-                    const target =
-                        item.dataset.scroll;
+                        if (
+                            goal.key === "water"
+                        ) target = 8;
 
+                        else if (
+                            goal.key === "walking"
+                        ) target = 30;
 
-                    if(target === "top"){
+                        else if (
+                            goal.key === "sleep"
+                        ) target = 8;
 
-                        window.scrollTo({
-                            top:0,
-                            behavior:"smooth"
-                        });
+                        else if (
+                            goal.key === "steps"
+                        ) target = 8000;
 
-                        return;
-
+                        else target = 1;
                     }
 
 
-                    const element =
-                        document.getElementById(
+                    let progress =
+                        percent(
+                            current,
                             target
                         );
 
 
-                    if(element){
+                    if (
+                        goal.key === "bedtime"
+                    ) {
 
-                        element.scrollIntoView({
-                            behavior:"smooth",
-                            block:"start"
-                        });
+                        const targetTime =
+                            goalsData.bedtime;
+
+                        progress =
+                            todayData.bedtime &&
+                            targetTime &&
+                            todayData.bedtime ===
+                            targetTime
+                                ? 100
+                                : 0;
+                    }
+
+
+                    if (
+                        goal.key === "wakeTime"
+                    ) {
+
+                        const targetTime =
+                            goalsData.wakeTime;
+
+                        progress =
+                            todayData.wakeTime &&
+                            targetTime &&
+                            todayData.wakeTime ===
+                            targetTime
+                                ? 100
+                                : 0;
+                    }
+
+
+                    const currentText =
+                        (
+                            goal.key === "bedtime" ||
+                            goal.key === "wakeTime"
+                        )
+                            ? (
+                                todayData[
+                                    goal.key
+                                ] ||
+                                "لم يسجل"
+                            )
+                            : `${current} ${goal.unit}`;
+
+
+                    const targetText =
+                        (
+                            goal.key === "bedtime" ||
+                            goal.key === "wakeTime"
+                        )
+                            ? (
+                                goalsData[
+                                    goal.key
+                                ] ||
+                                "غير محدد"
+                            )
+                            : `${target} ${goal.unit}`;
+
+
+                    const card =
+                        document.createElement(
+                            "div"
+                        );
+
+                    card.className =
+                        "goal-card";
+
+
+                    card.innerHTML = `
+
+                        <div
+                            class="goal-icon"
+                            style="
+                                color:${goal.color};
+                                background:${goal.bg};
+                            "
+                        >
+
+                            <i
+                                class="fa-solid ${goal.icon}"
+                            ></i>
+
+                        </div>
+
+                        <div class="goal-main">
+
+                            <div class="goal-top">
+
+                                <span class="goal-name">
+                                    ${escapeHTML(
+                                        goal.name
+                                    )}
+                                </span>
+
+                                <span
+                                    class="goal-percent"
+                                    style="
+                                        color:${goal.color};
+                                    "
+                                >
+                                    ${progress}%
+                                </span>
+
+                            </div>
+
+                            <div class="goal-bar">
+
+                                <span
+                                    style="
+                                        width:${progress}%;
+                                        background:${goal.color};
+                                    "
+                                ></span>
+
+                            </div>
+
+                            <div class="goal-bottom">
+
+                                <span>
+                                    ${escapeHTML(
+                                        currentText
+                                    )}
+                                </span>
+
+                                <span>
+                                    الهدف:
+                                    ${escapeHTML(
+                                        targetText
+                                    )}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+
+                    container.appendChild(card);
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           MEASUREMENTS
+        ========================= */
+
+        function renderMeasurements() {
+
+            const container =
+                document.getElementById(
+                    "measurements"
+                );
+
+            container.innerHTML = "";
+
+
+            const measurements = [
+
+                {
+                    key: "weight",
+                    name: "الوزن",
+                    icon: "fa-weight-scale",
+                    color: "#7C3AED",
+                    bg: "#F5F3FF",
+                    unit: "كغ"
+                },
+
+                {
+                    key: "bloodPressure",
+                    name: "ضغط الدم",
+                    icon: "fa-heart-pulse",
+                    color: "#DC2626",
+                    bg: "#FEF2F2",
+                    unit: ""
+                },
+
+                {
+                    key: "pulse",
+                    name: "النبض",
+                    icon: "fa-heart",
+                    color: "#DB2777",
+                    bg: "#FDF2F8",
+                    unit: "نبضة/د"
+                },
+
+                {
+                    key: "spo2",
+                    name: "SpO₂",
+                    icon: "fa-lungs",
+                    color: "#0891B2",
+                    bg: "#ECFEFF",
+                    unit: "%"
+                },
+
+                {
+                    key: "temperature",
+                    name: "الحرارة",
+                    icon: "fa-temperature-half",
+                    color: "#F97316",
+                    bg: "#FFF7ED",
+                    unit: "°C"
+                },
+
+                {
+                    key: "glucose",
+                    name: "السكر",
+                    icon: "fa-droplet",
+                    color: "#2563EB",
+                    bg: "#EFF6FF",
+                    unit: "غ/ل"
+                }
+
+            ];
+
+
+            let found = 0;
+
+
+            measurements.forEach(
+                item => {
+
+                    const value =
+                        todayData[
+                            item.key
+                        ];
+
+
+                    if (
+                        value === undefined ||
+                        value === null ||
+                        value === ""
+                    ) {
+                        return;
+                    }
+
+
+                    found++;
+
+
+                    const card =
+                        document.createElement(
+                            "div"
+                        );
+
+                    card.className =
+                        "measurement-card";
+
+
+                    card.innerHTML = `
+
+                        <div
+                            class="measurement-icon"
+                            style="
+                                background:${item.bg};
+                                color:${item.color};
+                            "
+                        >
+
+                            <i
+                                class="fa-solid ${item.icon}"
+                            ></i>
+
+                        </div>
+
+                        <div class="measurement-info">
+
+                            <div class="measurement-name">
+                                ${item.name}
+                            </div>
+
+                            <div class="measurement-value">
+
+                                ${escapeHTML(
+                                    value
+                                )}
+
+                                ${item.unit
+                                    ? `<small style="
+                                            font-size:10px;
+                                            color:#718096;
+                                        ">
+                                        ${item.unit}
+                                       </small>`
+                                    : ""
+                                }
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+
+                    container.appendChild(card);
+
+                }
+            );
+
+
+            if (!found) {
+
+                container.innerHTML = `
+
+                    <div class="no-measurements">
+
+                        <i
+                            class="fa-regular fa-clipboard"
+                            style="
+                                font-size:22px;
+                                margin-bottom:7px;
+                                color:#AAB7C8;
+                            "
+                        ></i>
+
+                        <div>
+                            لا توجد قياسات مسجلة اليوم
+                        </div>
+
+                    </div>
+
+                `;
+            }
+
+        }
+
+
+        /* =========================
+           OVERALL PROGRESS
+        ========================= */
+
+        function calculateOverallProgress() {
+
+            let total = 0;
+
+            let completed = 0;
+
+
+            goalDefinitions.forEach(
+                goal => {
+
+                    if (
+                        goalsData[
+                            goal.enabled
+                        ] !== true
+                    ) {
+                        return;
+                    }
+
+
+                    total++;
+
+
+                    let p = 0;
+
+
+                    if (
+                        goal.key === "bedtime" ||
+                        goal.key === "wakeTime"
+                    ) {
+
+                        if (
+                            todayData[
+                                goal.key
+                            ] &&
+                            goalsData[
+                                goal.key
+                            ] &&
+                            todayData[
+                                goal.key
+                            ] ===
+                            goalsData[
+                                goal.key
+                            ]
+                        ) {
+                            p = 100;
+                        }
+
+                    } else {
+
+                        p =
+                            percent(
+                                todayData[
+                                    goal.key
+                                ],
+                                goalsData[
+                                    goal.key
+                                ]
+                            );
+                    }
+
+
+                    if (p >= 100) {
+                        completed++;
+                    }
+
+                }
+            );
+
+
+            if (
+                Array.isArray(
+                    goalsData.customGoals
+                )
+            ) {
+
+                goalsData.customGoals
+                    .forEach(
+                        goal => {
+
+                            if (
+                                !goal ||
+                                !goal.name
+                            ) {
+                                return;
+                            }
+
+                            total++;
+
+                            const p =
+                                percent(
+                                    todayData[
+                                        "custom_" +
+                                        goal.id
+                                    ],
+                                    goal.value
+                                );
+
+                            if (
+                                p >= 100
+                            ) {
+                                completed++;
+                            }
+
+                        }
+                    );
+            }
+
+
+            const value =
+                total > 0
+                    ? Math.round(
+                        (completed / total) *
+                        100
+                    )
+                    : 0;
+
+
+            const degrees =
+                value * 3.6;
+
+
+            document.getElementById(
+                "completionPercent"
+            ).textContent =
+                `${value}%`;
+
+
+            document.getElementById(
+                "heroProgress"
+            ).style
+                .setProperty(
+                    "--progress",
+                    `${degrees}deg`
+                );
+
+
+            const message =
+                document.getElementById(
+                    "heroMessage"
+                );
+
+
+            if (value === 0) {
+
+                message.textContent =
+                    "ابدأ بخطوة بسيطة اليوم، وكل إنجاز صغير مهم.";
+
+            } else if (value < 40) {
+
+                message.textContent =
+                    "بداية جيدة! واصل تسجيل عاداتك الصحية.";
+
+            } else if (value < 70) {
+
+                message.textContent =
+                    "ممتاز! أنت في الطريق الصحيح.";
+
+            } else if (value < 100) {
+
+                message.textContent =
+                    "رائع! اقتربت من إكمال أهداف اليوم.";
+
+            } else {
+
+                message.textContent =
+                    "أحسنت! أكملت جميع أهدافك اليوم 🎉";
+            }
+
+        }
+
+
+        /* =========================
+           SAVE DAILY
+        ========================= */
+
+        async function saveDailyData(
+            updates
+        ) {
+
+            if (!currentUser) {
+                return;
+            }
+
+
+            const dailyRef =
+                doc(
+                    db,
+                    "users",
+                    currentUser.uid,
+                    "dailyTracking",
+                    today
+                );
+
+
+            todayData = {
+                ...todayData,
+                ...updates
+            };
+
+
+            await setDoc(
+                dailyRef,
+                {
+                    ...updates,
+
+                    uid:
+                        currentUser.uid,
+
+                    date:
+                        today,
+
+                    updatedAt:
+                        serverTimestamp()
+
+                },
+                {
+                    merge: true
+                }
+            );
+
+
+            renderQuickStats();
+
+            renderGoals();
+
+            renderMeasurements();
+
+            calculateOverallProgress();
+
+            showToast(
+                "تم حفظ البيانات بنجاح ✓"
+            );
+
+        }
+
+
+        /* =========================
+           QUICK MODAL
+        ========================= */
+
+        function openQuickModal(
+            type
+        ) {
+
+            const modal =
+                document.getElementById(
+                    "quickModal"
+                );
+
+            const title =
+                document.getElementById(
+                    "modalTitle"
+                );
+
+            const content =
+                document.getElementById(
+                    "modalContent"
+                );
+
+
+            let current = 0;
+
+            let label = "";
+
+            let unit = "";
+
+            let step = "1";
+
+            let inputType = "number";
+
+
+            if (type === "water") {
+
+                title.textContent =
+                    "تسجيل الماء";
+
+                current =
+                    number(
+                        todayData.water
+                    );
+
+                label =
+                    "عدد أكواب الماء";
+
+                unit =
+                    "كوب";
+
+                step = "1";
+
+            }
+
+
+            if (type === "walking") {
+
+                title.textContent =
+                    "تسجيل المشي";
+
+                current =
+                    number(
+                        todayData.walking
+                    );
+
+                label =
+                    "مدة المشي";
+
+                unit =
+                    "دقيقة";
+
+                step = "1";
+
+            }
+
+
+            if (type === "sleep") {
+
+                title.textContent =
+                    "تسجيل النوم";
+
+                current =
+                    number(
+                        todayData.sleep
+                    );
+
+                label =
+                    "عدد ساعات النوم";
+
+                unit =
+                    "ساعة";
+
+                step = "0.5";
+
+            }
+
+
+            if (type === "steps") {
+
+                title.textContent =
+                    "تسجيل الخطوات";
+
+                current =
+                    number(
+                        todayData.steps
+                    );
+
+                label =
+                    "عدد الخطوات";
+
+                unit =
+                    "خطوة";
+
+                step = "100";
+
+            }
+
+
+            content.innerHTML = `
+
+                <div class="input-group">
+
+                    <label>
+                        ${label}
+                    </label>
+
+                    <input
+                        id="quickInput"
+                        type="${inputType}"
+                        min="0"
+                        step="${step}"
+                        value="${current}"
+                        inputmode="decimal"
+                    >
+
+                    <div style="
+                        margin-top:6px;
+                        color:#94A3B8;
+                        font-size:10px;
+                    ">
+                        الوحدة: ${unit}
+                    </div>
+
+                </div>
+
+                <button
+                    class="modal-save"
+                    id="saveQuick"
+                >
+                    حفظ البيانات
+                </button>
+
+            `;
+
+
+            modal.classList.add("show");
+
+
+            document
+                .getElementById("saveQuick")
+                .onclick =
+                async () => {
+
+                    const input =
+                        document.getElementById(
+                            "quickInput"
+                        );
+
+                    const value =
+                        Number(
+                            input.value
+                        );
+
+
+                    if (
+                        !Number.isFinite(value) ||
+                        value < 0
+                    ) {
+
+                        showToast(
+                            "أدخل قيمة صحيحة"
+                        );
+
+                        return;
+                    }
+
+
+                    await saveDailyData({
+
+                        [type]:
+                            value
+
+                    });
+
+
+                    closeModal();
+
+                };
+
+
+            setTimeout(() => {
+
+                document
+                    .getElementById(
+                        "quickInput"
+                    )
+                    ?.focus();
+
+            }, 100);
+
+        }
+
+
+        function closeModal() {
+
+            document
+                .getElementById(
+                    "quickModal"
+                )
+                .classList.remove(
+                    "show"
+                );
+        }
+
+
+        /* =========================
+           QUICK CARDS
+        ========================= */
+
+        document
+            .querySelectorAll(
+                "[data-quick]"
+            )
+            .forEach(card => {
+
+                card.addEventListener(
+                    "click",
+                    () => {
+
+                        openQuickModal(
+                            card.dataset.quick
+                        );
+
+                    }
+                );
+
+            });
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        document
+            .getElementById(
+                "closeModal"
+            )
+            .addEventListener(
+                "click",
+                closeModal
+            );
+
+
+        document
+            .getElementById(
+                "quickModal"
+            )
+            .addEventListener(
+                "click",
+                event => {
+
+                    if (
+                        event.target.id ===
+                        "quickModal"
+                    ) {
+                        closeModal();
+                    }
+
+                }
+            );
+
+
+        document
+            .getElementById(
+                "recordButton"
+            )
+            .addEventListener(
+                "click",
+                () => {
+
+                    openQuickModal(
+                        "water"
+                    );
+
+                }
+            );
+
+
+        document
+            .getElementById(
+                "goalsButton"
+            )
+            .addEventListener(
+                "click",
+                () => {
+
+                    window.location.href =
+                        "goals.html";
+
+                }
+            );
+
+
+        document
+            .getElementById(
+                "refreshBtn"
+            )
+            .addEventListener(
+                "click",
+                async () => {
+
+                    if (!currentUser) {
+                        return;
+                    }
+
+                    const icon =
+                        document.querySelector(
+                            "#refreshBtn i"
+                        );
+
+                    icon.classList.add(
+                        "fa-spin"
+                    );
+
+                    try {
+
+                        await loadUserData();
+
+                        showToast(
+                            "تم تحديث البيانات ✓"
+                        );
+
+                    } catch (error) {
+
+                        console.error(error);
+
+                        showToast(
+                            "تعذر تحديث البيانات"
+                        );
+
+                    } finally {
+
+                        setTimeout(() => {
+
+                            icon.classList.remove(
+                                "fa-spin"
+                            );
+
+                        }, 500);
 
                     }
 
                 }
             );
 
-        }
-    );
 
+        /* =========================
+           LOGOUT
+        ========================= */
 
-/* =========================================================
-   REPORTS / ACCOUNT
-========================================================= */
+        document
+            .getElementById(
+                "logoutBtn"
+            )
+            .addEventListener(
+                "click",
+                async () => {
 
-document
-    .getElementById(
-        "reportsNav"
-    )
-    .addEventListener(
-        "click",
-        () => {
+                    try {
 
-            showToast(
-                "قسم التقارير سيكون متاحًا قريبًا 📊"
+                        await signOut(auth);
+
+                        window.location.href =
+                            "login.html";
+
+                    } catch (error) {
+
+                        console.error(error);
+
+                        showToast(
+                            "تعذر تسجيل الخروج"
+                        );
+
+                    }
+
+                }
             );
 
-        }
-    );
+
+        /* =========================
+           BOTTOM NAV
+        ========================= */
+
+        document
+            .querySelectorAll(
+                "[data-nav]"
+            )
+            .forEach(
+                item => {
+
+                    item.addEventListener(
+                        "click",
+                        () => {
+
+                            const nav =
+                                item.dataset.nav;
 
 
-document
-    .getElementById(
-        "accountNav"
-    )
-    .addEventListener(
-        "click",
-        () => {
+                            if (
+                                nav === "home"
+                            ) {
 
-            showToast(
-                "صفحة الحساب ستتم إضافتها لاحقًا 👤"
+                                window.scrollTo({
+                                    top: 0,
+                                    behavior: "smooth"
+                                });
+
+                                return;
+                            }
+
+
+                            if (
+                                nav === "goals"
+                            ) {
+
+                                window.location.href =
+                                    "goals.html";
+
+                                return;
+                            }
+
+
+                            if (
+                                nav === "record"
+                            ) {
+
+                                openQuickModal(
+                                    "water"
+                                );
+
+                                return;
+                            }
+
+
+                            showToast(
+                                "هذا القسم سنضيفه في المرحلة التالية"
+                            );
+
+                        }
+                    );
+
+                }
             );
 
-        }
-    );
+
+        /* =========================
+           AUTH
+        ========================= */
+
+        onAuthStateChanged(
+            auth,
+            async user => {
+
+                if (!user) {
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+                }
 
 
-/* =========================================================
-   PREMIUM
-========================================================= */
-
-document
-    .getElementById(
-        "premiumBtn"
-    )
-    .addEventListener(
-        "click",
-        () => {
-
-            showToast(
-                "صفحة Premium والدفع ستتم إضافتها في الخطوة القادمة ⭐"
-            );
-
-        }
-    );
+                currentUser =
+                    user;
 
 
-/* =========================================================
-   ESCAPE
-========================================================= */
+                try {
 
-function escapeHtml(value){
+                    await loadUserData();
 
-    return String(value)
+                } catch (error) {
 
-        .replaceAll(
-            "&",
-            "&amp;"
-        )
+                    console.error(
+                        "Dashboard error:",
+                        error
+                    );
 
-        .replaceAll(
-            "<",
-            "&lt;"
-        )
+                    showToast(
+                        "حدث خطأ أثناء تحميل بياناتك"
+                    );
 
-        .replaceAll(
-            ">",
-            "&gt;"
-        )
+                } finally {
 
-        .replaceAll(
-            '"',
-            "&quot;"
-        )
+                    hideLoading();
 
-        .replaceAll(
-            "'",
-            "&#039;"
+                }
+
+            }
         );
 
-}
+    </script>
 
-
-</script>
 </body>
+
 </html>
