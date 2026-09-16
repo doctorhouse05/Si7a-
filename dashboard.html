@@ -8,7 +8,7 @@
       content="width=device-width, initial-scale=1.0,
       maximum-scale=1.0, user-scalable=no">
 
-<meta name="theme-color" content="#F7FAFC">
+<meta name="theme-color" content="#F7F9FC">
 
 <title>صحتي | الرئيسية</title>
 
@@ -36,42 +36,53 @@
 
 :root{
 
-    --blue:#2563EB;
-    --blue-dark:#1D4ED8;
+    /* Main */
+    --blue:#3B82F6;
+    --blue-dark:#2563EB;
     --blue-soft:#EEF5FF;
 
-    --green:#16A34A;
-    --green-soft:#ECFDF3;
+    /* Green */
+    --green:#22A06B;
+    --green-soft:#EAF8F1;
 
-    --purple:#7C3AED;
-    --purple-soft:#F5F3FF;
-
-    --pink:#DB2777;
-    --pink-soft:#FDF2F8;
-
+    /* Cyan */
     --cyan:#0891B2;
-    --cyan-soft:#ECFEFF;
+    --cyan-soft:#E8F9FC;
 
-    --orange:#EA580C;
-    --orange-soft:#FFF7ED;
+    /* Purple */
+    --purple:#7C5CFC;
+    --purple-soft:#F1EEFF;
 
-    --dark:#172033;
-    --text:#263248;
-    --muted:#7A879A;
+    /* Pink */
+    --pink:#E05291;
+    --pink-soft:#FCEEF5;
 
-    --border:#E8EDF4;
+    /* Orange */
+    --orange:#F59E0B;
+    --orange-soft:#FFF7E5;
 
-    --background:#F6F8FC;
+    /* Teal */
+    --teal:#0F9D8A;
+    --teal-soft:#E8F8F5;
 
+    /* General */
+    --dark:#182235;
+    --text:#344054;
+    --muted:#8290A3;
+
+    --background:#F7F9FC;
     --white:#FFFFFF;
 
-    --radius-xl:24px;
-    --radius-lg:20px;
-    --radius-md:16px;
+    --border:#E9EDF3;
 
     --shadow:
-        0 8px 30px rgba(31,56,88,.055);
+        0 8px 28px rgba(25,45,75,.055);
 }
+
+
+/* =========================================================
+   BODY
+========================================================= */
 
 html{
     scroll-behavior:smooth;
@@ -87,16 +98,7 @@ body{
 
     min-height:100vh;
 
-    padding-bottom:92px;
-}
-
-button,
-a{
-    font-family:inherit;
-}
-
-button{
-    border:0;
+    padding-bottom:94px;
 }
 
 a{
@@ -104,9 +106,14 @@ a{
     color:inherit;
 }
 
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
 
 /* =========================================================
-   APP CONTAINER
+   APP
 ========================================================= */
 
 .app{
@@ -120,29 +127,24 @@ a{
 
 
 /* =========================================================
-   TOP AREA
+   HEADER
 ========================================================= */
 
-.top-area{
-
-    background:var(--white);
+.header{
 
     padding:
-        20px
+        22px
         18px
         18px;
+
+    background:white;
 
     border-bottom:
         1px solid
         var(--border);
 }
 
-
-/* =========================================================
-   TOP BAR
-========================================================= */
-
-.top-bar{
+.header-row{
 
     display:flex;
 
@@ -153,7 +155,7 @@ a{
     gap:12px;
 }
 
-.user-area{
+.user-section{
 
     display:flex;
 
@@ -162,18 +164,18 @@ a{
     gap:12px;
 }
 
-.profile-button{
+.avatar{
 
-    width:46px;
-    height:46px;
+    width:48px;
+    height:48px;
 
-    border-radius:15px;
+    border-radius:16px;
 
     background:
         linear-gradient(
             145deg,
-            #2563EB,
-            #60A5FA
+            #3B82F6,
+            #8B5CF6
         );
 
     color:white;
@@ -187,72 +189,66 @@ a{
 
     box-shadow:
         0 7px 16px
-        rgba(37,99,235,.20);
+        rgba(59,130,246,.20);
 }
 
-.user-text small{
+.user-info small{
 
     display:block;
 
-    color:var(--muted);
+    font-size:10px;
 
-    font-size:11px;
+    color:var(--muted);
 
     margin-bottom:3px;
 }
 
-.user-text strong{
+.user-info strong{
 
     display:block;
-
-    color:var(--dark);
 
     font-size:18px;
 
     font-weight:800;
+
+    color:var(--dark);
 }
 
-
-.top-actions{
+.actions{
 
     display:flex;
 
     gap:7px;
 }
 
-.icon-button{
+.header-button{
 
     width:40px;
     height:40px;
+
+    border:0;
 
     border-radius:13px;
 
     background:#F5F7FA;
 
-    color:#657286;
+    color:#687588;
 
     display:flex;
 
     align-items:center;
     justify-content:center;
 
-    font-size:15px;
-
-    cursor:pointer;
+    font-size:14px;
 }
 
-
-/* =========================================================
-   DATE
-========================================================= */
-
-.today-date{
+.header-date{
 
     margin-top:10px;
 
-    color:var(--muted);
+    font-size:10px;
 
-    font-size:11px;
+    color:var(--muted);
 }
 
 
@@ -265,15 +261,15 @@ a{
     padding:
         18px
         18px
-        22px;
+        24px;
 }
 
 
 /* =========================================================
-   SECTION HEADER
+   TITLES
 ========================================================= */
 
-.section-header{
+.section-head{
 
     display:flex;
 
@@ -284,7 +280,7 @@ a{
     margin-bottom:11px;
 }
 
-.section-header h2{
+.section-head h2{
 
     font-size:16px;
 
@@ -293,13 +289,15 @@ a{
     font-weight:800;
 }
 
-.section-action{
+.section-link{
 
-    color:var(--blue);
+    border:0;
 
-    background:none;
+    background:transparent;
 
-    font-size:11px;
+    color:var(--blue-dark);
+
+    font-size:10px;
 
     font-weight:700;
 
@@ -308,8 +306,6 @@ a{
     align-items:center;
 
     gap:6px;
-
-    cursor:pointer;
 }
 
 
@@ -317,15 +313,15 @@ a{
    CALENDAR
 ========================================================= */
 
-.calendar-box{
+.calendar-card{
 
-    background:var(--white);
+    background:white;
 
     border:
         1px solid
         var(--border);
 
-    border-radius:var(--radius-xl);
+    border-radius:23px;
 
     padding:13px;
 
@@ -344,24 +340,22 @@ a{
 
 .day{
 
-    text-align:center;
-
     padding:
         8px
         2px;
 
+    text-align:center;
+
     border-radius:15px;
 
     cursor:pointer;
-
-    transition:.2s;
 }
 
-.day-label{
-
-    color:#8B96A7;
+.day-name{
 
     font-size:9px;
+
+    color:#919CAB;
 
     margin-bottom:6px;
 }
@@ -380,21 +374,22 @@ a{
 
     border-radius:11px;
 
+    color:var(--dark);
+
     font-size:12px;
 
     font-weight:700;
-
-    color:var(--dark);
 }
 
 .day.selected{
 
-    background:var(--blue-soft);
+    background:
+        var(--blue-soft);
 }
 
-.day.selected .day-label{
+.day.selected .day-name{
 
-    color:var(--blue);
+    color:var(--blue-dark);
 
     font-weight:700;
 }
@@ -403,57 +398,53 @@ a{
 
     color:white;
 
-    background:var(--blue);
+    background:
+        linear-gradient(
+            145deg,
+            #3B82F6,
+            #2563EB
+        );
 
     box-shadow:
         0 5px 12px
-        rgba(37,99,235,.23);
+        rgba(37,99,235,.22);
 }
 
 
 /* =========================================================
-   SELECTED DAY
+   DAY INFORMATION
 ========================================================= */
 
-.selected-day{
+.day-info{
 
     margin-top:12px;
 
     padding:12px;
 
-    background:#F8FAFD;
+    background:#F9FAFC;
 
     border:
         1px solid
-        #EDF1F6;
+        #EEF1F5;
 
     border-radius:17px;
 }
 
-.selected-day-head{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    margin-bottom:10px;
-}
-
-.selected-day-title{
+.day-info-title{
 
     display:flex;
 
     align-items:center;
 
     gap:9px;
+
+    margin-bottom:10px;
 }
 
-.calendar-mini-icon{
+.calendar-icon{
 
-    width:34px;
-    height:34px;
+    width:35px;
+    height:35px;
 
     border-radius:11px;
 
@@ -469,27 +460,27 @@ a{
     font-size:14px;
 }
 
-.selected-day-title strong{
+.day-info-title strong{
 
     display:block;
+
+    color:var(--dark);
 
     font-size:12px;
-
-    font-weight:800;
 }
 
-.selected-day-title span{
+.day-info-title span{
 
     display:block;
-
-    margin-top:2px;
 
     color:var(--muted);
 
     font-size:9px;
+
+    margin-top:2px;
 }
 
-.day-details{
+.day-stats{
 
     display:grid;
 
@@ -499,29 +490,32 @@ a{
     gap:7px;
 }
 
-.detail-item{
+.day-stat{
 
     background:white;
-
-    border-radius:13px;
-
-    padding:9px 5px;
-
-    text-align:center;
 
     border:
         1px solid
         var(--border);
+
+    border-radius:13px;
+
+    padding:
+        9px 4px;
+
+    text-align:center;
 }
 
-.detail-item i{
+.day-stat i{
+
+    display:block;
 
     font-size:12px;
 
     margin-bottom:5px;
 }
 
-.detail-item strong{
+.day-stat strong{
 
     display:block;
 
@@ -530,7 +524,7 @@ a{
     font-size:11px;
 }
 
-.detail-item span{
+.day-stat span{
 
     display:block;
 
@@ -543,40 +537,37 @@ a{
 
 
 /* =========================================================
-   MAIN PROGRESS CARD
+   DAILY PROGRESS
 ========================================================= */
 
 .progress-card{
 
     margin-top:18px;
 
-    background:
-        linear-gradient(
-            145deg,
-            #1D4ED8,
-            #2563EB 55%,
-            #3B82F6
-        );
+    border-radius:25px;
+
+    padding:19px;
 
     color:white;
-
-    border-radius:
-        26px;
-
-    padding:
-        20px;
 
     position:relative;
 
     overflow:hidden;
 
+    background:
+        linear-gradient(
+            135deg,
+            #4F46E5 0%,
+            #7C3AED 55%,
+            #9333EA 100%
+        );
+
     box-shadow:
         0 12px 32px
-        rgba(37,99,235,.19);
+        rgba(124,58,237,.18);
+
+    cursor:pointer;
 }
-
-
-/* decorative circles */
 
 .progress-card::before{
 
@@ -584,17 +575,17 @@ a{
 
     position:absolute;
 
-    width:150px;
-    height:150px;
+    width:160px;
+    height:160px;
 
     border-radius:50%;
 
     background:
-        rgba(255,255,255,.055);
+        rgba(255,255,255,.07);
 
-    top:-70px;
+    top:-90px;
 
-    left:-45px;
+    left:-55px;
 }
 
 .progress-card::after{
@@ -603,17 +594,17 @@ a{
 
     position:absolute;
 
-    width:120px;
-    height:120px;
+    width:130px;
+    height:130px;
 
     border-radius:50%;
 
     background:
-        rgba(255,255,255,.04);
+        rgba(255,255,255,.05);
 
-    bottom:-65px;
+    bottom:-70px;
 
-    right:-40px;
+    right:-45px;
 }
 
 .progress-content{
@@ -623,7 +614,7 @@ a{
     z-index:1;
 }
 
-.progress-heading{
+.progress-header{
 
     display:flex;
 
@@ -632,7 +623,7 @@ a{
     justify-content:space-between;
 }
 
-.progress-heading-left{
+.progress-title{
 
     display:flex;
 
@@ -641,7 +632,7 @@ a{
     gap:10px;
 }
 
-.progress-heading-icon{
+.progress-icon{
 
     width:40px;
     height:40px;
@@ -649,7 +640,7 @@ a{
     border-radius:13px;
 
     background:
-        rgba(255,255,255,.14);
+        rgba(255,255,255,.15);
 
     display:flex;
 
@@ -659,14 +650,14 @@ a{
     font-size:16px;
 }
 
-.progress-heading h2{
+.progress-title h2{
 
-    font-size:16px;
+    font-size:15px;
 
     font-weight:800;
 }
 
-.progress-heading p{
+.progress-title p{
 
     margin-top:2px;
 
@@ -675,7 +666,7 @@ a{
     opacity:.75;
 }
 
-.progress-more{
+.progress-arrow{
 
     width:32px;
     height:32px;
@@ -685,16 +676,11 @@ a{
     background:
         rgba(255,255,255,.12);
 
-    color:white;
-
     display:flex;
 
     align-items:center;
     justify-content:center;
 }
-
-
-/* progress body */
 
 .progress-body{
 
@@ -702,31 +688,30 @@ a{
 
     align-items:center;
 
-    gap:20px;
+    gap:19px;
 
-    margin-top:18px;
+    margin-top:17px;
 }
 
-.progress-ring{
+.ring{
 
-    width:122px;
-    height:122px;
+    width:119px;
+    height:119px;
 
     position:relative;
 
     flex-shrink:0;
 }
 
-.progress-ring svg{
+.ring svg{
 
-    width:122px;
-    height:122px;
+    width:119px;
+    height:119px;
 
-    transform:
-        rotate(-90deg);
+    transform:rotate(-90deg);
 }
 
-.progress-track{
+.ring-background{
 
     fill:none;
 
@@ -736,7 +721,7 @@ a{
     stroke-width:9;
 }
 
-.progress-bar{
+.ring-progress{
 
     fill:none;
 
@@ -751,7 +736,7 @@ a{
     stroke-dashoffset:72;
 }
 
-.progress-center{
+.ring-center{
 
     position:absolute;
 
@@ -760,43 +745,40 @@ a{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     flex-direction:column;
 }
 
-.progress-number{
+.ring-number{
 
-    font-size:25px;
+    font-size:24px;
 
     font-weight:800;
 }
 
-.progress-word{
+.ring-label{
 
     font-size:9px;
 
     opacity:.75;
-
-    margin-top:1px;
 }
 
-.progress-description{
+.progress-text{
 
     flex:1;
 }
 
-.progress-description h3{
+.progress-text h3{
 
-    font-size:15px;
+    font-size:14px;
 
     font-weight:800;
 
-    margin-bottom:7px;
+    margin-bottom:6px;
 }
 
-.progress-description p{
+.progress-text p{
 
     font-size:10px;
 
@@ -805,27 +787,27 @@ a{
     opacity:.78;
 }
 
-.progress-button{
+.progress-action{
 
     display:inline-flex;
 
     align-items:center;
 
-    gap:7px;
+    gap:6px;
 
-    margin-top:11px;
+    margin-top:10px;
 
     background:white;
 
-    color:var(--blue);
-
-    padding:
-        8px
-        12px;
+    color:#6D28D9;
 
     border-radius:10px;
 
-    font-size:10px;
+    padding:
+        8px
+        11px;
+
+    font-size:9px;
 
     font-weight:800;
 }
@@ -852,6 +834,8 @@ a{
 
 .quick-card{
 
+    position:relative;
+
     background:white;
 
     border:
@@ -865,10 +849,8 @@ a{
     min-height:126px;
 
     box-shadow:
-        0 6px 22px
-        rgba(31,56,88,.035);
-
-    position:relative;
+        0 6px 20px
+        rgba(30,50,80,.035);
 
     overflow:hidden;
 
@@ -887,22 +869,21 @@ a{
 
     position:absolute;
 
-    width:65px;
-    height:65px;
+    width:75px;
+    height:75px;
 
     border-radius:50%;
 
-    left:-28px;
+    left:-35px;
+    bottom:-35px;
 
-    bottom:-28px;
-
-    opacity:.45;
+    opacity:.28;
 }
 
 .quick-icon{
 
-    width:42px;
-    height:42px;
+    width:43px;
+    height:43px;
 
     border-radius:14px;
 
@@ -936,37 +917,69 @@ a{
     margin-top:4px;
 }
 
+
+/* HEALTH */
+
 .health .quick-icon{
 
-    color:var(--blue);
+    color:#2563EB;
 
-    background:var(--blue-soft);
+    background:#EEF5FF;
 }
+
+.health::after{
+
+    background:#60A5FA;
+}
+
+
+/* PERIOD */
 
 .period .quick-icon{
 
-    color:var(--pink);
+    color:#E05291;
 
-    background:var(--pink-soft);
+    background:#FCEEF5;
 }
+
+.period::after{
+
+    background:#F472B6;
+}
+
+
+/* PREGNANCY */
 
 .pregnancy .quick-icon{
 
-    color:var(--purple);
+    color:#7C3AED;
 
-    background:var(--purple-soft);
+    background:#F1EEFF;
 }
+
+.pregnancy::after{
+
+    background:#A78BFA;
+}
+
+
+/* STATS */
 
 .stats .quick-icon{
 
-    color:var(--cyan);
+    color:#0891B2;
 
-    background:var(--cyan-soft);
+    background:#E8F9FC;
+}
+
+.stats::after{
+
+    background:#22D3EE;
 }
 
 
 /* =========================================================
-   HEALTH OVERVIEW
+   OVERVIEW
 ========================================================= */
 
 .overview{
@@ -984,37 +997,39 @@ a{
 
     border-radius:20px;
 
-    padding:16px;
+    padding:15px;
 
     box-shadow:var(--shadow);
 }
 
-.overview-row{
+.overview-grid{
 
     display:grid;
 
     grid-template-columns:
         repeat(3,1fr);
 
-    gap:8px;
+    gap:7px;
 }
 
 .overview-item{
 
     text-align:center;
 
-    padding:8px 4px;
+    padding:8px 3px;
+
+    border-radius:14px;
 }
 
 .overview-icon{
 
-    width:36px;
-    height:36px;
+    width:37px;
+    height:37px;
 
     margin:
         0 auto 7px;
 
-    border-radius:11px;
+    border-radius:12px;
 
     display:flex;
 
@@ -1028,7 +1043,7 @@ a{
 
     display:block;
 
-    font-size:12px;
+    font-size:11px;
 
     font-weight:800;
 
@@ -1039,32 +1054,56 @@ a{
 
     display:block;
 
-    color:var(--muted);
-
     font-size:8px;
+
+    color:var(--muted);
 
     margin-top:2px;
 }
 
+
+/* WATER */
+
+.water{
+
+    background:#F5FCFD;
+}
+
 .water .overview-icon{
 
-    color:var(--cyan);
-
     background:var(--cyan-soft);
+
+    color:var(--cyan);
+}
+
+
+/* WALK */
+
+.walk{
+
+    background:#F4FBF7;
 }
 
 .walk .overview-icon{
 
-    color:var(--green);
-
     background:var(--green-soft);
+
+    color:var(--green);
+}
+
+
+/* SLEEP */
+
+.sleep{
+
+    background:#F8F6FF;
 }
 
 .sleep .overview-icon{
 
-    color:var(--purple);
-
     background:var(--purple-soft);
+
+    color:var(--purple);
 }
 
 
@@ -1076,11 +1115,20 @@ a{
 
     position:fixed;
 
-    bottom:0;
     left:0;
     right:0;
+    bottom:0;
 
     z-index:100;
+
+    background:
+        rgba(255,255,255,.95);
+
+    border-top:
+        1px solid
+        var(--border);
+
+    backdrop-filter:blur(18px);
 
     padding:
         7px
@@ -1089,18 +1137,9 @@ a{
             7px +
             env(safe-area-inset-bottom)
         );
-
-    background:
-        rgba(255,255,255,.94);
-
-    border-top:
-        1px solid
-        var(--border);
-
-    backdrop-filter:blur(18px);
 }
 
-.nav-container{
+.nav{
 
     max-width:620px;
 
@@ -1121,12 +1160,11 @@ a{
     flex-direction:column;
 
     align-items:center;
-
     justify-content:center;
 
     gap:5px;
 
-    color:#8994A5;
+    color:#8B96A6;
 
     font-size:9px;
 
@@ -1145,12 +1183,6 @@ a{
     color:var(--blue);
 }
 
-.nav-item.active i{
-
-    transform:
-        translateY(-1px);
-}
-
 .nav-item.active::before{
 
     content:"";
@@ -1159,13 +1191,13 @@ a{
 
     top:0;
 
-    width:25px;
+    width:26px;
     height:3px;
 
-    border-radius:
-        0 0 6px 6px;
-
     background:var(--blue);
+
+    border-radius:
+        0 0 7px 7px;
 }
 
 
@@ -1230,7 +1262,7 @@ a{
     }
 }
 
-.modal-head{
+.modal-header{
 
     display:flex;
 
@@ -1241,17 +1273,21 @@ a{
     margin-bottom:18px;
 }
 
-.modal-head h3{
+.modal-header h3{
 
     font-size:17px;
 
     font-weight:800;
+
+    color:var(--dark);
 }
 
-.close{
+.close-button{
 
     width:38px;
     height:38px;
+
+    border:0;
 
     border-radius:12px;
 
@@ -1265,10 +1301,7 @@ a{
     justify-content:center;
 }
 
-
-/* month */
-
-.month-bar{
+.month-row{
 
     display:flex;
 
@@ -1279,15 +1312,19 @@ a{
     margin-bottom:14px;
 }
 
-.month-bar strong{
+.month-row strong{
 
     font-size:15px;
+
+    color:var(--dark);
 }
 
 .month-button{
 
     width:36px;
     height:36px;
+
+    border:0;
 
     border-radius:11px;
 
@@ -1334,12 +1371,12 @@ a{
 
     aspect-ratio:1;
 
+    border-radius:12px;
+
     display:flex;
 
     align-items:center;
     justify-content:center;
-
-    border-radius:12px;
 
     font-size:11px;
 
@@ -1350,18 +1387,18 @@ a{
 
 .full-day.today{
 
-    color:var(--blue);
-
     background:var(--blue-soft);
+
+    color:var(--blue);
 
     font-weight:800;
 }
 
 .full-day.selected{
 
-    color:white;
-
     background:var(--blue);
+
+    color:white;
 }
 
 .full-day.empty{
@@ -1384,10 +1421,10 @@ a{
 
         position:relative;
 
+        max-width:620px;
+
         margin:
             0 auto 20px;
-
-        max-width:620px;
 
         background:transparent;
 
@@ -1396,7 +1433,7 @@ a{
         backdrop-filter:none;
     }
 
-    .nav-container{
+    .nav{
 
         background:white;
 
@@ -1408,7 +1445,6 @@ a{
 
         box-shadow:var(--shadow);
     }
-
 }
 
 </style>
@@ -1420,23 +1456,23 @@ a{
 <div class="app">
 
 
-<!-- =======================================================
+<!-- =====================================================
      HEADER
-======================================================= -->
+===================================================== -->
 
-<header class="top-area">
+<header class="header">
 
-    <div class="top-bar">
+    <div class="header-row">
 
-        <div class="user-area">
+        <div class="user-section">
 
-            <div class="profile-button">
+            <div class="avatar">
 
                 <i class="fa-solid fa-user"></i>
 
             </div>
 
-            <div class="user-text">
+            <div class="user-info">
 
                 <small>
                     مرحباً بك في صحتي
@@ -1451,10 +1487,10 @@ a{
         </div>
 
 
-        <div class="top-actions">
+        <div class="actions">
 
             <button
-                class="icon-button"
+                class="header-button"
                 onclick="openNotifications()">
 
                 <i class="fa-regular fa-bell"></i>
@@ -1462,7 +1498,7 @@ a{
             </button>
 
             <button
-                class="icon-button"
+                class="header-button"
                 onclick="openSettings()">
 
                 <i class="fa-solid fa-sliders"></i>
@@ -1475,34 +1511,34 @@ a{
 
 
     <div
-        class="today-date"
+        class="header-date"
         id="headerDate">
     </div>
 
 </header>
 
 
-<!-- =======================================================
+<!-- =====================================================
      MAIN
-======================================================= -->
+===================================================== -->
 
 <main class="main">
 
 
-<!-- =======================================================
+<!-- =====================================================
      CALENDAR
-======================================================= -->
+===================================================== -->
 
 <section>
 
-    <div class="section-header">
+    <div class="section-head">
 
         <h2>
             يومك الصحي
         </h2>
 
         <button
-            class="section-action"
+            class="section-link"
             onclick="openCalendar()">
 
             التقويم الكامل
@@ -1514,7 +1550,7 @@ a{
     </div>
 
 
-    <div class="calendar-box">
+    <div class="calendar-card">
 
         <div
             class="week"
@@ -1522,43 +1558,39 @@ a{
         </div>
 
 
-        <div class="selected-day">
+        <div class="day-info">
 
-            <div class="selected-day-head">
+            <div class="day-info-title">
 
-                <div class="selected-day-title">
+                <div class="calendar-icon">
 
-                    <div class="calendar-mini-icon">
+                    <i class="fa-regular fa-calendar"></i>
 
-                        <i class="fa-regular fa-calendar"></i>
+                </div>
 
-                    </div>
+                <div>
 
-                    <div>
+                    <strong>
+                        معلومات اليوم
+                    </strong>
 
-                        <strong>
-                            معلومات اليوم
-                        </strong>
-
-                        <span id="selectedDateText">
-                            اليوم
-                        </span>
-
-                    </div>
+                    <span
+                        id="selectedDateText">
+                    </span>
 
                 </div>
 
             </div>
 
 
-            <div class="day-details">
+            <div class="day-stats">
 
 
-                <div class="detail-item">
+                <div class="day-stat">
 
                     <i
-                        class="fa-solid fa-flag"
-                        style="color:#2563EB">
+                        class="fa-solid fa-bullseye"
+                        style="color:#7C3AED">
                     </i>
 
                     <strong>
@@ -1572,7 +1604,7 @@ a{
                 </div>
 
 
-                <div class="detail-item">
+                <div class="day-stat">
 
                     <i
                         class="fa-solid fa-droplet"
@@ -1590,11 +1622,11 @@ a{
                 </div>
 
 
-                <div class="detail-item">
+                <div class="day-stat">
 
                     <i
                         class="fa-solid fa-person-walking"
-                        style="color:#16A34A">
+                        style="color:#22A06B">
                     </i>
 
                     <strong>
@@ -1617,9 +1649,9 @@ a{
 </section>
 
 
-<!-- =======================================================
-     TODAY PROGRESS
-======================================================= -->
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
 
 <section
     class="progress-card"
@@ -1628,11 +1660,11 @@ a{
     <div class="progress-content">
 
 
-        <div class="progress-heading">
+        <div class="progress-header">
 
-            <div class="progress-heading-left">
+            <div class="progress-title">
 
-                <div class="progress-heading-icon">
+                <div class="progress-icon">
 
                     <i class="fa-solid fa-chart-pie"></i>
 
@@ -1645,7 +1677,7 @@ a{
                     </h2>
 
                     <p>
-                        بناءً على أهدافك الشخصية
+                        حسب أهدافك الشخصية
                     </p>
 
                 </div>
@@ -1653,7 +1685,7 @@ a{
             </div>
 
 
-            <div class="progress-more">
+            <div class="progress-arrow">
 
                 <i class="fa-solid fa-chevron-left"></i>
 
@@ -1665,19 +1697,19 @@ a{
         <div class="progress-body">
 
 
-            <div class="progress-ring">
+            <div class="ring">
 
                 <svg viewBox="0 0 120 120">
 
                     <circle
-                        class="progress-track"
+                        class="ring-background"
                         cx="60"
                         cy="60"
                         r="52">
                     </circle>
 
                     <circle
-                        class="progress-bar"
+                        class="ring-progress"
                         cx="60"
                         cy="60"
                         r="52">
@@ -1686,13 +1718,13 @@ a{
                 </svg>
 
 
-                <div class="progress-center">
+                <div class="ring-center">
 
-                    <div class="progress-number">
+                    <div class="ring-number">
                         78%
                     </div>
 
-                    <div class="progress-word">
+                    <div class="ring-label">
                         مكتمل
                     </div>
 
@@ -1701,21 +1733,21 @@ a{
             </div>
 
 
-            <div class="progress-description">
+            <div class="progress-text">
 
                 <h3>
-                    أنت تتقدم بشكل جيد
+                    تقدمك اليوم جيد
                 </h3>
 
                 <p>
-                    أكملت معظم أهدافك اليومية.
-                    افتح التفاصيل لإضافة ما أنجزته
-                    وتحديث تقدمك.
+                    أكملت جزءًا كبيرًا من أهدافك.
+                    يمكنك فتح التفاصيل وتحديث
+                    المعلومات الخاصة بهذا اليوم.
                 </p>
 
-                <div class="progress-button">
+                <div class="progress-action">
 
-                    <i class="fa-solid fa-plus"></i>
+                    <i class="fa-solid fa-pen"></i>
 
                     إضافة معلومات
 
@@ -1730,13 +1762,13 @@ a{
 </section>
 
 
-<!-- =======================================================
+<!-- =====================================================
      QUICK ACCESS
-======================================================= -->
+===================================================== -->
 
 <section class="quick-section">
 
-    <div class="section-header">
+    <div class="section-head">
 
         <h2>
             الوصول السريع
@@ -1763,7 +1795,7 @@ a{
             </h3>
 
             <p>
-                متابعة أهم القياسات الصحية
+                الوزن، الضغط، السكر والمزيد
             </p>
 
         </a>
@@ -1805,7 +1837,7 @@ a{
             </h3>
 
             <p>
-                متابعة عمر الحمل والموعد المتوقع
+                عمر الحمل والموعد المتوقع
             </p>
 
         </a>
@@ -1837,20 +1869,20 @@ a{
 </section>
 
 
-<!-- =======================================================
-     HEALTH OVERVIEW
-======================================================= -->
+<!-- =====================================================
+     OVERVIEW
+===================================================== -->
 
 <section class="overview">
 
-    <div class="section-header">
+    <div class="section-head">
 
         <h2>
             نظرة سريعة
         </h2>
 
         <button
-            class="section-action"
+            class="section-link"
             onclick="goHealth()">
 
             التفاصيل
@@ -1864,7 +1896,7 @@ a{
 
     <div class="overview-card">
 
-        <div class="overview-row">
+        <div class="overview-grid">
 
 
             <div class="overview-item water">
@@ -1934,13 +1966,13 @@ a{
 </main>
 
 
-<!-- =======================================================
-     BOTTOM NAVIGATION
-======================================================= -->
+<!-- =====================================================
+     BOTTOM NAV
+===================================================== -->
 
 <nav class="bottom-nav">
 
-    <div class="nav-container">
+    <div class="nav">
 
 
         <a
@@ -2002,27 +2034,26 @@ a{
 </div>
 
 
-<!-- =======================================================
+<!-- =====================================================
      CALENDAR MODAL
-======================================================= -->
+===================================================== -->
 
 <div
     class="modal"
     id="calendarModal"
     onclick="closeOutside(event)">
 
-
     <div class="modal-box">
 
 
-        <div class="modal-head">
+        <div class="modal-header">
 
             <h3>
                 التقويم الصحي
             </h3>
 
             <button
-                class="close"
+                class="close-button"
                 onclick="closeCalendar()">
 
                 <i class="fa-solid fa-xmark"></i>
@@ -2032,7 +2063,7 @@ a{
         </div>
 
 
-        <div class="month-bar">
+        <div class="month-row">
 
             <button
                 class="month-button"
@@ -2086,23 +2117,23 @@ a{
 <script>
 
 /* =========================================================
-   USER
+   USER NAME
 ========================================================= */
 
-const storedName =
+const savedName =
     localStorage.getItem("userName");
 
-if(storedName){
+if(savedName){
 
     document.getElementById(
         "userName"
-    ).textContent = storedName;
+    ).textContent = savedName;
 
 }
 
 
 /* =========================================================
-   DATE
+   DATES
 ========================================================= */
 
 const today = new Date();
@@ -2167,6 +2198,7 @@ function formatDate(date){
 
 }
 
+
 document.getElementById(
     "headerDate"
 ).textContent =
@@ -2206,7 +2238,9 @@ function sameDate(a,b){
 function renderWeek(){
 
     const container =
-        document.getElementById("week");
+        document.getElementById(
+            "week"
+        );
 
     container.innerHTML = "";
 
@@ -2251,7 +2285,7 @@ function renderWeek(){
 
         item.innerHTML = `
 
-            <div class="day-label">
+            <div class="day-name">
                 ${days[date.getDay()]}
             </div>
 
@@ -2296,26 +2330,32 @@ function updateSelectedDate(){
 
 
 /* =========================================================
-   MODAL
+   CALENDAR MODAL
 ========================================================= */
 
 function openCalendar(){
 
     document
-        .getElementById("calendarModal")
+        .getElementById(
+            "calendarModal"
+        )
         .classList.add("show");
 
     renderCalendar();
 
 }
 
+
 function closeCalendar(){
 
     document
-        .getElementById("calendarModal")
+        .getElementById(
+            "calendarModal"
+        )
         .classList.remove("show");
 
 }
+
 
 function closeOutside(event){
 
@@ -2332,7 +2372,7 @@ function closeOutside(event){
 
 
 /* =========================================================
-   CHANGE MONTH
+   MONTH
 ========================================================= */
 
 function changeMonth(direction){
@@ -2493,12 +2533,14 @@ function openTodayDetails(){
 
 }
 
+
 function goHealth(){
 
     window.location.href =
         "health.html";
 
 }
+
 
 function openNotifications(){
 
@@ -2507,6 +2549,7 @@ function openNotifications(){
     );
 
 }
+
 
 function openSettings(){
 
@@ -2517,7 +2560,7 @@ function openSettings(){
 
 
 /* =========================================================
-   INITIALIZE
+   START
 ========================================================= */
 
 renderWeek();
