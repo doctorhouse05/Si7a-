@@ -1,0 +1,2970 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
+
+<meta name="theme-color" content="#F7F9FC">
+
+<title>صحتي | قياساتي</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Cairo",sans-serif;
+    background:#F7F9FC;
+    color:#172033;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+button,
+input,
+select{
+    font-family:inherit;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+}
+
+input,
+select{
+    outline:none;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app{
+    width:100%;
+    max-width:650px;
+    margin:auto;
+    min-height:100vh;
+    padding-bottom:105px;
+}
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar{
+    padding:20px 18px 12px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.top-left{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.back-btn{
+    width:43px;
+    height:43px;
+    border-radius:15px;
+    background:#fff;
+    color:#4F5D72;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 5px 18px rgba(30,50,80,.07);
+}
+
+.back-btn:active{
+    transform:scale(.94);
+}
+
+.page-title{
+    display:flex;
+    flex-direction:column;
+}
+
+.page-title small{
+    font-size:10px;
+    color:#929CAB;
+    font-weight:600;
+}
+
+.page-title strong{
+    font-size:18px;
+    color:#182235;
+    font-weight:800;
+}
+
+.top-action{
+    width:43px;
+    height:43px;
+    border-radius:15px;
+    background:#fff;
+    color:#526075;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 5px 18px rgba(30,50,80,.07);
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    padding:7px 18px 18px;
+}
+
+.intro h1{
+    font-size:26px;
+    font-weight:800;
+    color:#152238;
+    line-height:1.45;
+}
+
+.intro p{
+    margin-top:3px;
+    color:#8C96A6;
+    font-size:11px;
+    line-height:1.8;
+}
+
+/* =========================================================
+   SUMMARY CARD
+========================================================= */
+
+.summary{
+    margin:0 18px 20px;
+    border-radius:27px;
+    padding:19px;
+    color:white;
+    background:
+        linear-gradient(
+            135deg,
+            #176FC5,
+            #3D9BE9
+        );
+    box-shadow:
+        0 12px 30px
+        rgba(25,118,210,.20);
+    position:relative;
+    overflow:hidden;
+}
+
+.summary:before{
+    content:"";
+    position:absolute;
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    background:rgba(255,255,255,.09);
+    left:-70px;
+    top:-90px;
+}
+
+.summary:after{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    background:rgba(255,255,255,.07);
+    right:-55px;
+    bottom:-70px;
+}
+
+.summary-content{
+    position:relative;
+    z-index:2;
+}
+
+.summary-top{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.summary-icon{
+    width:49px;
+    height:49px;
+    border-radius:17px;
+    background:rgba(255,255,255,.14);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+}
+
+.summary-text{
+    flex:1;
+}
+
+.summary-text small{
+    display:block;
+    font-size:10px;
+    color:#D9EEFF;
+}
+
+.summary-text strong{
+    display:block;
+    font-size:17px;
+    font-weight:800;
+}
+
+.summary-info{
+    margin-top:15px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+}
+
+.summary-item{
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:15px;
+    padding:10px 6px;
+    text-align:center;
+}
+
+.summary-item span{
+    display:block;
+    font-size:9px;
+    color:#D9EEFF;
+}
+
+.summary-item strong{
+    display:block;
+    margin-top:2px;
+    font-size:13px;
+}
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.section{
+    margin-bottom:23px;
+}
+
+.section-title{
+    padding:0 20px 11px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.section-title div{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.title-icon{
+    width:29px;
+    height:29px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#EAF3FD;
+    color:#1976D2;
+    font-size:12px;
+}
+
+.section-title h2{
+    font-size:15px;
+    color:#263248;
+    font-weight:800;
+}
+
+.section-title span{
+    color:#99A3B2;
+    font-size:9px;
+}
+
+/* =========================================================
+   MEASUREMENTS GRID
+========================================================= */
+
+.measure-grid{
+    padding:0 18px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.measure-card{
+    background:#fff;
+    border:1px solid #EDF1F6;
+    border-radius:22px;
+    padding:14px;
+    box-shadow:0 5px 18px rgba(30,50,80,.045);
+    transition:.2s;
+    cursor:pointer;
+}
+
+.measure-card:active{
+    transform:scale(.97);
+}
+
+.measure-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.measure-icon{
+    width:45px;
+    height:45px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:17px;
+}
+
+.measure-add{
+    width:30px;
+    height:30px;
+    border-radius:10px;
+    background:#F3F6FA;
+    color:#667589;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+}
+
+.measure-name{
+    display:block;
+    margin-top:10px;
+    font-size:11px;
+    font-weight:800;
+    color:#334056;
+}
+
+.measure-value{
+    display:block;
+    margin-top:2px;
+    font-size:18px;
+    font-weight:800;
+    color:#172033;
+}
+
+.measure-unit{
+    font-size:9px;
+    color:#9AA4B3;
+    font-weight:600;
+}
+
+.measure-date{
+    display:block;
+    margin-top:7px;
+    font-size:8px;
+    color:#A0A8B5;
+}
+
+/* COLORS */
+
+.weight .measure-icon{
+    background:#EAF4FF;
+    color:#1976D2;
+}
+
+.height .measure-icon{
+    background:#F0ECFF;
+    color:#7355D8;
+}
+
+.pressure .measure-icon{
+    background:#FFF0F1;
+    color:#E6505C;
+}
+
+.pulse .measure-icon{
+    background:#FFF0F5;
+    color:#E35A8A;
+}
+
+.sugar .measure-icon{
+    background:#FFF5E5;
+    color:#E99525;
+}
+
+.temperature .measure-icon{
+    background:#FFF0E8;
+    color:#E56F32;
+}
+
+.oxygen .measure-icon{
+    background:#E8F8FF;
+    color:#1599CC;
+}
+
+.waist .measure-icon{
+    background:#EEF9EC;
+    color:#5C9F48;
+}
+
+/* =========================================================
+   BMI
+========================================================= */
+
+.bmi-card{
+    margin:0 18px;
+    padding:16px;
+    border-radius:23px;
+    background:#fff;
+    border:1px solid #EDF1F6;
+    box-shadow:0 5px 18px rgba(30,50,80,.045);
+}
+
+.bmi-top{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.bmi-icon{
+    width:44px;
+    height:44px;
+    border-radius:15px;
+    background:#EEF5FF;
+    color:#1976D2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.bmi-info{
+    flex:1;
+}
+
+.bmi-info strong{
+    display:block;
+    font-size:12px;
+    color:#344056;
+}
+
+.bmi-info small{
+    display:block;
+    margin-top:2px;
+    font-size:9px;
+    color:#99A3B1;
+}
+
+.bmi-value{
+    text-align:left;
+}
+
+.bmi-value strong{
+    display:block;
+    font-size:20px;
+    color:#1976D2;
+}
+
+.bmi-value small{
+    display:block;
+    font-size:8px;
+    color:#9AA4B2;
+}
+
+.bmi-bar{
+    margin-top:14px;
+    height:7px;
+    border-radius:20px;
+    background:
+        linear-gradient(
+            to left,
+            #E85D63 0%,
+            #F2C94C 30%,
+            #55B97A 45%,
+            #55B97A 70%,
+            #E9A044 85%,
+            #E85D63 100%
+        );
+    position:relative;
+}
+
+.bmi-marker{
+    position:absolute;
+    top:50%;
+    transform:translate(50%,-50%);
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    background:#17263D;
+    border:3px solid white;
+    box-shadow:0 2px 7px rgba(0,0,0,.2);
+    right:50%;
+}
+
+/* =========================================================
+   ADD MEASUREMENT BUTTON
+========================================================= */
+
+.add-button{
+    margin:0 18px;
+    width:calc(100% - 36px);
+    height:52px;
+    border-radius:18px;
+    background:#17263D;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    font-size:11px;
+    font-weight:800;
+    box-shadow:0 8px 20px rgba(23,38,61,.13);
+}
+
+.add-button i{
+    font-size:13px;
+}
+
+.add-button:active{
+    transform:scale(.98);
+}
+
+/* =========================================================
+   HISTORY
+========================================================= */
+
+.history-list{
+    padding:0 18px;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+
+.history-empty{
+    background:white;
+    border:1px solid #EDF1F6;
+    border-radius:21px;
+    padding:22px;
+    text-align:center;
+    color:#9AA4B2;
+    font-size:10px;
+}
+
+.history-empty i{
+    display:block;
+    font-size:25px;
+    margin-bottom:8px;
+    color:#C5CDD7;
+}
+
+.history-item{
+    background:white;
+    border:1px solid #EDF1F6;
+    border-radius:20px;
+    padding:12px;
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.history-icon{
+    width:42px;
+    height:42px;
+    min-width:42px;
+    border-radius:14px;
+    background:#EAF4FF;
+    color:#1976D2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.history-main{
+    flex:1;
+    min-width:0;
+}
+
+.history-main strong{
+    display:block;
+    font-size:11px;
+    color:#334056;
+}
+
+.history-main small{
+    display:block;
+    margin-top:2px;
+    font-size:8px;
+    color:#9AA4B2;
+}
+
+.history-value{
+    font-size:12px;
+    font-weight:800;
+    color:#172033;
+}
+
+.history-actions{
+    display:flex;
+    gap:5px;
+}
+
+.history-action{
+    width:31px;
+    height:31px;
+    border-radius:10px;
+    background:#F4F6F9;
+    color:#718096;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:10px;
+}
+
+.history-action.delete{
+    color:#D95460;
+    background:#FFF1F2;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:500;
+    background:rgba(16,28,45,.45);
+    backdrop-filter:blur(5px);
+    display:none;
+    align-items:flex-end;
+    justify-content:center;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:min(650px,100%);
+    max-height:88vh;
+    overflow-y:auto;
+    background:#fff;
+    border-radius:29px 29px 0 0;
+    padding:20px;
+    animation:slideUp .25s ease;
+}
+
+@keyframes slideUp{
+    from{
+        transform:translateY(100%);
+    }
+    to{
+        transform:translateY(0);
+    }
+}
+
+.modal-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:18px;
+}
+
+.modal-head h3{
+    font-size:16px;
+    color:#263248;
+    font-weight:800;
+}
+
+.close{
+    width:35px;
+    height:35px;
+    border-radius:12px;
+    background:#F3F5F8;
+    color:#687486;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-group{
+    margin-bottom:13px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:6px;
+    font-size:10px;
+    font-weight:700;
+    color:#4C586B;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    height:47px;
+    border:1px solid #E5EAF0;
+    border-radius:14px;
+    padding:0 13px;
+    background:#F9FAFC;
+    color:#273349;
+    font-size:11px;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#1976D2;
+    background:#fff;
+    box-shadow:0 0 0 3px rgba(25,118,210,.08);
+}
+
+.two-fields{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.save-button{
+    width:100%;
+    height:50px;
+    border-radius:16px;
+    background:#1976D2;
+    color:white;
+    font-size:11px;
+    font-weight:800;
+    margin-top:5px;
+}
+
+.save-button:active{
+    transform:scale(.98);
+}
+
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
+
+.bottom-nav{
+    position:fixed;
+    z-index:100;
+    bottom:13px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(610px,calc(100% - 26px));
+    height:70px;
+    border-radius:25px;
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:0 12px 35px rgba(25,45,75,.14);
+    border:1px solid rgba(220,226,234,.8);
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    align-items:center;
+    padding:6px;
+}
+
+.nav-item{
+    height:58px;
+    border-radius:19px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:3px;
+    color:#9AA4B2;
+    font-size:9px;
+    font-weight:700;
+}
+
+.nav-item i{
+    font-size:17px;
+}
+
+.nav-item.active{
+    background:#EAF4FF;
+    color:#1976D2;
+}
+
+.nav-item:active{
+    transform:scale(.94);
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading{
+    position:fixed;
+    inset:0;
+    z-index:999;
+    background:#F7F9FC;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:15px;
+}
+
+.loading-logo{
+    width:60px;
+    height:60px;
+    border-radius:20px;
+    background:linear-gradient(145deg,#1976D2,#43A5F5);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    box-shadow:0 12px 30px rgba(25,118,210,.2);
+}
+
+.spinner{
+    width:24px;
+    height:24px;
+    border:3px solid #E0E8F1;
+    border-top-color:#1976D2;
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:380px){
+
+    .measure-grid{
+        gap:7px;
+    }
+
+    .measure-card{
+        padding:11px;
+    }
+
+    .measure-icon{
+        width:40px;
+        height:40px;
+    }
+
+    .intro h1{
+        font-size:23px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ======================================================
+     LOADING
+====================================================== -->
+
+<div class="loading" id="loadingScreen">
+
+    <div class="loading-logo">
+        <i class="fa-solid fa-heart-pulse"></i>
+    </div>
+
+    <div class="spinner"></div>
+
+</div>
+
+
+<div class="app">
+
+<!-- ======================================================
+     TOPBAR
+====================================================== -->
+
+<header class="topbar">
+
+    <div class="top-left">
+
+        <button
+            class="back-btn"
+            id="backBtn"
+        >
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <div class="page-title">
+
+            <small>صحتي</small>
+
+            <strong>قياساتي</strong>
+
+        </div>
+
+    </div>
+
+    <button
+        class="top-action"
+        id="refreshBtn"
+    >
+        <i class="fa-solid fa-rotate"></i>
+    </button>
+
+</header>
+
+
+<!-- ======================================================
+     INTRO
+====================================================== -->
+
+<section class="intro">
+
+    <h1>قياساتي الصحية</h1>
+
+    <p>
+        سجّل قياساتك وتابع تغيراتها مع مرور الوقت.
+    </p>
+
+</section>
+
+
+<!-- ======================================================
+     SUMMARY
+====================================================== -->
+
+<section class="summary">
+
+    <div class="summary-content">
+
+        <div class="summary-top">
+
+            <div class="summary-icon">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+
+            <div class="summary-text">
+
+                <small>آخر تحديث</small>
+
+                <strong id="lastUpdate">
+                    لا توجد قياسات
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-info">
+
+            <div class="summary-item">
+
+                <span>الوزن</span>
+
+                <strong id="summaryWeight">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="summary-item">
+
+                <span>الضغط</span>
+
+                <strong id="summaryPressure">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="summary-item">
+
+                <span>النبض</span>
+
+                <strong id="summaryPulse">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     MEASUREMENTS
+====================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+
+            <span class="title-icon">
+                <i class="fa-solid fa-stethoscope"></i>
+            </span>
+
+            <h2>القياسات الأساسية</h2>
+
+        </div>
+
+        <span>آخر قيمة</span>
+
+    </div>
+
+
+    <div class="measure-grid">
+
+
+        <!-- WEIGHT -->
+
+        <div
+            class="measure-card weight"
+            data-type="weight"
+        >
+
+            <div class="measure-top">
+
+                <div class="measure-icon">
+                    <i class="fa-solid fa-weight-scale"></i>
+                </div>
+
+                <button class="measure-add">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+
+            </div>
+
+            <strong class="measure-name">
+                الوزن
+            </strong>
+
+            <span
+                class="measure-value"
+                id="weightValue"
+            >
+                —
+            </span>
+
+            <span class="measure-unit">
+                كغ
+            </span>
+
+            <small
+                class="measure-date"
+                id="weightDate"
+            >
+                لم يتم التسجيل
+            </small>
+
+        </div>
+
+
+        <!-- HEIGHT -->
+
+        <div
+            class="measure-card height"
+            data-type="height"
+        >
+
+            <div class="measure-top">
+
+                <div class="measure-icon">
+                    <i class="fa-solid fa-ruler-vertical"></i>
+                </div>
+
+                <button class="measure-add">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+
+            </div>
+
+            <strong class="measure-name">
+                الطول
+            </strong>
+
+            <span
+                class="measure-value"
+                id="heightValue"
+            >
+                —
+            </span>
+
+            <span class="measure-unit">
+                سم
+            </span>
+
+            <small
+                class="measure-date"
+                id="heightDate"
+            >
+                لم يتم التسجيل
+            </small>
+
+        </div>
+
+
+        <!-- PRESSURE -->
+
+        <div
+            class="measure-card pressure"
+            data-type="pressure"
+        >
+
+            <div class="measure-top">
+
+                <div class="measure-icon">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+
+                <button class="measure-add">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+
+            </div>
+
+            <strong class="measure-name">
+                ضغط الدم
+            </strong>
+
+            <span
+                class="measure-value"
+                id="pressureValue"
+            >
+                —
+            </span>
+
+            <span class="measure-unit">
+                mmHg
+            </span>
+
+            <small
+                class="measure-date"
+                id="pressureDate"
+            >
+                لم يتم التسجيل
+            </small>
+
+        </div>
+
+
+        <!-- PULSE -->
+
+        <div
+            class="measure-card pulse"
+            data-type="pulse"
+        >
+
+            <div class="measure-top">
+
+                <div class="measure-icon">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <button class="measure-add">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+
+            </div>
+
+            <strong class="measure-name">
+                نبض القلب
+            </strong>
+
+            <span
+                class="measure-value"
+                id="pulseValue"
+            >
+                —
+            </span>
+
+            <span class="measure-unit">
+                نبضة/د
+            </span>
+
+            <small
+                class="measure-date"
+                id="pulseDate"
+            >
+                لم يتم التسجيل
+            </small>
+
+        </div>
+
+
+        <!-- SUGAR -->
+
+        <div
+            class="measure-card sugar"
+            data-type="sugar"
+        >
+
+            <div class="measure-top">
+
+                <div class="measure-icon">
+                    <i class="fa-solid fa-droplet"></i>
+                </div>
+
+                <button class="measure-add">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+
+            </div>
+
+            <strong class="measure-name">
+                سكر الدم
+            </strong>
+
+            <span
+                class="measure-value"
+                id="sugarValue"
+            >
+                —
+            </span>
+
+            <span class="measure-unit">
+                g/L
+            </span>
+
+            <small
+                class="measure-date"
+                id="sugarDate"
+            >
+                لم يتم التسجيل
+            </small>
+
+        </div>
+
+
+        <!-- TEMPERATURE -->
+
+        <div
+            class="measure-card temperature"
+            data-type="temperature"
+        >
+
+            <div class="measure-top">
+
+                <div class="measure-icon">
+                    <i class="fa-solid fa-temperature-half"></i>
+                </div>
+
+                <button class="measure-add">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+
+            </div>
+
+            <strong class="measure-name">
+                درجة الحرارة
+            </strong>
+
+            <span
+                class="measure-value"
+                id="temperatureValue"
+            >
+                —
+            </span>
+
+            <span class="measure-unit">
+                °C
+            </span>
+
+            <small
+                class="measure-date"
+                id="temperatureDate"
+            >
+                لم يتم التسجيل
+            </small>
+
+        </div>
+
+
+        <!-- OXYGEN -->
+
+        <div
+            class="measure-card oxygen"
+            data-type="oxygen"
+        >
+
+            <div class="measure-top">
+
+                <div class="measure-icon">
+                    <i class="fa-solid fa-lungs"></i>
+                </div>
+
+                <button class="measure-add">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+
+            </div>
+
+            <strong class="measure-name">
+                الأكسجين
+            </strong>
+
+            <span
+                class="measure-value"
+                id="oxygenValue"
+            >
+                —
+            </span>
+
+            <span class="measure-unit">
+                SpO₂ %
+            </span>
+
+            <small
+                class="measure-date"
+                id="oxygenDate"
+            >
+                لم يتم التسجيل
+            </small>
+
+        </div>
+
+
+        <!-- WAIST -->
+
+        <div
+            class="measure-card waist"
+            data-type="waist"
+        >
+
+            <div class="measure-top">
+
+                <div class="measure-icon">
+                    <i class="fa-solid fa-ruler-horizontal"></i>
+                </div>
+
+                <button class="measure-add">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+
+            </div>
+
+            <strong class="measure-name">
+                محيط الخصر
+            </strong>
+
+            <span
+                class="measure-value"
+                id="waistValue"
+            >
+                —
+            </span>
+
+            <span class="measure-unit">
+                سم
+            </span>
+
+            <small
+                class="measure-date"
+                id="waistDate"
+            >
+                لم يتم التسجيل
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     BMI
+====================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+
+            <span class="title-icon">
+                <i class="fa-solid fa-calculator"></i>
+            </span>
+
+            <h2>مؤشر كتلة الجسم</h2>
+
+        </div>
+
+        <span>BMI</span>
+
+    </div>
+
+
+    <div class="bmi-card">
+
+        <div class="bmi-top">
+
+            <div class="bmi-icon">
+                <i class="fa-solid fa-scale-balanced"></i>
+            </div>
+
+            <div class="bmi-info">
+
+                <strong>
+                    مؤشر كتلة الجسم
+                </strong>
+
+                <small id="bmiStatus">
+                    أدخل الوزن والطول لحساب المؤشر
+                </small>
+
+            </div>
+
+            <div class="bmi-value">
+
+                <strong id="bmiValue">
+                    —
+                </strong>
+
+                <small>
+                    kg/m²
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="bmi-bar">
+
+            <span
+                class="bmi-marker"
+                id="bmiMarker"
+            ></span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     ADD BUTTON
+====================================================== -->
+
+<section class="section">
+
+    <button
+        class="add-button"
+        id="addMeasurementBtn"
+    >
+
+        <i class="fa-solid fa-plus"></i>
+
+        إضافة قياس جديد
+
+    </button>
+
+</section>
+
+
+<!-- ======================================================
+     HISTORY
+====================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+
+            <span class="title-icon">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+            </span>
+
+            <h2>سجل القياسات</h2>
+
+        </div>
+
+        <span id="historyCount">
+            0 قياس
+        </span>
+
+    </div>
+
+
+    <div
+        class="history-list"
+        id="historyList"
+    >
+
+        <div class="history-empty">
+
+            <i class="fa-regular fa-folder-open"></i>
+
+            لا توجد قياسات مسجلة بعد.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+<!-- ======================================================
+     BOTTOM NAV
+====================================================== -->
+
+<nav class="bottom-nav">
+
+    <a
+        href="dashboard.html"
+        class="nav-item"
+    >
+        <i class="fa-solid fa-house"></i>
+        <span>الرئيسية</span>
+    </a>
+
+
+    <a
+        href="challenges.html"
+        class="nav-item"
+    >
+        <i class="fa-solid fa-bullseye"></i>
+        <span>تحدياتي</span>
+    </a>
+
+
+    <a
+        href="health.html"
+        class="nav-item active"
+    >
+        <i class="fa-solid fa-heart-pulse"></i>
+        <span>صحتي</span>
+    </a>
+
+
+    <a
+        href="more.html"
+        class="nav-item"
+    >
+        <i class="fa-solid fa-grip"></i>
+        <span>المزيد</span>
+    </a>
+
+</nav>
+
+
+<!-- ======================================================
+     ADD MODAL
+====================================================== -->
+
+<div
+    class="modal"
+    id="measurementModal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-head">
+
+            <h3 id="modalTitle">
+                إضافة قياس
+            </h3>
+
+            <button
+                class="close"
+                id="closeModal"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                نوع القياس
+            </label>
+
+            <select id="measurementType">
+
+                <option value="weight">
+                    الوزن
+                </option>
+
+                <option value="height">
+                    الطول
+                </option>
+
+                <option value="pressure">
+                    ضغط الدم
+                </option>
+
+                <option value="pulse">
+                    نبض القلب
+                </option>
+
+                <option value="sugar">
+                    سكر الدم
+                </option>
+
+                <option value="temperature">
+                    درجة الحرارة
+                </option>
+
+                <option value="oxygen">
+                    نسبة الأكسجين
+                </option>
+
+                <option value="waist">
+                    محيط الخصر
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div
+            class="form-group"
+            id="singleValueGroup"
+        >
+
+            <label id="valueLabel">
+                القيمة
+            </label>
+
+            <input
+                type="number"
+                id="measurementValue"
+                inputmode="decimal"
+                step="any"
+                placeholder="أدخل القيمة"
+            >
+
+        </div>
+
+
+        <div
+            class="two-fields"
+            id="pressureFields"
+            style="display:none;"
+        >
+
+            <div class="form-group">
+
+                <label>
+                    الانقباضي
+                </label>
+
+                <input
+                    type="number"
+                    id="systolic"
+                    inputmode="numeric"
+                    placeholder="120"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    الانبساطي
+                </label>
+
+                <input
+                    type="number"
+                    id="diastolic"
+                    inputmode="numeric"
+                    placeholder="80"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                التاريخ والوقت
+            </label>
+
+            <input
+                type="datetime-local"
+                id="measurementDate"
+            >
+
+        </div>
+
+
+        <button
+            class="save-button"
+            id="saveMeasurement"
+        >
+
+            <i class="fa-solid fa-check"></i>
+
+            حفظ القياس
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ======================================================
+     FIREBASE
+====================================================== -->
+
+<script type="module">
+
+import {
+    auth,
+    db
+} from "./js/firebase.js";
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+import {
+    collection,
+    addDoc,
+    getDocs,
+    deleteDoc,
+    doc,
+    query,
+    orderBy,
+    limit
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const loadingScreen =
+    document.getElementById("loadingScreen");
+
+const modal =
+    document.getElementById("measurementModal");
+
+const measurementType =
+    document.getElementById("measurementType");
+
+const measurementValue =
+    document.getElementById("measurementValue");
+
+const systolic =
+    document.getElementById("systolic");
+
+const diastolic =
+    document.getElementById("diastolic");
+
+const pressureFields =
+    document.getElementById("pressureFields");
+
+const valueLabel =
+    document.getElementById("valueLabel");
+
+const measurementDate =
+    document.getElementById("measurementDate");
+
+const historyList =
+    document.getElementById("historyList");
+
+let currentUser = null;
+
+let measurements = [];
+
+
+/* =========================================================
+   TYPES
+========================================================= */
+
+const typeInfo = {
+
+    weight:{
+        name:"الوزن",
+        unit:"كغ",
+        icon:"fa-weight-scale"
+    },
+
+    height:{
+        name:"الطول",
+        unit:"سم",
+        icon:"fa-ruler-vertical"
+    },
+
+    pressure:{
+        name:"ضغط الدم",
+        unit:"mmHg",
+        icon:"fa-heart-pulse"
+    },
+
+    pulse:{
+        name:"نبض القلب",
+        unit:"نبضة/د",
+        icon:"fa-heart"
+    },
+
+    sugar:{
+        name:"سكر الدم",
+        unit:"g/L",
+        icon:"fa-droplet"
+    },
+
+    temperature:{
+        name:"درجة الحرارة",
+        unit:"°C",
+        icon:"fa-temperature-half"
+    },
+
+    oxygen:{
+        name:"الأكسجين",
+        unit:"%",
+        icon:"fa-lungs"
+    },
+
+    waist:{
+        name:"محيط الخصر",
+        unit:"سم",
+        icon:"fa-ruler-horizontal"
+    }
+
+};
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+function formatDate(value){
+
+    if(!value){
+        return "—";
+    }
+
+    const date =
+        value instanceof Date
+            ? value
+            : new Date(value);
+
+    if(Number.isNaN(date.getTime())){
+        return "—";
+    }
+
+    return new Intl.DateTimeFormat(
+        "ar-DZ",
+        {
+            day:"numeric",
+            month:"short",
+            year:"numeric",
+            hour:"2-digit",
+            minute:"2-digit"
+        }
+    ).format(date);
+
+}
+
+
+function localDateTime(){
+
+    const date = new Date();
+
+    const year =
+        date.getFullYear();
+
+    const month =
+        String(
+            date.getMonth()+1
+        ).padStart(2,"0");
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(2,"0");
+
+    const hour =
+        String(
+            date.getHours()
+        ).padStart(2,"0");
+
+    const minute =
+        String(
+            date.getMinutes()
+        ).padStart(2,"0");
+
+    return `${year}-${month}-${day}T${hour}:${minute}`;
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function openModal(type="weight"){
+
+    modal.classList.add("show");
+
+    measurementType.value =
+        type;
+
+    measurementValue.value =
+        "";
+
+    systolic.value =
+        "";
+
+    diastolic.value =
+        "";
+
+    measurementDate.value =
+        localDateTime();
+
+    updateForm();
+
+}
+
+
+function closeModal(){
+
+    modal.classList.remove(
+        "show"
+    );
+
+}
+
+
+document
+    .getElementById("addMeasurementBtn")
+    .addEventListener(
+        "click",
+        () => openModal("weight")
+    );
+
+
+document
+    .getElementById("closeModal")
+    .addEventListener(
+        "click",
+        closeModal
+    );
+
+
+modal.addEventListener(
+    "click",
+    event => {
+
+        if(
+            event.target === modal
+        ){
+            closeModal();
+        }
+
+    }
+);
+
+
+/* =========================================================
+   FORM TYPE
+========================================================= */
+
+function updateForm(){
+
+    const type =
+        measurementType.value;
+
+    if(type === "pressure"){
+
+        pressureFields.style.display =
+            "grid";
+
+        document
+            .getElementById("singleValueGroup")
+            .style.display = "none";
+
+    }else{
+
+        pressureFields.style.display =
+            "none";
+
+        document
+            .getElementById("singleValueGroup")
+            .style.display = "block";
+
+        const info =
+            typeInfo[type];
+
+        valueLabel.textContent =
+            `${info.name} (${info.unit})`;
+
+    }
+
+}
+
+
+measurementType.addEventListener(
+    "change",
+    updateForm
+);
+
+
+/* =========================================================
+   CARD CLICK
+========================================================= */
+
+document
+    .querySelectorAll(".measure-card")
+    .forEach(card => {
+
+        card.addEventListener(
+            "click",
+            event => {
+
+                if(
+                    event.target.closest(
+                        ".measure-add"
+                    )
+                ){
+                    return;
+                }
+
+                openModal(
+                    card.dataset.type
+                );
+
+            }
+        );
+
+        const add =
+            card.querySelector(
+                ".measure-add"
+            );
+
+        add.addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+                openModal(
+                    card.dataset.type
+                );
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   SAVE
+========================================================= */
+
+document
+    .getElementById("saveMeasurement")
+    .addEventListener(
+        "click",
+        async () => {
+
+            if(!currentUser){
+
+                alert(
+                    "يجب تسجيل الدخول أولاً."
+                );
+
+                return;
+
+            }
+
+            const type =
+                measurementType.value;
+
+            const date =
+                measurementDate.value;
+
+            if(!date){
+
+                alert(
+                    "يرجى اختيار التاريخ."
+                );
+
+                return;
+
+            }
+
+            let value = null;
+
+            let pressureData = null;
+
+
+            if(type === "pressure"){
+
+                const sys =
+                    Number(
+                        systolic.value
+                    );
+
+                const dia =
+                    Number(
+                        diastolic.value
+                    );
+
+                if(
+                    !sys ||
+                    !dia
+                ){
+
+                    alert(
+                        "أدخل قيمتي الضغط الانقباضي والانبساطي."
+                    );
+
+                    return;
+
+                }
+
+                pressureData = {
+                    systolic:sys,
+                    diastolic:dia
+                };
+
+                value =
+                    `${sys}/${dia}`;
+
+            }else{
+
+                value =
+                    Number(
+                        measurementValue.value
+                    );
+
+                if(
+                    !Number.isFinite(value)
+                ){
+
+                    alert(
+                        "أدخل قيمة صحيحة."
+                    );
+
+                    return;
+
+                }
+
+            }
+
+
+            const button =
+                document.getElementById(
+                    "saveMeasurement"
+                );
+
+            button.disabled = true;
+
+            button.innerHTML =
+                `<i class="fa-solid fa-spinner fa-spin"></i>
+                 جارٍ الحفظ...`;
+
+
+            try{
+
+                const data = {
+
+                    type,
+
+                    value,
+
+                    date,
+
+                    createdAt:
+                        new Date().toISOString()
+
+                };
+
+
+                if(pressureData){
+
+                    data.systolic =
+                        pressureData.systolic;
+
+                    data.diastolic =
+                        pressureData.diastolic;
+
+                }
+
+
+                await addDoc(
+
+                    collection(
+                        db,
+                        "users",
+                        currentUser.uid,
+                        "measurements"
+                    ),
+
+                    data
+
+                );
+
+
+                closeModal();
+
+                await loadMeasurements();
+
+            }catch(error){
+
+                console.error(
+                    "Save measurement error:",
+                    error
+                );
+
+                alert(
+                    "حدث خطأ أثناء حفظ القياس."
+                );
+
+            }finally{
+
+                button.disabled = false;
+
+                button.innerHTML =
+                    `<i class="fa-solid fa-check"></i>
+                     حفظ القياس`;
+
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   LOAD MEASUREMENTS
+========================================================= */
+
+async function loadMeasurements(){
+
+    if(!currentUser){
+        return;
+    }
+
+    try{
+
+        const ref =
+            collection(
+                db,
+                "users",
+                currentUser.uid,
+                "measurements"
+            );
+
+
+        const snapshot =
+            await getDocs(
+                query(
+                    ref,
+                    orderBy(
+                        "createdAt",
+                        "desc"
+                    ),
+                    limit(100)
+                )
+            );
+
+
+        measurements = [];
+
+        snapshot.forEach(
+            item => {
+
+                measurements.push({
+
+                    id:item.id,
+
+                    ...item.data()
+
+                });
+
+            }
+        );
+
+
+        renderMeasurements();
+
+    }catch(error){
+
+        console.error(
+            "Load measurements error:",
+            error
+        );
+
+        /*
+          fallback في حال لم يوجد index
+          أو كانت بيانات قديمة.
+        */
+
+        try{
+
+            const ref =
+                collection(
+                    db,
+                    "users",
+                    currentUser.uid,
+                    "measurements"
+                );
+
+            const snapshot =
+                await getDocs(ref);
+
+            measurements = [];
+
+            snapshot.forEach(
+                item => {
+
+                    measurements.push({
+
+                        id:item.id,
+
+                        ...item.data()
+
+                    });
+
+                }
+            );
+
+            measurements.sort(
+                (a,b) =>
+                    new Date(
+                        b.date ||
+                        b.createdAt ||
+                        0
+                    ) -
+                    new Date(
+                        a.date ||
+                        a.createdAt ||
+                        0
+                    )
+            );
+
+            measurements =
+                measurements.slice(
+                    0,
+                    100
+                );
+
+            renderMeasurements();
+
+        }catch(fallbackError){
+
+            console.error(
+                fallbackError
+            );
+
+            historyList.innerHTML = `
+                <div class="history-empty">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    تعذر تحميل القياسات.
+                </div>
+            `;
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   LAST MEASUREMENT
+========================================================= */
+
+function latest(type){
+
+    return measurements.find(
+        item =>
+            item.type === type
+    );
+
+}
+
+
+/* =========================================================
+   RENDER CARDS
+========================================================= */
+
+function renderMeasurements(){
+
+    const types = [
+        "weight",
+        "height",
+        "pressure",
+        "pulse",
+        "sugar",
+        "temperature",
+        "oxygen",
+        "waist"
+    ];
+
+
+    types.forEach(
+        type => {
+
+            const item =
+                latest(type);
+
+            const valueElement =
+                document.getElementById(
+                    `${type}Value`
+                );
+
+            const dateElement =
+                document.getElementById(
+                    `${type}Date`
+                );
+
+
+            if(!item){
+
+                valueElement.textContent =
+                    "—";
+
+                dateElement.textContent =
+                    "لم يتم التسجيل";
+
+                return;
+
+            }
+
+
+            if(type === "pressure"){
+
+                valueElement.textContent =
+                    `${item.systolic}/${item.diastolic}`;
+
+            }else{
+
+                valueElement.textContent =
+                    item.value;
+            }
+
+
+            dateElement.textContent =
+                formatDate(
+                    item.date ||
+                    item.createdAt
+                );
+
+        }
+    );
+
+
+    renderSummary();
+
+    renderBMI();
+
+    renderHistory();
+
+}
+
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+function renderSummary(){
+
+    const weight =
+        latest("weight");
+
+    const pressure =
+        latest("pressure");
+
+    const pulse =
+        latest("pulse");
+
+
+    document.getElementById(
+        "summaryWeight"
+    ).textContent =
+        weight
+            ? `${weight.value} كغ`
+            : "—";
+
+
+    document.getElementById(
+        "summaryPressure"
+    ).textContent =
+        pressure
+            ? `${pressure.systolic}/${pressure.diastolic}`
+            : "—";
+
+
+    document.getElementById(
+        "summaryPulse"
+    ).textContent =
+        pulse
+            ? `${pulse.value}`
+            : "—";
+
+
+    const newest =
+        measurements[0];
+
+
+    document.getElementById(
+        "lastUpdate"
+    ).textContent =
+        newest
+            ? formatDate(
+                newest.date ||
+                newest.createdAt
+              )
+            : "لا توجد قياسات";
+
+}
+
+
+/* =========================================================
+   BMI
+========================================================= */
+
+function renderBMI(){
+
+    const weight =
+        latest("weight");
+
+    const height =
+        latest("height");
+
+
+    const bmiValue =
+        document.getElementById(
+            "bmiValue"
+        );
+
+    const bmiStatus =
+        document.getElementById(
+            "bmiStatus"
+        );
+
+    const marker =
+        document.getElementById(
+            "bmiMarker"
+        );
+
+
+    if(
+        !weight ||
+        !height ||
+        Number(weight.value) <= 0 ||
+        Number(height.value) <= 0
+    ){
+
+        bmiValue.textContent =
+            "—";
+
+        bmiStatus.textContent =
+            "أدخل الوزن والطول لحساب المؤشر";
+
+        marker.style.right =
+            "50%";
+
+        return;
+
+    }
+
+
+    const heightM =
+        Number(height.value) / 100;
+
+    const bmi =
+        Number(weight.value) /
+        (heightM * heightM);
+
+
+    bmiValue.textContent =
+        bmi.toFixed(1);
+
+
+    let status =
+        "ضمن المجال المعتاد";
+
+    if(bmi < 18.5){
+
+        status =
+            "أقل من 18.5";
+
+    }else if(bmi < 25){
+
+        status =
+            "18.5 – 24.9";
+
+    }else if(bmi < 30){
+
+        status =
+            "25 – 29.9";
+
+    }else{
+
+        status =
+            "30 أو أكثر";
+
+    }
+
+
+    bmiStatus.textContent =
+        status;
+
+
+    const position =
+        Math.max(
+            5,
+            Math.min(
+                95,
+                ((bmi - 15) / 25) * 100
+            )
+        );
+
+
+    marker.style.right =
+        `${position}%`;
+
+}
+
+
+/* =========================================================
+   HISTORY
+========================================================= */
+
+function renderHistory(){
+
+    document.getElementById(
+        "historyCount"
+    ).textContent =
+        `${measurements.length} قياس`;
+
+
+    if(!measurements.length){
+
+        historyList.innerHTML = `
+            <div class="history-empty">
+                <i class="fa-regular fa-folder-open"></i>
+                لا توجد قياسات مسجلة بعد.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    historyList.innerHTML = "";
+
+
+    measurements.forEach(
+        item => {
+
+            const info =
+                typeInfo[item.type] ||
+                {
+                    name:"قياس",
+                    unit:"",
+                    icon:"fa-heart-pulse"
+                };
+
+
+            let valueText = "";
+
+
+            if(item.type === "pressure"){
+
+                valueText =
+                    `${item.systolic}/${item.diastolic}`;
+
+            }else{
+
+                valueText =
+                    `${item.value}`;
+
+            }
+
+
+            const element =
+                document.createElement(
+                    "div"
+                );
+
+            element.className =
+                "history-item";
+
+
+            element.innerHTML = `
+
+                <div class="history-icon">
+
+                    <i class="fa-solid ${info.icon}"></i>
+
+                </div>
+
+
+                <div class="history-main">
+
+                    <strong>
+                        ${info.name}
+                    </strong>
+
+                    <small>
+                        ${formatDate(
+                            item.date ||
+                            item.createdAt
+                        )}
+                    </small>
+
+                </div>
+
+
+                <div class="history-value">
+
+                    ${valueText}
+                    ${info.unit}
+
+                </div>
+
+
+                <div class="history-actions">
+
+                    <button
+                        class="history-action delete"
+                        data-id="${item.id}"
+                        title="حذف"
+                    >
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+
+                </div>
+
+            `;
+
+
+            historyList.appendChild(
+                element
+            );
+
+        }
+    );
+
+
+    historyList
+        .querySelectorAll(
+            ".delete"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    async () => {
+
+                        const id =
+                            button.dataset.id;
+
+
+                        const confirmed =
+                            confirm(
+                                "هل تريد حذف هذا القياس؟"
+                            );
+
+
+                        if(!confirmed){
+                            return;
+                        }
+
+
+                        try{
+
+                            await deleteDoc(
+
+                                doc(
+                                    db,
+                                    "users",
+                                    currentUser.uid,
+                                    "measurements",
+                                    id
+                                )
+
+                            );
+
+
+                            await loadMeasurements();
+
+                        }catch(error){
+
+                            console.error(
+                                error
+                            );
+
+                            alert(
+                                "تعذر حذف القياس."
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   BACK
+========================================================= */
+
+document
+    .getElementById("backBtn")
+    .addEventListener(
+        "click",
+        () => {
+
+            window.location.href =
+                "dashboard.html";
+
+        }
+    );
+
+
+/* =========================================================
+   REFRESH
+========================================================= */
+
+document
+    .getElementById("refreshBtn")
+    .addEventListener(
+        "click",
+        async () => {
+
+            const icon =
+                document.querySelector(
+                    "#refreshBtn i"
+                );
+
+            icon.classList.add(
+                "fa-spin"
+            );
+
+            await loadMeasurements();
+
+            setTimeout(
+                () => {
+
+                    icon.classList.remove(
+                        "fa-spin"
+                    );
+
+                },
+                500
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   AUTH
+========================================================= */
+
+onAuthStateChanged(
+    auth,
+    async user => {
+
+        if(!user){
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        currentUser =
+            user;
+
+
+        try{
+
+            await loadMeasurements();
+
+        }catch(error){
+
+            console.error(
+                error
+            );
+
+        }finally{
+
+            loadingScreen.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
