@@ -5,163 +5,151 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width,
-      initial-scale=1.0,
-      maximum-scale=1.0,
-      user-scalable=no">
+<meta
+    name="viewport"
+    content="width=device-width,
+    initial-scale=1.0,
+    maximum-scale=1.0,
+    user-scalable=no"
+>
 
-<meta name="theme-color"
-      content="#5B4BC4">
+<meta
+    name="theme-color"
+    content="#2563EB"
+>
 
 <title>صحتي | الرئيسية</title>
 
 
 <!-- =====================================================
-     CAIRO FONT
+     FONTS
 ===================================================== -->
 
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
 
 
 <!-- =====================================================
      FONT AWESOME
 ===================================================== -->
 
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+>
 
 
 <style>
 
-/* =========================================================
+/* =====================================================
    ROOT
-========================================================= */
+===================================================== */
 
 :root{
 
-    --purple:#5B4BC4;
-    --purple-dark:#4637A5;
-    --purple-light:#F0EEFF;
+    --primary:#2563EB;
+    --primary-dark:#1D4ED8;
+    --primary-soft:#EFF6FF;
 
-    --blue:#3D7EF0;
-    --blue-light:#ECF4FF;
+    --cyan:#0891B2;
+    --cyan-soft:#ECFEFF;
 
-    --pink:#D94B87;
-    --pink-light:#FDF0F6;
+    --green:#16A34A;
+    --green-soft:#F0FDF4;
 
-    --green:#20A36A;
-    --green-light:#EAF8F1;
+    --purple:#7C3AED;
+    --purple-soft:#F5F3FF;
 
-    --cyan:#0D9DB8;
-    --cyan-light:#E9F9FC;
+    --pink:#DB2777;
+    --pink-soft:#FDF2F8;
 
-    --orange:#E79527;
-    --orange-light:#FFF6E8;
+    --orange:#EA580C;
+    --orange-soft:#FFF7ED;
 
-    --red:#E05252;
-    --red-light:#FFF0F0;
+    --red:#DC2626;
+    --red-soft:#FEF2F2;
 
-    --dark:#25243A;
-    --text:#55566A;
-    --muted:#9394A4;
+    --dark:#172033;
+    --text:#536075;
+    --muted:#8A94A6;
 
-    --background:#F6F6FA;
+    --bg:#F5F7FB;
     --white:#FFFFFF;
 
-    --border:#EAEAF0;
+    --border:#E8ECF3;
 
     --shadow:
-        0 7px 25px
-        rgba(48,43,90,.055);
+        0 10px 35px rgba(30,50,90,.07);
 
 }
 
 
-/* =========================================================
+/* =====================================================
    RESET
-========================================================= */
+===================================================== */
 
 *{
-
     margin:0;
     padding:0;
-
     box-sizing:border-box;
-
     -webkit-tap-highlight-color:transparent;
-
 }
 
 html{
-
     scroll-behavior:smooth;
-
 }
 
 body{
 
     margin:0;
 
-    font-family:
-        "Cairo",
-        sans-serif;
-
     background:
-        var(--background);
+        var(--bg);
 
     color:
         var(--text);
 
+    font-family:
+        "Tajawal",
+        sans-serif;
+
     min-height:100vh;
 
-    padding-bottom:95px;
-
+    padding-bottom:100px;
 }
 
 button,
 input{
-
     font-family:
-        "Cairo",
+        "Tajawal",
         sans-serif;
-
 }
 
 button{
-
     border:0;
-
     cursor:pointer;
-
 }
 
 a{
-
-    text-decoration:none;
-
     color:inherit;
-
+    text-decoration:none;
 }
-
-
-/* =========================================================
-   APP
-========================================================= */
 
 .app{
 
     width:100%;
 
-    max-width:620px;
+    max-width:650px;
 
     margin:auto;
 
@@ -170,83 +158,90 @@ a{
 }
 
 
-/* =========================================================
-   HEADER
-========================================================= */
+/* =====================================================
+   TOP HERO
+===================================================== */
 
-.header{
+.hero{
 
     position:relative;
 
-    background:
-
-        linear-gradient(
-            135deg,
-            #B82775 0%,
-            #7B3FA6 50%,
-            #5147B9 100%
-        );
+    padding:
+        20px
+        17px
+        18px;
 
     color:white;
 
-    padding:
-        21px
-        18px
-        25px;
-
     overflow:hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #2563EB 0%,
+            #315DDC 42%,
+            #6346D8 100%
+        );
+
+    border-radius:
+        0
+        0
+        30px
+        30px;
+
+    box-shadow:
+        0 12px 35px
+        rgba(37,99,235,.20);
 
 }
 
 
-/* Decorative circles */
+/* decorative shapes */
 
-.header::before{
+.hero::before{
 
     content:"";
 
     position:absolute;
 
-    width:190px;
-    height:190px;
+    width:220px;
+    height:220px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.08);
+
+    left:-95px;
+    top:-125px;
+
+}
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
 
     border-radius:50%;
 
     background:
         rgba(255,255,255,.07);
 
-    left:-80px;
-
-    top:-110px;
-
-}
-
-.header::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:150px;
-    height:150px;
-
-    border-radius:50%;
-
-    background:
-        rgba(255,255,255,.055);
-
-    right:-70px;
-
-    bottom:-95px;
+    right:-80px;
+    bottom:-115px;
 
 }
 
 
-/* =========================================================
-   HEADER TOP
-========================================================= */
+/* =====================================================
+   HERO TOP
+===================================================== */
 
-.header-top{
+.hero-top{
 
     position:relative;
 
@@ -261,9 +256,9 @@ a{
 }
 
 
-/* Profile */
+/* user */
 
-.profile{
+.user-box{
 
     display:flex;
 
@@ -273,19 +268,12 @@ a{
 
 }
 
-.avatar{
+.user-avatar{
 
-    width:47px;
-    height:47px;
+    width:48px;
+    height:48px;
 
-    border-radius:15px;
-
-    background:
-        rgba(255,255,255,.17);
-
-    border:
-        1px solid
-        rgba(255,255,255,.20);
+    border-radius:17px;
 
     display:flex;
 
@@ -293,36 +281,47 @@ a{
 
     justify-content:center;
 
+    background:
+        rgba(255,255,255,.16);
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.15);
+
     font-size:17px;
 
 }
 
-.profile-text small{
+.user-info small{
 
     display:block;
 
-    font-size:9px;
+    font-size:10px;
 
-    opacity:.72;
+    opacity:.70;
 
-    margin-bottom:1px;
+    margin-bottom:2px;
 
 }
 
-.profile-text strong{
+.user-info strong{
 
     display:block;
 
-    font-size:16px;
+    font-size:17px;
 
-    font-weight:700;
+    font-weight:800;
 
 }
 
 
-/* Header buttons */
+/* hero actions */
 
-.header-buttons{
+.hero-actions{
 
     display:flex;
 
@@ -330,12 +329,18 @@ a{
 
 }
 
-.header-button{
+.hero-action{
 
-    width:38px;
-    height:38px;
+    width:39px;
+    height:39px;
 
-    border-radius:12px;
+    border-radius:13px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
 
     color:white;
 
@@ -344,7 +349,88 @@ a{
 
     border:
         1px solid
-        rgba(255,255,255,.10);
+        rgba(255,255,255,.12);
+
+    font-size:14px;
+
+}
+
+
+/* =====================================================
+   WELCOME
+===================================================== */
+
+.hero-title{
+
+    position:relative;
+
+    z-index:2;
+
+    margin-top:19px;
+
+}
+
+.hero-title h1{
+
+    font-size:21px;
+
+    font-weight:800;
+
+    line-height:1.45;
+
+}
+
+.hero-title p{
+
+    margin-top:4px;
+
+    font-size:10px;
+
+    opacity:.75;
+
+}
+
+
+/* =====================================================
+   HEALTH SCORE
+===================================================== */
+
+.health-score{
+
+    position:relative;
+
+    z-index:2;
+
+    margin-top:15px;
+
+    padding:12px;
+
+    border-radius:19px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+    background:
+        rgba(255,255,255,.11);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    backdrop-filter:
+        blur(10px);
+
+}
+
+.score-icon{
+
+    width:40px;
+    height:40px;
+
+    border-radius:14px;
 
     display:flex;
 
@@ -352,127 +438,82 @@ a{
 
     justify-content:center;
 
-}
+    background:
+        rgba(255,255,255,.16);
 
-
-/* =========================================================
-   HEADER MESSAGE
-========================================================= */
-
-.header-message{
-
-    position:relative;
-
-    z-index:2;
-
-    margin-top:20px;
+    font-size:14px;
 
 }
 
-.header-message h1{
+.score-text{
+
+    flex:1;
+
+}
+
+.score-text strong{
+
+    display:block;
+
+    font-size:11px;
+
+}
+
+.score-text span{
+
+    display:block;
+
+    margin-top:2px;
+
+    font-size:8px;
+
+    opacity:.68;
+
+}
+
+.score-percent{
 
     font-size:20px;
 
     font-weight:800;
 
-    line-height:1.5;
-
-}
-
-.header-message p{
-
-    margin-top:3px;
-
-    font-size:9px;
-
-    opacity:.72;
-
 }
 
 
-/* =========================================================
-   HEADER MINI STATUS
-========================================================= */
+/* =====================================================
+   CALENDAR INSIDE HERO
+===================================================== */
 
-.header-status{
+.hero-calendar{
 
     position:relative;
 
     z-index:2;
 
-    margin-top:16px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:10px;
-
-}
-
-.status{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:7px;
-
-    font-size:9px;
-
-    opacity:.9;
-
-}
-
-.status-dot{
-
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:#61E2A4;
-
-    box-shadow:
-        0 0 0 4px
-        rgba(97,226,164,.13);
-
-}
-
-.header-date{
-
-    font-size:8px;
-
-    opacity:.67;
-
-}
-
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-.main{
+    margin-top:15px;
 
     padding:
-        18px;
+        12px
+        10px
+        10px;
+
+    border-radius:22px;
+
+    background:
+        rgba(255,255,255,.97);
+
+    color:var(--dark);
+
+    box-shadow:
+        0 10px 25px
+        rgba(20,40,100,.12);
 
 }
 
 
-/* =========================================================
-   SECTION TITLE
-========================================================= */
+/* calendar header */
 
-.section{
-
-    margin-bottom:21px;
-
-}
-
-.section-title{
+.calendar-header{
 
     display:flex;
 
@@ -480,52 +521,50 @@ a{
 
     justify-content:space-between;
 
-    margin-bottom:10px;
+    margin-bottom:9px;
+
+    padding:
+        0
+        3px;
 
 }
 
-.section-title h2{
+.calendar-header strong{
 
-    font-size:14px;
-
-    font-weight:800;
+    font-size:11px;
 
     color:var(--dark);
 
 }
 
-.section-title button{
+.calendar-link{
 
-    background:none;
+    display:flex;
 
-    color:var(--purple);
+    align-items:center;
 
-    font-size:9px;
+    gap:5px;
 
-    font-weight:700;
+    color:
+        var(--primary);
 
-}
+    font-size:8px;
 
+    font-weight:800;
 
-/* =========================================================
-   CALENDAR
-========================================================= */
+    background:
+        var(--primary-soft);
 
-.calendar-card{
+    padding:
+        6px
+        9px;
 
-    background:white;
-
-    border-radius:22px;
-
-    border:
-        1px solid
-        var(--border);
-
-    padding:11px;
-
-    box-shadow:var(--shadow);
+    border-radius:9px;
 
 }
+
+
+/* week */
 
 .week{
 
@@ -540,41 +579,43 @@ a{
 
 .week-day{
 
-    text-align:center;
-
-    padding:
-        7px
-        2px
-        9px;
+    min-height:61px;
 
     border-radius:15px;
 
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:6px;
+
     cursor:pointer;
 
-    transition:.18s;
+    transition:.2s;
 
 }
 
 .week-day small{
 
-    display:block;
-
     font-size:7px;
 
-    color:#A1A1AF;
+    color:
+        var(--muted);
 
-    margin-bottom:6px;
+    font-weight:600;
 
 }
 
 .week-day strong{
 
-    width:33px;
-    height:33px;
+    width:30px;
+    height:30px;
 
-    margin:auto;
-
-    border-radius:11px;
+    border-radius:10px;
 
     display:flex;
 
@@ -582,55 +623,120 @@ a{
 
     justify-content:center;
 
-    color:#4E5060;
+    font-size:10px;
 
-    font-size:11px;
+    color:
+        var(--dark);
 
 }
 
 .week-day.selected{
 
     background:
-        var(--purple-light);
+        var(--primary-soft);
 
 }
 
 .week-day.selected small{
 
-    color:var(--purple);
-
-    font-weight:700;
+    color:
+        var(--primary);
 
 }
 
 .week-day.selected strong{
 
-    background:
-        var(--purple);
-
     color:white;
+
+    background:
+        var(--primary);
 
     box-shadow:
         0 5px 12px
-        rgba(91,75,196,.22);
+        rgba(37,99,235,.25);
+
+}
+
+.week-day.today:not(.selected) strong{
+
+    border:
+        1px solid
+        var(--primary);
+
+    color:
+        var(--primary);
 
 }
 
 
-/* =========================================================
-   SELECTED DAY INFO
-========================================================= */
+/* selected date */
 
-.selected-info{
+.selected-date{
 
-    margin-top:10px;
+    margin-top:9px;
 
     padding:
-        10px 12px;
+        8px
+        10px;
 
-    border-radius:16px;
+    border-radius:12px;
 
-    background:#FAFAFC;
+    background:
+        #F8FAFC;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+}
+
+.selected-date i{
+
+    color:
+        var(--primary);
+
+    font-size:11px;
+
+}
+
+.selected-date span{
+
+    font-size:8px;
+
+    color:
+        var(--text);
+
+    font-weight:600;
+
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.main{
+
+    padding:
+        19px
+        17px;
+
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section{
+
+    margin-bottom:21px;
+
+}
+
+.section-head{
 
     display:flex;
 
@@ -638,94 +744,40 @@ a{
 
     justify-content:space-between;
 
-}
-
-.selected-info-left{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:9px;
+    margin-bottom:10px;
 
 }
 
-.selected-icon{
-
-    width:34px;
-    height:34px;
-
-    border-radius:11px;
-
-    background:
-        var(--purple-light);
+.section-head h2{
 
     color:
-        var(--purple);
+        var(--dark);
 
-    display:flex;
+    font-size:14px;
 
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:12px;
+    font-weight:800;
 
 }
 
-.selected-text strong{
+.section-head span{
 
-    display:block;
-
-    color:var(--dark);
-
-    font-size:10px;
-
-}
-
-.selected-text span{
-
-    display:block;
-
-    color:var(--muted);
+    color:
+        var(--muted);
 
     font-size:8px;
 
-    margin-top:1px;
-
-}
-
-.calendar-open{
-
-    width:31px;
-    height:31px;
-
-    border-radius:10px;
-
-    background:white;
-
-    border:
-        1px solid
-        var(--border);
-
-    color:#77798A;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
 }
 
 
-/* =========================================================
-   TODAY SUMMARY
-========================================================= */
+/* =====================================================
+   TODAY CARD
+===================================================== */
 
-.summary-card{
+.today-card{
 
     position:relative;
+
+    overflow:hidden;
 
     background:white;
 
@@ -735,15 +787,14 @@ a{
 
     border-radius:24px;
 
-    padding:17px;
+    padding:16px;
 
-    overflow:hidden;
-
-    box-shadow:var(--shadow);
+    box-shadow:
+        var(--shadow);
 
 }
 
-.summary-card::before{
+.today-card::after{
 
     content:"";
 
@@ -755,15 +806,14 @@ a{
     border-radius:50%;
 
     background:
-        var(--purple-light);
+        var(--primary-soft);
 
-    left:-75px;
-
+    left:-70px;
     bottom:-75px;
 
 }
 
-.summary-top{
+.today-top{
 
     position:relative;
 
@@ -777,31 +827,22 @@ a{
 
 }
 
-.summary-heading{
+.today-title{
 
     display:flex;
 
     align-items:center;
 
-    gap:9px;
+    gap:10px;
 
 }
 
-.summary-icon{
+.today-icon{
 
-    width:39px;
-    height:39px;
+    width:43px;
+    height:43px;
 
-    border-radius:13px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #5B4BC4,
-            #806FD8
-        );
-
-    color:white;
+    border-radius:15px;
 
     display:flex;
 
@@ -809,41 +850,57 @@ a{
 
     justify-content:center;
 
+    color:white;
+
+    background:
+        linear-gradient(
+            145deg,
+            #2563EB,
+            #7C3AED
+        );
+
+    box-shadow:
+        0 7px 17px
+        rgba(37,99,235,.18);
+
 }
 
-.summary-heading strong{
+.today-title strong{
 
     display:block;
 
-    color:var(--dark);
+    color:
+        var(--dark);
 
     font-size:12px;
 
 }
 
-.summary-heading span{
+.today-title span{
 
     display:block;
 
-    color:var(--muted);
+    margin-top:2px;
+
+    color:
+        var(--muted);
 
     font-size:8px;
 
-    margin-top:2px;
-
 }
 
-.summary-arrow{
+.details-button{
 
-    width:30px;
-    height:30px;
+    width:32px;
+    height:32px;
 
-    border-radius:10px;
+    border-radius:11px;
 
     background:
-        #F6F5FC;
+        var(--primary-soft);
 
-    color:var(--purple);
+    color:
+        var(--primary);
 
     display:flex;
 
@@ -854,17 +911,13 @@ a{
 }
 
 
-/* =========================================================
-   SUMMARY BODY
-========================================================= */
+/* progress */
 
-.summary-body{
+.today-progress{
 
     position:relative;
 
     z-index:2;
-
-    margin-top:17px;
 
     display:flex;
 
@@ -872,50 +925,49 @@ a{
 
     gap:17px;
 
+    margin-top:17px;
+
 }
 
-
-/* Circle */
-
-.progress-circle{
-
-    width:115px;
-    height:115px;
+.progress{
 
     position:relative;
+
+    width:103px;
+    height:103px;
 
     flex-shrink:0;
 
 }
 
-.progress-circle svg{
+.progress svg{
 
-    width:115px;
-    height:115px;
+    width:103px;
+    height:103px;
 
     transform:
         rotate(-90deg);
 
 }
 
-.progress-background{
+.progress-bg{
 
     fill:none;
 
-    stroke:#EEEEF4;
+    stroke:#EDF0F5;
 
-    stroke-width:8;
+    stroke-width:9;
 
 }
 
-.progress-value{
+.progress-line{
 
     fill:none;
 
     stroke:
-        url(#progressGradient);
+        url(#gradient);
 
-    stroke-width:8;
+    stroke-width:9;
 
     stroke-linecap:round;
 
@@ -943,11 +995,10 @@ a{
 
 .progress-center strong{
 
-    color:var(--dark);
+    color:
+        var(--dark);
 
-    font-size:24px;
-
-    line-height:1;
+    font-size:22px;
 
     font-weight:800;
 
@@ -955,46 +1006,47 @@ a{
 
 .progress-center span{
 
-    color:var(--muted);
+    color:
+        var(--muted);
 
-    font-size:8px;
-
-    margin-top:5px;
+    font-size:7px;
 
 }
 
 
-/* Summary text */
+/* today description */
 
-.summary-text{
+.today-content{
 
     flex:1;
 
 }
 
-.summary-text h3{
+.today-content h3{
 
-    color:var(--dark);
+    color:
+        var(--dark);
 
     font-size:13px;
 
     font-weight:800;
 
-    margin-bottom:5px;
-
 }
 
-.summary-text p{
+.today-content p{
 
-    color:var(--muted);
+    margin-top:5px;
+
+    color:
+        var(--muted);
 
     font-size:8px;
 
-    line-height:1.9;
+    line-height:1.8;
 
 }
 
-.add-data{
+.add-button{
 
     display:inline-flex;
 
@@ -1002,7 +1054,7 @@ a{
 
     gap:6px;
 
-    margin-top:10px;
+    margin-top:9px;
 
     padding:
         7px
@@ -1010,11 +1062,11 @@ a{
 
     border-radius:10px;
 
-    background:
-        var(--purple-light);
-
     color:
-        var(--purple);
+        var(--primary);
+
+    background:
+        var(--primary-soft);
 
     font-size:8px;
 
@@ -1023,22 +1075,30 @@ a{
 }
 
 
-/* =========================================================
-   QUICK ACCESS
-========================================================= */
+/* =====================================================
+   QUICK SERVICES
+===================================================== */
 
-.quick-grid{
+.service-grid{
 
     display:grid;
 
     grid-template-columns:
-        repeat(2,1fr);
+        repeat(4,1fr);
 
-    gap:10px;
+    gap:8px;
 
 }
 
-.quick-card{
+.service{
+
+    min-height:103px;
+
+    padding:
+        11px
+        8px;
+
+    border-radius:18px;
 
     background:white;
 
@@ -1046,35 +1106,32 @@ a{
         1px solid
         var(--border);
 
-    border-radius:20px;
-
-    padding:14px;
-
-    min-height:117px;
-
-    position:relative;
-
-    overflow:hidden;
-
     box-shadow:
-        0 5px 18px
-        rgba(48,43,90,.035);
+        0 5px 20px
+        rgba(30,50,90,.04);
+
+    text-align:center;
 
     transition:.18s;
 
 }
 
-.quick-card:active{
+.service:active{
 
     transform:
-        scale(.975);
+        scale(.96);
 
 }
 
-.quick-icon{
+.service-icon{
 
     width:42px;
     height:42px;
+
+    margin:
+        0
+        auto
+        9px;
 
     border-radius:14px;
 
@@ -1084,106 +1141,81 @@ a{
 
     justify-content:center;
 
-    font-size:16px;
-
-    margin-bottom:11px;
+    font-size:15px;
 
 }
 
-.quick-card h3{
 
-    color:var(--dark);
+/* individual colors */
 
-    font-size:11px;
+.service.health .service-icon{
+
+    color:var(--primary);
+
+    background:
+        var(--primary-soft);
+
+}
+
+.service.period .service-icon{
+
+    color:var(--pink);
+
+    background:
+        var(--pink-soft);
+
+}
+
+.service.pregnancy .service-icon{
+
+    color:var(--purple);
+
+    background:
+        var(--purple-soft);
+
+}
+
+.service.stats .service-icon{
+
+    color:var(--orange);
+
+    background:
+        var(--orange-soft);
+
+}
+
+.service h3{
+
+    color:
+        var(--dark);
+
+    font-size:9px;
 
     font-weight:800;
 
+    line-height:1.5;
+
 }
 
-.quick-card p{
+.service span{
 
-    color:var(--muted);
-
-    font-size:7px;
+    display:block;
 
     margin-top:3px;
 
-    line-height:1.6;
-
-}
-
-.quick-arrow{
-
-    position:absolute;
-
-    left:12px;
-
-    bottom:12px;
-
-    color:#B7B7C4;
-
-    font-size:8px;
-
-}
-
-
-/* Health */
-
-.health .quick-icon{
-
-    background:
-        var(--blue-light);
-
     color:
-        var(--blue);
+        var(--muted);
+
+    font-size:6.5px;
 
 }
 
 
-/* Period */
+/* =====================================================
+   DAILY TRACKING
+===================================================== */
 
-.period .quick-icon{
-
-    background:
-        var(--pink-light);
-
-    color:
-        var(--pink);
-
-}
-
-
-/* Pregnancy */
-
-.pregnancy .quick-icon{
-
-    background:
-        var(--violet-light);
-
-    color:
-        var(--violet);
-
-}
-
-
-/* Stats */
-
-.stats .quick-icon{
-
-    background:
-        var(--orange-light);
-
-    color:
-        var(--orange);
-
-}
-
-
-/* =========================================================
-   HEALTH INDICATORS
-========================================================= */
-
-.indicators{
+.tracking-card{
 
     background:white;
 
@@ -1191,16 +1223,16 @@ a{
         1px solid
         var(--border);
 
-    border-radius:22px;
+    border-radius:23px;
 
-    padding:
-        8px 14px;
+    overflow:hidden;
 
-    box-shadow:var(--shadow);
+    box-shadow:
+        var(--shadow);
 
 }
 
-.indicator{
+.track{
 
     display:flex;
 
@@ -1209,26 +1241,27 @@ a{
     gap:10px;
 
     padding:
-        10px 0;
+        12px
+        14px;
 
     border-bottom:
         1px solid
-        #F1F1F5;
+        #F0F2F6;
 
 }
 
-.indicator:last-child{
+.track:last-child{
 
     border-bottom:0;
 
 }
 
-.indicator-icon{
+.track-icon{
 
-    width:38px;
-    height:38px;
+    width:39px;
+    height:39px;
 
-    border-radius:12px;
+    border-radius:13px;
 
     display:flex;
 
@@ -1236,35 +1269,60 @@ a{
 
     justify-content:center;
 
-    font-size:13px;
-
     flex-shrink:0;
 
 }
 
-.indicator-content{
+.track.water .track-icon{
+
+    color:var(--cyan);
+
+    background:
+        var(--cyan-soft);
+
+}
+
+.track.walk .track-icon{
+
+    color:var(--green);
+
+    background:
+        var(--green-soft);
+
+}
+
+.track.sleep .track-icon{
+
+    color:var(--purple);
+
+    background:
+        var(--purple-soft);
+
+}
+
+.track-info{
 
     flex:1;
 
 }
 
-.indicator-content strong{
+.track-info strong{
 
     display:block;
 
-    color:var(--dark);
+    color:
+        var(--dark);
 
     font-size:10px;
 
-    font-weight:700;
-
 }
 
-.indicator-content span{
+.track-info span{
 
     display:block;
 
-    color:var(--muted);
+    color:
+        var(--muted);
 
     font-size:7px;
 
@@ -1272,27 +1330,29 @@ a{
 
 }
 
-.indicator-value{
+.track-value{
 
     text-align:left;
 
 }
 
-.indicator-value strong{
+.track-value strong{
 
     display:block;
 
-    color:var(--dark);
+    color:
+        var(--dark);
 
     font-size:10px;
 
 }
 
-.indicator-value span{
+.track-value span{
 
     display:block;
 
-    color:var(--muted);
+    color:
+        var(--muted);
 
     font-size:7px;
 
@@ -1301,50 +1361,15 @@ a{
 }
 
 
-/* Water */
-
-.water .indicator-icon{
-
-    background:
-        var(--cyan-light);
-
-    color:
-        var(--cyan);
-
-}
-
-
-/* Walking */
-
-.walking .indicator-icon{
-
-    background:
-        var(--green-light);
-
-    color:
-        var(--green);
-
-}
-
-
-/* Sleep */
-
-.sleep .indicator-icon{
-
-    background:
-        var(--violet-light);
-
-    color:
-        var(--violet);
-
-}
-
-
-/* =========================================================
+/* =====================================================
    CHALLENGE
-========================================================= */
+===================================================== */
 
-.challenge{
+.challenge-card{
+
+    position:relative;
+
+    overflow:hidden;
 
     display:flex;
 
@@ -1352,33 +1377,53 @@ a{
 
     gap:11px;
 
-    padding:14px;
+    padding:15px;
 
-    border-radius:20px;
+    border-radius:22px;
 
     background:
         linear-gradient(
             135deg,
-            #F0EEFF,
-            #FAF9FF
+            #ECFDF5,
+            #F0FDFA
         );
 
     border:
         1px solid
-        #E5E0FA;
+        #D6F5E7;
+
+}
+
+.challenge-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    background:
+        rgba(22,163,74,.06);
+
+    left:-30px;
+
+    bottom:-50px;
 
 }
 
 .challenge-icon{
 
-    width:42px;
-    height:42px;
+    position:relative;
+
+    z-index:2;
+
+    width:43px;
+    height:43px;
 
     border-radius:14px;
-
-    background:#E2DDFB;
-
-    color:var(--purple);
 
     display:flex;
 
@@ -1386,41 +1431,55 @@ a{
 
     justify-content:center;
 
+    color:
+        var(--green);
+
+    background:
+        #DCFCE7;
+
     flex-shrink:0;
 
 }
 
-.challenge-text{
+.challenge-content{
+
+    position:relative;
+
+    z-index:2;
 
     flex:1;
 
 }
 
-.challenge-text strong{
+.challenge-content strong{
 
     display:block;
 
-    color:#3C3565;
+    color:#14532D;
 
     font-size:11px;
 
 }
 
-.challenge-text span{
+.challenge-content span{
 
     display:block;
 
-    color:#8580A3;
+    color:#66907A;
 
     font-size:7px;
 
-    margin-top:3px;
-
     line-height:1.7;
+
+    margin-top:3px;
 
 }
 
 .challenge-arrow{
+
+    position:relative;
+
+    z-index:2;
 
     width:31px;
     height:31px;
@@ -1429,7 +1488,8 @@ a{
 
     background:white;
 
-    color:var(--purple);
+    color:
+        var(--green);
 
     display:flex;
 
@@ -1440,9 +1500,9 @@ a{
 }
 
 
-/* =========================================================
-   BOTTOM NAVIGATION
-========================================================= */
+/* =====================================================
+   BOTTOM NAV
+===================================================== */
 
 .bottom-nav{
 
@@ -1454,16 +1514,6 @@ a{
     right:0;
     bottom:0;
 
-    background:
-        rgba(255,255,255,.97);
-
-    border-top:
-        1px solid
-        var(--border);
-
-    backdrop-filter:
-        blur(15px);
-
     padding:
         7px
         9px
@@ -1472,11 +1522,21 @@ a{
             env(safe-area-inset-bottom)
         );
 
+    background:
+        rgba(255,255,255,.96);
+
+    border-top:
+        1px solid
+        var(--border);
+
+    backdrop-filter:
+        blur(18px);
+
 }
 
 .bottom-inner{
 
-    max-width:620px;
+    max-width:650px;
 
     margin:auto;
 
@@ -1501,25 +1561,47 @@ a{
 
     gap:4px;
 
-    color:#999AAA;
+    color:
+        #9AA3B2;
 
     font-size:7px;
 
-    font-weight:600;
+    font-weight:700;
 
     position:relative;
 
 }
 
-.nav-item i{
+.nav-icon{
 
-    font-size:16px;
+    width:34px;
+    height:28px;
+
+    border-radius:11px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:14px;
+
+    transition:.2s;
 
 }
 
 .nav-item.active{
 
-    color:var(--purple);
+    color:
+        var(--primary);
+
+}
+
+.nav-item.active .nav-icon{
+
+    background:
+        var(--primary-soft);
 
 }
 
@@ -1531,21 +1613,24 @@ a{
 
     top:-7px;
 
-    width:28px;
+    width:30px;
     height:3px;
 
     border-radius:
-        0 0 6px 6px;
+        0
+        0
+        8px
+        8px;
 
     background:
-        var(--purple);
+        var(--primary);
 
 }
 
 
-/* =========================================================
-   CALENDAR MODAL
-========================================================= */
+/* =====================================================
+   MODAL
+===================================================== */
 
 .modal{
 
@@ -1560,7 +1645,7 @@ a{
     align-items:flex-end;
 
     background:
-        rgba(29,27,49,.45);
+        rgba(15,23,42,.45);
 
     backdrop-filter:
         blur(5px);
@@ -1577,18 +1662,24 @@ a{
 
     width:100%;
 
-    max-width:620px;
+    max-width:650px;
 
-    margin:auto auto 0;
+    margin:
+        auto
+        auto
+        0;
+
+    padding:20px;
 
     background:white;
 
     border-radius:
-        28px 28px 0 0;
+        28px
+        28px
+        0
+        0;
 
-    padding:20px;
-
-    max-height:85vh;
+    max-height:86vh;
 
     overflow:auto;
 
@@ -1600,17 +1691,13 @@ a{
 @keyframes slideUp{
 
     from{
-
         transform:
             translateY(100%);
-
     }
 
     to{
-
         transform:
             translateY(0);
-
     }
 
 }
@@ -1629,7 +1716,8 @@ a{
 
 .modal-header h3{
 
-    color:var(--dark);
+    color:
+        var(--dark);
 
     font-size:16px;
 
@@ -1644,9 +1732,11 @@ a{
 
     border-radius:12px;
 
-    background:#F5F5F8;
+    background:
+        #F1F5F9;
 
-    color:#666779;
+    color:
+        #64748B;
 
     display:flex;
 
@@ -1670,7 +1760,8 @@ a{
 
 .month-row strong{
 
-    color:var(--dark);
+    color:
+        var(--dark);
 
     font-size:13px;
 
@@ -1684,10 +1775,10 @@ a{
     border-radius:11px;
 
     background:
-        var(--purple-light);
+        var(--primary-soft);
 
     color:
-        var(--purple);
+        var(--primary);
 
     display:flex;
 
@@ -1710,11 +1801,14 @@ a{
 
     text-align:center;
 
-    color:var(--muted);
+    color:
+        var(--muted);
 
     font-size:7px;
 
-    padding:6px 0;
+    padding:
+        6px
+        0;
 
 }
 
@@ -1741,7 +1835,8 @@ a{
 
     justify-content:center;
 
-    color:var(--dark);
+    color:
+        var(--dark);
 
     font-size:10px;
 
@@ -1752,10 +1847,10 @@ a{
 .calendar-day.today{
 
     background:
-        var(--purple-light);
+        var(--primary-soft);
 
     color:
-        var(--purple);
+        var(--primary);
 
     font-weight:800;
 
@@ -1764,7 +1859,7 @@ a{
 .calendar-day.selected{
 
     background:
-        var(--purple);
+        var(--primary);
 
     color:white;
 
@@ -1777,15 +1872,42 @@ a{
 }
 
 
-/* =========================================================
-   DESKTOP
-========================================================= */
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:390px){
+
+    .service-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .service{
+
+        min-height:95px;
+
+    }
+
+}
 
 @media(min-width:700px){
 
     body{
 
-        padding-bottom:20px;
+        padding-bottom:25px;
+
+    }
+
+    .hero{
+
+        border-radius:
+            0
+            0
+            32px
+            32px;
 
     }
 
@@ -1793,10 +1915,12 @@ a{
 
         position:relative;
 
-        max-width:620px;
+        max-width:650px;
 
         margin:
-            0 auto 20px;
+            0
+            auto
+            20px;
 
         background:transparent;
 
@@ -1816,7 +1940,27 @@ a{
 
         border-radius:20px;
 
-        box-shadow:var(--shadow);
+        box-shadow:
+            var(--shadow);
+
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+    *{
+
+        scroll-behavior:auto !important;
+
+        transition:none !important;
+
+        animation:none !important;
 
     }
 
@@ -1834,47 +1978,46 @@ a{
 
 
 <!-- =====================================================
-     HEADER
+     HERO
 ===================================================== -->
 
-<header class="header">
+<header class="hero">
 
 
-    <div class="header-top">
+    <!-- TOP -->
 
+    <div class="hero-top">
 
-        <div class="profile">
+        <div class="user-box">
 
-
-            <div class="avatar">
+            <div class="user-avatar">
 
                 <i class="fa-solid fa-user"></i>
 
             </div>
 
-
-            <div class="profile-text">
+            <div class="user-info">
 
                 <small>
                     تطبيق صحتي
                 </small>
 
                 <strong>
-                    أهلاً بك، <span id="userName">مستخدم</span>
+                    أهلاً، <span id="userName">مستخدم</span>
                 </strong>
 
             </div>
 
-
         </div>
 
 
-        <div class="header-buttons">
-
+        <div class="hero-actions">
 
             <button
-                class="header-button"
-                onclick="showNotifications()">
+                class="hero-action"
+                onclick="showNotifications()"
+                aria-label="التنبيهات"
+            >
 
                 <i class="fa-regular fa-bell"></i>
 
@@ -1882,57 +2025,112 @@ a{
 
 
             <button
-                class="header-button"
-                onclick="openMore()">
+                class="hero-action"
+                onclick="openMore()"
+                aria-label="المزيد"
+            >
 
-                <i class="fa-solid fa-ellipsis-vertical"></i>
+                <i class="fa-solid fa-ellipsis"></i>
 
             </button>
 
-
         </div>
-
 
     </div>
 
 
-    <div class="header-message">
+    <!-- WELCOME -->
+
+    <div class="hero-title">
 
         <h1>
             كيف حالك اليوم؟
         </h1>
 
         <p>
-            تابع صحتك وعاداتك اليومية بسهولة
+            تابع صحتك وعاداتك اليومية في مكان واحد
         </p>
 
     </div>
 
 
-    <div class="header-status">
+    <!-- HEALTH SCORE -->
 
+    <div class="health-score">
 
-        <div class="status">
+        <div class="score-icon">
 
-            <span class="status-dot"></span>
+            <i class="fa-solid fa-shield-heart"></i>
 
-            <span>
+        </div>
+
+        <div class="score-text">
+
+            <strong>
                 متابعة يومك الصحي
+            </strong>
+
+            <span id="headerDate">
+                اليوم
             </span>
+
+        </div>
+
+        <div class="score-percent">
+            78%
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         CALENDAR INSIDE COLORED HEADER
+    ================================================= -->
+
+    <div class="hero-calendar">
+
+
+        <div class="calendar-header">
+
+            <strong>
+                جدولك اليومي
+            </strong>
+
+            <button
+                class="calendar-link"
+                onclick="openCalendar()"
+            >
+
+                التقويم
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+            </button>
 
         </div>
 
 
         <div
-            class="header-date"
-            id="headerDate">
+            class="week"
+            id="week"
+        >
+        </div>
+
+
+        <div class="selected-date">
+
+            <i class="fa-regular fa-calendar-check"></i>
+
+            <span id="selectedDate">
+            </span>
+
         </div>
 
 
     </div>
 
-
 </header>
+
 
 
 <!-- =====================================================
@@ -1942,604 +2140,467 @@ a{
 <main class="main">
 
 
-<!-- =====================================================
-     CALENDAR
-===================================================== -->
+    <!-- =================================================
+         TODAY
+    ================================================= -->
 
-<section class="section">
+    <section class="section">
 
+        <div class="section-head">
 
-    <div class="section-title">
-
-        <h2>
-            تقويمك
-        </h2>
-
-        <button onclick="openCalendar()">
-
-            عرض الشهر
-
-            <i class="fa-solid fa-chevron-left"></i>
-
-        </button>
-
-    </div>
-
-
-    <div class="calendar-card">
-
-
-        <div
-            class="week"
-            id="week">
-        </div>
-
-
-        <div class="selected-info">
-
-
-            <div class="selected-info-left">
-
-
-                <div class="selected-icon">
-
-                    <i class="fa-regular fa-calendar-check"></i>
-
-                </div>
-
-
-                <div class="selected-text">
-
-                    <strong>
-                        اليوم المحدد
-                    </strong>
-
-                    <span id="selectedDate">
-                    </span>
-
-                </div>
-
-
-            </div>
-
-
-            <button
-                class="calendar-open"
-                onclick="openCalendar()">
-
-                <i class="fa-solid fa-calendar-days"></i>
-
-            </button>
-
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-<!-- =====================================================
-     TODAY SUMMARY
-===================================================== -->
-
-<section class="section">
-
-
-    <div class="section-title">
-
-        <h2>
-            ملخص اليوم
-        </h2>
-
-    </div>
-
-
-    <div
-        class="summary-card"
-        onclick="openToday()">
-
-
-        <div class="summary-top">
-
-
-            <div class="summary-heading">
-
-
-                <div class="summary-icon">
-
-                    <i class="fa-solid fa-heart-pulse"></i>
-
-                </div>
-
-
-                <div>
-
-                    <strong>
-                        إنجازك اليوم
-                    </strong>
-
-                    <span>
-                        حسب التحديات التي حددتها
-                    </span>
-
-                </div>
-
-
-            </div>
-
-
-            <div class="summary-arrow">
-
-                <i class="fa-solid fa-chevron-left"></i>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="summary-body">
-
-
-            <div class="progress-circle">
-
-
-                <svg viewBox="0 0 120 120">
-
-
-                    <defs>
-
-                        <linearGradient
-                            id="progressGradient"
-                            x1="0%"
-                            y1="0%"
-                            x2="100%"
-                            y2="100%">
-
-                            <stop
-                                offset="0%"
-                                stop-color="#5B4BC4"/>
-
-                            <stop
-                                offset="100%"
-                                stop-color="#B82775"/>
-
-                        </linearGradient>
-
-                    </defs>
-
-
-                    <circle
-                        class="progress-background"
-                        cx="60"
-                        cy="60"
-                        r="51">
-                    </circle>
-
-
-                    <circle
-                        class="progress-value"
-                        cx="60"
-                        cy="60"
-                        r="51">
-                    </circle>
-
-
-                </svg>
-
-
-                <div class="progress-center">
-
-                    <strong>
-                        78%
-                    </strong>
-
-                    <span>
-                        مكتمل
-                    </span>
-
-                </div>
-
-
-            </div>
-
-
-            <div class="summary-text">
-
-
-                <h3>
-                    تقدم جيد اليوم
-                </h3>
-
-
-                <p>
-                    أنجزت جزءًا كبيرًا من أهدافك.
-                    أضف معلوماتك اليومية لمتابعة تقدمك.
-                </p>
-
-
-                <div class="add-data">
-
-                    <i class="fa-solid fa-plus"></i>
-
-                    إضافة معلومات
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-<!-- =====================================================
-     QUICK ACCESS
-===================================================== -->
-
-<section class="section">
-
-
-    <div class="section-title">
-
-        <h2>
-            الوصول السريع
-        </h2>
-
-    </div>
-
-
-    <div class="quick-grid">
-
-
-        <!-- Health -->
-
-        <a
-            href="health.html"
-            class="quick-card health">
-
-
-            <div class="quick-icon">
-
-                <i class="fa-solid fa-heart-pulse"></i>
-
-            </div>
-
-
-            <h3>
-                قياساتي الصحية
-            </h3>
-
-
-            <p>
-                الوزن، الضغط، السكر والمزيد
-            </p>
-
-
-            <i
-                class="fa-solid fa-arrow-left quick-arrow">
-            </i>
-
-
-        </a>
-
-
-        <!-- Period -->
-
-        <a
-            href="period.html"
-            class="quick-card period">
-
-
-            <div class="quick-icon">
-
-                <i class="fa-solid fa-calendar-days"></i>
-
-            </div>
-
-
-            <h3>
-                دورتي الشهرية
-            </h3>
-
-
-            <p>
-                التقويم والأيام المقدرة
-            </p>
-
-
-            <i
-                class="fa-solid fa-arrow-left quick-arrow">
-            </i>
-
-
-        </a>
-
-
-        <!-- Pregnancy -->
-
-        <a
-            href="pregnancy.html"
-            class="quick-card pregnancy">
-
-
-            <div class="quick-icon">
-
-                <i class="fa-solid fa-person-pregnant"></i>
-
-            </div>
-
-
-            <h3>
-                الحمل
-            </h3>
-
-
-            <p>
-                عمر الحمل والموعد المتوقع
-            </p>
-
-
-            <i
-                class="fa-solid fa-arrow-left quick-arrow">
-            </i>
-
-
-        </a>
-
-
-        <!-- Statistics -->
-
-        <a
-            href="stats.html"
-            class="quick-card stats">
-
-
-            <div class="quick-icon">
-
-                <i class="fa-solid fa-chart-column"></i>
-
-            </div>
-
-
-            <h3>
-                إحصائياتي
-            </h3>
-
-
-            <p>
-                تطور بياناتك الصحية
-            </p>
-
-
-            <i
-                class="fa-solid fa-arrow-left quick-arrow">
-            </i>
-
-
-        </a>
-
-
-    </div>
-
-
-</section>
-
-
-<!-- =====================================================
-     HEALTH INDICATORS
-===================================================== -->
-
-<section class="section">
-
-
-    <div class="section-title">
-
-        <h2>
-            مؤشرات اليوم
-        </h2>
-
-
-        <button onclick="openToday()">
-
-            التفاصيل
-
-            <i class="fa-solid fa-chevron-left"></i>
-
-        </button>
-
-
-    </div>
-
-
-    <div class="indicators">
-
-
-        <!-- Water -->
-
-        <div class="indicator water">
-
-
-            <div class="indicator-icon">
-
-                <i class="fa-solid fa-droplet"></i>
-
-            </div>
-
-
-            <div class="indicator-content">
-
-                <strong>
-                    شرب الماء
-                </strong>
-
-                <span>
-                    الهدف اليومي
-                </span>
-
-            </div>
-
-
-            <div class="indicator-value">
-
-                <strong>
-                    6 / 8
-                </strong>
-
-                <span>
-                    أكواب
-                </span>
-
-            </div>
-
-
-        </div>
-
-
-        <!-- Walking -->
-
-        <div class="indicator walking">
-
-
-            <div class="indicator-icon">
-
-                <i class="fa-solid fa-person-walking"></i>
-
-            </div>
-
-
-            <div class="indicator-content">
-
-                <strong>
-                    المشي والحركة
-                </strong>
-
-                <span>
-                    نشاط اليوم
-                </span>
-
-            </div>
-
-
-            <div class="indicator-value">
-
-                <strong>
-                    4,820
-                </strong>
-
-                <span>
-                    خطوة
-                </span>
-
-            </div>
-
-
-        </div>
-
-
-        <!-- Sleep -->
-
-        <div class="indicator sleep">
-
-
-            <div class="indicator-icon">
-
-                <i class="fa-solid fa-moon"></i>
-
-            </div>
-
-
-            <div class="indicator-content">
-
-                <strong>
-                    النوم
-                </strong>
-
-                <span>
-                    مدة النوم
-                </span>
-
-            </div>
-
-
-            <div class="indicator-value">
-
-                <strong>
-                    7س 20د
-                </strong>
-
-                <span>
-                    اليوم
-                </span>
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-<!-- =====================================================
-     CHALLENGES
-===================================================== -->
-
-<section class="section">
-
-
-    <a
-        href="challenges.html"
-        class="challenge">
-
-
-        <div class="challenge-icon">
-
-            <i class="fa-solid fa-bullseye"></i>
-
-        </div>
-
-
-        <div class="challenge-text">
-
-            <strong>
-                تحدياتك الصحية
-            </strong>
+            <h2>
+                ملخص اليوم
+            </h2>
 
             <span>
-                حدد أهدافك بنفسك: النوم، الاستيقاظ،
-                المشي، الماء وغيرها.
+                تقدمك اليوم
             </span>
 
         </div>
 
 
-        <div class="challenge-arrow">
+        <div
+            class="today-card"
+            onclick="openToday()"
+        >
 
-            <i class="fa-solid fa-chevron-left"></i>
+
+            <div class="today-top">
+
+                <div class="today-title">
+
+                    <div class="today-icon">
+
+                        <i class="fa-solid fa-heart-pulse"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            إنجازك الصحي
+                        </strong>
+
+                        <span>
+                            حسب أهدافك اليومية
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="details-button">
+
+                    <i class="fa-solid fa-chevron-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="today-progress">
+
+
+                <div class="progress">
+
+                    <svg viewBox="0 0 120 120">
+
+                        <defs>
+
+                            <linearGradient
+                                id="gradient"
+                                x1="0%"
+                                y1="0%"
+                                x2="100%"
+                                y2="100%"
+                            >
+
+                                <stop
+                                    offset="0%"
+                                    stop-color="#2563EB"
+                                >
+
+                                <stop
+                                    offset="100%"
+                                    stop-color="#7C3AED"
+                                >
+
+                            </linearGradient>
+
+                        </defs>
+
+
+                        <circle
+                            class="progress-bg"
+                            cx="60"
+                            cy="60"
+                            r="51"
+                        ></circle>
+
+
+                        <circle
+                            class="progress-line"
+                            cx="60"
+                            cy="60"
+                            r="51"
+                        ></circle>
+
+                    </svg>
+
+
+                    <div class="progress-center">
+
+                        <strong>
+                            78%
+                        </strong>
+
+                        <span>
+                            مكتمل
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="today-content">
+
+                    <h3>
+                        تقدم جيد اليوم
+                    </h3>
+
+                    <p>
+                        واصل أهدافك اليومية وأضف بياناتك
+                        الصحية لمتابعة تطورك.
+                    </p>
+
+                    <div class="add-button">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        إضافة معلومات
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         QUICK SERVICES
+    ================================================= -->
+
+    <section class="section">
+
+        <div class="section-head">
+
+            <h2>
+                خدمات صحتي
+            </h2>
+
+            <span>
+                الوصول السريع
+            </span>
 
         </div>
 
 
-    </a>
+        <div class="service-grid">
 
 
-</section>
+            <!-- HEALTH -->
+
+            <a
+                href="health.html"
+                class="service health"
+            >
+
+                <div class="service-icon">
+
+                    <i class="fa-solid fa-stethoscope"></i>
+
+                </div>
+
+                <h3>
+                    قياساتي
+                </h3>
+
+                <span>
+                    مؤشرات صحية
+                </span>
+
+            </a>
+
+
+            <!-- PERIOD -->
+
+            <a
+                href="period.html"
+                class="service period"
+            >
+
+                <div class="service-icon">
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+                </div>
+
+                <h3>
+                    دورتي
+                </h3>
+
+                <span>
+                    متابعة الدورة
+                </span>
+
+            </a>
+
+
+            <!-- PREGNANCY -->
+
+            <a
+                href="pregnancy.html"
+                class="service pregnancy"
+            >
+
+                <div class="service-icon">
+
+                    <i class="fa-solid fa-person-pregnant"></i>
+
+                </div>
+
+                <h3>
+                    الحمل
+                </h3>
+
+                <span>
+                    متابعة الحمل
+                </span>
+
+            </a>
+
+
+            <!-- STATS -->
+
+            <a
+                href="stats.html"
+                class="service stats"
+            >
+
+                <div class="service-icon">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                </div>
+
+                <h3>
+                    إحصائياتي
+                </h3>
+
+                <span>
+                    تطور بياناتك
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         DAILY TRACKING
+    ================================================= -->
+
+    <section class="section">
+
+        <div class="section-head">
+
+            <h2>
+                متابعة اليوم
+            </h2>
+
+            <span>
+                أهدافك اليومية
+            </span>
+
+        </div>
+
+
+        <div class="tracking-card">
+
+
+            <!-- WATER -->
+
+            <div class="track water">
+
+                <div class="track-icon">
+
+                    <i class="fa-solid fa-glass-water"></i>
+
+                </div>
+
+                <div class="track-info">
+
+                    <strong>
+                        شرب الماء
+                    </strong>
+
+                    <span>
+                        الهدف اليومي
+                    </span>
+
+                </div>
+
+                <div class="track-value">
+
+                    <strong>
+                        6 / 8
+                    </strong>
+
+                    <span>
+                        أكواب
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- WALK -->
+
+            <div class="track walk">
+
+                <div class="track-icon">
+
+                    <i class="fa-solid fa-person-walking"></i>
+
+                </div>
+
+                <div class="track-info">
+
+                    <strong>
+                        المشي والحركة
+                    </strong>
+
+                    <span>
+                        نشاط اليوم
+                    </span>
+
+                </div>
+
+                <div class="track-value">
+
+                    <strong>
+                        4,820
+                    </strong>
+
+                    <span>
+                        خطوة
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- SLEEP -->
+
+            <div class="track sleep">
+
+                <div class="track-icon">
+
+                    <i class="fa-solid fa-bed"></i>
+
+                </div>
+
+                <div class="track-info">
+
+                    <strong>
+                        النوم
+                    </strong>
+
+                    <span>
+                        مدة النوم
+                    </span>
+
+                </div>
+
+                <div class="track-value">
+
+                    <strong>
+                        7س 20د
+                    </strong>
+
+                    <span>
+                        اليوم
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CHALLENGES
+    ================================================= -->
+
+    <section class="section">
+
+        <a
+            href="challenges.html"
+            class="challenge-card"
+        >
+
+            <div class="challenge-icon">
+
+                <i class="fa-solid fa-bullseye"></i>
+
+            </div>
+
+
+            <div class="challenge-content">
+
+                <strong>
+                    تحدياتك الصحية
+                </strong>
+
+                <span>
+                    حدد أهدافك بنفسك مثل النوم،
+                    الاستيقاظ، المشي، الماء وغيرها.
+                </span>
+
+            </div>
+
+
+            <div class="challenge-arrow">
+
+                <i class="fa-solid fa-chevron-left"></i>
+
+            </div>
+
+        </a>
+
+    </section>
 
 
 </main>
+
 
 
 <!-- =====================================================
@@ -2548,15 +2609,19 @@ a{
 
 <nav class="bottom-nav">
 
-
     <div class="bottom-inner">
 
 
         <a
             href="dashboard.html"
-            class="nav-item active">
+            class="nav-item active"
+        >
 
-            <i class="fa-solid fa-house"></i>
+            <div class="nav-icon">
+
+                <i class="fa-solid fa-house"></i>
+
+            </div>
 
             <span>
                 الرئيسية
@@ -2567,9 +2632,14 @@ a{
 
         <a
             href="challenges.html"
-            class="nav-item">
+            class="nav-item"
+        >
 
-            <i class="fa-solid fa-bullseye"></i>
+            <div class="nav-icon">
+
+                <i class="fa-solid fa-bullseye"></i>
+
+            </div>
 
             <span>
                 تحدياتي
@@ -2580,9 +2650,14 @@ a{
 
         <a
             href="health.html"
-            class="nav-item">
+            class="nav-item"
+        >
 
-            <i class="fa-solid fa-heart-pulse"></i>
+            <div class="nav-icon">
+
+                <i class="fa-solid fa-heart-pulse"></i>
+
+            </div>
 
             <span>
                 صحتي
@@ -2593,9 +2668,14 @@ a{
 
         <a
             href="more.html"
-            class="nav-item">
+            class="nav-item"
+        >
 
-            <i class="fa-solid fa-grip"></i>
+            <div class="nav-icon">
+
+                <i class="fa-solid fa-table-cells-large"></i>
+
+            </div>
 
             <span>
                 المزيد
@@ -2606,11 +2686,10 @@ a{
 
     </div>
 
-
 </nav>
 
-
 </div>
+
 
 
 <!-- =====================================================
@@ -2620,37 +2699,35 @@ a{
 <div
     class="modal"
     id="calendarModal"
-    onclick="outsideModal(event)">
-
+    onclick="outsideModal(event)"
+>
 
     <div class="modal-box">
 
 
         <div class="modal-header">
 
-
             <h3>
                 التقويم الصحي
             </h3>
 
-
             <button
                 class="close-button"
-                onclick="closeCalendar()">
+                onclick="closeCalendar()"
+            >
 
                 <i class="fa-solid fa-xmark"></i>
 
             </button>
-
 
         </div>
 
 
         <div class="month-row">
 
-
             <button
-                onclick="changeMonth(-1)">
+                onclick="changeMonth(-1)"
+            >
 
                 <i class="fa-solid fa-chevron-right"></i>
 
@@ -2663,12 +2740,12 @@ a{
 
 
             <button
-                onclick="changeMonth(1)">
+                onclick="changeMonth(1)"
+            >
 
                 <i class="fa-solid fa-chevron-left"></i>
 
             </button>
-
 
         </div>
 
@@ -2688,38 +2765,43 @@ a{
 
         <div
             class="calendar-days"
-            id="calendarDays">
+            id="calendarDays"
+        >
         </div>
 
 
     </div>
 
-
 </div>
+
 
 
 <script>
 
-/* =========================================================
+
+/* =====================================================
    USER NAME
-========================================================= */
+===================================================== */
 
 const savedName =
     localStorage.getItem("userName");
 
-if(savedName){
+if(
+    savedName &&
+    savedName.trim() !== ""
+){
 
     document.getElementById(
         "userName"
     ).textContent =
-        savedName;
+        savedName.trim();
 
 }
 
 
-/* =========================================================
-   DATE VARIABLES
-========================================================= */
+/* =====================================================
+   DATES
+===================================================== */
 
 const today =
     new Date();
@@ -2766,19 +2848,24 @@ const months = [
 ];
 
 
-/* =========================================================
+/* =====================================================
    DATE FORMAT
-========================================================= */
+===================================================== */
 
 function formatDate(date){
 
     return date.toLocaleDateString(
         "ar-DZ",
         {
+
             weekday:"long",
+
             day:"numeric",
+
             month:"long",
+
             year:"numeric"
+
         }
     );
 
@@ -2791,9 +2878,9 @@ document.getElementById(
     formatDate(today);
 
 
-/* =========================================================
+/* =====================================================
    SAME DATE
-========================================================= */
+===================================================== */
 
 function sameDate(a,b){
 
@@ -2817,9 +2904,9 @@ function sameDate(a,b){
 }
 
 
-/* =========================================================
+/* =====================================================
    WEEK
-========================================================= */
+===================================================== */
 
 function renderWeek(){
 
@@ -2840,8 +2927,8 @@ function renderWeek(){
 
 
     for(
-        let i=0;
-        i<7;
+        let i = 0;
+        i < 7;
         i++
     ){
 
@@ -2871,6 +2958,20 @@ function renderWeek(){
 
             item.classList.add(
                 "selected"
+            );
+
+        }
+
+
+        if(
+            sameDate(
+                date,
+                today
+            )
+        ){
+
+            item.classList.add(
+                "today"
             );
 
         }
@@ -2908,9 +3009,9 @@ function renderWeek(){
 }
 
 
-/* =========================================================
+/* =====================================================
    SELECTED DATE
-========================================================= */
+===================================================== */
 
 function updateSelectedDate(){
 
@@ -2922,9 +3023,9 @@ function updateSelectedDate(){
 }
 
 
-/* =========================================================
+/* =====================================================
    OPEN CALENDAR
-========================================================= */
+===================================================== */
 
 function openCalendar(){
 
@@ -2939,6 +3040,10 @@ function openCalendar(){
 }
 
 
+/* =====================================================
+   CLOSE CALENDAR
+===================================================== */
+
 function closeCalendar(){
 
     document
@@ -2949,6 +3054,10 @@ function closeCalendar(){
 
 }
 
+
+/* =====================================================
+   OUTSIDE MODAL
+===================================================== */
 
 function outsideModal(event){
 
@@ -2964,15 +3073,18 @@ function outsideModal(event){
 }
 
 
-/* =========================================================
+/* =====================================================
    CHANGE MONTH
-========================================================= */
+===================================================== */
 
 function changeMonth(direction){
 
     calendarMonth.setMonth(
-        calendarMonth.getMonth() +
+
+        calendarMonth.getMonth()
+        +
         direction
+
     );
 
     renderCalendar();
@@ -2980,9 +3092,9 @@ function changeMonth(direction){
 }
 
 
-/* =========================================================
+/* =====================================================
    FULL CALENDAR
-========================================================= */
+===================================================== */
 
 function renderCalendar(){
 
@@ -3023,9 +3135,11 @@ function renderCalendar(){
         ).getDate();
 
 
+    /* empty days */
+
     for(
-        let i=0;
-        i<firstDay;
+        let i = 0;
+        i < firstDay;
         i++
     ){
 
@@ -3044,9 +3158,11 @@ function renderCalendar(){
     }
 
 
+    /* days */
+
     for(
-        let day=1;
-        day<=totalDays;
+        let day = 1;
+        day <= totalDays;
         day++
     ){
 
@@ -3099,18 +3215,19 @@ function renderCalendar(){
             day;
 
 
-        element.onclick = function(){
+        element.onclick =
+            function(){
 
-            selectedDate =
-                new Date(date);
+                selectedDate =
+                    new Date(date);
 
-            renderWeek();
+                renderWeek();
 
-            updateSelectedDate();
+                updateSelectedDate();
 
-            closeCalendar();
+                closeCalendar();
 
-        };
+            };
 
 
         container.appendChild(
@@ -3122,9 +3239,9 @@ function renderCalendar(){
 }
 
 
-/* =========================================================
+/* =====================================================
    NAVIGATION
-========================================================= */
+===================================================== */
 
 function openToday(){
 
@@ -3151,13 +3268,14 @@ function showNotifications(){
 }
 
 
-/* =========================================================
+/* =====================================================
    START
-========================================================= */
+===================================================== */
 
 renderWeek();
 
 updateSelectedDate();
+
 
 </script>
 
