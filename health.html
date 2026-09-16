@@ -14,8 +14,16 @@
 
 <title>صحتي | قياساتي</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
 
 <link
     href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
@@ -26,6 +34,7 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 >
+
 
 <style>
 
@@ -63,15 +72,11 @@ button{
     cursor:pointer;
 }
 
-input,
-select{
-    outline:none;
+a{
+    color:inherit;
+    text-decoration:none;
 }
 
-a{
-    text-decoration:none;
-    color:inherit;
-}
 
 /* =========================================================
    APP
@@ -82,204 +87,309 @@ a{
     max-width:650px;
     margin:auto;
     min-height:100vh;
-    padding-bottom:105px;
+    padding-bottom:110px;
 }
 
+
 /* =========================================================
-   TOPBAR
+   TOP BAR
 ========================================================= */
 
 .topbar{
-    padding:20px 18px 12px;
+    padding:22px 18px 12px;
     display:flex;
     align-items:center;
     justify-content:space-between;
 }
 
-.top-left{
+.user-area{
     display:flex;
     align-items:center;
-    gap:11px;
+    gap:12px;
 }
 
-.back-btn{
-    width:43px;
-    height:43px;
-    border-radius:15px;
-    background:#fff;
-    color:#4F5D72;
+.avatar{
+    width:48px;
+    height:48px;
+    border-radius:17px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    box-shadow:0 5px 18px rgba(30,50,80,.07);
+
+    background:
+        linear-gradient(
+            145deg,
+            #1976D2,
+            #43A5F5
+        );
+
+    color:#fff;
+    font-size:20px;
+
+    box-shadow:
+        0 8px 22px
+        rgba(25,118,210,.20);
 }
 
-.back-btn:active{
-    transform:scale(.94);
-}
-
-.page-title{
+.greeting{
     display:flex;
     flex-direction:column;
+    line-height:1.35;
 }
 
-.page-title small{
-    font-size:10px;
-    color:#929CAB;
+.greeting small{
+    color:#8993A4;
+    font-size:11px;
     font-weight:600;
 }
 
-.page-title strong{
-    font-size:18px;
+.greeting strong{
     color:#182235;
-    font-weight:800;
-}
-
-.top-action{
-    width:43px;
-    height:43px;
-    border-radius:15px;
-    background:#fff;
-    color:#526075;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    box-shadow:0 5px 18px rgba(30,50,80,.07);
-}
-
-/* =========================================================
-   INTRO
-========================================================= */
-
-.intro{
-    padding:7px 18px 18px;
-}
-
-.intro h1{
-    font-size:26px;
-    font-weight:800;
-    color:#152238;
-    line-height:1.45;
-}
-
-.intro p{
-    margin-top:3px;
-    color:#8C96A6;
-    font-size:11px;
-    line-height:1.8;
-}
-
-/* =========================================================
-   SUMMARY CARD
-========================================================= */
-
-.summary{
-    margin:0 18px 20px;
-    border-radius:27px;
-    padding:19px;
-    color:white;
-    background:
-        linear-gradient(
-            135deg,
-            #176FC5,
-            #3D9BE9
-        );
-    box-shadow:
-        0 12px 30px
-        rgba(25,118,210,.20);
-    position:relative;
-    overflow:hidden;
-}
-
-.summary:before{
-    content:"";
-    position:absolute;
-    width:170px;
-    height:170px;
-    border-radius:50%;
-    background:rgba(255,255,255,.09);
-    left:-70px;
-    top:-90px;
-}
-
-.summary:after{
-    content:"";
-    position:absolute;
-    width:130px;
-    height:130px;
-    border-radius:50%;
-    background:rgba(255,255,255,.07);
-    right:-55px;
-    bottom:-70px;
-}
-
-.summary-content{
-    position:relative;
-    z-index:2;
-}
-
-.summary-top{
-    display:flex;
-    align-items:center;
-    gap:13px;
-}
-
-.summary-icon{
-    width:49px;
-    height:49px;
-    border-radius:17px;
-    background:rgba(255,255,255,.14);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:20px;
-}
-
-.summary-text{
-    flex:1;
-}
-
-.summary-text small{
-    display:block;
-    font-size:10px;
-    color:#D9EEFF;
-}
-
-.summary-text strong{
-    display:block;
     font-size:17px;
     font-weight:800;
 }
 
-.summary-info{
-    margin-top:15px;
+.top-actions{
+    display:flex;
+    gap:8px;
+}
+
+.top-btn{
+    width:43px;
+    height:43px;
+    border-radius:15px;
+
+    background:#fff;
+    color:#526075;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+        0 5px 18px
+        rgba(30,50,80,.07);
+}
+
+.top-btn:active{
+    transform:scale(.94);
+}
+
+
+/* =========================================================
+   PAGE INTRO
+========================================================= */
+
+.page-intro{
+    padding:8px 18px 18px;
+}
+
+.page-intro h1{
+    font-size:27px;
+    line-height:1.35;
+    font-weight:800;
+    color:#152238;
+}
+
+.page-intro p{
+    margin-top:4px;
+    color:#8B95A6;
+    font-size:11px;
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   BLUE SUMMARY CARD
+========================================================= */
+
+.summary-card{
+    margin:0 18px 22px;
+
+    border-radius:28px;
+
+    padding:20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #176FC5,
+            #298EDC 55%,
+            #47A9F3
+        );
+
+    color:#fff;
+
+    position:relative;
+    overflow:hidden;
+
+    box-shadow:
+        0 12px 30px
+        rgba(25,118,210,.20);
+}
+
+.summary-card:before{
+    content:"";
+
+    position:absolute;
+
+    width:190px;
+    height:190px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.09);
+
+    left:-75px;
+    top:-95px;
+}
+
+.summary-card:after{
+    content:"";
+
+    position:absolute;
+
+    width:160px;
+    height:160px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.07);
+
+    right:-65px;
+    bottom:-85px;
+}
+
+.summary-top{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:16px;
+}
+
+.summary-label{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.summary-label-icon{
+    width:37px;
+    height:37px;
+
+    border-radius:13px;
+
+    background:
+        rgba(255,255,255,.14);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+}
+
+.summary-label div strong{
+    display:block;
+    font-size:12px;
+}
+
+.summary-label div small{
+    display:block;
+    margin-top:1px;
+    font-size:8px;
+    color:rgba(255,255,255,.68);
+}
+
+.summary-date{
+    font-size:9px;
+    color:rgba(255,255,255,.70);
+}
+
+.summary-grid{
+    position:relative;
+    z-index:2;
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        1fr 1fr 1fr;
+
     gap:8px;
 }
 
 .summary-item{
-    background:rgba(255,255,255,.10);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:15px;
-    padding:10px 6px;
-    text-align:center;
+    min-width:0;
+
+    padding:13px 10px;
+
+    border-radius:18px;
+
+    background:
+        rgba(255,255,255,.12);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
 }
 
-.summary-item span{
+.summary-item small{
     display:block;
-    font-size:9px;
-    color:#D9EEFF;
+
+    font-size:8px;
+
+    color:
+        rgba(255,255,255,.70);
+
+    margin-bottom:4px;
 }
 
-.summary-item strong{
-    display:block;
-    margin-top:2px;
-    font-size:13px;
+.summary-value{
+    display:flex;
+    align-items:baseline;
+    gap:4px;
+
+    white-space:nowrap;
 }
+
+.summary-value strong{
+    font-size:20px;
+    font-weight:800;
+}
+
+.summary-value span{
+    font-size:8px;
+    color:
+        rgba(255,255,255,.72);
+}
+
+.summary-status{
+    margin-top:4px;
+
+    display:inline-flex;
+
+    padding:3px 7px;
+
+    border-radius:8px;
+
+    background:
+        rgba(255,255,255,.14);
+
+    font-size:8px;
+
+    color:#fff;
+}
+
 
 /* =========================================================
-   SECTION TITLE
+   SECTION
 ========================================================= */
 
 .section{
@@ -288,6 +398,7 @@ a{
 
 .section-title{
     padding:0 20px 11px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -302,25 +413,30 @@ a{
 .title-icon{
     width:29px;
     height:29px;
+
     border-radius:10px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     background:#EAF3FD;
     color:#1976D2;
+
     font-size:12px;
 }
 
 .section-title h2{
     font-size:15px;
-    color:#263248;
     font-weight:800;
+    color:#263248;
 }
 
 .section-title span{
-    color:#99A3B2;
     font-size:9px;
+    color:#9AA4B3;
 }
+
 
 /* =========================================================
    MEASUREMENTS GRID
@@ -328,81 +444,123 @@ a{
 
 .measure-grid{
     padding:0 18px;
+
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:
+        repeat(2,1fr);
+
     gap:10px;
 }
 
 .measure-card{
     background:#fff;
-    border:1px solid #EDF1F6;
-    border-radius:22px;
+
+    border:
+        1px solid
+        #EDF1F6;
+
+    border-radius:23px;
+
     padding:14px;
-    box-shadow:0 5px 18px rgba(30,50,80,.045);
+
+    min-height:145px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(30,50,80,.045);
+
+    position:relative;
+
+    overflow:hidden;
+
     transition:.2s;
-    cursor:pointer;
 }
 
 .measure-card:active{
     transform:scale(.97);
 }
 
-.measure-top{
+.measure-card-head{
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     justify-content:space-between;
 }
 
 .measure-icon{
     width:45px;
     height:45px;
+
     border-radius:15px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:17px;
+
+    font-size:18px;
 }
 
 .measure-add{
     width:30px;
     height:30px;
+
     border-radius:10px;
-    background:#F3F6FA;
-    color:#667589;
+
+    background:#F4F7FA;
+
+    color:#758195;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     font-size:11px;
 }
 
-.measure-name{
-    display:block;
-    margin-top:10px;
-    font-size:11px;
+.measure-card h3{
+    margin-top:11px;
+
+    font-size:12px;
     font-weight:800;
-    color:#334056;
+
+    color:#2E394D;
 }
 
 .measure-value{
-    display:block;
-    margin-top:2px;
-    font-size:18px;
+    margin-top:3px;
+
+    display:flex;
+    align-items:baseline;
+
+    gap:4px;
+}
+
+.measure-value strong{
+    font-size:21px;
     font-weight:800;
-    color:#172033;
+
+    color:#1E2B40;
 }
 
-.measure-unit{
-    font-size:9px;
-    color:#9AA4B3;
-    font-weight:600;
-}
-
-.measure-date{
-    display:block;
-    margin-top:7px;
+.measure-value span{
     font-size:8px;
-    color:#A0A8B5;
+    color:#8E99A9;
 }
+
+.measure-sub{
+    margin-top:3px;
+
+    font-size:8px;
+
+    color:#9BA5B3;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
 
 /* COLORS */
 
@@ -411,269 +569,137 @@ a{
     color:#1976D2;
 }
 
-.height .measure-icon{
-    background:#F0ECFF;
-    color:#7355D8;
-}
-
 .pressure .measure-icon{
     background:#FFF0F1;
-    color:#E6505C;
+    color:#E4555E;
 }
 
 .pulse .measure-icon{
     background:#FFF0F5;
-    color:#E35A8A;
+    color:#D95386;
 }
 
-.sugar .measure-icon{
-    background:#FFF5E5;
-    color:#E99525;
+.glucose .measure-icon{
+    background:#FFF4E8;
+    color:#E88928;
 }
 
 .temperature .measure-icon{
-    background:#FFF0E8;
-    color:#E56F32;
+    background:#FFF0E9;
+    color:#EF6C3B;
 }
 
 .oxygen .measure-icon{
-    background:#E8F8FF;
-    color:#1599CC;
+    background:#EAF8FF;
+    color:#168FC4;
 }
 
 .waist .measure-icon{
-    background:#EEF9EC;
-    color:#5C9F48;
+    background:#F1EDFF;
+    color:#7957D7;
 }
+
+.height .measure-icon{
+    background:#ECF8EF;
+    color:#3B9B61;
+}
+
 
 /* =========================================================
-   BMI
+   HEIGHT CARD
 ========================================================= */
 
-.bmi-card{
+.height-card{
     margin:0 18px;
-    padding:16px;
-    border-radius:23px;
+
     background:#fff;
-    border:1px solid #EDF1F6;
-    box-shadow:0 5px 18px rgba(30,50,80,.045);
-}
 
-.bmi-top{
+    border:
+        1px solid
+        #EDF1F6;
+
+    border-radius:22px;
+
+    padding:15px;
+
     display:flex;
+
     align-items:center;
+
     gap:12px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(30,50,80,.045);
 }
 
-.bmi-icon{
-    width:44px;
-    height:44px;
-    border-radius:15px;
-    background:#EEF5FF;
-    color:#1976D2;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.height-card .measure-icon{
+    width:45px;
+    height:45px;
+    min-width:45px;
 }
 
-.bmi-info{
+.height-info{
     flex:1;
 }
 
-.bmi-info strong{
+.height-info strong{
     display:block;
-    font-size:12px;
+
+    font-size:11px;
+
     color:#344056;
 }
 
-.bmi-info small{
+.height-info small{
     display:block;
-    margin-top:2px;
-    font-size:9px;
-    color:#99A3B1;
-}
 
-.bmi-value{
-    text-align:left;
-}
-
-.bmi-value strong{
-    display:block;
-    font-size:20px;
-    color:#1976D2;
-}
-
-.bmi-value small{
-    display:block;
     font-size:8px;
+
     color:#9AA4B2;
-}
 
-.bmi-bar{
-    margin-top:14px;
-    height:7px;
-    border-radius:20px;
-    background:
-        linear-gradient(
-            to left,
-            #E85D63 0%,
-            #F2C94C 30%,
-            #55B97A 45%,
-            #55B97A 70%,
-            #E9A044 85%,
-            #E85D63 100%
-        );
-    position:relative;
-}
-
-.bmi-marker{
-    position:absolute;
-    top:50%;
-    transform:translate(50%,-50%);
-    width:14px;
-    height:14px;
-    border-radius:50%;
-    background:#17263D;
-    border:3px solid white;
-    box-shadow:0 2px 7px rgba(0,0,0,.2);
-    right:50%;
-}
-
-/* =========================================================
-   ADD MEASUREMENT BUTTON
-========================================================= */
-
-.add-button{
-    margin:0 18px;
-    width:calc(100% - 36px);
-    height:52px;
-    border-radius:18px;
-    background:#17263D;
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:9px;
-    font-size:11px;
-    font-weight:800;
-    box-shadow:0 8px 20px rgba(23,38,61,.13);
-}
-
-.add-button i{
-    font-size:13px;
-}
-
-.add-button:active{
-    transform:scale(.98);
-}
-
-/* =========================================================
-   HISTORY
-========================================================= */
-
-.history-list{
-    padding:0 18px;
-    display:flex;
-    flex-direction:column;
-    gap:9px;
-}
-
-.history-empty{
-    background:white;
-    border:1px solid #EDF1F6;
-    border-radius:21px;
-    padding:22px;
-    text-align:center;
-    color:#9AA4B2;
-    font-size:10px;
-}
-
-.history-empty i{
-    display:block;
-    font-size:25px;
-    margin-bottom:8px;
-    color:#C5CDD7;
-}
-
-.history-item{
-    background:white;
-    border:1px solid #EDF1F6;
-    border-radius:20px;
-    padding:12px;
-    display:flex;
-    align-items:center;
-    gap:11px;
-}
-
-.history-icon{
-    width:42px;
-    height:42px;
-    min-width:42px;
-    border-radius:14px;
-    background:#EAF4FF;
-    color:#1976D2;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.history-main{
-    flex:1;
-    min-width:0;
-}
-
-.history-main strong{
-    display:block;
-    font-size:11px;
-    color:#334056;
-}
-
-.history-main small{
-    display:block;
     margin-top:2px;
-    font-size:8px;
-    color:#9AA4B2;
 }
 
-.history-value{
-    font-size:12px;
+.height-value{
+    font-size:17px;
     font-weight:800;
-    color:#172033;
+    color:#263248;
 }
 
-.history-actions{
-    display:flex;
-    gap:5px;
-}
+.height-button{
+    width:34px;
+    height:34px;
 
-.history-action{
-    width:31px;
-    height:31px;
-    border-radius:10px;
-    background:#F4F6F9;
-    color:#718096;
+    border-radius:11px;
+
+    background:#EAF8EF;
+
+    color:#3B9B61;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:10px;
 }
 
-.history-action.delete{
-    color:#D95460;
-    background:#FFF1F2;
-}
 
 /* =========================================================
-   MODAL
+   RECORD MODAL
 ========================================================= */
 
 .modal{
     position:fixed;
     inset:0;
+
     z-index:500;
-    background:rgba(16,28,45,.45);
+
+    background:
+        rgba(16,28,45,.43);
+
     backdrop-filter:blur(5px);
+
     display:none;
+
     align-items:flex-end;
     justify-content:center;
 }
@@ -684,43 +710,89 @@ a{
 
 .modal-box{
     width:min(650px,100%);
-    max-height:88vh;
+
+    max-height:91vh;
+
     overflow-y:auto;
+
     background:#fff;
-    border-radius:29px 29px 0 0;
+
+    border-radius:
+        29px 29px 0 0;
+
     padding:20px;
-    animation:slideUp .25s ease;
+
+    animation:
+        slideUp .25s ease;
 }
 
 @keyframes slideUp{
+
     from{
         transform:translateY(100%);
     }
+
     to{
         transform:translateY(0);
     }
+
 }
 
 .modal-head{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     margin-bottom:18px;
+}
+
+.modal-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.modal-title-icon{
+    width:40px;
+    height:40px;
+
+    border-radius:13px;
+
+    background:#EAF4FF;
+
+    color:#1976D2;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .modal-head h3{
     font-size:16px;
-    color:#263248;
-    font-weight:800;
+    color:#243149;
+}
+
+.modal-head small{
+    display:block;
+
+    color:#9AA4B2;
+
+    font-size:8px;
 }
 
 .close{
-    width:35px;
-    height:35px;
+    width:36px;
+    height:36px;
+
     border-radius:12px;
+
     background:#F3F5F8;
+
     color:#687486;
 }
+
 
 /* =========================================================
    FORM
@@ -732,51 +804,371 @@ a{
 
 .form-group label{
     display:block;
+
     margin-bottom:6px;
+
     font-size:10px;
+
     font-weight:700;
-    color:#4C586B;
+
+    color:#4A5669;
 }
 
-.form-group input,
-.form-group select{
+.input-wrap{
+    position:relative;
+}
+
+.input-wrap i{
+    position:absolute;
+
+    right:13px;
+
+    top:50%;
+
+    transform:
+        translateY(-50%);
+
+    color:#9AA6B5;
+
+    font-size:13px;
+
+    pointer-events:none;
+}
+
+.input-wrap input,
+.input-wrap select{
     width:100%;
-    height:47px;
-    border:1px solid #E5EAF0;
-    border-radius:14px;
-    padding:0 13px;
+
+    height:49px;
+
+    border:
+        1px solid
+        #E6EBF1;
+
+    border-radius:15px;
+
     background:#F9FAFC;
+
+    outline:none;
+
+    padding:
+        0 40px
+        0 13px;
+
     color:#273349;
+
     font-size:11px;
+
+    direction:rtl;
 }
 
-.form-group input:focus,
-.form-group select:focus{
+.input-wrap input:focus,
+.input-wrap select:focus{
     border-color:#1976D2;
+
     background:#fff;
-    box-shadow:0 0 0 3px rgba(25,118,210,.08);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(25,118,210,.08);
 }
 
-.two-fields{
+.unit{
+    position:absolute;
+
+    left:13px;
+
+    top:50%;
+
+    transform:
+        translateY(-50%);
+
+    font-size:9px;
+
+    color:#98A2B1;
+}
+
+.form-row{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:9px;
 }
 
-.save-button{
+
+/* =========================================================
+   SAVE BUTTON
+========================================================= */
+
+.save-btn{
     width:100%;
-    height:50px;
-    border-radius:16px;
-    background:#1976D2;
-    color:white;
-    font-size:11px;
-    font-weight:800;
+
+    height:51px;
+
     margin-top:5px;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1976D2,
+            #43A5F5
+        );
+
+    color:#fff;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    box-shadow:
+        0 8px 20px
+        rgba(25,118,210,.20);
 }
 
-.save-button:active{
+.save-btn:active{
     transform:scale(.98);
 }
+
+
+/* =========================================================
+   CHART AREA
+========================================================= */
+
+.chart-box{
+    margin:0 18px;
+
+    background:#fff;
+
+    border:
+        1px solid
+        #EDF1F6;
+
+    border-radius:24px;
+
+    padding:16px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(30,50,80,.045);
+}
+
+.chart-header{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:12px;
+}
+
+.chart-header strong{
+    font-size:11px;
+    color:#344056;
+}
+
+.chart-header span{
+    font-size:9px;
+    color:#9BA4B2;
+}
+
+.chart-wrap{
+    width:100%;
+    height:190px;
+
+    position:relative;
+}
+
+.chart-wrap canvas{
+    width:100%;
+    height:100%;
+
+    display:block;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table-box{
+    margin:0 18px;
+
+    background:#fff;
+
+    border:
+        1px solid
+        #EDF1F6;
+
+    border-radius:23px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 5px 18px
+        rgba(30,50,80,.045);
+}
+
+.table-scroll{
+    width:100%;
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:520px;
+}
+
+thead{
+    background:#F5F8FB;
+}
+
+th{
+    padding:12px 9px;
+
+    font-size:8px;
+
+    color:#8994A4;
+
+    font-weight:700;
+
+    white-space:nowrap;
+}
+
+td{
+    padding:12px 9px;
+
+    border-top:
+        1px solid
+        #F0F2F5;
+
+    font-size:9px;
+
+    color:#475267;
+
+    text-align:center;
+
+    white-space:nowrap;
+}
+
+td strong{
+    color:#273349;
+}
+
+.empty-table{
+    padding:25px 15px;
+
+    text-align:center;
+
+    color:#9AA4B2;
+
+    font-size:10px;
+}
+
+.delete-btn{
+    width:28px;
+    height:28px;
+
+    border-radius:9px;
+
+    background:#FFF0F1;
+
+    color:#D9535D;
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:10px;
+}
+
+
+/* =========================================================
+   QUICK INFO
+========================================================= */
+
+.info-card{
+    margin:0 18px;
+
+    padding:15px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #EFF7FF,
+            #F3FAFF
+        );
+
+    border:
+        1px solid
+        #E1EEF9;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:11px;
+}
+
+.info-icon{
+    width:38px;
+    height:38px;
+
+    min-width:38px;
+
+    border-radius:12px;
+
+    background:#fff;
+
+    color:#1976D2;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:
+        0 4px 12px
+        rgba(25,118,210,.06);
+}
+
+.info-card strong{
+    display:block;
+
+    font-size:10px;
+
+    color:#31506D;
+}
+
+.info-card p{
+    margin-top:3px;
+
+    font-size:8px;
+
+    color:#74869A;
+
+    line-height:1.9;
+}
+
 
 /* =========================================================
    BOTTOM NAV
@@ -784,35 +1176,75 @@ a{
 
 .bottom-nav{
     position:fixed;
+
     z-index:100;
+
     bottom:13px;
+
     left:50%;
-    transform:translateX(-50%);
-    width:min(610px,calc(100% - 26px));
+
+    transform:
+        translateX(-50%);
+
+    width:
+        min(
+            610px,
+            calc(100% - 26px)
+        );
+
     height:70px;
+
     border-radius:25px;
-    background:rgba(255,255,255,.95);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-    box-shadow:0 12px 35px rgba(25,45,75,.14);
-    border:1px solid rgba(220,226,234,.8);
+
+    background:
+        rgba(255,255,255,.95);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 12px 35px
+        rgba(25,45,75,.14);
+
+    border:
+        1px solid
+        rgba(220,226,234,.8);
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     align-items:center;
+
     padding:6px;
 }
 
 .nav-item{
     height:58px;
+
     border-radius:19px;
+
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
+
     justify-content:center;
+
     gap:3px;
+
     color:#9AA4B2;
+
     font-size:9px;
+
     font-weight:700;
+
+    transition:.2s;
 }
 
 .nav-item i{
@@ -828,49 +1260,146 @@ a{
     transform:scale(.94);
 }
 
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+    position:fixed;
+
+    z-index:900;
+
+    left:50%;
+
+    bottom:96px;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    width:
+        min(
+            360px,
+            calc(100% - 40px)
+        );
+
+    padding:13px 16px;
+
+    border-radius:15px;
+
+    background:#17263D;
+
+    color:#fff;
+
+    font-size:10px;
+
+    text-align:center;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.18);
+}
+
+.toast.show{
+    opacity:1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+.toast.success{
+    background:#168A68;
+}
+
+.toast.error{
+    background:#C94B54;
+}
+
+
 /* =========================================================
    LOADING
 ========================================================= */
 
 .loading{
     position:fixed;
+
     inset:0;
+
     z-index:999;
+
     background:#F7F9FC;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     flex-direction:column;
+
     gap:15px;
 }
 
 .loading-logo{
     width:60px;
     height:60px;
+
     border-radius:20px;
-    background:linear-gradient(145deg,#1976D2,#43A5F5);
+
+    background:
+        linear-gradient(
+            145deg,
+            #1976D2,
+            #43A5F5
+        );
+
     color:white;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     font-size:25px;
-    box-shadow:0 12px 30px rgba(25,118,210,.2);
+
+    box-shadow:
+        0 12px 30px
+        rgba(25,118,210,.2);
 }
 
 .spinner{
     width:24px;
     height:24px;
-    border:3px solid #E0E8F1;
+
+    border:
+        3px solid
+        #E0E8F1;
+
     border-top-color:#1976D2;
+
     border-radius:50%;
-    animation:spin .8s linear infinite;
+
+    animation:
+        spin .8s linear infinite;
 }
 
 @keyframes spin{
+
     to{
         transform:rotate(360deg);
     }
+
 }
+
 
 /* =========================================================
    RESPONSIVE
@@ -878,21 +1407,25 @@ a{
 
 @media(max-width:380px){
 
+    .summary-grid{
+        gap:6px;
+    }
+
+    .summary-item{
+        padding:11px 7px;
+    }
+
+    .summary-value strong{
+        font-size:17px;
+    }
+
     .measure-grid{
         gap:7px;
     }
 
     .measure-card{
-        padding:11px;
-    }
-
-    .measure-icon{
-        width:40px;
-        height:40px;
-    }
-
-    .intro h1{
-        font-size:23px;
+        padding:12px;
+        border-radius:20px;
     }
 
 }
@@ -901,13 +1434,18 @@ a{
 
 </head>
 
+
 <body>
 
-<!-- ======================================================
-     LOADING
-====================================================== -->
 
-<div class="loading" id="loadingScreen">
+<!-- =======================================================
+     LOADING
+======================================================= -->
+
+<div
+    class="loading"
+    id="loadingScreen"
+>
 
     <div class="loading-logo">
         <i class="fa-solid fa-heart-pulse"></i>
@@ -918,117 +1456,200 @@ a{
 </div>
 
 
+
+<!-- =======================================================
+     APP
+======================================================= -->
+
 <div class="app">
 
-<!-- ======================================================
-     TOPBAR
-====================================================== -->
+
+<!-- =======================================================
+     TOP BAR
+======================================================= -->
 
 <header class="topbar">
 
-    <div class="top-left">
+    <div class="user-area">
 
-        <button
-            class="back-btn"
-            id="backBtn"
-        >
-            <i class="fa-solid fa-arrow-right"></i>
-        </button>
+        <div class="avatar">
+            <i class="fa-solid fa-user"></i>
+        </div>
 
-        <div class="page-title">
+        <div class="greeting">
 
-            <small>صحتي</small>
+            <small>أهلاً بك</small>
 
-            <strong>قياساتي</strong>
+            <strong id="topUserName">
+                ...
+            </strong>
 
         </div>
 
     </div>
 
-    <button
-        class="top-action"
-        id="refreshBtn"
-    >
-        <i class="fa-solid fa-rotate"></i>
-    </button>
+
+    <div class="top-actions">
+
+        <button
+            class="top-btn"
+            id="refreshBtn"
+            aria-label="تحديث"
+        >
+            <i class="fa-solid fa-rotate"></i>
+        </button>
+
+    </div>
 
 </header>
 
 
-<!-- ======================================================
+
+<!-- =======================================================
      INTRO
-====================================================== -->
+======================================================= -->
 
-<section class="intro">
+<section class="page-intro">
 
-    <h1>قياساتي الصحية</h1>
+    <h1>
+        قياساتي الصحية
+    </h1>
 
     <p>
-        سجّل قياساتك وتابع تغيراتها مع مرور الوقت.
+        تابع مؤشراتك الصحية وسجّل قياساتك بانتظام.
     </p>
 
 </section>
 
 
-<!-- ======================================================
-     SUMMARY
-====================================================== -->
 
-<section class="summary">
+<!-- =======================================================
+     BLUE SUMMARY
+======================================================= -->
 
-    <div class="summary-content">
+<section class="summary-card">
 
-        <div class="summary-top">
+    <div class="summary-top">
 
-            <div class="summary-icon">
+        <div class="summary-label">
+
+            <div class="summary-label-icon">
                 <i class="fa-solid fa-chart-line"></i>
             </div>
 
-            <div class="summary-text">
+            <div>
 
-                <small>آخر تحديث</small>
-
-                <strong id="lastUpdate">
-                    لا توجد قياسات
+                <strong>
+                    ملخص حالتك الصحية
                 </strong>
+
+                <small>
+                    آخر القياسات المسجلة
+                </small>
 
             </div>
 
         </div>
 
 
-        <div class="summary-info">
+        <div
+            class="summary-date"
+            id="summaryDate"
+        >
+            —
+        </div>
 
-            <div class="summary-item">
+    </div>
 
-                <span>الوزن</span>
 
-                <strong id="summaryWeight">
+    <div class="summary-grid">
+
+
+        <!-- BMI -->
+
+        <div class="summary-item">
+
+            <small>
+                مؤشر كتلة الجسم BMI
+            </small>
+
+            <div class="summary-value">
+
+                <strong id="bmiValue">
                     —
                 </strong>
 
+                <span>
+                    kg/m²
+                </span>
+
             </div>
 
+            <div
+                class="summary-status"
+                id="bmiStatus"
+            >
+                أدخل الطول والوزن
+            </div>
 
-            <div class="summary-item">
+        </div>
 
-                <span>الضغط</span>
+
+        <!-- GLUCOSE -->
+
+        <div class="summary-item">
+
+            <small>
+                ملخص السكر
+            </small>
+
+            <div class="summary-value">
+
+                <strong id="summaryGlucose">
+                    —
+                </strong>
+
+                <span>
+                    g/L
+                </span>
+
+            </div>
+
+            <div
+                class="summary-status"
+                id="summaryGlucoseType"
+            >
+                آخر قياس
+            </div>
+
+        </div>
+
+
+        <!-- BLOOD PRESSURE -->
+
+        <div class="summary-item">
+
+            <small>
+                ضغط الدم
+            </small>
+
+            <div class="summary-value">
 
                 <strong id="summaryPressure">
                     —
                 </strong>
 
+                <span>
+                    mmHg
+                </span>
+
             </div>
 
-
-            <div class="summary-item">
-
-                <span>النبض</span>
-
-                <strong id="summaryPulse">
-                    —
-                </strong>
-
+            <div
+                class="summary-status"
+                id="summaryPressureStatus"
+            >
+                آخر قراءة
             </div>
 
         </div>
@@ -1038,9 +1659,10 @@ a{
 </section>
 
 
-<!-- ======================================================
+
+<!-- =======================================================
      MEASUREMENTS
-====================================================== -->
+======================================================= -->
 
 <section class="section">
 
@@ -1052,11 +1674,15 @@ a{
                 <i class="fa-solid fa-stethoscope"></i>
             </span>
 
-            <h2>القياسات الأساسية</h2>
+            <h2>
+                قياساتي
+            </h2>
 
         </div>
 
-        <span>آخر قيمة</span>
+        <span>
+            اضغط لإضافة قياس
+        </span>
 
     </div>
 
@@ -1066,455 +1692,376 @@ a{
 
         <!-- WEIGHT -->
 
-        <div
+        <button
             class="measure-card weight"
-            data-type="weight"
+            data-measure="weight"
         >
 
-            <div class="measure-top">
+            <div class="measure-card-head">
 
                 <div class="measure-icon">
                     <i class="fa-solid fa-weight-scale"></i>
                 </div>
 
-                <button class="measure-add">
+                <div class="measure-add">
                     <i class="fa-solid fa-plus"></i>
-                </button>
+                </div>
 
             </div>
 
-            <strong class="measure-name">
+            <h3>
                 الوزن
-            </strong>
+            </h3>
 
-            <span
-                class="measure-value"
-                id="weightValue"
-            >
-                —
-            </span>
+            <div class="measure-value">
 
-            <span class="measure-unit">
-                كغ
-            </span>
+                <strong id="weightValue">
+                    —
+                </strong>
 
-            <small
-                class="measure-date"
+                <span>
+                    كغ
+                </span>
+
+            </div>
+
+            <div
+                class="measure-sub"
                 id="weightDate"
             >
                 لم يتم التسجيل
-            </small>
-
-        </div>
-
-
-        <!-- HEIGHT -->
-
-        <div
-            class="measure-card height"
-            data-type="height"
-        >
-
-            <div class="measure-top">
-
-                <div class="measure-icon">
-                    <i class="fa-solid fa-ruler-vertical"></i>
-                </div>
-
-                <button class="measure-add">
-                    <i class="fa-solid fa-plus"></i>
-                </button>
-
             </div>
 
-            <strong class="measure-name">
-                الطول
-            </strong>
-
-            <span
-                class="measure-value"
-                id="heightValue"
-            >
-                —
-            </span>
-
-            <span class="measure-unit">
-                سم
-            </span>
-
-            <small
-                class="measure-date"
-                id="heightDate"
-            >
-                لم يتم التسجيل
-            </small>
-
-        </div>
+        </button>
 
 
-        <!-- PRESSURE -->
 
-        <div
+        <!-- BLOOD PRESSURE -->
+
+        <button
             class="measure-card pressure"
-            data-type="pressure"
+            data-measure="pressure"
         >
 
-            <div class="measure-top">
+            <div class="measure-card-head">
 
                 <div class="measure-icon">
                     <i class="fa-solid fa-heart-pulse"></i>
                 </div>
 
-                <button class="measure-add">
+                <div class="measure-add">
                     <i class="fa-solid fa-plus"></i>
-                </button>
+                </div>
 
             </div>
 
-            <strong class="measure-name">
+            <h3>
                 ضغط الدم
-            </strong>
+            </h3>
 
-            <span
-                class="measure-value"
-                id="pressureValue"
-            >
-                —
-            </span>
+            <div class="measure-value">
 
-            <span class="measure-unit">
-                mmHg
-            </span>
+                <strong id="pressureValue">
+                    —
+                </strong>
 
-            <small
-                class="measure-date"
+                <span>
+                    mmHg
+                </span>
+
+            </div>
+
+            <div
+                class="measure-sub"
                 id="pressureDate"
             >
                 لم يتم التسجيل
-            </small>
+            </div>
 
-        </div>
+        </button>
+
 
 
         <!-- PULSE -->
 
-        <div
+        <button
             class="measure-card pulse"
-            data-type="pulse"
+            data-measure="pulse"
         >
 
-            <div class="measure-top">
+            <div class="measure-card-head">
 
                 <div class="measure-icon">
                     <i class="fa-solid fa-heart"></i>
                 </div>
 
-                <button class="measure-add">
+                <div class="measure-add">
                     <i class="fa-solid fa-plus"></i>
-                </button>
+                </div>
 
             </div>
 
-            <strong class="measure-name">
+            <h3>
                 نبض القلب
-            </strong>
+            </h3>
 
-            <span
-                class="measure-value"
-                id="pulseValue"
-            >
-                —
-            </span>
+            <div class="measure-value">
 
-            <span class="measure-unit">
-                نبضة/د
-            </span>
+                <strong id="pulseValue">
+                    —
+                </strong>
 
-            <small
-                class="measure-date"
+                <span>
+                    BPM
+                </span>
+
+            </div>
+
+            <div
+                class="measure-sub"
                 id="pulseDate"
             >
                 لم يتم التسجيل
-            </small>
+            </div>
 
-        </div>
+        </button>
 
 
-        <!-- SUGAR -->
 
-        <div
-            class="measure-card sugar"
-            data-type="sugar"
+        <!-- GLUCOSE -->
+
+        <button
+            class="measure-card glucose"
+            data-measure="glucose"
         >
 
-            <div class="measure-top">
+            <div class="measure-card-head">
 
                 <div class="measure-icon">
                     <i class="fa-solid fa-droplet"></i>
                 </div>
 
-                <button class="measure-add">
+                <div class="measure-add">
                     <i class="fa-solid fa-plus"></i>
-                </button>
+                </div>
 
             </div>
 
-            <strong class="measure-name">
+            <h3>
                 سكر الدم
-            </strong>
+            </h3>
 
-            <span
-                class="measure-value"
-                id="sugarValue"
-            >
-                —
-            </span>
+            <div class="measure-value">
 
-            <span class="measure-unit">
-                g/L
-            </span>
+                <strong id="glucoseValue">
+                    —
+                </strong>
 
-            <small
-                class="measure-date"
-                id="sugarDate"
+                <span>
+                    g/L
+                </span>
+
+            </div>
+
+            <div
+                class="measure-sub"
+                id="glucoseDate"
             >
                 لم يتم التسجيل
-            </small>
+            </div>
 
-        </div>
+        </button>
+
 
 
         <!-- TEMPERATURE -->
 
-        <div
+        <button
             class="measure-card temperature"
-            data-type="temperature"
+            data-measure="temperature"
         >
 
-            <div class="measure-top">
+            <div class="measure-card-head">
 
                 <div class="measure-icon">
                     <i class="fa-solid fa-temperature-half"></i>
                 </div>
 
-                <button class="measure-add">
+                <div class="measure-add">
                     <i class="fa-solid fa-plus"></i>
-                </button>
+                </div>
 
             </div>
 
-            <strong class="measure-name">
+            <h3>
                 درجة الحرارة
-            </strong>
+            </h3>
 
-            <span
-                class="measure-value"
-                id="temperatureValue"
-            >
-                —
-            </span>
+            <div class="measure-value">
 
-            <span class="measure-unit">
-                °C
-            </span>
+                <strong id="temperatureValue">
+                    —
+                </strong>
 
-            <small
-                class="measure-date"
+                <span>
+                    °C
+                </span>
+
+            </div>
+
+            <div
+                class="measure-sub"
                 id="temperatureDate"
             >
                 لم يتم التسجيل
-            </small>
+            </div>
 
-        </div>
+        </button>
+
 
 
         <!-- OXYGEN -->
 
-        <div
+        <button
             class="measure-card oxygen"
-            data-type="oxygen"
+            data-measure="oxygen"
         >
 
-            <div class="measure-top">
+            <div class="measure-card-head">
 
                 <div class="measure-icon">
                     <i class="fa-solid fa-lungs"></i>
                 </div>
 
-                <button class="measure-add">
+                <div class="measure-add">
                     <i class="fa-solid fa-plus"></i>
-                </button>
+                </div>
 
             </div>
 
-            <strong class="measure-name">
+            <h3>
                 الأكسجين
-            </strong>
+            </h3>
 
-            <span
-                class="measure-value"
-                id="oxygenValue"
-            >
-                —
-            </span>
+            <div class="measure-value">
 
-            <span class="measure-unit">
-                SpO₂ %
-            </span>
+                <strong id="oxygenValue">
+                    —
+                </strong>
 
-            <small
-                class="measure-date"
+                <span>
+                    %
+                </span>
+
+            </div>
+
+            <div
+                class="measure-sub"
                 id="oxygenDate"
             >
                 لم يتم التسجيل
-            </small>
+            </div>
 
-        </div>
+        </button>
+
 
 
         <!-- WAIST -->
 
-        <div
+        <button
             class="measure-card waist"
-            data-type="waist"
+            data-measure="waist"
         >
 
-            <div class="measure-top">
+            <div class="measure-card-head">
 
                 <div class="measure-icon">
                     <i class="fa-solid fa-ruler-horizontal"></i>
                 </div>
 
-                <button class="measure-add">
+                <div class="measure-add">
                     <i class="fa-solid fa-plus"></i>
-                </button>
+                </div>
 
             </div>
 
-            <strong class="measure-name">
+            <h3>
                 محيط الخصر
-            </strong>
+            </h3>
 
-            <span
-                class="measure-value"
-                id="waistValue"
-            >
-                —
-            </span>
+            <div class="measure-value">
 
-            <span class="measure-unit">
-                سم
-            </span>
-
-            <small
-                class="measure-date"
-                id="waistDate"
-            >
-                لم يتم التسجيل
-            </small>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     BMI
-====================================================== -->
-
-<section class="section">
-
-    <div class="section-title">
-
-        <div>
-
-            <span class="title-icon">
-                <i class="fa-solid fa-calculator"></i>
-            </span>
-
-            <h2>مؤشر كتلة الجسم</h2>
-
-        </div>
-
-        <span>BMI</span>
-
-    </div>
-
-
-    <div class="bmi-card">
-
-        <div class="bmi-top">
-
-            <div class="bmi-icon">
-                <i class="fa-solid fa-scale-balanced"></i>
-            </div>
-
-            <div class="bmi-info">
-
-                <strong>
-                    مؤشر كتلة الجسم
-                </strong>
-
-                <small id="bmiStatus">
-                    أدخل الوزن والطول لحساب المؤشر
-                </small>
-
-            </div>
-
-            <div class="bmi-value">
-
-                <strong id="bmiValue">
+                <strong id="waistValue">
                     —
                 </strong>
 
-                <small>
-                    kg/m²
-                </small>
+                <span>
+                    سم
+                </span>
 
             </div>
 
-        </div>
+            <div
+                class="measure-sub"
+                id="waistDate"
+            >
+                لم يتم التسجيل
+            </div>
+
+        </button>
 
 
-        <div class="bmi-bar">
 
-            <span
-                class="bmi-marker"
-                id="bmiMarker"
-            ></span>
+        <!-- HEIGHT -->
 
-        </div>
+        <button
+            class="measure-card height"
+            data-measure="height"
+        >
+
+            <div class="measure-card-head">
+
+                <div class="measure-icon">
+                    <i class="fa-solid fa-ruler-vertical"></i>
+                </div>
+
+                <div class="measure-add">
+                    <i class="fa-solid fa-pen"></i>
+                </div>
+
+            </div>
+
+            <h3>
+                الطول
+            </h3>
+
+            <div class="measure-value">
+
+                <strong id="heightValue">
+                    —
+                </strong>
+
+                <span>
+                    سم
+                </span>
+
+            </div>
+
+            <div class="measure-sub">
+                ضروري لحساب BMI
+            </div>
+
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- ======================================================
-     ADD BUTTON
-====================================================== -->
 
-<section class="section">
-
-    <button
-        class="add-button"
-        id="addMeasurementBtn"
-    >
-
-        <i class="fa-solid fa-plus"></i>
-
-        إضافة قياس جديد
-
-    </button>
-
-</section>
-
-
-<!-- ======================================================
-     HISTORY
-====================================================== -->
+<!-- =======================================================
+     WEIGHT CHART
+======================================================= -->
 
 <section class="section">
 
@@ -1523,30 +2070,476 @@ a{
         <div>
 
             <span class="title-icon">
-                <i class="fa-solid fa-clock-rotate-left"></i>
+                <i class="fa-solid fa-weight-scale"></i>
             </span>
 
-            <h2>سجل القياسات</h2>
+            <h2>
+                تطور الوزن
+            </h2>
 
         </div>
 
-        <span id="historyCount">
-            0 قياس
+        <span>
+            حسب الأيام
         </span>
 
     </div>
 
 
-    <div
-        class="history-list"
-        id="historyList"
-    >
+    <div class="chart-box">
 
-        <div class="history-empty">
+        <div class="chart-header">
 
-            <i class="fa-regular fa-folder-open"></i>
+            <strong>
+                مخطط الوزن
+            </strong>
 
-            لا توجد قياسات مسجلة بعد.
+            <span>
+                كغ
+            </span>
+
+        </div>
+
+        <div class="chart-wrap">
+            <canvas id="weightChart"></canvas>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     PULSE CHART
+======================================================= -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+
+            <span class="title-icon">
+                <i class="fa-solid fa-heart"></i>
+            </span>
+
+            <h2>
+                تطور نبض القلب
+            </h2>
+
+        </div>
+
+        <span>
+            BPM
+        </span>
+
+    </div>
+
+
+    <div class="chart-box">
+
+        <div class="chart-header">
+
+            <strong>
+                مخطط النبض
+            </strong>
+
+            <span>
+                نبضة / دقيقة
+            </span>
+
+        </div>
+
+        <div class="chart-wrap">
+            <canvas id="pulseChart"></canvas>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     TEMPERATURE CHART
+======================================================= -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+
+            <span class="title-icon">
+                <i class="fa-solid fa-temperature-half"></i>
+            </span>
+
+            <h2>
+                درجة الحرارة
+            </h2>
+
+        </div>
+
+        <span>
+            °C
+        </span>
+
+    </div>
+
+
+    <div class="chart-box">
+
+        <div class="chart-header">
+
+            <strong>
+                تغير درجة الحرارة
+            </strong>
+
+            <span>
+                حسب الأيام
+            </span>
+
+        </div>
+
+        <div class="chart-wrap">
+            <canvas id="temperatureChart"></canvas>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     WAIST CHART
+======================================================= -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+
+            <span class="title-icon">
+                <i class="fa-solid fa-ruler-horizontal"></i>
+            </span>
+
+            <h2>
+                محيط الخصر
+            </h2>
+
+        </div>
+
+        <span>
+            سم
+        </span>
+
+    </div>
+
+
+    <div class="chart-box">
+
+        <div class="chart-header">
+
+            <strong>
+                تغير محيط الخصر
+            </strong>
+
+            <span>
+                حسب الأيام
+            </span>
+
+        </div>
+
+        <div class="chart-wrap">
+            <canvas id="waistChart"></canvas>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     BLOOD PRESSURE TABLE
+======================================================= -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+
+            <span class="title-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </span>
+
+            <h2>
+                سجل ضغط الدم
+            </h2>
+
+        </div>
+
+        <span>
+            التاريخ والوقت
+        </span>
+
+    </div>
+
+
+    <div class="table-box">
+
+        <div class="table-scroll">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            التاريخ
+                        </th>
+
+                        <th>
+                            الوقت
+                        </th>
+
+                        <th>
+                            الانقباضي
+                        </th>
+
+                        <th>
+                            الانبساطي
+                        </th>
+
+                        <th>
+                            النبض
+                        </th>
+
+                        <th>
+                            حذف
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="pressureTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div
+            class="empty-table"
+            id="pressureEmpty"
+        >
+            لا توجد قياسات ضغط مسجلة بعد.
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     GLUCOSE TABLE
+======================================================= -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+
+            <span class="title-icon">
+                <i class="fa-solid fa-droplet"></i>
+            </span>
+
+            <h2>
+                سجل سكر الدم
+            </h2>
+
+        </div>
+
+        <span>
+            حسب وقت القياس
+        </span>
+
+    </div>
+
+
+    <div class="table-box">
+
+        <div class="table-scroll">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            التاريخ
+                        </th>
+
+                        <th>
+                            الوقت
+                        </th>
+
+                        <th>
+                            نوع القياس
+                        </th>
+
+                        <th>
+                            القيمة
+                        </th>
+
+                        <th>
+                            الوحدة
+                        </th>
+
+                        <th>
+                            حذف
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="glucoseTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div
+            class="empty-table"
+            id="glucoseEmpty"
+        >
+            لا توجد قياسات سكر مسجلة بعد.
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     OXYGEN TABLE
+======================================================= -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+
+            <span class="title-icon">
+                <i class="fa-solid fa-lungs"></i>
+            </span>
+
+            <h2>
+                سجل الأكسجين
+            </h2>
+
+        </div>
+
+        <span>
+            التاريخ والوقت
+        </span>
+
+    </div>
+
+
+    <div class="table-box">
+
+        <div class="table-scroll">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            التاريخ
+                        </th>
+
+                        <th>
+                            الوقت
+                        </th>
+
+                        <th>
+                            SpO₂
+                        </th>
+
+                        <th>
+                            النبض
+                        </th>
+
+                        <th>
+                            حذف
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="oxygenTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div
+            class="empty-table"
+            id="oxygenEmpty"
+        >
+            لا توجد قياسات أكسجين مسجلة بعد.
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     INFORMATION
+======================================================= -->
+
+<section class="section">
+
+    <div class="info-card">
+
+        <div class="info-icon">
+            <i class="fa-solid fa-circle-info"></i>
+        </div>
+
+        <div>
+
+            <strong>
+                ملاحظة
+            </strong>
+
+            <p>
+                هذه الصفحة مخصصة لتسجيل ومتابعة القياسات الصحية.
+                القيم المسجلة تساعدك على متابعة التغيرات مع الوقت،
+                ولا تُستخدم وحدها لتشخيص أي حالة مرضية.
+            </p>
 
         </div>
 
@@ -1555,12 +2548,14 @@ a{
 </section>
 
 
+
 </div>
 
 
-<!-- ======================================================
+
+<!-- =======================================================
      BOTTOM NAV
-====================================================== -->
+======================================================= -->
 
 <nav class="bottom-nav">
 
@@ -1568,8 +2563,13 @@ a{
         href="dashboard.html"
         class="nav-item"
     >
+
         <i class="fa-solid fa-house"></i>
-        <span>الرئيسية</span>
+
+        <span>
+            الرئيسية
+        </span>
+
     </a>
 
 
@@ -1577,8 +2577,13 @@ a{
         href="challenges.html"
         class="nav-item"
     >
+
         <i class="fa-solid fa-bullseye"></i>
-        <span>تحدياتي</span>
+
+        <span>
+            تحدياتي
+        </span>
+
     </a>
 
 
@@ -1586,8 +2591,13 @@ a{
         href="health.html"
         class="nav-item active"
     >
+
         <i class="fa-solid fa-heart-pulse"></i>
-        <span>صحتي</span>
+
+        <span>
+            صحتي
+        </span>
+
     </a>
 
 
@@ -1595,16 +2605,22 @@ a{
         href="more.html"
         class="nav-item"
     >
-        <i class="fa-solid fa-grip"></i>
-        <span>المزيد</span>
+
+        <i class="fa-solid fa-table-cells-large"></i>
+
+        <span>
+            المزيد
+        </span>
+
     </a>
 
 </nav>
 
 
-<!-- ======================================================
-     ADD MODAL
-====================================================== -->
+
+<!-- =======================================================
+     MODAL
+======================================================= -->
 
 <div
     class="modal"
@@ -1615,9 +2631,29 @@ a{
 
         <div class="modal-head">
 
-            <h3 id="modalTitle">
-                إضافة قياس
-            </h3>
+            <div class="modal-title">
+
+                <div
+                    class="modal-title-icon"
+                    id="modalIcon"
+                >
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+
+                <div>
+
+                    <h3 id="modalTitle">
+                        إضافة قياس
+                    </h3>
+
+                    <small id="modalSubtitle">
+                        أدخل البيانات
+                    </small>
+
+                </div>
+
+            </div>
+
 
             <button
                 class="close"
@@ -1629,146 +2665,51 @@ a{
         </div>
 
 
-        <div class="form-group">
+        <form id="measurementForm">
 
-            <label>
-                نوع القياس
-            </label>
+            <div id="dynamicFields"></div>
 
-            <select id="measurementType">
-
-                <option value="weight">
-                    الوزن
-                </option>
-
-                <option value="height">
-                    الطول
-                </option>
-
-                <option value="pressure">
-                    ضغط الدم
-                </option>
-
-                <option value="pulse">
-                    نبض القلب
-                </option>
-
-                <option value="sugar">
-                    سكر الدم
-                </option>
-
-                <option value="temperature">
-                    درجة الحرارة
-                </option>
-
-                <option value="oxygen">
-                    نسبة الأكسجين
-                </option>
-
-                <option value="waist">
-                    محيط الخصر
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div
-            class="form-group"
-            id="singleValueGroup"
-        >
-
-            <label id="valueLabel">
-                القيمة
-            </label>
-
-            <input
-                type="number"
-                id="measurementValue"
-                inputmode="decimal"
-                step="any"
-                placeholder="أدخل القيمة"
+            <button
+                class="save-btn"
+                type="submit"
             >
 
-        </div>
+                <i class="fa-solid fa-check"></i>
 
+                حفظ القياس
 
-        <div
-            class="two-fields"
-            id="pressureFields"
-            style="display:none;"
-        >
+            </button>
 
-            <div class="form-group">
-
-                <label>
-                    الانقباضي
-                </label>
-
-                <input
-                    type="number"
-                    id="systolic"
-                    inputmode="numeric"
-                    placeholder="120"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    الانبساطي
-                </label>
-
-                <input
-                    type="number"
-                    id="diastolic"
-                    inputmode="numeric"
-                    placeholder="80"
-                >
-
-            </div>
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                التاريخ والوقت
-            </label>
-
-            <input
-                type="datetime-local"
-                id="measurementDate"
-            >
-
-        </div>
-
-
-        <button
-            class="save-button"
-            id="saveMeasurement"
-        >
-
-            <i class="fa-solid fa-check"></i>
-
-            حفظ القياس
-
-        </button>
+        </form>
 
     </div>
 
 </div>
 
 
-<!-- ======================================================
+
+<!-- =======================================================
+     TOAST
+======================================================= -->
+
+<div
+    class="toast"
+    id="toast"
+>
+</div>
+
+
+
+<!-- =======================================================
      FIREBASE
-====================================================== -->
+======================================================= -->
 
 <script type="module">
+
+
+/* =========================================================
+   FIREBASE IMPORTS
+========================================================= */
 
 import {
     auth,
@@ -1780,15 +2721,40 @@ import {
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
 import {
+    doc,
+    getDoc,
     collection,
     addDoc,
-    getDocs,
     deleteDoc,
-    doc,
+    getDocs,
     query,
     orderBy,
-    limit
+    limit,
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let currentUser = null;
+
+let heightCm = 0;
+
+let records = {
+
+    weight:[],
+    pressure:[],
+    pulse:[],
+    glucose:[],
+    temperature:[],
+    oxygen:[],
+    waist:[]
+
+};
+
+let currentMeasurement = "";
 
 
 /* =========================================================
@@ -1796,122 +2762,116 @@ import {
 ========================================================= */
 
 const loadingScreen =
-    document.getElementById("loadingScreen");
+    document.getElementById(
+        "loadingScreen"
+    );
 
 const modal =
-    document.getElementById("measurementModal");
+    document.getElementById(
+        "measurementModal"
+    );
 
-const measurementType =
-    document.getElementById("measurementType");
+const dynamicFields =
+    document.getElementById(
+        "dynamicFields"
+    );
 
-const measurementValue =
-    document.getElementById("measurementValue");
+const measurementForm =
+    document.getElementById(
+        "measurementForm"
+    );
 
-const systolic =
-    document.getElementById("systolic");
+const modalTitle =
+    document.getElementById(
+        "modalTitle"
+    );
 
-const diastolic =
-    document.getElementById("diastolic");
+const modalSubtitle =
+    document.getElementById(
+        "modalSubtitle"
+    );
 
-const pressureFields =
-    document.getElementById("pressureFields");
+const modalIcon =
+    document.getElementById(
+        "modalIcon"
+    );
 
-const valueLabel =
-    document.getElementById("valueLabel");
-
-const measurementDate =
-    document.getElementById("measurementDate");
-
-const historyList =
-    document.getElementById("historyList");
-
-let currentUser = null;
-
-let measurements = [];
-
-
-/* =========================================================
-   TYPES
-========================================================= */
-
-const typeInfo = {
-
-    weight:{
-        name:"الوزن",
-        unit:"كغ",
-        icon:"fa-weight-scale"
-    },
-
-    height:{
-        name:"الطول",
-        unit:"سم",
-        icon:"fa-ruler-vertical"
-    },
-
-    pressure:{
-        name:"ضغط الدم",
-        unit:"mmHg",
-        icon:"fa-heart-pulse"
-    },
-
-    pulse:{
-        name:"نبض القلب",
-        unit:"نبضة/د",
-        icon:"fa-heart"
-    },
-
-    sugar:{
-        name:"سكر الدم",
-        unit:"g/L",
-        icon:"fa-droplet"
-    },
-
-    temperature:{
-        name:"درجة الحرارة",
-        unit:"°C",
-        icon:"fa-temperature-half"
-    },
-
-    oxygen:{
-        name:"الأكسجين",
-        unit:"%",
-        icon:"fa-lungs"
-    },
-
-    waist:{
-        name:"محيط الخصر",
-        unit:"سم",
-        icon:"fa-ruler-horizontal"
-    }
-
-};
+const toast =
+    document.getElementById(
+        "toast"
+    );
 
 
 /* =========================================================
-   DATE
+   HELPERS
 ========================================================= */
 
-function formatDate(value){
+function number(value){
 
-    if(!value){
-        return "—";
+    const n =
+        Number(value);
+
+    return Number.isFinite(n)
+        ? n
+        : 0;
+
+}
+
+
+function pad(value){
+
+    return String(value)
+        .padStart(2,"0");
+
+}
+
+
+function dateFromRecord(record){
+
+    if(
+        record.createdAt &&
+        typeof record.createdAt.toDate === "function"
+    ){
+        return record.createdAt.toDate();
     }
 
-    const date =
-        value instanceof Date
-            ? value
-            : new Date(value);
-
-    if(Number.isNaN(date.getTime())){
-        return "—";
+    if(record.createdAt instanceof Date){
+        return record.createdAt;
     }
+
+    if(record.dateTime){
+        const d =
+            new Date(record.dateTime);
+
+        if(!isNaN(d.getTime())){
+            return d;
+        }
+    }
+
+    return new Date();
+
+}
+
+
+function formatDate(date){
 
     return new Intl.DateTimeFormat(
         "ar-DZ",
         {
-            day:"numeric",
-            month:"short",
             year:"numeric",
+            month:"2-digit",
+            day:"2-digit"
+        }
+    ).format(date);
+
+}
+
+
+function formatTime(date){
+
+    return new Intl.DateTimeFormat(
+        "ar-DZ",
+        {
             hour:"2-digit",
             minute:"2-digit"
         }
@@ -1920,65 +2880,2696 @@ function formatDate(value){
 }
 
 
-function localDateTime(){
+function formatShortDate(date){
 
-    const date = new Date();
-
-    const year =
-        date.getFullYear();
-
-    const month =
-        String(
-            date.getMonth()+1
-        ).padStart(2,"0");
-
-    const day =
-        String(
-            date.getDate()
-        ).padStart(2,"0");
-
-    const hour =
-        String(
-            date.getHours()
-        ).padStart(2,"0");
-
-    const minute =
-        String(
-            date.getMinutes()
-        ).padStart(2,"0");
-
-    return `${year}-${month}-${day}T${hour}:${minute}`;
+    return new Intl.DateTimeFormat(
+        "ar-DZ",
+        {
+            day:"numeric",
+            month:"short"
+        }
+    ).format(date);
 
 }
 
 
 /* =========================================================
-   MODAL
+   TOAST
 ========================================================= */
 
-function openModal(type="weight"){
+function showToast(
+    message,
+    type="success"
+){
 
-    modal.classList.add("show");
+    toast.textContent =
+        message;
 
-    measurementType.value =
-        type;
+    toast.className =
+        `toast show ${type}`;
 
-    measurementValue.value =
-        "";
-
-    systolic.value =
-        "";
-
-    diastolic.value =
-        "";
-
-    measurementDate.value =
-        localDateTime();
-
-    updateForm();
+    setTimeout(
+        () => {
+            toast.className =
+                "toast";
+        },
+        2600
+    );
 
 }
 
+
+/* =========================================================
+   USER
+========================================================= */
+
+async function loadUser(){
+
+    if(!currentUser) return;
+
+    try{
+
+        const ref =
+            doc(
+                db,
+                "users",
+                currentUser.uid
+            );
+
+        const snap =
+            await getDoc(ref);
+
+        let data = {};
+
+        if(snap.exists()){
+            data = snap.data();
+        }
+
+        const name =
+            data.name ||
+            data.displayName ||
+            currentUser.displayName ||
+            "مستخدم صحتي";
+
+        document.getElementById(
+            "topUserName"
+        ).textContent =
+            name;
+
+        /*
+          Support several possible
+          height field names.
+        */
+
+        heightCm =
+            number(
+                data.height ||
+                data.heightCm ||
+                data.userHeight
+            );
+
+        updateHeightUI();
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+
+/* =========================================================
+   HEIGHT UI
+========================================================= */
+
+function updateHeightUI(){
+
+    const el =
+        document.getElementById(
+            "heightValue"
+        );
+
+    el.textContent =
+        heightCm > 0
+            ? heightCm
+            : "—";
+
+    calculateBMI();
+
+}
+
+
+/* =========================================================
+   BMI
+========================================================= */
+
+function calculateBMI(){
+
+    const latestWeight =
+        records.weight[0];
+
+    if(
+        !heightCm ||
+        !latestWeight
+    ){
+
+        document.getElementById(
+            "bmiValue"
+        ).textContent =
+            "—";
+
+        document.getElementById(
+            "bmiStatus"
+        ).textContent =
+            "أدخل الطول والوزن";
+
+        return;
+
+    }
+
+    const weight =
+        number(
+            latestWeight.value
+        );
+
+    const heightM =
+        heightCm / 100;
+
+    if(
+        weight <= 0 ||
+        heightM <= 0
+    ) return;
+
+    const bmi =
+        weight /
+        (heightM * heightM);
+
+    document.getElementById(
+        "bmiValue"
+    ).textContent =
+        bmi.toFixed(1);
+
+    let status = "";
+
+    if(bmi < 18.5){
+
+        status =
+            "نقص وزن";
+
+    }else if(bmi < 25){
+
+        status =
+            "وزن طبيعي";
+
+    }else if(bmi < 30){
+
+        status =
+            "زيادة وزن";
+
+    }else{
+
+        status =
+            "سمنة";
+
+    }
+
+    document.getElementById(
+        "bmiStatus"
+    ).textContent =
+        status;
+
+}
+
+
+/* =========================================================
+   MEASUREMENT CONFIG
+========================================================= */
+
+const configs = {
+
+    weight:{
+
+        title:"الوزن",
+
+        subtitle:
+            "سجل وزنك لمتابعة التغير مع الوقت",
+
+        icon:
+            "fa-solid fa-weight-scale"
+
+    },
+
+    pressure:{
+
+        title:"ضغط الدم",
+
+        subtitle:
+            "أدخل ضغط الدم الانقباضي والانبساطي",
+
+        icon:
+            "fa-solid fa-heart-pulse"
+
+    },
+
+    pulse:{
+
+        title:"نبض القلب",
+
+        subtitle:
+            "عدد ضربات القلب في الدقيقة",
+
+        icon:
+            "fa-solid fa-heart"
+
+    },
+
+    glucose:{
+
+        title:"سكر الدم",
+
+        subtitle:
+            "اختر توقيت القياس ثم أدخل القيمة",
+
+        icon:
+            "fa-solid fa-droplet"
+
+    },
+
+    temperature:{
+
+        title:"درجة الحرارة",
+
+        subtitle:
+            "سجل درجة الحرارة",
+
+        icon:
+            "fa-solid fa-temperature-half"
+
+    },
+
+    oxygen:{
+
+        title:"الأكسجين",
+
+        subtitle:
+            "سجل نسبة تشبع الأكسجين SpO₂",
+
+        icon:
+            "fa-solid fa-lungs"
+
+    },
+
+    waist:{
+
+        title:"محيط الخصر",
+
+        subtitle:
+            "سجل محيط الخصر بالسنتيمتر",
+
+        icon:
+            "fa-solid fa-ruler-horizontal"
+
+    },
+
+    height:{
+
+        title:"الطول",
+
+        subtitle:
+            "يستخدم الطول لحساب مؤشر كتلة الجسم",
+
+        icon:
+            "fa-solid fa-ruler-vertical"
+
+    }
+
+};
+
+
+/* =========================================================
+   OPEN MODAL
+========================================================= */
+
+function openMeasurement(
+    type
+){
+
+    currentMeasurement =
+        type;
+
+    const config =
+        configs[type];
+
+    modalTitle.textContent =
+        config.title;
+
+    modalSubtitle.textContent =
+        config.subtitle;
+
+    modalIcon.innerHTML =
+        `<i class="${config.icon}"></i>`;
+
+    renderFields(type);
+
+    modal.classList.add(
+        "show"
+    );
+
+}
+
+
+/* =========================================================
+   RENDER FIELDS
+========================================================= */
+
+function renderFields(type){
+
+    let html = "";
+
+
+    /* WEIGHT */
+
+    if(type === "weight"){
+
+        html = `
+
+            <div class="form-group">
+
+                <label>
+                    الوزن
+                </label>
+
+                <div class="input-wrap">
+
+                    <i class="fa-solid fa-weight-scale"></i>
+
+                    <input
+                        type="number"
+                        step="0.1"
+                        min="1"
+                        max="500"
+                        id="inputWeight"
+                        placeholder="مثال: 70.5"
+                        required
+                    >
+
+                    <span class="unit">
+                        كغ
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* PRESSURE */
+
+    if(type === "pressure"){
+
+        html = `
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>
+                        الضغط الانقباضي
+                    </label>
+
+                    <div class="input-wrap">
+
+                        <i class="fa-solid fa-arrow-up"></i>
+
+                        <input
+                            type="number"
+                            min="50"
+                            max="250"
+                            id="inputSystolic"
+                            placeholder="120"
+                            required
+                        >
+
+                        <span class="unit">
+                            mmHg
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        الضغط الانبساطي
+                    </label>
+
+                    <div class="input-wrap">
+
+                        <i class="fa-solid fa-arrow-down"></i>
+
+                        <input
+                            type="number"
+                            min="30"
+                            max="180"
+                            id="inputDiastolic"
+                            placeholder="80"
+                            required
+                        >
+
+                        <span class="unit">
+                            mmHg
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    النبض أثناء القياس
+                </label>
+
+                <div class="input-wrap">
+
+                    <i class="fa-solid fa-heart"></i>
+
+                    <input
+                        type="number"
+                        min="30"
+                        max="220"
+                        id="inputPressurePulse"
+                        placeholder="70"
+                    >
+
+                    <span class="unit">
+                        BPM
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* PULSE */
+
+    if(type === "pulse"){
+
+        html = `
+
+            <div class="form-group">
+
+                <label>
+                    نبض القلب
+                </label>
+
+                <div class="input-wrap">
+
+                    <i class="fa-solid fa-heart"></i>
+
+                    <input
+                        type="number"
+                        min="30"
+                        max="220"
+                        id="inputPulse"
+                        placeholder="70"
+                        required
+                    >
+
+                    <span class="unit">
+                        BPM
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* GLUCOSE */
+
+    if(type === "glucose"){
+
+        html = `
+
+            <div class="form-group">
+
+                <label>
+                    نوع القياس
+                </label>
+
+                <div class="input-wrap">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    <select
+                        id="inputGlucoseType"
+                        required
+                    >
+
+                        <option value="">
+                            اختر توقيت القياس
+                        </option>
+
+                        <option value="fasting">
+                            صائم
+                        </option>
+
+                        <option value="beforeMeal">
+                            قبل الأكل
+                        </option>
+
+                        <option value="afterBreakfast">
+                            بعد الإفطار بساعتين
+                        </option>
+
+                        <option value="afterLunch">
+                            بعد الغداء بساعتين
+                        </option>
+
+                        <option value="afterDinner">
+                            بعد العشاء بساعتين
+                        </option>
+
+                        <option value="random">
+                            قياس عشوائي
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    قيمة السكر
+                </label>
+
+                <div class="input-wrap">
+
+                    <i class="fa-solid fa-droplet"></i>
+
+                    <input
+                        type="number"
+                        step="0.01"
+                        min="0.2"
+                        max="10"
+                        id="inputGlucose"
+                        placeholder="مثال: 0.95"
+                        required
+                    >
+
+                    <span class="unit">
+                        g/L
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* TEMPERATURE */
+
+    if(type === "temperature"){
+
+        html = `
+
+            <div class="form-group">
+
+                <label>
+                    درجة الحرارة
+                </label>
+
+                <div class="input-wrap">
+
+                    <i class="fa-solid fa-temperature-half"></i>
+
+                    <input
+                        type="number"
+                        step="0.1"
+                        min="30"
+                        max="45"
+                        id="inputTemperature"
+                        placeholder="36.7"
+                        required
+                    >
+
+                    <span class="unit">
+                        °C
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* OXYGEN */
+
+    if(type === "oxygen"){
+
+        html = `
+
+            <div class="form-group">
+
+                <label>
+                    تشبع الأكسجين SpO₂
+                </label>
+
+                <div class="input-wrap">
+
+                    <i class="fa-solid fa-lungs"></i>
+
+                    <input
+                        type="number"
+                        step="1"
+                        min="50"
+                        max="100"
+                        id="inputOxygen"
+                        placeholder="98"
+                        required
+                    >
+
+                    <span class="unit">
+                        %
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    النبض أثناء القياس — اختياري
+                </label>
+
+                <div class="input-wrap">
+
+                    <i class="fa-solid fa-heart"></i>
+
+                    <input
+                        type="number"
+                        min="30"
+                        max="220"
+                        id="inputOxygenPulse"
+                        placeholder="70"
+                    >
+
+                    <span class="unit">
+                        BPM
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* WAIST */
+
+    if(type === "waist"){
+
+        html = `
+
+            <div class="form-group">
+
+                <label>
+                    محيط الخصر
+                </label>
+
+                <div class="input-wrap">
+
+                    <i class="fa-solid fa-ruler-horizontal"></i>
+
+                    <input
+                        type="number"
+                        step="0.1"
+                        min="20"
+                        max="250"
+                        id="inputWaist"
+                        placeholder="مثال: 85"
+                        required
+                    >
+
+                    <span class="unit">
+                        سم
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* HEIGHT */
+
+    if(type === "height"){
+
+        html = `
+
+            <div class="form-group">
+
+                <label>
+                    الطول
+                </label>
+
+                <div class="input-wrap">
+
+                    <i class="fa-solid fa-ruler-vertical"></i>
+
+                    <input
+                        type="number"
+                        step="0.1"
+                        min="80"
+                        max="250"
+                        id="inputHeight"
+                        value="${heightCm || ""}"
+                        placeholder="مثال: 170"
+                        required
+                    >
+
+                    <span class="unit">
+                        سم
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    dynamicFields.innerHTML =
+        html;
+
+}
+
+
+/* =========================================================
+   SAVE HEIGHT
+========================================================= */
+
+async function saveHeight(){
+
+    const input =
+        document.getElementById(
+            "inputHeight"
+        );
+
+    const value =
+        number(input.value);
+
+    if(
+        value < 80 ||
+        value > 250
+    ){
+
+        showToast(
+            "أدخل طولًا صحيحًا.",
+            "error"
+        );
+
+        return;
+
+    }
+
+    try{
+
+        const userRef =
+            doc(
+                db,
+                "users",
+                currentUser.uid
+            );
+
+        /*
+          نحفظ الطول في ملف المستخدم.
+        */
+
+        const {
+            setDoc
+        } = await import(
+            "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js"
+        );
+
+        await setDoc(
+            userRef,
+            {
+                height:value,
+                heightCm:value,
+                updatedAt:serverTimestamp()
+            },
+            {
+                merge:true
+            }
+        );
+
+        heightCm =
+            value;
+
+        updateHeightUI();
+
+        closeModal();
+
+        showToast(
+            "تم حفظ الطول وحساب BMI.",
+            "success"
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        showToast(
+            "حدث خطأ أثناء الحفظ.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   COLLECTION
+========================================================= */
+
+function measurementCollection(
+    type
+){
+
+    return collection(
+        db,
+        "users",
+        currentUser.uid,
+        "healthMeasurements",
+        type,
+        "records"
+    );
+
+}
+
+
+/* =========================================================
+   SAVE MEASUREMENT
+========================================================= */
+
+async function saveMeasurement(){
+
+    if(
+        !currentUser ||
+        !currentMeasurement
+    ) return;
+
+
+    /* HEIGHT */
+
+    if(
+        currentMeasurement ===
+        "height"
+    ){
+
+        await saveHeight();
+
+        return;
+
+    }
+
+
+    const type =
+        currentMeasurement;
+
+    let data = {
+        userId:
+            currentUser.uid,
+
+        createdAt:
+            serverTimestamp(),
+
+        dateTime:
+            new Date().toISOString()
+    };
+
+
+    /* WEIGHT */
+
+    if(type === "weight"){
+
+        const value =
+            number(
+                document.getElementById(
+                    "inputWeight"
+                ).value
+            );
+
+        if(value <= 0){
+
+            showToast(
+                "أدخل وزنًا صحيحًا.",
+                "error"
+            );
+
+            return;
+
+        }
+
+        data.value =
+            value;
+
+        data.unit =
+            "kg";
+
+    }
+
+
+    /* PRESSURE */
+
+    if(type === "pressure"){
+
+        const systolic =
+            number(
+                document.getElementById(
+                    "inputSystolic"
+                ).value
+            );
+
+        const diastolic =
+            number(
+                document.getElementById(
+                    "inputDiastolic"
+                ).value
+            );
+
+        const pulse =
+            number(
+                document.getElementById(
+                    "inputPressurePulse"
+                ).value
+            );
+
+        if(
+            systolic <= 0 ||
+            diastolic <= 0
+        ){
+
+            showToast(
+                "أدخل قيم ضغط الدم.",
+                "error"
+            );
+
+            return;
+
+        }
+
+        data.systolic =
+            systolic;
+
+        data.diastolic =
+            diastolic;
+
+        data.pulse =
+            pulse || null;
+
+        data.unit =
+            "mmHg";
+
+    }
+
+
+    /* PULSE */
+
+    if(type === "pulse"){
+
+        const value =
+            number(
+                document.getElementById(
+                    "inputPulse"
+                ).value
+            );
+
+        if(value <= 0){
+
+            showToast(
+                "أدخل قيمة النبض.",
+                "error"
+            );
+
+            return;
+
+        }
+
+        data.value =
+            value;
+
+        data.unit =
+            "BPM";
+
+    }
+
+
+    /* GLUCOSE */
+
+    if(type === "glucose"){
+
+        const glucoseType =
+            document.getElementById(
+                "inputGlucoseType"
+            ).value;
+
+        const value =
+            number(
+                document.getElementById(
+                    "inputGlucose"
+                ).value
+            );
+
+        if(
+            !glucoseType ||
+            value <= 0
+        ){
+
+            showToast(
+                "أدخل نوع القياس والقيمة.",
+                "error"
+            );
+
+            return;
+
+        }
+
+        data.value =
+            value;
+
+        data.type =
+            glucoseType;
+
+        data.typeLabel =
+            glucoseTypeLabel(
+                glucoseType
+            );
+
+        data.unit =
+            "g/L";
+
+    }
+
+
+    /* TEMPERATURE */
+
+    if(type === "temperature"){
+
+        const value =
+            number(
+                document.getElementById(
+                    "inputTemperature"
+                ).value
+            );
+
+        if(
+            value < 30 ||
+            value > 45
+        ){
+
+            showToast(
+                "أدخل درجة حرارة صحيحة.",
+                "error"
+            );
+
+            return;
+
+        }
+
+        data.value =
+            value;
+
+        data.unit =
+            "°C";
+
+    }
+
+
+    /* OXYGEN */
+
+    if(type === "oxygen"){
+
+        const value =
+            number(
+                document.getElementById(
+                    "inputOxygen"
+                ).value
+            );
+
+        const pulse =
+            number(
+                document.getElementById(
+                    "inputOxygenPulse"
+                ).value
+            );
+
+        if(
+            value < 50 ||
+            value > 100
+        ){
+
+            showToast(
+                "أدخل نسبة أكسجين صحيحة.",
+                "error"
+            );
+
+            return;
+
+        }
+
+        data.value =
+            value;
+
+        data.pulse =
+            pulse || null;
+
+        data.unit =
+            "%";
+
+    }
+
+
+    /* WAIST */
+
+    if(type === "waist"){
+
+        const value =
+            number(
+                document.getElementById(
+                    "inputWaist"
+                ).value
+            );
+
+        if(value <= 0){
+
+            showToast(
+                "أدخل محيط الخصر.",
+                "error"
+            );
+
+            return;
+
+        }
+
+        data.value =
+            value;
+
+        data.unit =
+            "cm";
+
+    }
+
+
+    try{
+
+        await addDoc(
+            measurementCollection(type),
+            data
+        );
+
+        closeModal();
+
+        showToast(
+            "تم حفظ القياس بنجاح.",
+            "success"
+        );
+
+        await loadAllMeasurements();
+
+    }catch(error){
+
+        console.error(
+            "Save measurement:",
+            error
+        );
+
+        showToast(
+            "حدث خطأ أثناء حفظ القياس.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   GLUCOSE LABEL
+========================================================= */
+
+function glucoseTypeLabel(
+    type
+){
+
+    const labels = {
+
+        fasting:
+            "صائم",
+
+        beforeMeal:
+            "قبل الأكل",
+
+        afterBreakfast:
+            "بعد الإفطار بساعتين",
+
+        afterLunch:
+            "بعد الغداء بساعتين",
+
+        afterDinner:
+            "بعد العشاء بساعتين",
+
+        random:
+            "عشوائي"
+
+    };
+
+    return labels[type] ||
+        "قياس سكر";
+
+}
+
+
+/* =========================================================
+   LOAD COLLECTION
+========================================================= */
+
+async function loadCollection(
+    type,
+    max=100
+){
+
+    try{
+
+        const ref =
+            measurementCollection(
+                type
+            );
+
+        const q =
+            query(
+                ref,
+                orderBy(
+                    "createdAt",
+                    "desc"
+                ),
+                limit(max)
+            );
+
+        const snap =
+            await getDocs(q);
+
+        return snap.docs.map(
+            item => {
+
+                return {
+                    id:item.id,
+                    ...item.data()
+                };
+
+            }
+        );
+
+    }catch(error){
+
+        console.warn(
+            "Indexed query failed:",
+            type,
+            error
+        );
+
+        /*
+          fallback بدون orderBy
+          إذا كانت البيانات القديمة
+          لا تحتوي createdAt بشكل صحيح.
+        */
+
+        try{
+
+            const snap =
+                await getDocs(
+                    measurementCollection(
+                        type
+                    )
+                );
+
+            const result =
+                snap.docs.map(
+                    item => ({
+                        id:item.id,
+                        ...item.data()
+                    })
+                );
+
+            result.sort(
+                (a,b) =>
+                    dateFromRecord(b)
+                    -
+                    dateFromRecord(a)
+            );
+
+            return result.slice(
+                0,
+                max
+            );
+
+        }catch(error2){
+
+            console.error(
+                error2
+            );
+
+            return [];
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD ALL
+========================================================= */
+
+async function loadAllMeasurements(){
+
+    const types = [
+        "weight",
+        "pressure",
+        "pulse",
+        "glucose",
+        "temperature",
+        "oxygen",
+        "waist"
+    ];
+
+    const results =
+        await Promise.all(
+            types.map(
+                type =>
+                    loadCollection(
+                        type
+                    )
+            )
+        );
+
+    types.forEach(
+        (type,index) => {
+
+            records[type] =
+                results[index];
+
+        }
+    );
+
+    renderAll();
+
+}
+
+
+/* =========================================================
+   RENDER ALL
+========================================================= */
+
+function renderAll(){
+
+    renderLatestCards();
+
+    renderPressureTable();
+
+    renderGlucoseTable();
+
+    renderOxygenTable();
+
+    calculateBMI();
+
+    renderCharts();
+
+    renderSummaryDate();
+
+}
+
+
+/* =========================================================
+   LATEST CARD VALUES
+========================================================= */
+
+function latest(
+    type
+){
+
+    return records[type]?.[0] ||
+        null;
+
+}
+
+
+function renderLatestCards(){
+
+    /* WEIGHT */
+
+    const weight =
+        latest("weight");
+
+    if(weight){
+
+        document.getElementById(
+            "weightValue"
+        ).textContent =
+            number(weight.value)
+            .toFixed(1);
+
+        document.getElementById(
+            "weightDate"
+        ).textContent =
+            formatDate(
+                dateFromRecord(weight)
+            ) +
+            " • " +
+            formatTime(
+                dateFromRecord(weight)
+            );
+
+    }
+
+
+    /* PRESSURE */
+
+    const pressure =
+        latest("pressure");
+
+    if(pressure){
+
+        document.getElementById(
+            "pressureValue"
+        ).textContent =
+            `${pressure.systolic}/${pressure.diastolic}`;
+
+        document.getElementById(
+            "pressureDate"
+        ).textContent =
+            formatDate(
+                dateFromRecord(pressure)
+            ) +
+            " • " +
+            formatTime(
+                dateFromRecord(pressure)
+            );
+
+        document.getElementById(
+            "summaryPressure"
+        ).textContent =
+            `${pressure.systolic}/${pressure.diastolic}`;
+
+        document.getElementById(
+            "summaryPressureStatus"
+        ).textContent =
+            pressureStatus(
+                pressure.systolic,
+                pressure.diastolic
+            );
+
+    }
+
+
+    /* PULSE */
+
+    const pulse =
+        latest("pulse");
+
+    if(pulse){
+
+        document.getElementById(
+            "pulseValue"
+        ).textContent =
+            number(pulse.value);
+
+        document.getElementById(
+            "pulseDate"
+        ).textContent =
+            formatDate(
+                dateFromRecord(pulse)
+            ) +
+            " • " +
+            formatTime(
+                dateFromRecord(pulse)
+            );
+
+    }
+
+
+    /*
+      If pressure has pulse,
+      show it as latest pulse too
+      if standalone pulse doesn't exist.
+    */
+
+    if(
+        !pulse &&
+        pressure &&
+        pressure.pulse
+    ){
+
+        document.getElementById(
+            "pulseValue"
+        ).textContent =
+            pressure.pulse;
+
+        document.getElementById(
+            "pulseDate"
+        ).textContent =
+            "من آخر قياس ضغط";
+
+    }
+
+
+    /* GLUCOSE */
+
+    const glucose =
+        latest("glucose");
+
+    if(glucose){
+
+        document.getElementById(
+            "glucoseValue"
+        ).textContent =
+            number(glucose.value)
+            .toFixed(2);
+
+        document.getElementById(
+            "glucoseDate"
+        ).textContent =
+            glucose.typeLabel ||
+            glucoseTypeLabel(
+                glucose.type
+            );
+
+        document.getElementById(
+            "summaryGlucose"
+        ).textContent =
+            number(glucose.value)
+            .toFixed(2);
+
+        document.getElementById(
+            "summaryGlucoseType"
+        ).textContent =
+            glucose.typeLabel ||
+            "آخر قياس";
+
+    }
+
+
+    /* TEMPERATURE */
+
+    const temperature =
+        latest("temperature");
+
+    if(temperature){
+
+        document.getElementById(
+            "temperatureValue"
+        ).textContent =
+            number(
+                temperature.value
+            ).toFixed(1);
+
+        document.getElementById(
+            "temperatureDate"
+        ).textContent =
+            formatDate(
+                dateFromRecord(
+                    temperature
+                )
+            ) +
+            " • " +
+            formatTime(
+                dateFromRecord(
+                    temperature
+                )
+            );
+
+    }
+
+
+    /* OXYGEN */
+
+    const oxygen =
+        latest("oxygen");
+
+    if(oxygen){
+
+        document.getElementById(
+            "oxygenValue"
+        ).textContent =
+            number(
+                oxygen.value
+            );
+
+        document.getElementById(
+            "oxygenDate"
+        ).textContent =
+            formatDate(
+                dateFromRecord(
+                    oxygen
+                )
+            ) +
+            " • " +
+            formatTime(
+                dateFromRecord(
+                    oxygen
+                )
+            );
+
+    }
+
+
+    /* WAIST */
+
+    const waist =
+        latest("waist");
+
+    if(waist){
+
+        document.getElementById(
+            "waistValue"
+        ).textContent =
+            number(
+                waist.value
+            ).toFixed(1);
+
+        document.getElementById(
+            "waistDate"
+        ).textContent =
+            formatDate(
+                dateFromRecord(
+                    waist
+                )
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   PRESSURE STATUS
+========================================================= */
+
+function pressureStatus(
+    systolic,
+    diastolic
+){
+
+    systolic =
+        number(systolic);
+
+    diastolic =
+        number(diastolic);
+
+    if(
+        systolic < 90 ||
+        diastolic < 60
+    ){
+        return "منخفض";
+    }
+
+    if(
+        systolic < 120 &&
+        diastolic < 80
+    ){
+        return "ضمن الطبيعي";
+    }
+
+    if(
+        systolic < 130 &&
+        diastolic < 80
+    ){
+        return "مرتفع قليلاً";
+    }
+
+    if(
+        systolic < 140 ||
+        diastolic < 90
+    ){
+        return "مرتفع";
+    }
+
+    return "مرتفع جدًا";
+
+}
+
+
+/* =========================================================
+   PRESSURE TABLE
+========================================================= */
+
+function renderPressureTable(){
+
+    const tbody =
+        document.getElementById(
+            "pressureTable"
+        );
+
+    const empty =
+        document.getElementById(
+            "pressureEmpty"
+        );
+
+    tbody.innerHTML = "";
+
+    if(
+        !records.pressure.length
+    ){
+
+        empty.style.display =
+            "block";
+
+        return;
+
+    }
+
+    empty.style.display =
+        "none";
+
+    records.pressure
+        .slice(0,50)
+        .forEach(
+            record => {
+
+                const date =
+                    dateFromRecord(
+                        record
+                    );
+
+                const tr =
+                    document.createElement(
+                        "tr"
+                    );
+
+                tr.innerHTML = `
+
+                    <td>
+                        ${formatDate(date)}
+                    </td>
+
+                    <td>
+                        ${formatTime(date)}
+                    </td>
+
+                    <td>
+                        <strong>
+                            ${record.systolic ?? "—"}
+                        </strong>
+                    </td>
+
+                    <td>
+                        <strong>
+                            ${record.diastolic ?? "—"}
+                        </strong>
+                    </td>
+
+                    <td>
+                        ${record.pulse ?? "—"}
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="delete-btn"
+                            data-delete-type="pressure"
+                            data-delete-id="${record.id}"
+                        >
+
+                            <i class="fa-solid fa-trash"></i>
+
+                        </button>
+
+                    </td>
+
+                `;
+
+                tbody.appendChild(
+                    tr
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   GLUCOSE TABLE
+========================================================= */
+
+function renderGlucoseTable(){
+
+    const tbody =
+        document.getElementById(
+            "glucoseTable"
+        );
+
+    const empty =
+        document.getElementById(
+            "glucoseEmpty"
+        );
+
+    tbody.innerHTML = "";
+
+    if(
+        !records.glucose.length
+    ){
+
+        empty.style.display =
+            "block";
+
+        return;
+
+    }
+
+    empty.style.display =
+        "none";
+
+    records.glucose
+        .slice(0,50)
+        .forEach(
+            record => {
+
+                const date =
+                    dateFromRecord(
+                        record
+                    );
+
+                const tr =
+                    document.createElement(
+                        "tr"
+                    );
+
+                tr.innerHTML = `
+
+                    <td>
+                        ${formatDate(date)}
+                    </td>
+
+                    <td>
+                        ${formatTime(date)}
+                    </td>
+
+                    <td>
+                        ${record.typeLabel || glucoseTypeLabel(record.type)}
+                    </td>
+
+                    <td>
+                        <strong>
+                            ${number(record.value).toFixed(2)}
+                        </strong>
+                    </td>
+
+                    <td>
+                        g/L
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="delete-btn"
+                            data-delete-type="glucose"
+                            data-delete-id="${record.id}"
+                        >
+
+                            <i class="fa-solid fa-trash"></i>
+
+                        </button>
+
+                    </td>
+
+                `;
+
+                tbody.appendChild(
+                    tr
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   OXYGEN TABLE
+========================================================= */
+
+function renderOxygenTable(){
+
+    const tbody =
+        document.getElementById(
+            "oxygenTable"
+        );
+
+    const empty =
+        document.getElementById(
+            "oxygenEmpty"
+        );
+
+    tbody.innerHTML = "";
+
+    if(
+        !records.oxygen.length
+    ){
+
+        empty.style.display =
+            "block";
+
+        return;
+
+    }
+
+    empty.style.display =
+        "none";
+
+    records.oxygen
+        .slice(0,50)
+        .forEach(
+            record => {
+
+                const date =
+                    dateFromRecord(
+                        record
+                    );
+
+                const tr =
+                    document.createElement(
+                        "tr"
+                    );
+
+                tr.innerHTML = `
+
+                    <td>
+                        ${formatDate(date)}
+                    </td>
+
+                    <td>
+                        ${formatTime(date)}
+                    </td>
+
+                    <td>
+                        <strong>
+                            ${record.value ?? "—"}%
+                        </strong>
+                    </td>
+
+                    <td>
+                        ${record.pulse ?? "—"}
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="delete-btn"
+                            data-delete-type="oxygen"
+                            data-delete-id="${record.id}"
+                        >
+
+                            <i class="fa-solid fa-trash"></i>
+
+                        </button>
+
+                    </td>
+
+                `;
+
+                tbody.appendChild(
+                    tr
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   DELETE RECORD
+========================================================= */
+
+document.addEventListener(
+    "click",
+    async event => {
+
+        const button =
+            event.target.closest(
+                "[data-delete-type]"
+            );
+
+        if(!button) return;
+
+        const type =
+            button.dataset.deleteType;
+
+        const id =
+            button.dataset.deleteId;
+
+        const confirmed =
+            confirm(
+                "هل تريد حذف هذه القياس؟"
+            );
+
+        if(!confirmed) return;
+
+        try{
+
+            await deleteDoc(
+                doc(
+                    db,
+                    "users",
+                    currentUser.uid,
+                    "healthMeasurements",
+                    type,
+                    "records",
+                    id
+                )
+            );
+
+            showToast(
+                "تم حذف القياس.",
+                "success"
+            );
+
+            await loadAllMeasurements();
+
+        }catch(error){
+
+            console.error(error);
+
+            showToast(
+                "تعذر حذف القياس.",
+                "error"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   CHART ENGINE
+========================================================= */
+
+function drawChart(
+    canvas,
+    data,
+    options={}
+){
+
+    const ctx =
+        canvas.getContext("2d");
+
+    const rect =
+        canvas.getBoundingClientRect();
+
+    const dpr =
+        window.devicePixelRatio || 1;
+
+    canvas.width =
+        rect.width * dpr;
+
+    canvas.height =
+        rect.height * dpr;
+
+    ctx.scale(
+        dpr,
+        dpr
+    );
+
+    const width =
+        rect.width;
+
+    const height =
+        rect.height;
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    if(
+        !data ||
+        data.length === 0
+    ){
+
+        ctx.fillStyle =
+            "#A1AAB7";
+
+        ctx.font =
+            "10px Cairo";
+
+        ctx.textAlign =
+            "center";
+
+        ctx.fillText(
+            "لا توجد بيانات كافية لعرض المخطط",
+            width / 2,
+            height / 2
+        );
+
+        return;
+
+    }
+
+
+    const padding = {
+
+        top:20,
+        right:15,
+        bottom:28,
+        left:35
+
+    };
+
+
+    const chartWidth =
+        width -
+        padding.left -
+        padding.right;
+
+    const chartHeight =
+        height -
+        padding.top -
+        padding.bottom;
+
+
+    const values =
+        data.map(
+            item =>
+                number(item.value)
+        );
+
+
+    let min =
+        Math.min(...values);
+
+    let max =
+        Math.max(...values);
+
+
+    if(min === max){
+
+        min -= 1;
+        max += 1;
+
+    }
+
+
+    const extra =
+        (max-min) * .18;
+
+    min -= extra;
+    max += extra;
+
+
+    /* GRID */
+
+    ctx.strokeStyle =
+        "#EEF2F6";
+
+    ctx.lineWidth = 1;
+
+
+    for(let i=0;i<4;i++){
+
+        const y =
+            padding.top +
+            (
+                chartHeight *
+                i /
+                3
+            );
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            padding.left,
+            y
+        );
+
+        ctx.lineTo(
+            width -
+            padding.right,
+            y
+        );
+
+        ctx.stroke();
+
+
+        const gridValue =
+            max -
+            (
+                (max-min) *
+                i /
+                3
+            );
+
+        ctx.fillStyle =
+            "#9AA4B2";
+
+        ctx.font =
+            "8px Cairo";
+
+        ctx.textAlign =
+            "right";
+
+        ctx.fillText(
+            Number(
+                gridValue
+            ).toFixed(
+                options.decimals ?? 1
+            ),
+            padding.left - 6,
+            y + 3
+        );
+
+    }
+
+
+    /* POINTS */
+
+    const points =
+        data.map(
+            (item,index) => {
+
+                const x =
+                    padding.left +
+                    (
+                        chartWidth *
+                        index /
+                        Math.max(
+                            data.length-1,
+                            1
+                        )
+                    );
+
+                const y =
+                    padding.top +
+                    chartHeight -
+                    (
+                        (
+                            number(item.value)-min
+                        ) /
+                        (
+                            max-min
+                        )
+                    ) *
+                    chartHeight;
+
+                return {
+                    x,
+                    y,
+                    item
+                };
+
+            }
+        );
+
+
+    /* AREA */
+
+    if(points.length > 1){
+
+        const gradient =
+            ctx.createLinearGradient(
+                0,
+                padding.top,
+                0,
+                height
+            );
+
+        gradient.addColorStop(
+            0,
+            options.fill ||
+            "rgba(25,118,210,.16)"
+        );
+
+        gradient.addColorStop(
+            1,
+            "rgba(25,118,210,0)"
+        );
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            points[0].x,
+            points[0].y
+        );
+
+        points
+            .slice(1)
+            .forEach(
+                point => {
+
+                    ctx.lineTo(
+                        point.x,
+                        point.y
+                    );
+
+                }
+            );
+
+        ctx.lineTo(
+            points[points.length-1].x,
+            height -
+            padding.bottom
+        );
+
+        ctx.lineTo(
+            points[0].x,
+            height -
+            padding.bottom
+        );
+
+        ctx.closePath();
+
+        ctx.fillStyle =
+            gradient;
+
+        ctx.fill();
+
+    }
+
+
+    /* LINE */
+
+    ctx.beginPath();
+
+    points.forEach(
+        (point,index) => {
+
+            if(index === 0){
+
+                ctx.moveTo(
+                    point.x,
+                    point.y
+                );
+
+            }else{
+
+                ctx.lineTo(
+                    point.x,
+                    point.y
+                );
+
+            }
+
+        }
+    );
+
+    ctx.strokeStyle =
+        options.color ||
+        "#1976D2";
+
+    ctx.lineWidth = 2.5;
+
+    ctx.lineCap =
+        "round";
+
+    ctx.lineJoin =
+        "round";
+
+    ctx.stroke();
+
+
+    /* POINTS */
+
+    points.forEach(
+        point => {
+
+            ctx.beginPath();
+
+            ctx.arc(
+                point.x,
+                point.y,
+                4,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fillStyle =
+                "#fff";
+
+            ctx.fill();
+
+            ctx.strokeStyle =
+                options.color ||
+                "#1976D2";
+
+            ctx.lineWidth = 2;
+
+            ctx.stroke();
+
+        }
+    );
+
+
+    /* LABELS */
+
+    ctx.fillStyle =
+        "#98A2B0";
+
+    ctx.font =
+        "8px Cairo";
+
+    ctx.textAlign =
+        "center";
+
+
+    const step =
+        Math.max(
+            1,
+            Math.ceil(
+                data.length / 5
+            )
+        );
+
+
+    data.forEach(
+        (item,index) => {
+
+            if(
+                index % step !== 0 &&
+                index !== data.length-1
+            ) return;
+
+            const point =
+                points[index];
+
+            const date =
+                dateFromRecord(
+                    item
+                );
+
+            ctx.fillText(
+                formatShortDate(date),
+                point.x,
+                height - 8
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   CHART DATA
+========================================================= */
+
+function chartData(
+    type
+){
+
+    /*
+      Records are newest first.
+      Reverse to display oldest -> newest.
+    */
+
+    return [...records[type]]
+        .reverse()
+        .slice(-14);
+
+}
+
+
+/* =========================================================
+   RENDER CHARTS
+========================================================= */
+
+function renderCharts(){
+
+    drawChart(
+        document.getElementById(
+            "weightChart"
+        ),
+        chartData("weight"),
+        {
+            color:"#1976D2",
+            fill:"rgba(25,118,210,.16)",
+            decimals:1
+        }
+    );
+
+
+    drawChart(
+        document.getElementById(
+            "pulseChart"
+        ),
+        chartData("pulse"),
+        {
+            color:"#D95386",
+            fill:"rgba(217,83,134,.14)",
+            decimals:0
+        }
+    );
+
+
+    drawChart(
+        document.getElementById(
+            "temperatureChart"
+        ),
+        chartData("temperature"),
+        {
+            color:"#EF6C3B",
+            fill:"rgba(239,108,59,.13)",
+            decimals:1
+        }
+    );
+
+
+    drawChart(
+        document.getElementById(
+            "waistChart"
+        ),
+        chartData("waist"),
+        {
+            color:"#7957D7",
+            fill:"rgba(121,87,215,.13)",
+            decimals:1
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SUMMARY DATE
+========================================================= */
+
+function renderSummaryDate(){
+
+    const all = [
+
+        ...records.weight,
+        ...records.pressure,
+        ...records.glucose
+
+    ];
+
+    if(!all.length){
+
+        document.getElementById(
+            "summaryDate"
+        ).textContent =
+            "لا توجد قياسات";
+
+        return;
+
+    }
+
+    all.sort(
+        (a,b) =>
+            dateFromRecord(b)
+            -
+            dateFromRecord(a)
+    );
+
+    document.getElementById(
+        "summaryDate"
+    ).textContent =
+        formatDate(
+            dateFromRecord(
+                all[0]
+            )
+        );
+
+}
+
+
+/* =========================================================
+   OPEN BUTTONS
+========================================================= */
+
+document
+    .querySelectorAll(
+        "[data-measure]"
+    )
+    .forEach(
+        card => {
+
+            card.addEventListener(
+                "click",
+                () => {
+
+                    openMeasurement(
+                        card.dataset.measure
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   FORM SUBMIT
+========================================================= */
+
+measurementForm.addEventListener(
+    "submit",
+    async event => {
+
+        event.preventDefault();
+
+        await saveMeasurement();
+
+    }
+);
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
 
 function closeModal(){
 
@@ -1986,19 +5577,18 @@ function closeModal(){
         "show"
     );
 
+    measurementForm.reset();
+
+    dynamicFields.innerHTML =
+        "";
+
 }
 
 
 document
-    .getElementById("addMeasurementBtn")
-    .addEventListener(
-        "click",
-        () => openModal("weight")
-    );
-
-
-document
-    .getElementById("closeModal")
+    .getElementById(
+        "closeModal"
+    )
     .addEventListener(
         "click",
         closeModal
@@ -2012,878 +5602,13 @@ modal.addEventListener(
         if(
             event.target === modal
         ){
+
             closeModal();
+
         }
 
     }
 );
-
-
-/* =========================================================
-   FORM TYPE
-========================================================= */
-
-function updateForm(){
-
-    const type =
-        measurementType.value;
-
-    if(type === "pressure"){
-
-        pressureFields.style.display =
-            "grid";
-
-        document
-            .getElementById("singleValueGroup")
-            .style.display = "none";
-
-    }else{
-
-        pressureFields.style.display =
-            "none";
-
-        document
-            .getElementById("singleValueGroup")
-            .style.display = "block";
-
-        const info =
-            typeInfo[type];
-
-        valueLabel.textContent =
-            `${info.name} (${info.unit})`;
-
-    }
-
-}
-
-
-measurementType.addEventListener(
-    "change",
-    updateForm
-);
-
-
-/* =========================================================
-   CARD CLICK
-========================================================= */
-
-document
-    .querySelectorAll(".measure-card")
-    .forEach(card => {
-
-        card.addEventListener(
-            "click",
-            event => {
-
-                if(
-                    event.target.closest(
-                        ".measure-add"
-                    )
-                ){
-                    return;
-                }
-
-                openModal(
-                    card.dataset.type
-                );
-
-            }
-        );
-
-        const add =
-            card.querySelector(
-                ".measure-add"
-            );
-
-        add.addEventListener(
-            "click",
-            event => {
-
-                event.stopPropagation();
-
-                openModal(
-                    card.dataset.type
-                );
-
-            }
-        );
-
-    });
-
-
-/* =========================================================
-   SAVE
-========================================================= */
-
-document
-    .getElementById("saveMeasurement")
-    .addEventListener(
-        "click",
-        async () => {
-
-            if(!currentUser){
-
-                alert(
-                    "يجب تسجيل الدخول أولاً."
-                );
-
-                return;
-
-            }
-
-            const type =
-                measurementType.value;
-
-            const date =
-                measurementDate.value;
-
-            if(!date){
-
-                alert(
-                    "يرجى اختيار التاريخ."
-                );
-
-                return;
-
-            }
-
-            let value = null;
-
-            let pressureData = null;
-
-
-            if(type === "pressure"){
-
-                const sys =
-                    Number(
-                        systolic.value
-                    );
-
-                const dia =
-                    Number(
-                        diastolic.value
-                    );
-
-                if(
-                    !sys ||
-                    !dia
-                ){
-
-                    alert(
-                        "أدخل قيمتي الضغط الانقباضي والانبساطي."
-                    );
-
-                    return;
-
-                }
-
-                pressureData = {
-                    systolic:sys,
-                    diastolic:dia
-                };
-
-                value =
-                    `${sys}/${dia}`;
-
-            }else{
-
-                value =
-                    Number(
-                        measurementValue.value
-                    );
-
-                if(
-                    !Number.isFinite(value)
-                ){
-
-                    alert(
-                        "أدخل قيمة صحيحة."
-                    );
-
-                    return;
-
-                }
-
-            }
-
-
-            const button =
-                document.getElementById(
-                    "saveMeasurement"
-                );
-
-            button.disabled = true;
-
-            button.innerHTML =
-                `<i class="fa-solid fa-spinner fa-spin"></i>
-                 جارٍ الحفظ...`;
-
-
-            try{
-
-                const data = {
-
-                    type,
-
-                    value,
-
-                    date,
-
-                    createdAt:
-                        new Date().toISOString()
-
-                };
-
-
-                if(pressureData){
-
-                    data.systolic =
-                        pressureData.systolic;
-
-                    data.diastolic =
-                        pressureData.diastolic;
-
-                }
-
-
-                await addDoc(
-
-                    collection(
-                        db,
-                        "users",
-                        currentUser.uid,
-                        "measurements"
-                    ),
-
-                    data
-
-                );
-
-
-                closeModal();
-
-                await loadMeasurements();
-
-            }catch(error){
-
-                console.error(
-                    "Save measurement error:",
-                    error
-                );
-
-                alert(
-                    "حدث خطأ أثناء حفظ القياس."
-                );
-
-            }finally{
-
-                button.disabled = false;
-
-                button.innerHTML =
-                    `<i class="fa-solid fa-check"></i>
-                     حفظ القياس`;
-
-            }
-
-        }
-    );
-
-
-/* =========================================================
-   LOAD MEASUREMENTS
-========================================================= */
-
-async function loadMeasurements(){
-
-    if(!currentUser){
-        return;
-    }
-
-    try{
-
-        const ref =
-            collection(
-                db,
-                "users",
-                currentUser.uid,
-                "measurements"
-            );
-
-
-        const snapshot =
-            await getDocs(
-                query(
-                    ref,
-                    orderBy(
-                        "createdAt",
-                        "desc"
-                    ),
-                    limit(100)
-                )
-            );
-
-
-        measurements = [];
-
-        snapshot.forEach(
-            item => {
-
-                measurements.push({
-
-                    id:item.id,
-
-                    ...item.data()
-
-                });
-
-            }
-        );
-
-
-        renderMeasurements();
-
-    }catch(error){
-
-        console.error(
-            "Load measurements error:",
-            error
-        );
-
-        /*
-          fallback في حال لم يوجد index
-          أو كانت بيانات قديمة.
-        */
-
-        try{
-
-            const ref =
-                collection(
-                    db,
-                    "users",
-                    currentUser.uid,
-                    "measurements"
-                );
-
-            const snapshot =
-                await getDocs(ref);
-
-            measurements = [];
-
-            snapshot.forEach(
-                item => {
-
-                    measurements.push({
-
-                        id:item.id,
-
-                        ...item.data()
-
-                    });
-
-                }
-            );
-
-            measurements.sort(
-                (a,b) =>
-                    new Date(
-                        b.date ||
-                        b.createdAt ||
-                        0
-                    ) -
-                    new Date(
-                        a.date ||
-                        a.createdAt ||
-                        0
-                    )
-            );
-
-            measurements =
-                measurements.slice(
-                    0,
-                    100
-                );
-
-            renderMeasurements();
-
-        }catch(fallbackError){
-
-            console.error(
-                fallbackError
-            );
-
-            historyList.innerHTML = `
-                <div class="history-empty">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                    تعذر تحميل القياسات.
-                </div>
-            `;
-
-        }
-
-    }
-
-}
-
-
-/* =========================================================
-   LAST MEASUREMENT
-========================================================= */
-
-function latest(type){
-
-    return measurements.find(
-        item =>
-            item.type === type
-    );
-
-}
-
-
-/* =========================================================
-   RENDER CARDS
-========================================================= */
-
-function renderMeasurements(){
-
-    const types = [
-        "weight",
-        "height",
-        "pressure",
-        "pulse",
-        "sugar",
-        "temperature",
-        "oxygen",
-        "waist"
-    ];
-
-
-    types.forEach(
-        type => {
-
-            const item =
-                latest(type);
-
-            const valueElement =
-                document.getElementById(
-                    `${type}Value`
-                );
-
-            const dateElement =
-                document.getElementById(
-                    `${type}Date`
-                );
-
-
-            if(!item){
-
-                valueElement.textContent =
-                    "—";
-
-                dateElement.textContent =
-                    "لم يتم التسجيل";
-
-                return;
-
-            }
-
-
-            if(type === "pressure"){
-
-                valueElement.textContent =
-                    `${item.systolic}/${item.diastolic}`;
-
-            }else{
-
-                valueElement.textContent =
-                    item.value;
-            }
-
-
-            dateElement.textContent =
-                formatDate(
-                    item.date ||
-                    item.createdAt
-                );
-
-        }
-    );
-
-
-    renderSummary();
-
-    renderBMI();
-
-    renderHistory();
-
-}
-
-
-/* =========================================================
-   SUMMARY
-========================================================= */
-
-function renderSummary(){
-
-    const weight =
-        latest("weight");
-
-    const pressure =
-        latest("pressure");
-
-    const pulse =
-        latest("pulse");
-
-
-    document.getElementById(
-        "summaryWeight"
-    ).textContent =
-        weight
-            ? `${weight.value} كغ`
-            : "—";
-
-
-    document.getElementById(
-        "summaryPressure"
-    ).textContent =
-        pressure
-            ? `${pressure.systolic}/${pressure.diastolic}`
-            : "—";
-
-
-    document.getElementById(
-        "summaryPulse"
-    ).textContent =
-        pulse
-            ? `${pulse.value}`
-            : "—";
-
-
-    const newest =
-        measurements[0];
-
-
-    document.getElementById(
-        "lastUpdate"
-    ).textContent =
-        newest
-            ? formatDate(
-                newest.date ||
-                newest.createdAt
-              )
-            : "لا توجد قياسات";
-
-}
-
-
-/* =========================================================
-   BMI
-========================================================= */
-
-function renderBMI(){
-
-    const weight =
-        latest("weight");
-
-    const height =
-        latest("height");
-
-
-    const bmiValue =
-        document.getElementById(
-            "bmiValue"
-        );
-
-    const bmiStatus =
-        document.getElementById(
-            "bmiStatus"
-        );
-
-    const marker =
-        document.getElementById(
-            "bmiMarker"
-        );
-
-
-    if(
-        !weight ||
-        !height ||
-        Number(weight.value) <= 0 ||
-        Number(height.value) <= 0
-    ){
-
-        bmiValue.textContent =
-            "—";
-
-        bmiStatus.textContent =
-            "أدخل الوزن والطول لحساب المؤشر";
-
-        marker.style.right =
-            "50%";
-
-        return;
-
-    }
-
-
-    const heightM =
-        Number(height.value) / 100;
-
-    const bmi =
-        Number(weight.value) /
-        (heightM * heightM);
-
-
-    bmiValue.textContent =
-        bmi.toFixed(1);
-
-
-    let status =
-        "ضمن المجال المعتاد";
-
-    if(bmi < 18.5){
-
-        status =
-            "أقل من 18.5";
-
-    }else if(bmi < 25){
-
-        status =
-            "18.5 – 24.9";
-
-    }else if(bmi < 30){
-
-        status =
-            "25 – 29.9";
-
-    }else{
-
-        status =
-            "30 أو أكثر";
-
-    }
-
-
-    bmiStatus.textContent =
-        status;
-
-
-    const position =
-        Math.max(
-            5,
-            Math.min(
-                95,
-                ((bmi - 15) / 25) * 100
-            )
-        );
-
-
-    marker.style.right =
-        `${position}%`;
-
-}
-
-
-/* =========================================================
-   HISTORY
-========================================================= */
-
-function renderHistory(){
-
-    document.getElementById(
-        "historyCount"
-    ).textContent =
-        `${measurements.length} قياس`;
-
-
-    if(!measurements.length){
-
-        historyList.innerHTML = `
-            <div class="history-empty">
-                <i class="fa-regular fa-folder-open"></i>
-                لا توجد قياسات مسجلة بعد.
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    historyList.innerHTML = "";
-
-
-    measurements.forEach(
-        item => {
-
-            const info =
-                typeInfo[item.type] ||
-                {
-                    name:"قياس",
-                    unit:"",
-                    icon:"fa-heart-pulse"
-                };
-
-
-            let valueText = "";
-
-
-            if(item.type === "pressure"){
-
-                valueText =
-                    `${item.systolic}/${item.diastolic}`;
-
-            }else{
-
-                valueText =
-                    `${item.value}`;
-
-            }
-
-
-            const element =
-                document.createElement(
-                    "div"
-                );
-
-            element.className =
-                "history-item";
-
-
-            element.innerHTML = `
-
-                <div class="history-icon">
-
-                    <i class="fa-solid ${info.icon}"></i>
-
-                </div>
-
-
-                <div class="history-main">
-
-                    <strong>
-                        ${info.name}
-                    </strong>
-
-                    <small>
-                        ${formatDate(
-                            item.date ||
-                            item.createdAt
-                        )}
-                    </small>
-
-                </div>
-
-
-                <div class="history-value">
-
-                    ${valueText}
-                    ${info.unit}
-
-                </div>
-
-
-                <div class="history-actions">
-
-                    <button
-                        class="history-action delete"
-                        data-id="${item.id}"
-                        title="حذف"
-                    >
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-
-                </div>
-
-            `;
-
-
-            historyList.appendChild(
-                element
-            );
-
-        }
-    );
-
-
-    historyList
-        .querySelectorAll(
-            ".delete"
-        )
-        .forEach(
-            button => {
-
-                button.addEventListener(
-                    "click",
-                    async () => {
-
-                        const id =
-                            button.dataset.id;
-
-
-                        const confirmed =
-                            confirm(
-                                "هل تريد حذف هذا القياس؟"
-                            );
-
-
-                        if(!confirmed){
-                            return;
-                        }
-
-
-                        try{
-
-                            await deleteDoc(
-
-                                doc(
-                                    db,
-                                    "users",
-                                    currentUser.uid,
-                                    "measurements",
-                                    id
-                                )
-
-                            );
-
-
-                            await loadMeasurements();
-
-                        }catch(error){
-
-                            console.error(
-                                error
-                            );
-
-                            alert(
-                                "تعذر حذف القياس."
-                            );
-
-                        }
-
-                    }
-                );
-
-            }
-        );
-
-}
-
-
-/* =========================================================
-   BACK
-========================================================= */
-
-document
-    .getElementById("backBtn")
-    .addEventListener(
-        "click",
-        () => {
-
-            window.location.href =
-                "dashboard.html";
-
-        }
-    );
 
 
 /* =========================================================
@@ -2891,7 +5616,9 @@ document
 ========================================================= */
 
 document
-    .getElementById("refreshBtn")
+    .getElementById(
+        "refreshBtn"
+    )
     .addEventListener(
         "click",
         async () => {
@@ -2905,7 +5632,9 @@ document
                 "fa-spin"
             );
 
-            await loadMeasurements();
+            await loadUser();
+
+            await loadAllMeasurements();
 
             setTimeout(
                 () => {
@@ -2920,6 +5649,20 @@ document
 
         }
     );
+
+
+/* =========================================================
+   WINDOW RESIZE
+========================================================= */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        renderCharts();
+
+    }
+);
 
 
 /* =========================================================
@@ -2939,19 +5682,24 @@ onAuthStateChanged(
 
         }
 
-
         currentUser =
             user;
 
-
         try{
 
-            await loadMeasurements();
+            await loadUser();
+
+            await loadAllMeasurements();
 
         }catch(error){
 
             console.error(
                 error
+            );
+
+            showToast(
+                "تعذر تحميل بيانات القياسات.",
+                "error"
             );
 
         }finally{
