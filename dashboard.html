@@ -29,31 +29,41 @@
 
 :root{
 
-    --blue-dark:#075985;
     --blue:#1479D1;
-    --blue-mid:#2196F3;
-    --blue-light:#38BDF8;
-
-    --blue-soft:#EFF8FF;
+    --blue-dark:#075985;
+    --cyan:#0891B2;
+    --blue-soft:#EEF7FF;
 
     --green:#16A34A;
-    --green-soft:#F0FDF4;
+    --green-soft:#ECFDF3;
 
     --purple:#7C3AED;
-    --purple-soft:#F5F3FF;
+    --purple-soft:#F5F1FF;
 
     --pink:#DB2777;
-    --pink-soft:#FDF2F8;
+    --pink-soft:#FDF0F7;
 
     --orange:#EA580C;
-    --orange-soft:#FFF7ED;
+    --orange-soft:#FFF5EC;
+
+    --teal:#0F766E;
+    --teal-soft:#ECFDFB;
+
+    --yellow:#D97706;
+    --yellow-soft:#FFF8E7;
+
+    --red:#DC2626;
+    --red-soft:#FEF2F2;
+
+    --indigo:#4F46E5;
+    --indigo-soft:#EEF2FF;
 
     --dark:#172033;
     --text:#536075;
     --muted:#8A94A6;
 
     --bg:#F5F8FC;
-    --white:#fff;
+    --white:#FFFFFF;
     --border:#E5EBF3;
 
     --shadow:
@@ -67,6 +77,10 @@
     -webkit-tap-highlight-color:transparent;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
 
     background:var(--bg);
@@ -77,17 +91,19 @@ body{
 
     min-height:100vh;
 
-    padding-bottom:90px;
+    padding-bottom:95px;
 }
 
 a{
-    text-decoration:none;
     color:inherit;
+    text-decoration:none;
 }
 
 button{
     border:0;
+    outline:0;
     font-family:"Cairo",sans-serif;
+    cursor:pointer;
 }
 
 .app{
@@ -108,41 +124,52 @@ button{
     inset:0;
     z-index:9999;
 
-    background:
-        linear-gradient(
-            145deg,
-            #075985,
-            #1479D1,
-            #2196F3
-        );
-
     display:flex;
     align-items:center;
     justify-content:center;
 
-    transition:.3s;
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(56,189,248,.25),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #075985,
+            #1479D1 55%,
+            #0E7490
+        );
+
+    transition:.35s ease;
 }
 
 .loading-content{
     text-align:center;
-    color:white;
+    color:#fff;
 }
 
 .loading-icon{
 
-    width:65px;
-    height:65px;
+    width:70px;
+    height:70px;
 
-    border-radius:22px;
+    margin:auto;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    margin:auto;
+    border-radius:22px;
 
-    background:
-        rgba(255,255,255,.15);
+    color:#fff;
+
+    background:rgba(255,255,255,.14);
+
+    border:1px solid rgba(255,255,255,.20);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.12);
 
     font-size:26px;
 
@@ -151,10 +178,12 @@ button{
 
 .loading-content p{
 
-    margin-top:12px;
+    margin-top:13px;
 
     font-size:11px;
     font-weight:700;
+
+    opacity:.85;
 }
 
 @keyframes pulse{
@@ -164,7 +193,7 @@ button{
     }
 
     50%{
-        transform:scale(1.08);
+        transform:scale(1.07);
     }
 }
 
@@ -177,9 +206,9 @@ button{
 
     position:relative;
 
-    padding:19px 17px 16px;
+    padding:18px 17px 16px;
 
-    color:white;
+    color:#fff;
 
     overflow:hidden;
 
@@ -187,16 +216,16 @@ button{
         linear-gradient(
             145deg,
             #075985 0%,
-            #0E7490 28%,
-            #1479D1 65%,
+            #0E7490 30%,
+            #1479D1 70%,
             #2196F3 100%
         );
 
     border-radius:
-        0 0 32px 32px;
+        0 0 34px 34px;
 
     box-shadow:
-        0 13px 36px
+        0 14px 38px
         rgba(14,116,144,.20);
 }
 
@@ -206,16 +235,16 @@ button{
 
     position:absolute;
 
-    width:260px;
-    height:260px;
+    width:270px;
+    height:270px;
 
     border-radius:50%;
 
     background:
         rgba(56,189,248,.12);
 
-    left:-135px;
-    top:-150px;
+    left:-145px;
+    top:-155px;
 }
 
 .hero::after{
@@ -224,24 +253,24 @@ button{
 
     position:absolute;
 
-    width:210px;
-    height:210px;
+    width:230px;
+    height:230px;
 
     border-radius:50%;
 
     background:
-        rgba(255,255,255,.07);
+        rgba(255,255,255,.065);
 
-    right:-100px;
-    bottom:-135px;
+    right:-110px;
+    bottom:-145px;
 }
 
 .hero-light{
 
     position:absolute;
 
-    width:100px;
-    height:100px;
+    width:110px;
+    height:110px;
 
     border-radius:50%;
 
@@ -249,7 +278,7 @@ button{
         rgba(255,255,255,.045);
 
     right:38%;
-    top:-65px;
+    top:-70px;
 }
 
 
@@ -271,6 +300,7 @@ button{
 
     display:flex;
     align-items:center;
+
     gap:11px;
 }
 
@@ -279,29 +309,38 @@ button{
     width:48px;
     height:48px;
 
-    border-radius:16px;
-
     display:flex;
     align-items:center;
     justify-content:center;
 
+    border-radius:16px;
+
+    color:#fff;
+
     background:
-        rgba(255,255,255,.15);
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.20),
+            rgba(255,255,255,.08)
+        );
 
     border:
         1px solid
         rgba(255,255,255,.20);
 
-    font-size:16px;
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.12);
+
+    font-size:15px;
 }
 
 .user-info small{
 
     display:block;
 
-    font-size:9px;
+    color:rgba(255,255,255,.68);
 
-    opacity:.70;
+    font-size:9px;
 }
 
 .user-info strong{
@@ -310,7 +349,7 @@ button{
 
     margin-top:1px;
 
-    color:white;
+    color:#fff;
 
     font-size:15px;
 
@@ -325,25 +364,38 @@ button{
 
 .hero-action{
 
-    width:38px;
-    height:38px;
-
-    border-radius:12px;
+    width:40px;
+    height:40px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    color:white;
+    border-radius:13px;
+
+    color:#fff;
 
     background:
         rgba(255,255,255,.12);
 
     border:
         1px solid
-        rgba(255,255,255,.13);
+        rgba(255,255,255,.16);
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.06);
 
     font-size:13px;
+
+    transition:.2s;
+}
+
+.hero-action:active{
+
+    transform:scale(.91);
+
+    background:
+        rgba(255,255,255,.20);
 }
 
 
@@ -361,7 +413,7 @@ button{
 
 .hero-title h1{
 
-    color:white;
+    color:#fff;
 
     font-size:21px;
     line-height:1.5;
@@ -373,11 +425,11 @@ button{
 
     margin-top:3px;
 
-    color:white;
+    color:#fff;
 
     font-size:9px;
 
-    opacity:.72;
+    opacity:.70;
 }
 
 
@@ -394,18 +446,21 @@ button{
 
     padding:12px 10px 10px;
 
-    border-radius:22px;
+    border-radius:23px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.17),
+            rgba(255,255,255,.18),
             rgba(255,255,255,.075)
         );
 
     border:
         1px solid
         rgba(255,255,255,.19);
+
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.10);
 }
 
 .calendar-header{
@@ -419,7 +474,7 @@ button{
 
 .calendar-header strong{
 
-    color:white;
+    color:#fff;
 
     font-size:11px;
     font-weight:800;
@@ -429,19 +484,29 @@ button{
 
     display:flex;
     align-items:center;
-    gap:5px;
+    gap:6px;
 
-    color:white;
+    padding:6px 9px;
+
+    border-radius:10px;
+
+    color:#fff;
 
     background:
         rgba(255,255,255,.13);
 
-    padding:5px 8px;
-
-    border-radius:9px;
+    border:
+        1px solid
+        rgba(255,255,255,.10);
 
     font-size:7px;
     font-weight:700;
+
+    transition:.2s;
+}
+
+.calendar-link:active{
+    transform:scale(.94);
 }
 
 .week{
@@ -458,8 +523,6 @@ button{
 
     min-height:61px;
 
-    border-radius:15px;
-
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -467,31 +530,41 @@ button{
 
     gap:5px;
 
+    border-radius:15px;
+
     cursor:pointer;
+
+    transition:.2s;
+}
+
+.week-day:active{
+    transform:scale(.94);
 }
 
 .week-day small{
 
     color:
-        rgba(255,255,255,.67);
+        rgba(255,255,255,.63);
 
     font-size:7px;
 }
 
 .week-day strong{
 
-    width:31px;
-    height:31px;
-
-    border-radius:11px;
+    width:32px;
+    height:32px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    color:white;
+    border-radius:11px;
+
+    color:#fff;
 
     font-size:10px;
+
+    transition:.2s;
 }
 
 .week-day.selected{
@@ -501,7 +574,6 @@ button{
 }
 
 .week-day.selected small{
-
     color:#BAE6FD;
 }
 
@@ -509,11 +581,11 @@ button{
 
     color:#075985;
 
-    background:white;
+    background:#fff;
 
     box-shadow:
-        0 5px 15px
-        rgba(0,40,80,.20);
+        0 5px 16px
+        rgba(0,40,80,.22);
 }
 
 .selected-date{
@@ -530,11 +602,11 @@ button{
 
     border-radius:11px;
 
-    background:
-        rgba(255,255,255,.08);
-
     color:
         rgba(255,255,255,.82);
+
+    background:
+        rgba(255,255,255,.08);
 
     font-size:7px;
 }
@@ -545,13 +617,11 @@ button{
 ===================================================== */
 
 .main{
-
-    padding:20px 17px;
+    padding:21px 17px;
 }
 
 .section{
-
-    margin-bottom:22px;
+    margin-bottom:23px;
 }
 
 .section-head{
@@ -560,7 +630,7 @@ button{
     align-items:center;
     justify-content:space-between;
 
-    margin-bottom:10px;
+    margin-bottom:11px;
 }
 
 .section-head h2{
@@ -585,15 +655,15 @@ button{
 
 .today-card{
 
-    background:white;
+    padding:16px;
+
+    background:#fff;
 
     border:
         1px solid
         var(--border);
 
-    border-radius:24px;
-
-    padding:16px;
+    border-radius:25px;
 
     box-shadow:var(--shadow);
 }
@@ -614,16 +684,16 @@ button{
 
 .today-icon{
 
-    width:43px;
-    height:43px;
-
-    border-radius:15px;
+    width:45px;
+    height:45px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    color:white;
+    border-radius:15px;
+
+    color:#fff;
 
     background:
         linear-gradient(
@@ -631,6 +701,12 @@ button{
             #1479D1,
             #0E7490
         );
+
+    box-shadow:
+        0 7px 18px
+        rgba(20,121,209,.18);
+
+    font-size:15px;
 }
 
 .today-title strong{
@@ -651,22 +727,6 @@ button{
     color:var(--muted);
 
     font-size:8px;
-}
-
-.details-button{
-
-    width:32px;
-    height:32px;
-
-    border-radius:11px;
-
-    background:var(--blue-soft);
-
-    color:var(--blue);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
 }
 
 .today-progress{
@@ -723,7 +783,6 @@ button{
 .progress-center{
 
     position:absolute;
-
     inset:0;
 
     display:flex;
@@ -737,6 +796,7 @@ button{
     color:var(--dark);
 
     font-size:22px;
+    font-weight:800;
 }
 
 .progress-center span{
@@ -747,7 +807,6 @@ button{
 }
 
 .today-content{
-
     flex:1;
 }
 
@@ -772,9 +831,7 @@ button{
 .add-button{
 
     display:inline-flex;
-
     align-items:center;
-
     gap:6px;
 
     margin-top:9px;
@@ -788,11 +845,13 @@ button{
     background:var(--blue-soft);
 
     font-size:8px;
+
+    font-weight:600;
 }
 
 
 /* =====================================================
-   HEALTH SERVICES
+   HEALTH SERVICE CARDS
 ===================================================== */
 
 .health-services{
@@ -807,68 +866,107 @@ button{
 
 .health-service{
 
-    min-height:145px;
+    position:relative;
 
-    padding:13px;
+    min-height:151px;
 
-    background:white;
+    padding:14px;
+
+    overflow:hidden;
+
+    background:#fff;
 
     border:
         1px solid
         var(--border);
 
-    border-radius:21px;
+    border-radius:22px;
 
     box-shadow:
-        0 6px 22px
+        0 7px 24px
         rgba(30,55,90,.045);
 
-    transition:.18s;
+    transition:
+        transform .18s,
+        box-shadow .18s;
 }
 
-.health-service:active,
-.daily-card:active,
-.extra-card:active{
+.health-service::after{
 
-    transform:scale(.97);
+    content:"";
+
+    position:absolute;
+
+    width:75px;
+    height:75px;
+
+    border-radius:50%;
+
+    left:-30px;
+    bottom:-35px;
+
+    background:currentColor;
+
+    opacity:.035;
+
+    pointer-events:none;
 }
 
-.health-service-top,
-.daily-card-header{
+.health-service:active{
+
+    transform:scale(.965);
+
+    box-shadow:
+        0 4px 14px
+        rgba(30,55,90,.07);
+}
+
+.health-service-top{
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 }
 
-.health-service-icon,
-.daily-icon{
+.health-service-icon{
 
-    width:45px;
-    height:45px;
-
-    border-radius:15px;
+    width:49px;
+    height:49px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    font-size:16px;
+    border-radius:17px;
+
+    position:relative;
+
+    font-size:17px;
+
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.7);
 }
 
-.health-service-arrow,
-.daily-arrow{
+.health-service-arrow{
 
-    width:29px;
-    height:29px;
-
-    border-radius:10px;
+    width:31px;
+    height:31px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    font-size:9px;
+    border-radius:11px;
+
+    font-size:8px;
+
+    transition:.18s;
+}
+
+.health-service:active
+.health-service-arrow{
+
+    transform:translateX(-3px);
 }
 
 .health-service-title{
@@ -890,49 +988,104 @@ button{
 
     font-size:7px;
 
-    line-height:1.7;
+    line-height:1.75;
 }
 
 
-/* health colors */
+/* health themes */
+
+.measurements{
+    color:#1479D1;
+}
 
 .measurements .health-service-icon{
+
     color:#1479D1;
-    background:#EFF8FF;
+
+    background:
+        linear-gradient(
+            145deg,
+            #E8F4FF,
+            #F3F9FF
+        );
 }
 
 .measurements .health-service-arrow{
+
     color:#1479D1;
+
     background:#EFF8FF;
 }
 
-.period .health-service-icon{
+
+.period{
     color:#DB2777;
-    background:#FDF2F8;
+}
+
+.period .health-service-icon{
+
+    color:#DB2777;
+
+    background:
+        linear-gradient(
+            145deg,
+            #FDE8F2,
+            #FFF6FA
+        );
 }
 
 .period .health-service-arrow{
+
     color:#DB2777;
+
     background:#FDF2F8;
 }
 
-.pregnancy .health-service-icon{
+
+.pregnancy{
     color:#7C3AED;
-    background:#F5F3FF;
+}
+
+.pregnancy .health-service-icon{
+
+    color:#7C3AED;
+
+    background:
+        linear-gradient(
+            145deg,
+            #F0EAFF,
+            #FAF8FF
+        );
 }
 
 .pregnancy .health-service-arrow{
+
     color:#7C3AED;
+
     background:#F5F3FF;
 }
 
-.statistics .health-service-icon{
+
+.statistics{
     color:#EA580C;
-    background:#FFF7ED;
+}
+
+.statistics .health-service-icon{
+
+    color:#EA580C;
+
+    background:
+        linear-gradient(
+            145deg,
+            #FFF0E5,
+            #FFFAF6
+        );
 }
 
 .statistics .health-service-arrow{
+
     color:#EA580C;
+
     background:#FFF7ED;
 }
 
@@ -953,23 +1106,95 @@ button{
 
 .daily-card{
 
-    min-height:158px;
+    position:relative;
 
-    padding:13px;
+    min-height:164px;
 
-    background:white;
+    padding:14px;
+
+    overflow:hidden;
+
+    background:#fff;
 
     border:
         1px solid
         var(--border);
 
-    border-radius:21px;
+    border-radius:22px;
 
     box-shadow:
-        0 6px 22px
+        0 7px 24px
         rgba(30,55,90,.045);
 
     transition:.18s;
+}
+
+.daily-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:80px;
+    height:80px;
+
+    border-radius:50%;
+
+    right:-35px;
+    bottom:-40px;
+
+    background:currentColor;
+
+    opacity:.035;
+
+    pointer-events:none;
+}
+
+.daily-card:active{
+
+    transform:scale(.965);
+
+    box-shadow:
+        0 4px 15px
+        rgba(30,55,90,.07);
+}
+
+.daily-card-header{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.daily-icon{
+
+    width:48px;
+    height:48px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:17px;
+
+    font-size:17px;
+
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.7);
+}
+
+.daily-arrow{
+
+    width:31px;
+    height:31px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:11px;
+
+    font-size:8px;
 }
 
 .daily-title{
@@ -986,7 +1211,6 @@ button{
 .daily-value{
 
     display:flex;
-
     align-items:baseline;
 
     gap:4px;
@@ -999,6 +1223,8 @@ button{
     color:var(--dark);
 
     font-size:15px;
+
+    font-weight:800;
 }
 
 .daily-value span{
@@ -1010,7 +1236,7 @@ button{
 
 .daily-progress{
 
-    height:5px;
+    height:6px;
 
     margin-top:13px;
 
@@ -1025,6 +1251,8 @@ button{
 
     display:block;
 
+    width:0;
+
     height:100%;
 
     border-radius:20px;
@@ -1034,14 +1262,26 @@ button{
 }
 
 
-/* daily colors */
+/* water */
+
+.water{
+    color:#0284C7;
+}
 
 .water .daily-icon{
+
     color:#0284C7;
-    background:#E0F2FE;
+
+    background:
+        linear-gradient(
+            145deg,
+            #DFF3FF,
+            #F3FAFF
+        );
 }
 
 .water .daily-arrow{
+
     color:#0284C7;
     background:#F0F9FF;
 }
@@ -1050,12 +1290,27 @@ button{
     background:#0EA5E9;
 }
 
-.walking .daily-icon{
+
+/* walking */
+
+.walking{
     color:#16A34A;
-    background:#DCFCE7;
+}
+
+.walking .daily-icon{
+
+    color:#16A34A;
+
+    background:
+        linear-gradient(
+            145deg,
+            #DCFCE7,
+            #F3FFF6
+        );
 }
 
 .walking .daily-arrow{
+
     color:#16A34A;
     background:#F0FDF4;
 }
@@ -1064,12 +1319,27 @@ button{
     background:#22C55E;
 }
 
-.sleep .daily-icon{
+
+/* sleep */
+
+.sleep{
     color:#7C3AED;
-    background:#EDE9FE;
+}
+
+.sleep .daily-icon{
+
+    color:#7C3AED;
+
+    background:
+        linear-gradient(
+            145deg,
+            #EDE7FF,
+            #FAF8FF
+        );
 }
 
 .sleep .daily-arrow{
+
     color:#7C3AED;
     background:#F5F3FF;
 }
@@ -1078,12 +1348,27 @@ button{
     background:#8B5CF6;
 }
 
-.wake .daily-icon{
+
+/* wake */
+
+.wake{
     color:#EA580C;
-    background:#FFEDD5;
+}
+
+.wake .daily-icon{
+
+    color:#EA580C;
+
+    background:
+        linear-gradient(
+            145deg,
+            #FFE9D5,
+            #FFFAF5
+        );
 }
 
 .wake .daily-arrow{
+
     color:#EA580C;
     background:#FFF7ED;
 }
@@ -1092,12 +1377,27 @@ button{
     background:#F97316;
 }
 
-.nutrition .daily-icon{
+
+/* nutrition */
+
+.nutrition{
     color:#16A34A;
-    background:#DCFCE7;
+}
+
+.nutrition .daily-icon{
+
+    color:#16A34A;
+
+    background:
+        linear-gradient(
+            145deg,
+            #DCFCE7,
+            #F5FFF7
+        );
 }
 
 .nutrition .daily-arrow{
+
     color:#16A34A;
     background:#F0FDF4;
 }
@@ -1106,12 +1406,27 @@ button{
     background:#22C55E;
 }
 
-.vitamins .daily-icon{
+
+/* vitamins */
+
+.vitamins{
     color:#DB2777;
-    background:#FCE7F3;
+}
+
+.vitamins .daily-icon{
+
+    color:#DB2777;
+
+    background:
+        linear-gradient(
+            145deg,
+            #FCE1EE,
+            #FFF8FB
+        );
 }
 
 .vitamins .daily-arrow{
+
     color:#DB2777;
     background:#FDF2F8;
 }
@@ -1122,50 +1437,58 @@ button{
 
 
 /* =====================================================
-   EXTRA
+   EXTRA TOOLS
 ===================================================== */
 
 .extra-card{
 
-    display:flex;
+    position:relative;
 
+    display:flex;
     align-items:center;
 
     gap:11px;
 
     padding:13px;
 
-    background:white;
+    margin-bottom:9px;
+
+    background:#fff;
 
     border:
         1px solid
         var(--border);
 
-    border-radius:19px;
+    border-radius:20px;
 
     box-shadow:
-        0 5px 20px
+        0 6px 21px
         rgba(30,55,90,.04);
 
-    margin-bottom:8px;
+    transition:.18s;
+}
+
+.extra-card:active{
+    transform:scale(.975);
 }
 
 .extra-icon{
 
-    width:40px;
-    height:40px;
-
-    border-radius:13px;
+    width:44px;
+    height:44px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
+    border-radius:15px;
+
     flex-shrink:0;
+
+    font-size:15px;
 }
 
 .extra-info{
-
     flex:1;
 }
 
@@ -1176,6 +1499,8 @@ button{
     color:var(--dark);
 
     font-size:10px;
+
+    font-weight:800;
 }
 
 .extra-info span{
@@ -1191,18 +1516,26 @@ button{
 
 .extra-arrow{
 
-    width:29px;
-    height:29px;
-
-    border-radius:10px;
-
-    background:#F4F7FA;
-
-    color:#7A8798;
+    width:31px;
+    height:31px;
 
     display:flex;
     align-items:center;
     justify-content:center;
+
+    border-radius:11px;
+
+    color:#7A8798;
+
+    background:#F5F7FA;
+
+    font-size:8px;
+
+    transition:.18s;
+}
+
+.extra-card:active .extra-arrow{
+    transform:translateX(-3px);
 }
 
 
@@ -1212,15 +1545,18 @@ button{
 
 .challenge-card{
 
-    display:flex;
+    position:relative;
 
+    display:flex;
     align-items:center;
 
-    gap:11px;
+    gap:12px;
 
     padding:15px;
 
-    border-radius:22px;
+    overflow:hidden;
+
+    border-radius:23px;
 
     background:
         linear-gradient(
@@ -1232,26 +1568,63 @@ button{
     border:
         1px solid
         #D6F5E7;
+
+    box-shadow:
+        0 7px 24px
+        rgba(22,163,74,.055);
+
+    transition:.18s;
+}
+
+.challenge-card:active{
+    transform:scale(.975);
+}
+
+.challenge-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:110px;
+    height:110px;
+
+    border-radius:50%;
+
+    left:-55px;
+    bottom:-65px;
+
+    background:#16A34A;
+
+    opacity:.035;
 }
 
 .challenge-icon{
 
-    width:43px;
-    height:43px;
-
-    border-radius:14px;
+    width:46px;
+    height:46px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    color:var(--green);
+    flex-shrink:0;
 
-    background:#DCFCE7;
+    border-radius:16px;
+
+    color:#16A34A;
+
+    background:
+        linear-gradient(
+            145deg,
+            #DCFCE7,
+            #F0FDF4
+        );
+
+    font-size:16px;
 }
 
 .challenge-content{
-
     flex:1;
 }
 
@@ -1262,6 +1635,8 @@ button{
     color:#14532D;
 
     font-size:11px;
+
+    font-weight:800;
 }
 
 .challenge-content span{
@@ -1279,23 +1654,27 @@ button{
 
 .challenge-arrow{
 
-    width:31px;
-    height:31px;
-
-    border-radius:10px;
-
-    background:white;
-
-    color:var(--green);
+    width:32px;
+    height:32px;
 
     display:flex;
     align-items:center;
     justify-content:center;
+
+    flex-shrink:0;
+
+    border-radius:11px;
+
+    color:#16A34A;
+
+    background:#fff;
+
+    font-size:8px;
 }
 
 
 /* =====================================================
-   NAV
+   BOTTOM NAVIGATION
 ===================================================== */
 
 .bottom-nav{
@@ -1317,13 +1696,17 @@ button{
         );
 
     background:
-        rgba(255,255,255,.97);
+        rgba(255,255,255,.96);
 
     border-top:
         1px solid
-        var(--border);
+        rgba(229,235,243,.9);
 
-    backdrop-filter:blur(18px);
+    box-shadow:
+        0 -8px 25px
+        rgba(30,55,90,.045);
+
+    backdrop-filter:blur(20px);
 }
 
 .bottom-inner{
@@ -1336,9 +1719,13 @@ button{
 
     grid-template-columns:
         repeat(4,1fr);
+
+    gap:4px;
 }
 
 .nav-item{
+
+    position:relative;
 
     height:57px;
 
@@ -1347,7 +1734,6 @@ button{
     flex-direction:column;
 
     align-items:center;
-
     justify-content:center;
 
     gap:4px;
@@ -1358,31 +1744,42 @@ button{
 
     font-weight:700;
 
-    position:relative;
+    transition:.18s;
 }
 
 .nav-icon{
 
-    width:34px;
-    height:28px;
-
-    border-radius:11px;
+    width:38px;
+    height:30px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
+    border-radius:12px;
+
     font-size:14px;
+
+    transition:.18s;
 }
 
 .nav-item.active{
-
     color:var(--blue);
 }
 
 .nav-item.active .nav-icon{
 
-    background:var(--blue-soft);
+    color:var(--blue);
+
+    background:
+        linear-gradient(
+            145deg,
+            #EAF5FF,
+            #F4FAFF
+        );
+
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.9);
 }
 
 .nav-item.active::before{
@@ -1393,13 +1790,17 @@ button{
 
     top:-7px;
 
-    width:30px;
+    width:27px;
     height:3px;
 
     border-radius:
         0 0 8px 8px;
 
     background:var(--blue);
+}
+
+.nav-item:active .nav-icon{
+    transform:scale(.88);
 }
 
 
@@ -1426,36 +1827,47 @@ button{
 }
 
 .modal.show{
-
     display:flex;
 }
 
 .modal-box{
 
     width:100%;
-
     max-width:650px;
+
+    max-height:86vh;
 
     margin:auto auto 0;
 
     padding:20px;
 
-    background:white;
+    overflow:auto;
+
+    background:#fff;
 
     border-radius:
-        28px 28px 0 0;
+        29px 29px 0 0;
 
-    max-height:86vh;
+    animation:modalUp .25s ease;
+}
 
-    overflow:auto;
+@keyframes modalUp{
+
+    from{
+        transform:translateY(30px);
+        opacity:.6;
+    }
+
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
 }
 
 .modal-header{
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     margin-bottom:18px;
@@ -1466,31 +1878,41 @@ button{
     color:var(--dark);
 
     font-size:16px;
+
+    font-weight:800;
 }
 
 .close-button{
 
-    width:37px;
-    height:37px;
+    width:38px;
+    height:38px;
 
-    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    background:#F1F5F9;
+    border-radius:13px;
 
     color:#64748B;
 
-    display:flex;
+    background:#F1F5F9;
 
-    align-items:center;
-    justify-content:center;
+    transition:.18s;
 }
+
+.close-button:active{
+    transform:scale(.9);
+}
+
+
+/* =====================================================
+   FULL CALENDAR
+===================================================== */
 
 .month-row{
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     margin-bottom:14px;
@@ -1501,18 +1923,29 @@ button{
     color:var(--dark);
 
     font-size:13px;
+    font-weight:800;
 }
 
 .month-row button{
 
-    width:35px;
-    height:35px;
+    width:36px;
+    height:36px;
 
-    border-radius:11px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    color:var(--blue);
 
     background:var(--blue-soft);
 
-    color:var(--blue);
+    transition:.18s;
+}
+
+.month-row button:active{
+    transform:scale(.9);
 }
 
 .calendar-week{
@@ -1525,13 +1958,13 @@ button{
 
 .calendar-week span{
 
+    padding:6px 0;
+
     text-align:center;
 
     color:var(--muted);
 
     font-size:7px;
-
-    padding:6px 0;
 }
 
 .calendar-days{
@@ -1548,32 +1981,48 @@ button{
 
     aspect-ratio:1;
 
-    border-radius:12px;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
+
+    border-radius:12px;
 
     color:var(--dark);
 
     font-size:10px;
+
+    cursor:pointer;
+
+    transition:.18s;
+}
+
+.calendar-day:active{
+    transform:scale(.9);
 }
 
 .calendar-day.today{
 
-    background:var(--blue-soft);
-
     color:var(--blue);
+
+    background:var(--blue-soft);
 
     font-weight:800;
 }
 
 .calendar-day.selected{
 
-    background:var(--blue);
+    color:#fff;
 
-    color:white;
+    background:
+        linear-gradient(
+            145deg,
+            #1479D1,
+            #0E7490
+        );
+
+    box-shadow:
+        0 5px 13px
+        rgba(20,121,209,.18);
 }
 
 
@@ -1581,13 +2030,47 @@ button{
    RESPONSIVE
 ===================================================== */
 
+@media(max-width:390px){
+
+    .main{
+        padding-left:13px;
+        padding-right:13px;
+    }
+
+    .hero{
+        padding-left:13px;
+        padding-right:13px;
+    }
+
+    .health-services,
+    .daily-grid{
+        gap:8px;
+    }
+
+    .health-service,
+    .daily-card{
+        padding:12px;
+    }
+
+}
+
 @media(max-width:360px){
 
     .health-services,
     .daily-grid{
-
         grid-template-columns:1fr;
     }
+
+    .today-progress{
+        gap:12px;
+    }
+
+    .progress,
+    .progress svg{
+        width:90px;
+        height:90px;
+    }
+
 }
 
 </style>
@@ -1610,9 +2093,7 @@ button{
     <div class="loading-content">
 
         <div class="loading-icon">
-
             <i class="fa-solid fa-heart-pulse"></i>
-
         </div>
 
         <p>
@@ -1622,7 +2103,6 @@ button{
     </div>
 
 </div>
-
 
 
 <div class="app">
@@ -1641,9 +2121,7 @@ button{
         <div class="user-box">
 
             <div class="user-avatar">
-
                 <i class="fa-solid fa-user"></i>
-
             </div>
 
             <div class="user-info">
@@ -1666,6 +2144,7 @@ button{
             <button
                 class="hero-action"
                 onclick="showNotifications()"
+                aria-label="التنبيهات"
             >
 
                 <i class="fa-regular fa-bell"></i>
@@ -1703,7 +2182,9 @@ button{
                 onclick="openCalendar()"
             >
 
-                عرض الشهر
+                <span>
+                    عرض الشهر
+                </span>
 
                 <i class="fa-solid fa-calendar-days"></i>
 
@@ -1729,7 +2210,6 @@ button{
     </div>
 
 </header>
-
 
 
 <main class="main">
@@ -1762,7 +2242,7 @@ button{
 
                 <div class="today-icon">
 
-                    <i class="fa-solid fa-heart-pulse"></i>
+                    <i class="fa-solid fa-chart-simple"></i>
 
                 </div>
 
@@ -1858,7 +2338,7 @@ button{
 
                 <div class="add-button">
 
-                    <i class="fa-solid fa-database"></i>
+                    <i class="fa-solid fa-shield-halved"></i>
 
                     بياناتك محفوظة بشكل خاص
 
@@ -1873,9 +2353,8 @@ button{
 </section>
 
 
-
 <!-- =====================================================
-     HEALTH
+     HEALTH SERVICES
 ===================================================== -->
 
 <section class="section">
@@ -1911,7 +2390,7 @@ button{
 
                 <div class="health-service-arrow">
 
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <i class="fa-solid fa-arrow-left"></i>
 
                 </div>
 
@@ -1922,11 +2401,10 @@ button{
             </div>
 
             <div class="health-service-description">
-                الوزن، الضغط، النبض ومؤشراتك
+                الوزن، الضغط، النبض ومؤشراتك الصحية
             </div>
 
         </a>
-
 
 
         <a
@@ -1938,13 +2416,13 @@ button{
 
                 <div class="health-service-icon">
 
-                    <i class="fa-solid fa-calendar-days"></i>
+                    <i class="fa-solid fa-calendar-heart"></i>
 
                 </div>
 
                 <div class="health-service-arrow">
 
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <i class="fa-solid fa-arrow-left"></i>
 
                 </div>
 
@@ -1955,11 +2433,10 @@ button{
             </div>
 
             <div class="health-service-description">
-                التقويم ومتابعة الدورة
+                التقويم ومتابعة الدورة الشهرية
             </div>
 
         </a>
-
 
 
         <a
@@ -1977,7 +2454,7 @@ button{
 
                 <div class="health-service-arrow">
 
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <i class="fa-solid fa-arrow-left"></i>
 
                 </div>
 
@@ -1988,11 +2465,10 @@ button{
             </div>
 
             <div class="health-service-description">
-                عمر الحمل والمتابعة
+                عمر الحمل والمتابعة اليومية
             </div>
 
         </a>
-
 
 
         <a
@@ -2010,7 +2486,7 @@ button{
 
                 <div class="health-service-arrow">
 
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <i class="fa-solid fa-arrow-left"></i>
 
                 </div>
 
@@ -2021,7 +2497,7 @@ button{
             </div>
 
             <div class="health-service-description">
-                تطور بياناتك الصحية
+                تطور بياناتك الصحية بمرور الوقت
             </div>
 
         </a>
@@ -2029,7 +2505,6 @@ button{
     </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -2069,7 +2544,7 @@ button{
 
                 <div class="daily-arrow">
 
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <i class="fa-solid fa-arrow-left"></i>
 
                 </div>
 
@@ -2100,7 +2575,6 @@ button{
         </a>
 
 
-
         <a
             href="walking.html"
             class="daily-card walking"
@@ -2116,7 +2590,7 @@ button{
 
                 <div class="daily-arrow">
 
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <i class="fa-solid fa-arrow-left"></i>
 
                 </div>
 
@@ -2147,7 +2621,6 @@ button{
         </a>
 
 
-
         <a
             href="sleep.html"
             class="daily-card sleep"
@@ -2163,7 +2636,7 @@ button{
 
                 <div class="daily-arrow">
 
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <i class="fa-solid fa-arrow-left"></i>
 
                 </div>
 
@@ -2194,7 +2667,6 @@ button{
         </a>
 
 
-
         <a
             href="wake-up.html"
             class="daily-card wake"
@@ -2210,7 +2682,7 @@ button{
 
                 <div class="daily-arrow">
 
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <i class="fa-solid fa-arrow-left"></i>
 
                 </div>
 
@@ -2244,7 +2716,6 @@ button{
         </a>
 
 
-
         <a
             href="nutrition.html"
             class="daily-card nutrition"
@@ -2260,7 +2731,7 @@ button{
 
                 <div class="daily-arrow">
 
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <i class="fa-solid fa-arrow-left"></i>
 
                 </div>
 
@@ -2294,7 +2765,6 @@ button{
         </a>
 
 
-
         <a
             href="vitamins.html"
             class="daily-card vitamins"
@@ -2304,13 +2774,13 @@ button{
 
                 <div class="daily-icon">
 
-                    <i class="fa-solid fa-pills"></i>
+                    <i class="fa-solid fa-capsules"></i>
 
                 </div>
 
                 <div class="daily-arrow">
 
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <i class="fa-solid fa-arrow-left"></i>
 
                 </div>
 
@@ -2348,7 +2818,6 @@ button{
 </section>
 
 
-
 <!-- =====================================================
      EXTRA
 ===================================================== -->
@@ -2372,7 +2841,15 @@ button{
 
         <div
             class="extra-icon"
-            style="color:#0F766E;background:#F0FDFA;"
+            style="
+                color:#0F766E;
+                background:
+                    linear-gradient(
+                        145deg,
+                        #E5FAF7,
+                        #F5FFFE
+                    );
+            "
         >
 
             <i class="fa-solid fa-flask-vial"></i>
@@ -2392,9 +2869,7 @@ button{
         </div>
 
         <div class="extra-arrow">
-
-            <i class="fa-solid fa-chevron-left"></i>
-
+            <i class="fa-solid fa-arrow-left"></i>
         </div>
 
     </a>
@@ -2404,7 +2879,15 @@ button{
 
         <div
             class="extra-icon"
-            style="color:#D97706;background:#FEF3C7;"
+            style="
+                color:#D97706;
+                background:
+                    linear-gradient(
+                        145deg,
+                        #FFF1C7,
+                        #FFFBF0
+                    );
+            "
         >
 
             <i class="fa-regular fa-bell"></i>
@@ -2424,9 +2907,7 @@ button{
         </div>
 
         <div class="extra-arrow">
-
-            <i class="fa-solid fa-chevron-left"></i>
-
+            <i class="fa-solid fa-arrow-left"></i>
         </div>
 
     </a>
@@ -2436,7 +2917,15 @@ button{
 
         <div
             class="extra-icon"
-            style="color:#475569;background:#F1F5F9;"
+            style="
+                color:#475569;
+                background:
+                    linear-gradient(
+                        145deg,
+                        #EDF1F5,
+                        #F8FAFC
+                    );
+            "
         >
 
             <i class="fa-solid fa-user"></i>
@@ -2456,15 +2945,12 @@ button{
         </div>
 
         <div class="extra-arrow">
-
-            <i class="fa-solid fa-chevron-left"></i>
-
+            <i class="fa-solid fa-arrow-left"></i>
         </div>
 
     </a>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -2496,7 +2982,7 @@ button{
 
         <div class="challenge-arrow">
 
-            <i class="fa-solid fa-chevron-left"></i>
+            <i class="fa-solid fa-arrow-left"></i>
 
         </div>
 
@@ -2508,9 +2994,8 @@ button{
 </main>
 
 
-
 <!-- =====================================================
-     NAV
+     BOTTOM NAV
 ===================================================== -->
 
 <nav class="bottom-nav">
@@ -2526,7 +3011,9 @@ button{
                 <i class="fa-solid fa-house"></i>
             </div>
 
-            <span>الرئيسية</span>
+            <span>
+                الرئيسية
+            </span>
 
         </a>
 
@@ -2540,7 +3027,9 @@ button{
                 <i class="fa-solid fa-bullseye"></i>
             </div>
 
-            <span>تحدياتي</span>
+            <span>
+                تحدياتي
+            </span>
 
         </a>
 
@@ -2554,7 +3043,9 @@ button{
                 <i class="fa-solid fa-heart-pulse"></i>
             </div>
 
-            <span>صحتي</span>
+            <span>
+                صحتي
+            </span>
 
         </a>
 
@@ -2568,7 +3059,9 @@ button{
                 <i class="fa-solid fa-table-cells-large"></i>
             </div>
 
-            <span>المزيد</span>
+            <span>
+                المزيد
+            </span>
 
         </a>
 
@@ -2576,8 +3069,8 @@ button{
 
 </nav>
 
-</div>
 
+</div>
 
 
 <!-- =====================================================
@@ -2612,17 +3105,13 @@ button{
         <div class="month-row">
 
             <button onclick="changeMonth(-1)">
-
                 <i class="fa-solid fa-chevron-right"></i>
-
             </button>
 
             <strong id="monthTitle"></strong>
 
             <button onclick="changeMonth(1)">
-
                 <i class="fa-solid fa-chevron-left"></i>
-
             </button>
 
         </div>
@@ -2649,7 +3138,6 @@ button{
     </div>
 
 </div>
-
 
 
 <!-- =====================================================
@@ -2690,22 +3178,28 @@ button{
 
             <div
                 style="
-                    width:60px;
-                    height:60px;
+                    width:62px;
+                    height:62px;
                     border-radius:20px;
                     display:flex;
                     align-items:center;
                     justify-content:center;
                     margin:auto;
-                    background:#EFF8FF;
+                    background:
+                        linear-gradient(
+                            145deg,
+                            #EAF5FF,
+                            #F5FAFF
+                        );
                     color:#1479D1;
-                    font-size:22px;
+                    font-size:21px;
                 "
             >
 
                 <i class="fa-regular fa-bell"></i>
 
             </div>
+
 
             <h3
                 style="
@@ -2714,10 +3208,9 @@ button{
                     margin-top:12px;
                 "
             >
-
                 لا توجد تنبيهات جديدة
-
             </h3>
+
 
             <p
                 style="
@@ -2726,9 +3219,7 @@ button{
                     margin-top:5px;
                 "
             >
-
                 ستظهر هنا تذكيراتك الصحية.
-
             </p>
 
         </div>
@@ -2736,7 +3227,6 @@ button{
     </div>
 
 </div>
-
 
 
 <!-- =====================================================
@@ -2759,10 +3249,8 @@ import {
 import {
     getFirestore,
     doc,
-    onSnapshot,
-    setDoc
+    onSnapshot
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-
 
 
 /* =====================================================
@@ -2792,7 +3280,6 @@ const firebaseConfig = {
 };
 
 
-
 /* =====================================================
    INIT
 ===================================================== */
@@ -2807,7 +3294,6 @@ const db =
     getFirestore(app);
 
 
-
 /* =====================================================
    VARIABLES
 ===================================================== */
@@ -2817,7 +3303,6 @@ let currentUser = null;
 let dailyUnsubscribe = null;
 
 let settingsUnsubscribe = null;
-
 
 
 /* =====================================================
@@ -2844,9 +3329,8 @@ function dateKey(date){
 }
 
 
-
 /* =====================================================
-   CURRENT SELECTED DATE
+   SELECTED DATE
 ===================================================== */
 
 function getSelectedDate(){
@@ -2854,7 +3338,6 @@ function getSelectedDate(){
     return window.selectedDate || new Date();
 
 }
-
 
 
 /* =====================================================
@@ -2893,7 +3376,6 @@ let healthGoals = {
 };
 
 
-
 /* =====================================================
    AUTH
 ===================================================== */
@@ -2924,7 +3406,6 @@ onAuthStateChanged(
 
     }
 );
-
 
 
 /* =====================================================
@@ -2991,7 +3472,6 @@ async function loadUserProfile(user){
 }
 
 
-
 /* =====================================================
    REALTIME DATA
 ===================================================== */
@@ -2999,16 +3479,12 @@ async function loadUserProfile(user){
 function startRealtimeData(user){
 
     if(dailyUnsubscribe){
-
         dailyUnsubscribe();
-
     }
 
 
     if(settingsUnsubscribe){
-
         settingsUnsubscribe();
-
     }
 
 
@@ -3073,15 +3549,22 @@ function startRealtimeData(user){
 
                 renderDashboard();
 
+            },
+            error => {
+
+                console.error(
+                    "Settings error:",
+                    error
+                );
+
             }
         );
 
 }
 
 
-
 /* =====================================================
-   LISTEN DAILY
+   DAILY LISTENER
 ===================================================== */
 
 function listenDailyData(
@@ -3090,9 +3573,7 @@ function listenDailyData(
 ){
 
     if(dailyUnsubscribe){
-
         dailyUnsubscribe();
-
     }
 
 
@@ -3117,34 +3598,38 @@ function listenDailyData(
 
                 if(snapshot.exists()){
 
+                    const data =
+                        snapshot.data();
+
+
                     healthData = {
 
                         waterCups:
                             Number(
-                                snapshot.data().waterCups
+                                data.waterCups
                             ) || 0,
 
                         walkingSteps:
                             Number(
-                                snapshot.data().walkingSteps
+                                data.walkingSteps
                             ) || 0,
 
                         sleepMinutes:
                             Number(
-                                snapshot.data().sleepMinutes
+                                data.sleepMinutes
                             ) || 0,
 
                         wakeTime:
-                            snapshot.data().wakeTime || "",
+                            data.wakeTime || "",
 
                         meals:
                             Number(
-                                snapshot.data().meals
+                                data.meals
                             ) || 0,
 
                         vitaminsTaken:
                             Number(
-                                snapshot.data().vitaminsTaken
+                                data.vitaminsTaken
                             ) || 0
 
                     };
@@ -3187,9 +3672,8 @@ function listenDailyData(
 }
 
 
-
 /* =====================================================
-   RENDER DASHBOARD
+   RENDER
 ===================================================== */
 
 function renderDashboard(){
@@ -3211,7 +3695,6 @@ function renderDashboard(){
 }
 
 
-
 /* =====================================================
    WATER
 ===================================================== */
@@ -3223,6 +3706,7 @@ function renderWater(){
 
     const goal =
         healthGoals.waterGoal;
+
 
     document
         .getElementById("waterValue")
@@ -3236,20 +3720,12 @@ function renderWater(){
         `/ ${goal} أكواب`;
 
 
-    const percent =
-        calculatePercent(
-            value,
-            goal
-        );
-
-
     document
         .getElementById("waterProgress")
         .style.width =
-        `${percent}%`;
+        `${calculatePercent(value,goal)}%`;
 
 }
-
 
 
 /* =====================================================
@@ -3283,7 +3759,6 @@ function renderWalking(){
         `${calculatePercent(value,goal)}%`;
 
 }
-
 
 
 /* =====================================================
@@ -3334,7 +3809,6 @@ function renderSleep(){
 }
 
 
-
 /* =====================================================
    WAKE
 ===================================================== */
@@ -3357,7 +3831,6 @@ function renderWake(){
         value ? "100%" : "0%";
 
 }
-
 
 
 /* =====================================================
@@ -3387,7 +3860,6 @@ function renderMeals(){
 }
 
 
-
 /* =====================================================
    VITAMINS
 ===================================================== */
@@ -3415,7 +3887,6 @@ function renderVitamins(){
 }
 
 
-
 /* =====================================================
    PERCENT
 ===================================================== */
@@ -3426,10 +3897,9 @@ function calculatePercent(
 ){
 
     if(!goal || goal <= 0){
-
         return 0;
-
     }
+
 
     return Math.min(
         100,
@@ -3439,7 +3909,6 @@ function calculatePercent(
     );
 
 }
-
 
 
 /* =====================================================
@@ -3494,18 +3963,14 @@ function calculateCompletion(){
 
 
     document
-        .getElementById(
-            "completion"
-        )
+        .getElementById("completion")
         .textContent =
         `${percent}%`;
 
 
     const circle =
         document
-        .getElementById(
-            "progressCircle"
-        );
+        .getElementById("progressCircle");
 
 
     const circumference =
@@ -3530,16 +3995,12 @@ function calculateCompletion(){
 
     const title =
         document
-        .getElementById(
-            "todayTitle"
-        );
+        .getElementById("todayTitle");
 
 
     const description =
         document
-        .getElementById(
-            "todayDescription"
-        );
+        .getElementById("todayDescription");
 
 
     if(percent === 0){
@@ -3582,18 +4043,15 @@ function calculateCompletion(){
 }
 
 
-
 /* =====================================================
-   CHANGE SELECTED DATE
+   DATE CHANGED
 ===================================================== */
 
 window.onDashboardDateChanged =
 function(date){
 
     if(!currentUser){
-
         return;
-
     }
 
 
@@ -3605,9 +4063,8 @@ function(date){
 };
 
 
-
 /* =====================================================
-   HIDE LOADING
+   LOADING
 ===================================================== */
 
 function hideLoading(){
@@ -3632,7 +4089,7 @@ function hideLoading(){
                         "none";
 
                 },
-                300
+                350
             );
 
         },
@@ -3657,6 +4114,7 @@ const shortDays = [
     "سبت"
 
 ];
+
 
 const months = [
 
@@ -3688,7 +4146,6 @@ let calendarMonth =
     );
 
 
-
 function sameDate(a,b){
 
     return (
@@ -3711,7 +4168,6 @@ function sameDate(a,b){
 }
 
 
-
 function formatDate(date){
 
     return date.toLocaleDateString(
@@ -3727,6 +4183,9 @@ function formatDate(date){
 }
 
 
+/* =====================================================
+   WEEK
+===================================================== */
 
 function renderWeek(){
 
@@ -3834,8 +4293,19 @@ function renderWeek(){
 }
 
 
+/* =====================================================
+   OPEN CALENDAR
+===================================================== */
 
 function openCalendar(){
+
+    calendarMonth =
+        new Date(
+            window.selectedDate.getFullYear(),
+            window.selectedDate.getMonth(),
+            1
+        );
+
 
     document
         .getElementById(
@@ -3849,6 +4319,13 @@ function openCalendar(){
 }
 
 
+window.openCalendar =
+    openCalendar;
+
+
+/* =====================================================
+   CLOSE CALENDAR
+===================================================== */
 
 function closeCalendar(){
 
@@ -3861,6 +4338,13 @@ function closeCalendar(){
 }
 
 
+window.closeCalendar =
+    closeCalendar;
+
+
+/* =====================================================
+   CHANGE MONTH
+===================================================== */
 
 function changeMonth(direction){
 
@@ -3878,6 +4362,13 @@ function changeMonth(direction){
 }
 
 
+window.changeMonth =
+    changeMonth;
+
+
+/* =====================================================
+   RENDER MONTH
+===================================================== */
 
 function renderCalendar(){
 
@@ -4014,6 +4505,7 @@ function renderCalendar(){
 
                 renderWeek();
 
+
                 window.onDashboardDateChanged(
                     window.selectedDate
                 );
@@ -4033,7 +4525,6 @@ function renderCalendar(){
 }
 
 
-
 /* =====================================================
    NOTIFICATIONS
 ===================================================== */
@@ -4047,6 +4538,7 @@ function showNotifications(){
         .classList.add("show");
 
 }
+
 
 window.showNotifications =
     showNotifications;
@@ -4062,13 +4554,55 @@ function closeNotifications(){
 
 }
 
+
 window.closeNotifications =
     closeNotifications;
 
 
+/* =====================================================
+   CLOSE MODALS BY BACKGROUND
+===================================================== */
+
+document
+    .getElementById("calendarModal")
+    .addEventListener(
+        "click",
+        event => {
+
+            if(
+                event.target.id ===
+                "calendarModal"
+            ){
+
+                closeCalendar();
+
+            }
+
+        }
+    );
+
+
+document
+    .getElementById("notificationModal")
+    .addEventListener(
+        "click",
+        event => {
+
+            if(
+                event.target.id ===
+                "notificationModal"
+            ){
+
+                closeNotifications();
+
+            }
+
+        }
+    );
+
 
 /* =====================================================
-   START CALENDAR
+   START
 ===================================================== */
 
 document
