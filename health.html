@@ -2,7 +2,6 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 
 <meta
@@ -14,16 +13,8 @@
 
 <title>صحتي | قياساتي</title>
 
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
->
-
-<link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
     href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
@@ -34,7 +25,6 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 >
-
 
 <style>
 
@@ -109,27 +99,26 @@ a{
 }
 
 .avatar{
-    width:48px;
-    height:48px;
-    border-radius:17px;
+    width:46px;
+    height:46px;
+    border-radius:15px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    background:
-        linear-gradient(
-            145deg,
-            #1976D2,
-            #43A5F5
-        );
+    background:linear-gradient(
+        145deg,
+        #1976D2,
+        #43A5F5
+    );
 
     color:#fff;
-    font-size:20px;
+    font-size:17px;
 
     box-shadow:
-        0 8px 22px
-        rgba(25,118,210,.20);
+        0 7px 20px
+        rgba(25,118,210,.18);
 }
 
 .greeting{
@@ -140,13 +129,13 @@ a{
 
 .greeting small{
     color:#8993A4;
-    font-size:11px;
+    font-size:10px;
     font-weight:600;
 }
 
 .greeting strong{
     color:#182235;
-    font-size:17px;
+    font-size:16px;
     font-weight:800;
 }
 
@@ -156,9 +145,9 @@ a{
 }
 
 .top-btn{
-    width:43px;
-    height:43px;
-    border-radius:15px;
+    width:41px;
+    height:41px;
+    border-radius:13px;
 
     background:#fff;
     color:#526075;
@@ -170,6 +159,10 @@ a{
     box-shadow:
         0 5px 18px
         rgba(30,50,80,.07);
+}
+
+.top-btn i{
+    font-size:13px;
 }
 
 .top-btn:active{
@@ -186,7 +179,7 @@ a{
 }
 
 .page-intro h1{
-    font-size:27px;
+    font-size:25px;
     line-height:1.35;
     font-weight:800;
     color:#152238;
@@ -195,70 +188,54 @@ a{
 .page-intro p{
     margin-top:4px;
     color:#8B95A6;
-    font-size:11px;
+    font-size:10px;
     line-height:1.8;
 }
 
 
 /* =========================================================
-   BLUE SUMMARY CARD
+   SUMMARY
 ========================================================= */
 
 .summary-card{
-    margin:0 18px 22px;
+    margin:0 18px 23px;
+    border-radius:27px;
+    padding:19px;
 
-    border-radius:28px;
-
-    padding:20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #176FC5,
-            #298EDC 55%,
-            #47A9F3
-        );
+    background:linear-gradient(
+        145deg,
+        #176FC5,
+        #298EDC 55%,
+        #47A9F3
+    );
 
     color:#fff;
-
     position:relative;
     overflow:hidden;
 
     box-shadow:
         0 12px 30px
-        rgba(25,118,210,.20);
+        rgba(25,118,210,.19);
 }
 
 .summary-card:before{
     content:"";
-
     position:absolute;
-
     width:190px;
     height:190px;
-
     border-radius:50%;
-
-    background:
-        rgba(255,255,255,.09);
-
+    background:rgba(255,255,255,.08);
     left:-75px;
     top:-95px;
 }
 
 .summary-card:after{
     content:"";
-
     position:absolute;
-
     width:160px;
     height:160px;
-
     border-radius:50%;
-
-    background:
-        rgba(255,255,255,.07);
-
+    background:rgba(255,255,255,.06);
     right:-65px;
     bottom:-85px;
 }
@@ -271,7 +248,7 @@ a{
     align-items:center;
     justify-content:space-between;
 
-    margin-bottom:16px;
+    margin-bottom:15px;
 }
 
 .summary-label{
@@ -281,24 +258,22 @@ a{
 }
 
 .summary-label-icon{
-    width:37px;
-    height:37px;
+    width:35px;
+    height:35px;
+    border-radius:12px;
 
-    border-radius:13px;
-
-    background:
-        rgba(255,255,255,.14);
+    background:rgba(255,255,255,.14);
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    font-size:15px;
+    font-size:14px;
 }
 
 .summary-label div strong{
     display:block;
-    font-size:12px;
+    font-size:11px;
 }
 
 .summary-label div small{
@@ -309,8 +284,8 @@ a{
 }
 
 .summary-date{
-    font-size:9px;
-    color:rgba(255,255,255,.70);
+    font-size:8px;
+    color:rgba(255,255,255,.72);
 }
 
 .summary-grid{
@@ -318,22 +293,17 @@ a{
     z-index:2;
 
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr 1fr;
-
+    grid-template-columns:repeat(3,1fr);
     gap:8px;
 }
 
 .summary-item{
     min-width:0;
+    padding:12px 9px;
 
-    padding:13px 10px;
+    border-radius:17px;
 
-    border-radius:18px;
-
-    background:
-        rgba(255,255,255,.12);
+    background:rgba(255,255,255,.12);
 
     border:
         1px solid
@@ -342,12 +312,8 @@ a{
 
 .summary-item small{
     display:block;
-
     font-size:8px;
-
-    color:
-        rgba(255,255,255,.70);
-
+    color:rgba(255,255,255,.72);
     margin-bottom:4px;
 }
 
@@ -355,35 +321,30 @@ a{
     display:flex;
     align-items:baseline;
     gap:4px;
-
     white-space:nowrap;
 }
 
 .summary-value strong{
-    font-size:20px;
+    font-size:19px;
     font-weight:800;
 }
 
 .summary-value span{
-    font-size:8px;
-    color:
-        rgba(255,255,255,.72);
+    font-size:7px;
+    color:rgba(255,255,255,.72);
 }
 
 .summary-status{
     margin-top:4px;
-
     display:inline-flex;
 
     padding:3px 7px;
 
     border-radius:8px;
 
-    background:
-        rgba(255,255,255,.14);
+    background:rgba(255,255,255,.14);
 
-    font-size:8px;
-
+    font-size:7px;
     color:#fff;
 }
 
@@ -393,28 +354,28 @@ a{
 ========================================================= */
 
 .section{
-    margin-bottom:23px;
+    margin-bottom:24px;
 }
 
 .section-title{
-    padding:0 20px 11px;
+    padding:0 19px 11px;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 }
 
-.section-title div{
+.section-title > div{
     display:flex;
     align-items:center;
     gap:8px;
 }
 
 .title-icon{
-    width:29px;
-    height:29px;
+    width:28px;
+    height:28px;
 
-    border-radius:10px;
+    border-radius:9px;
 
     display:flex;
     align-items:center;
@@ -423,62 +384,75 @@ a{
     background:#EAF3FD;
     color:#1976D2;
 
-    font-size:12px;
+    font-size:11px;
 }
 
 .section-title h2{
-    font-size:15px;
+    font-size:14px;
     font-weight:800;
     color:#263248;
 }
 
 .section-title span{
-    font-size:9px;
+    font-size:8px;
     color:#9AA4B3;
 }
 
 
 /* =========================================================
-   MEASUREMENTS GRID
+   MEASUREMENTS
 ========================================================= */
 
 .measure-grid{
     padding:0 18px;
 
     display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
+    grid-template-columns:repeat(2,1fr);
     gap:10px;
 }
 
 .measure-card{
+    width:100%;
+    border:1px solid #EAEFF5;
+
     background:#fff;
 
-    border:
-        1px solid
-        #EDF1F6;
+    border-radius:21px;
 
-    border-radius:23px;
+    padding:13px;
 
-    padding:14px;
-
-    min-height:145px;
+    min-height:137px;
 
     box-shadow:
         0 5px 18px
         rgba(30,50,80,.045);
 
     position:relative;
-
     overflow:hidden;
 
-    transition:.2s;
+    text-align:right;
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease;
+}
+
+.measure-card:before{
+    content:"";
+    position:absolute;
+
+    top:0;
+    right:0;
+    left:0;
+
+    height:3px;
+
+    background:var(--accent);
+    opacity:.85;
 }
 
 .measure-card:active{
-    transform:scale(.97);
+    transform:scale(.975);
 }
 
 .measure-card-head{
@@ -488,46 +462,49 @@ a{
 }
 
 .measure-icon{
-    width:45px;
-    height:45px;
+    width:40px;
+    height:40px;
 
-    border-radius:15px;
+    border-radius:13px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    font-size:18px;
+    font-size:15px;
+}
+
+.measure-icon i{
+    line-height:1;
 }
 
 .measure-add{
-    width:30px;
-    height:30px;
+    width:28px;
+    height:28px;
 
-    border-radius:10px;
+    border-radius:9px;
 
-    background:#F4F7FA;
-
-    color:#758195;
+    background:#F5F7FA;
+    color:#718096;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    font-size:11px;
+    font-size:9px;
 }
 
 .measure-card h3{
-    margin-top:11px;
+    margin-top:10px;
 
-    font-size:12px;
+    font-size:11px;
     font-weight:800;
 
     color:#2E394D;
 }
 
 .measure-value{
-    margin-top:3px;
+    margin-top:2px;
 
     display:flex;
     align-items:baseline;
@@ -536,37 +513,44 @@ a{
 }
 
 .measure-value strong{
-    font-size:21px;
+    font-size:19px;
     font-weight:800;
-
     color:#1E2B40;
 }
 
 .measure-value span{
-    font-size:8px;
+    font-size:7px;
     color:#8E99A9;
 }
 
 .measure-sub{
     margin-top:3px;
 
-    font-size:8px;
+    font-size:7px;
 
     color:#9BA5B3;
 
     white-space:nowrap;
-
     overflow:hidden;
-
     text-overflow:ellipsis;
 }
 
 
-/* COLORS */
+/* =========================================================
+   MEASUREMENT COLORS
+========================================================= */
+
+.weight{
+    --accent:#1976D2;
+}
 
 .weight .measure-icon{
     background:#EAF4FF;
     color:#1976D2;
+}
+
+.pressure{
+    --accent:#E4555E;
 }
 
 .pressure .measure-icon{
@@ -574,9 +558,17 @@ a{
     color:#E4555E;
 }
 
+.pulse{
+    --accent:#D95386;
+}
+
 .pulse .measure-icon{
     background:#FFF0F5;
     color:#D95386;
+}
+
+.glucose{
+    --accent:#E88928;
 }
 
 .glucose .measure-icon{
@@ -584,9 +576,17 @@ a{
     color:#E88928;
 }
 
+.temperature{
+    --accent:#EF6C3B;
+}
+
 .temperature .measure-icon{
     background:#FFF0E9;
     color:#EF6C3B;
+}
+
+.oxygen{
+    --accent:#168FC4;
 }
 
 .oxygen .measure-icon{
@@ -594,9 +594,17 @@ a{
     color:#168FC4;
 }
 
+.waist{
+    --accent:#7957D7;
+}
+
 .waist .measure-icon{
     background:#F1EDFF;
     color:#7957D7;
+}
+
+.height{
+    --accent:#3B9B61;
 }
 
 .height .measure-icon{
@@ -614,18 +622,14 @@ a{
 
     background:#fff;
 
-    border:
-        1px solid
-        #EDF1F6;
+    border:1px solid #EDF1F6;
 
     border-radius:22px;
 
     padding:15px;
 
     display:flex;
-
     align-items:center;
-
     gap:12px;
 
     box-shadow:
@@ -634,9 +638,9 @@ a{
 }
 
 .height-card .measure-icon{
-    width:45px;
-    height:45px;
-    min-width:45px;
+    width:43px;
+    height:43px;
+    min-width:43px;
 }
 
 .height-info{
@@ -645,19 +649,14 @@ a{
 
 .height-info strong{
     display:block;
-
     font-size:11px;
-
     color:#344056;
 }
 
 .height-info small{
     display:block;
-
     font-size:8px;
-
     color:#9AA4B2;
-
     margin-top:2px;
 }
 
@@ -668,13 +667,12 @@ a{
 }
 
 .height-button{
-    width:34px;
-    height:34px;
+    width:33px;
+    height:33px;
 
-    border-radius:11px;
+    border-radius:10px;
 
     background:#EAF8EF;
-
     color:#3B9B61;
 
     display:flex;
@@ -684,17 +682,278 @@ a{
 
 
 /* =========================================================
-   RECORD MODAL
+   CHART
+========================================================= */
+
+.chart-box{
+    margin:0 18px;
+
+    background:#fff;
+
+    border:1px solid #EDF1F6;
+
+    border-radius:22px;
+
+    padding:15px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(30,50,80,.045);
+}
+
+.chart-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:11px;
+}
+
+.chart-header strong{
+    font-size:10px;
+    color:#344056;
+}
+
+.chart-header span{
+    font-size:8px;
+    color:#9BA4B2;
+}
+
+.chart-wrap{
+    width:100%;
+    height:185px;
+    position:relative;
+}
+
+.chart-wrap canvas{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+
+/* =========================================================
+   TABLES
+========================================================= */
+
+.table-box{
+    margin:0 18px;
+
+    background:#fff;
+
+    border:1px solid #E7ECF2;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 5px 18px
+        rgba(30,50,80,.045);
+}
+
+.table-scroll{
+    width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    -webkit-overflow-scrolling:touch;
+
+    scrollbar-width:thin;
+    scrollbar-color:#CBD5E1 transparent;
+}
+
+.table-scroll::-webkit-scrollbar{
+    height:5px;
+}
+
+.table-scroll::-webkit-scrollbar-track{
+    background:#F5F7FA;
+}
+
+.table-scroll::-webkit-scrollbar-thumb{
+    background:#CBD5E1;
+    border-radius:20px;
+}
+
+table{
+    width:100%;
+
+    min-width:540px;
+
+    border-collapse:separate;
+    border-spacing:0;
+
+    table-layout:auto;
+}
+
+thead{
+    background:#F4F7FA;
+}
+
+th{
+    height:42px;
+
+    padding:0 10px;
+
+    font-size:8px;
+
+    color:#687588;
+
+    font-weight:800;
+
+    white-space:nowrap;
+
+    text-align:center;
+
+    border-bottom:
+        1px solid
+        #E8EDF2;
+}
+
+td{
+    height:45px;
+
+    padding:0 10px;
+
+    border-bottom:
+        1px solid
+        #F0F3F6;
+
+    font-size:8px;
+
+    color:#566174;
+
+    text-align:center;
+
+    white-space:nowrap;
+
+    vertical-align:middle;
+}
+
+tbody tr:last-child td{
+    border-bottom:0;
+}
+
+tbody tr:nth-child(even){
+    background:#FBFCFD;
+}
+
+tbody tr:active{
+    background:#F4F8FC;
+}
+
+td strong{
+    color:#273349;
+    font-size:9px;
+    font-weight:800;
+}
+
+.delete-btn{
+    width:27px;
+    height:27px;
+
+    border-radius:8px;
+
+    background:#FFF1F2;
+    color:#D9535D;
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:9px;
+
+    transition:.15s;
+}
+
+.delete-btn:active{
+    transform:scale(.9);
+    background:#FFE3E5;
+}
+
+.empty-table{
+    padding:23px 15px;
+
+    text-align:center;
+
+    color:#9AA4B2;
+
+    font-size:9px;
+}
+
+
+/* =========================================================
+   INFO
+========================================================= */
+
+.info-card{
+    margin:0 18px;
+
+    padding:14px;
+
+    border-radius:19px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #EFF7FF,
+            #F3FAFF
+        );
+
+    border:1px solid #E1EEF9;
+
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+}
+
+.info-icon{
+    width:36px;
+    height:36px;
+    min-width:36px;
+
+    border-radius:11px;
+
+    background:#fff;
+    color:#1976D2;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:13px;
+
+    box-shadow:
+        0 4px 12px
+        rgba(25,118,210,.06);
+}
+
+.info-card strong{
+    display:block;
+    font-size:10px;
+    color:#31506D;
+}
+
+.info-card p{
+    margin-top:3px;
+    font-size:8px;
+    color:#74869A;
+    line-height:1.9;
+}
+
+
+/* =========================================================
+   MODAL
 ========================================================= */
 
 .modal{
     position:fixed;
     inset:0;
-
     z-index:500;
 
-    background:
-        rgba(16,28,45,.43);
+    background:rgba(16,28,45,.43);
 
     backdrop-filter:blur(5px);
 
@@ -717,32 +976,25 @@ a{
 
     background:#fff;
 
-    border-radius:
-        29px 29px 0 0;
+    border-radius:28px 28px 0 0;
 
     padding:20px;
 
-    animation:
-        slideUp .25s ease;
+    animation:slideUp .25s ease;
 }
 
 @keyframes slideUp{
-
     from{
         transform:translateY(100%);
     }
-
     to{
         transform:translateY(0);
     }
-
 }
 
 .modal-head{
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     margin-bottom:18px;
@@ -755,42 +1007,48 @@ a{
 }
 
 .modal-title-icon{
-    width:40px;
-    height:40px;
+    width:39px;
+    height:39px;
 
-    border-radius:13px;
+    border-radius:12px;
 
     background:#EAF4FF;
-
     color:#1976D2;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:14px;
+}
+
+.modal-head h3{
+    font-size:15px;
+    color:#243149;
+}
+
+.modal-head small{
+    display:block;
+    color:#9AA4B2;
+    font-size:8px;
+}
+
+.close{
+    width:35px;
+    height:35px;
+
+    border-radius:11px;
+
+    background:#F3F5F8;
+    color:#687486;
 
     display:flex;
     align-items:center;
     justify-content:center;
 }
 
-.modal-head h3{
-    font-size:16px;
-    color:#243149;
-}
-
-.modal-head small{
-    display:block;
-
-    color:#9AA4B2;
-
-    font-size:8px;
-}
-
-.close{
-    width:36px;
-    height:36px;
-
-    border-radius:12px;
-
-    background:#F3F5F8;
-
-    color:#687486;
+.close i{
+    font-size:12px;
 }
 
 
@@ -807,7 +1065,7 @@ a{
 
     margin-bottom:6px;
 
-    font-size:10px;
+    font-size:9px;
 
     font-weight:700;
 
@@ -822,15 +1080,13 @@ a{
     position:absolute;
 
     right:13px;
-
     top:50%;
 
-    transform:
-        translateY(-50%);
+    transform:translateY(-50%);
 
     color:#9AA6B5;
 
-    font-size:13px;
+    font-size:12px;
 
     pointer-events:none;
 }
@@ -838,26 +1094,21 @@ a{
 .input-wrap input,
 .input-wrap select{
     width:100%;
+    height:48px;
 
-    height:49px;
+    border:1px solid #E6EBF1;
 
-    border:
-        1px solid
-        #E6EBF1;
-
-    border-radius:15px;
+    border-radius:14px;
 
     background:#F9FAFC;
 
     outline:none;
 
-    padding:
-        0 40px
-        0 13px;
+    padding:0 39px 0 13px;
 
     color:#273349;
 
-    font-size:11px;
+    font-size:10px;
 
     direction:rtl;
 }
@@ -865,7 +1116,6 @@ a{
 .input-wrap input:focus,
 .input-wrap select:focus{
     border-color:#1976D2;
-
     background:#fff;
 
     box-shadow:
@@ -877,39 +1127,32 @@ a{
     position:absolute;
 
     left:13px;
-
     top:50%;
 
-    transform:
-        translateY(-50%);
+    transform:translateY(-50%);
 
-    font-size:9px;
-
+    font-size:8px;
     color:#98A2B1;
 }
 
 .form-row{
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns:1fr 1fr;
     gap:9px;
 }
 
 
 /* =========================================================
-   SAVE BUTTON
+   SAVE
 ========================================================= */
 
 .save-btn{
     width:100%;
-
-    height:51px;
+    height:50px;
 
     margin-top:5px;
 
-    border-radius:16px;
+    border-radius:15px;
 
     background:
         linear-gradient(
@@ -920,16 +1163,12 @@ a{
 
     color:#fff;
 
-    font-size:12px;
-
+    font-size:11px;
     font-weight:800;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     gap:8px;
 
     box-shadow:
@@ -937,236 +1176,12 @@ a{
         rgba(25,118,210,.20);
 }
 
+.save-btn i{
+    font-size:11px;
+}
+
 .save-btn:active{
     transform:scale(.98);
-}
-
-
-/* =========================================================
-   CHART AREA
-========================================================= */
-
-.chart-box{
-    margin:0 18px;
-
-    background:#fff;
-
-    border:
-        1px solid
-        #EDF1F6;
-
-    border-radius:24px;
-
-    padding:16px;
-
-    box-shadow:
-        0 5px 18px
-        rgba(30,50,80,.045);
-}
-
-.chart-header{
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    margin-bottom:12px;
-}
-
-.chart-header strong{
-    font-size:11px;
-    color:#344056;
-}
-
-.chart-header span{
-    font-size:9px;
-    color:#9BA4B2;
-}
-
-.chart-wrap{
-    width:100%;
-    height:190px;
-
-    position:relative;
-}
-
-.chart-wrap canvas{
-    width:100%;
-    height:100%;
-
-    display:block;
-}
-
-
-/* =========================================================
-   TABLE
-========================================================= */
-
-.table-box{
-    margin:0 18px;
-
-    background:#fff;
-
-    border:
-        1px solid
-        #EDF1F6;
-
-    border-radius:23px;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 5px 18px
-        rgba(30,50,80,.045);
-}
-
-.table-scroll{
-    width:100%;
-    overflow-x:auto;
-}
-
-table{
-    width:100%;
-
-    border-collapse:collapse;
-
-    min-width:520px;
-}
-
-thead{
-    background:#F5F8FB;
-}
-
-th{
-    padding:12px 9px;
-
-    font-size:8px;
-
-    color:#8994A4;
-
-    font-weight:700;
-
-    white-space:nowrap;
-}
-
-td{
-    padding:12px 9px;
-
-    border-top:
-        1px solid
-        #F0F2F5;
-
-    font-size:9px;
-
-    color:#475267;
-
-    text-align:center;
-
-    white-space:nowrap;
-}
-
-td strong{
-    color:#273349;
-}
-
-.empty-table{
-    padding:25px 15px;
-
-    text-align:center;
-
-    color:#9AA4B2;
-
-    font-size:10px;
-}
-
-.delete-btn{
-    width:28px;
-    height:28px;
-
-    border-radius:9px;
-
-    background:#FFF0F1;
-
-    color:#D9535D;
-
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    font-size:10px;
-}
-
-
-/* =========================================================
-   QUICK INFO
-========================================================= */
-
-.info-card{
-    margin:0 18px;
-
-    padding:15px;
-
-    border-radius:20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #EFF7FF,
-            #F3FAFF
-        );
-
-    border:
-        1px solid
-        #E1EEF9;
-
-    display:flex;
-
-    align-items:flex-start;
-
-    gap:11px;
-}
-
-.info-icon{
-    width:38px;
-    height:38px;
-
-    min-width:38px;
-
-    border-radius:12px;
-
-    background:#fff;
-
-    color:#1976D2;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    box-shadow:
-        0 4px 12px
-        rgba(25,118,210,.06);
-}
-
-.info-card strong{
-    display:block;
-
-    font-size:10px;
-
-    color:#31506D;
-}
-
-.info-card p{
-    margin-top:3px;
-
-    font-size:8px;
-
-    color:#74869A;
-
-    line-height:1.9;
 }
 
 
@@ -1176,79 +1191,66 @@ td strong{
 
 .bottom-nav{
     position:fixed;
-
     z-index:100;
 
     bottom:13px;
-
     left:50%;
 
-    transform:
-        translateX(-50%);
+    transform:translateX(-50%);
 
-    width:
-        min(
-            610px,
-            calc(100% - 26px)
-        );
+    width:min(
+        610px,
+        calc(100% - 26px)
+    );
 
-    height:70px;
+    height:68px;
 
-    border-radius:25px;
+    border-radius:24px;
 
-    background:
-        rgba(255,255,255,.95);
+    background:rgba(255,255,255,.95);
 
-    backdrop-filter:
-        blur(18px);
+    backdrop-filter:blur(18px);
 
-    -webkit-backdrop-filter:
-        blur(18px);
+    -webkit-backdrop-filter:blur(18px);
 
     box-shadow:
         0 12px 35px
         rgba(25,45,75,.14);
 
-    border:
-        1px solid
-        rgba(220,226,234,.8);
+    border:1px solid rgba(220,226,234,.8);
 
     display:grid;
 
-    grid-template-columns:
-        repeat(4,1fr);
+    grid-template-columns:repeat(4,1fr);
 
     align-items:center;
 
-    padding:6px;
+    padding:5px;
 }
 
 .nav-item{
-    height:58px;
+    height:57px;
 
-    border-radius:19px;
+    border-radius:18px;
 
     display:flex;
-
     flex-direction:column;
 
     align-items:center;
-
     justify-content:center;
 
     gap:3px;
 
     color:#9AA4B2;
 
-    font-size:9px;
-
+    font-size:8px;
     font-weight:700;
 
     transition:.2s;
 }
 
 .nav-item i{
-    font-size:17px;
+    font-size:15px;
 }
 
 .nav-item.active{
@@ -1267,37 +1269,33 @@ td strong{
 
 .toast{
     position:fixed;
-
     z-index:900;
 
     left:50%;
-
     bottom:96px;
 
     transform:
         translateX(-50%)
         translateY(20px);
 
-    width:
-        min(
-            360px,
-            calc(100% - 40px)
-        );
+    width:min(
+        360px,
+        calc(100% - 40px)
+    );
 
-    padding:13px 16px;
+    padding:12px 15px;
 
-    border-radius:15px;
+    border-radius:14px;
 
     background:#17263D;
 
     color:#fff;
 
-    font-size:10px;
+    font-size:9px;
 
     text-align:center;
 
     opacity:0;
-
     pointer-events:none;
 
     transition:.3s;
@@ -1330,29 +1328,24 @@ td strong{
 
 .loading{
     position:fixed;
-
     inset:0;
-
     z-index:999;
 
     background:#F7F9FC;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     flex-direction:column;
-
     gap:15px;
 }
 
 .loading-logo{
-    width:60px;
-    height:60px;
+    width:58px;
+    height:58px;
 
-    border-radius:20px;
+    border-radius:19px;
 
     background:
         linear-gradient(
@@ -1361,15 +1354,13 @@ td strong{
             #43A5F5
         );
 
-    color:white;
+    color:#fff;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
-    font-size:25px;
+    font-size:22px;
 
     box-shadow:
         0 12px 30px
@@ -1377,12 +1368,10 @@ td strong{
 }
 
 .spinner{
-    width:24px;
-    height:24px;
+    width:23px;
+    height:23px;
 
-    border:
-        3px solid
-        #E0E8F1;
+    border:3px solid #E0E8F1;
 
     border-top-color:#1976D2;
 
@@ -1393,11 +1382,9 @@ td strong{
 }
 
 @keyframes spin{
-
     to{
         transform:rotate(360deg);
     }
-
 }
 
 
@@ -1412,7 +1399,7 @@ td strong{
     }
 
     .summary-item{
-        padding:11px 7px;
+        padding:10px 7px;
     }
 
     .summary-value strong{
@@ -1425,27 +1412,64 @@ td strong{
 
     .measure-card{
         padding:12px;
-        border-radius:20px;
+        min-height:133px;
+        border-radius:19px;
+    }
+
+    .measure-icon{
+        width:38px;
+        height:38px;
+        border-radius:12px;
+        font-size:14px;
+    }
+
+    .measure-card h3{
+        font-size:10px;
+    }
+
+    .measure-value strong{
+        font-size:18px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media(max-width:340px){
+
+    .summary-grid{
+        grid-template-columns:1fr;
+    }
+
+    .summary-item{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:8px;
+    }
+
+    .summary-item small{
+        margin-bottom:0;
+    }
+
+    .summary-status{
+        margin-top:0;
     }
 
 }
 
 </style>
-
 </head>
 
 
 <body>
 
+<!-- LOADING -->
 
-<!-- =======================================================
-     LOADING
-======================================================= -->
-
-<div
-    class="loading"
-    id="loadingScreen"
->
+<div class="loading" id="loadingScreen">
 
     <div class="loading-logo">
         <i class="fa-solid fa-heart-pulse"></i>
@@ -1456,17 +1480,10 @@ td strong{
 </div>
 
 
-
-<!-- =======================================================
-     APP
-======================================================= -->
-
 <div class="app">
 
 
-<!-- =======================================================
-     TOP BAR
-======================================================= -->
+<!-- TOP BAR -->
 
 <header class="topbar">
 
@@ -1480,14 +1497,11 @@ td strong{
 
             <small>أهلاً بك</small>
 
-            <strong id="topUserName">
-                ...
-            </strong>
+            <strong id="topUserName">...</strong>
 
         </div>
 
     </div>
-
 
     <div class="top-actions">
 
@@ -1504,16 +1518,11 @@ td strong{
 </header>
 
 
-
-<!-- =======================================================
-     INTRO
-======================================================= -->
+<!-- INTRO -->
 
 <section class="page-intro">
 
-    <h1>
-        قياساتي الصحية
-    </h1>
+    <h1>قياساتي الصحية</h1>
 
     <p>
         تابع مؤشراتك الصحية وسجّل قياساتك بانتظام.
@@ -1522,10 +1531,7 @@ td strong{
 </section>
 
 
-
-<!-- =======================================================
-     BLUE SUMMARY
-======================================================= -->
+<!-- SUMMARY -->
 
 <section class="summary-card">
 
@@ -1539,18 +1545,13 @@ td strong{
 
             <div>
 
-                <strong>
-                    ملخص حالتك الصحية
-                </strong>
+                <strong>ملخص حالتك الصحية</strong>
 
-                <small>
-                    آخر القياسات المسجلة
-                </small>
+                <small>آخر القياسات المسجلة</small>
 
             </div>
 
         </div>
-
 
         <div
             class="summary-date"
@@ -1564,24 +1565,15 @@ td strong{
 
     <div class="summary-grid">
 
-
-        <!-- BMI -->
-
         <div class="summary-item">
 
-            <small>
-                مؤشر كتلة الجسم BMI
-            </small>
+            <small>مؤشر كتلة الجسم BMI</small>
 
             <div class="summary-value">
 
-                <strong id="bmiValue">
-                    —
-                </strong>
+                <strong id="bmiValue">—</strong>
 
-                <span>
-                    kg/m²
-                </span>
+                <span>kg/m²</span>
 
             </div>
 
@@ -1595,23 +1587,15 @@ td strong{
         </div>
 
 
-        <!-- GLUCOSE -->
-
         <div class="summary-item">
 
-            <small>
-                ملخص السكر
-            </small>
+            <small>ملخص السكر</small>
 
             <div class="summary-value">
 
-                <strong id="summaryGlucose">
-                    —
-                </strong>
+                <strong id="summaryGlucose">—</strong>
 
-                <span>
-                    g/L
-                </span>
+                <span>g/L</span>
 
             </div>
 
@@ -1625,23 +1609,15 @@ td strong{
         </div>
 
 
-        <!-- BLOOD PRESSURE -->
-
         <div class="summary-item">
 
-            <small>
-                ضغط الدم
-            </small>
+            <small>ضغط الدم</small>
 
             <div class="summary-value">
 
-                <strong id="summaryPressure">
-                    —
-                </strong>
+                <strong id="summaryPressure">—</strong>
 
-                <span>
-                    mmHg
-                </span>
+                <span>mmHg</span>
 
             </div>
 
@@ -1659,10 +1635,7 @@ td strong{
 </section>
 
 
-
-<!-- =======================================================
-     MEASUREMENTS
-======================================================= -->
+<!-- MEASUREMENTS -->
 
 <section class="section">
 
@@ -1674,15 +1647,11 @@ td strong{
                 <i class="fa-solid fa-stethoscope"></i>
             </span>
 
-            <h2>
-                قياساتي
-            </h2>
+            <h2>قياساتي</h2>
 
         </div>
 
-        <span>
-            اضغط لإضافة قياس
-        </span>
+        <span>اضغط لإضافة قياس</span>
 
     </div>
 
@@ -1709,19 +1678,13 @@ td strong{
 
             </div>
 
-            <h3>
-                الوزن
-            </h3>
+            <h3>الوزن</h3>
 
             <div class="measure-value">
 
-                <strong id="weightValue">
-                    —
-                </strong>
+                <strong id="weightValue">—</strong>
 
-                <span>
-                    كغ
-                </span>
+                <span>كغ</span>
 
             </div>
 
@@ -1733,283 +1696,6 @@ td strong{
             </div>
 
         </button>
-
-
-
-        <!-- BLOOD PRESSURE -->
-
-        <button
-            class="measure-card pressure"
-            data-measure="pressure"
-        >
-
-            <div class="measure-card-head">
-
-                <div class="measure-icon">
-                    <i class="fa-solid fa-heart-pulse"></i>
-                </div>
-
-                <div class="measure-add">
-                    <i class="fa-solid fa-plus"></i>
-                </div>
-
-            </div>
-
-            <h3>
-                ضغط الدم
-            </h3>
-
-            <div class="measure-value">
-
-                <strong id="pressureValue">
-                    —
-                </strong>
-
-                <span>
-                    mmHg
-                </span>
-
-            </div>
-
-            <div
-                class="measure-sub"
-                id="pressureDate"
-            >
-                لم يتم التسجيل
-            </div>
-
-        </button>
-
-
-
-        <!-- PULSE -->
-
-        <button
-            class="measure-card pulse"
-            data-measure="pulse"
-        >
-
-            <div class="measure-card-head">
-
-                <div class="measure-icon">
-                    <i class="fa-solid fa-heart"></i>
-                </div>
-
-                <div class="measure-add">
-                    <i class="fa-solid fa-plus"></i>
-                </div>
-
-            </div>
-
-            <h3>
-                نبض القلب
-            </h3>
-
-            <div class="measure-value">
-
-                <strong id="pulseValue">
-                    —
-                </strong>
-
-                <span>
-                    BPM
-                </span>
-
-            </div>
-
-            <div
-                class="measure-sub"
-                id="pulseDate"
-            >
-                لم يتم التسجيل
-            </div>
-
-        </button>
-
-
-
-        <!-- GLUCOSE -->
-
-        <button
-            class="measure-card glucose"
-            data-measure="glucose"
-        >
-
-            <div class="measure-card-head">
-
-                <div class="measure-icon">
-                    <i class="fa-solid fa-droplet"></i>
-                </div>
-
-                <div class="measure-add">
-                    <i class="fa-solid fa-plus"></i>
-                </div>
-
-            </div>
-
-            <h3>
-                سكر الدم
-            </h3>
-
-            <div class="measure-value">
-
-                <strong id="glucoseValue">
-                    —
-                </strong>
-
-                <span>
-                    g/L
-                </span>
-
-            </div>
-
-            <div
-                class="measure-sub"
-                id="glucoseDate"
-            >
-                لم يتم التسجيل
-            </div>
-
-        </button>
-
-
-
-        <!-- TEMPERATURE -->
-
-        <button
-            class="measure-card temperature"
-            data-measure="temperature"
-        >
-
-            <div class="measure-card-head">
-
-                <div class="measure-icon">
-                    <i class="fa-solid fa-temperature-half"></i>
-                </div>
-
-                <div class="measure-add">
-                    <i class="fa-solid fa-plus"></i>
-                </div>
-
-            </div>
-
-            <h3>
-                درجة الحرارة
-            </h3>
-
-            <div class="measure-value">
-
-                <strong id="temperatureValue">
-                    —
-                </strong>
-
-                <span>
-                    °C
-                </span>
-
-            </div>
-
-            <div
-                class="measure-sub"
-                id="temperatureDate"
-            >
-                لم يتم التسجيل
-            </div>
-
-        </button>
-
-
-
-        <!-- OXYGEN -->
-
-        <button
-            class="measure-card oxygen"
-            data-measure="oxygen"
-        >
-
-            <div class="measure-card-head">
-
-                <div class="measure-icon">
-                    <i class="fa-solid fa-lungs"></i>
-                </div>
-
-                <div class="measure-add">
-                    <i class="fa-solid fa-plus"></i>
-                </div>
-
-            </div>
-
-            <h3>
-                الأكسجين
-            </h3>
-
-            <div class="measure-value">
-
-                <strong id="oxygenValue">
-                    —
-                </strong>
-
-                <span>
-                    %
-                </span>
-
-            </div>
-
-            <div
-                class="measure-sub"
-                id="oxygenDate"
-            >
-                لم يتم التسجيل
-            </div>
-
-        </button>
-
-
-
-        <!-- WAIST -->
-
-        <button
-            class="measure-card waist"
-            data-measure="waist"
-        >
-
-            <div class="measure-card-head">
-
-                <div class="measure-icon">
-                    <i class="fa-solid fa-ruler-horizontal"></i>
-                </div>
-
-                <div class="measure-add">
-                    <i class="fa-solid fa-plus"></i>
-                </div>
-
-            </div>
-
-            <h3>
-                محيط الخصر
-            </h3>
-
-            <div class="measure-value">
-
-                <strong id="waistValue">
-                    —
-                </strong>
-
-                <span>
-                    سم
-                </span>
-
-            </div>
-
-            <div
-                class="measure-sub"
-                id="waistDate"
-            >
-                لم يتم التسجيل
-            </div>
-
-        </button>
-
 
 
         <!-- HEIGHT -->
@@ -2031,19 +1717,13 @@ td strong{
 
             </div>
 
-            <h3>
-                الطول
-            </h3>
+            <h3>الطول</h3>
 
             <div class="measure-value">
 
-                <strong id="heightValue">
-                    —
-                </strong>
+                <strong id="heightValue">—</strong>
 
-                <span>
-                    سم
-                </span>
+                <span>سم</span>
 
             </div>
 
@@ -2053,15 +1733,246 @@ td strong{
 
         </button>
 
+
+        <!-- WAIST -->
+
+        <button
+            class="measure-card waist"
+            data-measure="waist"
+        >
+
+            <div class="measure-card-head">
+
+                <div class="measure-icon">
+                    <i class="fa-solid fa-ruler-horizontal"></i>
+                </div>
+
+                <div class="measure-add">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+
+            </div>
+
+            <h3>محيط الخصر</h3>
+
+            <div class="measure-value">
+
+                <strong id="waistValue">—</strong>
+
+                <span>سم</span>
+
+            </div>
+
+            <div
+                class="measure-sub"
+                id="waistDate"
+            >
+                لم يتم التسجيل
+            </div>
+
+        </button>
+
+
+        <!-- PRESSURE -->
+
+        <button
+            class="measure-card pressure"
+            data-measure="pressure"
+        >
+
+            <div class="measure-card-head">
+
+                <div class="measure-icon">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+
+                <div class="measure-add">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+
+            </div>
+
+            <h3>ضغط الدم</h3>
+
+            <div class="measure-value">
+
+                <strong id="pressureValue">—</strong>
+
+                <span>mmHg</span>
+
+            </div>
+
+            <div
+                class="measure-sub"
+                id="pressureDate"
+            >
+                لم يتم التسجيل
+            </div>
+
+        </button>
+
+
+        <!-- PULSE -->
+
+        <button
+            class="measure-card pulse"
+            data-measure="pulse"
+        >
+
+            <div class="measure-card-head">
+
+                <div class="measure-icon">
+                    <i class="fa-solid fa-wave-square"></i>
+                </div>
+
+                <div class="measure-add">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+
+            </div>
+
+            <h3>النبض</h3>
+
+            <div class="measure-value">
+
+                <strong id="pulseValue">—</strong>
+
+                <span>BPM</span>
+
+            </div>
+
+            <div
+                class="measure-sub"
+                id="pulseDate"
+            >
+                لم يتم التسجيل
+            </div>
+
+        </button>
+
+
+        <!-- GLUCOSE -->
+
+        <button
+            class="measure-card glucose"
+            data-measure="glucose"
+        >
+
+            <div class="measure-card-head">
+
+                <div class="measure-icon">
+                    <i class="fa-solid fa-droplet"></i>
+                </div>
+
+                <div class="measure-add">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+
+            </div>
+
+            <h3>سكر الدم</h3>
+
+            <div class="measure-value">
+
+                <strong id="glucoseValue">—</strong>
+
+                <span>g/L</span>
+
+            </div>
+
+            <div
+                class="measure-sub"
+                id="glucoseDate"
+            >
+                لم يتم التسجيل
+            </div>
+
+        </button>
+
+
+        <!-- TEMPERATURE -->
+
+        <button
+            class="measure-card temperature"
+            data-measure="temperature"
+        >
+
+            <div class="measure-card-head">
+
+                <div class="measure-icon">
+                    <i class="fa-solid fa-temperature-half"></i>
+                </div>
+
+                <div class="measure-add">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+
+            </div>
+
+            <h3>درجة الحرارة</h3>
+
+            <div class="measure-value">
+
+                <strong id="temperatureValue">—</strong>
+
+                <span>°C</span>
+
+            </div>
+
+            <div
+                class="measure-sub"
+                id="temperatureDate"
+            >
+                لم يتم التسجيل
+            </div>
+
+        </button>
+
+
+        <!-- OXYGEN -->
+
+        <button
+            class="measure-card oxygen"
+            data-measure="oxygen"
+        >
+
+            <div class="measure-card-head">
+
+                <div class="measure-icon">
+                    <i class="fa-solid fa-lungs"></i>
+                </div>
+
+                <div class="measure-add">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+
+            </div>
+
+            <h3>الأكسجين</h3>
+
+            <div class="measure-value">
+
+                <strong id="oxygenValue">—</strong>
+
+                <span>%</span>
+
+            </div>
+
+            <div
+                class="measure-sub"
+                id="oxygenDate"
+            >
+                لم يتم التسجيل
+            </div>
+
+        </button>
+
     </div>
 
 </section>
 
 
-
-<!-- =======================================================
-     WEIGHT CHART
-======================================================= -->
+<!-- WEIGHT CHART -->
 
 <section class="section">
 
@@ -2073,30 +1984,21 @@ td strong{
                 <i class="fa-solid fa-weight-scale"></i>
             </span>
 
-            <h2>
-                تطور الوزن
-            </h2>
+            <h2>تطور الوزن</h2>
 
         </div>
 
-        <span>
-            حسب الأيام
-        </span>
+        <span>حسب الأيام</span>
 
     </div>
-
 
     <div class="chart-box">
 
         <div class="chart-header">
 
-            <strong>
-                مخطط الوزن
-            </strong>
+            <strong>مخطط الوزن</strong>
 
-            <span>
-                كغ
-            </span>
+            <span>كغ</span>
 
         </div>
 
@@ -2109,10 +2011,7 @@ td strong{
 </section>
 
 
-
-<!-- =======================================================
-     PULSE CHART
-======================================================= -->
+<!-- PULSE CHART -->
 
 <section class="section">
 
@@ -2121,33 +2020,24 @@ td strong{
         <div>
 
             <span class="title-icon">
-                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-wave-square"></i>
             </span>
 
-            <h2>
-                تطور نبض القلب
-            </h2>
+            <h2>تطور النبض</h2>
 
         </div>
 
-        <span>
-            BPM
-        </span>
+        <span>BPM</span>
 
     </div>
-
 
     <div class="chart-box">
 
         <div class="chart-header">
 
-            <strong>
-                مخطط النبض
-            </strong>
+            <strong>مخطط النبض</strong>
 
-            <span>
-                نبضة / دقيقة
-            </span>
+            <span>نبضة / دقيقة</span>
 
         </div>
 
@@ -2160,10 +2050,7 @@ td strong{
 </section>
 
 
-
-<!-- =======================================================
-     TEMPERATURE CHART
-======================================================= -->
+<!-- TEMPERATURE CHART -->
 
 <section class="section">
 
@@ -2175,30 +2062,21 @@ td strong{
                 <i class="fa-solid fa-temperature-half"></i>
             </span>
 
-            <h2>
-                درجة الحرارة
-            </h2>
+            <h2>درجة الحرارة</h2>
 
         </div>
 
-        <span>
-            °C
-        </span>
+        <span>°C</span>
 
     </div>
-
 
     <div class="chart-box">
 
         <div class="chart-header">
 
-            <strong>
-                تغير درجة الحرارة
-            </strong>
+            <strong>تغير درجة الحرارة</strong>
 
-            <span>
-                حسب الأيام
-            </span>
+            <span>حسب الأيام</span>
 
         </div>
 
@@ -2211,10 +2089,7 @@ td strong{
 </section>
 
 
-
-<!-- =======================================================
-     WAIST CHART
-======================================================= -->
+<!-- WAIST CHART -->
 
 <section class="section">
 
@@ -2226,30 +2101,21 @@ td strong{
                 <i class="fa-solid fa-ruler-horizontal"></i>
             </span>
 
-            <h2>
-                محيط الخصر
-            </h2>
+            <h2>محيط الخصر</h2>
 
         </div>
 
-        <span>
-            سم
-        </span>
+        <span>سم</span>
 
     </div>
-
 
     <div class="chart-box">
 
         <div class="chart-header">
 
-            <strong>
-                تغير محيط الخصر
-            </strong>
+            <strong>تغير محيط الخصر</strong>
 
-            <span>
-                حسب الأيام
-            </span>
+            <span>حسب الأيام</span>
 
         </div>
 
@@ -2262,10 +2128,7 @@ td strong{
 </section>
 
 
-
-<!-- =======================================================
-     BLOOD PRESSURE TABLE
-======================================================= -->
+<!-- PRESSURE TABLE -->
 
 <section class="section">
 
@@ -2277,18 +2140,13 @@ td strong{
                 <i class="fa-solid fa-heart-pulse"></i>
             </span>
 
-            <h2>
-                سجل ضغط الدم
-            </h2>
+            <h2>سجل ضغط الدم</h2>
 
         </div>
 
-        <span>
-            التاريخ والوقت
-        </span>
+        <span>آخر القراءات</span>
 
     </div>
-
 
     <div class="table-box">
 
@@ -2299,38 +2157,17 @@ td strong{
                 <thead>
 
                     <tr>
-
-                        <th>
-                            التاريخ
-                        </th>
-
-                        <th>
-                            الوقت
-                        </th>
-
-                        <th>
-                            الانقباضي
-                        </th>
-
-                        <th>
-                            الانبساطي
-                        </th>
-
-                        <th>
-                            النبض
-                        </th>
-
-                        <th>
-                            حذف
-                        </th>
-
+                        <th>التاريخ</th>
+                        <th>الوقت</th>
+                        <th>الانقباضي</th>
+                        <th>الانبساطي</th>
+                        <th>النبض</th>
+                        <th>حذف</th>
                     </tr>
 
                 </thead>
 
-                <tbody id="pressureTable">
-
-                </tbody>
+                <tbody id="pressureTable"></tbody>
 
             </table>
 
@@ -2348,10 +2185,7 @@ td strong{
 </section>
 
 
-
-<!-- =======================================================
-     GLUCOSE TABLE
-======================================================= -->
+<!-- GLUCOSE TABLE -->
 
 <section class="section">
 
@@ -2363,18 +2197,13 @@ td strong{
                 <i class="fa-solid fa-droplet"></i>
             </span>
 
-            <h2>
-                سجل سكر الدم
-            </h2>
+            <h2>سجل سكر الدم</h2>
 
         </div>
 
-        <span>
-            حسب وقت القياس
-        </span>
+        <span>آخر القراءات</span>
 
     </div>
-
 
     <div class="table-box">
 
@@ -2385,38 +2214,17 @@ td strong{
                 <thead>
 
                     <tr>
-
-                        <th>
-                            التاريخ
-                        </th>
-
-                        <th>
-                            الوقت
-                        </th>
-
-                        <th>
-                            نوع القياس
-                        </th>
-
-                        <th>
-                            القيمة
-                        </th>
-
-                        <th>
-                            الوحدة
-                        </th>
-
-                        <th>
-                            حذف
-                        </th>
-
+                        <th>التاريخ</th>
+                        <th>الوقت</th>
+                        <th>نوع القياس</th>
+                        <th>القيمة</th>
+                        <th>الوحدة</th>
+                        <th>حذف</th>
                     </tr>
 
                 </thead>
 
-                <tbody id="glucoseTable">
-
-                </tbody>
+                <tbody id="glucoseTable"></tbody>
 
             </table>
 
@@ -2434,10 +2242,7 @@ td strong{
 </section>
 
 
-
-<!-- =======================================================
-     OXYGEN TABLE
-======================================================= -->
+<!-- OXYGEN TABLE -->
 
 <section class="section">
 
@@ -2449,18 +2254,13 @@ td strong{
                 <i class="fa-solid fa-lungs"></i>
             </span>
 
-            <h2>
-                سجل الأكسجين
-            </h2>
+            <h2>سجل الأكسجين</h2>
 
         </div>
 
-        <span>
-            التاريخ والوقت
-        </span>
+        <span>آخر القراءات</span>
 
     </div>
-
 
     <div class="table-box">
 
@@ -2471,34 +2271,16 @@ td strong{
                 <thead>
 
                     <tr>
-
-                        <th>
-                            التاريخ
-                        </th>
-
-                        <th>
-                            الوقت
-                        </th>
-
-                        <th>
-                            SpO₂
-                        </th>
-
-                        <th>
-                            النبض
-                        </th>
-
-                        <th>
-                            حذف
-                        </th>
-
+                        <th>التاريخ</th>
+                        <th>الوقت</th>
+                        <th>SpO₂</th>
+                        <th>النبض</th>
+                        <th>حذف</th>
                     </tr>
 
                 </thead>
 
-                <tbody id="oxygenTable">
-
-                </tbody>
+                <tbody id="oxygenTable"></tbody>
 
             </table>
 
@@ -2516,10 +2298,7 @@ td strong{
 </section>
 
 
-
-<!-- =======================================================
-     INFORMATION
-======================================================= -->
+<!-- INFO -->
 
 <section class="section">
 
@@ -2531,9 +2310,7 @@ td strong{
 
         <div>
 
-            <strong>
-                ملاحظة
-            </strong>
+            <strong>ملاحظة</strong>
 
             <p>
                 هذه الصفحة مخصصة لتسجيل ومتابعة القياسات الصحية.
@@ -2547,15 +2324,10 @@ td strong{
 
 </section>
 
-
-
 </div>
 
 
-
-<!-- =======================================================
-     BOTTOM NAV
-======================================================= -->
+<!-- BOTTOM NAV -->
 
 <nav class="bottom-nav">
 
@@ -2563,64 +2335,38 @@ td strong{
         href="dashboard.html"
         class="nav-item"
     >
-
         <i class="fa-solid fa-house"></i>
-
-        <span>
-            الرئيسية
-        </span>
-
+        <span>الرئيسية</span>
     </a>
-
 
     <a
         href="challenges.html"
         class="nav-item"
     >
-
         <i class="fa-solid fa-bullseye"></i>
-
-        <span>
-            تحدياتي
-        </span>
-
+        <span>تحدياتي</span>
     </a>
-
 
     <a
         href="health.html"
         class="nav-item active"
     >
-
         <i class="fa-solid fa-heart-pulse"></i>
-
-        <span>
-            صحتي
-        </span>
-
+        <span>صحتي</span>
     </a>
-
 
     <a
         href="more.html"
         class="nav-item"
     >
-
         <i class="fa-solid fa-table-cells-large"></i>
-
-        <span>
-            المزيد
-        </span>
-
+        <span>المزيد</span>
     </a>
 
 </nav>
 
 
-
-<!-- =======================================================
-     MODAL
-======================================================= -->
+<!-- MODAL -->
 
 <div
     class="modal"
@@ -2654,16 +2400,15 @@ td strong{
 
             </div>
 
-
             <button
                 class="close"
                 id="closeModal"
+                type="button"
             >
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
         </div>
-
 
         <form id="measurementForm">
 
@@ -2673,11 +2418,8 @@ td strong{
                 class="save-btn"
                 type="submit"
             >
-
                 <i class="fa-solid fa-check"></i>
-
                 حفظ القياس
-
             </button>
 
         </form>
@@ -2687,28 +2429,18 @@ td strong{
 </div>
 
 
-
-<!-- =======================================================
-     TOAST
-======================================================= -->
+<!-- TOAST -->
 
 <div
     class="toast"
     id="toast"
->
-</div>
+></div>
 
-
-
-<!-- =======================================================
-     FIREBASE
-======================================================= -->
 
 <script type="module">
 
-
 /* =========================================================
-   FIREBASE IMPORTS
+   FIREBASE
 ========================================================= */
 
 import {
@@ -2730,7 +2462,8 @@ import {
     query,
     orderBy,
     limit,
-    serverTimestamp
+    serverTimestamp,
+    setDoc
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 
@@ -2739,11 +2472,9 @@ import {
 ========================================================= */
 
 let currentUser = null;
-
 let heightCm = 0;
 
 let records = {
-
     weight:[],
     pressure:[],
     pulse:[],
@@ -2751,7 +2482,6 @@ let records = {
     temperature:[],
     oxygen:[],
     waist:[]
-
 };
 
 let currentMeasurement = "";
@@ -2762,44 +2492,28 @@ let currentMeasurement = "";
 ========================================================= */
 
 const loadingScreen =
-    document.getElementById(
-        "loadingScreen"
-    );
+    document.getElementById("loadingScreen");
 
 const modal =
-    document.getElementById(
-        "measurementModal"
-    );
+    document.getElementById("measurementModal");
 
 const dynamicFields =
-    document.getElementById(
-        "dynamicFields"
-    );
+    document.getElementById("dynamicFields");
 
 const measurementForm =
-    document.getElementById(
-        "measurementForm"
-    );
+    document.getElementById("measurementForm");
 
 const modalTitle =
-    document.getElementById(
-        "modalTitle"
-    );
+    document.getElementById("modalTitle");
 
 const modalSubtitle =
-    document.getElementById(
-        "modalSubtitle"
-    );
+    document.getElementById("modalSubtitle");
 
 const modalIcon =
-    document.getElementById(
-        "modalIcon"
-    );
+    document.getElementById("modalIcon");
 
 const toast =
-    document.getElementById(
-        "toast"
-    );
+    document.getElementById("toast");
 
 
 /* =========================================================
@@ -2808,21 +2522,11 @@ const toast =
 
 function number(value){
 
-    const n =
-        Number(value);
+    const n = Number(value);
 
     return Number.isFinite(n)
         ? n
         : 0;
-
-}
-
-
-function pad(value){
-
-    return String(value)
-        .padStart(2,"0");
-
 }
 
 
@@ -2840,6 +2544,7 @@ function dateFromRecord(record){
     }
 
     if(record.dateTime){
+
         const d =
             new Date(record.dateTime);
 
@@ -2849,7 +2554,6 @@ function dateFromRecord(record){
     }
 
     return new Date();
-
 }
 
 
@@ -2863,7 +2567,6 @@ function formatDate(date){
             day:"2-digit"
         }
     ).format(date);
-
 }
 
 
@@ -2876,7 +2579,6 @@ function formatTime(date){
             minute:"2-digit"
         }
     ).format(date);
-
 }
 
 
@@ -2889,7 +2591,6 @@ function formatShortDate(date){
             month:"short"
         }
     ).format(date);
-
 }
 
 
@@ -2902,20 +2603,17 @@ function showToast(
     type="success"
 ){
 
-    toast.textContent =
-        message;
+    toast.textContent = message;
 
     toast.className =
         `toast show ${type}`;
 
     setTimeout(
         () => {
-            toast.className =
-                "toast";
+            toast.className = "toast";
         },
         2600
     );
-
 }
 
 
@@ -2953,13 +2651,7 @@ async function loadUser(){
 
         document.getElementById(
             "topUserName"
-        ).textContent =
-            name;
-
-        /*
-          Support several possible
-          height field names.
-        */
+        ).textContent = name;
 
         heightCm =
             number(
@@ -2975,28 +2667,23 @@ async function loadUser(){
         console.error(error);
 
     }
-
 }
 
 
 /* =========================================================
-   HEIGHT UI
+   HEIGHT
 ========================================================= */
 
 function updateHeightUI(){
 
-    const el =
-        document.getElementById(
-            "heightValue"
-        );
-
-    el.textContent =
+    document.getElementById(
+        "heightValue"
+    ).textContent =
         heightCm > 0
             ? heightCm
             : "—";
 
     calculateBMI();
-
 }
 
 
@@ -3016,8 +2703,7 @@ function calculateBMI(){
 
         document.getElementById(
             "bmiValue"
-        ).textContent =
-            "—";
+        ).textContent = "—";
 
         document.getElementById(
             "bmiStatus"
@@ -3025,13 +2711,10 @@ function calculateBMI(){
             "أدخل الطول والوزن";
 
         return;
-
     }
 
     const weight =
-        number(
-            latestWeight.value
-        );
+        number(latestWeight.value);
 
     const heightM =
         heightCm / 100;
@@ -3053,135 +2736,76 @@ function calculateBMI(){
     let status = "";
 
     if(bmi < 18.5){
-
-        status =
-            "نقص وزن";
-
-    }else if(bmi < 25){
-
-        status =
-            "وزن طبيعي";
-
-    }else if(bmi < 30){
-
-        status =
-            "زيادة وزن";
-
-    }else{
-
-        status =
-            "سمنة";
-
+        status = "نقص وزن";
+    }
+    else if(bmi < 25){
+        status = "وزن طبيعي";
+    }
+    else if(bmi < 30){
+        status = "زيادة وزن";
+    }
+    else{
+        status = "سمنة";
     }
 
     document.getElementById(
         "bmiStatus"
-    ).textContent =
-        status;
-
+    ).textContent = status;
 }
 
 
 /* =========================================================
-   MEASUREMENT CONFIG
+   CONFIG
 ========================================================= */
 
 const configs = {
 
     weight:{
-
         title:"الوزن",
-
-        subtitle:
-            "سجل وزنك لمتابعة التغير مع الوقت",
-
-        icon:
-            "fa-solid fa-weight-scale"
-
-    },
-
-    pressure:{
-
-        title:"ضغط الدم",
-
-        subtitle:
-            "أدخل ضغط الدم الانقباضي والانبساطي",
-
-        icon:
-            "fa-solid fa-heart-pulse"
-
-    },
-
-    pulse:{
-
-        title:"نبض القلب",
-
-        subtitle:
-            "عدد ضربات القلب في الدقيقة",
-
-        icon:
-            "fa-solid fa-heart"
-
-    },
-
-    glucose:{
-
-        title:"سكر الدم",
-
-        subtitle:
-            "اختر توقيت القياس ثم أدخل القيمة",
-
-        icon:
-            "fa-solid fa-droplet"
-
-    },
-
-    temperature:{
-
-        title:"درجة الحرارة",
-
-        subtitle:
-            "سجل درجة الحرارة",
-
-        icon:
-            "fa-solid fa-temperature-half"
-
-    },
-
-    oxygen:{
-
-        title:"الأكسجين",
-
-        subtitle:
-            "سجل نسبة تشبع الأكسجين SpO₂",
-
-        icon:
-            "fa-solid fa-lungs"
-
-    },
-
-    waist:{
-
-        title:"محيط الخصر",
-
-        subtitle:
-            "سجل محيط الخصر بالسنتيمتر",
-
-        icon:
-            "fa-solid fa-ruler-horizontal"
-
+        subtitle:"سجل وزنك لمتابعة التغير مع الوقت",
+        icon:"fa-solid fa-weight-scale"
     },
 
     height:{
-
         title:"الطول",
+        subtitle:"يستخدم الطول لحساب مؤشر كتلة الجسم",
+        icon:"fa-solid fa-ruler-vertical"
+    },
 
-        subtitle:
-            "يستخدم الطول لحساب مؤشر كتلة الجسم",
+    waist:{
+        title:"محيط الخصر",
+        subtitle:"سجل محيط الخصر بالسنتيمتر",
+        icon:"fa-solid fa-ruler-horizontal"
+    },
 
-        icon:
-            "fa-solid fa-ruler-vertical"
+    pressure:{
+        title:"ضغط الدم",
+        subtitle:"أدخل ضغط الدم الانقباضي والانبساطي",
+        icon:"fa-solid fa-heart-pulse"
+    },
 
+    pulse:{
+        title:"النبض",
+        subtitle:"عدد ضربات القلب في الدقيقة",
+        icon:"fa-solid fa-wave-square"
+    },
+
+    glucose:{
+        title:"سكر الدم",
+        subtitle:"اختر توقيت القياس ثم أدخل القيمة",
+        icon:"fa-solid fa-droplet"
+    },
+
+    temperature:{
+        title:"درجة الحرارة",
+        subtitle:"سجل درجة الحرارة",
+        icon:"fa-solid fa-temperature-half"
+    },
+
+    oxygen:{
+        title:"الأكسجين",
+        subtitle:"سجل نسبة تشبع الأكسجين SpO₂",
+        icon:"fa-solid fa-lungs"
     }
 
 };
@@ -3191,15 +2815,11 @@ const configs = {
    OPEN MODAL
 ========================================================= */
 
-function openMeasurement(
-    type
-){
+function openMeasurement(type){
 
-    currentMeasurement =
-        type;
+    currentMeasurement = type;
 
-    const config =
-        configs[type];
+    const config = configs[type];
 
     modalTitle.textContent =
         config.title;
@@ -3212,15 +2832,12 @@ function openMeasurement(
 
     renderFields(type);
 
-    modal.classList.add(
-        "show"
-    );
-
+    modal.classList.add("show");
 }
 
 
 /* =========================================================
-   RENDER FIELDS
+   FIELDS
 ========================================================= */
 
 function renderFields(type){
@@ -3228,17 +2845,13 @@ function renderFields(type){
     let html = "";
 
 
-    /* WEIGHT */
-
     if(type === "weight"){
 
         html = `
 
             <div class="form-group">
 
-                <label>
-                    الوزن
-                </label>
+                <label>الوزن</label>
 
                 <div class="input-wrap">
 
@@ -3254,20 +2867,80 @@ function renderFields(type){
                         required
                     >
 
-                    <span class="unit">
-                        كغ
-                    </span>
+                    <span class="unit">كغ</span>
 
                 </div>
 
             </div>
 
         `;
-
     }
 
 
-    /* PRESSURE */
+    if(type === "height"){
+
+        html = `
+
+            <div class="form-group">
+
+                <label>الطول</label>
+
+                <div class="input-wrap">
+
+                    <i class="fa-solid fa-ruler-vertical"></i>
+
+                    <input
+                        type="number"
+                        step="0.1"
+                        min="80"
+                        max="250"
+                        id="inputHeight"
+                        value="${heightCm || ""}"
+                        placeholder="مثال: 170"
+                        required
+                    >
+
+                    <span class="unit">سم</span>
+
+                </div>
+
+            </div>
+
+        `;
+    }
+
+
+    if(type === "waist"){
+
+        html = `
+
+            <div class="form-group">
+
+                <label>محيط الخصر</label>
+
+                <div class="input-wrap">
+
+                    <i class="fa-solid fa-ruler-horizontal"></i>
+
+                    <input
+                        type="number"
+                        step="0.1"
+                        min="20"
+                        max="250"
+                        id="inputWaist"
+                        placeholder="مثال: 85"
+                        required
+                    >
+
+                    <span class="unit">سم</span>
+
+                </div>
+
+            </div>
+
+        `;
+    }
+
 
     if(type === "pressure"){
 
@@ -3277,9 +2950,7 @@ function renderFields(type){
 
                 <div class="form-group">
 
-                    <label>
-                        الضغط الانقباضي
-                    </label>
+                    <label>الضغط الانقباضي</label>
 
                     <div class="input-wrap">
 
@@ -3294,9 +2965,7 @@ function renderFields(type){
                             required
                         >
 
-                        <span class="unit">
-                            mmHg
-                        </span>
+                        <span class="unit">mmHg</span>
 
                     </div>
 
@@ -3305,9 +2974,7 @@ function renderFields(type){
 
                 <div class="form-group">
 
-                    <label>
-                        الضغط الانبساطي
-                    </label>
+                    <label>الضغط الانبساطي</label>
 
                     <div class="input-wrap">
 
@@ -3322,9 +2989,7 @@ function renderFields(type){
                             required
                         >
 
-                        <span class="unit">
-                            mmHg
-                        </span>
+                        <span class="unit">mmHg</span>
 
                     </div>
 
@@ -3335,13 +3000,11 @@ function renderFields(type){
 
             <div class="form-group">
 
-                <label>
-                    النبض أثناء القياس
-                </label>
+                <label>النبض أثناء القياس</label>
 
                 <div class="input-wrap">
 
-                    <i class="fa-solid fa-heart"></i>
+                    <i class="fa-solid fa-wave-square"></i>
 
                     <input
                         type="number"
@@ -3351,20 +3014,15 @@ function renderFields(type){
                         placeholder="70"
                     >
 
-                    <span class="unit">
-                        BPM
-                    </span>
+                    <span class="unit">BPM</span>
 
                 </div>
 
             </div>
 
         `;
-
     }
 
-
-    /* PULSE */
 
     if(type === "pulse"){
 
@@ -3372,13 +3030,11 @@ function renderFields(type){
 
             <div class="form-group">
 
-                <label>
-                    نبض القلب
-                </label>
+                <label>النبض</label>
 
                 <div class="input-wrap">
 
-                    <i class="fa-solid fa-heart"></i>
+                    <i class="fa-solid fa-wave-square"></i>
 
                     <input
                         type="number"
@@ -3389,20 +3045,15 @@ function renderFields(type){
                         required
                     >
 
-                    <span class="unit">
-                        BPM
-                    </span>
+                    <span class="unit">BPM</span>
 
                 </div>
 
             </div>
 
         `;
-
     }
 
-
-    /* GLUCOSE */
 
     if(type === "glucose"){
 
@@ -3410,9 +3061,7 @@ function renderFields(type){
 
             <div class="form-group">
 
-                <label>
-                    نوع القياس
-                </label>
+                <label>نوع القياس</label>
 
                 <div class="input-wrap">
 
@@ -3460,9 +3109,7 @@ function renderFields(type){
 
             <div class="form-group">
 
-                <label>
-                    قيمة السكر
-                </label>
+                <label>قيمة السكر</label>
 
                 <div class="input-wrap">
 
@@ -3478,20 +3125,15 @@ function renderFields(type){
                         required
                     >
 
-                    <span class="unit">
-                        g/L
-                    </span>
+                    <span class="unit">g/L</span>
 
                 </div>
 
             </div>
 
         `;
-
     }
 
-
-    /* TEMPERATURE */
 
     if(type === "temperature"){
 
@@ -3499,9 +3141,7 @@ function renderFields(type){
 
             <div class="form-group">
 
-                <label>
-                    درجة الحرارة
-                </label>
+                <label>درجة الحرارة</label>
 
                 <div class="input-wrap">
 
@@ -3517,20 +3157,15 @@ function renderFields(type){
                         required
                     >
 
-                    <span class="unit">
-                        °C
-                    </span>
+                    <span class="unit">°C</span>
 
                 </div>
 
             </div>
 
         `;
-
     }
 
-
-    /* OXYGEN */
 
     if(type === "oxygen"){
 
@@ -3538,9 +3173,7 @@ function renderFields(type){
 
             <div class="form-group">
 
-                <label>
-                    تشبع الأكسجين SpO₂
-                </label>
+                <label>تشبع الأكسجين SpO₂</label>
 
                 <div class="input-wrap">
 
@@ -3556,9 +3189,7 @@ function renderFields(type){
                         required
                     >
 
-                    <span class="unit">
-                        %
-                    </span>
+                    <span class="unit">%</span>
 
                 </div>
 
@@ -3573,7 +3204,7 @@ function renderFields(type){
 
                 <div class="input-wrap">
 
-                    <i class="fa-solid fa-heart"></i>
+                    <i class="fa-solid fa-wave-square"></i>
 
                     <input
                         type="number"
@@ -3583,101 +3214,17 @@ function renderFields(type){
                         placeholder="70"
                     >
 
-                    <span class="unit">
-                        BPM
-                    </span>
+                    <span class="unit">BPM</span>
 
                 </div>
 
             </div>
 
         `;
-
     }
 
 
-    /* WAIST */
-
-    if(type === "waist"){
-
-        html = `
-
-            <div class="form-group">
-
-                <label>
-                    محيط الخصر
-                </label>
-
-                <div class="input-wrap">
-
-                    <i class="fa-solid fa-ruler-horizontal"></i>
-
-                    <input
-                        type="number"
-                        step="0.1"
-                        min="20"
-                        max="250"
-                        id="inputWaist"
-                        placeholder="مثال: 85"
-                        required
-                    >
-
-                    <span class="unit">
-                        سم
-                    </span>
-
-                </div>
-
-            </div>
-
-        `;
-
-    }
-
-
-    /* HEIGHT */
-
-    if(type === "height"){
-
-        html = `
-
-            <div class="form-group">
-
-                <label>
-                    الطول
-                </label>
-
-                <div class="input-wrap">
-
-                    <i class="fa-solid fa-ruler-vertical"></i>
-
-                    <input
-                        type="number"
-                        step="0.1"
-                        min="80"
-                        max="250"
-                        id="inputHeight"
-                        value="${heightCm || ""}"
-                        placeholder="مثال: 170"
-                        required
-                    >
-
-                    <span class="unit">
-                        سم
-                    </span>
-
-                </div>
-
-            </div>
-
-        `;
-
-    }
-
-
-    dynamicFields.innerHTML =
-        html;
-
+    dynamicFields.innerHTML = html;
 }
 
 
@@ -3688,9 +3235,7 @@ function renderFields(type){
 async function saveHeight(){
 
     const input =
-        document.getElementById(
-            "inputHeight"
-        );
+        document.getElementById("inputHeight");
 
     const value =
         number(input.value);
@@ -3706,7 +3251,6 @@ async function saveHeight(){
         );
 
         return;
-
     }
 
     try{
@@ -3717,16 +3261,6 @@ async function saveHeight(){
                 "users",
                 currentUser.uid
             );
-
-        /*
-          نحفظ الطول في ملف المستخدم.
-        */
-
-        const {
-            setDoc
-        } = await import(
-            "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js"
-        );
 
         await setDoc(
             userRef,
@@ -3740,8 +3274,7 @@ async function saveHeight(){
             }
         );
 
-        heightCm =
-            value;
+        heightCm = value;
 
         updateHeightUI();
 
@@ -3760,9 +3293,7 @@ async function saveHeight(){
             "حدث خطأ أثناء الحفظ.",
             "error"
         );
-
     }
-
 }
 
 
@@ -3770,9 +3301,7 @@ async function saveHeight(){
    COLLECTION
 ========================================================= */
 
-function measurementCollection(
-    type
-){
+function measurementCollection(type){
 
     return collection(
         db,
@@ -3782,7 +3311,6 @@ function measurementCollection(
         type,
         "records"
     );
-
 }
 
 
@@ -3798,24 +3326,18 @@ async function saveMeasurement(){
     ) return;
 
 
-    /* HEIGHT */
-
-    if(
-        currentMeasurement ===
-        "height"
-    ){
+    if(currentMeasurement === "height"){
 
         await saveHeight();
 
         return;
-
     }
 
 
-    const type =
-        currentMeasurement;
+    const type = currentMeasurement;
 
     let data = {
+
         userId:
             currentUser.uid,
 
@@ -3824,10 +3346,9 @@ async function saveMeasurement(){
 
         dateTime:
             new Date().toISOString()
+
     };
 
-
-    /* WEIGHT */
 
     if(type === "weight"){
 
@@ -3846,19 +3367,12 @@ async function saveMeasurement(){
             );
 
             return;
-
         }
 
-        data.value =
-            value;
-
-        data.unit =
-            "kg";
-
+        data.value = value;
+        data.unit = "kg";
     }
 
-
-    /* PRESSURE */
 
     if(type === "pressure"){
 
@@ -3894,25 +3408,14 @@ async function saveMeasurement(){
             );
 
             return;
-
         }
 
-        data.systolic =
-            systolic;
-
-        data.diastolic =
-            diastolic;
-
-        data.pulse =
-            pulse || null;
-
-        data.unit =
-            "mmHg";
-
+        data.systolic = systolic;
+        data.diastolic = diastolic;
+        data.pulse = pulse || null;
+        data.unit = "mmHg";
     }
 
-
-    /* PULSE */
 
     if(type === "pulse"){
 
@@ -3931,19 +3434,12 @@ async function saveMeasurement(){
             );
 
             return;
-
         }
 
-        data.value =
-            value;
-
-        data.unit =
-            "BPM";
-
+        data.value = value;
+        data.unit = "BPM";
     }
 
-
-    /* GLUCOSE */
 
     if(type === "glucose"){
 
@@ -3970,27 +3466,19 @@ async function saveMeasurement(){
             );
 
             return;
-
         }
 
-        data.value =
-            value;
-
-        data.type =
-            glucoseType;
+        data.value = value;
+        data.type = glucoseType;
 
         data.typeLabel =
             glucoseTypeLabel(
                 glucoseType
             );
 
-        data.unit =
-            "g/L";
-
+        data.unit = "g/L";
     }
 
-
-    /* TEMPERATURE */
 
     if(type === "temperature"){
 
@@ -4012,19 +3500,12 @@ async function saveMeasurement(){
             );
 
             return;
-
         }
 
-        data.value =
-            value;
-
-        data.unit =
-            "°C";
-
+        data.value = value;
+        data.unit = "°C";
     }
 
-
-    /* OXYGEN */
 
     if(type === "oxygen"){
 
@@ -4053,22 +3534,13 @@ async function saveMeasurement(){
             );
 
             return;
-
         }
 
-        data.value =
-            value;
-
-        data.pulse =
-            pulse || null;
-
-        data.unit =
-            "%";
-
+        data.value = value;
+        data.pulse = pulse || null;
+        data.unit = "%";
     }
 
-
-    /* WAIST */
 
     if(type === "waist"){
 
@@ -4087,15 +3559,10 @@ async function saveMeasurement(){
             );
 
             return;
-
         }
 
-        data.value =
-            value;
-
-        data.unit =
-            "cm";
-
+        data.value = value;
+        data.unit = "cm";
     }
 
 
@@ -4126,9 +3593,7 @@ async function saveMeasurement(){
             "حدث خطأ أثناء حفظ القياس.",
             "error"
         );
-
     }
-
 }
 
 
@@ -4136,35 +3601,20 @@ async function saveMeasurement(){
    GLUCOSE LABEL
 ========================================================= */
 
-function glucoseTypeLabel(
-    type
-){
+function glucoseTypeLabel(type){
 
     const labels = {
 
-        fasting:
-            "صائم",
-
-        beforeMeal:
-            "قبل الأكل",
-
-        afterBreakfast:
-            "بعد الإفطار بساعتين",
-
-        afterLunch:
-            "بعد الغداء بساعتين",
-
-        afterDinner:
-            "بعد العشاء بساعتين",
-
-        random:
-            "عشوائي"
+        fasting:"صائم",
+        beforeMeal:"قبل الأكل",
+        afterBreakfast:"بعد الإفطار بساعتين",
+        afterLunch:"بعد الغداء بساعتين",
+        afterDinner:"بعد العشاء بساعتين",
+        random:"عشوائي"
 
     };
 
-    return labels[type] ||
-        "قياس سكر";
-
+    return labels[type] || "قياس سكر";
 }
 
 
@@ -4180,9 +3630,7 @@ async function loadCollection(
     try{
 
         const ref =
-            measurementCollection(
-                type
-            );
+            measurementCollection(type);
 
         const q =
             query(
@@ -4198,14 +3646,10 @@ async function loadCollection(
             await getDocs(q);
 
         return snap.docs.map(
-            item => {
-
-                return {
-                    id:item.id,
-                    ...item.data()
-                };
-
-            }
+            item => ({
+                id:item.id,
+                ...item.data()
+            })
         );
 
     }catch(error){
@@ -4216,19 +3660,11 @@ async function loadCollection(
             error
         );
 
-        /*
-          fallback بدون orderBy
-          إذا كانت البيانات القديمة
-          لا تحتوي createdAt بشكل صحيح.
-        */
-
         try{
 
             const snap =
                 await getDocs(
-                    measurementCollection(
-                        type
-                    )
+                    measurementCollection(type)
                 );
 
             const result =
@@ -4241,8 +3677,7 @@ async function loadCollection(
 
             result.sort(
                 (a,b) =>
-                    dateFromRecord(b)
-                    -
+                    dateFromRecord(b) -
                     dateFromRecord(a)
             );
 
@@ -4253,16 +3688,11 @@ async function loadCollection(
 
         }catch(error2){
 
-            console.error(
-                error2
-            );
+            console.error(error2);
 
             return [];
-
         }
-
     }
-
 }
 
 
@@ -4286,23 +3716,18 @@ async function loadAllMeasurements(){
         await Promise.all(
             types.map(
                 type =>
-                    loadCollection(
-                        type
-                    )
+                    loadCollection(type)
             )
         );
 
     types.forEach(
         (type,index) => {
-
             records[type] =
                 results[index];
-
         }
     );
 
     renderAll();
-
 }
 
 
@@ -4325,27 +3750,20 @@ function renderAll(){
     renderCharts();
 
     renderSummaryDate();
-
 }
 
 
 /* =========================================================
-   LATEST CARD VALUES
+   LATEST
 ========================================================= */
 
-function latest(
-    type
-){
+function latest(type){
 
-    return records[type]?.[0] ||
-        null;
-
+    return records[type]?.[0] || null;
 }
 
 
 function renderLatestCards(){
-
-    /* WEIGHT */
 
     const weight =
         latest("weight");
@@ -4355,8 +3773,7 @@ function renderLatestCards(){
         document.getElementById(
             "weightValue"
         ).textContent =
-            number(weight.value)
-            .toFixed(1);
+            number(weight.value).toFixed(1);
 
         document.getElementById(
             "weightDate"
@@ -4368,11 +3785,8 @@ function renderLatestCards(){
             formatTime(
                 dateFromRecord(weight)
             );
-
     }
 
-
-    /* PRESSURE */
 
     const pressure =
         latest("pressure");
@@ -4407,11 +3821,8 @@ function renderLatestCards(){
                 pressure.systolic,
                 pressure.diastolic
             );
-
     }
 
-
-    /* PULSE */
 
     const pulse =
         latest("pulse");
@@ -4433,15 +3844,8 @@ function renderLatestCards(){
             formatTime(
                 dateFromRecord(pulse)
             );
-
     }
 
-
-    /*
-      If pressure has pulse,
-      show it as latest pulse too
-      if standalone pulse doesn't exist.
-    */
 
     if(
         !pulse &&
@@ -4458,11 +3862,8 @@ function renderLatestCards(){
             "pulseDate"
         ).textContent =
             "من آخر قياس ضغط";
-
     }
 
-
-    /* GLUCOSE */
 
     const glucose =
         latest("glucose");
@@ -4472,33 +3873,26 @@ function renderLatestCards(){
         document.getElementById(
             "glucoseValue"
         ).textContent =
-            number(glucose.value)
-            .toFixed(2);
+            number(glucose.value).toFixed(2);
 
         document.getElementById(
             "glucoseDate"
         ).textContent =
             glucose.typeLabel ||
-            glucoseTypeLabel(
-                glucose.type
-            );
+            glucoseTypeLabel(glucose.type);
 
         document.getElementById(
             "summaryGlucose"
         ).textContent =
-            number(glucose.value)
-            .toFixed(2);
+            number(glucose.value).toFixed(2);
 
         document.getElementById(
             "summaryGlucoseType"
         ).textContent =
             glucose.typeLabel ||
             "آخر قياس";
-
     }
 
-
-    /* TEMPERATURE */
 
     const temperature =
         latest("temperature");
@@ -4516,21 +3910,14 @@ function renderLatestCards(){
             "temperatureDate"
         ).textContent =
             formatDate(
-                dateFromRecord(
-                    temperature
-                )
+                dateFromRecord(temperature)
             ) +
             " • " +
             formatTime(
-                dateFromRecord(
-                    temperature
-                )
+                dateFromRecord(temperature)
             );
-
     }
 
-
-    /* OXYGEN */
 
     const oxygen =
         latest("oxygen");
@@ -4548,21 +3935,14 @@ function renderLatestCards(){
             "oxygenDate"
         ).textContent =
             formatDate(
-                dateFromRecord(
-                    oxygen
-                )
+                dateFromRecord(oxygen)
             ) +
             " • " +
             formatTime(
-                dateFromRecord(
-                    oxygen
-                )
+                dateFromRecord(oxygen)
             );
-
     }
 
-
-    /* WAIST */
 
     const waist =
         latest("waist");
@@ -4580,13 +3960,9 @@ function renderLatestCards(){
             "waistDate"
         ).textContent =
             formatDate(
-                dateFromRecord(
-                    waist
-                )
+                dateFromRecord(waist)
             );
-
     }
-
 }
 
 
@@ -4599,11 +3975,8 @@ function pressureStatus(
     diastolic
 ){
 
-    systolic =
-        number(systolic);
-
-    diastolic =
-        number(diastolic);
+    systolic = number(systolic);
+    diastolic = number(diastolic);
 
     if(
         systolic < 90 ||
@@ -4634,7 +4007,6 @@ function pressureStatus(
     }
 
     return "مرتفع جدًا";
-
 }
 
 
@@ -4656,84 +4028,64 @@ function renderPressureTable(){
 
     tbody.innerHTML = "";
 
-    if(
-        !records.pressure.length
-    ){
+    if(!records.pressure.length){
 
-        empty.style.display =
-            "block";
+        empty.style.display = "block";
 
         return;
-
     }
 
-    empty.style.display =
-        "none";
+    empty.style.display = "none";
 
     records.pressure
         .slice(0,50)
-        .forEach(
-            record => {
+        .forEach(record => {
 
-                const date =
-                    dateFromRecord(
-                        record
-                    );
+            const date =
+                dateFromRecord(record);
 
-                const tr =
-                    document.createElement(
-                        "tr"
-                    );
+            const tr =
+                document.createElement("tr");
 
-                tr.innerHTML = `
+            tr.innerHTML = `
 
-                    <td>
-                        ${formatDate(date)}
-                    </td>
+                <td>${formatDate(date)}</td>
 
-                    <td>
-                        ${formatTime(date)}
-                    </td>
+                <td>${formatTime(date)}</td>
 
-                    <td>
-                        <strong>
-                            ${record.systolic ?? "—"}
-                        </strong>
-                    </td>
+                <td>
+                    <strong>
+                        ${record.systolic ?? "—"}
+                    </strong>
+                </td>
 
-                    <td>
-                        <strong>
-                            ${record.diastolic ?? "—"}
-                        </strong>
-                    </td>
+                <td>
+                    <strong>
+                        ${record.diastolic ?? "—"}
+                    </strong>
+                </td>
 
-                    <td>
-                        ${record.pulse ?? "—"}
-                    </td>
+                <td>
+                    ${record.pulse ?? "—"}
+                </td>
 
-                    <td>
+                <td>
 
-                        <button
-                            class="delete-btn"
-                            data-delete-type="pressure"
-                            data-delete-id="${record.id}"
-                        >
+                    <button
+                        class="delete-btn"
+                        data-delete-type="pressure"
+                        data-delete-id="${record.id}"
+                        aria-label="حذف القياس"
+                    >
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
 
-                            <i class="fa-solid fa-trash"></i>
+                </td>
 
-                        </button>
+            `;
 
-                    </td>
-
-                `;
-
-                tbody.appendChild(
-                    tr
-                );
-
-            }
-        );
-
+            tbody.appendChild(tr);
+        });
 }
 
 
@@ -4755,82 +4107,61 @@ function renderGlucoseTable(){
 
     tbody.innerHTML = "";
 
-    if(
-        !records.glucose.length
-    ){
+    if(!records.glucose.length){
 
-        empty.style.display =
-            "block";
+        empty.style.display = "block";
 
         return;
-
     }
 
-    empty.style.display =
-        "none";
+    empty.style.display = "none";
 
     records.glucose
         .slice(0,50)
-        .forEach(
-            record => {
+        .forEach(record => {
 
-                const date =
-                    dateFromRecord(
-                        record
-                    );
+            const date =
+                dateFromRecord(record);
 
-                const tr =
-                    document.createElement(
-                        "tr"
-                    );
+            const tr =
+                document.createElement("tr");
 
-                tr.innerHTML = `
+            tr.innerHTML = `
 
-                    <td>
-                        ${formatDate(date)}
-                    </td>
+                <td>${formatDate(date)}</td>
 
-                    <td>
-                        ${formatTime(date)}
-                    </td>
+                <td>${formatTime(date)}</td>
 
-                    <td>
-                        ${record.typeLabel || glucoseTypeLabel(record.type)}
-                    </td>
+                <td>
+                    ${record.typeLabel ||
+                    glucoseTypeLabel(record.type)}
+                </td>
 
-                    <td>
-                        <strong>
-                            ${number(record.value).toFixed(2)}
-                        </strong>
-                    </td>
+                <td>
+                    <strong>
+                        ${number(record.value).toFixed(2)}
+                    </strong>
+                </td>
 
-                    <td>
-                        g/L
-                    </td>
+                <td>g/L</td>
 
-                    <td>
+                <td>
 
-                        <button
-                            class="delete-btn"
-                            data-delete-type="glucose"
-                            data-delete-id="${record.id}"
-                        >
+                    <button
+                        class="delete-btn"
+                        data-delete-type="glucose"
+                        data-delete-id="${record.id}"
+                        aria-label="حذف القياس"
+                    >
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
 
-                            <i class="fa-solid fa-trash"></i>
+                </td>
 
-                        </button>
+            `;
 
-                    </td>
-
-                `;
-
-                tbody.appendChild(
-                    tr
-                );
-
-            }
-        );
-
+            tbody.appendChild(tr);
+        });
 }
 
 
@@ -4852,83 +4183,63 @@ function renderOxygenTable(){
 
     tbody.innerHTML = "";
 
-    if(
-        !records.oxygen.length
-    ){
+    if(!records.oxygen.length){
 
-        empty.style.display =
-            "block";
+        empty.style.display = "block";
 
         return;
-
     }
 
-    empty.style.display =
-        "none";
+    empty.style.display = "none";
 
     records.oxygen
         .slice(0,50)
-        .forEach(
-            record => {
+        .forEach(record => {
 
-                const date =
-                    dateFromRecord(
-                        record
-                    );
+            const date =
+                dateFromRecord(record);
 
-                const tr =
-                    document.createElement(
-                        "tr"
-                    );
+            const tr =
+                document.createElement("tr");
 
-                tr.innerHTML = `
+            tr.innerHTML = `
 
-                    <td>
-                        ${formatDate(date)}
-                    </td>
+                <td>${formatDate(date)}</td>
 
-                    <td>
-                        ${formatTime(date)}
-                    </td>
+                <td>${formatTime(date)}</td>
 
-                    <td>
-                        <strong>
-                            ${record.value ?? "—"}%
-                        </strong>
-                    </td>
+                <td>
+                    <strong>
+                        ${record.value ?? "—"}%
+                    </strong>
+                </td>
 
-                    <td>
-                        ${record.pulse ?? "—"}
-                    </td>
+                <td>
+                    ${record.pulse ?? "—"}
+                </td>
 
-                    <td>
+                <td>
 
-                        <button
-                            class="delete-btn"
-                            data-delete-type="oxygen"
-                            data-delete-id="${record.id}"
-                        >
+                    <button
+                        class="delete-btn"
+                        data-delete-type="oxygen"
+                        data-delete-id="${record.id}"
+                        aria-label="حذف القياس"
+                    >
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
 
-                            <i class="fa-solid fa-trash"></i>
+                </td>
 
-                        </button>
+            `;
 
-                    </td>
-
-                `;
-
-                tbody.appendChild(
-                    tr
-                );
-
-            }
-        );
-
+            tbody.appendChild(tr);
+        });
 }
 
 
 /* =========================================================
-   DELETE RECORD
+   DELETE
 ========================================================= */
 
 document.addEventListener(
@@ -4950,7 +4261,7 @@ document.addEventListener(
 
         const confirmed =
             confirm(
-                "هل تريد حذف هذه القياس؟"
+                "هل تريد حذف هذا القياس؟"
             );
 
         if(!confirmed) return;
@@ -4984,9 +4295,7 @@ document.addEventListener(
                 "تعذر حذف القياس.",
                 "error"
             );
-
         }
-
     }
 );
 
@@ -5016,9 +4325,13 @@ function drawChart(
     canvas.height =
         rect.height * dpr;
 
-    ctx.scale(
+    ctx.setTransform(
         dpr,
-        dpr
+        0,
+        0,
+        dpr,
+        0,
+        0
     );
 
     const width =
@@ -5034,20 +4347,16 @@ function drawChart(
         height
     );
 
-
     if(
         !data ||
         data.length === 0
     ){
 
-        ctx.fillStyle =
-            "#A1AAB7";
+        ctx.fillStyle = "#A1AAB7";
 
-        ctx.font =
-            "10px Cairo";
+        ctx.font = "10px Cairo";
 
-        ctx.textAlign =
-            "center";
+        ctx.textAlign = "center";
 
         ctx.fillText(
             "لا توجد بيانات كافية لعرض المخطط",
@@ -5056,19 +4365,15 @@ function drawChart(
         );
 
         return;
-
     }
 
 
     const padding = {
-
         top:20,
         right:15,
         bottom:28,
         left:35
-
     };
-
 
     const chartWidth =
         width -
@@ -5080,13 +4385,11 @@ function drawChart(
         padding.top -
         padding.bottom;
 
-
     const values =
         data.map(
             item =>
                 number(item.value)
         );
-
 
     let min =
         Math.min(...values);
@@ -5094,14 +4397,10 @@ function drawChart(
     let max =
         Math.max(...values);
 
-
     if(min === max){
-
         min -= 1;
         max += 1;
-
     }
-
 
     const extra =
         (max-min) * .18;
@@ -5112,11 +4411,8 @@ function drawChart(
 
     /* GRID */
 
-    ctx.strokeStyle =
-        "#EEF2F6";
-
+    ctx.strokeStyle = "#EEF2F6";
     ctx.lineWidth = 1;
-
 
     for(let i=0;i<4;i++){
 
@@ -5152,14 +4448,9 @@ function drawChart(
                 3
             );
 
-        ctx.fillStyle =
-            "#9AA4B2";
-
-        ctx.font =
-            "8px Cairo";
-
-        ctx.textAlign =
-            "right";
+        ctx.fillStyle = "#9AA4B2";
+        ctx.font = "8px Cairo";
+        ctx.textAlign = "right";
 
         ctx.fillText(
             Number(
@@ -5170,7 +4461,6 @@ function drawChart(
             padding.left - 6,
             y + 3
         );
-
     }
 
 
@@ -5209,7 +4499,6 @@ function drawChart(
                     y,
                     item
                 };
-
             }
         );
 
@@ -5246,16 +4535,14 @@ function drawChart(
 
         points
             .slice(1)
-            .forEach(
-                point => {
+            .forEach(point => {
 
-                    ctx.lineTo(
-                        point.x,
-                        point.y
-                    );
+                ctx.lineTo(
+                    point.x,
+                    point.y
+                );
 
-                }
-            );
+            });
 
         ctx.lineTo(
             points[points.length-1].x,
@@ -5271,11 +4558,9 @@ function drawChart(
 
         ctx.closePath();
 
-        ctx.fillStyle =
-            gradient;
+        ctx.fillStyle = gradient;
 
         ctx.fill();
-
     }
 
 
@@ -5299,9 +4584,7 @@ function drawChart(
                     point.x,
                     point.y
                 );
-
             }
-
         }
     );
 
@@ -5311,58 +4594,46 @@ function drawChart(
 
     ctx.lineWidth = 2.5;
 
-    ctx.lineCap =
-        "round";
-
-    ctx.lineJoin =
-        "round";
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
 
     ctx.stroke();
 
 
     /* POINTS */
 
-    points.forEach(
-        point => {
+    points.forEach(point => {
 
-            ctx.beginPath();
+        ctx.beginPath();
 
-            ctx.arc(
-                point.x,
-                point.y,
-                4,
-                0,
-                Math.PI*2
-            );
+        ctx.arc(
+            point.x,
+            point.y,
+            3.5,
+            0,
+            Math.PI*2
+        );
 
-            ctx.fillStyle =
-                "#fff";
+        ctx.fillStyle = "#fff";
 
-            ctx.fill();
+        ctx.fill();
 
-            ctx.strokeStyle =
-                options.color ||
-                "#1976D2";
+        ctx.strokeStyle =
+            options.color ||
+            "#1976D2";
 
-            ctx.lineWidth = 2;
+        ctx.lineWidth = 2;
 
-            ctx.stroke();
+        ctx.stroke();
 
-        }
-    );
+    });
 
 
     /* LABELS */
 
-    ctx.fillStyle =
-        "#98A2B0";
-
-    ctx.font =
-        "8px Cairo";
-
-    ctx.textAlign =
-        "center";
-
+    ctx.fillStyle = "#98A2B0";
+    ctx.font = "8px Cairo";
+    ctx.textAlign = "center";
 
     const step =
         Math.max(
@@ -5371,7 +4642,6 @@ function drawChart(
                 data.length / 5
             )
         );
-
 
     data.forEach(
         (item,index) => {
@@ -5385,19 +4655,15 @@ function drawChart(
                 points[index];
 
             const date =
-                dateFromRecord(
-                    item
-                );
+                dateFromRecord(item);
 
             ctx.fillText(
                 formatShortDate(date),
                 point.x,
                 height - 8
             );
-
         }
     );
-
 }
 
 
@@ -5405,19 +4671,11 @@ function drawChart(
    CHART DATA
 ========================================================= */
 
-function chartData(
-    type
-){
-
-    /*
-      Records are newest first.
-      Reverse to display oldest -> newest.
-    */
+function chartData(type){
 
     return [...records[type]]
         .reverse()
         .slice(-14);
-
 }
 
 
@@ -5428,9 +4686,7 @@ function chartData(
 function renderCharts(){
 
     drawChart(
-        document.getElementById(
-            "weightChart"
-        ),
+        document.getElementById("weightChart"),
         chartData("weight"),
         {
             color:"#1976D2",
@@ -5441,9 +4697,7 @@ function renderCharts(){
 
 
     drawChart(
-        document.getElementById(
-            "pulseChart"
-        ),
+        document.getElementById("pulseChart"),
         chartData("pulse"),
         {
             color:"#D95386",
@@ -5454,9 +4708,7 @@ function renderCharts(){
 
 
     drawChart(
-        document.getElementById(
-            "temperatureChart"
-        ),
+        document.getElementById("temperatureChart"),
         chartData("temperature"),
         {
             color:"#EF6C3B",
@@ -5467,9 +4719,7 @@ function renderCharts(){
 
 
     drawChart(
-        document.getElementById(
-            "waistChart"
-        ),
+        document.getElementById("waistChart"),
         chartData("waist"),
         {
             color:"#7957D7",
@@ -5477,7 +4727,6 @@ function renderCharts(){
             decimals:1
         }
     );
-
 }
 
 
@@ -5503,13 +4752,11 @@ function renderSummaryDate(){
             "لا توجد قياسات";
 
         return;
-
     }
 
     all.sort(
         (a,b) =>
-            dateFromRecord(b)
-            -
+            dateFromRecord(b) -
             dateFromRecord(a)
     );
 
@@ -5517,42 +4764,35 @@ function renderSummaryDate(){
         "summaryDate"
     ).textContent =
         formatDate(
-            dateFromRecord(
-                all[0]
-            )
+            dateFromRecord(all[0])
         );
-
 }
 
 
 /* =========================================================
-   OPEN BUTTONS
+   MEASUREMENT BUTTONS
 ========================================================= */
 
 document
-    .querySelectorAll(
-        "[data-measure]"
-    )
-    .forEach(
-        card => {
+    .querySelectorAll("[data-measure]")
+    .forEach(card => {
 
-            card.addEventListener(
-                "click",
-                () => {
+        card.addEventListener(
+            "click",
+            () => {
 
-                    openMeasurement(
-                        card.dataset.measure
-                    );
+                openMeasurement(
+                    card.dataset.measure
+                );
 
-                }
-            );
+            }
+        );
 
-        }
-    );
+    });
 
 
 /* =========================================================
-   FORM SUBMIT
+   FORM
 ========================================================= */
 
 measurementForm.addEventListener(
@@ -5573,22 +4813,18 @@ measurementForm.addEventListener(
 
 function closeModal(){
 
-    modal.classList.remove(
-        "show"
-    );
+    modal.classList.remove("show");
 
     measurementForm.reset();
 
-    dynamicFields.innerHTML =
-        "";
+    dynamicFields.innerHTML = "";
 
+    currentMeasurement = "";
 }
 
 
 document
-    .getElementById(
-        "closeModal"
-    )
+    .getElementById("closeModal")
     .addEventListener(
         "click",
         closeModal
@@ -5599,12 +4835,8 @@ modal.addEventListener(
     "click",
     event => {
 
-        if(
-            event.target === modal
-        ){
-
+        if(event.target === modal){
             closeModal();
-
         }
 
     }
@@ -5616,9 +4848,7 @@ modal.addEventListener(
 ========================================================= */
 
 document
-    .getElementById(
-        "refreshBtn"
-    )
+    .getElementById("refreshBtn")
     .addEventListener(
         "click",
         async () => {
@@ -5628,9 +4858,7 @@ document
                     "#refreshBtn i"
                 );
 
-            icon.classList.add(
-                "fa-spin"
-            );
+            icon.classList.add("fa-spin");
 
             await loadUser();
 
@@ -5638,11 +4866,9 @@ document
 
             setTimeout(
                 () => {
-
                     icon.classList.remove(
                         "fa-spin"
                     );
-
                 },
                 500
             );
@@ -5652,15 +4878,13 @@ document
 
 
 /* =========================================================
-   WINDOW RESIZE
+   RESIZE
 ========================================================= */
 
 window.addEventListener(
     "resize",
     () => {
-
         renderCharts();
-
     }
 );
 
@@ -5679,11 +4903,9 @@ onAuthStateChanged(
                 "login.html";
 
             return;
-
         }
 
-        currentUser =
-            user;
+        currentUser = user;
 
         try{
 
@@ -5693,9 +4915,7 @@ onAuthStateChanged(
 
         }catch(error){
 
-            console.error(
-                error
-            );
+            console.error(error);
 
             showToast(
                 "تعذر تحميل بيانات القياسات.",
