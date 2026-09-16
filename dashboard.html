@@ -12,11 +12,15 @@
       user-scalable=no">
 
 <meta name="theme-color"
-      content="#F4F8FC">
+      content="#5B4BC4">
 
-<title>صحتي | لوحة التحكم</title>
+<title>صحتي | الرئيسية</title>
 
-<!-- Medical UI Font -->
+
+<!-- =====================================================
+     CAIRO FONT
+===================================================== -->
+
 <link rel="preconnect"
       href="https://fonts.googleapis.com">
 
@@ -24,12 +28,17 @@
       href="https://fonts.gstatic.com"
       crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
       rel="stylesheet">
 
-<!-- Font Awesome -->
+
+<!-- =====================================================
+     FONT AWESOME
+===================================================== -->
+
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 
 <style>
 
@@ -39,39 +48,41 @@
 
 :root{
 
-    --primary:#1769E0;
-    --primary-dark:#0D4FB5;
-    --primary-light:#EAF3FF;
+    --purple:#5B4BC4;
+    --purple-dark:#4637A5;
+    --purple-light:#F0EEFF;
 
-    --cyan:#08A6C7;
-    --cyan-light:#E8F9FC;
+    --blue:#3D7EF0;
+    --blue-light:#ECF4FF;
 
-    --green:#20A66A;
+    --pink:#D94B87;
+    --pink-light:#FDF0F6;
+
+    --green:#20A36A;
     --green-light:#EAF8F1;
 
-    --violet:#7657D9;
-    --violet-light:#F1EEFF;
+    --cyan:#0D9DB8;
+    --cyan-light:#E9F9FC;
 
-    --rose:#D95786;
-    --rose-light:#FCEEF4;
+    --orange:#E79527;
+    --orange-light:#FFF6E8;
 
-    --orange:#E89020;
-    --orange-light:#FFF5E7;
+    --red:#E05252;
+    --red-light:#FFF0F0;
 
-    --dark:#172033;
-    --text:#39465A;
-    --muted:#8B98AA;
+    --dark:#25243A;
+    --text:#55566A;
+    --muted:#9394A4;
 
-    --background:#F4F8FC;
+    --background:#F6F6FA;
     --white:#FFFFFF;
 
-    --border:#E5ECF3;
+    --border:#EAEAF0;
 
     --shadow:
-        0 8px 30px
-        rgba(25,55,90,.055);
+        0 7px 25px
+        rgba(48,43,90,.055);
 
-    --radius:22px;
 }
 
 
@@ -87,16 +98,21 @@
     box-sizing:border-box;
 
     -webkit-tap-highlight-color:transparent;
+
 }
 
 html{
+
     scroll-behavior:smooth;
+
 }
 
 body{
 
+    margin:0;
+
     font-family:
-        "IBM Plex Sans Arabic",
+        "Cairo",
         sans-serif;
 
     background:
@@ -107,13 +123,17 @@ body{
 
     min-height:100vh;
 
-    padding-bottom:92px;
+    padding-bottom:95px;
+
 }
 
 button,
 input{
 
-    font-family:inherit;
+    font-family:
+        "Cairo",
+        sans-serif;
+
 }
 
 button{
@@ -121,18 +141,20 @@ button{
     border:0;
 
     cursor:pointer;
+
 }
 
 a{
 
+    text-decoration:none;
+
     color:inherit;
 
-    text-decoration:none;
 }
 
 
 /* =========================================================
-   APP CONTAINER
+   APP
 ========================================================= */
 
 .app{
@@ -144,45 +166,102 @@ a{
     margin:auto;
 
     min-height:100vh;
+
 }
 
 
 /* =========================================================
-   TOP AREA
+   HEADER
 ========================================================= */
 
-.top-area{
+.header{
+
+    position:relative;
 
     background:
+
         linear-gradient(
-            160deg,
-            #F8FBFF 0%,
-            #EDF5FF 100%
+            135deg,
+            #B82775 0%,
+            #7B3FA6 50%,
+            #5147B9 100%
         );
 
-    padding:
-        20px
-        18px
-        22px;
+    color:white;
 
-    border-bottom:
-        1px solid
-        var(--border);
+    padding:
+        21px
+        18px
+        25px;
+
+    overflow:hidden;
+
+}
+
+
+/* Decorative circles */
+
+.header::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:190px;
+    height:190px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.07);
+
+    left:-80px;
+
+    top:-110px;
+
+}
+
+.header::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.055);
+
+    right:-70px;
+
+    bottom:-95px;
+
 }
 
 
 /* =========================================================
-   TOP BAR
+   HEADER TOP
 ========================================================= */
 
-.top-bar{
+.header-top{
+
+    position:relative;
+
+    z-index:2;
 
     display:flex;
 
     align-items:center;
 
     justify-content:space-between;
+
 }
+
+
+/* Profile */
 
 .profile{
 
@@ -191,23 +270,22 @@ a{
     align-items:center;
 
     gap:11px;
+
 }
 
-.profile-avatar{
+.avatar{
 
     width:47px;
     height:47px;
 
-    border-radius:16px;
+    border-radius:15px;
 
     background:
-        linear-gradient(
-            145deg,
-            #1769E0,
-            #4D8EF0
-        );
+        rgba(255,255,255,.17);
 
-    color:white;
+    border:
+        1px solid
+        rgba(255,255,255,.20);
 
     display:flex;
 
@@ -217,54 +295,56 @@ a{
 
     font-size:17px;
 
-    box-shadow:
-        0 8px 18px
-        rgba(23,105,224,.18);
 }
 
 .profile-text small{
 
     display:block;
 
-    font-size:10px;
+    font-size:9px;
 
-    color:var(--muted);
+    opacity:.72;
 
-    margin-bottom:2px;
+    margin-bottom:1px;
+
 }
 
 .profile-text strong{
 
     display:block;
 
-    font-size:17px;
+    font-size:16px;
 
     font-weight:700;
 
-    color:var(--dark);
 }
 
-.top-actions{
+
+/* Header buttons */
+
+.header-buttons{
 
     display:flex;
 
     gap:7px;
+
 }
 
-.top-action{
+.header-button{
 
-    width:39px;
-    height:39px;
+    width:38px;
+    height:38px;
 
-    border-radius:13px;
+    border-radius:12px;
 
-    background:white;
+    color:white;
+
+    background:
+        rgba(255,255,255,.13);
 
     border:
         1px solid
-        var(--border);
-
-    color:#68778B;
+        rgba(255,255,255,.10);
 
     display:flex;
 
@@ -272,19 +352,55 @@ a{
 
     justify-content:center;
 
-    box-shadow:
-        0 4px 12px
-        rgba(20,50,80,.035);
 }
 
 
 /* =========================================================
-   HEALTH STATUS
+   HEADER MESSAGE
 ========================================================= */
 
-.status-line{
+.header-message{
+
+    position:relative;
+
+    z-index:2;
 
     margin-top:20px;
+
+}
+
+.header-message h1{
+
+    font-size:20px;
+
+    font-weight:800;
+
+    line-height:1.5;
+
+}
+
+.header-message p{
+
+    margin-top:3px;
+
+    font-size:9px;
+
+    opacity:.72;
+
+}
+
+
+/* =========================================================
+   HEADER MINI STATUS
+========================================================= */
+
+.header-status{
+
+    position:relative;
+
+    z-index:2;
+
+    margin-top:16px;
 
     display:flex;
 
@@ -293,45 +409,44 @@ a{
     justify-content:space-between;
 
     gap:10px;
+
 }
 
-.status-title{
+.status{
 
     display:flex;
 
     align-items:center;
 
-    gap:8px;
+    gap:7px;
+
+    font-size:9px;
+
+    opacity:.9;
+
 }
 
 .status-dot{
 
-    width:8px;
-    height:8px;
+    width:7px;
+    height:7px;
 
     border-radius:50%;
 
-    background:#21B879;
+    background:#61E2A4;
 
     box-shadow:
-        0 0 0 5px
-        rgba(33,184,121,.10);
+        0 0 0 4px
+        rgba(97,226,164,.13);
+
 }
 
-.status-title span{
+.header-date{
 
-    font-size:11px;
+    font-size:8px;
 
-    color:#617084;
+    opacity:.67;
 
-    font-weight:500;
-}
-
-.status-date{
-
-    font-size:10px;
-
-    color:var(--muted);
 }
 
 
@@ -343,19 +458,21 @@ a{
 
     padding:
         18px;
+
 }
 
 
 /* =========================================================
-   SECTION
+   SECTION TITLE
 ========================================================= */
 
 .section{
 
-    margin-bottom:22px;
+    margin-bottom:21px;
+
 }
 
-.section-heading{
+.section-title{
 
     display:flex;
 
@@ -363,50 +480,54 @@ a{
 
     justify-content:space-between;
 
-    margin-bottom:11px;
+    margin-bottom:10px;
+
 }
 
-.section-heading h2{
+.section-title h2{
+
+    font-size:14px;
+
+    font-weight:800;
 
     color:var(--dark);
 
-    font-size:15px;
-
-    font-weight:700;
 }
 
-.section-heading button{
+.section-title button{
 
     background:none;
 
-    color:var(--primary);
+    color:var(--purple);
 
-    font-size:10px;
+    font-size:9px;
 
-    font-weight:600;
+    font-weight:700;
+
 }
 
 
 /* =========================================================
-   DATE STRIP
+   CALENDAR
 ========================================================= */
 
-.date-card{
+.calendar-card{
 
     background:white;
+
+    border-radius:22px;
 
     border:
         1px solid
         var(--border);
 
-    border-radius:24px;
-
     padding:11px;
 
     box-shadow:var(--shadow);
+
 }
 
-.date-strip{
+.week{
 
     display:grid;
 
@@ -414,157 +535,170 @@ a{
         repeat(7,1fr);
 
     gap:3px;
+
 }
 
-.date-item{
-
-    min-width:0;
-
-    padding:
-        8px
-        3px
-        9px;
-
-    border-radius:17px;
+.week-day{
 
     text-align:center;
+
+    padding:
+        7px
+        2px
+        9px;
+
+    border-radius:15px;
 
     cursor:pointer;
 
     transition:.18s;
+
 }
 
-.date-item small{
+.week-day small{
 
     display:block;
 
-    color:#98A4B4;
+    font-size:7px;
 
-    font-size:8px;
+    color:#A1A1AF;
 
-    margin-bottom:7px;
+    margin-bottom:6px;
+
 }
 
-.date-item strong{
+.week-day strong{
 
-    display:flex;
-
-    width:34px;
-    height:34px;
+    width:33px;
+    height:33px;
 
     margin:auto;
 
+    border-radius:11px;
+
+    display:flex;
+
     align-items:center;
+
     justify-content:center;
 
-    border-radius:12px;
+    color:#4E5060;
 
-    color:#364255;
+    font-size:11px;
 
-    font-size:12px;
 }
 
-.date-item.selected{
+.week-day.selected{
 
     background:
-        #EEF5FF;
+        var(--purple-light);
+
 }
 
-.date-item.selected small{
+.week-day.selected small{
 
-    color:var(--primary);
+    color:var(--purple);
+
+    font-weight:700;
+
 }
 
-.date-item.selected strong{
+.week-day.selected strong{
+
+    background:
+        var(--purple);
 
     color:white;
 
-    background:
-        var(--primary);
-
     box-shadow:
-        0 6px 13px
-        rgba(23,105,224,.20);
+        0 5px 12px
+        rgba(91,75,196,.22);
+
 }
 
 
 /* =========================================================
-   SELECTED DAY
+   SELECTED DAY INFO
 ========================================================= */
 
-.selected-day{
+.selected-info{
 
-    margin-top:11px;
+    margin-top:10px;
 
     padding:
-        11px
-        13px;
+        10px 12px;
 
-    background:
-        #F8FAFC;
+    border-radius:16px;
 
-    border-radius:17px;
+    background:#FAFAFC;
 
     display:flex;
 
     align-items:center;
 
     justify-content:space-between;
+
 }
 
-.selected-day-info{
+.selected-info-left{
 
     display:flex;
 
     align-items:center;
 
     gap:9px;
+
 }
 
-.selected-day-icon{
+.selected-icon{
 
-    width:35px;
-    height:35px;
+    width:34px;
+    height:34px;
 
     border-radius:11px;
 
     background:
-        var(--primary-light);
+        var(--purple-light);
 
-    color:var(--primary);
+    color:
+        var(--purple);
 
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
-    font-size:13px;
+    font-size:12px;
+
 }
 
-.selected-day-text strong{
+.selected-text strong{
 
     display:block;
-
-    font-size:11px;
 
     color:var(--dark);
+
+    font-size:10px;
+
 }
 
-.selected-day-text span{
+.selected-text span{
 
     display:block;
-
-    font-size:9px;
 
     color:var(--muted);
 
-    margin-top:2px;
+    font-size:8px;
+
+    margin-top:1px;
+
 }
 
-.open-calendar{
+.calendar-open{
 
-    width:32px;
-    height:32px;
+    width:31px;
+    height:31px;
 
     border-radius:10px;
 
@@ -574,64 +708,42 @@ a{
         1px solid
         var(--border);
 
-    color:#68778B;
+    color:#77798A;
 
     display:flex;
 
     align-items:center;
+
     justify-content:center;
+
 }
 
 
 /* =========================================================
-   MAIN HEALTH SCORE
+   TODAY SUMMARY
 ========================================================= */
 
-.health-score{
+.summary-card{
 
     position:relative;
 
-    background:
-        linear-gradient(
-            145deg,
-            #1559C7 0%,
-            #1769E0 55%,
-            #2187DF 100%
-        );
+    background:white;
 
-    border-radius:27px;
+    border:
+        1px solid
+        var(--border);
 
-    padding:20px;
+    border-radius:24px;
+
+    padding:17px;
 
     overflow:hidden;
 
-    color:white;
+    box-shadow:var(--shadow);
 
-    box-shadow:
-        0 15px 35px
-        rgba(23,105,224,.17);
 }
 
-.health-score::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:180px;
-    height:180px;
-
-    border-radius:50%;
-
-    border:
-        30px solid
-        rgba(255,255,255,.055);
-
-    left:-85px;
-    top:-90px;
-}
-
-.health-score::after{
+.summary-card::before{
 
     content:"";
 
@@ -643,38 +755,39 @@ a{
     border-radius:50%;
 
     background:
-        rgba(255,255,255,.045);
+        var(--purple-light);
 
-    right:-65px;
-    bottom:-70px;
+    left:-75px;
+
+    bottom:-75px;
+
 }
 
-.score-content{
+.summary-top{
 
     position:relative;
 
     z-index:2;
-}
-
-.score-top{
 
     display:flex;
 
     align-items:center;
 
     justify-content:space-between;
+
 }
 
-.score-label{
+.summary-heading{
 
     display:flex;
 
     align-items:center;
 
-    gap:10px;
+    gap:9px;
+
 }
 
-.score-label-icon{
+.summary-icon{
 
     width:39px;
     height:39px;
@@ -682,101 +795,125 @@ a{
     border-radius:13px;
 
     background:
-        rgba(255,255,255,.13);
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-}
-
-.score-label strong{
-
-    display:block;
-
-    font-size:14px;
-
-    font-weight:700;
-}
-
-.score-label span{
-
-    display:block;
-
-    font-size:9px;
-
-    opacity:.68;
-
-    margin-top:2px;
-}
-
-.score-more{
-
-    width:31px;
-    height:31px;
-
-    border-radius:10px;
-
-    background:
-        rgba(255,255,255,.11);
+        linear-gradient(
+            145deg,
+            #5B4BC4,
+            #806FD8
+        );
 
     color:white;
 
     display:flex;
 
     align-items:center;
+
     justify-content:center;
+
 }
 
+.summary-heading strong{
 
-/* =========================================================
-   SCORE BODY
-========================================================= */
+    display:block;
 
-.score-body{
+    color:var(--dark);
+
+    font-size:12px;
+
+}
+
+.summary-heading span{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:8px;
+
+    margin-top:2px;
+
+}
+
+.summary-arrow{
+
+    width:30px;
+    height:30px;
+
+    border-radius:10px;
+
+    background:
+        #F6F5FC;
+
+    color:var(--purple);
 
     display:flex;
 
     align-items:center;
 
-    margin-top:19px;
+    justify-content:center;
 
-    gap:20px;
 }
 
-.score-circle{
 
-    width:118px;
-    height:118px;
+/* =========================================================
+   SUMMARY BODY
+========================================================= */
+
+.summary-body{
+
+    position:relative;
+
+    z-index:2;
+
+    margin-top:17px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:17px;
+
+}
+
+
+/* Circle */
+
+.progress-circle{
+
+    width:115px;
+    height:115px;
 
     position:relative;
 
     flex-shrink:0;
+
 }
 
-.score-circle svg{
+.progress-circle svg{
 
-    width:118px;
-    height:118px;
+    width:115px;
+    height:115px;
 
-    transform:rotate(-90deg);
+    transform:
+        rotate(-90deg);
+
 }
 
-.circle-bg{
+.progress-background{
+
+    fill:none;
+
+    stroke:#EEEEF4;
+
+    stroke-width:8;
+
+}
+
+.progress-value{
 
     fill:none;
 
     stroke:
-        rgba(255,255,255,.18);
-
-    stroke-width:8;
-}
-
-.circle-value{
-
-    fill:none;
-
-    stroke:white;
+        url(#progressGradient);
 
     stroke-width:8;
 
@@ -785,9 +922,10 @@ a{
     stroke-dasharray:320;
 
     stroke-dashoffset:70;
+
 }
 
-.circle-center{
+.progress-center{
 
     position:absolute;
 
@@ -800,80 +938,96 @@ a{
     align-items:center;
 
     justify-content:center;
+
 }
 
-.circle-center strong{
+.progress-center strong{
 
-    font-size:25px;
+    color:var(--dark);
+
+    font-size:24px;
 
     line-height:1;
 
-    font-weight:700;
+    font-weight:800;
+
 }
 
-.circle-center span{
+.progress-center span{
+
+    color:var(--muted);
 
     font-size:8px;
 
-    opacity:.70;
+    margin-top:5px;
 
-    margin-top:4px;
 }
 
-.score-description{
+
+/* Summary text */
+
+.summary-text{
 
     flex:1;
+
 }
 
-.score-description h3{
+.summary-text h3{
 
-    font-size:14px;
+    color:var(--dark);
 
-    font-weight:700;
+    font-size:13px;
 
-    margin-bottom:6px;
+    font-weight:800;
+
+    margin-bottom:5px;
+
 }
 
-.score-description p{
+.summary-text p{
 
-    font-size:9px;
+    color:var(--muted);
 
-    line-height:1.8;
+    font-size:8px;
 
-    opacity:.75;
+    line-height:1.9;
+
 }
 
-.score-button{
+.add-data{
 
     display:inline-flex;
 
     align-items:center;
 
-    gap:7px;
+    gap:6px;
 
     margin-top:10px;
 
     padding:
-        8px
-        11px;
-
-    background:white;
-
-    color:var(--primary-dark);
+        7px
+        10px;
 
     border-radius:10px;
 
-    font-size:9px;
+    background:
+        var(--purple-light);
 
-    font-weight:700;
+    color:
+        var(--purple);
+
+    font-size:8px;
+
+    font-weight:800;
+
 }
 
 
 /* =========================================================
-   QUICK SERVICES
+   QUICK ACCESS
 ========================================================= */
 
-.services-grid{
+.quick-grid{
 
     display:grid;
 
@@ -881,11 +1035,10 @@ a{
         repeat(2,1fr);
 
     gap:10px;
+
 }
 
-.service{
-
-    position:relative;
+.quick-card{
 
     background:white;
 
@@ -893,20 +1046,32 @@ a{
         1px solid
         var(--border);
 
-    border-radius:21px;
+    border-radius:20px;
 
     padding:14px;
 
-    min-height:119px;
+    min-height:117px;
+
+    position:relative;
 
     overflow:hidden;
 
     box-shadow:
-        0 6px 22px
-        rgba(20,50,80,.035);
+        0 5px 18px
+        rgba(48,43,90,.035);
+
+    transition:.18s;
+
 }
 
-.service-icon{
+.quick-card:active{
+
+    transform:
+        scale(.975);
+
+}
+
+.quick-icon{
 
     width:42px;
     height:42px;
@@ -916,95 +1081,109 @@ a{
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     font-size:16px;
 
-    margin-bottom:12px;
+    margin-bottom:11px;
+
 }
 
-.service h3{
+.quick-card h3{
 
     color:var(--dark);
 
-    font-size:12px;
+    font-size:11px;
 
-    font-weight:700;
+    font-weight:800;
+
 }
 
-.service p{
+.quick-card p{
 
     color:var(--muted);
 
-    font-size:8px;
+    font-size:7px;
+
+    margin-top:3px;
 
     line-height:1.6;
 
-    margin-top:3px;
 }
 
-.service-arrow{
+.quick-arrow{
 
     position:absolute;
 
-    left:13px;
-    bottom:13px;
+    left:12px;
 
-    font-size:9px;
+    bottom:12px;
 
-    color:#B0BAC7;
+    color:#B7B7C4;
+
+    font-size:8px;
+
 }
 
 
 /* Health */
 
-.service-health .service-icon{
+.health .quick-icon{
 
     background:
-        var(--primary-light);
+        var(--blue-light);
 
-    color:var(--primary);
+    color:
+        var(--blue);
+
 }
 
 
 /* Period */
 
-.service-period .service-icon{
+.period .quick-icon{
 
     background:
-        var(--rose-light);
+        var(--pink-light);
 
-    color:var(--rose);
+    color:
+        var(--pink);
+
 }
 
 
 /* Pregnancy */
 
-.service-pregnancy .service-icon{
+.pregnancy .quick-icon{
 
     background:
         var(--violet-light);
 
-    color:var(--violet);
+    color:
+        var(--violet);
+
 }
 
 
-/* Statistics */
+/* Stats */
 
-.service-stats .service-icon{
+.stats .quick-icon{
 
     background:
         var(--orange-light);
 
-    color:var(--orange);
+    color:
+        var(--orange);
+
 }
 
 
 /* =========================================================
-   DAILY INDICATORS
+   HEALTH INDICATORS
 ========================================================= */
 
-.indicator-card{
+.indicators{
 
     background:white;
 
@@ -1012,11 +1191,13 @@ a{
         1px solid
         var(--border);
 
-    border-radius:23px;
+    border-radius:22px;
+
+    padding:
+        8px 14px;
 
     box-shadow:var(--shadow);
 
-    padding:15px;
 }
 
 .indicator{
@@ -1025,26 +1206,21 @@ a{
 
     align-items:center;
 
-    gap:11px;
+    gap:10px;
 
     padding:
         10px 0;
 
     border-bottom:
         1px solid
-        #F0F3F7;
+        #F1F1F5;
+
 }
 
 .indicator:last-child{
 
     border-bottom:0;
 
-    padding-bottom:2px;
-}
-
-.indicator:first-child{
-
-    padding-top:2px;
 }
 
 .indicator-icon{
@@ -1057,43 +1233,49 @@ a{
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     font-size:13px;
 
     flex-shrink:0;
+
 }
 
-.indicator-info{
+.indicator-content{
 
     flex:1;
+
 }
 
-.indicator-info strong{
+.indicator-content strong{
 
     display:block;
 
     color:var(--dark);
 
-    font-size:11px;
+    font-size:10px;
 
     font-weight:700;
+
 }
 
-.indicator-info span{
+.indicator-content span{
 
     display:block;
 
     color:var(--muted);
 
-    font-size:8px;
+    font-size:7px;
 
     margin-top:2px;
+
 }
 
 .indicator-value{
 
     text-align:left;
+
 }
 
 .indicator-value strong{
@@ -1102,153 +1284,167 @@ a{
 
     color:var(--dark);
 
-    font-size:11px;
+    font-size:10px;
+
 }
 
 .indicator-value span{
 
-    font-size:8px;
+    display:block;
 
     color:var(--muted);
+
+    font-size:7px;
+
+    margin-top:1px;
+
 }
 
 
 /* Water */
 
-.indicator-water .indicator-icon{
+.water .indicator-icon{
 
     background:
         var(--cyan-light);
 
-    color:var(--cyan);
+    color:
+        var(--cyan);
+
 }
 
 
 /* Walking */
 
-.indicator-walking .indicator-icon{
+.walking .indicator-icon{
 
     background:
         var(--green-light);
 
-    color:var(--green);
+    color:
+        var(--green);
+
 }
 
 
 /* Sleep */
 
-.indicator-sleep .indicator-icon{
+.sleep .indicator-icon{
 
     background:
         var(--violet-light);
 
-    color:var(--violet);
+    color:
+        var(--violet);
+
 }
 
 
 /* =========================================================
-   CHALLENGE BANNER
+   CHALLENGE
 ========================================================= */
 
-.challenge-banner{
+.challenge{
 
-    margin-top:22px;
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+    padding:14px;
+
+    border-radius:20px;
 
     background:
         linear-gradient(
             135deg,
-            #F1EEFF,
-            #FAF8FF
+            #F0EEFF,
+            #FAF9FF
         );
 
     border:
         1px solid
-        #E9E2FF;
+        #E5E0FA;
 
-    border-radius:22px;
-
-    padding:15px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
 }
 
 .challenge-icon{
 
-    width:43px;
-    height:43px;
-
-    flex-shrink:0;
+    width:42px;
+    height:42px;
 
     border-radius:14px;
 
-    background:#E3DBFF;
+    background:#E2DDFB;
 
-    color:var(--violet);
+    color:var(--purple);
 
     display:flex;
 
     align-items:center;
+
     justify-content:center;
+
+    flex-shrink:0;
+
 }
 
 .challenge-text{
 
     flex:1;
+
 }
 
 .challenge-text strong{
 
     display:block;
 
-    color:#30275B;
+    color:#3C3565;
 
-    font-size:12px;
+    font-size:11px;
+
 }
 
 .challenge-text span{
 
     display:block;
 
-    color:#8177A6;
+    color:#8580A3;
 
-    font-size:8px;
+    font-size:7px;
 
     margin-top:3px;
 
-    line-height:1.5;
+    line-height:1.7;
+
 }
 
-.challenge-button{
+.challenge-arrow{
 
-    width:32px;
-    height:32px;
+    width:31px;
+    height:31px;
 
     border-radius:10px;
 
     background:white;
 
-    color:var(--violet);
+    color:var(--purple);
 
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
-    box-shadow:
-        0 4px 10px
-        rgba(70,50,130,.07);
 }
 
 
 /* =========================================================
-   BOTTOM NAV
+   BOTTOM NAVIGATION
 ========================================================= */
 
-.bottom-navigation{
+.bottom-nav{
 
     position:fixed;
 
@@ -1259,26 +1455,26 @@ a{
     bottom:0;
 
     background:
-        rgba(255,255,255,.96);
+        rgba(255,255,255,.97);
 
     border-top:
         1px solid
         var(--border);
 
     backdrop-filter:
-        blur(18px);
+        blur(15px);
 
     padding:
-        7px 10px
+        7px
+        9px
         calc(
             7px +
             env(safe-area-inset-bottom)
         );
+
 }
 
 .bottom-inner{
-
-    width:100%;
 
     max-width:620px;
 
@@ -1288,11 +1484,12 @@ a{
 
     grid-template-columns:
         repeat(4,1fr);
+
 }
 
 .nav-item{
 
-    height:58px;
+    height:57px;
 
     display:flex;
 
@@ -1302,47 +1499,47 @@ a{
 
     justify-content:center;
 
-    gap:5px;
+    gap:4px;
 
-    color:#95A0AE;
+    color:#999AAA;
 
-    font-size:8px;
+    font-size:7px;
 
-    font-weight:500;
+    font-weight:600;
 
     position:relative;
+
 }
 
 .nav-item i{
 
     font-size:16px;
+
 }
 
 .nav-item.active{
 
-    color:var(--primary);
+    color:var(--purple);
+
 }
 
-.nav-item.active i{
-
-    transform:
-        translateY(-1px);
-}
-
-.nav-item.active::after{
+.nav-item.active::before{
 
     content:"";
 
     position:absolute;
 
-    width:5px;
-    height:5px;
+    top:-7px;
 
-    border-radius:50%;
+    width:28px;
+    height:3px;
 
-    background:var(--primary);
+    border-radius:
+        0 0 6px 6px;
 
-    bottom:4px;
+    background:
+        var(--purple);
+
 }
 
 
@@ -1358,20 +1555,22 @@ a{
 
     z-index:300;
 
-    background:
-        rgba(17,29,48,.42);
-
     display:none;
 
     align-items:flex-end;
 
+    background:
+        rgba(29,27,49,.45);
+
     backdrop-filter:
         blur(5px);
+
 }
 
 .modal.show{
 
     display:flex;
+
 }
 
 .modal-box{
@@ -1395,17 +1594,25 @@ a{
 
     animation:
         slideUp .25s ease;
+
 }
 
 @keyframes slideUp{
 
     from{
-        transform:translateY(100%);
+
+        transform:
+            translateY(100%);
+
     }
 
     to{
-        transform:translateY(0);
+
+        transform:
+            translateY(0);
+
     }
+
 }
 
 .modal-header{
@@ -1417,35 +1624,39 @@ a{
     justify-content:space-between;
 
     margin-bottom:18px;
+
 }
 
 .modal-header h3{
 
-    font-size:17px;
-
     color:var(--dark);
 
-    font-weight:700;
+    font-size:16px;
+
+    font-weight:800;
+
 }
 
-.close-modal{
+.close-button{
 
-    width:38px;
-    height:38px;
+    width:37px;
+    height:37px;
 
     border-radius:12px;
 
-    background:#F4F7FA;
+    background:#F5F5F8;
 
-    color:#657386;
+    color:#666779;
 
     display:flex;
 
     align-items:center;
+
     justify-content:center;
+
 }
 
-.month-navigation{
+.month-row{
 
     display:flex;
 
@@ -1453,31 +1664,37 @@ a{
 
     justify-content:space-between;
 
-    margin-bottom:15px;
+    margin-bottom:14px;
+
 }
 
-.month-navigation strong{
+.month-row strong{
 
     color:var(--dark);
 
-    font-size:14px;
+    font-size:13px;
+
 }
 
-.month-navigation button{
+.month-row button{
 
     width:35px;
     height:35px;
 
     border-radius:11px;
 
-    background:var(--primary-light);
+    background:
+        var(--purple-light);
 
-    color:var(--primary);
+    color:
+        var(--purple);
 
     display:flex;
 
     align-items:center;
+
     justify-content:center;
+
 }
 
 .calendar-week{
@@ -1487,7 +1704,6 @@ a{
     grid-template-columns:
         repeat(7,1fr);
 
-    margin-bottom:5px;
 }
 
 .calendar-week span{
@@ -1496,9 +1712,10 @@ a{
 
     color:var(--muted);
 
-    font-size:8px;
+    font-size:7px;
 
     padding:6px 0;
+
 }
 
 .calendar-days{
@@ -1509,6 +1726,7 @@ a{
         repeat(7,1fr);
 
     gap:5px;
+
 }
 
 .calendar-day{
@@ -1520,38 +1738,42 @@ a{
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     color:var(--dark);
 
     font-size:10px;
 
-    font-weight:500;
-
     cursor:pointer;
+
 }
 
 .calendar-day.today{
 
     background:
-        var(--primary-light);
+        var(--purple-light);
 
-    color:var(--primary);
+    color:
+        var(--purple);
 
-    font-weight:700;
+    font-weight:800;
+
 }
 
 .calendar-day.selected{
 
     background:
-        var(--primary);
+        var(--purple);
 
     color:white;
+
 }
 
 .calendar-day.empty{
 
     cursor:default;
+
 }
 
 
@@ -1562,10 +1784,12 @@ a{
 @media(min-width:700px){
 
     body{
-        padding-bottom:25px;
+
+        padding-bottom:20px;
+
     }
 
-    .bottom-navigation{
+    .bottom-nav{
 
         position:relative;
 
@@ -1579,6 +1803,7 @@ a{
         border:0;
 
         backdrop-filter:none;
+
     }
 
     .bottom-inner{
@@ -1592,7 +1817,9 @@ a{
         border-radius:20px;
 
         box-shadow:var(--shadow);
+
     }
+
 }
 
 </style>
@@ -1602,21 +1829,24 @@ a{
 
 <body>
 
+
 <div class="app">
 
 
 <!-- =====================================================
-     TOP
+     HEADER
 ===================================================== -->
 
-<header class="top-area">
+<header class="header">
 
-    <div class="top-bar">
+
+    <div class="header-top">
 
 
         <div class="profile">
 
-            <div class="profile-avatar">
+
+            <div class="avatar">
 
                 <i class="fa-solid fa-user"></i>
 
@@ -1626,7 +1856,7 @@ a{
             <div class="profile-text">
 
                 <small>
-                    لوحة صحتي
+                    تطبيق صحتي
                 </small>
 
                 <strong>
@@ -1635,14 +1865,16 @@ a{
 
             </div>
 
+
         </div>
 
 
-        <div class="top-actions">
+        <div class="header-buttons">
+
 
             <button
-                class="top-action"
-                onclick="openNotifications()">
+                class="header-button"
+                onclick="showNotifications()">
 
                 <i class="fa-regular fa-bell"></i>
 
@@ -1650,21 +1882,37 @@ a{
 
 
             <button
-                class="top-action"
+                class="header-button"
                 onclick="openMore()">
 
-                <i class="fa-solid fa-ellipsis"></i>
+                <i class="fa-solid fa-ellipsis-vertical"></i>
 
             </button>
 
+
         </div>
+
 
     </div>
 
 
-    <div class="status-line">
+    <div class="header-message">
 
-        <div class="status-title">
+        <h1>
+            كيف حالك اليوم؟
+        </h1>
+
+        <p>
+            تابع صحتك وعاداتك اليومية بسهولة
+        </p>
+
+    </div>
+
+
+    <div class="header-status">
+
+
+        <div class="status">
 
             <span class="status-dot"></span>
 
@@ -1676,11 +1924,13 @@ a{
 
 
         <div
-            class="status-date"
+            class="header-date"
             id="headerDate">
         </div>
 
+
     </div>
+
 
 </header>
 
@@ -1693,20 +1943,21 @@ a{
 
 
 <!-- =====================================================
-     DATE
+     CALENDAR
 ===================================================== -->
 
 <section class="section">
 
-    <div class="section-heading">
+
+    <div class="section-title">
 
         <h2>
-            هذا الأسبوع
+            تقويمك
         </h2>
 
         <button onclick="openCalendar()">
 
-            التقويم
+            عرض الشهر
 
             <i class="fa-solid fa-chevron-left"></i>
 
@@ -1715,29 +1966,32 @@ a{
     </div>
 
 
-    <div class="date-card">
+    <div class="calendar-card">
+
 
         <div
-            class="date-strip"
-            id="dateStrip">
+            class="week"
+            id="week">
         </div>
 
 
-        <div class="selected-day">
+        <div class="selected-info">
 
-            <div class="selected-day-info">
 
-                <div class="selected-day-icon">
+            <div class="selected-info-left">
+
+
+                <div class="selected-icon">
 
                     <i class="fa-regular fa-calendar-check"></i>
 
                 </div>
 
 
-                <div class="selected-day-text">
+                <div class="selected-text">
 
                     <strong>
-                        يومك المحدد
+                        اليوم المحدد
                     </strong>
 
                     <span id="selectedDate">
@@ -1745,31 +1999,36 @@ a{
 
                 </div>
 
+
             </div>
 
 
             <button
-                class="open-calendar"
+                class="calendar-open"
                 onclick="openCalendar()">
 
                 <i class="fa-solid fa-calendar-days"></i>
 
             </button>
 
+
         </div>
 
+
     </div>
+
 
 </section>
 
 
 <!-- =====================================================
-     HEALTH SCORE
+     TODAY SUMMARY
 ===================================================== -->
 
 <section class="section">
 
-    <div class="section-heading">
+
+    <div class="section-title">
 
         <h2>
             ملخص اليوم
@@ -1779,126 +2038,158 @@ a{
 
 
     <div
-        class="health-score"
+        class="summary-card"
         onclick="openToday()">
 
 
-        <div class="score-content">
+        <div class="summary-top">
 
 
-            <div class="score-top">
+            <div class="summary-heading">
 
-                <div class="score-label">
 
-                    <div class="score-label-icon">
+                <div class="summary-icon">
 
-                        <i class="fa-solid fa-heart-pulse"></i>
-
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            تقدمك اليوم
-                        </strong>
-
-                        <span>
-                            بناءً على تحدياتك الشخصية
-                        </span>
-
-                    </div>
+                    <i class="fa-solid fa-heart-pulse"></i>
 
                 </div>
 
 
-                <div class="score-more">
+                <div>
 
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <strong>
+                        إنجازك اليوم
+                    </strong>
 
-                </div>
-
-            </div>
-
-
-            <div class="score-body">
-
-
-                <div class="score-circle">
-
-                    <svg viewBox="0 0 120 120">
-
-                        <circle
-                            class="circle-bg"
-                            cx="60"
-                            cy="60"
-                            r="51">
-                        </circle>
-
-                        <circle
-                            class="circle-value"
-                            cx="60"
-                            cy="60"
-                            r="51">
-                        </circle>
-
-                    </svg>
-
-
-                    <div class="circle-center">
-
-                        <strong>
-                            78%
-                        </strong>
-
-                        <span>
-                            مكتمل
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="score-description">
-
-                    <h3>
-                        استمر بهذا التقدم
-                    </h3>
-
-                    <p>
-                        أنجزت معظم أهدافك اليومية.
-                        يمكنك إضافة معلومات جديدة
-                        وتحديث تقدمك.
-                    </p>
-
-
-                    <div class="score-button">
-
-                        <i class="fa-solid fa-plus"></i>
-
-                        إضافة معلومات
-
-                    </div>
+                    <span>
+                        حسب التحديات التي حددتها
+                    </span>
 
                 </div>
 
 
             </div>
+
+
+            <div class="summary-arrow">
+
+                <i class="fa-solid fa-chevron-left"></i>
+
+            </div>
+
 
         </div>
 
+
+        <div class="summary-body">
+
+
+            <div class="progress-circle">
+
+
+                <svg viewBox="0 0 120 120">
+
+
+                    <defs>
+
+                        <linearGradient
+                            id="progressGradient"
+                            x1="0%"
+                            y1="0%"
+                            x2="100%"
+                            y2="100%">
+
+                            <stop
+                                offset="0%"
+                                stop-color="#5B4BC4"/>
+
+                            <stop
+                                offset="100%"
+                                stop-color="#B82775"/>
+
+                        </linearGradient>
+
+                    </defs>
+
+
+                    <circle
+                        class="progress-background"
+                        cx="60"
+                        cy="60"
+                        r="51">
+                    </circle>
+
+
+                    <circle
+                        class="progress-value"
+                        cx="60"
+                        cy="60"
+                        r="51">
+                    </circle>
+
+
+                </svg>
+
+
+                <div class="progress-center">
+
+                    <strong>
+                        78%
+                    </strong>
+
+                    <span>
+                        مكتمل
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="summary-text">
+
+
+                <h3>
+                    تقدم جيد اليوم
+                </h3>
+
+
+                <p>
+                    أنجزت جزءًا كبيرًا من أهدافك.
+                    أضف معلوماتك اليومية لمتابعة تقدمك.
+                </p>
+
+
+                <div class="add-data">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    إضافة معلومات
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
     </div>
+
 
 </section>
 
 
 <!-- =====================================================
-     SERVICES
+     QUICK ACCESS
 ===================================================== -->
 
 <section class="section">
 
-    <div class="section-heading">
+
+    <div class="section-title">
 
         <h2>
             الوصول السريع
@@ -1907,117 +2198,156 @@ a{
     </div>
 
 
-    <div class="services-grid">
+    <div class="quick-grid">
 
+
+        <!-- Health -->
 
         <a
             href="health.html"
-            class="service service-health">
+            class="quick-card health">
 
-            <div class="service-icon">
+
+            <div class="quick-icon">
 
                 <i class="fa-solid fa-heart-pulse"></i>
 
             </div>
 
+
             <h3>
                 قياساتي الصحية
             </h3>
 
+
             <p>
-                متابعة القياسات والمؤشرات
+                الوزن، الضغط، السكر والمزيد
             </p>
 
-            <i class="fa-solid fa-arrow-left service-arrow"></i>
+
+            <i
+                class="fa-solid fa-arrow-left quick-arrow">
+            </i>
+
 
         </a>
 
 
+        <!-- Period -->
+
         <a
             href="period.html"
-            class="service service-period">
+            class="quick-card period">
 
-            <div class="service-icon">
+
+            <div class="quick-icon">
 
                 <i class="fa-solid fa-calendar-days"></i>
 
             </div>
 
+
             <h3>
                 دورتي الشهرية
             </h3>
 
+
             <p>
-                متابعة التقويم والأيام المقدرة
+                التقويم والأيام المقدرة
             </p>
 
-            <i class="fa-solid fa-arrow-left service-arrow"></i>
+
+            <i
+                class="fa-solid fa-arrow-left quick-arrow">
+            </i>
+
 
         </a>
 
 
+        <!-- Pregnancy -->
+
         <a
             href="pregnancy.html"
-            class="service service-pregnancy">
+            class="quick-card pregnancy">
 
-            <div class="service-icon">
+
+            <div class="quick-icon">
 
                 <i class="fa-solid fa-person-pregnant"></i>
 
             </div>
 
+
             <h3>
                 الحمل
             </h3>
+
 
             <p>
                 عمر الحمل والموعد المتوقع
             </p>
 
-            <i class="fa-solid fa-arrow-left service-arrow"></i>
+
+            <i
+                class="fa-solid fa-arrow-left quick-arrow">
+            </i>
+
 
         </a>
 
 
+        <!-- Statistics -->
+
         <a
             href="stats.html"
-            class="service service-stats">
+            class="quick-card stats">
 
-            <div class="service-icon">
+
+            <div class="quick-icon">
 
                 <i class="fa-solid fa-chart-column"></i>
 
             </div>
 
+
             <h3>
                 إحصائياتي
             </h3>
 
+
             <p>
-                رؤية تطور بياناتك الصحية
+                تطور بياناتك الصحية
             </p>
 
-            <i class="fa-solid fa-arrow-left service-arrow"></i>
+
+            <i
+                class="fa-solid fa-arrow-left quick-arrow">
+            </i>
+
 
         </a>
 
 
     </div>
 
+
 </section>
 
 
 <!-- =====================================================
-     DAILY INDICATORS
+     HEALTH INDICATORS
 ===================================================== -->
 
 <section class="section">
 
-    <div class="section-heading">
+
+    <div class="section-title">
 
         <h2>
             مؤشرات اليوم
         </h2>
+
 
         <button onclick="openToday()">
 
@@ -2027,13 +2357,17 @@ a{
 
         </button>
 
+
     </div>
 
 
-    <div class="indicator-card">
+    <div class="indicators">
 
 
-        <div class="indicator indicator-water">
+        <!-- Water -->
+
+        <div class="indicator water">
+
 
             <div class="indicator-icon">
 
@@ -2041,17 +2375,19 @@ a{
 
             </div>
 
-            <div class="indicator-info">
+
+            <div class="indicator-content">
 
                 <strong>
                     شرب الماء
                 </strong>
 
                 <span>
-                    هدفك اليومي
+                    الهدف اليومي
                 </span>
 
             </div>
+
 
             <div class="indicator-value">
 
@@ -2065,10 +2401,14 @@ a{
 
             </div>
 
+
         </div>
 
 
-        <div class="indicator indicator-walking">
+        <!-- Walking -->
+
+        <div class="indicator walking">
+
 
             <div class="indicator-icon">
 
@@ -2076,17 +2416,19 @@ a{
 
             </div>
 
-            <div class="indicator-info">
+
+            <div class="indicator-content">
 
                 <strong>
-                    النشاط والحركة
+                    المشي والحركة
                 </strong>
 
                 <span>
-                    خطوات اليوم
+                    نشاط اليوم
                 </span>
 
             </div>
+
 
             <div class="indicator-value">
 
@@ -2100,10 +2442,14 @@ a{
 
             </div>
 
+
         </div>
 
 
-        <div class="indicator indicator-sleep">
+        <!-- Sleep -->
+
+        <div class="indicator sleep">
+
 
             <div class="indicator-icon">
 
@@ -2111,7 +2457,8 @@ a{
 
             </div>
 
-            <div class="indicator-info">
+
+            <div class="indicator-content">
 
                 <strong>
                     النوم
@@ -2122,6 +2469,7 @@ a{
                 </span>
 
             </div>
+
 
             <div class="indicator-value">
 
@@ -2135,62 +2483,71 @@ a{
 
             </div>
 
+
         </div>
 
 
     </div>
 
+
 </section>
 
 
 <!-- =====================================================
-     CHALLENGE
+     CHALLENGES
 ===================================================== -->
 
-<a
-    href="challenges.html"
-    class="challenge-banner">
+<section class="section">
 
 
-    <div class="challenge-icon">
-
-        <i class="fa-solid fa-bullseye"></i>
-
-    </div>
+    <a
+        href="challenges.html"
+        class="challenge">
 
 
-    <div class="challenge-text">
+        <div class="challenge-icon">
 
-        <strong>
-            تحدياتك الصحية
-        </strong>
+            <i class="fa-solid fa-bullseye"></i>
 
-        <span>
-            حدد أهدافك بنفسك مثل النوم،
-            المشي، الماء وغيرها.
-        </span>
-
-    </div>
+        </div>
 
 
-    <div class="challenge-button">
+        <div class="challenge-text">
 
-        <i class="fa-solid fa-chevron-left"></i>
+            <strong>
+                تحدياتك الصحية
+            </strong>
 
-    </div>
+            <span>
+                حدد أهدافك بنفسك: النوم، الاستيقاظ،
+                المشي، الماء وغيرها.
+            </span>
+
+        </div>
 
 
-</a>
+        <div class="challenge-arrow">
+
+            <i class="fa-solid fa-chevron-left"></i>
+
+        </div>
+
+
+    </a>
+
+
+</section>
 
 
 </main>
 
 
 <!-- =====================================================
-     BOTTOM NAVIGATION
+     BOTTOM NAV
 ===================================================== -->
 
-<nav class="bottom-navigation">
+<nav class="bottom-nav">
+
 
     <div class="bottom-inner">
 
@@ -2249,7 +2606,9 @@ a{
 
     </div>
 
+
 </nav>
+
 
 </div>
 
@@ -2263,29 +2622,35 @@ a{
     id="calendarModal"
     onclick="outsideModal(event)">
 
+
     <div class="modal-box">
 
 
         <div class="modal-header">
 
+
             <h3>
-                التقويم
+                التقويم الصحي
             </h3>
 
+
             <button
-                class="close-modal"
+                class="close-button"
                 onclick="closeCalendar()">
 
                 <i class="fa-solid fa-xmark"></i>
 
             </button>
 
+
         </div>
 
 
-        <div class="month-navigation">
+        <div class="month-row">
 
-            <button onclick="changeMonth(-1)">
+
+            <button
+                onclick="changeMonth(-1)">
 
                 <i class="fa-solid fa-chevron-right"></i>
 
@@ -2297,11 +2662,13 @@ a{
             </strong>
 
 
-            <button onclick="changeMonth(1)">
+            <button
+                onclick="changeMonth(1)">
 
                 <i class="fa-solid fa-chevron-left"></i>
 
             </button>
+
 
         </div>
 
@@ -2327,30 +2694,31 @@ a{
 
     </div>
 
+
 </div>
 
 
 <script>
 
 /* =========================================================
-   USER
+   USER NAME
 ========================================================= */
 
-const savedUserName =
+const savedName =
     localStorage.getItem("userName");
 
-if(savedUserName){
+if(savedName){
 
     document.getElementById(
         "userName"
     ).textContent =
-        savedUserName;
+        savedName;
 
 }
 
 
 /* =========================================================
-   DATES
+   DATE VARIABLES
 ========================================================= */
 
 const today =
@@ -2367,19 +2735,6 @@ let calendarMonth =
     );
 
 
-const dayNames = [
-
-    "الأحد",
-    "الإثنين",
-    "الثلاثاء",
-    "الأربعاء",
-    "الخميس",
-    "الجمعة",
-    "السبت"
-
-];
-
-
 const shortDays = [
 
     "أحد",
@@ -2393,7 +2748,7 @@ const shortDays = [
 ];
 
 
-const monthNames = [
+const months = [
 
     "يناير",
     "فبراير",
@@ -2463,17 +2818,17 @@ function sameDate(a,b){
 
 
 /* =========================================================
-   WEEK STRIP
+   WEEK
 ========================================================= */
 
-function renderDateStrip(){
+function renderWeek(){
 
-    const strip =
+    const container =
         document.getElementById(
-            "dateStrip"
+            "week"
         );
 
-    strip.innerHTML = "";
+    container.innerHTML = "";
 
 
     const start =
@@ -2484,7 +2839,11 @@ function renderDateStrip(){
     );
 
 
-    for(let i=0;i<7;i++){
+    for(
+        let i=0;
+        i<7;
+        i++
+    ){
 
         const date =
             new Date(start);
@@ -2495,10 +2854,12 @@ function renderDateStrip(){
 
 
         const item =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         item.className =
-            "date-item";
+            "week-day";
 
 
         if(
@@ -2533,14 +2894,14 @@ function renderDateStrip(){
             selectedDate =
                 new Date(date);
 
-            renderDateStrip();
+            renderWeek();
 
             updateSelectedDate();
 
         };
 
 
-        strip.appendChild(item);
+        container.appendChild(item);
 
     }
 
@@ -2562,7 +2923,7 @@ function updateSelectedDate(){
 
 
 /* =========================================================
-   CALENDAR
+   OPEN CALENDAR
 ========================================================= */
 
 function openCalendar(){
@@ -2635,7 +2996,7 @@ function renderCalendar(){
     document.getElementById(
         "monthTitle"
     ).textContent =
-        `${monthNames[month]} ${year}`;
+        `${months[month]} ${year}`;
 
 
     const container =
@@ -2669,12 +3030,16 @@ function renderCalendar(){
     ){
 
         const empty =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         empty.className =
             "calendar-day empty";
 
-        container.appendChild(empty);
+        container.appendChild(
+            empty
+        );
 
     }
 
@@ -2694,7 +3059,9 @@ function renderCalendar(){
 
 
         const element =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         element.className =
             "calendar-day";
@@ -2737,7 +3104,7 @@ function renderCalendar(){
             selectedDate =
                 new Date(date);
 
-            renderDateStrip();
+            renderWeek();
 
             updateSelectedDate();
 
@@ -2775,7 +3142,7 @@ function openMore(){
 }
 
 
-function openNotifications(){
+function showNotifications(){
 
     alert(
         "لا توجد تنبيهات جديدة حالياً."
@@ -2788,11 +3155,12 @@ function openNotifications(){
    START
 ========================================================= */
 
-renderDateStrip();
+renderWeek();
 
 updateSelectedDate();
 
 </script>
+
 
 </body>
 
