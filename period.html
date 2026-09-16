@@ -1,11 +1,30 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head>
-<meta charset="UTF-8"><meta name="viewport"
-content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
-<meta name="theme-color" content="#1976D2"><title>دورتي الشهرية | Si7a+</title><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"><link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"><style>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="theme-color" content="#E95D8C">
+
+<title>دورتي الشهرية | Si7a+</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
 
 *{
     box-sizing:border-box;
@@ -15,12 +34,11 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 }
 
 :root{
-    --blue:#1976D2;
-    --blue-dark:#125AA3;
-    --blue-light:#EAF4FF;
 
     --pink:#E95D8C;
+    --pink-dark:#C94372;
     --pink-light:#FFF0F5;
+    --pink-soft:#FFE4ED;
 
     --purple:#8064D9;
     --purple-light:#F2EEFF;
@@ -33,9 +51,6 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 
     --red:#E05252;
     --red-light:#FFF0F0;
-
-    --cyan:#159BB5;
-    --cyan-light:#E9FAFD;
 
     --text:#1F2937;
     --muted:#788292;
@@ -78,31 +93,46 @@ button{
 ========================= */
 
 .loading-screen{
+
     position:fixed;
     inset:0;
-    background:rgba(255,255,255,.96);
+
+    background:rgba(255,255,255,.97);
+
     z-index:9999;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     flex-direction:column;
+
     gap:14px;
 }
 
 .loading-spinner{
+
     width:42px;
     height:42px;
-    border:4px solid #DCEBFA;
-    border-top-color:var(--blue);
+
+    border:4px solid #F8D8E3;
+    border-top-color:var(--pink);
+
     border-radius:50%;
+
     animation:spin .8s linear infinite;
 }
 
 @keyframes spin{
-    to{transform:rotate(360deg)}
+
+    to{
+        transform:rotate(360deg);
+    }
+
 }
 
 .loading-screen span{
+
     color:var(--muted);
     font-size:13px;
     font-weight:600;
@@ -113,67 +143,93 @@ button{
 ========================= */
 
 .topbar{
+
     height:68px;
+
     background:rgba(255,255,255,.96);
+
     border-bottom:1px solid var(--border);
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 16px;
+
     position:sticky;
     top:0;
+
     z-index:100;
+
     backdrop-filter:blur(12px);
 }
 
 .top-right{
+
     display:flex;
     align-items:center;
+
     gap:11px;
 }
 
 .page-icon{
+
     width:40px;
     height:40px;
+
     border-radius:13px;
+
     background:var(--pink-light);
     color:var(--pink);
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     font-size:17px;
 }
 
 .page-title{
+
     font-size:17px;
     font-weight:800;
 }
 
 .page-subtitle{
+
     font-size:10px;
     color:var(--muted);
+
     margin-top:1px;
 }
 
 .top-actions{
+
     display:flex;
     align-items:center;
+
     gap:8px;
 }
 
 .icon-btn{
+
     width:38px;
     height:38px;
+
     border-radius:12px;
+
     background:#F4F6F8;
     color:#5E6875;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     transition:.2s;
 }
 
 .icon-btn:active{
+
     transform:scale(.94);
 }
 
@@ -182,96 +238,148 @@ button{
 ========================= */
 
 .container{
+
     width:min(720px,100%);
+
     margin:auto;
+
     padding:17px 14px 30px;
 }
 
 /* =========================
-   HERO
+   HERO PINK
 ========================= */
 
 .hero{
-    background:linear-gradient(135deg,#1976D2 0%,#3F91E3 58%,#72B6F2 100%);
+
+    background:
+        linear-gradient(
+            135deg,
+            #D94D7E 0%,
+            #E95D8C 48%,
+            #F58FAF 100%
+        );
+
     border-radius:25px;
+
     padding:21px;
+
     color:#fff;
+
     position:relative;
     overflow:hidden;
-    box-shadow:0 12px 28px rgba(25,118,210,.19);
+
+    box-shadow:
+        0 12px 28px rgba(233,93,140,.22);
 }
 
 .hero:before{
+
     content:"";
+
     position:absolute;
-    width:170px;
-    height:170px;
+
+    width:180px;
+    height:180px;
+
     border-radius:50%;
-    background:rgba(255,255,255,.08);
-    left:-70px;
-    top:-80px;
+
+    background:rgba(255,255,255,.09);
+
+    left:-75px;
+    top:-90px;
 }
 
 .hero:after{
+
     content:"";
+
     position:absolute;
-    width:130px;
-    height:130px;
+
+    width:140px;
+    height:140px;
+
     border-radius:50%;
-    background:rgba(255,255,255,.06);
-    right:-50px;
-    bottom:-65px;
+
+    background:rgba(255,255,255,.07);
+
+    right:-55px;
+    bottom:-70px;
 }
 
 .hero-content{
+
     position:relative;
     z-index:1;
 }
 
 .hero-label{
+
     font-size:11px;
+
     opacity:.84;
+
     margin-bottom:5px;
 }
 
 .hero-main{
+
     display:flex;
+
     align-items:center;
     justify-content:space-between;
+
     gap:15px;
 }
 
 .hero-day{
+
     font-size:31px;
+
     line-height:1.2;
+
     font-weight:800;
 }
 
 .hero-state{
+
     font-size:12px;
+
     margin-top:5px;
+
     opacity:.93;
 }
 
 .cycle-circle{
+
     width:76px;
     height:76px;
-    border:5px solid rgba(255,255,255,.35);
+
+    border:5px solid rgba(255,255,255,.30);
+
     border-top-color:#fff;
+
     border-radius:50%;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     flex-direction:column;
+
     flex:none;
 }
 
 .cycle-circle strong{
+
     font-size:17px;
 }
 
 .cycle-circle span{
+
     font-size:8px;
+
     opacity:.9;
 }
 
@@ -280,35 +388,53 @@ button{
 ========================= */
 
 .mini-grid{
+
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
+
     gap:10px;
+
     margin-top:12px;
 }
 
 .mini-card{
+
     background:#fff;
+
     border:1px solid rgba(255,255,255,.45);
+
     border-radius:16px;
+
     padding:11px 12px;
+
     color:var(--text);
-    box-shadow:0 5px 16px rgba(0,0,0,.04);
+
+    box-shadow:
+        0 5px 16px rgba(0,0,0,.04);
 }
 
 .mini-label{
+
     font-size:9px;
+
     color:var(--muted);
+
     margin-bottom:3px;
 }
 
 .mini-value{
+
     font-size:12px;
+
     font-weight:800;
 }
 
 .mini-value i{
+
     margin-left:4px;
-    color:var(--blue);
+
+    color:var(--pink);
 }
 
 /* =========================
@@ -316,23 +442,32 @@ button{
 ========================= */
 
 .section{
+
     margin-top:16px;
 }
 
 .section-title{
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     margin-bottom:10px;
 }
 
 .section-title h2{
+
     font-size:15px;
+
     font-weight:800;
 }
 
 .section-title small{
+
     color:var(--muted);
+
     font-size:10px;
 }
 
@@ -341,207 +476,322 @@ button{
 ========================= */
 
 .calendar-card{
+
     background:#fff;
+
     border:1px solid var(--border);
+
     border-radius:23px;
+
     padding:15px;
+
     box-shadow:var(--shadow);
 }
 
 .calendar-head{
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     margin-bottom:14px;
 }
 
 .month-name{
+
     font-size:15px;
+
     font-weight:800;
 }
 
 .month-actions{
+
     display:flex;
+
     gap:6px;
 }
 
 .month-btn{
+
     width:32px;
     height:32px;
+
     border-radius:10px;
+
     background:#F3F6F9;
+
     color:#586575;
 }
 
 .weekdays,
 .calendar-grid{
+
     display:grid;
+
     grid-template-columns:repeat(7,1fr);
+
     gap:5px;
 }
 
 .weekdays{
+
     margin-bottom:6px;
 }
 
 .weekdays div{
+
     text-align:center;
+
     font-size:9px;
+
     color:#98A1AE;
+
     font-weight:700;
 }
 
 .day{
+
     min-height:39px;
+
     border-radius:11px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     position:relative;
+
     font-size:11px;
+
     font-weight:600;
+
     cursor:pointer;
+
     transition:.18s;
 }
 
 .day.empty{
+
     cursor:default;
 }
 
 .day:not(.empty):active{
+
     transform:scale(.94);
 }
 
 .day.period{
+
     background:var(--pink-light);
+
     color:var(--pink);
 }
 
 .day.fertile{
+
     background:var(--purple-light);
+
     color:var(--purple);
 }
 
 .day.ovulation{
+
     background:var(--orange-light);
+
     color:var(--orange);
+
     font-weight:800;
 }
 
 .day.today{
-    outline:2px solid var(--blue);
+
+    outline:2px solid var(--pink);
+
     outline-offset:-2px;
 }
 
 .day.selected{
-    box-shadow:inset 0 0 0 2px var(--blue);
+
+    box-shadow:
+        inset 0 0 0 2px var(--pink);
 }
 
 .day-number{
+
     position:relative;
+
     z-index:2;
 }
 
 .day-mark{
+
     position:absolute;
+
     bottom:4px;
+
     width:4px;
     height:4px;
+
     border-radius:50%;
 }
 
 .period .day-mark{
+
     background:var(--pink);
 }
 
 .fertile .day-mark{
+
     background:var(--purple);
 }
 
 .ovulation .day-mark{
+
     background:var(--orange);
 }
 
 .calendar-legend{
+
     display:flex;
+
     flex-wrap:wrap;
+
     gap:10px;
+
     margin-top:13px;
+
     padding-top:11px;
+
     border-top:1px solid #F0F2F5;
 }
 
 .legend{
+
     display:flex;
+
     align-items:center;
+
     gap:5px;
+
     color:var(--muted);
+
     font-size:9px;
 }
 
 .legend-dot{
+
     width:8px;
     height:8px;
+
     border-radius:50%;
 }
 
-.dot-period{background:var(--pink)}
-.dot-fertile{background:var(--purple)}
-.dot-ovulation{background:var(--orange)}
-.dot-today{border:2px solid var(--blue)}
+.dot-period{
+    background:var(--pink);
+}
+
+.dot-fertile{
+    background:var(--purple);
+}
+
+.dot-ovulation{
+    background:var(--orange);
+}
+
+.dot-today{
+
+    border:2px solid var(--pink);
+
+    background:#fff;
+}
 
 /* =========================
    SELECTED DAY
 ========================= */
 
 .selected-day{
+
     background:#fff;
+
     border:1px solid var(--border);
+
     border-radius:19px;
+
     padding:14px;
+
     margin-top:10px;
+
     display:flex;
+
     align-items:center;
+
     gap:12px;
+
     box-shadow:var(--shadow);
 }
 
 .selected-icon{
+
     width:42px;
     height:42px;
+
     border-radius:13px;
-    background:var(--blue-light);
-    color:var(--blue);
+
+    background:var(--pink-light);
+
+    color:var(--pink);
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     flex:none;
 }
 
 .selected-info{
+
     flex:1;
 }
 
 .selected-info strong{
+
     display:block;
+
     font-size:12px;
+
     font-weight:800;
 }
 
 .selected-info span{
+
     display:block;
+
     color:var(--muted);
+
     font-size:10px;
+
     margin-top:2px;
 }
 
 .selected-badge{
+
     font-size:9px;
+
     font-weight:700;
+
     border-radius:20px;
+
     padding:6px 9px;
+
     background:#F4F6F8;
+
     color:#66717E;
+
+    white-space:nowrap;
 }
 
 /* =========================
@@ -549,110 +799,76 @@ button{
 ========================= */
 
 .add-period{
+
     width:100%;
+
     background:#fff;
-    border:1px dashed #BFD5EA;
+
+    border:1px dashed #E8A8BD;
+
     border-radius:19px;
+
     padding:14px;
+
     display:flex;
+
     align-items:center;
+
     gap:12px;
+
     text-align:right;
-    box-shadow:0 5px 18px rgba(25,118,210,.04);
+
+    box-shadow:
+        0 5px 18px rgba(233,93,140,.05);
 }
 
 .add-period-icon{
+
     width:42px;
     height:42px;
+
     border-radius:13px;
+
     background:var(--pink-light);
+
     color:var(--pink);
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     flex:none;
 }
 
 .add-period-text{
+
     flex:1;
 }
 
 .add-period-text strong{
+
     display:block;
+
     font-size:12px;
 }
 
 .add-period-text span{
+
     display:block;
+
     font-size:9px;
+
     color:var(--muted);
+
     margin-top:2px;
 }
 
 .add-period-arrow{
+
     color:#9CA6B2;
+
     font-size:12px;
-}
-
-/* =========================
-   INFO CARDS
-========================= */
-
-.info-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-}
-
-.info-card{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:14px;
-    box-shadow:var(--shadow);
-    min-height:112px;
-}
-
-.info-icon{
-    width:34px;
-    height:34px;
-    border-radius:11px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-bottom:9px;
-    font-size:13px;
-}
-
-.info-card h3{
-    font-size:11px;
-    margin-bottom:3px;
-}
-
-.info-card p{
-    font-size:9px;
-    line-height:1.8;
-    color:var(--muted);
-}
-
-.info-blue .info-icon{
-    background:var(--blue-light);
-    color:var(--blue);
-}
-
-.info-purple .info-icon{
-    background:var(--purple-light);
-    color:var(--purple);
-}
-
-.info-pink .info-icon{
-    background:var(--pink-light);
-    color:var(--pink);
-}
-
-.info-orange .info-icon{
-    background:var(--orange-light);
-    color:var(--orange);
 }
 
 /* =========================
@@ -660,34 +876,57 @@ button{
 ========================= */
 
 .stats-card{
+
     background:#fff;
+
     border:1px solid var(--border);
+
     border-radius:21px;
+
     padding:14px;
+
     box-shadow:var(--shadow);
 }
 
 .stats-grid{
+
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
+
     gap:8px;
 }
 
 .stat{
+
     background:#F8FAFC;
+
     border-radius:14px;
+
     padding:11px;
 }
 
 .stat-label{
+
     color:var(--muted);
+
     font-size:9px;
 }
 
 .stat-value{
+
     margin-top:3px;
+
     font-size:15px;
+
     font-weight:800;
+}
+
+.stat-value small{
+
+    font-size:9px;
+
+    color:var(--muted);
 }
 
 /* =========================
@@ -695,78 +934,121 @@ button{
 ========================= */
 
 .history-list{
+
     display:flex;
+
     flex-direction:column;
+
     gap:9px;
 }
 
 .history-empty{
+
     background:#fff;
+
     border:1px dashed #D8DEE6;
+
     border-radius:18px;
+
     padding:25px 15px;
+
     text-align:center;
+
     color:var(--muted);
+
     font-size:11px;
 }
 
 .history-item{
+
     background:#fff;
+
     border:1px solid var(--border);
+
     border-radius:18px;
+
     padding:12px;
+
     display:flex;
+
     align-items:center;
+
     gap:11px;
-    box-shadow:0 5px 16px rgba(31,48,72,.04);
+
+    box-shadow:
+        0 5px 16px rgba(31,48,72,.04);
 }
 
 .history-icon{
+
     width:40px;
     height:40px;
+
     border-radius:12px;
+
     background:var(--pink-light);
+
     color:var(--pink);
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     flex:none;
 }
 
 .history-main{
+
     flex:1;
 }
 
 .history-main strong{
+
     display:block;
+
     font-size:11px;
 }
 
 .history-main span{
+
     display:block;
+
     font-size:9px;
+
     color:var(--muted);
+
     margin-top:2px;
 }
 
 .history-actions{
+
     display:flex;
+
     gap:5px;
 }
 
 .small-action{
+
     width:31px;
     height:31px;
+
     border-radius:9px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     background:#F4F6F8;
+
     color:#67727F;
 }
 
 .small-action.delete{
+
     color:var(--red);
+
     background:var(--red-light);
 }
 
@@ -775,23 +1057,35 @@ button{
 ========================= */
 
 .note{
+
     margin-top:16px;
+
     background:#FFF9EC;
+
     border:1px solid #F5E4B8;
+
     border-radius:17px;
+
     padding:12px;
+
     display:flex;
+
     gap:10px;
 }
 
 .note i{
+
     color:#D99B1F;
+
     margin-top:2px;
 }
 
 .note p{
+
     font-size:9px;
+
     color:#76643B;
+
     line-height:1.9;
 }
 
@@ -800,48 +1094,75 @@ button{
 ========================= */
 
 .bottom-nav{
+
     position:fixed;
+
     bottom:0;
+
     right:0;
     left:0;
+
     height:72px;
+
     background:rgba(255,255,255,.97);
+
     border-top:1px solid var(--border);
+
     display:flex;
+
     justify-content:center;
+
     z-index:200;
+
     backdrop-filter:blur(15px);
 }
 
 .nav-inner{
+
     width:min(520px,100%);
+
     display:grid;
+
     grid-template-columns:repeat(4,1fr);
 }
 
 .nav-item{
+
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
+
     justify-content:center;
+
     gap:4px;
+
     color:#929AA5;
+
     text-decoration:none;
+
     font-size:9px;
+
     font-weight:600;
 }
 
 .nav-item i{
+
     font-size:16px;
 }
 
 .nav-item.active{
-    color:var(--blue);
+
+    color:var(--pink);
 }
 
 .nav-item.active i{
-    background:var(--blue-light);
+
+    background:var(--pink-light);
+
     padding:5px 10px;
+
     border-radius:10px;
 }
 
@@ -850,146 +1171,218 @@ button{
 ========================= */
 
 .modal{
+
     position:fixed;
+
     inset:0;
+
     background:rgba(17,28,43,.48);
+
     z-index:1000;
+
     display:none;
+
     align-items:flex-end;
+
     justify-content:center;
+
     padding:0;
 }
 
 .modal.show{
+
     display:flex;
 }
 
 .modal-box{
+
     width:min(560px,100%);
+
     background:#fff;
+
     border-radius:26px 26px 0 0;
+
     padding:18px 16px 25px;
+
     max-height:90vh;
+
     overflow-y:auto;
+
     animation:slideUp .22s ease;
 }
 
 @keyframes slideUp{
+
     from{
+
         transform:translateY(35px);
+
         opacity:.5;
     }
+
     to{
+
         transform:translateY(0);
+
         opacity:1;
     }
 }
 
 .modal-head{
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     margin-bottom:16px;
 }
 
 .modal-title-wrap{
+
     display:flex;
+
     align-items:center;
+
     gap:10px;
 }
 
 .modal-icon{
+
     width:40px;
     height:40px;
+
     border-radius:12px;
+
     background:var(--pink-light);
+
     color:var(--pink);
+
     display:flex;
+
     align-items:center;
     justify-content:center;
 }
 
 .modal-title{
+
     font-size:14px;
+
     font-weight:800;
 }
 
 .modal-close{
+
     width:34px;
     height:34px;
+
     border-radius:10px;
+
     background:#F3F5F7;
+
     color:#6E7782;
 }
 
 .form-group{
+
     margin-bottom:13px;
 }
 
 .form-group label{
+
     display:block;
+
     font-size:10px;
+
     font-weight:700;
+
     margin-bottom:6px;
 }
 
 .form-control{
+
     width:100%;
+
     height:45px;
+
     border:1px solid #DDE3E9;
+
     border-radius:13px;
+
     padding:0 12px;
+
     outline:none;
+
     background:#FAFBFC;
+
     font-size:12px;
+
     color:var(--text);
+
     direction:rtl;
 }
 
 .form-control:focus{
-    border-color:#8EBBE6;
-    box-shadow:0 0 0 3px rgba(25,118,210,.08);
+
+    border-color:#E7A0B7;
+
+    box-shadow:
+        0 0 0 3px rgba(233,93,140,.08);
 }
 
 .form-row{
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:9px;
 }
 
 .form-hint{
+
     color:var(--muted);
+
     font-size:9px;
+
     margin-top:5px;
 }
 
 .modal-actions{
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:8px;
+
     margin-top:17px;
 }
 
 .btn{
+
     height:45px;
+
     border-radius:13px;
+
     font-size:11px;
+
     font-weight:700;
 }
 
 .btn-primary{
-    background:var(--blue);
+
+    background:var(--pink);
+
     color:#fff;
 }
 
 .btn-secondary{
-    background:#F2F4F6;
-    color:#65707D;
-}
 
-.btn-danger{
-    background:var(--red-light);
-    color:var(--red);
+    background:#F2F4F6;
+
+    color:#65707D;
 }
 
 /* =========================
@@ -997,26 +1390,47 @@ button{
 ========================= */
 
 .toast{
+
     position:fixed;
+
     bottom:86px;
+
     left:50%;
-    transform:translateX(-50%) translateY(15px);
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
     background:#202936;
+
     color:#fff;
+
     border-radius:13px;
+
     padding:10px 15px;
+
     font-size:10px;
+
     z-index:3000;
+
     opacity:0;
+
     pointer-events:none;
+
     transition:.25s;
+
     white-space:nowrap;
+
     max-width:90%;
 }
 
 .toast.show{
+
     opacity:1;
-    transform:translateX(-50%) translateY(0);
+
+    transform:
+        translateX(-50%)
+        translateY(0);
 }
 
 /* =========================
@@ -1026,57 +1440,96 @@ button{
 @media(max-width:380px){
 
     .container{
+
         padding-left:10px;
         padding-right:10px;
     }
 
     .hero-day{
+
         font-size:27px;
     }
 
     .cycle-circle{
+
         width:68px;
         height:68px;
     }
 
     .day{
-        min-height:35px;
-        font-size:10px;
-    }
 
-    .info-grid{
-        gap:8px;
+        min-height:35px;
+
+        font-size:10px;
     }
 
 }
 
-</style></head><body><!-- LOADING --><div class="loading-screen" id="loadingScreen">
+</style>
+
+</head>
+
+<body>
+
+<!-- LOADING -->
+
+<div class="loading-screen"
+     id="loadingScreen">
+
     <div class="loading-spinner"></div>
-    <span>جاري تحميل بياناتك...</span>
-</div><!-- TOP BAR --><header class="topbar"><div class="top-right">
 
-    <div class="page-icon">
-        <i class="fa-solid fa-calendar-days"></i>
-    </div>
-
-    <div>
-        <div class="page-title">دورتي الشهرية</div>
-        <div class="page-subtitle">متابعة وتنظيم الدورة</div>
-    </div>
+    <span>
+        جاري تحميل بياناتك...
+    </span>
 
 </div>
 
-<div class="top-actions">
 
-    <button class="icon-btn"
-            id="refreshBtn"
-            aria-label="تحديث">
-        <i class="fa-solid fa-rotate"></i>
-    </button>
+<!-- TOP BAR -->
 
-</div>
+<header class="topbar">
 
-</header><main class="container"><!-- HERO -->
+    <div class="top-right">
+
+        <div class="page-icon">
+
+            <i class="fa-solid fa-calendar-days"></i>
+
+        </div>
+
+        <div>
+
+            <div class="page-title">
+                دورتي الشهرية
+            </div>
+
+            <div class="page-subtitle">
+                متابعة وتنظيم الدورة
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="top-actions">
+
+        <button class="icon-btn"
+                id="refreshBtn"
+                aria-label="تحديث">
+
+            <i class="fa-solid fa-rotate"></i>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- HERO -->
 
 <section class="hero">
 
@@ -1091,21 +1544,30 @@ button{
             <div>
 
                 <div class="hero-day">
-                    اليوم <span id="cycleDay">—</span>
+
+                    اليوم
+                    <span id="cycleDay">—</span>
+
                 </div>
 
                 <div class="hero-state"
                      id="cycleState">
+
                     أضيفي أول دورة لبدء المتابعة
+
                 </div>
 
             </div>
 
             <div class="cycle-circle">
 
-                <strong id="cycleProgress">0%</strong>
+                <strong id="cycleProgress">
+                    0%
+                </strong>
 
-                <span>من الدورة</span>
+                <span>
+                    من الدورة
+                </span>
 
             </div>
 
@@ -1121,8 +1583,13 @@ button{
                 </div>
 
                 <div class="mini-value">
+
                     <i class="fa-regular fa-calendar"></i>
-                    <span id="lastPeriodDate">—</span>
+
+                    <span id="lastPeriodDate">
+                        —
+                    </span>
+
                 </div>
 
             </div>
@@ -1135,8 +1602,13 @@ button{
                 </div>
 
                 <div class="mini-value">
+
                     <i class="fa-solid fa-arrow-rotate-right"></i>
-                    <span id="nextPeriodDate">—</span>
+
+                    <span id="nextPeriodDate">
+                        —
+                    </span>
+
                 </div>
 
             </div>
@@ -1149,8 +1621,13 @@ button{
                 </div>
 
                 <div class="mini-value">
+
                     <i class="fa-solid fa-star"></i>
-                    <span id="ovulationDate">—</span>
+
+                    <span id="ovulationDate">
+                        —
+                    </span>
+
                 </div>
 
             </div>
@@ -1163,8 +1640,13 @@ button{
                 </div>
 
                 <div class="mini-value">
+
                     <i class="fa-solid fa-clock"></i>
-                    <span id="cycleLengthDisplay">—</span>
+
+                    <span id="cycleLengthDisplay">
+                        —
+                    </span>
+
                 </div>
 
             </div>
@@ -1182,7 +1664,9 @@ button{
 
     <div class="section-title">
 
-        <h2>تقويم الدورة</h2>
+        <h2>
+            تقويم الدورة
+        </h2>
 
         <small>
             اضغطي على أي يوم
@@ -1197,7 +1681,9 @@ button{
 
             <button class="month-btn"
                     id="prevMonth">
+
                 <i class="fa-solid fa-chevron-right"></i>
+
             </button>
 
             <div class="month-name"
@@ -1207,7 +1693,9 @@ button{
 
             <button class="month-btn"
                     id="nextMonth">
+
                 <i class="fa-solid fa-chevron-left"></i>
+
             </button>
 
         </div>
@@ -1234,23 +1722,35 @@ button{
         <div class="calendar-legend">
 
             <div class="legend">
+
                 <span class="legend-dot dot-period"></span>
+
                 الحيض
+
             </div>
 
             <div class="legend">
+
                 <span class="legend-dot dot-fertile"></span>
+
                 الخصوبة المتوقعة
+
             </div>
 
             <div class="legend">
+
                 <span class="legend-dot dot-ovulation"></span>
+
                 الإباضة المتوقعة
+
             </div>
 
             <div class="legend">
+
                 <span class="legend-dot dot-today"></span>
+
                 اليوم
+
             </div>
 
         </div>
@@ -1261,7 +1761,9 @@ button{
     <div class="selected-day">
 
         <div class="selected-icon">
+
             <i class="fa-regular fa-calendar-check"></i>
+
         </div>
 
         <div class="selected-info">
@@ -1278,7 +1780,9 @@ button{
 
         <div class="selected-badge"
              id="selectedBadge">
+
             —
+
         </div>
 
     </div>
@@ -1286,7 +1790,7 @@ button{
 </section>
 
 
-<!-- ADD -->
+<!-- ADD PERIOD -->
 
 <section class="section">
 
@@ -1294,7 +1798,9 @@ button{
             id="addPeriodBtn">
 
         <div class="add-period-icon">
+
             <i class="fa-solid fa-plus"></i>
+
         </div>
 
         <div class="add-period-text">
@@ -1310,85 +1816,12 @@ button{
         </div>
 
         <div class="add-period-arrow">
+
             <i class="fa-solid fa-chevron-left"></i>
+
         </div>
 
     </button>
-
-</section>
-
-
-<!-- CURRENT INFORMATION -->
-
-<section class="section">
-
-    <div class="section-title">
-        <h2>معلومات الدورة</h2>
-    </div>
-
-
-    <div class="info-grid">
-
-        <div class="info-card info-pink">
-
-            <div class="info-icon">
-                <i class="fa-solid fa-droplet"></i>
-            </div>
-
-            <h3>الحيض</h3>
-
-            <p id="periodInfo">
-                لم يتم تسجيل دورة بعد.
-            </p>
-
-        </div>
-
-
-        <div class="info-card info-purple">
-
-            <div class="info-icon">
-                <i class="fa-solid fa-leaf"></i>
-            </div>
-
-            <h3>نافذة الخصوبة</h3>
-
-            <p id="fertileInfo">
-                ستظهر بعد تسجيل دورة.
-            </p>
-
-        </div>
-
-
-        <div class="info-card info-orange">
-
-            <div class="info-icon">
-                <i class="fa-solid fa-star"></i>
-            </div>
-
-            <h3>الإباضة</h3>
-
-            <p id="ovulationInfo">
-                ستظهر بعد تسجيل دورة.
-            </p>
-
-        </div>
-
-
-        <div class="info-card info-blue">
-
-            <div class="info-icon">
-                <i class="fa-solid fa-calendar-check"></i>
-            </div>
-
-            <h3>الدورة القادمة</h3>
-
-            <p id="nextInfo">
-                ستظهر بعد تسجيل دورة.
-            </p>
-
-        </div>
-
-    </div>
 
 </section>
 
@@ -1399,7 +1832,9 @@ button{
 
     <div class="section-title">
 
-        <h2>إحصائيات دورتي</h2>
+        <h2>
+            إحصائيات دورتي
+        </h2>
 
         <small>
             بناءً على السجل
@@ -1419,8 +1854,13 @@ button{
                 </div>
 
                 <div class="stat-value">
+
                     <span id="avgCycle">—</span>
-                    <small>يوم</small>
+
+                    <small>
+                        يوم
+                    </small>
+
                 </div>
 
             </div>
@@ -1433,8 +1873,13 @@ button{
                 </div>
 
                 <div class="stat-value">
+
                     <span id="avgPeriod">—</span>
-                    <small>يوم</small>
+
+                    <small>
+                        يوم
+                    </small>
+
                 </div>
 
             </div>
@@ -1447,8 +1892,13 @@ button{
                 </div>
 
                 <div class="stat-value">
+
                     <span id="minCycle">—</span>
-                    <small>يوم</small>
+
+                    <small>
+                        يوم
+                    </small>
+
                 </div>
 
             </div>
@@ -1461,8 +1911,13 @@ button{
                 </div>
 
                 <div class="stat-value">
+
                     <span id="maxCycle">—</span>
-                    <small>يوم</small>
+
+                    <small>
+                        يوم
+                    </small>
+
                 </div>
 
             </div>
@@ -1480,7 +1935,9 @@ button{
 
     <div class="section-title">
 
-        <h2>سجل الدورات</h2>
+        <h2>
+            سجل الدورات
+        </h2>
 
         <small id="historyCount">
             0 دورة
@@ -1493,7 +1950,9 @@ button{
          id="historyList">
 
         <div class="history-empty">
+
             لا توجد دورات مسجلة بعد.
+
         </div>
 
     </div>
@@ -1508,115 +1967,108 @@ button{
     <i class="fa-solid fa-circle-info"></i>
 
     <p>
+
         التواريخ الخاصة بالإباضة والخصوبة والدورة القادمة
         هي تقديرات حسابية تعتمد على البيانات التي يتم إدخالها
         وليست وسيلة مؤكدة لتحديد الإباضة أو منع الحمل.
+
     </p>
 
 </div>
 
-</main><!-- BOTTOM NAV --><nav class="bottom-nav"><div class="nav-inner">
-
-    <a class="nav-item"
-       href="dashboard.html">
-
-        <i class="fa-solid fa-house"></i>
-        <span>الرئيسية</span>
-
-    </a>
+</main>
 
 
-    <a class="nav-item"
-       href="challenges.html">
+<!-- BOTTOM NAV -->
 
-        <i class="fa-solid fa-bullseye"></i>
-        <span>تحدياتي</span>
+<nav class="bottom-nav">
 
-    </a>
+    <div class="nav-inner">
+
+        <a class="nav-item"
+           href="dashboard.html">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>
+                الرئيسية
+            </span>
+
+        </a>
 
 
-    <a class="nav-item"
-       href="health.html">
+        <a class="nav-item"
+           href="challenges.html">
 
-        <i class="fa-solid fa-heart-pulse"></i>
-        <span>صحتي</span>
+            <i class="fa-solid fa-bullseye"></i>
 
-    </a>
+            <span>
+                تحدياتي
+            </span>
+
+        </a>
 
 
-    <a class="nav-item active"
-       href="period.html">
+        <a class="nav-item"
+           href="health.html">
 
-        <i class="fa-solid fa-calendar-days"></i>
-        <span>دورتي</span>
+            <i class="fa-solid fa-heart-pulse"></i>
 
-    </a>
+            <span>
+                صحتي
+            </span>
 
-</div>
+        </a>
 
-</nav><!-- MODAL --><div class="modal"
-     id="periodModal"><div class="modal-box">
 
-    <div class="modal-head">
+        <a class="nav-item"
+           href="more.html">
 
-        <div class="modal-title-wrap">
+            <i class="fa-solid fa-ellipsis"></i>
 
-            <div class="modal-icon">
-                <i class="fa-solid fa-droplet"></i>
-            </div>
+            <span>
+                المزيد
+            </span>
 
-            <div class="modal-title"
-                 id="modalTitle">
-                تسجيل دورة جديدة
-            </div>
-
-        </div>
-
-        <button class="modal-close"
-                id="closeModal">
-
-            <i class="fa-solid fa-xmark"></i>
-
-        </button>
+        </a>
 
     </div>
 
-
-    <div class="form-group">
-
-        <label>
-            أول يوم لنزول الدورة
-        </label>
-
-        <input type="date"
-               id="periodStart"
-               class="form-control">
-
-        <div class="form-hint">
-            اختاري اليوم الأول من آخر دورة.
-        </div>
-
-    </div>
+</nav>
 
 
-    <div class="form-row">
+<!-- MODAL -->
 
-        <div class="form-group">
+<div class="modal"
+     id="periodModal">
 
-            <label>
-                طول الدورة
-            </label>
+    <div class="modal-box">
 
-            <input type="number"
-                   id="cycleLength"
-                   class="form-control"
-                   min="15"
-                   max="60"
-                   placeholder="مثال: 28">
+        <div class="modal-head">
 
-            <div class="form-hint">
-                عدد الأيام من بداية دورة إلى بداية التالية.
+            <div class="modal-title-wrap">
+
+                <div class="modal-icon">
+
+                    <i class="fa-solid fa-droplet"></i>
+
+                </div>
+
+                <div class="modal-title"
+                     id="modalTitle">
+
+                    تسجيل دورة جديدة
+
+                </div>
+
             </div>
+
+            <button class="modal-close"
+                    id="closeModal">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
 
         </div>
 
@@ -1624,44 +2076,101 @@ button{
         <div class="form-group">
 
             <label>
-                مدة الحيض
+                أول يوم لنزول الدورة
             </label>
 
-            <input type="number"
-                   id="periodDuration"
-                   class="form-control"
-                   min="1"
-                   max="15"
-                   placeholder="مثال: 5">
+            <input type="date"
+                   id="periodStart"
+                   class="form-control">
 
             <div class="form-hint">
-                عدد أيام نزول الدم.
+
+                اختاري اليوم الأول من آخر دورة.
+
             </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>
+                    طول الدورة
+                </label>
+
+                <input type="number"
+                       id="cycleLength"
+                       class="form-control"
+                       min="15"
+                       max="60"
+                       placeholder="مثال: 28">
+
+                <div class="form-hint">
+
+                    عدد الأيام من بداية دورة إلى بداية التالية.
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    مدة الحيض
+                </label>
+
+                <input type="number"
+                       id="periodDuration"
+                       class="form-control"
+                       min="1"
+                       max="15"
+                       placeholder="مثال: 5">
+
+                <div class="form-hint">
+
+                    عدد أيام نزول الدم.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button class="btn btn-secondary"
+                    id="cancelModal">
+
+                إلغاء
+
+            </button>
+
+            <button class="btn btn-primary"
+                    id="savePeriod">
+
+                حفظ الدورة
+
+            </button>
 
         </div>
 
     </div>
 
-
-    <div class="modal-actions">
-
-        <button class="btn btn-secondary"
-                id="cancelModal">
-            إلغاء
-        </button>
-
-        <button class="btn btn-primary"
-                id="savePeriod">
-            حفظ الدورة
-        </button>
-
-    </div>
-
 </div>
 
-</div><!-- TOAST --><div class="toast"
+
+<!-- TOAST -->
+
+<div class="toast"
      id="toast">
-</div><script type="module">
+</div>
+
+
+<script type="module">
 
 import { auth, db } from "./js/firebase.js";
 
@@ -1675,11 +2184,13 @@ import {
     orderBy,
     serverTimestamp,
     updateDoc
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+}
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 import {
     onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+}
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
 
 /* =========================================
@@ -1718,10 +2229,11 @@ const toast =
 
 
 /* =========================================
-   HELPERS
+   MONTH NAMES
 ========================================= */
 
 const monthNames = [
+
     "يناير",
     "فبراير",
     "مارس",
@@ -1734,11 +2246,18 @@ const monthNames = [
     "أكتوبر",
     "نوفمبر",
     "ديسمبر"
+
 ];
 
 
+/* =========================================
+   HELPERS
+========================================= */
+
 function pad(n){
+
     return String(n).padStart(2,"0");
+
 }
 
 
@@ -1755,16 +2274,27 @@ function localDateString(date){
 
 function parseDate(value){
 
-    if(!value) return null;
+    if(!value){
 
-    const parts = value.split("-");
+        return null;
 
-    if(parts.length !== 3) return null;
+    }
+
+    const parts =
+        value.split("-");
+
+    if(parts.length !== 3){
+
+        return null;
+
+    }
 
     return new Date(
+
         Number(parts[0]),
         Number(parts[1])-1,
         Number(parts[2])
+
     );
 
 }
@@ -1777,7 +2307,11 @@ function formatDate(value){
             ? parseDate(value)
             : value;
 
-    if(!date) return "—";
+    if(!date){
+
+        return "—";
+
+    }
 
     return pad(date.getDate())
         + "/"
@@ -1790,7 +2324,11 @@ function formatDate(value){
 
 function formatLongDate(date){
 
-    if(!date) return "—";
+    if(!date){
+
+        return "—";
+
+    }
 
     return date.getDate()
         + " "
@@ -1801,23 +2339,37 @@ function formatLongDate(date){
 }
 
 
-function addDays(date, days){
+function addDays(date,days){
 
-    const result = new Date(date);
+    const result =
+        new Date(date);
 
-    result.setDate(result.getDate() + days);
+    result.setDate(
+        result.getDate()+days
+    );
 
     return result;
 
 }
 
 
+/*
+   حساب الفرق بالأيام فقط.
+
+   مثال:
+   1 سبتمبر → 1 سبتمبر = 0
+   1 سبتمبر → 2 سبتمبر = 1
+   لذلك يوم الدورة = الفرق + 1
+*/
+
 function diffDays(a,b){
 
-    const oneDay = 24 * 60 * 60 * 1000;
+    const oneDay =
+        24 * 60 * 60 * 1000;
 
     return Math.round(
-        (a.getTime() - b.getTime()) / oneDay
+        (a.getTime()-b.getTime())
+        / oneDay
     );
 
 }
@@ -1825,138 +2377,232 @@ function diffDays(a,b){
 
 function showToast(message){
 
-    toast.textContent = message;
+    toast.textContent =
+        message;
 
     toast.classList.add("show");
 
-    clearTimeout(window.__toastTimer);
+    clearTimeout(
+        window.__toastTimer
+    );
 
     window.__toastTimer =
-        setTimeout(() => {
+        setTimeout(()=>{
+
             toast.classList.remove("show");
-        }, 2500);
+
+        },2500);
 
 }
 
 
 /* =========================================
-   PERIOD CALCULATIONS
+   CYCLE LENGTH
 ========================================= */
 
 function getCycleLength(){
 
-    const last = periods[0];
+    const last =
+        getCurrentPeriod();
 
-    if(last && Number(last.cycleLength)){
-        return Number(last.cycleLength);
+    if(
+        last &&
+        Number(last.cycleLength)
+    ){
+
+        return Number(
+            last.cycleLength
+        );
+
     }
+
 
     if(periods.length >= 2){
 
-        const sorted = [...periods]
-            .sort((a,b) =>
-                parseDate(a.startDate) -
-                parseDate(b.startDate)
+        const sorted =
+            [...periods].sort(
+                (a,b)=>
+                    parseDate(a.startDate)
+                    -
+                    parseDate(b.startDate)
             );
+
 
         const differences = [];
 
-        for(let i=1;i<sorted.length;i++){
+
+        for(
+            let i=1;
+            i<sorted.length;
+            i++
+        ){
 
             const a =
-                parseDate(sorted[i].startDate);
+                parseDate(
+                    sorted[i].startDate
+                );
 
             const b =
-                parseDate(sorted[i-1].startDate);
+                parseDate(
+                    sorted[i-1].startDate
+                );
 
-            const d = diffDays(a,b);
 
-            if(d >= 15 && d <= 60){
+            const d =
+                diffDays(a,b);
+
+
+            if(
+                d >= 15 &&
+                d <= 60
+            ){
+
                 differences.push(d);
+
             }
 
         }
 
+
         if(differences.length){
 
             return Math.round(
-                differences.reduce((a,b)=>a+b,0)
-                / differences.length
+
+                differences.reduce(
+                    (a,b)=>a+b,
+                    0
+                )
+                /
+                differences.length
+
             );
 
         }
 
     }
+
 
     return null;
 
 }
 
 
+/* =========================================
+   CURRENT PERIOD
+========================================= */
+
 function getCurrentPeriod(){
 
-    if(!periods.length) return null;
+    if(!periods.length){
 
-    return [...periods]
-        .sort(
-            (a,b) =>
-                parseDate(b.startDate) -
-                parseDate(a.startDate)
-        )[0];
+        return null;
+
+    }
+
+    return [...periods].sort(
+
+        (a,b)=>
+            parseDate(b.startDate)
+            -
+            parseDate(a.startDate)
+
+    )[0];
 
 }
 
 
+/* =========================================
+   PREDICTION
+========================================= */
+
 function getPrediction(period){
 
-    if(!period) return null;
+    if(!period){
+
+        return null;
+
+    }
+
 
     const start =
-        parseDate(period.startDate);
+        parseDate(
+            period.startDate
+        );
+
 
     const cycleLength =
         Number(period.cycleLength)
-        || getCycleLength()
-        || 28;
+        ||
+        getCycleLength()
+        ||
+        28;
+
 
     const duration =
         Number(period.periodDuration)
-        || 5;
+        ||
+        5;
+
 
     const next =
-        addDays(start,cycleLength);
+        addDays(
+            start,
+            cycleLength
+        );
+
 
     /*
-       الإباضة التقديرية:
-       قبل الدورة القادمة بحوالي 14 يوماً.
+       الإباضة التقديرية
+       قبل الدورة التالية بـ 14 يومًا.
     */
 
     const ovulation =
-        addDays(next,-14);
+        addDays(
+            next,
+            -14
+        );
+
 
     /*
-       نافذة خصوبة تقديرية:
-       5 أيام قبل الإباضة + يوم الإباضة.
+       نافذة الخصوبة التقديرية:
+       5 أيام قبل الإباضة
+       + يوم الإباضة
+       + يوم بعدها.
     */
 
     const fertileStart =
-        addDays(ovulation,-5);
+        addDays(
+            ovulation,
+            -5
+        );
+
 
     const fertileEnd =
-        addDays(ovulation,1);
+        addDays(
+            ovulation,
+            1
+        );
+
 
     const periodEnd =
-        addDays(start,duration-1);
+        addDays(
+            start,
+            duration-1
+        );
+
 
     return {
+
         start,
         next,
         ovulation,
         fertileStart,
         fertileEnd,
         periodEnd,
+
         cycleLength,
         duration
+
     };
 
 }
@@ -1971,48 +2617,95 @@ function getDayStatus(date){
     const current =
         getCurrentPeriod();
 
-    if(!current) return null;
+
+    if(!current){
+
+        return null;
+
+    }
+
 
     const prediction =
         getPrediction(current);
 
-    if(!prediction) return null;
+
+    if(!prediction){
+
+        return null;
+
+    }
+
 
     const target =
         localDateString(date);
 
+
     const periodStart =
-        localDateString(prediction.start);
+        localDateString(
+            prediction.start
+        );
+
 
     const periodEnd =
-        localDateString(prediction.periodEnd);
+        localDateString(
+            prediction.periodEnd
+        );
+
 
     const fertileStart =
-        localDateString(prediction.fertileStart);
+        localDateString(
+            prediction.fertileStart
+        );
+
 
     const fertileEnd =
-        localDateString(prediction.fertileEnd);
+        localDateString(
+            prediction.fertileEnd
+        );
+
 
     const ovulation =
-        localDateString(prediction.ovulation);
+        localDateString(
+            prediction.ovulation
+        );
+
 
     if(
-        target >= periodStart &&
+
+        target >= periodStart
+        &&
         target <= periodEnd
+
     ){
+
         return "period";
+
     }
 
-    if(target === ovulation){
-        return "ovulation";
-    }
 
     if(
-        target >= fertileStart &&
-        target <= fertileEnd
+
+        target === ovulation
+
     ){
-        return "fertile";
+
+        return "ovulation";
+
     }
+
+
+    if(
+
+        target >= fertileStart
+        &&
+        target <= fertileEnd
+
+    ){
+
+        return "fertile";
+
+    }
+
 
     return null;
 
@@ -2031,27 +2724,50 @@ function renderCalendar(){
     const month =
         calendarDate.getMonth();
 
+
     monthName.textContent =
         monthNames[month]
         + " "
         + year;
 
-    calendarGrid.innerHTML = "";
+
+    calendarGrid.innerHTML =
+        "";
+
 
     const firstDay =
-        new Date(year,month,1).getDay();
+        new Date(
+            year,
+            month,
+            1
+        ).getDay();
+
 
     const daysInMonth =
-        new Date(year,month+1,0).getDate();
+        new Date(
+            year,
+            month+1,
+            0
+        ).getDate();
 
-    for(let i=0;i<firstDay;i++){
+
+    for(
+        let i=0;
+        i<firstDay;
+        i++
+    ){
 
         const empty =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
-        empty.className = "day empty";
+        empty.className =
+            "day empty";
 
-        calendarGrid.appendChild(empty);
+        calendarGrid.appendChild(
+            empty
+        );
 
     }
 
@@ -2059,81 +2775,156 @@ function renderCalendar(){
     const today =
         new Date();
 
-    for(let day=1;day<=daysInMonth;day++){
+
+    for(
+        let day=1;
+        day<=daysInMonth;
+        day++
+    ){
 
         const cell =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
-        cell.className = "day";
+        cell.className =
+            "day";
+
 
         const date =
-            new Date(year,month,day);
+            new Date(
+                year,
+                month,
+                day
+            );
+
 
         const status =
             getDayStatus(date);
 
+
         if(status){
-            cell.classList.add(status);
+
+            cell.classList.add(
+                status
+            );
+
         }
 
+
+        /* اليوم الحالي */
+
         if(
-            date.getFullYear() === today.getFullYear()
+
+            date.getFullYear()
+            ===
+            today.getFullYear()
+
             &&
-            date.getMonth() === today.getMonth()
+
+            date.getMonth()
+            ===
+            today.getMonth()
+
             &&
-            date.getDate() === today.getDate()
+
+            date.getDate()
+            ===
+            today.getDate()
+
         ){
-            cell.classList.add("today");
+
+            cell.classList.add(
+                "today"
+            );
+
         }
 
+
+        /* اليوم المحدد */
+
         if(
+
             selectedDate
+
             &&
-            date.getFullYear() === selectedDate.getFullYear()
+
+            date.getFullYear()
+            ===
+            selectedDate.getFullYear()
+
             &&
-            date.getMonth() === selectedDate.getMonth()
+
+            date.getMonth()
+            ===
+            selectedDate.getMonth()
+
             &&
-            date.getDate() === selectedDate.getDate()
+
+            date.getDate()
+            ===
+            selectedDate.getDate()
+
         ){
-            cell.classList.add("selected");
+
+            cell.classList.add(
+                "selected"
+            );
+
         }
 
 
         const number =
-            document.createElement("span");
+            document.createElement(
+                "span"
+            );
 
-        number.className = "day-number";
+        number.className =
+            "day-number";
 
-        number.textContent = day;
+        number.textContent =
+            day;
 
-        cell.appendChild(number);
+        cell.appendChild(
+            number
+        );
 
 
         if(status){
 
             const mark =
-                document.createElement("span");
+                document.createElement(
+                    "span"
+                );
 
-            mark.className = "day-mark";
+            mark.className =
+                "day-mark";
 
-            cell.appendChild(mark);
+            cell.appendChild(
+                mark
+            );
 
         }
 
 
-        cell.addEventListener("click",()=>{
+        cell.addEventListener(
+            "click",
+            ()=>{
 
-            selectedDate =
-                new Date(date);
+                selectedDate =
+                    new Date(date);
 
-            renderCalendar();
+                renderCalendar();
 
-            renderSelectedDay();
+                renderSelectedDay();
 
-        });
+            }
+        );
 
 
-        calendarGrid.appendChild(cell);
+        calendarGrid.appendChild(
+            cell
+        );
 
     }
 
@@ -2147,20 +2938,33 @@ function renderCalendar(){
 function renderSelectedDay(){
 
     const status =
-        getDayStatus(selectedDate);
+        getDayStatus(
+            selectedDate
+        );
+
 
     const selectedDateEl =
-        document.getElementById("selectedDate");
+        document.getElementById(
+            "selectedDate"
+        );
+
 
     const descriptionEl =
-        document.getElementById("selectedDescription");
+        document.getElementById(
+            "selectedDescription"
+        );
+
 
     const badgeEl =
-        document.getElementById("selectedBadge");
+        document.getElementById(
+            "selectedBadge"
+        );
 
 
     selectedDateEl.textContent =
-        formatLongDate(selectedDate);
+        formatLongDate(
+            selectedDate
+        );
 
 
     if(status === "period"){
@@ -2244,22 +3048,49 @@ function renderHero(){
     const current =
         getCurrentPeriod();
 
+
     if(!current){
 
-        document.getElementById("cycleDay").textContent = "—";
+        document.getElementById(
+            "cycleDay"
+        ).textContent = "—";
 
-        document.getElementById("cycleState").textContent =
+
+        document.getElementById(
+            "cycleState"
+        ).textContent =
             "أضيفي أول دورة لبدء المتابعة";
 
-        document.getElementById("lastPeriodDate").textContent = "—";
 
-        document.getElementById("nextPeriodDate").textContent = "—";
+        document.getElementById(
+            "lastPeriodDate"
+        ).textContent =
+            "—";
 
-        document.getElementById("ovulationDate").textContent = "—";
 
-        document.getElementById("cycleLengthDisplay").textContent = "—";
+        document.getElementById(
+            "nextPeriodDate"
+        ).textContent =
+            "—";
 
-        document.getElementById("cycleProgress").textContent = "0%";
+
+        document.getElementById(
+            "ovulationDate"
+        ).textContent =
+            "—";
+
+
+        document.getElementById(
+            "cycleLengthDisplay"
+        ).textContent =
+            "—";
+
+
+        document.getElementById(
+            "cycleProgress"
+        ).textContent =
+            "0%";
+
 
         return;
 
@@ -2269,8 +3100,23 @@ function renderHero(){
     const prediction =
         getPrediction(current);
 
+
     const today =
         new Date();
+
+
+    /*
+       مهم جدًا:
+
+       أول يوم للدورة = اليوم 1
+
+       لذلك:
+       فرق 0 أيام = اليوم 1
+       فرق 1 يوم = اليوم 2
+       فرق 15 يوم = اليوم 16
+
+       ولا نقوم بتحديد الرقم عند طول الدورة.
+    */
 
     const cycleDay =
         diffDays(
@@ -2279,133 +3125,131 @@ function renderHero(){
         ) + 1;
 
 
-    const boundedDay =
-        Math.max(
-            1,
-            Math.min(
-                cycleDay,
-                prediction.cycleLength
-            )
-        );
-
+    /*
+       النسبة فقط يتم تحديدها حتى 100%
+       أما رقم اليوم نفسه فيستمر فعليًا.
+    */
 
     const progress =
-        Math.round(
-            (boundedDay /
-             prediction.cycleLength) * 100
+        Math.min(
+            100,
+            Math.max(
+                0,
+                Math.round(
+                    (
+                        cycleDay
+                        /
+                        prediction.cycleLength
+                    ) * 100
+                )
+            )
         );
 
 
     let state =
         "ضمن الدورة الحالية";
 
+
     if(
-        today >= prediction.start &&
+
+        today >= prediction.start
+        &&
         today <= prediction.periodEnd
+
     ){
-        state = "أيام الحيض المتوقعة";
+
+        state =
+            "أيام الحيض المتوقعة";
+
     }
+
     else if(
-        today >= prediction.fertileStart &&
+
+        today >= prediction.fertileStart
+        &&
         today <= prediction.fertileEnd
+
     ){
-        state = "نافذة الخصوبة المتوقعة";
+
+        state =
+            "نافذة الخصوبة المتوقعة";
+
     }
+
     else if(
-        localDateString(today) ===
-        localDateString(prediction.ovulation)
+
+        localDateString(today)
+        ===
+        localDateString(
+            prediction.ovulation
+        )
+
     ){
-        state = "يوم الإباضة المتوقع";
+
+        state =
+            "يوم الإباضة المتوقع";
+
     }
+
     else if(
+
         today > prediction.next
+
     ){
-        state = "موعد الدورة القادمة قد حان أو تجاوزه";
+
+        state =
+            "موعد الدورة القادمة قد حان أو تجاوزه";
+
     }
 
 
-    document.getElementById("cycleDay").textContent =
-        boundedDay;
+    document.getElementById(
+        "cycleDay"
+    ).textContent =
+        cycleDay;
 
-    document.getElementById("cycleState").textContent =
+
+    document.getElementById(
+        "cycleState"
+    ).textContent =
         state;
 
-    document.getElementById("cycleProgress").textContent =
+
+    document.getElementById(
+        "cycleProgress"
+    ).textContent =
         progress + "%";
 
-    document.getElementById("lastPeriodDate").textContent =
-        formatDate(current.startDate);
 
-    document.getElementById("nextPeriodDate").textContent =
-        formatDate(prediction.next);
-
-    document.getElementById("ovulationDate").textContent =
-        formatDate(prediction.ovulation);
-
-    document.getElementById("cycleLengthDisplay").textContent =
-        prediction.cycleLength + " يوم";
-
-}
+    document.getElementById(
+        "lastPeriodDate"
+    ).textContent =
+        formatDate(
+            current.startDate
+        );
 
 
-/* =========================================
-   INFORMATION
-========================================= */
-
-function renderInformation(){
-
-    const current =
-        getCurrentPeriod();
-
-    if(!current){
-
-        document.getElementById("periodInfo").textContent =
-            "لم يتم تسجيل دورة بعد.";
-
-        document.getElementById("fertileInfo").textContent =
-            "ستظهر بعد تسجيل دورة.";
-
-        document.getElementById("ovulationInfo").textContent =
-            "ستظهر بعد تسجيل دورة.";
-
-        document.getElementById("nextInfo").textContent =
-            "ستظهر بعد تسجيل دورة.";
-
-        return;
-
-    }
+    document.getElementById(
+        "nextPeriodDate"
+    ).textContent =
+        formatDate(
+            prediction.next
+        );
 
 
-    const p =
-        getPrediction(current);
+    document.getElementById(
+        "ovulationDate"
+    ).textContent =
+        formatDate(
+            prediction.ovulation
+        );
 
 
-    document.getElementById("periodInfo").textContent =
-        "من "
-        + formatDate(p.start)
-        + " إلى "
-        + formatDate(p.periodEnd)
-        + " تقريبًا.";
-
-
-    document.getElementById("fertileInfo").textContent =
-        "من "
-        + formatDate(p.fertileStart)
-        + " إلى "
-        + formatDate(p.fertileEnd)
-        + " تقريبًا.";
-
-
-    document.getElementById("ovulationInfo").textContent =
-        "الإباضة المتوقعة: "
-        + formatDate(p.ovulation)
-        + ".";
-
-
-    document.getElementById("nextInfo").textContent =
-        "الموعد المتوقع: "
-        + formatDate(p.next)
-        + ".";
+    document.getElementById(
+        "cycleLengthDisplay"
+    ).textContent =
+        prediction.cycleLength
+        + " يوم";
 
 }
 
@@ -2418,38 +3262,92 @@ function renderStatistics(){
 
     const valid =
         periods
-            .map(p => Number(p.cycleLength))
-            .filter(n => n >= 15 && n <= 60);
+            .map(
+                p =>
+                    Number(
+                        p.cycleLength
+                    )
+            )
+            .filter(
+                n =>
+                    n >= 15
+                    &&
+                    n <= 60
+            );
 
 
     const durations =
         periods
-            .map(p => Number(p.periodDuration))
-            .filter(n => n >= 1 && n <= 15);
+            .map(
+                p =>
+                    Number(
+                        p.periodDuration
+                    )
+            )
+            .filter(
+                n =>
+                    n >= 1
+                    &&
+                    n <= 15
+            );
 
 
     if(valid.length){
 
         const avg =
             Math.round(
-                valid.reduce((a,b)=>a+b,0)
-                / valid.length
+
+                valid.reduce(
+                    (a,b)=>a+b,
+                    0
+                )
+                /
+                valid.length
+
             );
 
-        document.getElementById("avgCycle").textContent =
+
+        document.getElementById(
+            "avgCycle"
+        ).textContent =
             avg;
 
-        document.getElementById("minCycle").textContent =
-            Math.min(...valid);
 
-        document.getElementById("maxCycle").textContent =
-            Math.max(...valid);
+        document.getElementById(
+            "minCycle"
+        ).textContent =
+            Math.min(
+                ...valid
+            );
 
-    }else{
 
-        document.getElementById("avgCycle").textContent = "—";
-        document.getElementById("minCycle").textContent = "—";
-        document.getElementById("maxCycle").textContent = "—";
+        document.getElementById(
+            "maxCycle"
+        ).textContent =
+            Math.max(
+                ...valid
+            );
+
+    }
+
+    else{
+
+        document.getElementById(
+            "avgCycle"
+        ).textContent =
+            "—";
+
+
+        document.getElementById(
+            "minCycle"
+        ).textContent =
+            "—";
+
+
+        document.getElementById(
+            "maxCycle"
+        ).textContent =
+            "—";
 
     }
 
@@ -2458,16 +3356,29 @@ function renderStatistics(){
 
         const avgDuration =
             Math.round(
-                durations.reduce((a,b)=>a+b,0)
-                / durations.length
+
+                durations.reduce(
+                    (a,b)=>a+b,
+                    0
+                )
+                /
+                durations.length
+
             );
 
-        document.getElementById("avgPeriod").textContent =
+
+        document.getElementById(
+            "avgPeriod"
+        ).textContent =
             avgDuration;
 
-    }else{
+    }
 
-        document.getElementById("avgPeriod").textContent =
+    else{
+
+        document.getElementById(
+            "avgPeriod"
+        ).textContent =
             "—";
 
     }
@@ -2482,21 +3393,33 @@ function renderStatistics(){
 function renderHistory(){
 
     const list =
-        document.getElementById("historyList");
+        document.getElementById(
+            "historyList"
+        );
 
-    list.innerHTML = "";
+
+    list.innerHTML =
+        "";
 
 
     const sorted =
-        [...periods]
-            .sort(
-                (a,b) =>
-                    parseDate(b.startDate) -
-                    parseDate(a.startDate)
-            );
+        [...periods].sort(
+
+            (a,b)=>
+                parseDate(
+                    b.startDate
+                )
+                -
+                parseDate(
+                    a.startDate
+                )
+
+        );
 
 
-    document.getElementById("historyCount").textContent =
+    document.getElementById(
+        "historyCount"
+    ).textContent =
         sorted.length
         + " دورة";
 
@@ -2504,9 +3427,13 @@ function renderHistory(){
     if(!sorted.length){
 
         list.innerHTML = `
+
             <div class="history-empty">
+
                 لا توجد دورات مسجلة بعد.
+
             </div>
+
         `;
 
         return;
@@ -2514,81 +3441,109 @@ function renderHistory(){
     }
 
 
-    sorted.forEach(period => {
+    sorted.forEach(
+        period => {
 
-        const prediction =
-            getPrediction(period);
-
-
-        const item =
-            document.createElement("div");
-
-        item.className =
-            "history-item";
+            const item =
+                document.createElement(
+                    "div"
+                );
 
 
-        item.innerHTML = `
+            item.className =
+                "history-item";
 
-            <div class="history-icon">
-                <i class="fa-solid fa-droplet"></i>
-            </div>
 
-            <div class="history-main">
+            item.innerHTML = `
 
-                <strong>
-                    دورة ${formatDate(period.startDate)}
-                </strong>
+                <div class="history-icon">
 
-                <span>
-                    طول الدورة:
-                    ${Number(period.cycleLength) || "—"} يوم
-                    · مدة الحيض:
-                    ${Number(period.periodDuration) || "—"} يوم
-                </span>
+                    <i class="fa-solid fa-droplet"></i>
 
-            </div>
+                </div>
 
-            <div class="history-actions">
+                <div class="history-main">
 
-                <button class="small-action edit"
+                    <strong>
+                        دورة ${formatDate(period.startDate)}
+                    </strong>
+
+                    <span>
+
+                        طول الدورة:
+                        ${Number(period.cycleLength) || "—"}
+                        يوم
+
+                        · مدة الحيض:
+
+                        ${Number(period.periodDuration) || "—"}
+                        يوم
+
+                    </span>
+
+                </div>
+
+                <div class="history-actions">
+
+                    <button
+                        class="small-action edit"
                         title="تعديل">
 
-                    <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-pen"></i>
 
-                </button>
+                    </button>
 
-                <button class="small-action delete"
+                    <button
+                        class="small-action delete"
                         title="حذف">
 
-                    <i class="fa-solid fa-trash"></i>
+                        <i class="fa-solid fa-trash"></i>
 
-                </button>
+                    </button>
 
-            </div>
-        `;
+                </div>
 
-
-        item
-            .querySelector(".edit")
-            .addEventListener("click",()=>{
-
-                openEditModal(period);
-
-            });
+            `;
 
 
-        item
-            .querySelector(".delete")
-            .addEventListener("click",()=>{
+            item
+                .querySelector(
+                    ".edit"
+                )
+                .addEventListener(
+                    "click",
+                    ()=>{
 
-                deletePeriod(period.id);
+                        openEditModal(
+                            period
+                        );
 
-            });
+                    }
+                );
 
 
-        list.appendChild(item);
+            item
+                .querySelector(
+                    ".delete"
+                )
+                .addEventListener(
+                    "click",
+                    ()=>{
 
-    });
+                        deletePeriod(
+                            period.id
+                        );
+
+                    }
+                );
+
+
+            list.appendChild(
+                item
+            );
+
+        }
+    );
 
 }
 
@@ -2600,10 +3555,12 @@ function renderHistory(){
 function periodsCollection(){
 
     return collection(
+
         db,
         "users",
         currentUser.uid,
         "periods"
+
     );
 
 }
@@ -2615,36 +3572,58 @@ async function loadPeriods(){
 
         const q =
             query(
+
                 periodsCollection(),
-                orderBy("startDate","desc")
+
+                orderBy(
+                    "startDate",
+                    "desc"
+                )
+
             );
+
 
         const snapshot =
             await getDocs(q);
 
-        periods =
-            snapshot.docs.map(d => ({
-                id:d.id,
-                ...d.data()
-            }));
 
-    }catch(error){
+        periods =
+            snapshot.docs.map(
+                d => ({
+
+                    id:d.id,
+
+                    ...d.data()
+
+                })
+            );
+
+    }
+
+    catch(error){
 
         console.warn(
             "Order query failed:",
             error
         );
 
+
         const snapshot =
             await getDocs(
                 periodsCollection()
             );
 
+
         periods =
-            snapshot.docs.map(d => ({
-                id:d.id,
-                ...d.data()
-            }));
+            snapshot.docs.map(
+                d => ({
+
+                    id:d.id,
+
+                    ...d.data()
+
+                })
+            );
 
     }
 
@@ -2661,16 +3640,24 @@ async function loadPeriods(){
 async function savePeriod(){
 
     const startDate =
-        document.getElementById("periodStart").value;
+        document.getElementById(
+            "periodStart"
+        ).value;
+
 
     const cycleLength =
         Number(
-            document.getElementById("cycleLength").value
+            document.getElementById(
+                "cycleLength"
+            ).value
         );
+
 
     const periodDuration =
         Number(
-            document.getElementById("periodDuration").value
+            document.getElementById(
+                "periodDuration"
+            ).value
         );
 
 
@@ -2686,9 +3673,13 @@ async function savePeriod(){
 
 
     if(
-        !cycleLength ||
-        cycleLength < 15 ||
+
+        !cycleLength
+        ||
+        cycleLength < 15
+        ||
         cycleLength > 60
+
     ){
 
         showToast(
@@ -2701,9 +3692,13 @@ async function savePeriod(){
 
 
     if(
-        !periodDuration ||
-        periodDuration < 1 ||
+
+        !periodDuration
+        ||
+        periodDuration < 1
+        ||
         periodDuration > 15
+
     ){
 
         showToast(
@@ -2716,9 +3711,14 @@ async function savePeriod(){
 
 
     const button =
-        document.getElementById("savePeriod");
+        document.getElementById(
+            "savePeriod"
+        );
 
-    button.disabled = true;
+
+    button.disabled =
+        true;
+
 
     button.textContent =
         "جاري الحفظ...";
@@ -2734,7 +3734,8 @@ async function savePeriod(){
 
             periodDuration,
 
-            updatedAt:serverTimestamp(),
+            updatedAt:
+                serverTimestamp(),
 
             createdAt:
                 editingId
@@ -2744,42 +3745,58 @@ async function savePeriod(){
         };
 
 
-        /*
-           إزالة الحقول غير المعرفة
-        */
+        Object.keys(data).forEach(
+            key => {
 
-        Object.keys(data).forEach(key=>{
+                if(
+                    data[key]
+                    ===
+                    undefined
+                ){
 
-            if(data[key] === undefined){
-                delete data[key];
+                    delete data[key];
+
+                }
+
             }
-
-        });
+        );
 
 
         if(editingId){
 
             await updateDoc(
+
                 doc(
+
                     db,
                     "users",
                     currentUser.uid,
                     "periods",
                     editingId
+
                 ),
+
                 data
+
             );
+
 
             showToast(
                 "تم تعديل الدورة بنجاح"
             );
 
-        }else{
+        }
+
+        else{
 
             await addDoc(
+
                 periodsCollection(),
+
                 data
+
             );
+
 
             showToast(
                 "تم تسجيل الدورة بنجاح"
@@ -2790,19 +3807,29 @@ async function savePeriod(){
 
         closeModal();
 
+
         await loadPeriods();
 
-    }catch(error){
+    }
 
-        console.error(error);
+    catch(error){
+
+        console.error(
+            error
+        );
+
 
         showToast(
             "حدث خطأ أثناء حفظ البيانات"
         );
 
-    }finally{
+    }
 
-        button.disabled = false;
+    finally{
+
+        button.disabled =
+            false;
+
 
         button.textContent =
             "حفظ الدورة";
@@ -2818,28 +3845,42 @@ async function savePeriod(){
 
 async function deletePeriod(id){
 
-    if(!id) return;
+    if(!id){
+
+        return;
+
+    }
 
 
     const confirmed =
         confirm(
+
             "هل تريدين حذف هذه الدورة؟\nسيتم حذفها نهائيًا من حسابك."
+
         );
 
 
-    if(!confirmed) return;
+    if(!confirmed){
+
+        return;
+
+    }
 
 
     try{
 
         await deleteDoc(
+
             doc(
+
                 db,
                 "users",
                 currentUser.uid,
                 "periods",
                 id
+
             )
+
         );
 
 
@@ -2850,9 +3891,14 @@ async function deletePeriod(id){
 
         await loadPeriods();
 
-    }catch(error){
+    }
 
-        console.error(error);
+    catch(error){
+
+        console.error(
+            error
+        );
+
 
         showToast(
             "تعذر حذف الدورة"
@@ -2869,56 +3915,97 @@ async function deletePeriod(id){
 
 function openAddModal(){
 
-    editingId = null;
+    editingId =
+        null;
 
-    document.getElementById("modalTitle").textContent =
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
         "تسجيل دورة جديدة";
 
-    document.getElementById("periodStart").value =
-        localDateString(new Date());
 
-    const calculatedLength =
-        getCycleLength() || 28;
+    document.getElementById(
+        "periodStart"
+    ).value =
+        localDateString(
+            new Date()
+        );
 
-    document.getElementById("cycleLength").value =
-        calculatedLength;
 
-    document.getElementById("periodDuration").value =
+    document.getElementById(
+        "cycleLength"
+    ).value =
+        getCycleLength()
+        ||
+        28;
+
+
+    document.getElementById(
+        "periodDuration"
+    ).value =
         5;
 
 
-    periodModal.classList.add("show");
+    periodModal.classList.add(
+        "show"
+    );
 
 }
 
 
 function openEditModal(period){
 
-    editingId = period.id;
+    editingId =
+        period.id;
 
-    document.getElementById("modalTitle").textContent =
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
         "تعديل بيانات الدورة";
 
-    document.getElementById("periodStart").value =
-        period.startDate || "";
 
-    document.getElementById("cycleLength").value =
-        period.cycleLength || 28;
+    document.getElementById(
+        "periodStart"
+    ).value =
+        period.startDate
+        ||
+        "";
 
-    document.getElementById("periodDuration").value =
-        period.periodDuration || 5;
+
+    document.getElementById(
+        "cycleLength"
+    ).value =
+        period.cycleLength
+        ||
+        28;
 
 
-    periodModal.classList.add("show");
+    document.getElementById(
+        "periodDuration"
+    ).value =
+        period.periodDuration
+        ||
+        5;
+
+
+    periodModal.classList.add(
+        "show"
+    );
 
 }
 
 
 function closeModal(){
 
-    editingId = null;
+    editingId =
+        null;
 
-    periodModal.classList.remove("show");
+
+    periodModal.classList.remove(
+        "show"
+    );
 
 }
 
@@ -2935,8 +4022,6 @@ function renderAll(){
 
     renderSelectedDay();
 
-    renderInformation();
-
     renderStatistics();
 
     renderHistory();
@@ -2949,33 +4034,45 @@ function renderAll(){
 ========================================= */
 
 document
-    .getElementById("prevMonth")
-    .addEventListener("click",()=>{
+    .getElementById(
+        "prevMonth"
+    )
+    .addEventListener(
+        "click",
+        ()=>{
 
-        calendarDate.setMonth(
-            calendarDate.getMonth()-1
-        );
+            calendarDate.setMonth(
+                calendarDate.getMonth()-1
+            );
 
-        renderCalendar();
+            renderCalendar();
 
-    });
-
-
-document
-    .getElementById("nextMonth")
-    .addEventListener("click",()=>{
-
-        calendarDate.setMonth(
-            calendarDate.getMonth()+1
-        );
-
-        renderCalendar();
-
-    });
+        }
+    );
 
 
 document
-    .getElementById("addPeriodBtn")
+    .getElementById(
+        "nextMonth"
+    )
+    .addEventListener(
+        "click",
+        ()=>{
+
+            calendarDate.setMonth(
+                calendarDate.getMonth()+1
+            );
+
+            renderCalendar();
+
+        }
+    );
+
+
+document
+    .getElementById(
+        "addPeriodBtn"
+    )
     .addEventListener(
         "click",
         openAddModal
@@ -2983,7 +4080,9 @@ document
 
 
 document
-    .getElementById("closeModal")
+    .getElementById(
+        "closeModal"
+    )
     .addEventListener(
         "click",
         closeModal
@@ -2991,7 +4090,9 @@ document
 
 
 document
-    .getElementById("cancelModal")
+    .getElementById(
+        "cancelModal"
+    )
     .addEventListener(
         "click",
         closeModal
@@ -2999,44 +4100,73 @@ document
 
 
 document
-    .getElementById("savePeriod")
+    .getElementById(
+        "savePeriod"
+    )
     .addEventListener(
         "click",
         savePeriod
     );
 
 
-periodModal.addEventListener("click",(event)=>{
+periodModal.addEventListener(
+    "click",
+    event => {
 
-    if(event.target === periodModal){
+        if(
+            event.target
+            ===
+            periodModal
+        ){
 
-        closeModal();
+            closeModal();
+
+        }
 
     }
-
-});
+);
 
 
 document
-    .getElementById("refreshBtn")
+    .getElementById(
+        "refreshBtn"
+    )
     .addEventListener(
         "click",
         async ()=>{
 
-            if(!currentUser) return;
+            if(!currentUser){
+
+                return;
+
+            }
+
 
             const icon =
                 document.querySelector(
                     "#refreshBtn i"
                 );
 
-            icon.classList.add("fa-spin");
+
+            icon.classList.add(
+                "fa-spin"
+            );
+
 
             await loadPeriods();
 
-            setTimeout(()=>{
-                icon.classList.remove("fa-spin");
-            },500);
+
+            setTimeout(
+                ()=>{
+
+                    icon.classList.remove(
+                        "fa-spin"
+                    );
+
+                },
+                500
+            );
+
 
             showToast(
                 "تم تحديث البيانات"
@@ -3051,7 +4181,9 @@ document
 ========================================= */
 
 onAuthStateChanged(
+
     auth,
+
     async user => {
 
         if(!user){
@@ -3064,16 +4196,22 @@ onAuthStateChanged(
         }
 
 
-        currentUser = user;
+        currentUser =
+            user;
 
 
         try{
 
             await loadPeriods();
 
-        }catch(error){
+        }
 
-            console.error(error);
+        catch(error){
+
+            console.error(
+                error
+            );
+
 
             showToast(
                 "تعذر تحميل بيانات الدورة"
@@ -3087,8 +4225,10 @@ onAuthStateChanged(
         );
 
     }
+
 );
 
 </script>
+
 </body>
 </html>
