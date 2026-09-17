@@ -10,7 +10,7 @@
 
 <meta name="theme-color" content="#1976D2">
 
-<title>صحتي+ | تحدياتي</title>
+<title>Si7a+ | تحدياتي</title>
 
 <link rel="preconnect"
       href="https://fonts.googleapis.com">
@@ -28,10 +28,15 @@
 
 <style>
 
+/* =====================================================
+   RESET
+===================================================== */
+
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
+    -webkit-tap-highlight-color:transparent;
 }
 
 :root{
@@ -66,6 +71,11 @@
         0 8px 25px rgba(22,73,115,.08);
 }
 
+
+/* =====================================================
+   BODY
+===================================================== */
+
 html{
     scroll-behavior:smooth;
 }
@@ -86,11 +96,16 @@ body{
 
     min-height:100vh;
 
-    padding-bottom:100px;
+    padding-bottom:105px;
+
+    font-size:15px;
+
+    line-height:1.8;
 }
 
 button,
-input{
+input,
+select{
     font-family:inherit;
 }
 
@@ -99,14 +114,162 @@ button{
     cursor:pointer;
 }
 
+a{
+    text-decoration:none;
+    color:inherit;
+}
 
-/* =========================================
+
+/* =====================================================
+   LOADING SCREEN
+===================================================== */
+
+.loading-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:9999;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0D5BAE,
+            #1976D2 52%,
+            #42A5F5
+        );
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    opacity:1;
+
+    transition:
+        opacity .45s ease,
+        visibility .45s ease;
+}
+
+.loading-screen.hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+}
+
+.loading-content{
+
+    width:100%;
+
+    max-width:330px;
+
+    text-align:center;
+
+    color:#fff;
+
+    padding:20px;
+}
+
+.loading-logo{
+
+    width:92px;
+    height:92px;
+
+    margin:0 auto 17px;
+
+    border-radius:29px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        rgba(255,255,255,.16);
+
+    border:
+        1px solid
+        rgba(255,255,255,.28);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0,0,0,.14);
+
+    backdrop-filter:blur(12px);
+}
+
+.loading-logo i{
+
+    font-size:43px;
+
+    color:#fff;
+}
+
+.loading-title{
+
+    font-family:"Cairo",sans-serif;
+
+    font-size:31px;
+
+    font-weight:800;
+
+    line-height:1.3;
+
+    letter-spacing:.3px;
+}
+
+.loading-subtitle{
+
+    margin-top:4px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:
+        rgba(255,255,255,.88);
+}
+
+.loading-spinner{
+
+    width:27px;
+    height:27px;
+
+    margin:21px auto 0;
+
+    border:
+        3px solid
+        rgba(255,255,255,.30);
+
+    border-top-color:#fff;
+
+    border-radius:50%;
+
+    animation:
+        spin .8s linear infinite;
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* =====================================================
    APP
-========================================= */
+===================================================== */
 
 .app{
 
     width:100%;
+
     max-width:650px;
 
     margin:auto;
@@ -115,124 +278,91 @@ button{
 }
 
 
-/* =========================================
-   HEADER
-========================================= */
+/* =====================================================
+   TOP APP BAR
+===================================================== */
 
-.header{
+.app-bar{
 
     position:relative;
 
     margin:
-        0 -15px 22px;
+        0 -15px 18px;
+
+    min-height:74px;
 
     padding:
-        22px 18px 25px;
+        13px 17px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
 
     color:#fff;
 
     background:
-        radial-gradient(
-            circle at 5% 20%,
-            rgba(255,255,255,.18),
-            transparent 28%
-        ),
-
-        radial-gradient(
-            circle at 95% 0%,
-            rgba(130,210,255,.28),
-            transparent 35%
-        ),
-
         linear-gradient(
-            145deg,
+            135deg,
             #0D5BAE,
-            #1976D2 50%,
+            #1976D2 55%,
             #42A5F5
         );
 
     border-radius:
         0
         0
-        30px
-        30px;
+        24px
+        24px;
 
     box-shadow:
-        0 14px 35px
-        rgba(25,118,210,.20);
+        0 9px 25px
+        rgba(25,118,210,.18);
 
     overflow:hidden;
 }
 
-.header::before{
+.app-bar::before{
 
     content:"";
 
     position:absolute;
 
-    width:180px;
-    height:180px;
+    width:150px;
+    height:150px;
 
     border-radius:50%;
 
     background:
         rgba(255,255,255,.07);
 
-    right:-75px;
-    top:-100px;
+    left:-60px;
+    top:-85px;
 }
 
-.header-content{
+.app-brand{
 
     position:relative;
+
     z-index:2;
 
     display:flex;
 
     align-items:center;
 
-    gap:14px;
+    gap:11px;
 }
 
-.back-button{
+.app-brand-icon{
 
-    width:44px;
-    height:44px;
+    width:47px;
+    height:47px;
 
-    flex:none;
-
-    border-radius:14px;
+    border-radius:15px;
 
     display:flex;
-    align-items:center;
-    justify-content:center;
 
-    color:#fff;
-
-    background:
-        rgba(255,255,255,.16);
-
-    border:
-        1px solid
-        rgba(255,255,255,.20);
-
-    font-size:17px;
-
-    transition:.2s;
-}
-
-.back-button:active{
-    transform:scale(.94);
-}
-
-.header-icon{
-
-    width:52px;
-    height:52px;
-
-    border-radius:17px;
-
-    display:flex;
     align-items:center;
     justify-content:center;
 
@@ -241,40 +371,67 @@ button{
 
     border:
         1px solid
-        rgba(255,255,255,.20);
-
-    font-size:22px;
-
-    flex:none;
-}
-
-.header-title{
+        rgba(255,255,255,.24);
 
     font-size:21px;
 
-    font-weight:800;
-
-    line-height:1.5;
+    flex:none;
 }
 
-.header-subtitle{
+.app-brand-text{
 
-    margin-top:3px;
+    line-height:1.35;
+}
 
-    font-size:12px;
+.app-brand-name{
+
+    font-family:Arial,sans-serif;
+
+    direction:ltr;
+
+    font-size:22px;
+
+    font-weight:800;
+
+    letter-spacing:.4px;
+}
+
+.app-brand-title{
+
+    font-size:11px;
 
     font-weight:600;
 
-    line-height:1.8;
+    color:
+        rgba(255,255,255,.84);
+}
+
+.app-bar-page{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:13px;
+
+    font-weight:800;
 
     color:
-        rgba(255,255,255,.86);
+        rgba(255,255,255,.94);
+
+    background:
+        rgba(255,255,255,.13);
+
+    padding:
+        7px 11px;
+
+    border-radius:11px;
 }
 
 
-/* =========================================
+/* =====================================================
    INTRO
-========================================= */
+===================================================== */
 
 .intro{
 
@@ -288,7 +445,7 @@ button{
 
     padding:17px;
 
-    margin-bottom:18px;
+    margin-bottom:19px;
 
     box-shadow:var(--shadow);
 }
@@ -304,8 +461,10 @@ button{
 
 .intro-icon{
 
-    width:43px;
-    height:43px;
+    width:44px;
+    height:44px;
+
+    min-width:44px;
 
     border-radius:14px;
 
@@ -318,35 +477,35 @@ button{
     align-items:center;
     justify-content:center;
 
-    flex:none;
-
-    font-size:17px;
+    font-size:18px;
 }
 
 .intro-title{
 
-    font-size:14px;
+    font-size:16px;
 
     font-weight:800;
 
     margin-bottom:5px;
+
+    color:#172333;
 }
 
 .intro-text{
 
     color:#667587;
 
-    font-size:11px;
+    font-size:13px;
 
     font-weight:600;
 
-    line-height:2;
+    line-height:1.9;
 }
 
 
-/* =========================================
+/* =====================================================
    SECTION HEADER
-========================================= */
+===================================================== */
 
 .section-header{
 
@@ -368,9 +527,9 @@ button{
 
     align-items:center;
 
-    gap:8px;
+    gap:9px;
 
-    font-size:17px;
+    font-size:18px;
 
     font-weight:800;
 }
@@ -379,7 +538,7 @@ button{
 
     color:var(--blue);
 
-    font-size:17px;
+    font-size:18px;
 }
 
 .selected-count{
@@ -392,27 +551,27 @@ button{
 
     padding:7px 11px;
 
-    font-size:11px;
+    font-size:12px;
 
     font-weight:800;
 }
 
 
-/* =========================================
+/* =====================================================
    CHALLENGE LIST
-========================================= */
+===================================================== */
 
 .challenge-list{
 
     display:grid;
 
-    gap:11px;
+    gap:12px;
 }
 
 
-/* =========================================
+/* =====================================================
    CHALLENGE CARD
-========================================= */
+===================================================== */
 
 .challenge-card{
 
@@ -426,13 +585,7 @@ button{
 
     border-radius:21px;
 
-    padding:14px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:13px;
+    padding:15px;
 
     cursor:pointer;
 
@@ -444,11 +597,13 @@ button{
     box-shadow:
         0 5px 16px
         rgba(25,70,110,.035);
+
+    overflow:hidden;
 }
 
 .challenge-card:active{
 
-    transform:scale(.985);
+    transform:scale(.987);
 }
 
 .challenge-card.selected{
@@ -457,12 +612,9 @@ button{
         var(--card-color);
 
     box-shadow:
-        0 8px 22px
+        0 8px 24px
         rgba(25,118,210,.10);
 }
-
-
-/* right selected line */
 
 .challenge-card::before{
 
@@ -471,12 +623,14 @@ button{
     position:absolute;
 
     right:0;
-    top:14px;
-    bottom:14px;
+
+    top:15px;
+    bottom:15px;
 
     width:4px;
 
-    border-radius:8px 0 0 8px;
+    border-radius:
+        8px 0 0 8px;
 
     background:
         var(--card-color);
@@ -485,16 +639,30 @@ button{
 }
 
 .challenge-card.selected::before{
+
     opacity:1;
 }
 
 
-/* icon */
+/* =====================================================
+   CARD TOP
+===================================================== */
+
+.challenge-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+}
 
 .challenge-icon{
 
-    width:52px;
-    height:52px;
+    width:53px;
+    height:53px;
+
+    min-width:53px;
 
     border-radius:16px;
 
@@ -503,19 +671,14 @@ button{
     align-items:center;
     justify-content:center;
 
-    flex:none;
-
     background:
         var(--icon-bg);
 
     color:
         var(--card-color);
 
-    font-size:21px;
+    font-size:22px;
 }
-
-
-/* content */
 
 .challenge-content{
 
@@ -526,54 +689,32 @@ button{
 
 .challenge-name{
 
-    font-size:14px;
+    font-size:16px;
 
     font-weight:800;
 
-    margin-bottom:3px;
+    line-height:1.5;
+
+    color:#172333;
 }
 
 .challenge-description{
 
     color:#748294;
 
-    font-size:10px;
+    font-size:12px;
 
     font-weight:600;
 
     line-height:1.8;
 }
 
-.challenge-target{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:5px;
-
-    margin-top:5px;
-
-    color:#667789;
-
-    font-size:10px;
-
-    font-weight:700;
-}
-
-.challenge-target i{
-    color:var(--card-color);
-}
-
-
-/* =========================================
-   CHECK
-========================================= */
-
 .check-box{
 
-    width:30px;
-    height:30px;
+    width:32px;
+    height:32px;
+
+    min-width:32px;
 
     border-radius:10px;
 
@@ -581,8 +722,6 @@ button{
 
     align-items:center;
     justify-content:center;
-
-    flex:none;
 
     border:
         2px solid
@@ -595,7 +734,8 @@ button{
     transition:.2s;
 }
 
-.challenge-card.selected .check-box{
+.challenge-card.selected
+.check-box{
 
     border-color:
         var(--card-color);
@@ -607,17 +747,81 @@ button{
 }
 
 .check-box i{
-    font-size:13px;
+
+    font-size:14px;
 }
 
 
-/* =========================================
-   TARGET SETTINGS
-========================================= */
+/* =====================================================
+   TARGET ROW
+===================================================== */
+
+.target-info{
+
+    margin-top:12px;
+
+    padding:10px 11px;
+
+    border-radius:13px;
+
+    background:#F8FBFE;
+
+    border:
+        1px solid
+        #E5EDF4;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:8px;
+}
+
+.target-label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    color:#667789;
+}
+
+.target-label i{
+
+    color:
+        var(--card-color);
+}
+
+.target-default{
+
+    font-size:12px;
+
+    font-weight:800;
+
+    color:
+        var(--card-color);
+
+    text-align:left;
+}
+
+
+/* =====================================================
+   TARGET PANEL
+===================================================== */
 
 .target-panel{
 
     display:none;
+
+    margin-top:10px;
 
     background:#F8FBFE;
 
@@ -627,20 +831,20 @@ button{
 
     border-radius:16px;
 
-    margin-top:10px;
-
     padding:13px;
 }
 
-.challenge-card.selected .target-panel{
+.challenge-card.selected
+.target-panel{
+
     display:block;
 }
 
-.target-label{
+.target-label-large{
 
     display:block;
 
-    font-size:11px;
+    font-size:12px;
 
     font-weight:800;
 
@@ -649,9 +853,17 @@ button{
     color:#4D5D6D;
 }
 
-.target-input{
+
+/* =====================================================
+   INPUTS
+===================================================== */
+
+.target-input,
+.time-input{
 
     width:100%;
+
+    min-height:46px;
 
     border:
         1px solid
@@ -661,11 +873,11 @@ button{
 
     border-radius:12px;
 
-    padding:11px;
+    padding:10px;
 
     outline:none;
 
-    font-size:13px;
+    font-size:15px;
 
     font-weight:700;
 
@@ -674,7 +886,8 @@ button{
     text-align:center;
 }
 
-.target-input:focus{
+.target-input:focus,
+.time-input:focus{
 
     border-color:
         var(--blue);
@@ -685,13 +898,168 @@ button{
 }
 
 
-/* =========================================
+/* =====================================================
+   SLEEP TIMES
+===================================================== */
+
+.time-row{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:10px;
+}
+
+.time-box{
+
+    background:#fff;
+
+    border:
+        1px solid
+        #DDE6EF;
+
+    border-radius:14px;
+
+    padding:9px;
+}
+
+.time-box-label{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:5px;
+
+    margin-bottom:5px;
+
+    color:#596A7C;
+
+    font-size:11px;
+
+    font-weight:800;
+}
+
+.time-box-label i{
+
+    color:var(--purple);
+}
+
+.time-input{
+
+    direction:ltr;
+
+    font-size:17px;
+
+    letter-spacing:1px;
+}
+
+
+/* =====================================================
+   YES / NO OPTIONS
+===================================================== */
+
+.option-row{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:9px;
+}
+
+.option{
+
+    position:relative;
+
+    min-height:50px;
+
+    border:
+        1px solid
+        #DCE5ED;
+
+    background:#fff;
+
+    border-radius:13px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:7px;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    color:#5F7082;
+
+    transition:.2s;
+}
+
+.option input{
+
+    position:absolute;
+
+    opacity:0;
+
+    pointer-events:none;
+}
+
+.option.selected{
+
+    border-color:
+        var(--card-color);
+
+    background:
+        var(--icon-bg);
+
+    color:
+        var(--card-color);
+}
+
+.option i{
+
+    font-size:16px;
+}
+
+
+/* =====================================================
+   SUGAR
+===================================================== */
+
+.sugar-card{
+
+    --card-color:#E95D9B;
+    --icon-bg:#FFF0F6;
+}
+
+
+/* =====================================================
+   SMOKING
+===================================================== */
+
+.smoking-card{
+
+    --card-color:#607D8B;
+    --icon-bg:#EEF2F4;
+}
+
+
+/* =====================================================
    SAVE AREA
-========================================= */
+===================================================== */
 
 .save-area{
 
-    margin-top:20px;
+    margin-top:21px;
 
     position:sticky;
 
@@ -704,7 +1072,7 @@ button{
 
     width:100%;
 
-    min-height:54px;
+    min-height:56px;
 
     border-radius:17px;
 
@@ -730,7 +1098,7 @@ button{
         0 10px 25px
         rgba(25,118,210,.25);
 
-    font-size:14px;
+    font-size:15px;
 
     font-weight:800;
 
@@ -738,6 +1106,7 @@ button{
 }
 
 .save-button:active{
+
     transform:scale(.98);
 }
 
@@ -749,9 +1118,9 @@ button{
 }
 
 
-/* =========================================
+/* =====================================================
    MESSAGE
-========================================= */
+===================================================== */
 
 .message{
 
@@ -759,7 +1128,7 @@ button{
 
     left:50%;
 
-    bottom:86px;
+    bottom:90px;
 
     transform:
         translateX(-50%)
@@ -778,7 +1147,7 @@ button{
 
     text-align:center;
 
-    font-size:11px;
+    font-size:12px;
 
     font-weight:700;
 
@@ -809,110 +1178,9 @@ button{
 }
 
 
-/* =========================================
-   LOADING
-========================================= */
-
-.loading-screen{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:9999;
-
-    background:#fff;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    transition:.3s;
-}
-
-.loading-screen.hide{
-
-    opacity:0;
-
-    pointer-events:none;
-}
-
-.loading-box{
-    text-align:center;
-}
-
-.loading-logo{
-
-    width:66px;
-    height:66px;
-
-    margin:
-        0 auto 12px;
-
-    border-radius:21px;
-
-    background:var(--blue-light);
-
-    color:var(--blue);
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    font-size:28px;
-}
-
-.loading-box strong{
-
-    font-size:18px;
-
-    font-weight:800;
-}
-
-.loading-box p{
-
-    margin-top:3px;
-
-    color:#8996A5;
-
-    font-size:10px;
-
-    font-weight:600;
-}
-
-.spinner{
-
-    width:24px;
-    height:24px;
-
-    margin:15px auto 0;
-
-    border:
-        3px solid
-        #DDEBFA;
-
-    border-top-color:
-        var(--blue);
-
-    border-radius:50%;
-
-    animation:
-        spin .8s linear infinite;
-}
-
-@keyframes spin{
-
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-
-/* =========================================
+/* =====================================================
    BOTTOM NAV
-========================================= */
+===================================================== */
 
 .bottom-nav{
 
@@ -922,9 +1190,11 @@ button{
 
     left:50%;
 
-    transform:translateX(-50%);
+    transform:
+        translateX(-50%);
 
-    width:min(650px,100%);
+    width:
+        min(650px,100%);
 
     background:
         rgba(255,255,255,.97);
@@ -943,7 +1213,10 @@ button{
     padding:
         8px
         8px
-        max(8px,env(safe-area-inset-bottom));
+        max(
+            8px,
+            env(safe-area-inset-bottom)
+        );
 
     z-index:100;
 }
@@ -956,28 +1229,35 @@ button{
 
     padding:5px;
 
-    font-size:10px;
+    font-size:11px;
 
     font-weight:700;
+
+    border-radius:15px;
 }
 
 .nav-item i{
 
     display:block;
 
-    font-size:18px;
+    font-size:19px;
 
     margin-bottom:4px;
 }
 
 .nav-item.active{
+
     color:var(--blue);
+
+    background:#EDF6FF;
+
+    font-weight:800;
 }
 
 
-/* =========================================
+/* =====================================================
    RESPONSIVE
-========================================= */
+===================================================== */
 
 @media(max-width:390px){
 
@@ -986,26 +1266,36 @@ button{
         padding-right:11px;
     }
 
-    .header{
-
+    .app-bar{
         margin-left:-11px;
         margin-right:-11px;
     }
 
-    .header-title{
-        font-size:19px;
+    .app-brand-name{
+        font-size:20px;
+    }
+
+    .app-bar-page{
+        font-size:11px;
+    }
+
+    .challenge-card{
+        padding:13px;
     }
 
     .challenge-icon{
-
         width:48px;
         height:48px;
-
-        font-size:19px;
+        min-width:48px;
+        font-size:20px;
     }
 
     .challenge-name{
-        font-size:13px;
+        font-size:15px;
+    }
+
+    .challenge-description{
+        font-size:11px;
     }
 
 }
@@ -1018,83 +1308,81 @@ button{
 <body>
 
 
-<!-- =========================================
-     LOADING
-========================================= -->
+<!-- =====================================================
+     LOADING SCREEN
+===================================================== -->
 
 <div
     class="loading-screen"
     id="loadingScreen">
 
-    <div class="loading-box">
+    <div class="loading-content">
 
         <div class="loading-logo">
 
-            <i class="fa-solid fa-list-check"></i>
+            <i class="fa-solid fa-heart-pulse"></i>
 
         </div>
 
-        <strong>صحتي+</strong>
+        <div class="loading-title">
+            Si7a+
+        </div>
 
-        <p>
-            جاري تحميل تحدياتك...
-        </p>
+        <div class="loading-subtitle">
+            صحتي+ — رفيقك لمتابعة صحتك
+        </div>
 
-        <div class="spinner"></div>
+        <div class="loading-spinner"></div>
 
     </div>
 
 </div>
 
 
+
 <main class="app">
 
 
-<!-- =========================================
-     HEADER
-========================================= -->
+<!-- =====================================================
+     APP BAR
+===================================================== -->
 
-<header class="header">
+<header class="app-bar">
 
-    <div class="header-content">
+    <div class="app-brand">
 
-        <a
-            href="dashboard.html"
-            class="back-button"
-            aria-label="العودة">
+        <div class="app-brand-icon">
 
-            <i class="fa-solid fa-arrow-right"></i>
-
-        </a>
-
-
-        <div class="header-icon">
-
-            <i class="fa-solid fa-sliders"></i>
+            <i class="fa-solid fa-heart-pulse"></i>
 
         </div>
 
+        <div class="app-brand-text">
 
-        <div>
-
-            <div class="header-title">
-                تحدياتي اليومية
+            <div class="app-brand-name">
+                Si7a+
             </div>
 
-            <div class="header-subtitle">
-                اختر العادات الصحية التي تريد متابعتها
+            <div class="app-brand-title">
+                صحتي+
             </div>
 
         </div>
 
     </div>
 
+
+    <div class="app-bar-page">
+        تحدياتي
+    </div>
+
 </header>
 
 
-<!-- =========================================
+
+<!-- =====================================================
      INTRO
-========================================= -->
+===================================================== -->
 
 <section class="intro">
 
@@ -1102,21 +1390,21 @@ button{
 
         <div class="intro-icon">
 
-            <i class="fa-solid fa-circle-info"></i>
+            <i class="fa-solid fa-sliders"></i>
 
         </div>
 
         <div>
 
             <div class="intro-title">
-                خصّص واجهتك الصحية
+                خصّص متابعتك اليومية
             </div>
 
             <div class="intro-text">
 
-                اختر فقط التحديات التي تريد ظهورها
-                في قسم «متابعتي اليومية» في الصفحة الرئيسية.
-                يمكنك تغيير اختياراتك في أي وقت.
+                اختر العادات والمؤشرات التي تريد ظهورها
+                في الصفحة الرئيسية. يمكنك تعديل اختياراتك
+                وأهدافك في أي وقت.
 
             </div>
 
@@ -1127,15 +1415,16 @@ button{
 </section>
 
 
-<!-- =========================================
-     SECTION HEADER
-========================================= -->
+
+<!-- =====================================================
+     SECTION
+===================================================== -->
 
 <div class="section-header">
 
     <div class="section-title">
 
-        <i class="fa-solid fa-check-double"></i>
+        <i class="fa-solid fa-list-check"></i>
 
         التحديات المتاحة
 
@@ -1153,9 +1442,10 @@ button{
 </div>
 
 
-<!-- =========================================
-     CHALLENGES
-========================================= -->
+
+<!-- =====================================================
+     CHALLENGE LIST
+===================================================== -->
 
 <section
     class="challenge-list"
@@ -1163,9 +1453,10 @@ button{
 </section>
 
 
-<!-- =========================================
+
+<!-- =====================================================
      SAVE
-========================================= -->
+===================================================== -->
 
 <div class="save-area">
 
@@ -1185,9 +1476,10 @@ button{
 </main>
 
 
-<!-- =========================================
+
+<!-- =====================================================
      MESSAGE
-========================================= -->
+===================================================== -->
 
 <div
     class="message"
@@ -1195,9 +1487,10 @@ button{
 </div>
 
 
-<!-- =========================================
+
+<!-- =====================================================
      BOTTOM NAV
-========================================= -->
+===================================================== -->
 
 <nav class="bottom-nav">
 
@@ -1245,16 +1538,16 @@ button{
 
     </a>
 
-
 </nav>
+
 
 
 <script type="module">
 
 
-/* =========================================
+/* =====================================================
    FIREBASE
-========================================= */
+===================================================== */
 
 import {
     auth,
@@ -1279,9 +1572,9 @@ from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 
 
-/* =========================================
-   GLOBAL
-========================================= */
+/* =====================================================
+   GLOBAL VARIABLES
+===================================================== */
 
 let currentUser = null;
 
@@ -1289,11 +1582,13 @@ let selectedChallenges = [];
 
 let targets = {};
 
+let challengeValues = {};
 
 
-/* =========================================
-   CHALLENGE DEFINITIONS
-========================================= */
+
+/* =====================================================
+   CHALLENGES
+===================================================== */
 
 const CHALLENGES = [
 
@@ -1315,6 +1610,8 @@ const CHALLENGES = [
 
         bg:"#EAF5FF",
 
+        type:"number",
+
         link:"water.html"
     },
 
@@ -1325,17 +1622,19 @@ const CHALLENGES = [
         name:"المشي",
 
         description:
-            "تابع عدد خطواتك ونشاطك اليومي.",
+            "تابع المسافة التي تمشيها خلال اليوم.",
 
-        target:5000,
+        target:3000,
 
-        unit:"خطوة",
+        unit:"متر",
 
         icon:"fa-person-walking",
 
         color:"#16A085",
 
         bg:"#E9F9F5",
+
+        type:"number",
 
         link:"walking.html"
     },
@@ -1347,7 +1646,7 @@ const CHALLENGES = [
         name:"النوم",
 
         description:
-            "تابع عدد ساعات نومك وجودة انتظام النوم.",
+            "تابع عدد ساعات النوم التي تحصل عليها يوميًا.",
 
         target:8,
 
@@ -1359,102 +1658,122 @@ const CHALLENGES = [
 
         bg:"#F1EDFF",
 
+        type:"number",
+
         link:"sleep.html"
     },
 
 
     {
-        id:"wake",
+        id:"sleepSchedule",
 
-        name:"الاستيقاظ",
+        name:"موعد النوم والاستيقاظ",
 
         description:
-            "سجّل وقت استيقاظك لمتابعة انتظام يومك.",
+            "حدد الوقت الذي تريد النوم فيه والوقت الذي تريد الاستيقاظ فيه.",
 
-        target:1,
+        target:null,
 
-        unit:"مرة",
+        unit:"",
 
-        icon:"fa-sun",
+        icon:"fa-bed",
 
-        color:"#F39C12",
+        color:"#536DFE",
 
-        bg:"#FFF5E5",
+        bg:"#EEF0FF",
 
-        link:"wake-up.html"
+        type:"time",
+
+        sleepTime:"23:00",
+
+        wakeTime:"07:00",
+
+        link:"sleep.html"
     },
 
 
     {
-        id:"nutrition",
+        id:"sugar",
 
-        name:"التغذية",
+        name:"السكريات",
 
         description:
-            "تابع عدد الوجبات التي سجّلتها خلال اليوم.",
+            "تابع اختيارك اليومي لتجنب تناول السكريات.",
 
-        target:3,
+        target:"لم آكل",
 
-        unit:"وجبات",
+        unit:"",
 
-        icon:"fa-apple-whole",
+        icon:"fa-candy-cane",
 
         color:"#E95D9B",
 
         bg:"#FFF0F6",
+
+        type:"boolean",
+
+        defaultValue:"no",
 
         link:"nutrition.html"
     },
 
 
     {
-        id:"vitamins",
+        id:"smoking",
 
-        name:"الفيتامينات",
+        name:"التدخين",
 
         description:
-            "سجّل تناول الفيتامينات أو المكملات الخاصة بك.",
+            "تابع الأيام التي لا تدخن فيها.",
 
-        target:1,
+        target:"إيقاف التدخين",
 
-        unit:"مرة",
+        unit:"",
 
-        icon:"fa-capsules",
+        icon:"fa-smoking-ban",
 
-        color:"#E74C3C",
+        color:"#607D8B",
 
-        bg:"#FFF0EE",
+        bg:"#EEF2F4",
 
-        link:"vitamins.html"
+        type:"boolean",
+
+        defaultValue:"no",
+
+        link:"smoking.html"
     }
 
 ];
 
 
 
-/* =========================================
+/* =====================================================
    ELEMENTS
-========================================= */
+===================================================== */
 
 const challengeList =
     document.getElementById(
         "challengeList"
     );
 
+
 const selectedCount =
     document.getElementById(
         "selectedCount"
     );
+
 
 const saveButton =
     document.getElementById(
         "saveButton"
     );
 
+
 const message =
     document.getElementById(
         "message"
     );
+
 
 const loadingScreen =
     document.getElementById(
@@ -1463,9 +1782,9 @@ const loadingScreen =
 
 
 
-/* =========================================
+/* =====================================================
    MESSAGE
-========================================= */
+===================================================== */
 
 function showMessage(
     text,
@@ -1480,25 +1799,26 @@ function showMessage(
         type;
 
     setTimeout(
-        ()=>{
+        () => {
+
             message.className =
                 "message";
+
         },
-        2500
+        2600
     );
 
 }
 
 
 
-/* =========================================
-   NORMALIZE SETTINGS
-========================================= */
+/* =====================================================
+   NORMALIZE SELECTED
+===================================================== */
 
 function normalizeSelected(data){
 
     let selected =
-
         data.selected ??
         data.selectedChallenges ??
         data.challenges;
@@ -1543,15 +1863,14 @@ function normalizeSelected(data){
 
 
 
-/* =========================================
+/* =====================================================
    LOAD SETTINGS
-========================================= */
+===================================================== */
 
 async function loadSettings(){
 
-    if(!currentUser){
+    if(!currentUser)
         return;
-    }
 
 
     try{
@@ -1577,24 +1896,29 @@ async function loadSettings(){
 
 
             selectedChallenges =
-                normalizeSelected(data);
+                normalizeSelected(
+                    data
+                );
 
 
             targets =
                 data.targets || {};
 
+
+            challengeValues =
+                data.values || {};
+
         }else{
 
             /*
-             * مهم:
-             * لا نختار أي تحدي افتراضياً.
-             * الواجهة الرئيسية ستبقى فارغة
-             * حتى يختار المريض بنفسه.
+             * لا توجد تحديات مختارة افتراضيًا
              */
 
             selectedChallenges = [];
 
             targets = {};
+
+            challengeValues = {};
 
         }
 
@@ -1607,7 +1931,7 @@ async function loadSettings(){
     }catch(error){
 
         console.error(
-            "Settings loading error:",
+            "Load settings error:",
             error
         );
 
@@ -1616,12 +1940,15 @@ async function loadSettings(){
 
         targets = {};
 
+        challengeValues = {};
+
         renderChallenges();
 
         updateCount();
 
+
         showMessage(
-            "تعذر تحميل إعدادات التحديات",
+            "تعذر تحميل إعداداتك",
             "error"
         );
 
@@ -1631,11 +1958,21 @@ async function loadSettings(){
 
 
 
-/* =========================================
+/* =====================================================
    GET TARGET
-========================================= */
+===================================================== */
 
 function getTarget(challenge){
+
+    if(
+        challenge.type === "boolean" ||
+        challenge.type === "time"
+    ){
+
+        return challenge.target;
+
+    }
+
 
     const custom =
         targets?.[challenge.id];
@@ -1669,34 +2006,61 @@ function getTarget(challenge){
 
 
 
-/* =========================================
-   FORMAT TARGET
-========================================= */
+/* =====================================================
+   TARGET DISPLAY
+===================================================== */
 
-function formatTarget(
-    challenge
-){
+function getTargetDisplay(challenge){
 
-    const value =
+    const target =
         getTarget(challenge);
 
 
-    if(challenge.id === "sleep"){
+    if(
+        challenge.id === "sugar"
+    ){
 
-        return `${value} ساعات`;
+        return "لم آكل";
 
     }
 
 
-    return `${value.toLocaleString("ar-DZ")} ${challenge.unit}`;
+    if(
+        challenge.id === "smoking"
+    ){
+
+        return "إيقاف التدخين";
+
+    }
+
+
+    if(
+        challenge.id === "sleepSchedule"
+    ){
+
+        return "موعد شخصي";
+
+    }
+
+
+    if(
+        challenge.id === "sleep"
+    ){
+
+        return `${target} ساعات`;
+
+    }
+
+
+    return `${Number(target).toLocaleString("ar-DZ")} ${challenge.unit}`;
 
 }
 
 
 
-/* =========================================
-   RENDER
-========================================= */
+/* =====================================================
+   RENDER CHALLENGES
+===================================================== */
 
 function renderChallenges(){
 
@@ -1743,48 +2107,68 @@ function renderChallenges(){
             );
 
 
-            const targetValue =
-                getTarget(challenge);
+            /*
+             * السكريات
+             */
+
+            if(
+                challenge.id === "sugar"
+            ){
+
+                card.classList.add(
+                    "sugar-card"
+                );
+
+            }
 
 
-            let inputValue =
-                targetValue;
+            /*
+             * التدخين
+             */
+
+            if(
+                challenge.id === "smoking"
+            ){
+
+                card.classList.add(
+                    "smoking-card"
+                );
+
+            }
 
 
-            card.innerHTML = `
-
-                <div
-                    class="challenge-icon">
-
-                    <i
-                        class="fa-solid ${challenge.icon}">
-                    </i>
-
-                </div>
+            let extraHTML = "";
 
 
-                <div class="challenge-content">
+            /*
+             * NUMBER TARGET
+             */
 
-                    <div class="challenge-name">
+            if(
+                challenge.type === "number"
+            ){
 
-                        ${challenge.name}
-
-                    </div>
-
-
-                    <div class="challenge-description">
-
-                        ${challenge.description}
-
-                    </div>
+                const value =
+                    getTarget(challenge);
 
 
-                    <div class="challenge-target">
+                extraHTML = `
 
-                        <i class="fa-solid fa-bullseye"></i>
+                    <div class="target-info">
 
-                        الهدف:
-                        ${formatTarget(challenge)}
+                        <div class="target-label">
+
+                            <i class="fa-solid fa-bullseye"></i>
+
+                            الهدف اليومي
+
+                        </div>
+
+                        <div class="target-default">
+
+                            ${getTargetDisplay(challenge)}
+
+                        </div>
 
                     </div>
 
@@ -1792,35 +2176,365 @@ function renderChallenges(){
                     <div class="target-panel">
 
                         <label
-                            class="target-label">
+                            class="target-label-large">
 
-                            الهدف اليومي
+                            عدّل هدفك اليومي
 
                         </label>
-
 
                         <input
                             class="target-input"
                             type="number"
                             min="1"
                             step="1"
-                            value="${inputValue}"
+                            value="${value}"
                             data-target="${challenge.id}"
                             aria-label="الهدف اليومي">
+
+                    </div>
+
+                `;
+
+            }
+
+
+            /*
+             * TIME
+             */
+
+            if(
+                challenge.type === "time"
+            ){
+
+                const savedSleep =
+                    targets?.sleepTime ||
+                    challenge.sleepTime;
+
+
+                const savedWake =
+                    targets?.wakeTime ||
+                    challenge.wakeTime;
+
+
+                extraHTML = `
+
+                    <div class="target-info">
+
+                        <div class="target-label">
+
+                            <i class="fa-solid fa-clock"></i>
+
+                            أوقاتك المطلوبة
+
+                        </div>
+
+                        <div class="target-default">
+
+                            ${savedSleep}
+                            -
+                            ${savedWake}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="target-panel">
+
+                        <div class="time-row">
+
+                            <div class="time-box">
+
+                                <div class="time-box-label">
+
+                                    <i class="fa-solid fa-moon"></i>
+
+                                    وقت النوم
+
+                                </div>
+
+                                <input
+                                    class="time-input"
+                                    type="time"
+                                    value="${savedSleep}"
+                                    data-time="sleepTime">
+
+                            </div>
+
+
+                            <div class="time-box">
+
+                                <div class="time-box-label">
+
+                                    <i class="fa-solid fa-sun"></i>
+
+                                    وقت الاستيقاظ
+
+                                </div>
+
+                                <input
+                                    class="time-input"
+                                    type="time"
+                                    value="${savedWake}"
+                                    data-time="wakeTime">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            /*
+             * BOOLEAN
+             */
+
+            if(
+                challenge.type === "boolean"
+            ){
+
+                let defaultValue =
+                    challenge.defaultValue;
+
+
+                const savedValue =
+                    challengeValues?.[
+                        challenge.id
+                    ];
+
+
+                if(savedValue){
+
+                    defaultValue =
+                        savedValue;
+
+                }
+
+
+                if(
+                    challenge.id === "sugar"
+                ){
+
+                    extraHTML = `
+
+                        <div class="target-info">
+
+                            <div class="target-label">
+
+                                <i class="fa-solid fa-bullseye"></i>
+
+                                الهدف
+
+                            </div>
+
+                            <div class="target-default">
+
+                                لم آكل
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="target-panel">
+
+                            <div class="option-row">
+
+                                <label
+                                    class="option ${
+                                        defaultValue === "yes"
+                                            ? "selected"
+                                            : ""
+                                    }">
+
+                                    <input
+                                        type="radio"
+                                        name="sugar"
+                                        value="yes"
+                                        ${
+                                            defaultValue === "yes"
+                                                ? "checked"
+                                                : ""
+                                        }>
+
+                                    <i class="fa-solid fa-circle-check"></i>
+
+                                    أكلت
+
+                                </label>
+
+
+                                <label
+                                    class="option ${
+                                        defaultValue === "no"
+                                            ? "selected"
+                                            : ""
+                                    }">
+
+                                    <input
+                                        type="radio"
+                                        name="sugar"
+                                        value="no"
+                                        ${
+                                            defaultValue === "no"
+                                                ? "checked"
+                                                : ""
+                                        }>
+
+                                    <i class="fa-solid fa-circle-xmark"></i>
+
+                                    لم آكل
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
+
+
+                if(
+                    challenge.id === "smoking"
+                ){
+
+                    extraHTML = `
+
+                        <div class="target-info">
+
+                            <div class="target-label">
+
+                                <i class="fa-solid fa-bullseye"></i>
+
+                                الهدف
+
+                            </div>
+
+                            <div class="target-default">
+
+                                إيقاف التدخين
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="target-panel">
+
+                            <div class="option-row">
+
+                                <label
+                                    class="option ${
+                                        defaultValue === "yes"
+                                            ? "selected"
+                                            : ""
+                                    }">
+
+                                    <input
+                                        type="radio"
+                                        name="smoking"
+                                        value="yes"
+                                        ${
+                                            defaultValue === "yes"
+                                                ? "checked"
+                                                : ""
+                                        }>
+
+                                    <i class="fa-solid fa-smoking"></i>
+
+                                    نعم
+
+                                </label>
+
+
+                                <label
+                                    class="option ${
+                                        defaultValue === "no"
+                                            ? "selected"
+                                            : ""
+                                    }">
+
+                                    <input
+                                        type="radio"
+                                        name="smoking"
+                                        value="no"
+                                        ${
+                                            defaultValue === "no"
+                                                ? "checked"
+                                                : ""
+                                        }>
+
+                                    <i class="fa-solid fa-ban"></i>
+
+                                    لا
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
+
+            }
+
+
+            card.innerHTML = `
+
+                <div class="challenge-top">
+
+                    <div class="challenge-icon">
+
+                        <i
+                            class="fa-solid ${challenge.icon}">
+                        </i>
+
+                    </div>
+
+
+                    <div class="challenge-content">
+
+                        <div class="challenge-name">
+
+                            ${challenge.name}
+
+                        </div>
+
+
+                        <div class="challenge-description">
+
+                            ${challenge.description}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="check-box">
+
+                        <i class="fa-solid fa-check"></i>
 
                     </div>
 
                 </div>
 
 
-                <div class="check-box">
-
-                    <i class="fa-solid fa-check"></i>
-
-                </div>
+                ${extraHTML}
 
             `;
 
+
+            /*
+             * الضغط على البطاقة
+             */
 
             card.addEventListener(
                 "click",
@@ -1828,7 +2542,7 @@ function renderChallenges(){
 
                     if(
                         event.target.closest(
-                            ".target-input"
+                            "input"
                         )
                     ){
 
@@ -1845,32 +2559,156 @@ function renderChallenges(){
             );
 
 
-            const input =
+            /*
+             * NUMBER INPUT
+             */
+
+            const numberInput =
                 card.querySelector(
                     ".target-input"
                 );
 
 
-            input.addEventListener(
-                "input",
-                event => {
+            if(numberInput){
 
-                    const value =
-                        Number(
-                            event.target.value
-                        );
+                numberInput.addEventListener(
+                    "input",
+                    event => {
+
+                        const value =
+                            Number(
+                                event.target.value
+                            );
 
 
-                    if(
-                        Number.isFinite(value) &&
-                        value > 0
-                    ){
+                        if(
+                            Number.isFinite(value) &&
+                            value > 0
+                        ){
 
-                        targets[
-                            challenge.id
-                        ] = value;
+                            targets[
+                                challenge.id
+                            ] = value;
+
+                        }
 
                     }
+                );
+
+
+                numberInput.addEventListener(
+                    "click",
+                    event => {
+
+                        event.stopPropagation();
+
+                    }
+                );
+
+            }
+
+
+            /*
+             * TIME INPUTS
+             */
+
+            const timeInputs =
+                card.querySelectorAll(
+                    ".time-input"
+                );
+
+
+            timeInputs.forEach(
+                input => {
+
+                    input.addEventListener(
+                        "click",
+                        event => {
+
+                            event.stopPropagation();
+
+                        }
+                    );
+
+
+                    input.addEventListener(
+                        "change",
+                        event => {
+
+                            targets[
+                                event.target.dataset.time
+                            ] =
+                                event.target.value;
+
+                        }
+                    );
+
+                }
+            );
+
+
+            /*
+             * RADIO OPTIONS
+             */
+
+            const radioInputs =
+                card.querySelectorAll(
+                    'input[type="radio"]'
+                );
+
+
+            radioInputs.forEach(
+                input => {
+
+                    input.addEventListener(
+                        "click",
+                        event => {
+
+                            event.stopPropagation();
+
+                        }
+                    );
+
+
+                    input.addEventListener(
+                        "change",
+                        event => {
+
+                            const name =
+                                event.target.name;
+
+
+                            challengeValues[
+                                name
+                            ] =
+                                event.target.value;
+
+
+                            const options =
+                                card.querySelectorAll(
+                                    ".option"
+                                );
+
+
+                            options.forEach(
+                                option => {
+
+                                    const radio =
+                                        option.querySelector(
+                                            "input"
+                                        );
+
+
+                                    option.classList.toggle(
+                                        "selected",
+                                        radio.checked
+                                    );
+
+                                }
+                            );
+
+                        }
+                    );
 
                 }
             );
@@ -1887,9 +2725,9 @@ function renderChallenges(){
 
 
 
-/* =========================================
-   TOGGLE
-========================================= */
+/* =====================================================
+   TOGGLE CHALLENGE
+===================================================== */
 
 function toggleChallenge(id){
 
@@ -1919,9 +2757,9 @@ function toggleChallenge(id){
 
 
 
-/* =========================================
+/* =====================================================
    COUNT
-========================================= */
+===================================================== */
 
 function updateCount(){
 
@@ -1936,9 +2774,9 @@ function updateCount(){
 
 
 
-/* =========================================
-   SAVE
-========================================= */
+/* =====================================================
+   SAVE SETTINGS
+===================================================== */
 
 async function saveSettings(){
 
@@ -1954,7 +2792,8 @@ async function saveSettings(){
     }
 
 
-    saveButton.disabled = true;
+    saveButton.disabled =
+        true;
 
 
     const originalHTML =
@@ -1975,13 +2814,26 @@ async function saveSettings(){
         const cleanTargets = {};
 
 
+        /*
+         * الأهداف الرقمية
+         */
+
         CHALLENGES.forEach(
             challenge => {
 
                 if(
-                    selectedChallenges.includes(
+                    !selectedChallenges.includes(
                         challenge.id
                     )
+                ){
+
+                    return;
+
+                }
+
+
+                if(
+                    challenge.type === "number"
                 ){
 
                     let value =
@@ -2005,13 +2857,70 @@ async function saveSettings(){
 
                     cleanTargets[
                         challenge.id
-                    ] = value;
+                    ] =
+                        value;
+
+                }
+
+
+                /*
+                 * أوقات النوم
+                 */
+
+                if(
+                    challenge.id === "sleepSchedule"
+                ){
+
+                    cleanTargets.sleepTime =
+                        targets.sleepTime ||
+                        "23:00";
+
+                    cleanTargets.wakeTime =
+                        targets.wakeTime ||
+                        "07:00";
 
                 }
 
             }
         );
 
+
+        /*
+         * القيم الافتراضية
+         */
+
+        const cleanValues = {};
+
+
+        if(
+            selectedChallenges.includes(
+                "sugar"
+            )
+        ){
+
+            cleanValues.sugar =
+                challengeValues.sugar ||
+                "no";
+
+        }
+
+
+        if(
+            selectedChallenges.includes(
+                "smoking"
+            )
+        ){
+
+            cleanValues.smoking =
+                challengeValues.smoking ||
+                "no";
+
+        }
+
+
+        /*
+         * حفظ حسب UID
+         */
 
         await setDoc(
 
@@ -2031,6 +2940,9 @@ async function saveSettings(){
                 targets:
                     cleanTargets,
 
+                values:
+                    cleanValues,
+
                 updatedAt:
                     serverTimestamp()
 
@@ -2047,22 +2959,25 @@ async function saveSettings(){
             cleanTargets;
 
 
+        challengeValues =
+            cleanValues;
+
+
         showMessage(
-            selectedChallenges.length
+
+            selectedChallenges.length > 0
+
                 ? "تم حفظ تحدياتك بنجاح"
+
                 : "تم الحفظ، وستبقى متابعتك اليومية فارغة",
+
             "success"
+
         );
 
 
-        /*
-         * بعد الحفظ نعود للوحة الرئيسية.
-         * إذا لم يختر المستخدم أي تحدٍ،
-         * ستظهر رسالة اختيار التحديات هناك.
-         */
-
         setTimeout(
-            ()=>{
+            () => {
 
                 window.location.href =
                     "dashboard.html";
@@ -2075,7 +2990,7 @@ async function saveSettings(){
     }catch(error){
 
         console.error(
-            "Save settings error:",
+            "Save error:",
             error
         );
 
@@ -2089,6 +3004,7 @@ async function saveSettings(){
         saveButton.disabled =
             false;
 
+
         saveButton.innerHTML =
             originalHTML;
 
@@ -2098,20 +3014,9 @@ async function saveSettings(){
 
 
 
-/* =========================================
-   SAVE EVENT
-========================================= */
-
-saveButton.addEventListener(
-    "click",
-    saveSettings
-);
-
-
-
-/* =========================================
+/* =====================================================
    AUTH
-========================================= */
+===================================================== */
 
 onAuthStateChanged(
     auth,
@@ -2134,15 +3039,20 @@ onAuthStateChanged(
         await loadSettings();
 
 
+        /*
+         * إبقاء شاشة Si7a+ ظاهرة
+         * قليلًا حتى يظهر الشعار والعنوان
+         */
+
         setTimeout(
-            ()=>{
+            () => {
 
                 loadingScreen.classList.add(
                     "hide"
                 );
 
             },
-            250
+            850
         );
 
     }
@@ -2150,6 +3060,6 @@ onAuthStateChanged(
 
 </script>
 
-</body>
 
+</body>
 </html>
