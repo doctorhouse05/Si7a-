@@ -2,16 +2,24 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
 <meta name="theme-color" content="#1976D2">
 
 <title>صحتي+ | الرئيسية</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet">
 
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -25,6 +33,7 @@
 }
 
 :root{
+
     --blue:#1976D2;
     --blue-dark:#125EA8;
     --blue-light:#EAF5FF;
@@ -54,16 +63,29 @@
     --shadow:0 8px 25px rgba(26,72,116,.07);
 }
 
+
+/* =========================
+   BASE
+========================= */
+
 html{
     scroll-behavior:smooth;
 }
 
 body{
+
     font-family:"Cairo",sans-serif;
+
     background:
-        radial-gradient(circle at 100% 0%,rgba(25,118,210,.07),transparent 30%),
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(25,118,210,.07),
+            transparent 30%
+        ),
         var(--bg);
+
     color:var(--text);
+
     min-height:100vh;
 }
 
@@ -82,836 +104,1599 @@ button{
     cursor:pointer;
 }
 
+
+/* =========================
+   APP
+========================= */
+
 .app{
+
     width:100%;
+
     max-width:650px;
+
     margin:auto;
-    padding:16px 14px 95px;
+
+    padding:0 14px 95px;
 }
+
+
+/* ==================================================
+   TOP MEDICAL BLUE AREA
+================================================== */
+
+.top-medical{
+
+    position:relative;
+
+    margin-left:-14px;
+    margin-right:-14px;
+
+    padding:
+        18px
+        14px
+        18px;
+
+    background:
+
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(255,255,255,.18),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 92% 0%,
+            rgba(119,203,255,.28),
+            transparent 32%
+        ),
+
+        linear-gradient(
+            145deg,
+            #0F5FB7 0%,
+            #1976D2 42%,
+            #2388E5 72%,
+            #43A7F4 100%
+        );
+
+    border-radius:
+        0
+        0
+        32px
+        32px;
+
+    box-shadow:
+        0 15px 35px rgba(25,118,210,.20);
+
+    overflow:hidden;
+
+    margin-bottom:25px;
+}
+
+
+/* decorative circles */
+
+.top-medical::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:190px;
+    height:190px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.075);
+
+    top:-100px;
+    right:-65px;
+}
+
+.top-medical::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:130px;
+    height:130px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.055);
+
+    bottom:-70px;
+    left:-35px;
+}
+
 
 /* =========================
    PROFILE CARD
 ========================= */
 
 .profile-card{
+
     position:relative;
+
+    z-index:3;
+
     overflow:hidden;
-    background:#fff;
-    border:1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.98);
+
+    border:
+        1px solid
+        rgba(255,255,255,.75);
+
     border-radius:28px;
-    padding:20px;
-    margin-bottom:18px;
-    box-shadow:var(--shadow);
+
+    padding:19px;
+
+    margin-bottom:17px;
+
+    box-shadow:
+        0 12px 30px
+        rgba(7,61,117,.20);
+
     min-height:190px;
 }
 
+
 .profile-card::before{
+
     content:"";
+
     position:absolute;
-    top:-75px;
-    right:-70px;
-    width:260px;
-    height:170px;
+
+    top:-65px;
+    right:-60px;
+
+    width:220px;
+    height:145px;
+
     background:#EAF5FF;
+
     transform:rotate(-12deg);
+
     border-radius:35px;
 }
 
+
 .profile-card::after{
+
     content:"";
+
     position:absolute;
+
     top:0;
     right:0;
+
     width:6px;
     height:100%;
-    background:linear-gradient(
-        180deg,
-        #1976D2,
-        #48A9F8
-    );
+
+    background:
+        linear-gradient(
+            180deg,
+            #1976D2,
+            #48A9F8
+        );
 }
 
+
 .profile-content{
+
     position:relative;
+
     z-index:2;
+
     display:grid;
-    grid-template-columns:78px 1fr;
+
+    grid-template-columns:
+        78px 1fr;
+
     gap:15px;
+
     direction:ltr;
+
     align-items:start;
 }
 
+
 .profile-avatar-wrap{
+
     width:78px;
     height:78px;
+
     border-radius:50%;
+
     background:#F1F6FB;
+
     padding:4px;
-    border:1px solid #DDE7F0;
+
+    border:
+        1px solid
+        #DDE7F0;
+
     overflow:hidden;
-    box-shadow:0 5px 15px rgba(25,118,210,.12);
+
+    box-shadow:
+        0 5px 15px
+        rgba(25,118,210,.12);
 }
+
 
 .profile-avatar{
+
     width:100%;
     height:100%;
+
     display:block;
+
     object-fit:cover;
+
     border-radius:50%;
 }
 
+
 .profile-info{
+
     direction:rtl;
+
     min-width:0;
+
     padding-top:1px;
 }
 
+
 .profile-name{
+
     font-size:20px;
+
     font-weight:800;
+
     color:#152233;
+
     margin-bottom:10px;
+
     white-space:nowrap;
+
     overflow:hidden;
+
     text-overflow:ellipsis;
 }
 
+
 .profile-details{
+
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
+
     gap:8px;
 }
 
+
 .profile-detail{
+
     display:flex;
+
     align-items:center;
+
     gap:7px;
+
     color:#586575;
+
     font-size:12px;
+
     min-width:0;
 }
 
+
 .profile-detail i{
+
     width:26px;
     height:26px;
+
     border-radius:9px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     flex:none;
+
     background:#F2F7FC;
+
     color:var(--blue);
+
     font-size:11px;
 }
 
+
 .profile-detail span{
+
     white-space:nowrap;
+
     overflow:hidden;
+
     text-overflow:ellipsis;
 }
 
+
+/* =========================
+   MEDICAL INFORMATION
+========================= */
+
 .profile-medical{
+
     position:relative;
+
     z-index:2;
+
     margin-top:17px;
+
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
+
     gap:9px;
 }
 
+
 .medical-item{
-    border:1px solid #EDF1F5;
+
+    border:
+        1px solid
+        #EDF1F5;
+
     background:#FAFBFD;
+
     border-radius:14px;
+
     padding:9px 10px;
+
     min-width:0;
 }
 
+
 .medical-label{
+
     display:flex;
+
     align-items:center;
+
     gap:6px;
+
     color:#8A95A3;
+
     font-size:10px;
+
     margin-bottom:3px;
 }
 
+
 .medical-label i{
+
     color:var(--blue);
+
     font-size:10px;
 }
 
+
 .medical-value{
+
     font-size:12px;
+
     font-weight:700;
+
     color:#273444;
+
     white-space:nowrap;
+
     overflow:hidden;
+
     text-overflow:ellipsis;
 }
 
+
 .medical-value.empty{
+
     color:#9AA4AF;
+
     font-weight:500;
 }
 
+
 .profile-edit{
+
     position:absolute;
+
     left:17px;
     bottom:16px;
+
     z-index:5;
+
     width:32px;
     height:32px;
+
     border-radius:10px;
+
     background:#F1F7FD;
+
     color:var(--blue);
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     font-size:12px;
 }
 
-/* =========================
-   DATE
-========================= */
 
-.date-card{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:22px;
-    padding:13px 12px;
-    margin-bottom:18px;
-    box-shadow:var(--shadow);
+/* ==================================================
+   INTEGRATED WEEK CALENDAR
+================================================== */
+
+.integrated-calendar{
+
+    position:relative;
+
+    z-index:4;
 }
+
 
 .date-header{
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
+    gap:10px;
+
     margin-bottom:10px;
+
+    padding:0 2px;
 }
+
 
 .date-title{
-    font-size:14px;
+
+    font-size:13px;
+
     font-weight:800;
+
+    color:#fff;
 }
+
 
 .calendar-button{
-    width:34px;
-    height:34px;
+
+    width:35px;
+    height:35px;
+
     border-radius:11px;
-    background:var(--blue-light);
-    color:var(--blue);
-}
 
-.week{
-    display:grid;
-    grid-template-columns:repeat(7,1fr);
-    gap:5px;
-}
+    background:
+        rgba(255,255,255,.17);
 
-.day{
-    text-align:center;
-    padding:7px 2px;
-    border-radius:13px;
-    cursor:pointer;
+    color:#fff;
+
+    border:
+        1px solid
+        rgba(255,255,255,.20);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    backdrop-filter:blur(8px);
+
     transition:.2s;
 }
 
-.day-name{
-    font-size:9px;
-    color:#9AA4AF;
-    margin-bottom:3px;
+
+.calendar-button:active{
+
+    transform:scale(.94);
+
+    background:
+        rgba(255,255,255,.25);
 }
+
+
+.week{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(7,1fr);
+
+    gap:5px;
+}
+
+
+.day{
+
+    text-align:center;
+
+    padding:7px 2px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    color:
+        rgba(255,255,255,.78);
+}
+
+
+.day-name{
+
+    font-size:9px;
+
+    margin-bottom:4px;
+
+    color:
+        rgba(255,255,255,.70);
+}
+
 
 .day-number{
-    width:31px;
-    height:31px;
+
+    width:32px;
+    height:32px;
+
     margin:auto;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     border-radius:50%;
+
     font-size:11px;
+
     font-weight:700;
+
+    color:#fff;
+
+    transition:.2s;
 }
+
+
+/* selected day */
+
+.day.active{
+
+    background:
+        rgba(255,255,255,.12);
+}
+
 
 .day.active .day-number{
-    background:var(--blue);
-    color:#fff;
-    box-shadow:0 5px 12px rgba(25,118,210,.25);
+
+    background:#fff;
+
+    color:var(--blue);
+
+    box-shadow:
+        0 5px 14px
+        rgba(0,0,0,.15);
 }
+
+
+/* today */
 
 .day.today .day-number{
-    border:2px solid var(--blue);
-    color:var(--blue);
-    background:#fff;
+
+    border:
+        1.5px solid
+        rgba(255,255,255,.85);
 }
+
 
 .day.active.today .day-number{
-    background:var(--blue);
-    color:#fff;
+
+    background:#fff;
+
+    color:var(--blue);
+
+    border:0;
 }
 
-/* =========================
+
+/* ==================================================
    SCORE
-========================= */
+================================================== */
 
 .score-card{
+
     position:relative;
+
     overflow:hidden;
-    background:linear-gradient(135deg,#1976D2,#2388E5);
+
+    background:
+        linear-gradient(
+            135deg,
+            #1976D2,
+            #2388E5
+        );
+
     color:#fff;
+
     border-radius:26px;
+
     padding:20px;
+
     margin-bottom:24px;
-    box-shadow:0 12px 30px rgba(25,118,210,.22);
+
+    box-shadow:
+        0 12px 30px
+        rgba(25,118,210,.22);
 }
 
+
 .score-card::before{
+
     content:"";
+
     position:absolute;
+
     width:180px;
     height:180px;
+
     border-radius:50%;
-    background:rgba(255,255,255,.07);
+
+    background:
+        rgba(255,255,255,.07);
+
     left:-70px;
     top:-80px;
 }
 
+
 .score-inner{
+
     position:relative;
+
     z-index:2;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     gap:15px;
 }
 
+
 .score-text{
+
     flex:1;
 }
 
+
 .score-title{
+
     font-size:18px;
+
     font-weight:800;
+
     margin-bottom:5px;
 }
 
+
 .score-subtitle{
+
     font-size:11px;
+
     line-height:1.8;
-    color:rgba(255,255,255,.82);
+
+    color:
+        rgba(255,255,255,.82);
 }
 
+
 .progress-ring{
+
     width:90px;
     height:90px;
+
     position:relative;
+
     flex:none;
 }
 
+
 .progress-ring svg{
+
     width:100%;
     height:100%;
+
     transform:rotate(-90deg);
 }
 
+
 .progress-ring circle{
+
     fill:none;
+
     stroke-width:8;
 }
 
+
 .progress-bg{
-    stroke:rgba(255,255,255,.18);
+
+    stroke:
+        rgba(255,255,255,.18);
 }
 
+
 .progress-value{
+
     stroke:#fff;
+
     stroke-linecap:round;
+
     stroke-dasharray:251;
+
     stroke-dashoffset:251;
+
     transition:1s ease;
 }
 
+
 .progress-number{
+
     position:absolute;
+
     inset:0;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     font-size:19px;
+
     font-weight:800;
 }
+
 
 /* =========================
    SECTION
 ========================= */
 
 .section{
+
     margin-bottom:25px;
 }
 
+
 .section-header{
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     gap:10px;
+
     margin-bottom:12px;
 }
 
+
 .section-title{
+
     display:flex;
+
     align-items:center;
+
     gap:8px;
+
     font-size:16px;
+
     font-weight:800;
 }
 
+
 .section-title i{
+
     color:var(--blue);
+
     font-size:15px;
 }
 
+
 .section-action{
+
     display:flex;
+
     align-items:center;
+
     gap:6px;
+
     background:#EAF5FF;
+
     color:var(--blue);
+
     border-radius:12px;
+
     padding:8px 11px;
+
     font-size:10px;
+
     font-weight:700;
 }
+
 
 /* =========================
    HEALTH SHORTCUTS
 ========================= */
 
 .health-grid{
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:9px;
 }
 
+
 .health-item{
+
     background:#fff;
-    border:1px solid var(--border);
+
+    border:
+        1px solid
+        var(--border);
+
     border-radius:19px;
+
     padding:13px 5px;
+
     text-align:center;
-    box-shadow:0 5px 15px rgba(20,50,80,.035);
+
+    box-shadow:
+        0 5px 15px
+        rgba(20,50,80,.035);
+
     transition:.2s;
 }
 
+
 .health-item:active{
+
     transform:scale(.97);
 }
 
+
 .health-icon{
+
     width:42px;
     height:42px;
+
     margin:auto auto 7px;
+
     border-radius:14px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     font-size:16px;
 }
 
+
 .health-name{
+
     font-size:10px;
+
     font-weight:700;
+
     color:#44505E;
 }
 
+
 .blue-icon{
+
     background:#EAF5FF;
+
     color:#1976D2;
 }
 
+
 .pink-icon{
+
     background:#FFF0F6;
+
     color:#E95D9B;
 }
 
+
 .purple-icon{
+
     background:#F1EDFF;
+
     color:#7C4DFF;
 }
 
+
 .green-icon{
+
     background:#E9F9F5;
+
     color:#16A085;
 }
+
 
 /* =========================
    DAILY CHALLENGES
 ========================= */
 
 .daily-list{
+
     display:grid;
+
     gap:10px;
 }
 
+
 .daily-card{
+
     position:relative;
+
     background:#fff;
-    border:1px solid var(--border);
+
+    border:
+        1px solid
+        var(--border);
+
     border-radius:19px;
+
     padding:13px;
+
     display:flex;
+
     align-items:center;
+
     gap:12px;
-    box-shadow:0 5px 15px rgba(20,50,80,.035);
+
+    box-shadow:
+        0 5px 15px
+        rgba(20,50,80,.035);
+
     overflow:hidden;
 }
 
+
 .daily-card::before{
+
     content:"";
+
     position:absolute;
+
     right:0;
+
     top:0;
     bottom:0;
+
     width:4px;
-    background:var(--card-color,#1976D2);
+
+    background:
+        var(--card-color,#1976D2);
 }
 
+
 .daily-icon{
+
     width:43px;
     height:43px;
+
     border-radius:14px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     flex:none;
-    background:var(--icon-bg,#EAF5FF);
-    color:var(--card-color,#1976D2);
+
+    background:
+        var(--icon-bg,#EAF5FF);
+
+    color:
+        var(--card-color,#1976D2);
+
     font-size:16px;
 }
 
+
 .daily-main{
+
     flex:1;
+
     min-width:0;
 }
 
+
 .daily-name{
+
     font-size:12px;
+
     font-weight:800;
+
     margin-bottom:2px;
 }
 
+
 .daily-value{
+
     font-size:10px;
+
     color:#8A95A3;
 }
 
+
 .daily-progress{
+
     margin-top:7px;
+
     height:5px;
+
     background:#EEF2F6;
+
     border-radius:10px;
+
     overflow:hidden;
 }
 
+
 .daily-progress span{
+
     display:block;
+
     height:100%;
+
     width:0;
-    background:var(--card-color,#1976D2);
+
+    background:
+        var(--card-color,#1976D2);
+
     border-radius:10px;
+
     transition:.5s;
 }
 
+
 .daily-percent{
+
     font-size:12px;
+
     font-weight:800;
-    color:var(--card-color,#1976D2);
+
+    color:
+        var(--card-color,#1976D2);
+
     min-width:35px;
+
     text-align:center;
 }
+
+
+/* =========================
+   EMPTY CHALLENGES
+========================= */
 
 .empty-challenges{
+
     background:#fff;
-    border:1px dashed #CCD8E4;
+
+    border:
+        1px dashed
+        #CCD8E4;
+
     border-radius:20px;
+
     padding:25px 18px;
+
     text-align:center;
 }
 
+
 .empty-icon{
+
     width:48px;
     height:48px;
+
     border-radius:16px;
+
     margin:0 auto 10px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     background:#EAF5FF;
+
     color:var(--blue);
 }
 
+
 .empty-challenges strong{
+
     display:block;
+
     font-size:13px;
+
     margin-bottom:4px;
 }
 
+
 .empty-challenges p{
+
     font-size:10px;
+
     color:#8994A1;
+
     line-height:1.8;
+
     margin-bottom:12px;
 }
 
+
 .empty-button{
+
     display:inline-flex;
+
     align-items:center;
+
     gap:6px;
+
     background:var(--blue);
+
     color:#fff;
+
     padding:9px 14px;
+
     border-radius:12px;
+
     font-size:10px;
+
     font-weight:700;
 }
+
 
 /* =========================
    TOOLS
 ========================= */
 
 .tools-grid{
+
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
+
     gap:10px;
 }
 
+
 .tool-card{
+
     background:#fff;
-    border:1px solid var(--border);
+
+    border:
+        1px solid
+        var(--border);
+
     border-radius:19px;
+
     padding:15px;
+
     display:flex;
+
     align-items:center;
+
     gap:11px;
 }
 
+
 .tool-icon{
+
     width:40px;
     height:40px;
+
     border-radius:13px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     background:#F2F6FA;
+
     color:#536577;
+
     flex:none;
 }
 
+
 .tool-title{
+
     font-size:11px;
+
     font-weight:800;
 }
 
+
 .tool-sub{
+
     font-size:9px;
+
     color:#9AA4AF;
+
     margin-top:2px;
 }
+
 
 /* =========================
    MOTIVATION
 ========================= */
 
 .motivation{
+
     position:relative;
+
     overflow:hidden;
+
     border-radius:22px;
-    background:linear-gradient(135deg,#F1F8FF,#FFFFFF);
-    border:1px solid #DCECFB;
+
+    background:
+        linear-gradient(
+            135deg,
+            #F1F8FF,
+            #FFFFFF
+        );
+
+    border:
+        1px solid
+        #DCECFB;
+
     padding:18px;
+
     display:flex;
+
     align-items:center;
+
     gap:13px;
 }
 
+
 .motivation-icon{
+
     width:43px;
     height:43px;
+
     border-radius:14px;
+
     background:#DCEFFF;
+
     color:var(--blue);
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     flex:none;
 }
 
+
 .motivation-title{
+
     font-size:12px;
+
     font-weight:800;
+
     margin-bottom:3px;
 }
 
+
 .motivation-text{
+
     font-size:10px;
+
     color:#718091;
+
     line-height:1.8;
 }
+
 
 /* =========================
    BOTTOM NAV
 ========================= */
 
 .bottom-nav{
+
     position:fixed;
+
     bottom:0;
+
     left:50%;
+
     transform:translateX(-50%);
+
     width:min(650px,100%);
-    background:rgba(255,255,255,.96);
+
+    background:
+        rgba(255,255,255,.96);
+
     backdrop-filter:blur(15px);
-    border-top:1px solid #E8EDF3;
+
+    border-top:
+        1px solid
+        #E8EDF3;
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    padding:8px 8px max(8px,env(safe-area-inset-bottom));
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    padding:
+        8px
+        8px
+        max(8px,env(safe-area-inset-bottom));
+
     z-index:100;
 }
 
+
 .nav-item{
+
     text-align:center;
+
     color:#9AA4AF;
+
     font-size:9px;
+
     font-weight:600;
+
     padding:5px;
 }
 
+
 .nav-item i{
+
     display:block;
+
     font-size:16px;
+
     margin-bottom:3px;
 }
 
+
 .nav-item.active{
+
     color:var(--blue);
 }
+
 
 /* =========================
    LOADING
 ========================= */
 
 .loading-screen{
+
     position:fixed;
+
     inset:0;
+
     background:#fff;
+
     z-index:9999;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     transition:.3s;
 }
 
+
 .loading-screen.hide{
+
     opacity:0;
+
     pointer-events:none;
 }
 
+
 .loading-box{
+
     text-align:center;
 }
 
+
 .loading-logo{
+
     width:66px;
     height:66px;
+
     border-radius:21px;
+
     background:#EAF5FF;
+
     color:var(--blue);
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     margin:auto auto 12px;
+
     font-size:27px;
 }
 
+
 .loading-box strong{
+
     font-size:17px;
 }
 
+
 .loading-box p{
+
     font-size:10px;
+
     color:#98A3AE;
+
     margin-top:3px;
 }
 
+
 .spinner{
+
     width:22px;
     height:22px;
+
     border:3px solid #DCEBFA;
+
     border-top-color:var(--blue);
+
     border-radius:50%;
+
     animation:spin .8s linear infinite;
+
     margin:15px auto 0;
 }
 
+
 @keyframes spin{
-    to{transform:rotate(360deg);}
+
+    to{
+        transform:rotate(360deg);
+    }
+
 }
+
 
 /* =========================
    MODAL
 ========================= */
 
 .modal{
+
     position:fixed;
+
     inset:0;
-    background:rgba(20,35,50,.45);
+
+    background:
+        rgba(20,35,50,.45);
+
     backdrop-filter:blur(5px);
+
     z-index:500;
+
     display:none;
+
     align-items:flex-end;
+
     justify-content:center;
 }
 
+
 .modal.show{
+
     display:flex;
 }
 
+
 .modal-box{
+
     width:min(650px,100%);
+
     background:#fff;
-    border-radius:25px 25px 0 0;
+
+    border-radius:
+        25px
+        25px
+        0
+        0;
+
     padding:20px;
-    animation:slideUp .25s ease;
+
+    animation:
+        slideUp .25s ease;
 }
 
+
 @keyframes slideUp{
+
     from{
         transform:translateY(100%);
     }
+
     to{
         transform:translateY(0);
     }
+
 }
 
+
 .modal-head{
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     margin-bottom:15px;
 }
 
+
 .modal-head strong{
+
     font-size:15px;
 }
 
+
 .close-modal{
+
     width:34px;
     height:34px;
+
     border-radius:11px;
+
     background:#F2F5F8;
+
     color:#687685;
 }
+
 
 /* =========================
    RESPONSIVE
@@ -920,65 +1705,135 @@ button{
 @media(max-width:400px){
 
     .app{
+
+        padding-left:11px;
+        padding-right:11px;
+    }
+
+    .top-medical{
+
+        margin-left:-11px;
+        margin-right:-11px;
+
         padding-left:11px;
         padding-right:11px;
     }
 
     .profile-card{
+
         padding:17px;
     }
 
     .profile-content{
-        grid-template-columns:68px 1fr;
+
+        grid-template-columns:
+            68px 1fr;
+
         gap:12px;
     }
 
     .profile-avatar-wrap{
+
         width:68px;
         height:68px;
     }
 
     .profile-name{
+
         font-size:18px;
     }
 
     .profile-details{
+
         gap:6px;
     }
 
     .health-grid{
+
         gap:6px;
     }
 
     .health-item{
+
         padding:11px 3px;
     }
 
     .health-icon{
+
         width:38px;
         height:38px;
     }
+
+}
+
+
+/* very small screens */
+
+@media(max-width:350px){
+
+    .profile-details{
+
+        grid-template-columns:1fr;
+    }
+
+    .profile-card{
+
+        min-height:220px;
+    }
+
+    .day-number{
+
+        width:29px;
+        height:29px;
+    }
+
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<!-- Loading -->
+
+<!-- =========================================
+     LOADING
+========================================= -->
+
 <div class="loading-screen" id="loadingScreen">
+
     <div class="loading-box">
+
         <div class="loading-logo">
+
             <i class="fa-solid fa-heart-pulse"></i>
+
         </div>
+
         <strong>صحتي+</strong>
-        <p>مساحتك الصحية الشخصية</p>
+
+        <p>
+            مساحتك الصحية الشخصية
+        </p>
+
         <div class="spinner"></div>
+
     </div>
+
 </div>
 
 
+
 <main class="app">
+
+
+<!-- =================================================
+     BLUE MEDICAL HEADER
+================================================== -->
+
+<section class="top-medical">
+
 
     <!-- ==================================
          PROFILE CARD
@@ -986,98 +1841,149 @@ button{
 
     <section class="profile-card">
 
+
         <div class="profile-content">
 
+
             <!-- User Image -->
+
             <div class="profile-avatar-wrap">
+
                 <img
                     id="profileAvatar"
                     class="profile-avatar"
                     alt="صورة المستخدم">
+
             </div>
 
+
             <!-- User Information -->
+
             <div class="profile-info">
 
-                <div class="profile-name" id="profileName">
+
+                <div
+                    class="profile-name"
+                    id="profileName">
+
                     مستخدم صحتي
+
                 </div>
+
 
                 <div class="profile-details">
 
+
                     <div class="profile-detail">
+
                         <i class="fa-solid fa-venus-mars"></i>
+
                         <span id="profileGender">
                             غير محدد
                         </span>
+
                     </div>
 
+
                     <div class="profile-detail">
+
                         <i class="fa-solid fa-ruler-vertical"></i>
+
                         <span id="profileHeight">
-                            160 سم
+                            غير محدد
                         </span>
+
                     </div>
 
+
                     <div class="profile-detail">
+
                         <i class="fa-solid fa-droplet"></i>
+
                         <span id="profileBlood">
                             غير محددة
                         </span>
+
                     </div>
 
+
                     <div class="profile-detail">
+
                         <i class="fa-solid fa-weight-scale"></i>
+
                         <span id="profileWeight">
-                            50 كغ
+                            غير محدد
                         </span>
+
                     </div>
+
 
                 </div>
 
+
             </div>
+
 
         </div>
 
 
+
         <!-- Medical information -->
+
         <div class="profile-medical">
+
 
             <div class="medical-item">
 
                 <div class="medical-label">
+
                     <i class="fa-solid fa-heart-pulse"></i>
+
                     مؤشر كتلة الجسم
+
                 </div>
+
 
                 <div
                     class="medical-value"
                     id="profileBMI">
+
                     —
+
                 </div>
 
             </div>
+
 
 
             <div class="medical-item">
 
                 <div class="medical-label">
+
                     <i class="fa-solid fa-notes-medical"></i>
+
                     الأمراض المزمنة
+
                 </div>
+
 
                 <div
                     class="medical-value empty"
                     id="profileDiseases">
+
                     لا توجد معلومات
+
                 </div>
 
             </div>
 
+
         </div>
 
 
-        <!-- Edit profile -->
+
+        <!-- Edit -->
+
         <a
             href="profile.html"
             class="profile-edit"
@@ -1087,20 +1993,29 @@ button{
 
         </a>
 
+
     </section>
 
 
+
     <!-- ==================================
-         DATE
+         INTEGRATED CALENDAR
     =================================== -->
 
-    <section class="date-card">
+    <div class="integrated-calendar">
+
 
         <div class="date-header">
 
-            <div class="date-title" id="selectedDateText">
+
+            <div
+                class="date-title"
+                id="selectedDateText">
+
                 اليوم
+
             </div>
+
 
             <button
                 class="calendar-button"
@@ -1111,324 +2026,440 @@ button{
 
             </button>
 
+
         </div>
+
+
 
         <div
             class="week"
             id="week">
+
         </div>
 
-    </section>
+
+    </div>
 
 
-    <!-- ==================================
-         SCORE
-    =================================== -->
+</section>
 
-    <section class="score-card">
 
-        <div class="score-inner">
 
-            <div class="score-text">
+<!-- ==================================
+     SCORE
+=================================== -->
 
-                <div class="score-title">
-                    تقدم تحدياتك
-                </div>
+<section class="score-card">
 
-                <div
-                    class="score-subtitle"
-                    id="scoreSubtitle">
-                    سجّل نشاطاتك اليومية لمتابعة تقدمك.
-                </div>
+
+    <div class="score-inner">
+
+
+        <div class="score-text">
+
+
+            <div class="score-title">
+
+                تقدم تحدياتك
 
             </div>
 
 
-            <div class="progress-ring">
+            <div
+                class="score-subtitle"
+                id="scoreSubtitle">
 
-                <svg viewBox="0 0 100 100">
-
-                    <circle
-                        class="progress-bg"
-                        cx="50"
-                        cy="50"
-                        r="40">
-                    </circle>
-
-                    <circle
-                        class="progress-value"
-                        id="progressCircle"
-                        cx="50"
-                        cy="50"
-                        r="40">
-                    </circle>
-
-                </svg>
-
-                <div
-                    class="progress-number"
-                    id="progressNumber">
-                    0%
-                </div>
+                سجّل نشاطاتك اليومية لمتابعة تقدمك.
 
             </div>
 
+
         </div>
 
-    </section>
 
 
-    <!-- ==================================
-         HEALTH SHORTCUTS
-    =================================== -->
+        <div class="progress-ring">
 
-    <section class="section">
 
-        <div class="section-header">
+            <svg viewBox="0 0 100 100">
 
-            <div class="section-title">
-                <i class="fa-solid fa-heart-pulse"></i>
-                صحتي
+
+                <circle
+                    class="progress-bg"
+                    cx="50"
+                    cy="50"
+                    r="40">
+
+                </circle>
+
+
+                <circle
+                    class="progress-value"
+                    id="progressCircle"
+                    cx="50"
+                    cy="50"
+                    r="40">
+
+                </circle>
+
+
+            </svg>
+
+
+            <div
+                class="progress-number"
+                id="progressNumber">
+
+                0%
+
             </div>
 
-        </div>
-
-
-        <div class="health-grid">
-
-            <a
-                href="health.html"
-                class="health-item">
-
-                <div class="health-icon blue-icon">
-                    <i class="fa-solid fa-chart-line"></i>
-                </div>
-
-                <div class="health-name">
-                    قياساتي
-                </div>
-
-            </a>
-
-
-            <a
-                href="menstrual.html"
-                class="health-item">
-
-                <div class="health-icon pink-icon">
-                    <i class="fa-solid fa-calendar-days"></i>
-                </div>
-
-                <div class="health-name">
-                    دورتي
-                </div>
-
-            </a>
-
-
-            <a
-                href="pregnancy.html"
-                class="health-item">
-
-                <div class="health-icon purple-icon">
-                    <i class="fa-solid fa-baby"></i>
-                </div>
-
-                <div class="health-name">
-                    الحمل
-                </div>
-
-            </a>
-
-
-            <a
-                href="statistics.html"
-                class="health-item">
-
-                <div class="health-icon green-icon">
-                    <i class="fa-solid fa-chart-pie"></i>
-                </div>
-
-                <div class="health-name">
-                    إحصائياتي
-                </div>
-
-            </a>
 
         </div>
 
-    </section>
+
+    </div>
 
 
-    <!-- ==================================
-         DAILY CHALLENGES
-    =================================== -->
+</section>
 
-    <section class="section">
 
-        <div class="section-header">
 
-            <div class="section-title">
-                <i class="fa-solid fa-list-check"></i>
-                متابعتي اليومية
+<!-- ==================================
+     HEALTH SHORTCUTS
+=================================== -->
+
+<section class="section">
+
+
+    <div class="section-header">
+
+
+        <div class="section-title">
+
+            <i class="fa-solid fa-heart-pulse"></i>
+
+            صحتي
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="health-grid">
+
+
+        <a
+            href="health.html"
+            class="health-item">
+
+            <div class="health-icon blue-icon">
+
+                <i class="fa-solid fa-chart-line"></i>
+
             </div>
 
-            <a
-                href="challenges.html"
-                class="section-action">
-
-                <i class="fa-solid fa-sliders"></i>
-                ضبط تحدياتي
-
-            </a>
-
-        </div>
-
-
-        <div
-            class="daily-list"
-            id="dailyList">
-        </div>
-
-    </section>
-
-
-    <!-- ==================================
-         HEALTH TOOLS
-    =================================== -->
-
-    <section class="section">
-
-        <div class="section-header">
-
-            <div class="section-title">
-                <i class="fa-solid fa-toolbox"></i>
-                أدوات صحية
+            <div class="health-name">
+                قياساتي
             </div>
 
-        </div>
+        </a>
 
 
-        <div class="tools-grid">
 
-            <a
-                href="bmi.html"
-                class="tool-card">
+        <a
+            href="menstrual.html"
+            class="health-item">
 
-                <div class="tool-icon">
-                    <i class="fa-solid fa-weight-scale"></i>
-                </div>
+            <div class="health-icon pink-icon">
 
-                <div>
-                    <div class="tool-title">
-                        حاسبة BMI
-                    </div>
+                <i class="fa-solid fa-calendar-days"></i>
 
-                    <div class="tool-sub">
-                        مؤشر كتلة الجسم
-                    </div>
-                </div>
-
-            </a>
-
-
-            <a
-                href="water.html"
-                class="tool-card">
-
-                <div class="tool-icon">
-                    <i class="fa-solid fa-glass-water"></i>
-                </div>
-
-                <div>
-                    <div class="tool-title">
-                        شرب الماء
-                    </div>
-
-                    <div class="tool-sub">
-                        متابعة الترطيب
-                    </div>
-                </div>
-
-            </a>
-
-
-            <a
-                href="sleep.html"
-                class="tool-card">
-
-                <div class="tool-icon">
-                    <i class="fa-solid fa-moon"></i>
-                </div>
-
-                <div>
-                    <div class="tool-title">
-                        النوم
-                    </div>
-
-                    <div class="tool-sub">
-                        متابعة ساعات النوم
-                    </div>
-                </div>
-
-            </a>
-
-
-            <a
-                href="walking.html"
-                class="tool-card">
-
-                <div class="tool-icon">
-                    <i class="fa-solid fa-person-walking"></i>
-                </div>
-
-                <div>
-                    <div class="tool-title">
-                        المشي
-                    </div>
-
-                    <div class="tool-sub">
-                        متابعة النشاط
-                    </div>
-                </div>
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==================================
-         MOTIVATION
-    =================================== -->
-
-    <section class="section">
-
-        <div class="motivation">
-
-            <div class="motivation-icon">
-                <i class="fa-solid fa-seedling"></i>
             </div>
+
+            <div class="health-name">
+                دورتي
+            </div>
+
+        </a>
+
+
+
+        <a
+            href="pregnancy.html"
+            class="health-item">
+
+            <div class="health-icon purple-icon">
+
+                <i class="fa-solid fa-baby"></i>
+
+            </div>
+
+            <div class="health-name">
+                الحمل
+            </div>
+
+        </a>
+
+
+
+        <a
+            href="statistics.html"
+            class="health-item">
+
+            <div class="health-icon green-icon">
+
+                <i class="fa-solid fa-chart-pie"></i>
+
+            </div>
+
+            <div class="health-name">
+                إحصائياتي
+            </div>
+
+        </a>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ==================================
+     DAILY CHALLENGES
+=================================== -->
+
+<section class="section">
+
+
+    <div class="section-header">
+
+
+        <div class="section-title">
+
+            <i class="fa-solid fa-list-check"></i>
+
+            متابعتي اليومية
+
+        </div>
+
+
+        <a
+            href="challenges.html"
+            class="section-action">
+
+            <i class="fa-solid fa-sliders"></i>
+
+            ضبط تحدياتي
+
+        </a>
+
+
+    </div>
+
+
+
+    <div
+        class="daily-list"
+        id="dailyList">
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ==================================
+     HEALTH TOOLS
+=================================== -->
+
+<section class="section">
+
+
+    <div class="section-header">
+
+
+        <div class="section-title">
+
+            <i class="fa-solid fa-toolbox"></i>
+
+            أدوات صحية
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="tools-grid">
+
+
+        <a
+            href="bmi.html"
+            class="tool-card">
+
+            <div class="tool-icon">
+
+                <i class="fa-solid fa-weight-scale"></i>
+
+            </div>
+
 
             <div>
 
-                <div class="motivation-title">
-                    خطوة صغيرة كل يوم
+                <div class="tool-title">
+                    حاسبة BMI
                 </div>
 
-                <div class="motivation-text">
-                    التغيير الصحي لا يحتاج إلى الكمال،
-                    بل إلى الاستمرار.
+                <div class="tool-sub">
+                    مؤشر كتلة الجسم
                 </div>
 
             </div>
 
+        </a>
+
+
+
+        <a
+            href="water.html"
+            class="tool-card">
+
+            <div class="tool-icon">
+
+                <i class="fa-solid fa-glass-water"></i>
+
+            </div>
+
+
+            <div>
+
+                <div class="tool-title">
+                    شرب الماء
+                </div>
+
+                <div class="tool-sub">
+                    متابعة الترطيب
+                </div>
+
+            </div>
+
+        </a>
+
+
+
+        <a
+            href="sleep.html"
+            class="tool-card">
+
+            <div class="tool-icon">
+
+                <i class="fa-solid fa-moon"></i>
+
+            </div>
+
+
+            <div>
+
+                <div class="tool-title">
+                    النوم
+                </div>
+
+                <div class="tool-sub">
+                    متابعة ساعات النوم
+                </div>
+
+            </div>
+
+        </a>
+
+
+
+        <a
+            href="walking.html"
+            class="tool-card">
+
+            <div class="tool-icon">
+
+                <i class="fa-solid fa-person-walking"></i>
+
+            </div>
+
+
+            <div>
+
+                <div class="tool-title">
+                    المشي
+                </div>
+
+                <div class="tool-sub">
+                    متابعة النشاط
+                </div>
+
+            </div>
+
+        </a>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ==================================
+     MOTIVATION
+=================================== -->
+
+<section class="section">
+
+
+    <div class="motivation">
+
+
+        <div class="motivation-icon">
+
+            <i class="fa-solid fa-seedling"></i>
+
         </div>
 
-    </section>
+
+        <div>
+
+
+            <div class="motivation-title">
+
+                خطوة صغيرة كل يوم
+
+            </div>
+
+
+            <div class="motivation-text">
+
+                التغيير الصحي لا يحتاج إلى الكمال،
+                بل إلى الاستمرار.
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
 
 </main>
+
 
 
 <!-- ==================================
@@ -1437,11 +2468,13 @@ button{
 
 <nav class="bottom-nav">
 
+
     <a
         href="dashboard.html"
         class="nav-item active">
 
         <i class="fa-solid fa-house"></i>
+
         الرئيسية
 
     </a>
@@ -1452,6 +2485,7 @@ button{
         class="nav-item">
 
         <i class="fa-solid fa-list-check"></i>
+
         تحدياتي
 
     </a>
@@ -1462,6 +2496,7 @@ button{
         class="nav-item">
 
         <i class="fa-solid fa-heart-pulse"></i>
+
         صحتي
 
     </a>
@@ -1472,11 +2507,14 @@ button{
         class="nav-item">
 
         <i class="fa-solid fa-user"></i>
+
         حسابي
 
     </a>
 
+
 </nav>
+
 
 
 <!-- ==================================
@@ -1487,13 +2525,17 @@ button{
     class="modal"
     id="calendarModal">
 
+
     <div class="modal-box">
 
+
         <div class="modal-head">
+
 
             <strong>
                 اختيار اليوم
             </strong>
+
 
             <button
                 class="close-modal"
@@ -1503,7 +2545,9 @@ button{
 
             </button>
 
+
         </div>
+
 
         <input
             type="date"
@@ -1518,23 +2562,33 @@ button{
                 outline:none;
             ">
 
+
     </div>
+
 
 </div>
 
 
+
 <script type="module">
 
-import { auth, db } from "./js/firebase.js";
+
+import { auth, db }
+from "./js/firebase.js";
+
 
 import {
     onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+}
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
 
 import {
     doc,
     getDoc
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+}
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
 
 
 /* =========================================
@@ -1550,9 +2604,13 @@ let dailyData = {};
 let selectedDate = new Date();
 
 let challengeSettings = {
-    selected: null,
-    targets: {}
+
+    selected:null,
+
+    targets:{}
+
 };
+
 
 
 /* =========================================
@@ -1624,6 +2682,7 @@ const CHALLENGES = [
 ];
 
 
+
 /* =========================================
    DEFAULT AVATAR
 ========================================= */
@@ -1631,13 +2690,15 @@ const CHALLENGES = [
 function createDefaultAvatar(){
 
     const svg = `
+
     <svg xmlns="http://www.w3.org/2000/svg"
          viewBox="0 0 200 200">
 
-        <rect width="200"
-              height="200"
-              rx="100"
-              fill="#EEF5FA"/>
+        <rect
+            width="200"
+            height="200"
+            rx="100"
+            fill="#EEF5FA"/>
 
         <circle
             cx="100"
@@ -1690,7 +2751,9 @@ function createDefaultAvatar(){
 
     return "data:image/svg+xml;charset=UTF-8," +
         encodeURIComponent(svg);
+
 }
+
 
 
 /* =========================================
@@ -1699,18 +2762,23 @@ function createDefaultAvatar(){
 
 function formatDateKey(date){
 
-    const year = date.getFullYear();
+    const year =
+        date.getFullYear();
 
-    const month = String(
-        date.getMonth()+1
-    ).padStart(2,"0");
+    const month =
+        String(
+            date.getMonth()+1
+        ).padStart(2,"0");
 
-    const day = String(
-        date.getDate()
-    ).padStart(2,"0");
+    const day =
+        String(
+            date.getDate()
+        ).padStart(2,"0");
 
     return `${year}-${month}-${day}`;
+
 }
+
 
 
 function arabicDate(date){
@@ -1723,7 +2791,9 @@ function arabicDate(date){
             month:"long"
         }
     ).format(date);
+
 }
+
 
 
 /* =========================================
@@ -1732,25 +2802,41 @@ function arabicDate(date){
 
 function renderWeek(){
 
-    const week = document.getElementById("week");
+    const week =
+        document.getElementById(
+            "week"
+        );
 
     week.innerHTML = "";
 
-    const selectedKey = formatDateKey(selectedDate);
+    const selectedKey =
+        formatDateKey(
+            selectedDate
+        );
 
-    const start = new Date(selectedDate);
 
-    const day = start.getDay();
+    const start =
+        new Date(selectedDate);
+
+
+    const day =
+        start.getDay();
+
 
     const mondayOffset =
-        day === 0 ? -6 : 1 - day;
+        day === 0
+            ? -6
+            : 1 - day;
+
 
     start.setDate(
-        start.getDate()+mondayOffset
+        start.getDate()+
+        mondayOffset
     );
 
 
     const names = [
+
         "الإثنين",
         "الثلاثاء",
         "الأربعاء",
@@ -1758,44 +2844,70 @@ function renderWeek(){
         "الجمعة",
         "السبت",
         "الأحد"
+
     ];
 
 
     for(let i=0;i<7;i++){
 
-        const d = new Date(start);
+        const d =
+            new Date(start);
+
 
         d.setDate(
             start.getDate()+i
         );
 
-        const key = formatDateKey(d);
+
+        const key =
+            formatDateKey(d);
+
 
         const item =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
-        item.className = "day";
+
+        item.className =
+            "day";
+
 
         if(key === selectedKey){
-            item.classList.add("active");
+
+            item.classList.add(
+                "active"
+            );
+
         }
 
 
         if(
-            key === formatDateKey(new Date())
+            key ===
+            formatDateKey(
+                new Date()
+            )
         ){
-            item.classList.add("today");
+
+            item.classList.add(
+                "today"
+            );
+
         }
 
 
         item.innerHTML = `
 
             <div class="day-name">
+
                 ${names[i].slice(0,3)}
+
             </div>
 
             <div class="day-number">
+
                 ${d.getDate()}
+
             </div>
 
         `;
@@ -1824,12 +2936,16 @@ function renderWeek(){
 
     }
 
+
     document.getElementById(
         "selectedDateText"
     ).textContent =
-        arabicDate(selectedDate);
+        arabicDate(
+            selectedDate
+        );
 
 }
+
 
 
 /* =========================================
@@ -1839,10 +2955,16 @@ function renderWeek(){
 function normalizeGender(value){
 
     if(!value){
+
         return "غير محدد";
+
     }
 
-    const v = String(value).toLowerCase();
+
+    const v =
+        String(value)
+        .toLowerCase();
+
 
     if(
         v === "male" ||
@@ -1850,8 +2972,11 @@ function normalizeGender(value){
         v === "homme" ||
         v === "m"
     ){
+
         return "ذكر";
+
     }
+
 
     if(
         v === "female" ||
@@ -1859,28 +2984,43 @@ function normalizeGender(value){
         v === "femme" ||
         v === "f"
     ){
+
         return "أنثى";
+
     }
 
+
     return String(value);
+
 }
+
 
 
 function normalizeBlood(value){
 
     if(!value){
+
         return "غير محددة";
+
     }
 
     return String(value);
+
 }
 
 
-function calculateBMI(weight,height){
 
-    const w = Number(weight);
+function calculateBMI(
+    weight,
+    height
+){
 
-    const h = Number(height);
+    const w =
+        Number(weight);
+
+    const h =
+        Number(height);
+
 
     if(
         !Number.isFinite(w) ||
@@ -1888,40 +3028,63 @@ function calculateBMI(weight,height){
         w <= 0 ||
         h <= 0
     ){
+
         return null;
+
     }
 
-    const meters = h / 100;
 
-    return w / (meters * meters);
+    const meters =
+        h / 100;
+
+
+    return w /
+        (meters * meters);
+
 }
+
 
 
 function bmiStatus(bmi){
 
     if(bmi === null){
+
         return "";
+
     }
+
 
     if(bmi < 18.5){
+
         return "نحافة";
+
     }
+
 
     if(bmi < 25){
+
         return "طبيعي";
+
     }
+
 
     if(bmi < 30){
+
         return "زيادة في الوزن";
+
     }
 
+
     return "سمنة";
+
 }
+
 
 
 function getDiseases(data){
 
     const value =
+
         data.chronicDiseases ??
         data.chronicDisease ??
         data.diseases ??
@@ -1929,34 +3092,51 @@ function getDiseases(data){
         data.chronicConditions ??
         "";
 
+
     if(Array.isArray(value)){
+
         return value.length
             ? value.join("، ")
             : "لا توجد معلومات";
+
     }
 
-    if(
-        value === true
-    ){
+
+    if(value === true){
+
         return "موجودة";
+
     }
+
 
     if(
         !value ||
         String(value).trim() === ""
     ){
+
         return "لا توجد معلومات";
+
     }
 
+
     return String(value);
+
 }
 
 
+
+/* =========================================
+   RENDER PROFILE
+========================================= */
+
 function renderProfile(){
 
-    const data = userData || {};
+    const data =
+        userData || {};
+
 
     const name =
+
         data.name ||
         data.displayName ||
         currentUser?.displayName ||
@@ -1964,6 +3144,7 @@ function renderProfile(){
 
 
     const gender =
+
         normalizeGender(
             data.gender ??
             data.sex
@@ -1971,6 +3152,7 @@ function renderProfile(){
 
 
     const blood =
+
         normalizeBlood(
             data.bloodType ??
             data.bloodGroup ??
@@ -1981,20 +3163,19 @@ function renderProfile(){
     const height =
         Number(
             data.heightCm ??
-            data.height ??
-            160
+            data.height
         );
 
 
     const weight =
         Number(
             data.weightKg ??
-            data.weight ??
-            50
+            data.weight
         );
 
 
     const photo =
+
         data.photoURL ||
         data.photoUrl ||
         data.avatar ||
@@ -2002,40 +3183,54 @@ function renderProfile(){
         createDefaultAvatar();
 
 
+
     document.getElementById(
         "profileName"
-    ).textContent = name;
+    ).textContent =
+        name;
 
 
     document.getElementById(
         "profileGender"
-    ).textContent = gender;
+    ).textContent =
+        gender;
 
 
     document.getElementById(
         "profileBlood"
-    ).textContent = blood;
+    ).textContent =
+        blood;
 
 
     document.getElementById(
         "profileHeight"
     ).textContent =
-        Number.isFinite(height)
+
+        Number.isFinite(height) &&
+        height > 0
+
             ? `${height} سم`
+
             : "غير محدد";
 
 
     document.getElementById(
         "profileWeight"
     ).textContent =
-        Number.isFinite(weight)
+
+        Number.isFinite(weight) &&
+        weight > 0
+
             ? `${weight} كغ`
+
             : "غير محدد";
 
 
     document.getElementById(
         "profileAvatar"
-    ).src = photo;
+    ).src =
+        photo;
+
 
 
     const bmi =
@@ -2048,9 +3243,13 @@ function renderProfile(){
     document.getElementById(
         "profileBMI"
     ).textContent =
-        bmi
+
+        bmi !== null
+
             ? `${bmi.toFixed(1)} — ${bmiStatus(bmi)}`
+
             : "غير متاح";
+
 
 
     const diseaseElement =
@@ -2068,14 +3267,24 @@ function renderProfile(){
 
 
     if(
-        diseases === "لا توجد معلومات"
+        diseases ===
+        "لا توجد معلومات"
     ){
-        diseaseElement.classList.add("empty");
+
+        diseaseElement.classList.add(
+            "empty"
+        );
+
     }else{
-        diseaseElement.classList.remove("empty");
+
+        diseaseElement.classList.remove(
+            "empty"
+        );
+
     }
 
 }
+
 
 
 /* =========================================
@@ -2085,8 +3294,11 @@ function renderProfile(){
 async function loadUser(){
 
     if(!currentUser){
+
         return;
+
     }
+
 
     try{
 
@@ -2096,6 +3308,7 @@ async function loadUser(){
                 "users",
                 currentUser.uid
             );
+
 
         const snap =
             await getDoc(ref);
@@ -2115,12 +3328,14 @@ async function loadUser(){
 
         renderProfile();
 
+
     }catch(error){
 
         console.error(
             "User loading error:",
             error
         );
+
 
         userData = {};
 
@@ -2131,6 +3346,7 @@ async function loadUser(){
 }
 
 
+
 /* =========================================
    LOAD CHALLENGES
 ========================================= */
@@ -2138,7 +3354,9 @@ async function loadUser(){
 async function loadChallenges(){
 
     if(!currentUser){
+
         return;
+
     }
 
 
@@ -2204,7 +3422,8 @@ async function loadChallenges(){
                                 data[item.id] === true
                         )
                         .map(
-                            item => item.id
+                            item =>
+                                item.id
                         );
 
                 }
@@ -2228,6 +3447,7 @@ async function loadChallenges(){
 
         }
 
+
     }catch(error){
 
         console.error(
@@ -2238,18 +3458,14 @@ async function loadChallenges(){
     }
 
 
-    /*
-       إذا لم يضبط المستخدم تحدياته بعد،
-       نظهر جميع التحديات مؤقتاً.
-    */
-
     if(!found){
 
         challengeSettings = {
 
             selected:
                 CHALLENGES.map(
-                    item => item.id
+                    item =>
+                        item.id
                 ),
 
             targets:{}
@@ -2264,8 +3480,9 @@ async function loadChallenges(){
 }
 
 
+
 /* =========================================
-   GET CHALLENGE TARGET
+   GET TARGET
 ========================================= */
 
 function getTarget(challenge){
@@ -2290,7 +3507,9 @@ function getTarget(challenge){
             value > 0 &&
             value <= 24
         ){
+
             value *= 60;
+
         }
 
 
@@ -2304,8 +3523,9 @@ function getTarget(challenge){
 }
 
 
+
 /* =========================================
-   FIND DAILY VALUE
+   DAILY VALUE
 ========================================= */
 
 function getDailyValue(id){
@@ -2352,23 +3572,29 @@ function getDailyValue(id){
                 value > 0 &&
                 value <= 24
             ){
+
                 value *= 60;
+
             }
 
 
             return value;
+
         }
 
 
         case "wake":
 
             return (
+
                 d.wakeUp === true ||
                 d.wakeup === true ||
                 d.wake === true ||
                 d.wakeUpTime ||
                 d.wakeupTime
+
             ) ? 1 : 0;
+
 
 
         case "nutrition":
@@ -2384,11 +3610,13 @@ function getDailyValue(id){
         case "vitamins":
 
             return (
+
                 d.vitaminsTaken === true ||
                 d.vitamins === true ||
                 Number(
                     d.vitaminsCount ?? 0
                 ) > 0
+
             ) ? 1 : 0;
 
 
@@ -2401,8 +3629,9 @@ function getDailyValue(id){
 }
 
 
+
 /* =========================================
-   FORMAT DAILY VALUE
+   FORMAT DAILY
 ========================================= */
 
 function formatDailyValue(
@@ -2414,29 +3643,41 @@ function formatDailyValue(
     switch(challenge.id){
 
         case "water":
+
             return `${value} / ${target} كوب`;
 
+
         case "walking":
+
             return `${value.toLocaleString("ar-DZ")} / ${target.toLocaleString("ar-DZ")} خطوة`;
+
 
         case "sleep":
 
             return `${Math.floor(value/60)}س ${Math.round(value%60)}د / ${Math.floor(target/60)}س`;
 
+
         case "wake":
+
             return value
                 ? "تم تسجيل الاستيقاظ"
                 : "لم يتم التسجيل بعد";
 
+
         case "nutrition":
+
             return `${value} / ${target} وجبات`;
 
+
         case "vitamins":
+
             return value
                 ? "تم التسجيل"
                 : "لم يتم التسجيل بعد";
 
+
         default:
+
             return `${value} / ${target}`;
 
     }
@@ -2444,8 +3685,9 @@ function formatDailyValue(
 }
 
 
+
 /* =========================================
-   CALCULATE PERCENT
+   PERCENT
 ========================================= */
 
 function getPercent(
@@ -2456,7 +3698,9 @@ function getPercent(
 
     if(challenge.id === "wake"){
 
-        return value ? 100 : 0;
+        return value
+            ? 100
+            : 0;
 
     }
 
@@ -2465,7 +3709,9 @@ function getPercent(
         !Number.isFinite(target) ||
         target <= 0
     ){
+
         return 0;
+
     }
 
 
@@ -2477,6 +3723,7 @@ function getPercent(
     );
 
 }
+
 
 
 /* =========================================
@@ -2508,7 +3755,9 @@ function renderDaily(){
             <div class="empty-challenges">
 
                 <div class="empty-icon">
+
                     <i class="fa-solid fa-sliders"></i>
+
                 </div>
 
                 <strong>
@@ -2534,6 +3783,7 @@ function renderDaily(){
 
         `;
 
+
         updateOverallProgress();
 
         return;
@@ -2545,7 +3795,9 @@ function renderDaily(){
         CHALLENGES.filter(
             challenge =>
                 !Array.isArray(selected) ||
-                selected.includes(challenge.id)
+                selected.includes(
+                    challenge.id
+                )
         );
 
 
@@ -2553,7 +3805,9 @@ function renderDaily(){
         challenge => {
 
             const target =
-                getTarget(challenge);
+                getTarget(
+                    challenge
+                );
 
 
             const value =
@@ -2571,7 +3825,9 @@ function renderDaily(){
 
 
             const card =
-                document.createElement("a");
+                document.createElement(
+                    "a"
+                );
 
 
             card.href =
@@ -2610,13 +3866,17 @@ function renderDaily(){
                         ${challenge.name}
                     </div>
 
+
                     <div class="daily-value">
+
                         ${formatDailyValue(
                             challenge,
                             value,
                             target
                         )}
+
                     </div>
+
 
                     <div class="daily-progress">
 
@@ -2630,13 +3890,17 @@ function renderDaily(){
 
 
                 <div class="daily-percent">
+
                     ${percent}%
+
                 </div>
 
             `;
 
 
-            list.appendChild(card);
+            list.appendChild(
+                card
+            );
 
         }
     );
@@ -2645,6 +3909,7 @@ function renderDaily(){
     updateOverallProgress();
 
 }
+
 
 
 /* =========================================
@@ -2673,11 +3938,15 @@ function updateOverallProgress(){
         CHALLENGES.filter(
             challenge =>
                 !Array.isArray(selected) ||
-                selected.includes(challenge.id)
+                selected.includes(
+                    challenge.id
+                )
         );
 
 
-    if(!selectedDefinitions.length){
+    if(
+        !selectedDefinitions.length
+    ){
 
         setProgress(0);
 
@@ -2693,7 +3962,10 @@ function updateOverallProgress(){
         challenge => {
 
             const target =
-                getTarget(challenge);
+                getTarget(
+                    challenge
+                );
+
 
             const value =
                 getDailyValue(
@@ -2719,9 +3991,12 @@ function updateOverallProgress(){
         );
 
 
-    setProgress(average);
+    setProgress(
+        average
+    );
 
 }
+
 
 
 /* =========================================
@@ -2775,17 +4050,23 @@ function setProgress(percent){
         subtitle.textContent =
             "ابدأ بتسجيل تحدياتك اليومية.";
 
-    }else if(percent < 50){
+    }
+
+    else if(percent < 50){
 
         subtitle.textContent =
             "بداية جيدة، واصل تسجيل عاداتك.";
 
-    }else if(percent < 100){
+    }
+
+    else if(percent < 100){
 
         subtitle.textContent =
             "أنت في الطريق الصحيح، استمر.";
 
-    }else{
+    }
+
+    else{
 
         subtitle.textContent =
             "رائع! أكملت جميع تحدياتك اليوم.";
@@ -2795,6 +4076,7 @@ function setProgress(percent){
 }
 
 
+
 /* =========================================
    LOAD DAILY DATA
 ========================================= */
@@ -2802,7 +4084,9 @@ function setProgress(percent){
 async function loadDailyData(){
 
     if(!currentUser){
+
         return;
+
     }
 
 
@@ -2832,7 +4116,9 @@ async function loadDailyData(){
 
     try{
 
-        for(const path of paths){
+        for(
+            const path of paths
+        ){
 
             const ref =
                 doc(
@@ -2859,6 +4145,7 @@ async function loadDailyData(){
 
         }
 
+
     }catch(error){
 
         console.error(
@@ -2874,8 +4161,9 @@ async function loadDailyData(){
 }
 
 
+
 /* =========================================
-   CALENDAR
+   CALENDAR MODAL
 ========================================= */
 
 const calendarModal =
@@ -2888,6 +4176,7 @@ const calendarInput =
     document.getElementById(
         "calendarInput"
     );
+
 
 
 document.getElementById(
@@ -2909,6 +4198,7 @@ document.getElementById(
 );
 
 
+
 document.getElementById(
     "closeCalendar"
 ).addEventListener(
@@ -2923,12 +4213,15 @@ document.getElementById(
 );
 
 
+
 calendarInput.addEventListener(
     "change",
     async ()=>{
 
         if(!calendarInput.value){
+
             return;
+
         }
 
 
@@ -2959,6 +4252,7 @@ calendarInput.addEventListener(
 );
 
 
+
 calendarModal.addEventListener(
     "click",
     event => {
@@ -2978,6 +4272,7 @@ calendarModal.addEventListener(
 );
 
 
+
 /* =========================================
    AUTH
 ========================================= */
@@ -2985,6 +4280,7 @@ calendarModal.addEventListener(
 onAuthStateChanged(
     auth,
     async user => {
+
 
         if(!user){
 
@@ -2996,7 +4292,8 @@ onAuthStateChanged(
         }
 
 
-        currentUser = user;
+        currentUser =
+            user;
 
 
         try{
@@ -3008,6 +4305,7 @@ onAuthStateChanged(
             await loadDailyData();
 
             renderWeek();
+
 
         }catch(error){
 
@@ -3021,14 +4319,19 @@ onAuthStateChanged(
 
         setTimeout(
             ()=>{
+
                 document
                     .getElementById(
                         "loadingScreen"
                     )
-                    .classList.add("hide");
+                    .classList.add(
+                        "hide"
+                    );
+
             },
             250
         );
+
 
     }
 );
@@ -3036,4 +4339,5 @@ onAuthStateChanged(
 </script>
 
 </body>
+
 </html>
