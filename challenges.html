@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<meta name="theme-color" content="#1976D2">
+
+<title>صحتي+ | تحدياتي</title>
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800&display=swap"
+      rel="stylesheet">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+
+    --blue:#1976D2;
+    --blue-dark:#125EA8;
+    --blue-light:#EAF5FF;
+
+    --green:#16A085;
+    --green-light:#E9F9F5;
+
+    --orange:#F39C12;
+    --orange-light:#FFF5E5;
+
+    --purple:#7C4DFF;
+    --purple-light:#F1EDFF;
+
+    --pink:#E95D9B;
+    --pink-light:#FFF0F6;
+
+    --red:#E74C3C;
+    --red-light:#FFF0EE;
+
+    --text:#172333;
+    --muted:#687789;
+
+    --bg:#F4F8FC;
+    --card:#FFFFFF;
+    --border:#DFE8F1;
+
+    --shadow:
+        0 8px 25px rgba(22,73,115,.08);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:"Cairo",sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(25,118,210,.08),
+            transparent 30%
+        ),
+        var(--bg);
+
+    color:var(--text);
+
+    min-height:100vh;
+
+    padding-bottom:100px;
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+}
+
+
+/* =========================================
+   APP
+========================================= */
+
+.app{
+
+    width:100%;
+    max-width:650px;
+
+    margin:auto;
+
+    padding:0 15px 30px;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header{
+
+    position:relative;
+
+    margin:
+        0 -15px 22px;
+
+    padding:
+        22px 18px 25px;
+
+    color:#fff;
+
+    background:
+        radial-gradient(
+            circle at 5% 20%,
+            rgba(255,255,255,.18),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 95% 0%,
+            rgba(130,210,255,.28),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            145deg,
+            #0D5BAE,
+            #1976D2 50%,
+            #42A5F5
+        );
+
+    border-radius:
+        0
+        0
+        30px
+        30px;
+
+    box-shadow:
+        0 14px 35px
+        rgba(25,118,210,.20);
+
+    overflow:hidden;
+}
+
+.header::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.07);
+
+    right:-75px;
+    top:-100px;
+}
+
+.header-content{
+
+    position:relative;
+    z-index:2;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+}
+
+.back-button{
+
+    width:44px;
+    height:44px;
+
+    flex:none;
+
+    border-radius:14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#fff;
+
+    background:
+        rgba(255,255,255,.16);
+
+    border:
+        1px solid
+        rgba(255,255,255,.20);
+
+    font-size:17px;
+
+    transition:.2s;
+}
+
+.back-button:active{
+    transform:scale(.94);
+}
+
+.header-icon{
+
+    width:52px;
+    height:52px;
+
+    border-radius:17px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        rgba(255,255,255,.16);
+
+    border:
+        1px solid
+        rgba(255,255,255,.20);
+
+    font-size:22px;
+
+    flex:none;
+}
+
+.header-title{
+
+    font-size:21px;
+
+    font-weight:800;
+
+    line-height:1.5;
+}
+
+.header-subtitle{
+
+    margin-top:3px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    line-height:1.8;
+
+    color:
+        rgba(255,255,255,.86);
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.intro{
+
+    background:#fff;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:21px;
+
+    padding:17px;
+
+    margin-bottom:18px;
+
+    box-shadow:var(--shadow);
+}
+
+.intro-row{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:12px;
+}
+
+.intro-icon{
+
+    width:43px;
+    height:43px;
+
+    border-radius:14px;
+
+    background:var(--blue-light);
+
+    color:var(--blue);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex:none;
+
+    font-size:17px;
+}
+
+.intro-title{
+
+    font-size:14px;
+
+    font-weight:800;
+
+    margin-bottom:5px;
+}
+
+.intro-text{
+
+    color:#667587;
+
+    font-size:11px;
+
+    font-weight:600;
+
+    line-height:2;
+}
+
+
+/* =========================================
+   SECTION HEADER
+========================================= */
+
+.section-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin:
+        0 2px 12px;
+}
+
+.section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:17px;
+
+    font-weight:800;
+}
+
+.section-title i{
+
+    color:var(--blue);
+
+    font-size:17px;
+}
+
+.selected-count{
+
+    background:var(--blue-light);
+
+    color:var(--blue);
+
+    border-radius:12px;
+
+    padding:7px 11px;
+
+    font-size:11px;
+
+    font-weight:800;
+}
+
+
+/* =========================================
+   CHALLENGE LIST
+========================================= */
+
+.challenge-list{
+
+    display:grid;
+
+    gap:11px;
+}
+
+
+/* =========================================
+   CHALLENGE CARD
+========================================= */
+
+.challenge-card{
+
+    position:relative;
+
+    background:#fff;
+
+    border:
+        2px solid
+        var(--border);
+
+    border-radius:21px;
+
+    padding:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    cursor:pointer;
+
+    transition:
+        transform .18s,
+        border-color .18s,
+        box-shadow .18s;
+
+    box-shadow:
+        0 5px 16px
+        rgba(25,70,110,.035);
+}
+
+.challenge-card:active{
+
+    transform:scale(.985);
+}
+
+.challenge-card.selected{
+
+    border-color:
+        var(--card-color);
+
+    box-shadow:
+        0 8px 22px
+        rgba(25,118,210,.10);
+}
+
+
+/* right selected line */
+
+.challenge-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    right:0;
+    top:14px;
+    bottom:14px;
+
+    width:4px;
+
+    border-radius:8px 0 0 8px;
+
+    background:
+        var(--card-color);
+
+    opacity:0;
+}
+
+.challenge-card.selected::before{
+    opacity:1;
+}
+
+
+/* icon */
+
+.challenge-icon{
+
+    width:52px;
+    height:52px;
+
+    border-radius:16px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex:none;
+
+    background:
+        var(--icon-bg);
+
+    color:
+        var(--card-color);
+
+    font-size:21px;
+}
+
+
+/* content */
+
+.challenge-content{
+
+    flex:1;
+
+    min-width:0;
+}
+
+.challenge-name{
+
+    font-size:14px;
+
+    font-weight:800;
+
+    margin-bottom:3px;
+}
+
+.challenge-description{
+
+    color:#748294;
+
+    font-size:10px;
+
+    font-weight:600;
+
+    line-height:1.8;
+}
+
+.challenge-target{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    margin-top:5px;
+
+    color:#667789;
+
+    font-size:10px;
+
+    font-weight:700;
+}
+
+.challenge-target i{
+    color:var(--card-color);
+}
+
+
+/* =========================================
+   CHECK
+========================================= */
+
+.check-box{
+
+    width:30px;
+    height:30px;
+
+    border-radius:10px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex:none;
+
+    border:
+        2px solid
+        #D4DEE8;
+
+    color:transparent;
+
+    background:#fff;
+
+    transition:.2s;
+}
+
+.challenge-card.selected .check-box{
+
+    border-color:
+        var(--card-color);
+
+    background:
+        var(--card-color);
+
+    color:#fff;
+}
+
+.check-box i{
+    font-size:13px;
+}
+
+
+/* =========================================
+   TARGET SETTINGS
+========================================= */
+
+.target-panel{
+
+    display:none;
+
+    background:#F8FBFE;
+
+    border:
+        1px solid
+        #E1EAF2;
+
+    border-radius:16px;
+
+    margin-top:10px;
+
+    padding:13px;
+}
+
+.challenge-card.selected .target-panel{
+    display:block;
+}
+
+.target-label{
+
+    display:block;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    margin-bottom:7px;
+
+    color:#4D5D6D;
+}
+
+.target-input{
+
+    width:100%;
+
+    border:
+        1px solid
+        #D8E3ED;
+
+    background:#fff;
+
+    border-radius:12px;
+
+    padding:11px;
+
+    outline:none;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    text-align:center;
+}
+
+.target-input:focus{
+
+    border-color:
+        var(--blue);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(25,118,210,.08);
+}
+
+
+/* =========================================
+   SAVE AREA
+========================================= */
+
+.save-area{
+
+    margin-top:20px;
+
+    position:sticky;
+
+    bottom:10px;
+
+    z-index:20;
+}
+
+.save-button{
+
+    width:100%;
+
+    min-height:54px;
+
+    border-radius:17px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:9px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #125EA8,
+            #1976D2,
+            #2388E5
+        );
+
+    box-shadow:
+        0 10px 25px
+        rgba(25,118,210,.25);
+
+    font-size:14px;
+
+    font-weight:800;
+
+    transition:.2s;
+}
+
+.save-button:active{
+    transform:scale(.98);
+}
+
+.save-button:disabled{
+
+    opacity:.65;
+
+    cursor:not-allowed;
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.message{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:86px;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    width:
+        min(90%,430px);
+
+    background:#172333;
+
+    color:#fff;
+
+    padding:13px 16px;
+
+    border-radius:14px;
+
+    text-align:center;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.25s;
+
+    z-index:200;
+}
+
+.message.show{
+
+    opacity:1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+.message.success{
+    background:#13795B;
+}
+
+.message.error{
+    background:#C0392B;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.loading-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:9999;
+
+    background:#fff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    transition:.3s;
+}
+
+.loading-screen.hide{
+
+    opacity:0;
+
+    pointer-events:none;
+}
+
+.loading-box{
+    text-align:center;
+}
+
+.loading-logo{
+
+    width:66px;
+    height:66px;
+
+    margin:
+        0 auto 12px;
+
+    border-radius:21px;
+
+    background:var(--blue-light);
+
+    color:var(--blue);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+}
+
+.loading-box strong{
+
+    font-size:18px;
+
+    font-weight:800;
+}
+
+.loading-box p{
+
+    margin-top:3px;
+
+    color:#8996A5;
+
+    font-size:10px;
+
+    font-weight:600;
+}
+
+.spinner{
+
+    width:24px;
+    height:24px;
+
+    margin:15px auto 0;
+
+    border:
+        3px solid
+        #DDEBFA;
+
+    border-top-color:
+        var(--blue);
+
+    border-radius:50%;
+
+    animation:
+        spin .8s linear infinite;
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+
+/* =========================================
+   BOTTOM NAV
+========================================= */
+
+.bottom-nav{
+
+    position:fixed;
+
+    bottom:0;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(650px,100%);
+
+    background:
+        rgba(255,255,255,.97);
+
+    backdrop-filter:blur(15px);
+
+    border-top:
+        1px solid
+        #E3EAF1;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    padding:
+        8px
+        8px
+        max(8px,env(safe-area-inset-bottom));
+
+    z-index:100;
+}
+
+.nav-item{
+
+    color:#8995A3;
+
+    text-align:center;
+
+    padding:5px;
+
+    font-size:10px;
+
+    font-weight:700;
+}
+
+.nav-item i{
+
+    display:block;
+
+    font-size:18px;
+
+    margin-bottom:4px;
+}
+
+.nav-item.active{
+    color:var(--blue);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:390px){
+
+    .app{
+        padding-left:11px;
+        padding-right:11px;
+    }
+
+    .header{
+
+        margin-left:-11px;
+        margin-right:-11px;
+    }
+
+    .header-title{
+        font-size:19px;
+    }
+
+    .challenge-icon{
+
+        width:48px;
+        height:48px;
+
+        font-size:19px;
+    }
+
+    .challenge-name{
+        font-size:13px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     LOADING
+========================================= -->
+
+<div
+    class="loading-screen"
+    id="loadingScreen">
+
+    <div class="loading-box">
+
+        <div class="loading-logo">
+
+            <i class="fa-solid fa-list-check"></i>
+
+        </div>
+
+        <strong>صحتي+</strong>
+
+        <p>
+            جاري تحميل تحدياتك...
+        </p>
+
+        <div class="spinner"></div>
+
+    </div>
+
+</div>
+
+
+<main class="app">
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="header">
+
+    <div class="header-content">
+
+        <a
+            href="dashboard.html"
+            class="back-button"
+            aria-label="العودة">
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+
+        <div class="header-icon">
+
+            <i class="fa-solid fa-sliders"></i>
+
+        </div>
+
+
+        <div>
+
+            <div class="header-title">
+                تحدياتي اليومية
+            </div>
+
+            <div class="header-subtitle">
+                اختر العادات الصحية التي تريد متابعتها
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     INTRO
+========================================= -->
+
+<section class="intro">
+
+    <div class="intro-row">
+
+        <div class="intro-icon">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+        </div>
+
+        <div>
+
+            <div class="intro-title">
+                خصّص واجهتك الصحية
+            </div>
+
+            <div class="intro-text">
+
+                اختر فقط التحديات التي تريد ظهورها
+                في قسم «متابعتي اليومية» في الصفحة الرئيسية.
+                يمكنك تغيير اختياراتك في أي وقت.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     SECTION HEADER
+========================================= -->
+
+<div class="section-header">
+
+    <div class="section-title">
+
+        <i class="fa-solid fa-check-double"></i>
+
+        التحديات المتاحة
+
+    </div>
+
+
+    <div
+        class="selected-count"
+        id="selectedCount">
+
+        0 محددة
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     CHALLENGES
+========================================= -->
+
+<section
+    class="challenge-list"
+    id="challengeList">
+</section>
+
+
+<!-- =========================================
+     SAVE
+========================================= -->
+
+<div class="save-area">
+
+    <button
+        class="save-button"
+        id="saveButton">
+
+        <i class="fa-solid fa-floppy-disk"></i>
+
+        حفظ إعداداتي
+
+    </button>
+
+</div>
+
+
+</main>
+
+
+<!-- =========================================
+     MESSAGE
+========================================= -->
+
+<div
+    class="message"
+    id="message">
+</div>
+
+
+<!-- =========================================
+     BOTTOM NAV
+========================================= -->
+
+<nav class="bottom-nav">
+
+
+    <a
+        href="dashboard.html"
+        class="nav-item">
+
+        <i class="fa-solid fa-house"></i>
+
+        الرئيسية
+
+    </a>
+
+
+    <a
+        href="challenges.html"
+        class="nav-item active">
+
+        <i class="fa-solid fa-list-check"></i>
+
+        تحدياتي
+
+    </a>
+
+
+    <a
+        href="health.html"
+        class="nav-item">
+
+        <i class="fa-solid fa-heart-pulse"></i>
+
+        صحتي
+
+    </a>
+
+
+    <a
+        href="profile.html"
+        class="nav-item">
+
+        <i class="fa-solid fa-user"></i>
+
+        حسابي
+
+    </a>
+
+
+</nav>
+
+
+<script type="module">
+
+
+/* =========================================
+   FIREBASE
+========================================= */
+
+import {
+    auth,
+    db
+}
+from "./js/firebase.js";
+
+
+import {
+    onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+
+import {
+    doc,
+    getDoc,
+    setDoc,
+    serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+let currentUser = null;
+
+let selectedChallenges = [];
+
+let targets = {};
+
+
+
+/* =========================================
+   CHALLENGE DEFINITIONS
+========================================= */
+
+const CHALLENGES = [
+
+    {
+        id:"water",
+
+        name:"شرب الماء",
+
+        description:
+            "تابع كمية الماء التي تشربها خلال اليوم.",
+
+        target:8,
+
+        unit:"كوب",
+
+        icon:"fa-droplet",
+
+        color:"#2196F3",
+
+        bg:"#EAF5FF",
+
+        link:"water.html"
+    },
+
+
+    {
+        id:"walking",
+
+        name:"المشي",
+
+        description:
+            "تابع عدد خطواتك ونشاطك اليومي.",
+
+        target:5000,
+
+        unit:"خطوة",
+
+        icon:"fa-person-walking",
+
+        color:"#16A085",
+
+        bg:"#E9F9F5",
+
+        link:"walking.html"
+    },
+
+
+    {
+        id:"sleep",
+
+        name:"النوم",
+
+        description:
+            "تابع عدد ساعات نومك وجودة انتظام النوم.",
+
+        target:8,
+
+        unit:"ساعة",
+
+        icon:"fa-moon",
+
+        color:"#7C4DFF",
+
+        bg:"#F1EDFF",
+
+        link:"sleep.html"
+    },
+
+
+    {
+        id:"wake",
+
+        name:"الاستيقاظ",
+
+        description:
+            "سجّل وقت استيقاظك لمتابعة انتظام يومك.",
+
+        target:1,
+
+        unit:"مرة",
+
+        icon:"fa-sun",
+
+        color:"#F39C12",
+
+        bg:"#FFF5E5",
+
+        link:"wake-up.html"
+    },
+
+
+    {
+        id:"nutrition",
+
+        name:"التغذية",
+
+        description:
+            "تابع عدد الوجبات التي سجّلتها خلال اليوم.",
+
+        target:3,
+
+        unit:"وجبات",
+
+        icon:"fa-apple-whole",
+
+        color:"#E95D9B",
+
+        bg:"#FFF0F6",
+
+        link:"nutrition.html"
+    },
+
+
+    {
+        id:"vitamins",
+
+        name:"الفيتامينات",
+
+        description:
+            "سجّل تناول الفيتامينات أو المكملات الخاصة بك.",
+
+        target:1,
+
+        unit:"مرة",
+
+        icon:"fa-capsules",
+
+        color:"#E74C3C",
+
+        bg:"#FFF0EE",
+
+        link:"vitamins.html"
+    }
+
+];
+
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const challengeList =
+    document.getElementById(
+        "challengeList"
+    );
+
+const selectedCount =
+    document.getElementById(
+        "selectedCount"
+    );
+
+const saveButton =
+    document.getElementById(
+        "saveButton"
+    );
+
+const message =
+    document.getElementById(
+        "message"
+    );
+
+const loadingScreen =
+    document.getElementById(
+        "loadingScreen"
+    );
+
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+function showMessage(
+    text,
+    type="success"
+){
+
+    message.textContent =
+        text;
+
+    message.className =
+        "message show " +
+        type;
+
+    setTimeout(
+        ()=>{
+            message.className =
+                "message";
+        },
+        2500
+    );
+
+}
+
+
+
+/* =========================================
+   NORMALIZE SETTINGS
+========================================= */
+
+function normalizeSelected(data){
+
+    let selected =
+
+        data.selected ??
+        data.selectedChallenges ??
+        data.challenges;
+
+
+    if(Array.isArray(selected)){
+
+        return selected.filter(
+            id =>
+                CHALLENGES.some(
+                    item =>
+                        item.id === id
+                )
+        );
+
+    }
+
+
+    const result = [];
+
+
+    CHALLENGES.forEach(
+        challenge => {
+
+            if(
+                data[challenge.id] === true
+            ){
+
+                result.push(
+                    challenge.id
+                );
+
+            }
+
+        }
+    );
+
+
+    return result;
+
+}
+
+
+
+/* =========================================
+   LOAD SETTINGS
+========================================= */
+
+async function loadSettings(){
+
+    if(!currentUser){
+        return;
+    }
+
+
+    try{
+
+        const ref =
+            doc(
+                db,
+                "users",
+                currentUser.uid,
+                "challengeSettings",
+                "main"
+            );
+
+
+        const snap =
+            await getDoc(ref);
+
+
+        if(snap.exists()){
+
+            const data =
+                snap.data() || {};
+
+
+            selectedChallenges =
+                normalizeSelected(data);
+
+
+            targets =
+                data.targets || {};
+
+        }else{
+
+            /*
+             * مهم:
+             * لا نختار أي تحدي افتراضياً.
+             * الواجهة الرئيسية ستبقى فارغة
+             * حتى يختار المريض بنفسه.
+             */
+
+            selectedChallenges = [];
+
+            targets = {};
+
+        }
+
+
+        renderChallenges();
+
+        updateCount();
+
+
+    }catch(error){
+
+        console.error(
+            "Settings loading error:",
+            error
+        );
+
+
+        selectedChallenges = [];
+
+        targets = {};
+
+        renderChallenges();
+
+        updateCount();
+
+        showMessage(
+            "تعذر تحميل إعدادات التحديات",
+            "error"
+        );
+
+    }
+
+}
+
+
+
+/* =========================================
+   GET TARGET
+========================================= */
+
+function getTarget(challenge){
+
+    const custom =
+        targets?.[challenge.id];
+
+
+    if(
+        custom !== undefined &&
+        custom !== null &&
+        custom !== ""
+    ){
+
+        const number =
+            Number(custom);
+
+
+        if(
+            Number.isFinite(number) &&
+            number > 0
+        ){
+
+            return number;
+
+        }
+
+    }
+
+
+    return challenge.target;
+
+}
+
+
+
+/* =========================================
+   FORMAT TARGET
+========================================= */
+
+function formatTarget(
+    challenge
+){
+
+    const value =
+        getTarget(challenge);
+
+
+    if(challenge.id === "sleep"){
+
+        return `${value} ساعات`;
+
+    }
+
+
+    return `${value.toLocaleString("ar-DZ")} ${challenge.unit}`;
+
+}
+
+
+
+/* =========================================
+   RENDER
+========================================= */
+
+function renderChallenges(){
+
+    challengeList.innerHTML = "";
+
+
+    CHALLENGES.forEach(
+        challenge => {
+
+            const isSelected =
+                selectedChallenges.includes(
+                    challenge.id
+                );
+
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "challenge-card" +
+                (
+                    isSelected
+                        ? " selected"
+                        : ""
+                );
+
+
+            card.dataset.id =
+                challenge.id;
+
+
+            card.style.setProperty(
+                "--card-color",
+                challenge.color
+            );
+
+
+            card.style.setProperty(
+                "--icon-bg",
+                challenge.bg
+            );
+
+
+            const targetValue =
+                getTarget(challenge);
+
+
+            let inputValue =
+                targetValue;
+
+
+            card.innerHTML = `
+
+                <div
+                    class="challenge-icon">
+
+                    <i
+                        class="fa-solid ${challenge.icon}">
+                    </i>
+
+                </div>
+
+
+                <div class="challenge-content">
+
+                    <div class="challenge-name">
+
+                        ${challenge.name}
+
+                    </div>
+
+
+                    <div class="challenge-description">
+
+                        ${challenge.description}
+
+                    </div>
+
+
+                    <div class="challenge-target">
+
+                        <i class="fa-solid fa-bullseye"></i>
+
+                        الهدف:
+                        ${formatTarget(challenge)}
+
+                    </div>
+
+
+                    <div class="target-panel">
+
+                        <label
+                            class="target-label">
+
+                            الهدف اليومي
+
+                        </label>
+
+
+                        <input
+                            class="target-input"
+                            type="number"
+                            min="1"
+                            step="1"
+                            value="${inputValue}"
+                            data-target="${challenge.id}"
+                            aria-label="الهدف اليومي">
+
+                    </div>
+
+                </div>
+
+
+                <div class="check-box">
+
+                    <i class="fa-solid fa-check"></i>
+
+                </div>
+
+            `;
+
+
+            card.addEventListener(
+                "click",
+                event => {
+
+                    if(
+                        event.target.closest(
+                            ".target-input"
+                        )
+                    ){
+
+                        return;
+
+                    }
+
+
+                    toggleChallenge(
+                        challenge.id
+                    );
+
+                }
+            );
+
+
+            const input =
+                card.querySelector(
+                    ".target-input"
+                );
+
+
+            input.addEventListener(
+                "input",
+                event => {
+
+                    const value =
+                        Number(
+                            event.target.value
+                        );
+
+
+                    if(
+                        Number.isFinite(value) &&
+                        value > 0
+                    ){
+
+                        targets[
+                            challenge.id
+                        ] = value;
+
+                    }
+
+                }
+            );
+
+
+            challengeList.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================
+   TOGGLE
+========================================= */
+
+function toggleChallenge(id){
+
+    const index =
+        selectedChallenges.indexOf(id);
+
+
+    if(index === -1){
+
+        selectedChallenges.push(id);
+
+    }else{
+
+        selectedChallenges.splice(
+            index,
+            1
+        );
+
+    }
+
+
+    renderChallenges();
+
+    updateCount();
+
+}
+
+
+
+/* =========================================
+   COUNT
+========================================= */
+
+function updateCount(){
+
+    const count =
+        selectedChallenges.length;
+
+
+    selectedCount.textContent =
+        `${count.toLocaleString("ar-DZ")} محددة`;
+
+}
+
+
+
+/* =========================================
+   SAVE
+========================================= */
+
+async function saveSettings(){
+
+    if(!currentUser){
+
+        showMessage(
+            "يجب تسجيل الدخول أولاً",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    saveButton.disabled = true;
+
+
+    const originalHTML =
+        saveButton.innerHTML;
+
+
+    saveButton.innerHTML = `
+
+        <i class="fa-solid fa-spinner fa-spin"></i>
+
+        جاري الحفظ...
+
+    `;
+
+
+    try{
+
+        const cleanTargets = {};
+
+
+        CHALLENGES.forEach(
+            challenge => {
+
+                if(
+                    selectedChallenges.includes(
+                        challenge.id
+                    )
+                ){
+
+                    let value =
+                        Number(
+                            targets?.[
+                                challenge.id
+                            ]
+                        );
+
+
+                    if(
+                        !Number.isFinite(value) ||
+                        value <= 0
+                    ){
+
+                        value =
+                            challenge.target;
+
+                    }
+
+
+                    cleanTargets[
+                        challenge.id
+                    ] = value;
+
+                }
+
+            }
+        );
+
+
+        await setDoc(
+
+            doc(
+                db,
+                "users",
+                currentUser.uid,
+                "challengeSettings",
+                "main"
+            ),
+
+            {
+
+                selected:
+                    selectedChallenges,
+
+                targets:
+                    cleanTargets,
+
+                updatedAt:
+                    serverTimestamp()
+
+            },
+
+            {
+                merge:true
+            }
+
+        );
+
+
+        targets =
+            cleanTargets;
+
+
+        showMessage(
+            selectedChallenges.length
+                ? "تم حفظ تحدياتك بنجاح"
+                : "تم الحفظ، وستبقى متابعتك اليومية فارغة",
+            "success"
+        );
+
+
+        /*
+         * بعد الحفظ نعود للوحة الرئيسية.
+         * إذا لم يختر المستخدم أي تحدٍ،
+         * ستظهر رسالة اختيار التحديات هناك.
+         */
+
+        setTimeout(
+            ()=>{
+
+                window.location.href =
+                    "dashboard.html";
+
+            },
+            900
+        );
+
+
+    }catch(error){
+
+        console.error(
+            "Save settings error:",
+            error
+        );
+
+
+        showMessage(
+            "حدث خطأ أثناء حفظ الإعدادات",
+            "error"
+        );
+
+
+        saveButton.disabled =
+            false;
+
+        saveButton.innerHTML =
+            originalHTML;
+
+    }
+
+}
+
+
+
+/* =========================================
+   SAVE EVENT
+========================================= */
+
+saveButton.addEventListener(
+    "click",
+    saveSettings
+);
+
+
+
+/* =========================================
+   AUTH
+========================================= */
+
+onAuthStateChanged(
+    auth,
+    async user => {
+
+        if(!user){
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        currentUser =
+            user;
+
+
+        await loadSettings();
+
+
+        setTimeout(
+            ()=>{
+
+                loadingScreen.classList.add(
+                    "hide"
+                );
+
+            },
+            250
+        );
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
