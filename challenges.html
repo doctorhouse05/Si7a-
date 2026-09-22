@@ -8,9 +8,9 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<meta name="theme-color" content="#1976D2">
+<meta name="theme-color" content="#F5F5F5">
 
-<title>Si7a+ | تحدياتي</title>
+<title>صحتي+ | تحدياتي</title>
 
 <link rel="preconnect"
       href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
       href="https://fonts.gstatic.com"
       crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800&display=swap"
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&display=swap"
       rel="stylesheet">
 
 <link rel="stylesheet"
@@ -28,9 +28,9 @@
 
 <style>
 
-/* =====================================================
+/* =========================================================
    RESET
-===================================================== */
+========================================================= */
 
 *{
     box-sizing:border-box;
@@ -41,40 +41,45 @@
 
 :root{
 
-    --blue:#1976D2;
-    --blue-dark:#125EA8;
-    --blue-light:#EAF5FF;
+    --black:#111111;
+    --black-soft:#202020;
+
+    --pink:#FE2C55;
+    --pink-soft:#FFF0F3;
+
+    --cyan:#25F4EE;
+
+    --text:#171717;
+    --text-soft:#444;
+    --muted:#7A7A7A;
+
+    --bg:#F5F5F5;
+    --card:#FFFFFF;
+
+    --border:#E5E5E5;
 
     --green:#16A085;
-    --green-light:#E9F9F5;
+    --green-soft:#EAF8F4;
 
-    --orange:#F39C12;
-    --orange-light:#FFF5E5;
+    --purple:#7357D8;
+    --purple-soft:#F1EEFF;
 
-    --purple:#7C4DFF;
-    --purple-light:#F1EDFF;
+    --orange:#E58A00;
+    --orange-soft:#FFF4DF;
 
-    --pink:#E95D9B;
-    --pink-light:#FFF0F6;
+    --blue:#1976D2;
+    --blue-soft:#EDF5FF;
 
-    --red:#E74C3C;
-    --red-light:#FFF0EE;
-
-    --text:#172333;
-    --muted:#687789;
-
-    --bg:#F4F8FC;
-    --card:#FFFFFF;
-    --border:#DFE8F1;
+    --gray-soft:#F4F4F4;
 
     --shadow:
-        0 8px 25px rgba(22,73,115,.08);
+        0 4px 16px rgba(0,0,0,.055);
 }
 
 
-/* =====================================================
-   BODY
-===================================================== */
+/* =========================================================
+   BASE
+========================================================= */
 
 html{
     scroll-behavior:smooth;
@@ -84,23 +89,21 @@ body{
 
     font-family:"Cairo",sans-serif;
 
-    background:
-        radial-gradient(
-            circle at 100% 0%,
-            rgba(25,118,210,.08),
-            transparent 30%
-        ),
-        var(--bg);
+    background:#F5F5F5;
 
     color:var(--text);
 
     min-height:100vh;
 
-    padding-bottom:105px;
-
     font-size:15px;
 
+    font-weight:700;
+
     line-height:1.8;
+
+    -webkit-font-smoothing:antialiased;
+
+    padding-bottom:105px;
 }
 
 button,
@@ -120,151 +123,9 @@ a{
 }
 
 
-/* =====================================================
-   LOADING SCREEN
-===================================================== */
-
-.loading-screen{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:9999;
-
-    background:
-        linear-gradient(
-            145deg,
-            #0D5BAE,
-            #1976D2 52%,
-            #42A5F5
-        );
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    opacity:1;
-
-    transition:
-        opacity .45s ease,
-        visibility .45s ease;
-}
-
-.loading-screen.hide{
-
-    opacity:0;
-
-    visibility:hidden;
-
-    pointer-events:none;
-}
-
-.loading-content{
-
-    width:100%;
-
-    max-width:330px;
-
-    text-align:center;
-
-    color:#fff;
-
-    padding:20px;
-}
-
-.loading-logo{
-
-    width:92px;
-    height:92px;
-
-    margin:0 auto 17px;
-
-    border-radius:29px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    background:
-        rgba(255,255,255,.16);
-
-    border:
-        1px solid
-        rgba(255,255,255,.28);
-
-    box-shadow:
-        0 15px 35px
-        rgba(0,0,0,.14);
-
-    backdrop-filter:blur(12px);
-}
-
-.loading-logo i{
-
-    font-size:43px;
-
-    color:#fff;
-}
-
-.loading-title{
-
-    font-family:"Cairo",sans-serif;
-
-    font-size:31px;
-
-    font-weight:800;
-
-    line-height:1.3;
-
-    letter-spacing:.3px;
-}
-
-.loading-subtitle{
-
-    margin-top:4px;
-
-    font-size:14px;
-
-    font-weight:600;
-
-    color:
-        rgba(255,255,255,.88);
-}
-
-.loading-spinner{
-
-    width:27px;
-    height:27px;
-
-    margin:21px auto 0;
-
-    border:
-        3px solid
-        rgba(255,255,255,.30);
-
-    border-top-color:#fff;
-
-    border-radius:50%;
-
-    animation:
-        spin .8s linear infinite;
-}
-
-@keyframes spin{
-
-    to{
-        transform:rotate(360deg);
-    }
-
-}
-
-
-/* =====================================================
+/* =========================================================
    APP
-===================================================== */
+========================================================= */
 
 .app{
 
@@ -274,25 +135,44 @@ a{
 
     margin:auto;
 
-    padding:0 15px 30px;
+    padding:
+        0
+        15px
+        30px;
 }
 
 
-/* =====================================================
-   TOP APP BAR
-===================================================== */
+/* =========================================================
+   TOP AREA
+========================================================= */
 
-.app-bar{
+.top-area{
 
     position:relative;
 
-    margin:
-        0 -15px 18px;
-
-    min-height:74px;
+    margin-left:-15px;
+    margin-right:-15px;
 
     padding:
-        13px 17px;
+        14px
+        15px
+        18px;
+
+    background:#F5F5F5;
+
+    border-bottom:
+        1px solid
+        #E8E8E8;
+
+    margin-bottom:18px;
+}
+
+
+/* =========================================================
+   TOP HEADER
+========================================================= */
+
+.page-header{
 
     display:flex;
 
@@ -300,177 +180,30 @@ a{
 
     justify-content:space-between;
 
-    color:#fff;
+    gap:10px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #0D5BAE,
-            #1976D2 55%,
-            #42A5F5
-        );
-
-    border-radius:
-        0
-        0
-        24px
-        24px;
-
-    box-shadow:
-        0 9px 25px
-        rgba(25,118,210,.18);
-
-    overflow:hidden;
+    margin-bottom:13px;
 }
 
-.app-bar::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:150px;
-    height:150px;
-
-    border-radius:50%;
-
-    background:
-        rgba(255,255,255,.07);
-
-    left:-60px;
-    top:-85px;
-}
-
-.app-brand{
-
-    position:relative;
-
-    z-index:2;
+.page-heading{
 
     display:flex;
 
     align-items:center;
 
-    gap:11px;
+    gap:10px;
 }
 
-.app-brand-icon{
+.page-heading-icon{
 
-    width:47px;
-    height:47px;
-
-    border-radius:15px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    background:
-        rgba(255,255,255,.16);
-
-    border:
-        1px solid
-        rgba(255,255,255,.24);
-
-    font-size:21px;
-
-    flex:none;
-}
-
-.app-brand-text{
-
-    line-height:1.35;
-}
-
-.app-brand-name{
-
-    font-family:Arial,sans-serif;
-
-    direction:ltr;
-
-    font-size:22px;
-
-    font-weight:800;
-
-    letter-spacing:.4px;
-}
-
-.app-brand-title{
-
-    font-size:11px;
-
-    font-weight:600;
-
-    color:
-        rgba(255,255,255,.84);
-}
-
-.app-bar-page{
-
-    position:relative;
-
-    z-index:2;
-
-    font-size:13px;
-
-    font-weight:800;
-
-    color:
-        rgba(255,255,255,.94);
-
-    background:
-        rgba(255,255,255,.13);
-
-    padding:
-        7px 11px;
-
-    border-radius:11px;
-}
-
-
-/* =====================================================
-   INTRO
-===================================================== */
-
-.intro{
-
-    background:#fff;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:21px;
-
-    padding:17px;
-
-    margin-bottom:19px;
-
-    box-shadow:var(--shadow);
-}
-
-.intro-row{
-
-    display:flex;
-
-    align-items:flex-start;
-
-    gap:12px;
-}
-
-.intro-icon{
-
-    width:44px;
-    height:44px;
-
-    min-width:44px;
+    width:43px;
+    height:43px;
 
     border-radius:14px;
 
-    background:var(--blue-light);
+    background:#111;
 
-    color:var(--blue);
+    color:#fff;
 
     display:flex;
 
@@ -478,34 +211,162 @@ a{
     justify-content:center;
 
     font-size:18px;
+
+    box-shadow:
+        3px 3px 0 #25F4EE,
+        -3px -3px 0 #FE2C55;
+}
+
+.page-heading-text{
+
+    line-height:1.3;
+}
+
+.page-heading-title{
+
+    font-size:20px;
+
+    font-weight:900;
+
+    color:#111;
+}
+
+.page-heading-subtitle{
+
+    font-size:11px;
+
+    color:#777;
+
+    font-weight:800;
+}
+
+.selected-count{
+
+    background:#111;
+
+    color:#fff;
+
+    padding:
+        8px
+        11px;
+
+    border-radius:12px;
+
+    font-size:11px;
+
+    font-weight:900;
+
+    white-space:nowrap;
+}
+
+
+/* =========================================================
+   INTRO CARD
+========================================================= */
+
+.intro-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#fff;
+
+    border:
+        1px solid
+        #E4E4E4;
+
+    border-radius:20px;
+
+    padding:15px;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0,0,0,.05);
+
+    margin-bottom:18px;
+}
+
+.intro-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    right:0;
+
+    width:100%;
+    height:4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #25F4EE 0%,
+            #25F4EE 42%,
+            #FE2C55 58%,
+            #FE2C55 100%
+        );
+}
+
+.intro-content{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding-top:3px;
+}
+
+.intro-icon{
+
+    width:45px;
+    height:45px;
+
+    flex:none;
+
+    border-radius:14px;
+
+    background:#FFF0F3;
+
+    color:#FE2C55;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:19px;
 }
 
 .intro-title{
 
-    font-size:16px;
+    font-size:15px;
 
-    font-weight:800;
+    font-weight:900;
 
-    margin-bottom:5px;
+    color:#171717;
 
-    color:#172333;
+    margin-bottom:2px;
 }
 
 .intro-text{
 
-    color:#667587;
+    font-size:12px;
 
-    font-size:13px;
+    color:#777;
 
-    font-weight:600;
+    font-weight:700;
 
-    line-height:1.9;
+    line-height:1.8;
 }
 
 
-/* =====================================================
+/* =========================================================
    SECTION HEADER
-===================================================== */
+========================================================= */
 
 .section-header{
 
@@ -517,8 +378,7 @@ a{
 
     gap:10px;
 
-    margin:
-        0 2px 12px;
+    margin-bottom:12px;
 }
 
 .section-title{
@@ -531,89 +391,65 @@ a{
 
     font-size:18px;
 
-    font-weight:800;
+    font-weight:900;
+
+    color:#171717;
 }
 
 .section-title i{
 
-    color:var(--blue);
+    color:#FE2C55;
 
-    font-size:18px;
-}
-
-.selected-count{
-
-    background:var(--blue-light);
-
-    color:var(--blue);
-
-    border-radius:12px;
-
-    padding:7px 11px;
-
-    font-size:12px;
-
-    font-weight:800;
+    font-size:17px;
 }
 
 
-/* =====================================================
+/* =========================================================
    CHALLENGE LIST
-===================================================== */
+========================================================= */
 
 .challenge-list{
 
     display:grid;
 
-    gap:12px;
+    gap:10px;
 }
 
 
-/* =====================================================
+/* =========================================================
    CHALLENGE CARD
-===================================================== */
+========================================================= */
 
 .challenge-card{
 
     position:relative;
 
+    overflow:hidden;
+
     background:#fff;
 
     border:
-        2px solid
-        var(--border);
+        1px solid
+        #E5E5E5;
 
-    border-radius:21px;
+    border-radius:18px;
 
-    padding:15px;
+    padding:13px;
+
+    box-shadow:
+        var(--shadow);
 
     cursor:pointer;
 
     transition:
-        transform .18s,
-        border-color .18s,
-        box-shadow .18s;
-
-    box-shadow:
-        0 5px 16px
-        rgba(25,70,110,.035);
-
-    overflow:hidden;
+        transform .15s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
 }
 
 .challenge-card:active{
 
-    transform:scale(.987);
-}
-
-.challenge-card.selected{
-
-    border-color:
-        var(--card-color);
-
-    box-shadow:
-        0 8px 24px
-        rgba(25,118,210,.10);
+    transform:scale(.985);
 }
 
 .challenge-card::before{
@@ -623,19 +459,25 @@ a{
     position:absolute;
 
     right:0;
-
-    top:15px;
-    bottom:15px;
+    top:0;
+    bottom:0;
 
     width:4px;
-
-    border-radius:
-        8px 0 0 8px;
 
     background:
         var(--card-color);
 
     opacity:0;
+}
+
+.challenge-card.selected{
+
+    border-color:
+        var(--card-color);
+
+    box-shadow:
+        0 6px 18px
+        rgba(0,0,0,.07);
 }
 
 .challenge-card.selected::before{
@@ -644,9 +486,9 @@ a{
 }
 
 
-/* =====================================================
+/* =========================================================
    CARD TOP
-===================================================== */
+========================================================= */
 
 .challenge-top{
 
@@ -654,17 +496,17 @@ a{
 
     align-items:center;
 
-    gap:13px;
+    gap:11px;
 }
 
 .challenge-icon{
 
-    width:53px;
-    height:53px;
+    width:49px;
+    height:49px;
 
-    min-width:53px;
+    min-width:49px;
 
-    border-radius:16px;
+    border-radius:15px;
 
     display:flex;
 
@@ -677,7 +519,7 @@ a{
     color:
         var(--card-color);
 
-    font-size:22px;
+    font-size:20px;
 }
 
 .challenge-content{
@@ -689,32 +531,39 @@ a{
 
 .challenge-name{
 
-    font-size:16px;
+    color:#1B1B1B;
 
-    font-weight:800;
+    font-size:15px;
+
+    font-weight:900;
 
     line-height:1.5;
 
-    color:#172333;
+    margin-bottom:1px;
 }
 
 .challenge-description{
 
-    color:#748294;
+    color:#777;
 
-    font-size:12px;
+    font-size:11px;
 
-    font-weight:600;
+    font-weight:700;
 
-    line-height:1.8;
+    line-height:1.7;
 }
+
+
+/* =========================================================
+   CHECK
+========================================================= */
 
 .check-box{
 
-    width:32px;
-    height:32px;
+    width:31px;
+    height:31px;
 
-    min-width:32px;
+    min-width:31px;
 
     border-radius:10px;
 
@@ -725,7 +574,7 @@ a{
 
     border:
         2px solid
-        #D4DEE8;
+        #D8D8D8;
 
     color:transparent;
 
@@ -748,27 +597,27 @@ a{
 
 .check-box i{
 
-    font-size:14px;
+    font-size:13px;
 }
 
 
-/* =====================================================
-   TARGET ROW
-===================================================== */
+/* =========================================================
+   TARGET INFO
+========================================================= */
 
 .target-info{
 
-    margin-top:12px;
+    margin-top:10px;
 
-    padding:10px 11px;
+    padding:9px 10px;
 
     border-radius:13px;
 
-    background:#F8FBFE;
+    background:#FAFAFA;
 
     border:
         1px solid
-        #E5EDF4;
+        #E8E8E8;
 
     display:flex;
 
@@ -787,11 +636,11 @@ a{
 
     gap:6px;
 
-    font-size:12px;
+    color:#777;
 
-    font-weight:700;
+    font-size:11px;
 
-    color:#667789;
+    font-weight:800;
 }
 
 .target-label i{
@@ -802,36 +651,36 @@ a{
 
 .target-default{
 
-    font-size:12px;
-
-    font-weight:800;
-
     color:
         var(--card-color);
+
+    font-size:11px;
+
+    font-weight:900;
 
     text-align:left;
 }
 
 
-/* =====================================================
+/* =========================================================
    TARGET PANEL
-===================================================== */
+========================================================= */
 
 .target-panel{
 
     display:none;
 
-    margin-top:10px;
+    margin-top:9px;
 
-    background:#F8FBFE;
+    padding:12px;
+
+    border-radius:14px;
+
+    background:#F8F8F8;
 
     border:
         1px solid
-        #E1EAF2;
-
-    border-radius:16px;
-
-    padding:13px;
+        #E5E5E5;
 }
 
 .challenge-card.selected
@@ -844,44 +693,44 @@ a{
 
     display:block;
 
-    font-size:12px;
+    color:#555;
 
-    font-weight:800;
+    font-size:11px;
+
+    font-weight:900;
 
     margin-bottom:7px;
-
-    color:#4D5D6D;
 }
 
 
-/* =====================================================
+/* =========================================================
    INPUTS
-===================================================== */
+========================================================= */
 
 .target-input,
 .time-input{
 
     width:100%;
 
-    min-height:46px;
+    min-height:45px;
 
     border:
         1px solid
-        #D8E3ED;
+        #D9D9D9;
 
     background:#fff;
 
     border-radius:12px;
 
-    padding:10px;
+    padding:9px 10px;
 
     outline:none;
 
-    font-size:15px;
+    color:#171717;
 
-    font-weight:700;
+    font-size:14px;
 
-    color:var(--text);
+    font-weight:800;
 
     text-align:center;
 }
@@ -889,18 +738,17 @@ a{
 .target-input:focus,
 .time-input:focus{
 
-    border-color:
-        var(--blue);
+    border-color:#111;
 
     box-shadow:
         0 0 0 3px
-        rgba(25,118,210,.08);
+        rgba(0,0,0,.06);
 }
 
 
-/* =====================================================
-   SLEEP TIMES
-===================================================== */
+/* =========================================================
+   TIME
+========================================================= */
 
 .time-row{
 
@@ -909,7 +757,7 @@ a{
     grid-template-columns:
         1fr 1fr;
 
-    gap:10px;
+    gap:9px;
 }
 
 .time-box{
@@ -918,11 +766,11 @@ a{
 
     border:
         1px solid
-        #DDE6EF;
+        #E3E3E3;
 
-    border-radius:14px;
+    border-radius:13px;
 
-    padding:9px;
+    padding:8px;
 }
 
 .time-box-label{
@@ -937,31 +785,31 @@ a{
 
     margin-bottom:5px;
 
-    color:#596A7C;
+    color:#666;
 
-    font-size:11px;
+    font-size:10px;
 
-    font-weight:800;
+    font-weight:900;
 }
 
 .time-box-label i{
 
-    color:var(--purple);
+    color:#7357D8;
 }
 
 .time-input{
 
     direction:ltr;
 
-    font-size:17px;
+    font-size:16px;
 
     letter-spacing:1px;
 }
 
 
-/* =====================================================
-   YES / NO OPTIONS
-===================================================== */
+/* =========================================================
+   OPTIONS
+========================================================= */
 
 .option-row{
 
@@ -970,36 +818,35 @@ a{
     grid-template-columns:
         1fr 1fr;
 
-    gap:9px;
+    gap:8px;
 }
 
 .option{
 
     position:relative;
 
-    min-height:50px;
+    min-height:47px;
 
     border:
         1px solid
-        #DCE5ED;
+        #DFDFDF;
 
     background:#fff;
 
-    border-radius:13px;
+    border-radius:12px;
 
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
-    gap:7px;
+    gap:6px;
 
-    font-size:13px;
+    color:#666;
 
-    font-weight:800;
+    font-size:12px;
 
-    color:#5F7082;
+    font-weight:900;
 
     transition:.2s;
 }
@@ -1027,39 +874,17 @@ a{
 
 .option i{
 
-    font-size:16px;
+    font-size:15px;
 }
 
 
-/* =====================================================
-   SUGAR
-===================================================== */
-
-.sugar-card{
-
-    --card-color:#E95D9B;
-    --icon-bg:#FFF0F6;
-}
-
-
-/* =====================================================
-   SMOKING
-===================================================== */
-
-.smoking-card{
-
-    --card-color:#607D8B;
-    --icon-bg:#EEF2F4;
-}
-
-
-/* =====================================================
+/* =========================================================
    SAVE AREA
-===================================================== */
+========================================================= */
 
 .save-area{
 
-    margin-top:21px;
+    margin-top:18px;
 
     position:sticky;
 
@@ -1072,37 +897,37 @@ a{
 
     width:100%;
 
-    min-height:56px;
+    min-height:55px;
 
-    border-radius:17px;
+    border-radius:16px;
 
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
-    gap:9px;
+    gap:8px;
 
     color:#fff;
 
-    background:
-        linear-gradient(
-            135deg,
-            #125EA8,
-            #1976D2,
-            #2388E5
-        );
+    background:#111;
 
     box-shadow:
-        0 10px 25px
-        rgba(25,118,210,.25);
+        0 7px 18px
+        rgba(0,0,0,.16);
 
-    font-size:15px;
+    font-size:14px;
 
-    font-weight:800;
+    font-weight:900;
 
     transition:.2s;
+}
+
+.save-button::before{
+
+    content:"";
+
+    position:absolute;
 }
 
 .save-button:active{
@@ -1112,15 +937,15 @@ a{
 
 .save-button:disabled{
 
-    opacity:.65;
+    opacity:.6;
 
     cursor:not-allowed;
 }
 
 
-/* =====================================================
+/* =========================================================
    MESSAGE
-===================================================== */
+========================================================= */
 
 .message{
 
@@ -1134,14 +959,13 @@ a{
         translateX(-50%)
         translateY(20px);
 
-    width:
-        min(90%,430px);
+    width:min(90%,430px);
 
-    background:#172333;
+    background:#111;
 
     color:#fff;
 
-    padding:13px 16px;
+    padding:12px 15px;
 
     border-radius:14px;
 
@@ -1149,7 +973,7 @@ a{
 
     font-size:12px;
 
-    font-weight:700;
+    font-weight:800;
 
     opacity:0;
 
@@ -1157,7 +981,7 @@ a{
 
     transition:.25s;
 
-    z-index:200;
+    z-index:300;
 }
 
 .message.show{
@@ -1170,17 +994,19 @@ a{
 }
 
 .message.success{
-    background:#13795B;
+
+    background:#111;
 }
 
 .message.error{
-    background:#C0392B;
+
+    background:#B42318;
 }
 
 
-/* =====================================================
+/* =========================================================
    BOTTOM NAV
-===================================================== */
+========================================================= */
 
 .bottom-nav{
 
@@ -1193,17 +1019,16 @@ a{
     transform:
         translateX(-50%);
 
-    width:
-        min(650px,100%);
+    width:min(650px,100%);
 
     background:
-        rgba(255,255,255,.97);
+        rgba(255,255,255,.98);
 
     backdrop-filter:blur(15px);
 
     border-top:
         1px solid
-        #E3EAF1;
+        #E1E1E1;
 
     display:grid;
 
@@ -1211,7 +1036,7 @@ a{
         repeat(4,1fr);
 
     padding:
-        8px
+        7px
         8px
         max(
             8px,
@@ -1223,79 +1048,219 @@ a{
 
 .nav-item{
 
-    color:#8995A3;
-
     text-align:center;
+
+    color:#999;
+
+    font-size:12px;
+
+    font-weight:800;
 
     padding:5px;
 
-    font-size:11px;
+    border-radius:13px;
 
-    font-weight:700;
-
-    border-radius:15px;
+    transition:.2s;
 }
 
 .nav-item i{
 
     display:block;
 
-    font-size:19px;
+    font-size:20px;
 
     margin-bottom:4px;
 }
 
 .nav-item.active{
 
-    color:var(--blue);
+    color:#111;
 
-    background:#EDF6FF;
+    font-weight:900;
 
-    font-weight:800;
+    background:#F4F4F4;
+}
+
+.nav-item.active i{
+
+    color:#FE2C55;
 }
 
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+/* =========================================================
+   LOADING
+========================================================= */
 
-@media(max-width:390px){
+.loading-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#fff;
+
+    z-index:9999;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    transition:.3s;
+}
+
+.loading-screen.hide{
+
+    opacity:0;
+
+    pointer-events:none;
+}
+
+.loading-box{
+
+    text-align:center;
+}
+
+.loading-logo{
+
+    width:72px;
+    height:72px;
+
+    border-radius:22px;
+
+    background:#111;
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    margin:auto auto 12px;
+
+    font-size:30px;
+
+    box-shadow:
+        4px 4px 0 #25F4EE,
+        -4px -4px 0 #FE2C55;
+}
+
+.loading-box strong{
+
+    display:block;
+
+    font-size:22px;
+
+    font-weight:900;
+}
+
+.loading-box p{
+
+    font-size:13px;
+
+    color:#777;
+
+    font-weight:700;
+
+    margin-top:3px;
+}
+
+.spinner{
+
+    width:25px;
+    height:25px;
+
+    border:3px solid #E8E8E8;
+
+    border-top-color:#FE2C55;
+
+    border-radius:50%;
+
+    animation:
+        spin .8s linear infinite;
+
+    margin:15px auto 0;
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   SMALL SCREENS
+========================================================= */
+
+@media(max-width:400px){
 
     .app{
+
         padding-left:11px;
         padding-right:11px;
     }
 
-    .app-bar{
+    .top-area{
+
         margin-left:-11px;
         margin-right:-11px;
+
+        padding-left:11px;
+        padding-right:11px;
     }
 
-    .app-brand-name{
-        font-size:20px;
+    .page-heading-title{
+
+        font-size:18px;
     }
 
-    .app-bar-page{
-        font-size:11px;
+    .page-heading-icon{
+
+        width:40px;
+        height:40px;
+
+        font-size:17px;
     }
 
-    .challenge-card{
+    .selected-count{
+
+        font-size:10px;
+
+        padding:
+            7px 9px;
+    }
+
+    .intro-card{
+
         padding:13px;
     }
 
+    .challenge-card{
+
+        padding:11px;
+    }
+
     .challenge-icon{
-        width:48px;
-        height:48px;
-        min-width:48px;
-        font-size:20px;
+
+        width:45px;
+        height:45px;
+
+        min-width:45px;
+
+        font-size:18px;
     }
 
     .challenge-name{
-        font-size:15px;
+
+        font-size:14px;
     }
 
     .challenge-description{
-        font-size:11px;
+
+        font-size:10px;
     }
 
 }
@@ -1308,15 +1273,15 @@ a{
 <body>
 
 
-<!-- =====================================================
-     LOADING SCREEN
-===================================================== -->
+<!-- =========================================================
+     LOADING
+========================================================= -->
 
 <div
     class="loading-screen"
     id="loadingScreen">
 
-    <div class="loading-content">
+    <div class="loading-box">
 
         <div class="loading-logo">
 
@@ -1324,139 +1289,151 @@ a{
 
         </div>
 
-        <div class="loading-title">
-            Si7a+
-        </div>
+        <strong>Si7a+</strong>
 
-        <div class="loading-subtitle">
-            صحتي+ — رفيقك لمتابعة صحتك
-        </div>
+        <p>
+            صحتي+ — مساحتك الصحية الشخصية
+        </p>
 
-        <div class="loading-spinner"></div>
+        <div class="spinner"></div>
 
     </div>
 
 </div>
-
 
 
 <main class="app">
 
 
-<!-- =====================================================
-     APP BAR
-===================================================== -->
+<!-- =========================================================
+     TOP AREA
+========================================================= -->
 
-<header class="app-bar">
+<section class="top-area">
 
-    <div class="app-brand">
 
-        <div class="app-brand-icon">
+    <!-- HEADER -->
 
-            <i class="fa-solid fa-heart-pulse"></i>
+    <div class="page-header">
+
+
+        <div class="page-heading">
+
+
+            <div class="page-heading-icon">
+
+                <i class="fa-solid fa-list-check"></i>
+
+            </div>
+
+
+            <div class="page-heading-text">
+
+                <div class="page-heading-title">
+                    تحدياتي
+                </div>
+
+                <div class="page-heading-subtitle">
+                    خصّص متابعتك اليومية
+                </div>
+
+            </div>
+
 
         </div>
 
-        <div class="app-brand-text">
 
-            <div class="app-brand-name">
-                Si7a+
-            </div>
+        <div
+            class="selected-count"
+            id="selectedCount">
 
-            <div class="app-brand-title">
-                صحتي+
-            </div>
+            0 محددة
 
         </div>
+
 
     </div>
 
 
-    <div class="app-bar-page">
-        تحدياتي
-    </div>
+    <!-- INTRO -->
 
-</header>
+    <div class="intro-card">
 
 
+        <div class="intro-content">
 
-<!-- =====================================================
-     INTRO
-===================================================== -->
 
-<section class="intro">
+            <div class="intro-icon">
 
-    <div class="intro-row">
-
-        <div class="intro-icon">
-
-            <i class="fa-solid fa-sliders"></i>
-
-        </div>
-
-        <div>
-
-            <div class="intro-title">
-                خصّص متابعتك اليومية
-            </div>
-
-            <div class="intro-text">
-
-                اختر العادات والمؤشرات التي تريد ظهورها
-                في الصفحة الرئيسية. يمكنك تعديل اختياراتك
-                وأهدافك في أي وقت.
+                <i class="fa-solid fa-sliders"></i>
 
             </div>
 
+
+            <div>
+
+                <div class="intro-title">
+                    اختر ما تريد متابعته
+                </div>
+
+
+                <div class="intro-text">
+
+                    حدد العادات والمؤشرات التي تريد
+                    ظهورها في صفحتك الرئيسية.
+                    يمكنك تعديل أهدافك في أي وقت.
+
+                </div>
+
+            </div>
+
+
         </div>
 
+
     </div>
+
 
 </section>
 
 
 
-<!-- =====================================================
-     SECTION
-===================================================== -->
+<!-- =========================================================
+     CHALLENGES
+========================================================= -->
 
-<div class="section-header">
+<section>
 
-    <div class="section-title">
 
-        <i class="fa-solid fa-list-check"></i>
+    <div class="section-header">
 
-        التحديات المتاحة
+
+        <div class="section-title">
+
+            <i class="fa-solid fa-list-check"></i>
+
+            التحديات المتاحة
+
+        </div>
+
 
     </div>
 
 
     <div
-        class="selected-count"
-        id="selectedCount">
-
-        0 محددة
+        class="challenge-list"
+        id="challengeList">
 
     </div>
 
-</div>
 
-
-
-<!-- =====================================================
-     CHALLENGE LIST
-===================================================== -->
-
-<section
-    class="challenge-list"
-    id="challengeList">
 </section>
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      SAVE
-===================================================== -->
+========================================================= -->
 
 <div class="save-area">
 
@@ -1477,9 +1454,9 @@ a{
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      MESSAGE
-===================================================== -->
+========================================================= -->
 
 <div
     class="message"
@@ -1488,9 +1465,9 @@ a{
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      BOTTOM NAV
-===================================================== -->
+========================================================= -->
 
 <nav class="bottom-nav">
 
@@ -1538,6 +1515,7 @@ a{
 
     </a>
 
+
 </nav>
 
 
@@ -1545,9 +1523,9 @@ a{
 <script type="module">
 
 
-/* =====================================================
+/* =========================================================
    FIREBASE
-===================================================== */
+========================================================= */
 
 import {
     auth,
@@ -1572,9 +1550,9 @@ from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 
 
-/* =====================================================
-   GLOBAL VARIABLES
-===================================================== */
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 let currentUser = null;
 
@@ -1586,9 +1564,9 @@ let challengeValues = {};
 
 
 
-/* =====================================================
+/* =========================================================
    CHALLENGES
-===================================================== */
+========================================================= */
 
 const CHALLENGES = [
 
@@ -1606,9 +1584,9 @@ const CHALLENGES = [
 
         icon:"fa-droplet",
 
-        color:"#2196F3",
+        color:"#1976D2",
 
-        bg:"#EAF5FF",
+        bg:"#EDF5FF",
 
         type:"number",
 
@@ -1632,7 +1610,7 @@ const CHALLENGES = [
 
         color:"#16A085",
 
-        bg:"#E9F9F5",
+        bg:"#EAF8F4",
 
         type:"number",
 
@@ -1654,9 +1632,9 @@ const CHALLENGES = [
 
         icon:"fa-moon",
 
-        color:"#7C4DFF",
+        color:"#7357D8",
 
-        bg:"#F1EDFF",
+        bg:"#F1EEFF",
 
         type:"number",
 
@@ -1747,9 +1725,9 @@ const CHALLENGES = [
 
 
 
-/* =====================================================
+/* =========================================================
    ELEMENTS
-===================================================== */
+========================================================= */
 
 const challengeList =
     document.getElementById(
@@ -1782,9 +1760,9 @@ const loadingScreen =
 
 
 
-/* =====================================================
+/* =========================================================
    MESSAGE
-===================================================== */
+========================================================= */
 
 function showMessage(
     text,
@@ -1812,9 +1790,9 @@ function showMessage(
 
 
 
-/* =====================================================
+/* =========================================================
    NORMALIZE SELECTED
-===================================================== */
+========================================================= */
 
 function normalizeSelected(data){
 
@@ -1863,14 +1841,17 @@ function normalizeSelected(data){
 
 
 
-/* =====================================================
+/* =========================================================
    LOAD SETTINGS
-===================================================== */
+========================================================= */
 
 async function loadSettings(){
 
-    if(!currentUser)
+    if(!currentUser){
+
         return;
+
+    }
 
 
     try{
@@ -1909,10 +1890,6 @@ async function loadSettings(){
                 data.values || {};
 
         }else{
-
-            /*
-             * لا توجد تحديات مختارة افتراضيًا
-             */
 
             selectedChallenges = [];
 
@@ -1958,9 +1935,9 @@ async function loadSettings(){
 
 
 
-/* =====================================================
+/* =========================================================
    GET TARGET
-===================================================== */
+========================================================= */
 
 function getTarget(challenge){
 
@@ -2006,9 +1983,9 @@ function getTarget(challenge){
 
 
 
-/* =====================================================
+/* =========================================================
    TARGET DISPLAY
-===================================================== */
+========================================================= */
 
 function getTargetDisplay(challenge){
 
@@ -2058,9 +2035,9 @@ function getTargetDisplay(challenge){
 
 
 
-/* =====================================================
-   RENDER CHALLENGES
-===================================================== */
+/* =========================================================
+   RENDER
+========================================================= */
 
 function renderChallenges(){
 
@@ -2107,42 +2084,10 @@ function renderChallenges(){
             );
 
 
-            /*
-             * السكريات
-             */
-
-            if(
-                challenge.id === "sugar"
-            ){
-
-                card.classList.add(
-                    "sugar-card"
-                );
-
-            }
-
-
-            /*
-             * التدخين
-             */
-
-            if(
-                challenge.id === "smoking"
-            ){
-
-                card.classList.add(
-                    "smoking-card"
-                );
-
-            }
-
-
             let extraHTML = "";
 
 
-            /*
-             * NUMBER TARGET
-             */
+            /* NUMBER */
 
             if(
                 challenge.type === "number"
@@ -2188,8 +2133,7 @@ function renderChallenges(){
                             min="1"
                             step="1"
                             value="${value}"
-                            data-target="${challenge.id}"
-                            aria-label="الهدف اليومي">
+                            data-target="${challenge.id}">
 
                     </div>
 
@@ -2198,9 +2142,7 @@ function renderChallenges(){
             }
 
 
-            /*
-             * TIME
-             */
+            /* TIME */
 
             if(
                 challenge.type === "time"
@@ -2289,9 +2231,7 @@ function renderChallenges(){
             }
 
 
-            /*
-             * BOOLEAN
-             */
+            /* BOOLEAN */
 
             if(
                 challenge.type === "boolean"
@@ -2493,8 +2433,7 @@ function renderChallenges(){
 
                     <div class="challenge-icon">
 
-                        <i
-                            class="fa-solid ${challenge.icon}">
+                        <i class="fa-solid ${challenge.icon}">
                         </i>
 
                     </div>
@@ -2532,9 +2471,7 @@ function renderChallenges(){
             `;
 
 
-            /*
-             * الضغط على البطاقة
-             */
+            /* CARD CLICK */
 
             card.addEventListener(
                 "click",
@@ -2559,9 +2496,7 @@ function renderChallenges(){
             );
 
 
-            /*
-             * NUMBER INPUT
-             */
+            /* NUMBER */
 
             const numberInput =
                 card.querySelector(
@@ -2588,7 +2523,8 @@ function renderChallenges(){
 
                             targets[
                                 challenge.id
-                            ] = value;
+                            ] =
+                                value;
 
                         }
 
@@ -2608,9 +2544,7 @@ function renderChallenges(){
             }
 
 
-            /*
-             * TIME INPUTS
-             */
+            /* TIME */
 
             const timeInputs =
                 card.querySelectorAll(
@@ -2647,9 +2581,7 @@ function renderChallenges(){
             );
 
 
-            /*
-             * RADIO OPTIONS
-             */
+            /* RADIO */
 
             const radioInputs =
                 card.querySelectorAll(
@@ -2725,9 +2657,9 @@ function renderChallenges(){
 
 
 
-/* =====================================================
-   TOGGLE CHALLENGE
-===================================================== */
+/* =========================================================
+   TOGGLE
+========================================================= */
 
 function toggleChallenge(id){
 
@@ -2757,26 +2689,22 @@ function toggleChallenge(id){
 
 
 
-/* =====================================================
+/* =========================================================
    COUNT
-===================================================== */
+========================================================= */
 
 function updateCount(){
 
-    const count =
-        selectedChallenges.length;
-
-
     selectedCount.textContent =
-        `${count.toLocaleString("ar-DZ")} محددة`;
+        `${selectedChallenges.length.toLocaleString("ar-DZ")} محددة`;
 
 }
 
 
 
-/* =====================================================
-   SAVE SETTINGS
-===================================================== */
+/* =========================================================
+   SAVE
+========================================================= */
 
 async function saveSettings(){
 
@@ -2813,10 +2741,6 @@ async function saveSettings(){
 
         const cleanTargets = {};
 
-
-        /*
-         * الأهداف الرقمية
-         */
 
         CHALLENGES.forEach(
             challenge => {
@@ -2863,10 +2787,6 @@ async function saveSettings(){
                 }
 
 
-                /*
-                 * أوقات النوم
-                 */
-
                 if(
                     challenge.id === "sleepSchedule"
                 ){
@@ -2884,10 +2804,6 @@ async function saveSettings(){
             }
         );
 
-
-        /*
-         * القيم الافتراضية
-         */
 
         const cleanValues = {};
 
@@ -2917,10 +2833,6 @@ async function saveSettings(){
 
         }
 
-
-        /*
-         * حفظ حسب UID
-         */
 
         await setDoc(
 
@@ -3013,10 +2925,15 @@ async function saveSettings(){
 }
 
 
+saveButton.addEventListener(
+    "click",
+    saveSettings
+);
 
-/* =====================================================
+
+/* =========================================================
    AUTH
-===================================================== */
+========================================================= */
 
 onAuthStateChanged(
     auth,
@@ -3039,11 +2956,6 @@ onAuthStateChanged(
         await loadSettings();
 
 
-        /*
-         * إبقاء شاشة Si7a+ ظاهرة
-         * قليلًا حتى يظهر الشعار والعنوان
-         */
-
         setTimeout(
             () => {
 
@@ -3052,7 +2964,7 @@ onAuthStateChanged(
                 );
 
             },
-            850
+            500
         );
 
     }
@@ -3060,6 +2972,6 @@ onAuthStateChanged(
 
 </script>
 
-
 </body>
+
 </html>
