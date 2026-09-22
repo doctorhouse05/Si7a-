@@ -2,925 +2,1340 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta charset="UTF-8">
 
-    <meta name="theme-color" content="#1976D2">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-    <title>الحمل | Si7a+</title>
+<meta name="theme-color" content="#F5F5F5">
 
-    <!-- Cairo -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>صحتي+ | الحمل</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&display=swap"
+      rel="stylesheet">
 
-    <style>
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
 
-        :root {
-            --primary: #1976D2;
-            --primary-dark: #125DA8;
-            --primary-light: #EAF4FF;
+/* =========================================================
+   RESET
+========================================================= */
 
-            --pink: #E85D8E;
-            --pink-light: #FFF0F5;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-            --purple: #8067D9;
-            --green: #26A69A;
-            --orange: #F59E0B;
+:root{
 
-            --text: #172033;
-            --muted: #7A8496;
+    --black:#111111;
+    --black-soft:#202020;
 
-            --background: #F5F8FC;
-            --card: #FFFFFF;
+    --pink:#FE2C55;
+    --pink-soft:#FFF0F3;
 
-            --border: #E8EDF4;
+    --cyan:#25F4EE;
+    --cyan-soft:#E9FFFF;
 
-            --danger: #E55353;
+    --text:#171717;
+    --muted:#7A7A7A;
 
-            --shadow:
-                0 8px 30px rgba(35, 71, 110, 0.08);
+    --bg:#F5F5F5;
+    --card:#FFFFFF;
 
-            --radius: 20px;
-        }
+    --border:#E6E6E6;
 
-        body {
-            font-family: "Cairo", sans-serif;
-            background: var(--background);
-            color: var(--text);
-            min-height: 100vh;
-            padding-bottom: 90px;
-        }
+    --green:#18A878;
+    --green-soft:#EAF9F3;
 
-        button,
-        input {
-            font-family: inherit;
-        }
+    --purple:#7357D8;
+    --purple-soft:#F1EEFF;
 
-        button {
-            border: none;
-            cursor: pointer;
-        }
+    --orange:#E58A00;
+    --orange-soft:#FFF4DF;
 
-        /* =========================
-           Loading
-        ========================= */
+    --red:#D94848;
+    --red-soft:#FFF0F0;
 
-        #loadingScreen {
-            position: fixed;
-            inset: 0;
-            background: #F7FAFE;
-            z-index: 99999;
+    --blue:#2878D7;
+    --blue-soft:#EDF5FF;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
+    --shadow:0 4px 16px rgba(0,0,0,.055);
 
-            transition: 0.3s ease;
-        }
+    --radius:20px;
+}
 
-        .loading-logo {
-            width: 70px;
-            height: 70px;
-            border-radius: 22px;
+html{
+    scroll-behavior:smooth;
+}
 
-            background: linear-gradient(
-                135deg,
-                #1976D2,
-                #55A8F2
-            );
+body{
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    font-family:"Cairo",sans-serif;
 
-            color: white;
-            font-size: 30px;
+    background:var(--bg);
 
-            box-shadow: 0 12px 30px rgba(25,118,210,0.25);
+    color:var(--text);
 
-            margin-bottom: 18px;
-        }
+    min-height:100vh;
 
-        .loading-spinner {
-            width: 32px;
-            height: 32px;
+    padding-bottom:90px;
 
-            border: 3px solid #DCEAF8;
-            border-top-color: var(--primary);
+    font-weight:600;
+}
 
-            border-radius: 50%;
+button,
+input{
+    font-family:inherit;
+}
 
-            animation: spin 0.8s linear infinite;
-        }
+button{
+    border:0;
+    cursor:pointer;
+}
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
+.hidden{
+    display:none !important;
+}
 
-        /* =========================
-           Header
-        ========================= */
 
-        .top-header {
-            padding: 22px 18px 15px;
+/* =========================================================
+   LOADING
+========================================================= */
 
-            display: flex;
-            align-items: center;
-            gap: 14px;
+#loadingScreen{
 
-            background: #fff;
-        }
+    position:fixed;
 
-        .back-button {
-            width: 44px;
-            height: 44px;
+    inset:0;
 
-            border-radius: 14px;
+    z-index:99999;
 
-            background: #F1F6FB;
-            color: var(--primary);
+    background:#F5F5F5;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    display:flex;
 
-            font-size: 17px;
-        }
+    align-items:center;
 
-        .header-title {
-            flex: 1;
-        }
+    justify-content:center;
 
-        .header-title h1 {
-            font-size: 21px;
-            font-weight: 800;
-        }
+    flex-direction:column;
 
-        .header-title p {
-            font-size: 12px;
-            color: var(--muted);
-            margin-top: 2px;
-        }
+    transition:.3s ease;
+}
 
-        .header-icon {
-            width: 44px;
-            height: 44px;
+.loading-logo{
 
-            border-radius: 14px;
+    width:70px;
+    height:70px;
 
-            background: var(--pink-light);
-            color: var(--pink);
+    border-radius:22px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    background:var(--black);
 
-            font-size: 18px;
-        }
+    color:white;
 
-        /* =========================
-           Main
-        ========================= */
+    display:flex;
 
-        .container {
-            width: min(100%, 760px);
-            margin: auto;
-            padding: 10px 16px 30px;
-        }
+    align-items:center;
 
-        /* =========================
-           Welcome / Empty
-        ========================= */
+    justify-content:center;
 
-        .setup-card {
-            background: white;
-            border-radius: 24px;
-            padding: 25px 20px;
-            box-shadow: var(--shadow);
+    font-size:28px;
 
-            margin-top: 10px;
-        }
+    box-shadow:
+        7px 7px 0 var(--pink),
+        -5px -5px 0 var(--cyan);
 
-        .setup-icon {
-            width: 64px;
-            height: 64px;
+    margin-bottom:22px;
+}
 
-            border-radius: 20px;
+.loading-spinner{
 
-            background: var(--pink-light);
-            color: var(--pink);
+    width:30px;
+    height:30px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    border:3px solid #DDDDDD;
 
-            font-size: 28px;
+    border-top-color:var(--pink);
 
-            margin-bottom: 16px;
-        }
+    border-radius:50%;
 
-        .setup-card h2 {
-            font-size: 21px;
-            margin-bottom: 8px;
-        }
+    animation:spin .8s linear infinite;
+}
 
-        .setup-card > p {
-            font-size: 13px;
-            line-height: 1.8;
-            color: var(--muted);
-            margin-bottom: 22px;
-        }
+@keyframes spin{
 
-        /* =========================
-           Form
-        ========================= */
+    to{
+        transform:rotate(360deg);
+    }
+}
 
-        .field {
-            margin-bottom: 16px;
-        }
 
-        .field label {
-            display: block;
+/* =========================================================
+   HEADER
+========================================================= */
 
-            font-size: 13px;
-            font-weight: 700;
+.top-header{
 
-            margin-bottom: 8px;
-        }
+    width:min(100%,650px);
 
-        .field label i {
-            color: var(--primary);
-            margin-left: 5px;
-        }
+    margin:auto;
 
-        .date-input {
-            width: 100%;
+    padding:18px 16px 10px;
 
-            height: 53px;
+    display:flex;
 
-            border: 1px solid var(--border);
-            border-radius: 15px;
+    align-items:center;
 
-            background: #FAFCFF;
+    gap:12px;
+}
 
-            padding: 0 15px;
+.back-button{
 
-            color: var(--text);
+    width:44px;
+    height:44px;
 
-            outline: none;
+    flex-shrink:0;
 
-            font-size: 14px;
+    border-radius:14px;
 
-            transition: 0.2s;
-        }
+    background:white;
 
-        .date-input:focus {
-            border-color: var(--primary);
+    color:var(--black);
 
-            box-shadow:
-                0 0 0 4px rgba(25,118,210,0.08);
-        }
+    border:1px solid var(--border);
 
-        .helper {
-            font-size: 11px;
-            color: var(--muted);
+    display:flex;
 
-            line-height: 1.7;
+    align-items:center;
 
-            margin-top: 6px;
-        }
+    justify-content:center;
 
-        .primary-button {
-            width: 100%;
+    font-size:17px;
 
-            min-height: 54px;
+    box-shadow:var(--shadow);
 
-            border-radius: 16px;
+    transition:.2s;
+}
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #1976D2,
-                    #398FE0
-                );
+.back-button:active{
+    transform:scale(.95);
+}
 
-            color: white;
+.header-title{
 
-            font-size: 14px;
-            font-weight: 700;
+    flex:1;
 
-            box-shadow:
-                0 10px 25px rgba(25,118,210,0.22);
+    min-width:0;
+}
 
-            transition: 0.2s;
-        }
+.header-title h1{
 
-        .primary-button:active {
-            transform: scale(0.98);
-        }
+    font-size:22px;
 
-        .primary-button i {
-            margin-left: 7px;
-        }
+    line-height:1.3;
 
-        /* =========================
-           Dashboard Hero
-        ========================= */
+    font-weight:900;
 
-        .hero {
-            margin-top: 10px;
+    color:var(--black);
+}
 
-            border-radius: 26px;
+.header-title p{
 
-            padding: 23px 20px;
+    font-size:11px;
 
-            color: white;
+    color:var(--muted);
 
-            position: relative;
-            overflow: hidden;
+    margin-top:2px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #1976D2 0%,
-                    #368EDB 55%,
-                    #7C6FD7 100%
-                );
+    font-weight:700;
+}
 
-            box-shadow:
-                0 15px 35px rgba(25,118,210,0.20);
-        }
+.header-icon{
 
-        .hero::before {
-            content: "";
+    width:44px;
+    height:44px;
 
-            position: absolute;
+    flex-shrink:0;
 
-            width: 170px;
-            height: 170px;
+    border-radius:14px;
 
-            border-radius: 50%;
+    background:var(--black);
 
-            background: rgba(255,255,255,0.08);
+    color:white;
 
-            top: -90px;
-            left: -45px;
-        }
+    display:flex;
 
-        .hero::after {
-            content: "";
+    align-items:center;
 
-            position: absolute;
+    justify-content:center;
 
-            width: 130px;
-            height: 130px;
+    font-size:18px;
 
-            border-radius: 50%;
+    box-shadow:
+        4px 4px 0 var(--pink);
+}
 
-            background: rgba(255,255,255,0.06);
 
-            bottom: -75px;
-            right: -30px;
-        }
+/* =========================================================
+   MAIN
+========================================================= */
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
+.container{
 
-        .hero-small {
-            font-size: 12px;
-            opacity: 0.9;
-            margin-bottom: 4px;
-        }
+    width:min(100%,650px);
 
-        .hero-week {
-            font-size: 31px;
-            font-weight: 800;
-            line-height: 1.2;
-        }
+    margin:auto;
 
-        .hero-detail {
-            margin-top: 5px;
+    padding:4px 16px 30px;
+}
 
-            font-size: 12px;
 
-            opacity: 0.92;
-        }
+/* =========================================================
+   SETUP CARD
+========================================================= */
 
-        .progress-wrapper {
-            margin-top: 22px;
-        }
+.setup-card{
 
-        .progress-top {
-            display: flex;
-            justify-content: space-between;
+    background:var(--card);
 
-            font-size: 11px;
+    border:1px solid var(--border);
 
-            margin-bottom: 7px;
-        }
+    border-radius:24px;
 
-        .progress-track {
-            width: 100%;
-            height: 8px;
+    padding:22px 18px;
 
-            background: rgba(255,255,255,0.25);
+    box-shadow:var(--shadow);
 
-            border-radius: 20px;
+    margin-top:8px;
+}
 
-            overflow: hidden;
-        }
+.setup-top{
 
-        .progress-bar {
-            height: 100%;
+    display:flex;
 
-            background: white;
+    align-items:center;
 
-            border-radius: inherit;
+    gap:13px;
 
-            width: 0%;
+    margin-bottom:18px;
+}
 
-            transition: width 0.7s ease;
-        }
+.setup-icon{
 
-        /* =========================
-           Summary Grid
-        ========================= */
+    width:56px;
+    height:56px;
 
-        .section-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+    flex-shrink:0;
 
-            margin: 23px 3px 12px;
-        }
+    border-radius:17px;
 
-        .section-title h2 {
-            font-size: 16px;
-            font-weight: 800;
-        }
+    background:var(--black);
 
-        .section-title span {
-            font-size: 11px;
-            color: var(--muted);
-        }
+    color:white;
 
-        .summary-grid {
-            display: grid;
+    display:flex;
 
-            grid-template-columns:
-                repeat(2, minmax(0, 1fr));
+    align-items:center;
 
-            gap: 11px;
-        }
+    justify-content:center;
 
-        .summary-card {
-            background: white;
+    font-size:23px;
 
-            border-radius: 18px;
+    box-shadow:
+        5px 5px 0 var(--pink);
+}
 
-            padding: 15px;
+.setup-heading h2{
 
-            box-shadow: var(--shadow);
+    font-size:19px;
 
-            min-height: 105px;
-        }
+    font-weight:900;
 
-        .summary-icon {
-            width: 38px;
-            height: 38px;
+    color:var(--black);
+}
 
-            border-radius: 12px;
+.setup-heading p{
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    color:var(--muted);
 
-            margin-bottom: 9px;
+    font-size:11px;
 
-            font-size: 15px;
-        }
+    margin-top:2px;
+}
 
-        .blue-icon {
-            background: #EAF4FF;
-            color: var(--primary);
-        }
+.setup-card > p{
 
-        .pink-icon {
-            background: #FFF0F5;
-            color: var(--pink);
-        }
+    font-size:12px;
 
-        .purple-icon {
-            background: #F0EDFF;
-            color: var(--purple);
-        }
+    line-height:1.9;
 
-        .green-icon {
-            background: #EAF9F7;
-            color: var(--green);
-        }
+    color:#666;
 
-        .orange-icon {
-            background: #FFF6E5;
-            color: var(--orange);
-        }
+    margin-bottom:20px;
+}
 
-        .summary-label {
-            color: var(--muted);
-            font-size: 11px;
-        }
 
-        .summary-value {
-            font-size: 16px;
-            font-weight: 800;
+/* =========================================================
+   FORM
+========================================================= */
 
-            margin-top: 3px;
-        }
+.field{
 
-        /* =========================
-           Date Info
-        ========================= */
+    margin-bottom:17px;
+}
 
-        .info-card {
-            background: white;
+.field label{
 
-            border-radius: 20px;
+    display:block;
 
-            padding: 17px;
+    font-size:12px;
 
-            box-shadow: var(--shadow);
-        }
+    font-weight:800;
 
-        .info-row {
-            display: flex;
-            align-items: center;
-            gap: 13px;
+    color:var(--text);
 
-            padding: 12px 0;
-        }
+    margin-bottom:8px;
+}
 
-        .info-row + .info-row {
-            border-top: 1px solid #F0F2F6;
-        }
+.field label i{
 
-        .info-row-icon {
-            width: 42px;
-            height: 42px;
+    margin-left:5px;
 
-            border-radius: 13px;
+    color:var(--pink);
+}
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+.optional{
 
-            background: #EEF6FF;
-            color: var(--primary);
+    font-size:10px;
 
-            flex-shrink: 0;
-        }
+    color:#999;
 
-        .info-text {
-            flex: 1;
-        }
+    font-weight:600;
 
-        .info-text small {
-            display: block;
+    margin-right:4px;
+}
 
-            font-size: 10px;
-            color: var(--muted);
+.date-input{
 
-            margin-bottom: 2px;
-        }
+    width:100%;
 
-        .info-text strong {
-            font-size: 13px;
-        }
+    height:52px;
 
-        /* =========================
-           Week Table
-        ========================= */
+    padding:0 14px;
 
-        .week-table-card {
-            background: white;
+    border-radius:15px;
 
-            border-radius: 20px;
+    border:1px solid var(--border);
 
-            box-shadow: var(--shadow);
+    background:#FAFAFA;
 
-            overflow: hidden;
-        }
+    color:var(--text);
 
-        .table-scroll {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
+    outline:none;
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
+    font-size:13px;
 
-            min-width: 570px;
-        }
+    font-weight:700;
 
-        thead {
-            background: #F6F9FD;
-        }
+    transition:.2s;
+}
 
-        th {
-            padding: 13px 10px;
+.date-input:focus{
 
-            font-size: 11px;
-            color: var(--muted);
+    background:white;
 
-            font-weight: 700;
+    border-color:var(--pink);
 
-            white-space: nowrap;
-        }
+    box-shadow:
+        0 0 0 4px rgba(254,44,85,.08);
+}
 
-        td {
-            padding: 13px 10px;
+.helper{
 
-            text-align: center;
+    font-size:10px;
 
-            border-top: 1px solid #F0F2F6;
+    color:#888;
 
-            font-size: 11px;
+    line-height:1.7;
 
-            white-space: nowrap;
-        }
+    margin-top:6px;
+}
 
-        tbody tr {
-            transition: 0.2s;
-        }
+.primary-button{
 
-        tbody tr.current-week {
-            background: #EEF7FF;
-        }
+    width:100%;
 
-        tbody tr.current-week td {
-            color: var(--primary);
-            font-weight: 800;
-        }
+    min-height:53px;
 
-        .current-badge {
-            display: inline-flex;
+    border-radius:15px;
 
-            align-items: center;
-            gap: 4px;
+    background:var(--black);
 
-            background: var(--primary);
-            color: white;
+    color:white;
 
-            border-radius: 20px;
+    font-size:13px;
 
-            padding: 3px 7px;
+    font-weight:900;
 
-            font-size: 9px;
-        }
+    box-shadow:
+        5px 5px 0 var(--pink);
 
-        /* =========================
-           Note
-        ========================= */
+    transition:.2s;
+}
 
-        .medical-note {
-            background: #FFF9EC;
+.primary-button:active{
 
-            border: 1px solid #F8E7B6;
+    transform:translate(2px,2px);
 
-            border-radius: 18px;
+    box-shadow:
+        3px 3px 0 var(--pink);
+}
 
-            padding: 14px;
+.primary-button i{
+    margin-left:7px;
+}
 
-            margin-top: 18px;
 
-            display: flex;
+/* =========================================================
+   HERO
+========================================================= */
 
-            gap: 11px;
-        }
+.hero{
 
-        .medical-note i {
-            color: #D79614;
+    position:relative;
 
-            margin-top: 3px;
-        }
+    overflow:hidden;
 
-        .medical-note p {
-            font-size: 11px;
+    margin-top:8px;
 
-            color: #766020;
+    border-radius:25px;
 
-            line-height: 1.8;
-        }
+    padding:23px 20px;
 
-        /* =========================
-           Edit / Delete
-        ========================= */
+    color:white;
 
-        .actions {
-            display: grid;
+    background:var(--black);
 
-            grid-template-columns: 1fr 1fr;
+    box-shadow:var(--shadow);
+}
 
-            gap: 10px;
+.hero::before{
 
-            margin-top: 16px;
-        }
+    content:"";
 
-        .secondary-button,
-        .danger-button {
-            height: 48px;
+    position:absolute;
 
-            border-radius: 14px;
+    width:145px;
+    height:145px;
 
-            font-size: 12px;
-            font-weight: 700;
-        }
+    border-radius:50%;
 
-        .secondary-button {
-            background: #EDF5FD;
-            color: var(--primary);
-        }
+    background:var(--pink);
 
-        .danger-button {
-            background: #FFF0F0;
-            color: var(--danger);
-        }
+    opacity:.9;
 
-        /* =========================
-           Bottom Navigation
-        ========================= */
+    top:-85px;
 
-        .bottom-nav {
-            position: fixed;
+    left:-55px;
+}
 
-            bottom: 0;
-            right: 0;
-            left: 0;
+.hero::after{
 
-            height: 72px;
+    content:"";
 
-            background: rgba(255,255,255,0.97);
+    position:absolute;
 
-            border-top: 1px solid #EAEFF5;
+    width:120px;
+    height:120px;
 
-            display: grid;
+    border-radius:50%;
 
-            grid-template-columns:
-                repeat(4, 1fr);
+    background:var(--cyan);
 
-            z-index: 500;
+    opacity:.9;
 
-            box-shadow:
-                0 -5px 25px rgba(20,50,80,0.05);
+    bottom:-80px;
 
-            backdrop-filter: blur(12px);
-        }
+    right:-35px;
+}
 
-        .nav-item {
-            display: flex;
+.hero-content{
 
-            align-items: center;
-            justify-content: center;
+    position:relative;
 
-            flex-direction: column;
+    z-index:2;
+}
 
-            gap: 4px;
+.hero-label{
 
-            color: #8993A3;
+    display:flex;
 
-            font-size: 10px;
+    align-items:center;
 
-            text-decoration: none;
+    gap:7px;
 
-            position: relative;
-        }
+    font-size:11px;
 
-        .nav-item i {
-            font-size: 17px;
-        }
+    color:#D5D5D5;
 
-        .nav-item.active {
-            color: var(--primary);
-            font-weight: 700;
-        }
+    margin-bottom:5px;
+}
 
-        .nav-item.active::before {
-            content: "";
+.hero-label i{
 
-            position: absolute;
+    color:var(--cyan);
 
-            top: 0;
+    font-size:10px;
+}
 
-            width: 28px;
-            height: 3px;
+.hero-week{
 
-            background: var(--primary);
+    font-size:31px;
 
-            border-radius:
-                0 0 5px 5px;
-        }
+    font-weight:900;
 
-        /* =========================
-           Toast
-        ========================= */
+    line-height:1.2;
 
-        #toast {
-            position: fixed;
+    letter-spacing:-.5px;
+}
 
-            left: 50%;
+.hero-detail{
 
-            bottom: 90px;
+    margin-top:6px;
 
-            transform:
-                translate(-50%, 20px);
+    font-size:11px;
 
-            background: #172033;
+    color:#D6D6D6;
 
-            color: white;
+    line-height:1.7;
+}
 
-            padding: 12px 18px;
+.hero-progress{
 
-            border-radius: 13px;
+    margin-top:22px;
+}
 
-            font-size: 12px;
+.progress-top{
 
-            opacity: 0;
+    display:flex;
 
-            pointer-events: none;
+    align-items:center;
 
-            transition: 0.3s;
+    justify-content:space-between;
 
-            z-index: 10000;
+    font-size:10px;
 
-            white-space: nowrap;
-        }
+    color:#D0D0D0;
 
-        #toast.show {
-            opacity: 1;
+    margin-bottom:7px;
+}
 
-            transform:
-                translate(-50%, 0);
-        }
+.progress-top strong{
 
-        /* =========================
-           Hidden
-        ========================= */
+    color:white;
 
-        .hidden {
-            display: none !important;
-        }
+    font-size:12px;
+}
 
-        /* =========================
-           Responsive
-        ========================= */
+.progress-track{
 
-        @media (min-width: 700px) {
+    width:100%;
 
-            body {
-                padding-bottom: 20px;
-            }
+    height:8px;
 
-            .bottom-nav {
-                width: 500px;
+    border-radius:20px;
 
-                left: 50%;
-                right: auto;
+    background:#343434;
 
-                transform: translateX(-50%);
+    overflow:hidden;
+}
 
-                border-radius:
-                    20px 20px 0 0;
-            }
+.progress-bar{
 
-        }
+    width:0%;
 
-    </style>
+    height:100%;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--pink),
+            var(--cyan)
+        );
+
+    transition:width .7s ease;
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin:23px 2px 11px;
+}
+
+.section-title h2{
+
+    font-size:16px;
+
+    font-weight:900;
+
+    color:var(--black);
+}
+
+.section-title span{
+
+    font-size:10px;
+
+    color:var(--muted);
+
+    font-weight:700;
+}
+
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.summary-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:10px;
+}
+
+.summary-card{
+
+    position:relative;
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:14px;
+
+    min-height:112px;
+
+    box-shadow:var(--shadow);
+}
+
+.summary-icon{
+
+    width:38px;
+    height:38px;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:15px;
+
+    margin-bottom:10px;
+}
+
+.blue-icon{
+
+    background:var(--blue-soft);
+
+    color:var(--blue);
+}
+
+.pink-icon{
+
+    background:var(--pink-soft);
+
+    color:var(--pink);
+}
+
+.purple-icon{
+
+    background:var(--purple-soft);
+
+    color:var(--purple);
+}
+
+.green-icon{
+
+    background:var(--green-soft);
+
+    color:var(--green);
+}
+
+.summary-label{
+
+    font-size:10px;
+
+    color:var(--muted);
+
+    font-weight:700;
+}
+
+.summary-value{
+
+    font-size:14px;
+
+    font-weight:900;
+
+    margin-top:3px;
+
+    color:var(--black);
+
+    line-height:1.5;
+}
+
+
+/* =========================================================
+   INFORMATION CARD
+========================================================= */
+
+.info-card{
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:7px 16px;
+
+    box-shadow:var(--shadow);
+}
+
+.info-row{
+
+    min-height:67px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+.info-row + .info-row{
+
+    border-top:1px solid #EEEEEE;
+}
+
+.info-row-icon{
+
+    width:41px;
+    height:41px;
+
+    flex-shrink:0;
+
+    border-radius:13px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:var(--blue-soft);
+
+    color:var(--blue);
+
+    font-size:15px;
+}
+
+.info-row-icon.pink{
+
+    background:var(--pink-soft);
+
+    color:var(--pink);
+}
+
+.info-row-icon.purple{
+
+    background:var(--purple-soft);
+
+    color:var(--purple);
+}
+
+.info-row-icon.orange{
+
+    background:var(--orange-soft);
+
+    color:var(--orange);
+}
+
+.info-text{
+
+    flex:1;
+
+    min-width:0;
+}
+
+.info-text small{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    font-weight:700;
+
+    margin-bottom:2px;
+}
+
+.info-text strong{
+
+    display:block;
+
+    color:var(--black);
+
+    font-size:12px;
+
+    font-weight:900;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.actions{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:9px;
+
+    margin-top:12px;
+}
+
+.secondary-button,
+.danger-button{
+
+    min-height:47px;
+
+    border-radius:14px;
+
+    font-size:11px;
+
+    font-weight:900;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:7px;
+
+    transition:.2s;
+}
+
+.secondary-button{
+
+    background:var(--black);
+
+    color:white;
+}
+
+.secondary-button i{
+
+    color:var(--cyan);
+}
+
+.danger-button{
+
+    background:var(--red-soft);
+
+    color:var(--red);
+
+    border:1px solid #F5DADA;
+}
+
+.secondary-button:active,
+.danger-button:active{
+
+    transform:scale(.98);
+}
+
+
+/* =========================================================
+   WEEK TABLE
+========================================================= */
+
+.week-table-card{
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+}
+
+.table-scroll{
+
+    overflow-x:auto;
+
+    -webkit-overflow-scrolling:touch;
+
+    scrollbar-width:thin;
+}
+
+table{
+
+    width:100%;
+
+    min-width:560px;
+
+    border-collapse:collapse;
+}
+
+thead{
+
+    background:#FAFAFA;
+}
+
+th{
+
+    padding:12px 9px;
+
+    color:#777;
+
+    font-size:10px;
+
+    font-weight:900;
+
+    white-space:nowrap;
+}
+
+td{
+
+    padding:12px 9px;
+
+    text-align:center;
+
+    border-top:1px solid #EEEEEE;
+
+    font-size:10px;
+
+    white-space:nowrap;
+
+    font-weight:700;
+}
+
+tbody tr.current-week{
+
+    background:#FFF0F3;
+}
+
+tbody tr.current-week td{
+
+    color:var(--pink);
+
+    font-weight:900;
+}
+
+.current-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:4px;
+
+    padding:4px 8px;
+
+    border-radius:20px;
+
+    background:var(--black);
+
+    color:white;
+
+    font-size:8px;
+
+    font-weight:900;
+}
+
+.current-badge i{
+
+    color:var(--cyan);
+
+    font-size:8px;
+}
+
+
+/* =========================================================
+   MEDICAL NOTE
+========================================================= */
+
+.medical-note{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:13px;
+
+    padding:14px;
+
+    border-radius:17px;
+
+    background:#FFF9EC;
+
+    border:1px solid #F3E5BE;
+}
+
+.medical-note > i{
+
+    flex-shrink:0;
+
+    color:#D79614;
+
+    font-size:14px;
+
+    margin-top:3px;
+}
+
+.medical-note p{
+
+    color:#74602A;
+
+    font-size:10px;
+
+    line-height:1.9;
+
+    font-weight:700;
+}
+
+
+/* =========================================================
+   BOTTOM NAVIGATION
+========================================================= */
+
+.bottom-nav{
+
+    position:fixed;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:72px;
+
+    z-index:500;
+
+    background:rgba(255,255,255,.97);
+
+    border-top:1px solid #E5E5E5;
+
+    box-shadow:
+        0 -5px 25px rgba(0,0,0,.05);
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    backdrop-filter:blur(12px);
+}
+
+.nav-item{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:4px;
+
+    text-decoration:none;
+
+    color:#858585;
+
+    font-size:10px;
+
+    font-weight:700;
+}
+
+.nav-item i{
+
+    font-size:17px;
+}
+
+.nav-item.active{
+
+    color:var(--pink);
+
+    font-weight:900;
+}
+
+.nav-item.active::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    width:28px;
+
+    height:3px;
+
+    border-radius:
+        0 0 5px 5px;
+
+    background:var(--pink);
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+#toast{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:88px;
+
+    transform:
+        translate(-50%,20px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:10000;
+
+    max-width:
+        calc(100% - 35px);
+
+    padding:11px 17px;
+
+    border-radius:13px;
+
+    background:var(--black);
+
+    color:white;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    box-shadow:
+        4px 4px 0 var(--pink);
+
+    transition:.3s;
+
+    text-align:center;
+
+    white-space:nowrap;
+}
+
+#toast.show{
+
+    opacity:1;
+
+    transform:
+        translate(-50%,0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(min-width:700px){
+
+    body{
+        padding-bottom:25px;
+    }
+
+    .bottom-nav{
+
+        width:500px;
+
+        left:50%;
+        right:auto;
+
+        transform:translateX(-50%);
+
+        border-radius:
+            20px 20px 0 0;
+    }
+}
+
+@media(max-width:370px){
+
+    .container,
+    .top-header{
+        padding-left:12px;
+        padding-right:12px;
+    }
+
+    .hero-week{
+        font-size:27px;
+    }
+
+    .summary-value{
+        font-size:13px;
+    }
+
+    .setup-card{
+        padding:19px 15px;
+    }
+}
+
+</style>
+
 </head>
 
 
 <body>
 
-<!-- Loading -->
+
+<!-- =====================================================
+     LOADING
+===================================================== -->
+
 <div id="loadingScreen">
 
     <div class="loading-logo">
@@ -932,7 +1347,10 @@
 </div>
 
 
-<!-- Header -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header class="top-header">
 
     <button
@@ -965,524 +1383,528 @@
 </header>
 
 
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
 <main class="container">
 
 
-    <!-- =====================
-         Setup
-    ====================== -->
+<!-- =====================================================
+     SETUP
+===================================================== -->
 
-    <section
-        id="setupSection"
-        class="setup-card hidden">
+<section
+    id="setupSection"
+    class="setup-card hidden">
+
+
+    <div class="setup-top">
 
         <div class="setup-icon">
 
-            <i class="fa-solid fa-calendar-heart"></i>
+            <i class="fa-solid fa-baby"></i>
 
         </div>
 
-        <h2>
-            ابدئي متابعة الحمل
-        </h2>
-
-        <p>
-            أدخلي تاريخ أول يوم من آخر دورة شهرية،
-            وسيقوم التطبيق بحساب عمر الحمل وموعد الولادة
-            والجدول الأسبوعي تلقائيًا.
-        </p>
-
-
-        <div class="field">
-
-            <label>
-
-                <i class="fa-regular fa-calendar"></i>
-
-                أول يوم من آخر دورة
-
-            </label>
-
-            <input
-                type="date"
-                id="lmpInput"
-                class="date-input">
-
-            <div class="helper">
-
-                هذا هو التاريخ الذي يبدأ منه حساب عمر الحمل.
-
-            </div>
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-
-                <i class="fa-solid fa-baby"></i>
-
-                تاريخ الحمل / الإخصاب
-                <span
-                    style="
-                    font-weight:400;
-                    color:#9AA3B1;
-                    ">
-                    اختياري
-                </span>
-
-            </label>
-
-            <input
-                type="date"
-                id="conceptionInput"
-                class="date-input">
-
-            <div class="helper">
-
-                إذا كنتِ تعرفين تاريخ الحمل تقريبًا،
-                يمكنك إدخاله، وسيتم حساب آخر دورة تقريبيًا.
-
-            </div>
-
-        </div>
-
-
-        <button
-            class="primary-button"
-            id="saveInitialButton">
-
-            <i class="fa-solid fa-check"></i>
-
-            حفظ وبدء المتابعة
-
-        </button>
-
-    </section>
-
-
-
-    <!-- =====================
-         Pregnancy Dashboard
-    ====================== -->
-
-    <section
-        id="pregnancySection"
-        class="hidden">
-
-
-        <!-- Hero -->
-
-        <div class="hero">
-
-            <div class="hero-content">
-
-                <div class="hero-small">
-                    أنتِ الآن في
-                </div>
-
-                <div
-                    class="hero-week"
-                    id="heroWeek">
-
-                    الأسبوع —
-
-                </div>
-
-                <div
-                    class="hero-detail"
-                    id="heroDetail">
-
-                    —
-
-                </div>
-
-
-                <div class="progress-wrapper">
-
-                    <div class="progress-top">
-
-                        <span>
-                            تقدم الحمل
-                        </span>
-
-                        <strong id="progressPercent">
-                            0%
-                        </strong>
-
-                    </div>
-
-
-                    <div class="progress-track">
-
-                        <div
-                            id="progressBar"
-                            class="progress-bar">
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- Summary -->
-
-        <div class="section-title">
+        <div class="setup-heading">
 
             <h2>
-                ملخص الحمل
+                ابدئي متابعة الحمل
             </h2>
-
-            <span>
-                يتم تحديثه تلقائيًا
-            </span>
-
-        </div>
-
-
-        <div class="summary-grid">
-
-
-            <div class="summary-card">
-
-                <div
-                    class="summary-icon blue-icon">
-
-                    <i class="fa-solid fa-calendar-week"></i>
-
-                </div>
-
-                <div class="summary-label">
-                    عمر الحمل
-                </div>
-
-                <div
-                    class="summary-value"
-                    id="sgValue">
-
-                    —
-
-                </div>
-
-            </div>
-
-
-            <div class="summary-card">
-
-                <div
-                    class="summary-icon pink-icon">
-
-                    <i class="fa-solid fa-heart-pulse"></i>
-
-                </div>
-
-                <div class="summary-label">
-                    عمر الحمل SA
-                </div>
-
-                <div
-                    class="summary-value"
-                    id="saValue">
-
-                    —
-
-                </div>
-
-            </div>
-
-
-            <div class="summary-card">
-
-                <div
-                    class="summary-icon purple-icon">
-
-                    <i class="fa-solid fa-calendar-days"></i>
-
-                </div>
-
-                <div class="summary-label">
-                    شهر الحمل
-                </div>
-
-                <div
-                    class="summary-value"
-                    id="monthValue">
-
-                    —
-
-                </div>
-
-            </div>
-
-
-            <div class="summary-card">
-
-                <div
-                    class="summary-icon green-icon">
-
-                    <i class="fa-solid fa-hourglass-half"></i>
-
-                </div>
-
-                <div class="summary-label">
-                    المتبقي تقريبًا
-                </div>
-
-                <div
-                    class="summary-value"
-                    id="remainingValue">
-
-                    —
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- Important Dates -->
-
-        <div class="section-title">
-
-            <h2>
-                التواريخ المهمة
-            </h2>
-
-        </div>
-
-
-        <div class="info-card">
-
-
-            <div class="info-row">
-
-                <div class="info-row-icon">
-
-                    <i class="fa-regular fa-calendar"></i>
-
-                </div>
-
-                <div class="info-text">
-
-                    <small>
-                        أول يوم من آخر دورة
-                    </small>
-
-                    <strong id="lmpDisplay">
-                        —
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <div class="info-row-icon"
-                     style="
-                     background:#FFF0F5;
-                     color:#E85D8E;
-                     ">
-
-                    <i class="fa-solid fa-baby"></i>
-
-                </div>
-
-                <div class="info-text">
-
-                    <small>
-                        تاريخ الحمل التقريبي
-                    </small>
-
-                    <strong id="conceptionDisplay">
-                        —
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <div class="info-row-icon"
-                     style="
-                     background:#F0EDFF;
-                     color:#8067D9;
-                     ">
-
-                    <i class="fa-solid fa-calendar-check"></i>
-
-                </div>
-
-                <div class="info-text">
-
-                    <small>
-                        موعد الولادة المتوقع
-                    </small>
-
-                    <strong id="dueDateDisplay">
-                        —
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <div class="info-row-icon"
-                     style="
-                     background:#FFF6E5;
-                     color:#D79614;
-                     ">
-
-                    <i class="fa-solid fa-clock"></i>
-
-                </div>
-
-                <div class="info-text">
-
-                    <small>
-                        تاريخ اليوم
-                    </small>
-
-                    <strong id="todayDisplay">
-                        —
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- Actions -->
-
-        <div class="actions">
-
-            <button
-                class="secondary-button"
-                id="editButton">
-
-                <i class="fa-solid fa-pen"></i>
-
-                تعديل التاريخ
-
-            </button>
-
-
-            <button
-                class="danger-button"
-                id="deleteButton">
-
-                <i class="fa-solid fa-trash"></i>
-
-                حذف بيانات الحمل
-
-            </button>
-
-        </div>
-
-
-
-        <!-- Pregnancy Calendar -->
-
-        <div class="section-title">
-
-            <h2>
-                تقويم الحمل
-            </h2>
-
-            <span>
-                أسبوعًا بأسبوع
-            </span>
-
-        </div>
-
-
-        <div class="week-table-card">
-
-            <div class="table-scroll">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                الأسبوع
-                            </th>
-
-                            <th>
-                                الفترة
-                            </th>
-
-                            <th>
-                                SG
-                            </th>
-
-                            <th>
-                                SA
-                            </th>
-
-                            <th>
-                                الحالة
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody
-                        id="weekTableBody">
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- Medical note -->
-
-        <div class="medical-note">
-
-            <i class="fa-solid fa-circle-info"></i>
 
             <p>
-                هذه الحسابات تقديرية اعتمادًا على التاريخ
-                الذي أدخلته المستخدمة. قد يختلف موعد الولادة
-                وعمر الحمل المعتمد طبيًا بعد فحص الطبيب أو
-                التصوير بالأمواج فوق الصوتية.
+                أدخلي التاريخ لبدء الحساب
             </p>
 
         </div>
 
+    </div>
 
-    </section>
+
+    <p>
+
+        أدخلي تاريخ أول يوم من آخر دورة شهرية،
+        وسيقوم التطبيق بحساب عمر الحمل وموعد الولادة
+        والجدول الأسبوعي تلقائيًا.
+
+    </p>
+
+
+    <div class="field">
+
+        <label>
+
+            <i class="fa-regular fa-calendar"></i>
+
+            أول يوم من آخر دورة
+
+        </label>
+
+        <input
+            type="date"
+            id="lmpInput"
+            class="date-input">
+
+        <div class="helper">
+
+            هذا هو التاريخ الذي يبدأ منه حساب عمر الحمل.
+
+        </div>
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+
+            <i class="fa-solid fa-baby"></i>
+
+            تاريخ الحمل / الإخصاب
+
+            <span class="optional">
+                اختياري
+            </span>
+
+        </label>
+
+        <input
+            type="date"
+            id="conceptionInput"
+            class="date-input">
+
+        <div class="helper">
+
+            إذا كنتِ تعرفين تاريخ الحمل تقريبًا،
+            يمكنك إدخاله وسيتم حساب آخر دورة تقريبيًا.
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="primary-button"
+        id="saveInitialButton">
+
+        <i class="fa-solid fa-check"></i>
+
+        حفظ وبدء المتابعة
+
+    </button>
+
+
+</section>
+
+
+<!-- =====================================================
+     PREGNANCY DASHBOARD
+===================================================== -->
+
+<section
+    id="pregnancySection"
+    class="hidden">
+
+
+<!-- HERO -->
+
+<div class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+
+            <i class="fa-solid fa-circle"></i>
+
+            أنتِ الآن في
+
+        </div>
+
+
+        <div
+            class="hero-week"
+            id="heroWeek">
+
+            الأسبوع —
+
+        </div>
+
+
+        <div
+            class="hero-detail"
+            id="heroDetail">
+
+            —
+
+        </div>
+
+
+        <div class="hero-progress">
+
+            <div class="progress-top">
+
+                <span>
+                    تقدم الحمل
+                </span>
+
+                <strong id="progressPercent">
+                    0%
+                </strong>
+
+            </div>
+
+
+            <div class="progress-track">
+
+                <div
+                    id="progressBar"
+                    class="progress-bar">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SUMMARY -->
+
+<div class="section-title">
+
+    <h2>
+        ملخص الحمل
+    </h2>
+
+    <span>
+        يتحدث تلقائيًا
+    </span>
+
+</div>
+
+
+<div class="summary-grid">
+
+
+    <div class="summary-card">
+
+        <div class="summary-icon blue-icon">
+
+            <i class="fa-solid fa-calendar-week"></i>
+
+        </div>
+
+        <div class="summary-label">
+            عمر الحمل
+        </div>
+
+        <div
+            class="summary-value"
+            id="sgValue">
+
+            —
+
+        </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <div class="summary-icon pink-icon">
+
+            <i class="fa-solid fa-heart-pulse"></i>
+
+        </div>
+
+        <div class="summary-label">
+            عمر الحمل SA
+        </div>
+
+        <div
+            class="summary-value"
+            id="saValue">
+
+            —
+
+        </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <div class="summary-icon purple-icon">
+
+            <i class="fa-solid fa-calendar-days"></i>
+
+        </div>
+
+        <div class="summary-label">
+            شهر الحمل
+        </div>
+
+        <div
+            class="summary-value"
+            id="monthValue">
+
+            —
+
+        </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <div class="summary-icon green-icon">
+
+            <i class="fa-solid fa-hourglass-half"></i>
+
+        </div>
+
+        <div class="summary-label">
+            المتبقي تقريبًا
+        </div>
+
+        <div
+            class="summary-value"
+            id="remainingValue">
+
+            —
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- IMPORTANT DATES -->
+
+<div class="section-title">
+
+    <h2>
+        التواريخ المهمة
+    </h2>
+
+</div>
+
+
+<div class="info-card">
+
+
+    <div class="info-row">
+
+        <div class="info-row-icon">
+
+            <i class="fa-regular fa-calendar"></i>
+
+        </div>
+
+        <div class="info-text">
+
+            <small>
+                أول يوم من آخر دورة
+            </small>
+
+            <strong id="lmpDisplay">
+                —
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="info-row">
+
+        <div class="info-row-icon pink">
+
+            <i class="fa-solid fa-baby"></i>
+
+        </div>
+
+        <div class="info-text">
+
+            <small>
+                تاريخ الحمل التقريبي
+            </small>
+
+            <strong id="conceptionDisplay">
+                —
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="info-row">
+
+        <div class="info-row-icon purple">
+
+            <i class="fa-solid fa-calendar-check"></i>
+
+        </div>
+
+        <div class="info-text">
+
+            <small>
+                موعد الولادة المتوقع
+            </small>
+
+            <strong id="dueDateDisplay">
+                —
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="info-row">
+
+        <div class="info-row-icon orange">
+
+            <i class="fa-solid fa-clock"></i>
+
+        </div>
+
+        <div class="info-text">
+
+            <small>
+                تاريخ اليوم
+            </small>
+
+            <strong id="todayDisplay">
+                —
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ACTIONS -->
+
+<div class="actions">
+
+    <button
+        class="secondary-button"
+        id="editButton">
+
+        <i class="fa-solid fa-pen"></i>
+
+        تعديل التاريخ
+
+    </button>
+
+
+    <button
+        class="danger-button"
+        id="deleteButton">
+
+        <i class="fa-solid fa-trash"></i>
+
+        حذف البيانات
+
+    </button>
+
+</div>
+
+
+<!-- WEEK TABLE -->
+
+<div class="section-title">
+
+    <h2>
+        تقويم الحمل
+    </h2>
+
+    <span>
+        أسبوعًا بأسبوع
+    </span>
+
+</div>
+
+
+<div class="week-table-card">
+
+    <div class="table-scroll">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        الأسبوع
+                    </th>
+
+                    <th>
+                        الفترة
+                    </th>
+
+                    <th>
+                        SG
+                    </th>
+
+                    <th>
+                        SA
+                    </th>
+
+                    <th>
+                        الحالة
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="weekTableBody">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<!-- MEDICAL NOTE -->
+
+<div class="medical-note">
+
+    <i class="fa-solid fa-circle-info"></i>
+
+    <p>
+
+        هذه الحسابات تقديرية اعتمادًا على التاريخ
+        الذي أدخلته المستخدمة. قد يختلف موعد الولادة
+        وعمر الحمل المعتمد طبيًا بعد فحص الطبيب أو
+        التصوير بالأمواج فوق الصوتية.
+
+    </p>
+
+</div>
+
+
+</section>
 
 </main>
 
 
-
-<!-- Bottom Navigation -->
+<!-- =====================================================
+     BOTTOM NAV
+===================================================== -->
 
 <nav class="bottom-nav">
 
@@ -1515,7 +1937,7 @@
 
     <a
         href="health.html"
-        class="nav-item">
+        class="nav-item active">
 
         <i class="fa-solid fa-heart-pulse"></i>
 
@@ -1527,13 +1949,13 @@
 
 
     <a
-        href="more.html"
+        href="profile.html"
         class="nav-item">
 
-        <i class="fa-solid fa-ellipsis"></i>
+        <i class="fa-solid fa-user"></i>
 
         <span>
-            المزيد
+            حسابي
         </span>
 
     </a>
@@ -1541,1384 +1963,1236 @@
 </nav>
 
 
-
-<!-- Toast -->
+<!-- TOAST -->
 
 <div id="toast"></div>
 
 
-
 <script type="module">
 
-    /* =====================================================
-       Firebase
-    ===================================================== */
 
-    import {
-        auth,
-        db
-    } from "./js/firebase.js";
+/* =====================================================
+   FIREBASE
+===================================================== */
 
-
-    import {
-        onAuthStateChanged
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+import {
+    auth,
+    db
+} from "./js/firebase.js";
 
 
-    import {
-        doc,
-        getDoc,
-        setDoc,
-        deleteDoc,
-        serverTimestamp
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
 
-
-    /* =====================================================
-       Elements
-    ===================================================== */
-
-    const loadingScreen =
-        document.getElementById("loadingScreen");
-
-    const setupSection =
-        document.getElementById("setupSection");
-
-    const pregnancySection =
-        document.getElementById("pregnancySection");
-
-    const lmpInput =
-        document.getElementById("lmpInput");
-
-    const conceptionInput =
-        document.getElementById("conceptionInput");
-
-    const saveInitialButton =
-        document.getElementById("saveInitialButton");
-
-    const editButton =
-        document.getElementById("editButton");
-
-    const deleteButton =
-        document.getElementById("deleteButton");
+import {
+    doc,
+    getDoc,
+    setDoc,
+    deleteDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
-    /* =====================================================
-       State
-    ===================================================== */
+const loadingScreen =
+    document.getElementById("loadingScreen");
 
-    let currentUser = null;
+const setupSection =
+    document.getElementById("setupSection");
 
-    let pregnancyData = null;
+const pregnancySection =
+    document.getElementById("pregnancySection");
+
+const lmpInput =
+    document.getElementById("lmpInput");
+
+const conceptionInput =
+    document.getElementById("conceptionInput");
+
+const saveInitialButton =
+    document.getElementById("saveInitialButton");
+
+const editButton =
+    document.getElementById("editButton");
+
+const deleteButton =
+    document.getElementById("deleteButton");
 
 
+/* =====================================================
+   STATE
+===================================================== */
 
-    /* =====================================================
-       Constants
-    ===================================================== */
+let currentUser = null;
 
-    const DAY =
-        24 * 60 * 60 * 1000;
-
-    const PREGNANCY_DAYS =
-        280;
+let pregnancyData = null;
 
 
+/* =====================================================
+   CONSTANTS
+===================================================== */
 
-    /* =====================================================
-       Date Helpers
-    ===================================================== */
+const DAY =
+    24 * 60 * 60 * 1000;
 
-    function parseDate(value) {
+const PREGNANCY_DAYS =
+    280;
 
-        if (!value) return null;
 
-        const parts =
-            value.split("-").map(Number);
+/* =====================================================
+   DATE HELPERS
+===================================================== */
 
-        if (parts.length !== 3) {
-            return null;
-        }
+function parseDate(value){
 
-        return new Date(
-            parts[0],
-            parts[1] - 1,
-            parts[2]
-        );
+    if(!value) return null;
 
+    const parts =
+        value.split("-").map(Number);
+
+    if(parts.length !== 3){
+        return null;
     }
 
-
-    function dateToInput(date) {
-
-        if (!date) return "";
-
-        const y =
-            date.getFullYear();
-
-        const m =
-            String(
-                date.getMonth() + 1
-            ).padStart(2, "0");
-
-        const d =
-            String(
-                date.getDate()
-            ).padStart(2, "0");
-
-        return `${y}-${m}-${d}`;
-
-    }
+    return new Date(
+        parts[0],
+        parts[1] - 1,
+        parts[2]
+    );
+}
 
 
-    function startOfDay(date) {
+function dateToInput(date){
 
-        return new Date(
-            date.getFullYear(),
-            date.getMonth(),
+    if(!date) return "";
+
+    const y =
+        date.getFullYear();
+
+    const m =
+        String(
+            date.getMonth() + 1
+        ).padStart(2,"0");
+
+    const d =
+        String(
             date.getDate()
-        );
+        ).padStart(2,"0");
 
-    }
-
-
-    function addDays(date, days) {
-
-        const result =
-            new Date(date);
-
-        result.setDate(
-            result.getDate() + days
-        );
-
-        return result;
-
-    }
+    return `${y}-${m}-${d}`;
+}
 
 
-    function differenceInDays(
-        start,
-        end
-    ) {
+function startOfDay(date){
 
-        const a =
-            startOfDay(start);
-
-        const b =
-            startOfDay(end);
-
-        return Math.floor(
-            (b - a) / DAY
-        );
-
-    }
+    return new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate()
+    );
+}
 
 
+function addDays(date,days){
 
-    /* =====================================================
-       Arabic Date
-    ===================================================== */
+    const result =
+        new Date(date);
 
-    function formatDate(date) {
+    result.setDate(
+        result.getDate() + days
+    );
 
-        if (!date) return "—";
-
-        return new Intl.DateTimeFormat(
-            "ar-DZ",
-            {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-            }
-        ).format(date);
-
-    }
+    return result;
+}
 
 
+function differenceInDays(start,end){
 
-    /* =====================================================
-       Calculate Pregnancy
-    ===================================================== */
+    const a =
+        startOfDay(start);
 
-    function calculatePregnancy(
-        lmpDate
-    ) {
+    const b =
+        startOfDay(end);
 
-        const today =
-            startOfDay(new Date());
-
-        const lmp =
-            startOfDay(lmpDate);
-
-        const elapsed =
-            differenceInDays(
-                lmp,
-                today
-            );
+    return Math.floor(
+        (b - a) / DAY
+    );
+}
 
 
-        /*
-         * If the date is in the future
-         */
+/* =====================================================
+   FORMAT DATE
+===================================================== */
 
-        if (elapsed < 0) {
+function formatDate(date){
 
-            return {
-                valid: false,
-                reason:
-                    "future"
-            };
+    if(!date) return "—";
 
+    return new Intl.DateTimeFormat(
+        "ar-DZ",
+        {
+            day:"numeric",
+            month:"long",
+            year:"numeric"
         }
+    ).format(date);
+}
 
 
-        /*
-         * Standard gestational age
-         * from LMP.
-         */
+/* =====================================================
+   CALCULATE PREGNANCY
+===================================================== */
 
-        const completedWeeks =
-            Math.floor(
-                elapsed / 7
-            );
+function calculatePregnancy(lmpDate){
 
-        const remainingDays =
-            elapsed % 7;
+    const today =
+        startOfDay(new Date());
 
+    const lmp =
+        startOfDay(lmpDate);
 
-        /*
-         * SG = pregnancy age.
-         */
-
-        const sgWeeks =
-            completedWeeks;
+    const elapsed =
+        differenceInDays(
+            lmp,
+            today
+        );
 
 
-        /*
-         * SA = amenorrhea age
-         * approximately SG + 2 weeks.
-         */
-
-        const saWeeks =
-            completedWeeks + 2;
-
-
-        /*
-         * Current pregnancy week
-         * as a human-readable week number.
-         *
-         * Example:
-         * 26w6d => week 27.
-         */
-
-        const currentWeek =
-            completedWeeks + 1;
-
-
-        /*
-         * Expected due date
-         */
-
-        const dueDate =
-            addDays(
-                lmp,
-                PREGNANCY_DAYS
-            );
-
-
-        /*
-         * Days remaining.
-         */
-
-        const daysRemaining =
-            Math.max(
-                0,
-                differenceInDays(
-                    today,
-                    dueDate
-                )
-            );
-
-
-        /*
-         * Progress.
-         */
-
-        const progress =
-            Math.min(
-                100,
-                Math.max(
-                    0,
-                    Math.round(
-                        (elapsed /
-                            PREGNANCY_DAYS) *
-                        100
-                    )
-                )
-            );
-
-
-        /*
-         * Pregnancy month.
-         *
-         * Based approximately on SA.
-         */
-
-        const month =
-            getPregnancyMonth(
-                saWeeks,
-                remainingDays
-            );
-
-
-        /*
-         * Approximate conception date.
-         */
-
-        const conceptionDate =
-            addDays(
-                lmp,
-                14
-            );
-
+    if(elapsed < 0){
 
         return {
+            valid:false,
+            reason:"future"
+        };
 
-            valid: true,
+    }
 
-            elapsed,
 
-            completedWeeks,
+    const completedWeeks =
+        Math.floor(
+            elapsed / 7
+        );
 
-            remainingDays,
+    const remainingDays =
+        elapsed % 7;
 
-            sgWeeks,
 
+    const sgWeeks =
+        completedWeeks;
+
+
+    const saWeeks =
+        completedWeeks + 2;
+
+
+    const currentWeek =
+        completedWeeks + 1;
+
+
+    const dueDate =
+        addDays(
+            lmp,
+            PREGNANCY_DAYS
+        );
+
+
+    const daysRemaining =
+        Math.max(
+            0,
+            differenceInDays(
+                today,
+                dueDate
+            )
+        );
+
+
+    const progress =
+        Math.min(
+            100,
+            Math.max(
+                0,
+                Math.round(
+                    (
+                        elapsed /
+                        PREGNANCY_DAYS
+                    ) * 100
+                )
+            )
+        );
+
+
+    const month =
+        getPregnancyMonth(
             saWeeks,
-
-            currentWeek,
-
-            dueDate,
-
-            daysRemaining,
-
-            progress,
-
-            month,
-
-            conceptionDate
-
-        };
-
-    }
+            remainingDays
+        );
 
 
+    const conceptionDate =
+        addDays(
+            lmp,
+            14
+        );
 
-    /* =====================================================
-       Pregnancy Month
-    ===================================================== */
 
-    function getPregnancyMonth(
+    return {
+
+        valid:true,
+
+        elapsed,
+
+        completedWeeks,
+
+        remainingDays,
+
+        sgWeeks,
+
         saWeeks,
-        days
-    ) {
 
-        const totalDays =
-            saWeeks * 7 + days;
+        currentWeek,
+
+        dueDate,
+
+        daysRemaining,
+
+        progress,
+
+        month,
+
+        conceptionDate
+
+    };
+
+}
 
 
-        if (totalDays < 5 * 7) {
-            return 1;
-        }
+/* =====================================================
+   PREGNANCY MONTH
+===================================================== */
 
-        if (totalDays < 9 * 7) {
-            return 2;
-        }
+function getPregnancyMonth(
+    saWeeks,
+    days
+){
 
-        if (totalDays < 14 * 7) {
-            return 3;
-        }
+    const totalDays =
+        saWeeks * 7 + days;
 
-        if (totalDays < 18 * 7) {
-            return 4;
-        }
 
-        if (totalDays < 23 * 7) {
-            return 5;
-        }
+    if(totalDays < 5 * 7)
+        return 1;
 
-        if (totalDays < 28 * 7) {
-            return 6;
-        }
+    if(totalDays < 9 * 7)
+        return 2;
 
-        if (totalDays < 32 * 7) {
-            return 7;
-        }
+    if(totalDays < 14 * 7)
+        return 3;
 
-        if (totalDays < 36 * 7) {
-            return 8;
-        }
+    if(totalDays < 18 * 7)
+        return 4;
 
-        return 9;
+    if(totalDays < 23 * 7)
+        return 5;
+
+    if(totalDays < 28 * 7)
+        return 6;
+
+    if(totalDays < 32 * 7)
+        return 7;
+
+    if(totalDays < 36 * 7)
+        return 8;
+
+    return 9;
+}
+
+
+/* =====================================================
+   SAVE
+===================================================== */
+
+async function savePregnancyData(){
+
+    if(!currentUser){
+
+        showToast(
+            "يجب تسجيل الدخول أولًا"
+        );
+
+        return;
+    }
+
+
+    let lmpDate =
+        parseDate(
+            lmpInput.value
+        );
+
+
+    let conceptionDate =
+        parseDate(
+            conceptionInput.value
+        );
+
+
+    if(
+        !lmpDate &&
+        conceptionDate
+    ){
+
+        lmpDate =
+            addDays(
+                conceptionDate,
+                -14
+            );
 
     }
 
 
+    if(!lmpDate){
 
-    /* =====================================================
-       Save Data
-    ===================================================== */
+        showToast(
+            "أدخلي تاريخ أول يوم من آخر دورة"
+        );
 
-    async function savePregnancyData() {
-
-        if (!currentUser) {
-            showToast(
-                "يجب تسجيل الدخول أولًا"
-            );
-            return;
-        }
+        return;
+    }
 
 
-        let lmpDate =
-            parseDate(
-                lmpInput.value
-            );
+    if(lmpDate > new Date()){
 
-        let conceptionDate =
-            parseDate(
-                conceptionInput.value
-            );
+        showToast(
+            "لا يمكن أن يكون التاريخ في المستقبل"
+        );
+
+        return;
+    }
 
 
-        /*
-         * If only conception date
-         * is entered, estimate LMP.
-         */
+    const data = {
 
-        if (
-            !lmpDate &&
+        lmpDate:
+            dateToInput(lmpDate),
+
+        conceptionDate:
             conceptionDate
-        ) {
-
-            lmpDate =
-                addDays(
-                    conceptionDate,
-                    -14
-                );
-
-        }
-
-
-        if (!lmpDate) {
-
-            showToast(
-                "أدخلي تاريخ أول يوم من آخر دورة"
-            );
-
-            return;
-
-        }
-
-
-        if (lmpDate > new Date()) {
-
-            showToast(
-                "لا يمكن أن يكون التاريخ في المستقبل"
-            );
-
-            return;
-
-        }
-
-
-        const data = {
-
-            lmpDate:
-                dateToInput(lmpDate),
-
-            conceptionDate:
-                conceptionDate
-                    ? dateToInput(
-                        conceptionDate
+                ? dateToInput(
+                    conceptionDate
+                )
+                : dateToInput(
+                    addDays(
+                        lmpDate,
+                        14
                     )
-                    : dateToInput(
-                        addDays(
-                            lmpDate,
-                            14
-                        )
-                    ),
-
-            updatedAt:
-                serverTimestamp()
-
-        };
-
-
-        try {
-
-            saveInitialButton.disabled = true;
-
-            saveInitialButton.innerHTML =
-                `
-                <i class="fa-solid fa-spinner fa-spin"></i>
-                جارٍ الحفظ...
-                `;
-
-
-            await setDoc(
-
-                doc(
-                    db,
-                    "users",
-                    currentUser.uid,
-                    "pregnancy",
-                    "profile"
                 ),
 
-                data,
+        updatedAt:
+            serverTimestamp()
 
-                {
-                    merge: true
-                }
-
-            );
+    };
 
 
-            pregnancyData = data;
+    try{
+
+        saveInitialButton.disabled =
+            true;
 
 
-            showDashboard();
+        saveInitialButton.innerHTML =
+            `
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            جارٍ الحفظ...
+            `;
 
 
-            showToast(
-                "تم حفظ بيانات الحمل"
-            );
+        await setDoc(
+
+            doc(
+                db,
+                "users",
+                currentUser.uid,
+                "pregnancy",
+                "profile"
+            ),
+
+            data,
+
+            {
+                merge:true
+            }
+
+        );
 
 
-        } catch (error) {
+        pregnancyData =
+            data;
 
-            console.error(error);
 
-            showToast(
-                "حدث خطأ أثناء حفظ البيانات"
-            );
+        showDashboard();
 
-        } finally {
 
-            saveInitialButton.disabled =
-                false;
+        showToast(
+            "تم حفظ بيانات الحمل"
+        );
 
-            saveInitialButton.innerHTML =
-                `
-                <i class="fa-solid fa-check"></i>
-                حفظ وبدء المتابعة
-                `;
 
-        }
+    }catch(error){
+
+        console.error(error);
+
+        showToast(
+            "حدث خطأ أثناء حفظ البيانات"
+        );
+
+    }finally{
+
+        saveInitialButton.disabled =
+            false;
+
+        saveInitialButton.innerHTML =
+            `
+            <i class="fa-solid fa-check"></i>
+            حفظ وبدء المتابعة
+            `;
 
     }
 
+}
 
 
-    /* =====================================================
-       Load Data
-    ===================================================== */
+/* =====================================================
+   LOAD
+===================================================== */
 
-    async function loadPregnancyData() {
+async function loadPregnancyData(){
 
-        if (!currentUser) return;
-
-
-        try {
-
-            const ref =
-                doc(
-                    db,
-                    "users",
-                    currentUser.uid,
-                    "pregnancy",
-                    "profile"
-                );
+    if(!currentUser) return;
 
 
-            const snapshot =
-                await getDoc(ref);
+    try{
+
+        const ref =
+            doc(
+                db,
+                "users",
+                currentUser.uid,
+                "pregnancy",
+                "profile"
+            );
 
 
-            if (
-                snapshot.exists()
-            ) {
-
-                pregnancyData =
-                    snapshot.data();
+        const snapshot =
+            await getDoc(ref);
 
 
-                if (
-                    pregnancyData.lmpDate
-                ) {
+        if(snapshot.exists()){
 
-                    showDashboard();
+            pregnancyData =
+                snapshot.data();
 
-                } else {
 
-                    showSetup();
+            if(
+                pregnancyData.lmpDate
+            ){
 
-                }
+                showDashboard();
 
-            } else {
+            }else{
 
                 showSetup();
 
             }
 
-
-        } catch (error) {
-
-            console.error(error);
+        }else{
 
             showSetup();
 
-            showToast(
-                "تعذر تحميل بيانات الحمل"
-            );
-
-        }
-
-    }
-
-
-
-    /* =====================================================
-       Show Setup
-    ===================================================== */
-
-    function showSetup() {
-
-        setupSection.classList.remove(
-            "hidden"
-        );
-
-        pregnancySection.classList.add(
-            "hidden"
-        );
-
-
-        if (
-            pregnancyData?.lmpDate
-        ) {
-
-            lmpInput.value =
-                pregnancyData.lmpDate;
-
         }
 
 
-        if (
-            pregnancyData?.conceptionDate
-        ) {
+    }catch(error){
 
-            conceptionInput.value =
-                pregnancyData.conceptionDate;
+        console.error(error);
 
-        }
+        showSetup();
 
-    }
-
-
-
-    /* =====================================================
-       Show Dashboard
-    ===================================================== */
-
-    function showDashboard() {
-
-        setupSection.classList.add(
-            "hidden"
-        );
-
-        pregnancySection.classList.remove(
-            "hidden"
-        );
-
-
-        if (
-            !pregnancyData?.lmpDate
-        ) {
-
-            showSetup();
-
-            return;
-
-        }
-
-
-        const lmp =
-            parseDate(
-                pregnancyData.lmpDate
-            );
-
-
-        const result =
-            calculatePregnancy(lmp);
-
-
-        if (!result.valid) {
-
-            showSetup();
-
-            showToast(
-                "تاريخ آخر دورة غير صالح"
-            );
-
-            return;
-
-        }
-
-
-        renderDashboard(
-            lmp,
-            result
+        showToast(
+            "تعذر تحميل بيانات الحمل"
         );
 
     }
 
+}
 
 
-    /* =====================================================
-       Render Dashboard
-    ===================================================== */
+/* =====================================================
+   SETUP
+===================================================== */
 
-    function renderDashboard(
+function showSetup(){
+
+    setupSection.classList.remove(
+        "hidden"
+    );
+
+    pregnancySection.classList.add(
+        "hidden"
+    );
+
+
+    if(
+        pregnancyData?.lmpDate
+    ){
+
+        lmpInput.value =
+            pregnancyData.lmpDate;
+
+    }
+
+
+    if(
+        pregnancyData?.conceptionDate
+    ){
+
+        conceptionInput.value =
+            pregnancyData.conceptionDate;
+
+    }
+
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+function showDashboard(){
+
+    setupSection.classList.add(
+        "hidden"
+    );
+
+    pregnancySection.classList.remove(
+        "hidden"
+    );
+
+
+    if(
+        !pregnancyData?.lmpDate
+    ){
+
+        showSetup();
+
+        return;
+    }
+
+
+    const lmp =
+        parseDate(
+            pregnancyData.lmpDate
+        );
+
+
+    const result =
+        calculatePregnancy(lmp);
+
+
+    if(!result.valid){
+
+        showSetup();
+
+        showToast(
+            "تاريخ آخر دورة غير صالح"
+        );
+
+        return;
+    }
+
+
+    renderDashboard(
         lmp,
         result
-    ) {
+    );
 
-        /*
-         * Hero
-         */
-
-        document.getElementById(
-            "heroWeek"
-        ).textContent =
-            `الأسبوع ${result.currentWeek}`;
+}
 
 
-        document.getElementById(
-            "heroDetail"
-        ).textContent =
-            `${result.completedWeeks} أسبوعًا و${result.remainingDays} أيام من الحمل`;
+/* =====================================================
+   RENDER
+===================================================== */
+
+function renderDashboard(
+    lmp,
+    result
+){
+
+    document.getElementById(
+        "heroWeek"
+    ).textContent =
+        `الأسبوع ${result.currentWeek}`;
 
 
-        /*
-         * Progress
-         */
-
-        document.getElementById(
-            "progressPercent"
-        ).textContent =
-            `${result.progress}%`;
+    document.getElementById(
+        "heroDetail"
+    ).textContent =
+        `${result.completedWeeks} أسبوعًا و${result.remainingDays} يوم من الحمل`;
 
 
-        document.getElementById(
-            "progressBar"
-        ).style.width =
-            `${result.progress}%`;
+    document.getElementById(
+        "progressPercent"
+    ).textContent =
+        `${result.progress}%`;
 
 
-        /*
-         * Summary
-         */
-
-        document.getElementById(
-            "sgValue"
-        ).textContent =
-            `${result.completedWeeks} أسبوع + ${result.remainingDays} يوم`;
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        `${result.progress}%`;
 
 
-        document.getElementById(
-            "saValue"
-        ).textContent =
-            `${result.saWeeks} أسبوع + ${result.remainingDays} يوم`;
+    document.getElementById(
+        "sgValue"
+    ).textContent =
+        `${result.completedWeeks} أسبوع + ${result.remainingDays} يوم`;
 
 
-        document.getElementById(
-            "monthValue"
-        ).textContent =
-            `الشهر ${result.month}`;
+    document.getElementById(
+        "saValue"
+    ).textContent =
+        `${result.saWeeks} أسبوع + ${result.remainingDays} يوم`;
 
 
-        document.getElementById(
-            "remainingValue"
-        ).textContent =
-            formatRemaining(
-                result.daysRemaining
-            );
+    document.getElementById(
+        "monthValue"
+    ).textContent =
+        `الشهر ${result.month}`;
 
 
-        /*
-         * Dates
-         */
-
-        document.getElementById(
-            "lmpDisplay"
-        ).textContent =
-            formatDate(lmp);
-
-
-        document.getElementById(
-            "conceptionDisplay"
-        ).textContent =
-            formatDate(
-                result.conceptionDate
-            );
-
-
-        document.getElementById(
-            "dueDateDisplay"
-        ).textContent =
-            formatDate(
-                result.dueDate
-            );
-
-
-        document.getElementById(
-            "todayDisplay"
-        ).textContent =
-            formatDate(
-                new Date()
-            );
-
-
-        /*
-         * Week table
-         */
-
-        generateWeekTable(
-            lmp,
-            result
+    document.getElementById(
+        "remainingValue"
+    ).textContent =
+        formatRemaining(
+            result.daysRemaining
         );
 
-    }
+
+    document.getElementById(
+        "lmpDisplay"
+    ).textContent =
+        formatDate(lmp);
 
 
-
-    /* =====================================================
-       Remaining
-    ===================================================== */
-
-    function formatRemaining(days) {
-
-        if (days <= 0) {
-
-            return "الموعد قريب";
-
-        }
+    document.getElementById(
+        "conceptionDisplay"
+    ).textContent =
+        formatDate(
+            result.conceptionDate
+        );
 
 
-        const weeks =
-            Math.floor(
-                days / 7
-            );
-
-        const remainingDays =
-            days % 7;
-
-
-        if (
-            weeks > 0 &&
-            remainingDays > 0
-        ) {
-
-            return `${weeks} أسبوع و${remainingDays} يوم`;
-
-        }
+    document.getElementById(
+        "dueDateDisplay"
+    ).textContent =
+        formatDate(
+            result.dueDate
+        );
 
 
-        if (weeks > 0) {
-
-            return `${weeks} أسبوع`;
-
-        }
-
-
-        return `${remainingDays} يوم`;
-
-    }
+    document.getElementById(
+        "todayDisplay"
+    ).textContent =
+        formatDate(
+            new Date()
+        );
 
 
-
-    /* =====================================================
-       Week Table
-    ===================================================== */
-
-    function generateWeekTable(
+    generateWeekTable(
         lmp,
         result
-    ) {
+    );
 
-        const tbody =
-            document.getElementById(
-                "weekTableBody"
+}
+
+
+/* =====================================================
+   REMAINING
+===================================================== */
+
+function formatRemaining(days){
+
+    if(days <= 0){
+
+        return "الموعد قريب";
+    }
+
+
+    const weeks =
+        Math.floor(
+            days / 7
+        );
+
+    const remainingDays =
+        days % 7;
+
+
+    if(
+        weeks > 0 &&
+        remainingDays > 0
+    ){
+
+        return `${weeks} أسبوع و${remainingDays} يوم`;
+
+    }
+
+
+    if(weeks > 0){
+
+        return `${weeks} أسبوع`;
+
+    }
+
+
+    return `${remainingDays} يوم`;
+
+}
+
+
+/* =====================================================
+   WEEK TABLE
+===================================================== */
+
+function generateWeekTable(
+    lmp,
+    result
+){
+
+    const tbody =
+        document.getElementById(
+            "weekTableBody"
+        );
+
+
+    tbody.innerHTML = "";
+
+
+    for(
+        let week = 1;
+        week <= 40;
+        week++
+    ){
+
+        const start =
+            addDays(
+                lmp,
+                (week - 1) * 7
             );
 
 
-        tbody.innerHTML = "";
+        const end =
+            addDays(
+                start,
+                6
+            );
 
 
-        /*
-         * 40 pregnancy weeks.
-         */
-
-        for (
-            let week = 1;
-            week <= 40;
-            week++
-        ) {
-
-            /*
-             * Week 1 starts
-             * at LMP day 0.
-             */
-
-            const start =
-                addDays(
-                    lmp,
-                    (week - 1) * 7
-                );
+        const sg =
+            week;
 
 
-            const end =
-                addDays(
-                    start,
-                    6
-                );
+        const sa =
+            week + 2;
 
 
-            /*
-             * SG and SA values
-             * represented as pregnancy
-             * week numbers.
-             */
-
-            const sg =
-                week;
+        const isCurrent =
+            week ===
+            result.currentWeek;
 
 
-            const sa =
-                week + 2;
+        const isPast =
+            week <
+            result.currentWeek;
 
 
-            /*
-             * Determine current week.
-             */
-
-            const isCurrent =
-                week === result.currentWeek;
+        let status = "";
 
 
-            const isPast =
-                week <
-                result.currentWeek;
+        if(isCurrent){
 
-
-            let status = "";
-
-
-            if (isCurrent) {
-
-                status =
-                    `
-                    <span class="current-badge">
-                        <i class="fa-solid fa-location-dot"></i>
-                        الآن
-                    </span>
-                    `;
-
-            } else if (isPast) {
-
-                status =
-                    `
-                    <span
-                        style="
-                        color:#7A8496;
-                        ">
-                        مكتمل
-                    </span>
-                    `;
-
-            } else {
-
-                status =
-                    `
-                    <span
-                        style="
-                        color:#A4ACB8;
-                        ">
-                        قادم
-                    </span>
-                    `;
-
-            }
-
-
-            const row =
-                document.createElement(
-                    "tr"
-                );
-
-
-            if (isCurrent) {
-
-                row.classList.add(
-                    "current-week"
-                );
-
-            }
-
-
-            row.innerHTML =
+            status =
                 `
-                <td>
-                    <strong>
-                        ${week}
-                    </strong>
-                </td>
+                <span class="current-badge">
 
-                <td>
-                    ${formatShortDate(start)}
-                    -
-                    ${formatShortDate(end)}
-                </td>
+                    <i class="fa-solid fa-location-dot"></i>
 
-                <td>
-                    ${sg} SG
-                </td>
+                    الآن
 
-                <td>
-                    ${sa} SA
-                </td>
-
-                <td>
-                    ${status}
-                </td>
+                </span>
                 `;
 
+        }else if(isPast){
 
-            tbody.appendChild(row);
+            status =
+                `
+                <span style="color:#777;font-weight:700;">
+                    مكتمل
+                </span>
+                `;
+
+        }else{
+
+            status =
+                `
+                <span style="color:#AAA;">
+                    قادم
+                </span>
+                `;
 
         }
 
-    }
+
+        const row =
+            document.createElement("tr");
 
 
+        if(isCurrent){
 
-    /* =====================================================
-       Short Date
-    ===================================================== */
-
-    function formatShortDate(date) {
-
-        const day =
-            String(
-                date.getDate()
-            ).padStart(2, "0");
-
-
-        const month =
-            String(
-                date.getMonth() + 1
-            ).padStart(2, "0");
-
-
-        return `${day}/${month}`;
-
-    }
-
-
-
-    /* =====================================================
-       Delete Pregnancy
-    ===================================================== */
-
-    async function deletePregnancy() {
-
-        if (!currentUser) return;
-
-
-        const confirmed =
-            confirm(
-                "هل أنتِ متأكدة من حذف بيانات الحمل؟"
-            );
-
-
-        if (!confirmed) return;
-
-
-        try {
-
-            await deleteDoc(
-
-                doc(
-                    db,
-                    "users",
-                    currentUser.uid,
-                    "pregnancy",
-                    "profile"
-                )
-
-            );
-
-
-            pregnancyData = null;
-
-            lmpInput.value = "";
-
-            conceptionInput.value = "";
-
-
-            showSetup();
-
-
-            showToast(
-                "تم حذف بيانات الحمل"
-            );
-
-
-        } catch (error) {
-
-            console.error(error);
-
-            showToast(
-                "تعذر حذف البيانات"
+            row.classList.add(
+                "current-week"
             );
 
         }
 
+
+        row.innerHTML =
+            `
+            <td>
+                <strong>
+                    ${week}
+                </strong>
+            </td>
+
+            <td>
+                ${formatShortDate(start)}
+                -
+                ${formatShortDate(end)}
+            </td>
+
+            <td>
+                ${sg} SG
+            </td>
+
+            <td>
+                ${sa} SA
+            </td>
+
+            <td>
+                ${status}
+            </td>
+            `;
+
+
+        tbody.appendChild(row);
+
     }
 
+}
 
 
-    /* =====================================================
-       Toast
-    ===================================================== */
+/* =====================================================
+   SHORT DATE
+===================================================== */
 
-    let toastTimer;
+function formatShortDate(date){
 
-
-    function showToast(message) {
-
-        const toast =
-            document.getElementById(
-                "toast"
-            );
+    const day =
+        String(
+            date.getDate()
+        ).padStart(2,"0");
 
 
-        toast.textContent =
-            message;
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(2,"0");
 
 
-        toast.classList.add(
-            "show"
+    return `${day}/${month}`;
+
+}
+
+
+/* =====================================================
+   DELETE
+===================================================== */
+
+async function deletePregnancy(){
+
+    if(!currentUser) return;
+
+
+    const confirmed =
+        confirm(
+            "هل أنتِ متأكدة من حذف بيانات الحمل؟"
         );
 
 
-        clearTimeout(
-            toastTimer
+    if(!confirmed) return;
+
+
+    try{
+
+        await deleteDoc(
+
+            doc(
+                db,
+                "users",
+                currentUser.uid,
+                "pregnancy",
+                "profile"
+            )
+
         );
 
 
-        toastTimer =
+        pregnancyData = null;
+
+        lmpInput.value = "";
+
+        conceptionInput.value = "";
+
+
+        showSetup();
+
+
+        showToast(
+            "تم حذف بيانات الحمل"
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        showToast(
+            "تعذر حذف البيانات"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+let toastTimer;
+
+
+function showToast(message){
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2800
+        );
+
+}
+
+
+/* =====================================================
+   EVENTS
+===================================================== */
+
+saveInitialButton.addEventListener(
+    "click",
+    savePregnancyData
+);
+
+
+editButton.addEventListener(
+    "click",
+    () => {
+
+        showSetup();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+);
+
+
+deleteButton.addEventListener(
+    "click",
+    deletePregnancy
+);
+
+
+/* =====================================================
+   CONCEPTION DATE
+===================================================== */
+
+conceptionInput.addEventListener(
+    "change",
+    () => {
+
+        if(
+            conceptionInput.value &&
+            !lmpInput.value
+        ){
+
+            const conception =
+                parseDate(
+                    conceptionInput.value
+                );
+
+
+            if(conception){
+
+                const estimatedLMP =
+                    addDays(
+                        conception,
+                        -14
+                    );
+
+
+                lmpInput.value =
+                    dateToInput(
+                        estimatedLMP
+                    );
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   LMP DATE
+===================================================== */
+
+lmpInput.addEventListener(
+    "change",
+    () => {
+
+        if(lmpInput.value){
+
+            const lmp =
+                parseDate(
+                    lmpInput.value
+                );
+
+
+            if(lmp){
+
+                const conception =
+                    addDays(
+                        lmp,
+                        14
+                    );
+
+
+                conceptionInput.value =
+                    dateToInput(
+                        conception
+                    );
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   AUTHENTICATION
+===================================================== */
+
+onAuthStateChanged(
+    auth,
+    async(user) => {
+
+        if(!user){
+
+            window.location.href =
+                "login.html";
+
+            return;
+        }
+
+
+        currentUser =
+            user;
+
+
+        try{
+
+            await loadPregnancyData();
+
+        }finally{
+
             setTimeout(
                 () => {
 
-                    toast.classList.remove(
-                        "show"
+                    loadingScreen.style.opacity =
+                        "0";
+
+
+                    setTimeout(
+                        () => {
+
+                            loadingScreen.style.display =
+                                "none";
+
+                        },
+                        300
                     );
 
                 },
-                2800
+                250
             );
 
+        }
+
     }
-
-
-
-    /* =====================================================
-       Events
-    ===================================================== */
-
-    saveInitialButton.addEventListener(
-        "click",
-        savePregnancyData
-    );
-
-
-    editButton.addEventListener(
-        "click",
-        () => {
-
-            showSetup();
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-        }
-    );
-
-
-    deleteButton.addEventListener(
-        "click",
-        deletePregnancy
-    );
-
-
-
-    /* =====================================================
-       Date Inputs Synchronization
-    ===================================================== */
-
-    conceptionInput.addEventListener(
-        "change",
-        () => {
-
-            /*
-             * If user enters conception date
-             * and no LMP, calculate approximate LMP.
-             */
-
-            if (
-                conceptionInput.value &&
-                !lmpInput.value
-            ) {
-
-                const conception =
-                    parseDate(
-                        conceptionInput.value
-                    );
-
-
-                if (conception) {
-
-                    const estimatedLMP =
-                        addDays(
-                            conception,
-                            -14
-                        );
-
-
-                    lmpInput.value =
-                        dateToInput(
-                            estimatedLMP
-                        );
-
-                }
-
-            }
-
-        }
-    );
-
-
-
-    lmpInput.addEventListener(
-        "change",
-        () => {
-
-            /*
-             * Automatically show approximate
-             * conception date.
-             */
-
-            if (lmpInput.value) {
-
-                const lmp =
-                    parseDate(
-                        lmpInput.value
-                    );
-
-
-                if (lmp) {
-
-                    const conception =
-                        addDays(
-                            lmp,
-                            14
-                        );
-
-
-                    conceptionInput.value =
-                        dateToInput(
-                            conception
-                        );
-
-                }
-
-            }
-
-        }
-    );
-
-
-
-    /* =====================================================
-       Authentication
-    ===================================================== */
-
-    onAuthStateChanged(
-        auth,
-        async (user) => {
-
-            if (!user) {
-
-                /*
-                 * User is not logged in.
-                 */
-
-                window.location.href =
-                    "login.html";
-
-                return;
-
-            }
-
-
-            currentUser = user;
-
-
-            try {
-
-                await loadPregnancyData();
-
-            } finally {
-
-                setTimeout(
-                    () => {
-
-                        loadingScreen.style.opacity =
-                            "0";
-
-                        setTimeout(
-                            () => {
-
-                                loadingScreen.style.display =
-                                    "none";
-
-                            },
-                            300
-                        );
-
-                    },
-                    250
-                );
-
-            }
-
-        }
-    );
+);
 
 </script>
 
