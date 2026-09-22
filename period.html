@@ -68,8 +68,7 @@
     --red:#D94848;
     --red-soft:#FFF0F0;
 
-    --shadow:
-        0 4px 16px rgba(0,0,0,.055);
+    --shadow:0 4px 16px rgba(0,0,0,.055);
 }
 
 html{
@@ -100,14 +99,11 @@ body{
 button,
 input,
 select{
-
     font-family:inherit;
 }
 
 button{
-
     border:0;
-
     cursor:pointer;
 }
 
@@ -128,7 +124,6 @@ a{
 .loading-screen{
 
     position:fixed;
-
     inset:0;
 
     background:#fff;
@@ -136,9 +131,7 @@ a{
     z-index:9999;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     transition:.3s;
@@ -147,12 +140,10 @@ a{
 .loading-screen.hide{
 
     opacity:0;
-
     pointer-events:none;
 }
 
 .loading-box{
-
     text-align:center;
 }
 
@@ -168,7 +159,6 @@ a{
     color:#fff;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
@@ -186,7 +176,6 @@ a{
     display:block;
 
     font-size:22px;
-
     font-weight:900;
 }
 
@@ -197,7 +186,6 @@ a{
     color:#777;
 
     font-size:12px;
-
     font-weight:700;
 
     margin-top:2px;
@@ -220,7 +208,6 @@ a{
 }
 
 @keyframes spin{
-
     to{
         transform:rotate(360deg);
     }
@@ -239,10 +226,7 @@ a{
 
     margin:auto;
 
-    padding:
-        0
-        15px
-        30px;
+    padding:0 15px 30px;
 }
 
 
@@ -257,16 +241,11 @@ a{
     margin-left:-15px;
     margin-right:-15px;
 
-    padding:
-        14px
-        15px
-        18px;
+    padding:14px 15px 18px;
 
     background:#F5F5F5;
 
-    border-bottom:
-        1px solid
-        #E8E8E8;
+    border-bottom:1px solid #E8E8E8;
 
     margin-bottom:18px;
 }
@@ -365,7 +344,6 @@ a{
 }
 
 .refresh-btn:active{
-
     transform:scale(.94);
 }
 
@@ -388,9 +366,7 @@ a{
 
     padding:17px;
 
-    box-shadow:
-        0 7px 20px
-        rgba(0,0,0,.11);
+    box-shadow:0 7px 20px rgba(0,0,0,.11);
 
     margin-bottom:12px;
 }
@@ -406,8 +382,7 @@ a{
 
     border-radius:50%;
 
-    background:
-        rgba(37,244,238,.08);
+    background:rgba(37,244,238,.08);
 
     left:-65px;
     top:-75px;
@@ -424,8 +399,7 @@ a{
 
     border-radius:50%;
 
-    background:
-        rgba(254,44,85,.10);
+    background:rgba(254,44,85,.10);
 
     right:-55px;
     bottom:-70px;
@@ -434,7 +408,6 @@ a{
 .hero-content{
 
     position:relative;
-
     z-index:1;
 }
 
@@ -454,7 +427,6 @@ a{
     color:#BDBDBD;
 
     font-size:10px;
-
     font-weight:700;
 
     margin-bottom:2px;
@@ -474,7 +446,6 @@ a{
     color:#D2D2D2;
 
     font-size:11px;
-
     font-weight:700;
 
     margin-top:2px;
@@ -489,9 +460,7 @@ a{
 
     border-radius:50%;
 
-    border:
-        5px solid
-        rgba(255,255,255,.13);
+    border:5px solid rgba(255,255,255,.13);
 
     border-top-color:#FE2C55;
 
@@ -508,7 +477,6 @@ a{
 .cycle-circle strong{
 
     font-size:16px;
-
     font-weight:900;
 }
 
@@ -517,7 +485,6 @@ a{
     color:#BDBDBD;
 
     font-size:8px;
-
     font-weight:700;
 }
 
@@ -530,8 +497,7 @@ a{
 
     display:grid;
 
-    grid-template-columns:
-        repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
 
     gap:8px;
 
@@ -540,12 +506,9 @@ a{
 
 .mini-card{
 
-    background:
-        rgba(255,255,255,.08);
+    background:rgba(255,255,255,.08);
 
-    border:
-        1px solid
-        rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.08);
 
     border-radius:13px;
 
@@ -557,7 +520,6 @@ a{
     color:#AFAFAF;
 
     font-size:8px;
-
     font-weight:700;
 
     margin-bottom:2px;
@@ -587,11 +549,10 @@ a{
 
 
 /* =========================================================
-   SECTION
+   SECTIONS
 ========================================================= */
 
 .section{
-
     margin-top:17px;
 }
 
@@ -627,7 +588,6 @@ a{
 .section-title h2{
 
     font-size:16px;
-
     font-weight:900;
 }
 
@@ -636,22 +596,19 @@ a{
     color:#777;
 
     font-size:10px;
-
     font-weight:700;
 }
 
 
 /* =========================================================
-   CALENDAR CARD
+   CALENDAR
 ========================================================= */
 
 .calendar-card{
 
     background:#fff;
 
-    border:
-        1px solid
-        var(--border);
+    border:1px solid var(--border);
 
     border-radius:20px;
 
@@ -674,14 +631,12 @@ a{
 .month-name{
 
     font-size:15px;
-
     font-weight:900;
 }
 
 .month-actions{
 
     display:flex;
-
     gap:6px;
 }
 
@@ -703,7 +658,6 @@ a{
 }
 
 .month-btn:active{
-
     transform:scale(.94);
 }
 
@@ -712,14 +666,12 @@ a{
 
     display:grid;
 
-    grid-template-columns:
-        repeat(7,1fr);
+    grid-template-columns:repeat(7,1fr);
 
     gap:5px;
 }
 
 .weekdays{
-
     margin-bottom:6px;
 }
 
@@ -730,7 +682,6 @@ a{
     color:#999;
 
     font-size:9px;
-
     font-weight:800;
 }
 
@@ -743,13 +694,11 @@ a{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     position:relative;
 
     font-size:11px;
-
     font-weight:800;
 
     cursor:pointer;
@@ -760,12 +709,10 @@ a{
 }
 
 .day.empty{
-
     cursor:default;
 }
 
 .day:not(.empty):active{
-
     transform:scale(.93);
 }
 
@@ -794,24 +741,19 @@ a{
 
 .day.today{
 
-    outline:
-        2px solid
-        #FE2C55;
+    outline:2px solid #FE2C55;
 
     outline-offset:-2px;
 }
 
 .day.selected{
 
-    box-shadow:
-        inset 0 0 0 2px
-        #111;
+    box-shadow:inset 0 0 0 2px #111;
 }
 
 .day-number{
 
     position:relative;
-
     z-index:2;
 }
 
@@ -828,17 +770,14 @@ a{
 }
 
 .period .day-mark{
-
     background:#FE2C55;
 }
 
 .fertile .day-mark{
-
     background:#7357D8;
 }
 
 .ovulation .day-mark{
-
     background:#E58A00;
 }
 
@@ -859,9 +798,7 @@ a{
 
     padding-top:11px;
 
-    border-top:
-        1px solid
-        #EEEEEE;
+    border-top:1px solid #EEEEEE;
 }
 
 .legend{
@@ -903,9 +840,7 @@ a{
 
     background:#fff;
 
-    border:
-        2px solid
-        #FE2C55;
+    border:2px solid #FE2C55;
 }
 
 
@@ -917,9 +852,7 @@ a{
 
     background:#fff;
 
-    border:
-        1px solid
-        var(--border);
+    border:1px solid var(--border);
 
     border-radius:17px;
 
@@ -967,7 +900,6 @@ a{
     display:block;
 
     font-size:12px;
-
     font-weight:900;
 }
 
@@ -978,7 +910,6 @@ a{
     color:#777;
 
     font-size:9px;
-
     font-weight:700;
 
     margin-top:2px;
@@ -1003,7 +934,7 @@ a{
 
 
 /* =========================================================
-   ACTION CARD
+   ADD PERIOD
 ========================================================= */
 
 .add-period{
@@ -1012,9 +943,7 @@ a{
 
     background:#fff;
 
-    border:
-        1px solid
-        #E5E5E5;
+    border:1px solid #E5E5E5;
 
     border-radius:18px;
 
@@ -1034,7 +963,6 @@ a{
 }
 
 .add-period:active{
-
     transform:scale(.985);
 }
 
@@ -1058,12 +986,10 @@ a{
 
     font-size:17px;
 
-    box-shadow:
-        2px 2px 0 #25F4EE;
+    box-shadow:2px 2px 0 #25F4EE;
 }
 
 .add-period-text{
-
     flex:1;
 }
 
@@ -1072,7 +998,6 @@ a{
     display:block;
 
     font-size:13px;
-
     font-weight:900;
 }
 
@@ -1083,7 +1008,6 @@ a{
     color:#777;
 
     font-size:9px;
-
     font-weight:700;
 
     margin-top:1px;
@@ -1098,16 +1022,14 @@ a{
 
 
 /* =========================================================
-   STATS
+   STATISTICS
 ========================================================= */
 
 .stats-card{
 
     background:#fff;
 
-    border:
-        1px solid
-        var(--border);
+    border:1px solid var(--border);
 
     border-radius:19px;
 
@@ -1120,8 +1042,7 @@ a{
 
     display:grid;
 
-    grid-template-columns:
-        repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
 
     gap:8px;
 }
@@ -1140,7 +1061,6 @@ a{
     color:#777;
 
     font-size:9px;
-
     font-weight:700;
 }
 
@@ -1149,7 +1069,6 @@ a{
     margin-top:2px;
 
     font-size:16px;
-
     font-weight:900;
 }
 
@@ -1158,7 +1077,6 @@ a{
     color:#888;
 
     font-size:9px;
-
     font-weight:700;
 }
 
@@ -1180,9 +1098,7 @@ a{
 
     background:#fff;
 
-    border:
-        1px dashed
-        #D8D8D8;
+    border:1px dashed #D8D8D8;
 
     border-radius:17px;
 
@@ -1193,7 +1109,6 @@ a{
     color:#888;
 
     font-size:11px;
-
     font-weight:700;
 }
 
@@ -1201,9 +1116,7 @@ a{
 
     background:#fff;
 
-    border:
-        1px solid
-        var(--border);
+    border:1px solid var(--border);
 
     border-radius:17px;
 
@@ -1249,7 +1162,6 @@ a{
     display:block;
 
     font-size:11px;
-
     font-weight:900;
 }
 
@@ -1260,7 +1172,6 @@ a{
     color:#777;
 
     font-size:9px;
-
     font-weight:700;
 
     margin-top:2px;
@@ -1269,7 +1180,6 @@ a{
 .history-actions{
 
     display:flex;
-
     gap:5px;
 }
 
@@ -1308,9 +1218,7 @@ a{
 
     background:#fff;
 
-    border:
-        1px solid
-        #E7E7E7;
+    border:1px solid #E7E7E7;
 
     border-radius:16px;
 
@@ -1322,9 +1230,7 @@ a{
 
     gap:9px;
 
-    box-shadow:
-        0 3px 12px
-        rgba(0,0,0,.035);
+    box-shadow:0 3px 12px rgba(0,0,0,.035);
 }
 
 .note i{
@@ -1358,32 +1264,24 @@ a{
 
     left:50%;
 
-    transform:
-        translateX(-50%);
+    transform:translateX(-50%);
 
     width:min(650px,100%);
 
-    background:
-        rgba(255,255,255,.98);
+    background:rgba(255,255,255,.98);
 
     backdrop-filter:blur(15px);
 
-    border-top:
-        1px solid
-        #E1E1E1;
+    border-top:1px solid #E1E1E1;
 
     display:grid;
 
-    grid-template-columns:
-        repeat(4,1fr);
+    grid-template-columns:repeat(4,1fr);
 
     padding:
         7px
         8px
-        max(
-            8px,
-            env(safe-area-inset-bottom)
-        );
+        max(8px,env(safe-area-inset-bottom));
 
     z-index:100;
 }
@@ -1395,7 +1293,6 @@ a{
     color:#999;
 
     font-size:10px;
-
     font-weight:800;
 
     padding:5px;
@@ -1424,7 +1321,6 @@ a{
 }
 
 .nav-item.active i{
-
     color:#FE2C55;
 }
 
@@ -1439,8 +1335,7 @@ a{
 
     inset:0;
 
-    background:
-        rgba(0,0,0,.48);
+    background:rgba(0,0,0,.48);
 
     z-index:1000;
 
@@ -1452,7 +1347,6 @@ a{
 }
 
 .modal.show{
-
     display:flex;
 }
 
@@ -1462,20 +1356,15 @@ a{
 
     background:#fff;
 
-    border-radius:
-        25px 25px 0 0;
+    border-radius:25px 25px 0 0;
 
-    padding:
-        17px
-        15px
-        25px;
+    padding:17px 15px 25px;
 
     max-height:90vh;
 
     overflow-y:auto;
 
-    animation:
-        slideUp .22s ease;
+    animation:slideUp .22s ease;
 }
 
 @keyframes slideUp{
@@ -1531,7 +1420,6 @@ a{
 .modal-title{
 
     font-size:15px;
-
     font-weight:900;
 }
 
@@ -1548,7 +1436,6 @@ a{
 }
 
 .form-group{
-
     margin-bottom:13px;
 }
 
@@ -1559,7 +1446,6 @@ a{
     color:#333;
 
     font-size:10px;
-
     font-weight:900;
 
     margin-bottom:6px;
@@ -1571,15 +1457,11 @@ a{
 
     height:46px;
 
-    border:
-        1px solid
-        #DCDCDC;
+    border:1px solid #DCDCDC;
 
     border-radius:12px;
 
-    padding:
-        0
-        11px;
+    padding:0 11px;
 
     outline:none;
 
@@ -1588,7 +1470,6 @@ a{
     color:#171717;
 
     font-size:13px;
-
     font-weight:800;
 }
 
@@ -1596,17 +1477,14 @@ a{
 
     border-color:#111;
 
-    box-shadow:
-        0 0 0 3px
-        rgba(0,0,0,.05);
+    box-shadow:0 0 0 3px rgba(0,0,0,.05);
 }
 
 .form-row{
 
     display:grid;
 
-    grid-template-columns:
-        1fr 1fr;
+    grid-template-columns:1fr 1fr;
 
     gap:9px;
 }
@@ -1616,7 +1494,6 @@ a{
     color:#888;
 
     font-size:9px;
-
     font-weight:600;
 
     margin-top:4px;
@@ -1626,8 +1503,7 @@ a{
 
     display:grid;
 
-    grid-template-columns:
-        1fr 1fr;
+    grid-template-columns:1fr 1fr;
 
     gap:8px;
 
@@ -1641,7 +1517,6 @@ a{
     border-radius:13px;
 
     font-size:12px;
-
     font-weight:900;
 }
 
@@ -1682,12 +1557,9 @@ a{
 
     border-radius:13px;
 
-    padding:
-        10px
-        15px;
+    padding:10px 15px;
 
     font-size:11px;
-
     font-weight:800;
 
     z-index:3000;
@@ -1735,12 +1607,10 @@ a{
     }
 
     .page-heading-title{
-
         font-size:18px;
     }
 
     .hero-day{
-
         font-size:26px;
     }
 
@@ -1801,24 +1671,20 @@ a{
 
 
 <!-- =========================================================
-     TOP AREA
+     TOP
 ========================================================= -->
 
 <section class="top-area">
 
-
     <div class="page-header">
 
-
         <div class="page-heading">
-
 
             <div class="page-heading-icon">
 
                 <i class="fa-solid fa-calendar-days"></i>
 
             </div>
-
 
             <div>
 
@@ -1832,9 +1698,7 @@ a{
 
             </div>
 
-
         </div>
-
 
         <button
             class="refresh-btn"
@@ -1845,23 +1709,16 @@ a{
 
         </button>
 
-
     </div>
 
 
-
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
+    <!-- HERO -->
 
     <section class="hero">
 
-
         <div class="hero-content">
 
-
             <div class="hero-top">
-
 
                 <div>
 
@@ -1899,13 +1756,10 @@ a{
 
                 </div>
 
-
             </div>
 
 
-
             <div class="mini-grid">
-
 
                 <div class="mini-card">
 
@@ -1982,14 +1836,11 @@ a{
 
                 </div>
 
-
             </div>
-
 
         </div>
 
     </section>
-
 
 </section>
 
@@ -2001,9 +1852,7 @@ a{
 
 <section class="section">
 
-
     <div class="section-title">
-
 
         <div class="section-title-left">
 
@@ -2015,21 +1864,16 @@ a{
 
         </div>
 
-
         <small>
             اضغطي على أي يوم
         </small>
 
-
     </div>
-
 
 
     <div class="calendar-card">
 
-
         <div class="calendar-head">
-
 
             <button
                 class="month-btn"
@@ -2057,9 +1901,7 @@ a{
 
             </button>
 
-
         </div>
-
 
 
         <div class="weekdays">
@@ -2075,17 +1917,13 @@ a{
         </div>
 
 
-
         <div
             class="calendar-grid"
             id="calendarGrid">
-
         </div>
 
 
-
         <div class="calendar-legend">
-
 
             <div class="legend">
 
@@ -2122,16 +1960,12 @@ a{
 
             </div>
 
-
         </div>
-
 
     </div>
 
 
-
     <div class="selected-day">
-
 
         <div class="selected-icon">
 
@@ -2161,9 +1995,7 @@ a{
 
         </div>
 
-
     </div>
-
 
 </section>
 
@@ -2175,11 +2007,9 @@ a{
 
 <section class="section">
 
-
     <button
         class="add-period"
         id="addPeriodBtn">
-
 
         <div class="add-period-icon">
 
@@ -2207,9 +2037,7 @@ a{
 
         </div>
 
-
     </button>
-
 
 </section>
 
@@ -2221,9 +2049,7 @@ a{
 
 <section class="section">
 
-
     <div class="section-title">
-
 
         <div class="section-title-left">
 
@@ -2235,21 +2061,16 @@ a{
 
         </div>
 
-
         <small>
             بناءً على السجل
         </small>
 
-
     </div>
-
 
 
     <div class="stats-card">
 
-
         <div class="stats-grid">
-
 
             <div class="stat">
 
@@ -2326,12 +2147,9 @@ a{
 
             </div>
 
-
         </div>
 
-
     </div>
-
 
 </section>
 
@@ -2343,9 +2161,7 @@ a{
 
 <section class="section">
 
-
     <div class="section-title">
-
 
         <div class="section-title-left">
 
@@ -2357,14 +2173,11 @@ a{
 
         </div>
 
-
         <small id="historyCount">
             0 دورة
         </small>
 
-
     </div>
-
 
 
     <div
@@ -2379,14 +2192,11 @@ a{
 
     </div>
 
-
 </section>
 
 
 
-<!-- =========================================================
-     NOTE
-========================================================= -->
+<!-- NOTE -->
 
 <div class="note">
 
@@ -2412,7 +2222,6 @@ a{
 ========================================================= -->
 
 <nav class="bottom-nav">
-
 
     <a
         class="nav-item"
@@ -2457,7 +2266,6 @@ a{
 
     </a>
 
-
 </nav>
 
 
@@ -2470,15 +2278,11 @@ a{
     class="modal"
     id="periodModal">
 
-
     <div class="modal-box">
-
 
         <div class="modal-head">
 
-
             <div class="modal-title-wrap">
-
 
                 <div class="modal-icon">
 
@@ -2495,7 +2299,6 @@ a{
 
                 </div>
 
-
             </div>
 
 
@@ -2507,9 +2310,7 @@ a{
 
             </button>
 
-
         </div>
-
 
 
         <div class="form-group">
@@ -2530,9 +2331,7 @@ a{
         </div>
 
 
-
         <div class="form-row">
-
 
             <div class="form-group">
 
@@ -2575,13 +2374,10 @@ a{
 
             </div>
 
-
         </div>
 
 
-
         <div class="modal-actions">
-
 
             <button
                 class="btn btn-secondary"
@@ -2600,9 +2396,7 @@ a{
 
             </button>
 
-
         </div>
-
 
     </div>
 
@@ -2617,7 +2411,6 @@ a{
 <div
     class="toast"
     id="toast">
-
 </div>
 
 
@@ -2673,29 +2466,19 @@ let editingId = null;
 ========================================================= */
 
 const loadingScreen =
-    document.getElementById(
-        "loadingScreen"
-    );
+    document.getElementById("loadingScreen");
 
 const calendarGrid =
-    document.getElementById(
-        "calendarGrid"
-    );
+    document.getElementById("calendarGrid");
 
 const monthName =
-    document.getElementById(
-        "monthName"
-    );
+    document.getElementById("monthName");
 
 const periodModal =
-    document.getElementById(
-        "periodModal"
-    );
+    document.getElementById("periodModal");
 
 const toast =
-    document.getElementById(
-        "toast"
-    );
+    document.getElementById("toast");
 
 
 
@@ -2723,8 +2506,23 @@ const monthNames = [
 
 
 /* =========================================================
-   HELPERS
+   DATE HELPERS
 ========================================================= */
+
+/*
+   مهم جدًا:
+
+   لا نستخدم new Date("2026-08-29")
+   في حساب يوم الدورة.
+
+   لأن JavaScript قد يتعامل مع التاريخ
+   بتوقيت UTC، وهذا قد يؤدي أحيانًا
+   إلى ظهور يوم ناقص أو زائد.
+
+   لذلك نتعامل مع التاريخ كـ UTC
+   بشكل صريح عند حساب الفرق بين الأيام.
+*/
+
 
 function pad(n){
 
@@ -2752,8 +2550,9 @@ function parseDate(value){
 
     }
 
+
     const parts =
-        value.split("-");
+        String(value).split("-");
 
 
     if(parts.length !== 3){
@@ -2769,6 +2568,103 @@ function parseDate(value){
         Number(parts[1])-1,
         Number(parts[2])
 
+    );
+
+}
+
+
+/*
+   هذه الدالة مخصصة لحساب الأيام
+   بدون أي تأثير من timezone.
+*/
+
+function dateToUTC(date){
+
+    return Date.UTC(
+
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate()
+
+    );
+
+}
+
+
+/*
+   تحويل YYYY-MM-DD مباشرة إلى UTC
+*/
+
+function stringToUTC(value){
+
+    const parts =
+        String(value).split("-");
+
+
+    if(parts.length !== 3){
+
+        return null;
+
+    }
+
+
+    return Date.UTC(
+
+        Number(parts[0]),
+        Number(parts[1])-1,
+        Number(parts[2])
+
+    );
+
+}
+
+
+/*
+   الفرق بين تاريخين بالأيام.
+
+   مثال:
+
+   29/08 → 22/09
+
+   الفرق = 24
+
+   وبما أن أول يوم = اليوم 1:
+
+   24 + 1 = اليوم 25
+*/
+
+function daysBetweenDates(startDateString,endDate){
+
+    const startUTC =
+        stringToUTC(
+            startDateString
+        );
+
+
+    const endUTC =
+        dateToUTC(
+            endDate
+        );
+
+
+    if(
+        startUTC === null ||
+        endUTC === null
+    ){
+
+        return 0;
+
+    }
+
+
+    const oneDay =
+        24 * 60 * 60 * 1000;
+
+
+    return Math.floor(
+        (endUTC - startUTC)
+        /
+        oneDay
     );
 
 }
@@ -2837,8 +2733,13 @@ function diffDays(a,b){
 
 
     return Math.round(
-        (a.getTime()-b.getTime())
-        / oneDay
+        (
+            dateToUTC(a)
+            -
+            dateToUTC(b)
+        )
+        /
+        oneDay
     );
 
 }
@@ -2850,9 +2751,7 @@ function showToast(message){
         message;
 
 
-    toast.classList.add(
-        "show"
-    );
+    toast.classList.add("show");
 
 
     clearTimeout(
@@ -2918,20 +2817,15 @@ function getCycleLength(){
             i++
         ){
 
-            const a =
-                parseDate(
-                    sorted[i].startDate
-                );
-
-
-            const b =
-                parseDate(
-                    sorted[i-1].startDate
-                );
-
-
             const d =
-                diffDays(a,b);
+                diffDays(
+                    parseDate(
+                        sorted[i].startDate
+                    ),
+                    parseDate(
+                        sorted[i-1].startDate
+                    )
+                );
 
 
             if(
@@ -2964,7 +2858,7 @@ function getCycleLength(){
     }
 
 
-    return null;
+    return 28;
 
 }
 
@@ -3018,9 +2912,7 @@ function getPrediction(period){
     const cycleLength =
         Number(period.cycleLength)
         ||
-        getCycleLength()
-        ||
-        28;
+        getCycleLength();
 
 
     const duration =
@@ -3067,13 +2959,19 @@ function getPrediction(period){
     return {
 
         start,
+
         next,
+
         ovulation,
+
         fertileStart,
+
         fertileEnd,
+
         periodEnd,
 
         cycleLength,
+
         duration
 
     };
@@ -3226,9 +3124,7 @@ function renderCalendar(){
     ){
 
         const empty =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
 
         empty.className =
@@ -3253,9 +3149,7 @@ function renderCalendar(){
     ){
 
         const cell =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
 
         cell.className =
@@ -3342,9 +3236,7 @@ function renderCalendar(){
 
 
         const number =
-            document.createElement(
-                "span"
-            );
+            document.createElement("span");
 
 
         number.className =
@@ -3363,9 +3255,7 @@ function renderCalendar(){
         if(status){
 
             const mark =
-                document.createElement(
-                    "span"
-                );
+                document.createElement("span");
 
 
             mark.className =
@@ -3445,18 +3335,14 @@ function renderSelectedDay(){
         descriptionEl.textContent =
             "هذا اليوم يقع ضمن أيام الحيض المتوقعة.";
 
-
         badgeEl.textContent =
             "الحيض";
-
 
         badgeEl.style.background =
             "#FFF0F3";
 
-
         badgeEl.style.color =
             "#FE2C55";
-
 
         return;
 
@@ -3468,18 +3354,14 @@ function renderSelectedDay(){
         descriptionEl.textContent =
             "هذا اليوم يقع ضمن نافذة الخصوبة المتوقعة.";
 
-
         badgeEl.textContent =
             "خصوبة";
-
 
         badgeEl.style.background =
             "#F1EEFF";
 
-
         badgeEl.style.color =
             "#7357D8";
-
 
         return;
 
@@ -3491,18 +3373,14 @@ function renderSelectedDay(){
         descriptionEl.textContent =
             "هذا هو يوم الإباضة المتوقع حسابيًا.";
 
-
         badgeEl.textContent =
             "إباضة";
-
 
         badgeEl.style.background =
             "#FFF4DF";
 
-
         badgeEl.style.color =
             "#E58A00";
-
 
         return;
 
@@ -3512,14 +3390,11 @@ function renderSelectedDay(){
     badgeEl.textContent =
         "يوم عادي";
 
-
     badgeEl.style.background =
         "#F4F4F4";
 
-
     badgeEl.style.color =
         "#666";
-
 
     descriptionEl.textContent =
         "لا توجد مناسبة متوقعة مسجلة لهذا اليوم.";
@@ -3529,7 +3404,7 @@ function renderSelectedDay(){
 
 
 /* =========================================================
-   HERO
+   HERO — حساب يوم الدورة
 ========================================================= */
 
 function renderHero(){
@@ -3591,23 +3466,50 @@ function renderHero(){
         getPrediction(current);
 
 
+    /*
+      =======================================================
+      الحساب الصحيح ليوم الدورة
+      =======================================================
+
+      إذا كانت البداية:
+
+      29/08/2026
+
+      فإن:
+
+      29/08 = 1
+      30/08 = 2
+      31/08 = 3
+      01/09 = 4
+      ...
+      21/09 = 24
+      22/09 = 25
+
+      لذلك:
+      الفرق بين 29 أوت و22 سبتمبر = 24
+      ثم نضيف 1
+      النتيجة = 25
+    */
+
+
     const today =
         new Date();
 
 
-    /*
-       أول يوم للدورة = اليوم 1
+    const daysPassed =
+        daysBetweenDates(
+            current.startDate,
+            today
+        );
 
-       الفرق 0 = اليوم 1
-       الفرق 1 = اليوم 2
-    */
 
     const cycleDay =
-        diffDays(
-            today,
-            prediction.start
-        ) + 1;
+        daysPassed + 1;
 
+
+    /*
+      النسبة
+    */
 
     const progress =
         Math.min(
@@ -3624,6 +3526,10 @@ function renderHero(){
             )
         );
 
+
+    /*
+      حالة الدورة
+    */
 
     let state =
         "ضمن الدورة الحالية";
@@ -3671,6 +3577,10 @@ function renderHero(){
 
     }
 
+
+    /*
+      عرض النتائج
+    */
 
     document.getElementById(
         "cycleDay"
@@ -3978,33 +3888,21 @@ function renderHistory(){
 
 
             item
-                .querySelector(
-                    ".edit"
-                )
+                .querySelector(".edit")
                 .addEventListener(
                     "click",
                     ()=>{
-
-                        openEditModal(
-                            period
-                        );
-
+                        openEditModal(period);
                     }
                 );
 
 
             item
-                .querySelector(
-                    ".delete"
-                )
+                .querySelector(".delete")
                 .addEventListener(
                     "click",
                     ()=>{
-
-                        deletePeriod(
-                            period.id
-                        );
-
+                        deletePeriod(period.id);
                     }
                 );
 
@@ -4107,7 +4005,7 @@ async function loadPeriods(){
 
 
 /* =========================================================
-   SAVE PERIOD
+   SAVE
 ========================================================= */
 
 async function savePeriod(){
@@ -4303,9 +4201,7 @@ async function savePeriod(){
 async function deletePeriod(id){
 
     if(!id){
-
         return;
-
     }
 
 
@@ -4316,9 +4212,7 @@ async function deletePeriod(id){
 
 
     if(!confirmed){
-
         return;
-
     }
 
 
@@ -4487,9 +4381,7 @@ function renderAll(){
 ========================================================= */
 
 document
-    .getElementById(
-        "prevMonth"
-    )
+    .getElementById("prevMonth")
     .addEventListener(
         "click",
         ()=>{
@@ -4505,9 +4397,7 @@ document
 
 
 document
-    .getElementById(
-        "nextMonth"
-    )
+    .getElementById("nextMonth")
     .addEventListener(
         "click",
         ()=>{
@@ -4523,9 +4413,7 @@ document
 
 
 document
-    .getElementById(
-        "addPeriodBtn"
-    )
+    .getElementById("addPeriodBtn")
     .addEventListener(
         "click",
         openAddModal
@@ -4533,9 +4421,7 @@ document
 
 
 document
-    .getElementById(
-        "closeModal"
-    )
+    .getElementById("closeModal")
     .addEventListener(
         "click",
         closeModal
@@ -4543,9 +4429,7 @@ document
 
 
 document
-    .getElementById(
-        "cancelModal"
-    )
+    .getElementById("cancelModal")
     .addEventListener(
         "click",
         closeModal
@@ -4553,9 +4437,7 @@ document
 
 
 document
-    .getElementById(
-        "savePeriod"
-    )
+    .getElementById("savePeriod")
     .addEventListener(
         "click",
         savePeriod
@@ -4567,8 +4449,7 @@ periodModal.addEventListener(
     event => {
 
         if(
-            event.target ===
-            periodModal
+            event.target === periodModal
         ){
 
             closeModal();
@@ -4580,17 +4461,13 @@ periodModal.addEventListener(
 
 
 document
-    .getElementById(
-        "refreshBtn"
-    )
+    .getElementById("refreshBtn")
     .addEventListener(
         "click",
         async ()=>{
 
             if(!currentUser){
-
                 return;
-
             }
 
 
