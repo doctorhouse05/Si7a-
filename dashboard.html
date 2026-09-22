@@ -8,7 +8,7 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<meta name="theme-color" content="#1976D2">
+<meta name="theme-color" content="#000000">
 
 <title>صحتي+ | الرئيسية</title>
 
@@ -39,41 +39,29 @@
 
 :root{
 
-    --blue:#1976D2;
-    --blue-dark:#0D47A1;
-    --blue-deep:#083B78;
-    --blue-medium:#2587DF;
-    --blue-light:#EAF5FF;
-    --blue-soft:#F3F9FF;
+    --black:#000000;
+    --dark:#080808;
+    --dark-2:#111111;
+    --dark-3:#181818;
+    --dark-4:#222222;
 
-    --green:#149B7E;
-    --green-light:#E8F8F3;
+    --white:#FFFFFF;
+    --white-soft:#F2F2F2;
+    --muted:#A7A7A7;
 
-    --purple:#7050D8;
-    --purple-light:#F1EEFF;
+    --cyan:#25F4EE;
+    --pink:#FE2C55;
 
-    --pink:#D94F91;
-    --pink-light:#FFF0F7;
+    --blue:#2979FF;
+    --green:#20C997;
+    --purple:#9B6CFF;
+    --orange:#FF9F43;
+    --red:#FF4D67;
 
-    --orange:#E98A08;
-    --orange-light:#FFF5E3;
-
-    --red:#D94738;
-    --red-light:#FFF0EE;
-
-    --gray-blue:#607D8B;
-    --gray-blue-light:#EEF2F4;
-
-    --text:#172333;
-    --text-dark:#101B29;
-    --muted:#657486;
-
-    --bg:#F4F8FC;
-    --card:#FFFFFF;
-    --border:#DCE6F0;
+    --border:rgba(255,255,255,.09);
 
     --shadow:
-        0 6px 20px rgba(20,72,120,.07);
+        0 8px 30px rgba(0,0,0,.35);
 }
 
 
@@ -91,13 +79,18 @@ body{
 
     background:
         radial-gradient(
-            circle at 100% 0%,
-            rgba(25,118,210,.08),
-            transparent 28%
+            circle at 0% 0%,
+            rgba(37,244,238,.07),
+            transparent 30%
         ),
-        var(--bg);
+        radial-gradient(
+            circle at 100% 20%,
+            rgba(254,44,85,.07),
+            transparent 30%
+        ),
+        #000;
 
-    color:var(--text);
+    color:var(--white);
 
     min-height:100vh;
 
@@ -139,63 +132,60 @@ a{
 
     padding:
         0
-        15px
-        105px;
+        12px
+        110px;
 }
 
 
 /* =========================================================
-   MEDICAL HEADER
+   TOP AREA
 ========================================================= */
 
 .top-medical{
 
     position:relative;
 
-    margin-left:-15px;
-    margin-right:-15px;
+    margin-left:-12px;
+    margin-right:-12px;
 
     padding:
-        14px
-        15px
-        18px;
+        12px
+        12px
+        20px;
 
     background:
 
         radial-gradient(
-            circle at 8% 15%,
-            rgba(255,255,255,.18),
-            transparent 25%
+            circle at 5% 0%,
+            rgba(37,244,238,.15),
+            transparent 28%
         ),
 
         radial-gradient(
-            circle at 92% 0%,
-            rgba(105,202,255,.25),
-            transparent 30%
+            circle at 95% 5%,
+            rgba(254,44,85,.14),
+            transparent 28%
         ),
 
         linear-gradient(
-            145deg,
-            #0B56A5 0%,
-            #1976D2 48%,
-            #2D91E5 100%
+            180deg,
+            #080808,
+            #101010
         );
 
-    border-radius:
-        0
-        0
-        28px
-        28px;
-
-    box-shadow:
-        0 12px 30px
-        rgba(25,118,210,.18);
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.06);
 
     overflow:hidden;
 
-    margin-bottom:22px;
+    margin-bottom:18px;
 }
 
+
+/* =========================================================
+   TOP GLOW
+========================================================= */
 
 .top-medical::before{
 
@@ -203,16 +193,18 @@ a{
 
     position:absolute;
 
-    width:180px;
-    height:180px;
+    width:170px;
+    height:170px;
 
     border-radius:50%;
 
     background:
-        rgba(255,255,255,.07);
+        rgba(37,244,238,.055);
 
     top:-100px;
     right:-65px;
+
+    filter:blur(3px);
 }
 
 
@@ -222,16 +214,16 @@ a{
 
     position:absolute;
 
-    width:110px;
-    height:110px;
+    width:140px;
+    height:140px;
 
     border-radius:50%;
 
     background:
-        rgba(255,255,255,.05);
+        rgba(254,44,85,.045);
 
-    bottom:-60px;
-    left:-35px;
+    bottom:-100px;
+    left:-50px;
 }
 
 
@@ -248,23 +240,30 @@ a{
     overflow:hidden;
 
     background:
-        rgba(255,255,255,.98);
+
+        linear-gradient(
+            135deg,
+            #151515,
+            #0D0D0D
+        );
 
     border:
         1px solid
-        rgba(255,255,255,.8);
+        rgba(255,255,255,.11);
 
-    border-radius:22px;
+    border-radius:24px;
 
-    padding:13px 14px;
+    padding:15px;
 
-    margin-bottom:14px;
+    margin-bottom:15px;
 
     box-shadow:
-        0 8px 22px
-        rgba(7,61,117,.17);
+        0 10px 35px
+        rgba(0,0,0,.35);
 }
 
+
+/* TikTok-like gradient line */
 
 .profile-card::before{
 
@@ -272,19 +271,23 @@ a{
 
     position:absolute;
 
-    top:-55px;
-    right:-65px;
+    top:0;
+    right:0;
+    left:0;
 
-    width:190px;
-    height:120px;
+    height:3px;
 
-    background:#EAF5FF;
-
-    transform:rotate(-12deg);
-
-    border-radius:30px;
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            #FFFFFF,
+            var(--pink)
+        );
 }
 
+
+/* decorative glow */
 
 .profile-card::after{
 
@@ -292,18 +295,16 @@ a{
 
     position:absolute;
 
-    top:0;
-    right:0;
+    width:120px;
+    height:120px;
 
-    width:5px;
-    height:100%;
+    border-radius:50%;
 
     background:
-        linear-gradient(
-            180deg,
-            #0D47A1,
-            #42A5F5
-        );
+        rgba(37,244,238,.055);
+
+    top:-70px;
+    left:-45px;
 }
 
 
@@ -320,9 +321,9 @@ a{
     display:grid;
 
     grid-template-columns:
-        62px 1fr;
+        68px 1fr;
 
-    gap:12px;
+    gap:13px;
 
     direction:ltr;
 
@@ -332,24 +333,32 @@ a{
 
 .profile-avatar-wrap{
 
-    width:62px;
-    height:62px;
+    width:68px;
+    height:68px;
 
     border-radius:50%;
 
-    background:#F1F6FB;
+    background:#111;
 
     padding:3px;
 
     border:
-        1px solid
-        #D6E2ED;
+        2px solid
+        transparent;
+
+    background:
+        linear-gradient(#111,#111) padding-box,
+        linear-gradient(
+            135deg,
+            var(--cyan),
+            var(--pink)
+        ) border-box;
 
     overflow:hidden;
 
     box-shadow:
-        0 4px 12px
-        rgba(25,118,210,.10);
+        0 0 18px
+        rgba(37,244,238,.12);
 }
 
 
@@ -376,13 +385,13 @@ a{
 
 .profile-name{
 
-    font-size:18px;
+    font-size:20px;
 
     font-weight:900;
 
-    color:#132236;
+    color:#fff;
 
-    margin-bottom:7px;
+    margin-bottom:8px;
 
     white-space:nowrap;
 
@@ -399,7 +408,7 @@ a{
     grid-template-columns:
         1fr 1fr;
 
-    gap:6px 9px;
+    gap:7px 10px;
 }
 
 
@@ -411,9 +420,9 @@ a{
 
     gap:6px;
 
-    color:#4F6072;
+    color:#D0D0D0;
 
-    font-size:12px;
+    font-size:11px;
 
     font-weight:800;
 
@@ -423,8 +432,8 @@ a{
 
 .profile-detail i{
 
-    width:23px;
-    height:23px;
+    width:24px;
+    height:24px;
 
     border-radius:8px;
 
@@ -435,11 +444,11 @@ a{
 
     flex:none;
 
-    background:#EDF6FF;
+    background:#222;
 
-    color:#1268BC;
+    color:var(--cyan);
 
-    font-size:11px;
+    font-size:10px;
 }
 
 
@@ -463,14 +472,14 @@ a{
 
     z-index:2;
 
-    margin-top:11px;
+    margin-top:13px;
 
     display:grid;
 
     grid-template-columns:
         1fr 1fr;
 
-    gap:7px;
+    gap:8px;
 }
 
 
@@ -478,13 +487,14 @@ a{
 
     border:
         1px solid
-        #E2EAF2;
+        rgba(255,255,255,.08);
 
-    background:#F8FBFE;
+    background:
+        rgba(255,255,255,.045);
 
-    border-radius:12px;
+    border-radius:15px;
 
-    padding:8px 9px;
+    padding:10px;
 
     min-width:0;
 }
@@ -496,21 +506,21 @@ a{
 
     align-items:center;
 
-    gap:5px;
+    gap:6px;
 
-    color:#738193;
+    color:#969696;
 
-    font-size:11px;
+    font-size:10px;
 
     font-weight:800;
 
-    margin-bottom:2px;
+    margin-bottom:3px;
 }
 
 
 .medical-label i{
 
-    color:#1976D2;
+    color:var(--pink);
 
     font-size:10px;
 }
@@ -522,7 +532,7 @@ a{
 
     font-weight:900;
 
-    color:#263648;
+    color:#fff;
 
     white-space:nowrap;
 
@@ -534,7 +544,7 @@ a{
 
 .medical-value.empty{
 
-    color:#8C98A6;
+    color:#777;
 
     font-weight:700;
 }
@@ -544,26 +554,31 @@ a{
 
     position:absolute;
 
-    left:12px;
-    bottom:12px;
+    left:13px;
+    bottom:13px;
 
     z-index:5;
 
-    width:30px;
-    height:30px;
+    width:31px;
+    height:31px;
 
-    border-radius:9px;
+    border-radius:50%;
 
-    background:#EDF6FF;
+    background:
+        rgba(255,255,255,.08);
 
-    color:#1268BC;
+    color:#fff;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
 
     display:flex;
 
     align-items:center;
     justify-content:center;
 
-    font-size:12px;
+    font-size:11px;
 }
 
 
@@ -589,9 +604,9 @@ a{
 
     gap:10px;
 
-    margin-bottom:8px;
+    margin-bottom:9px;
 
-    padding:0 2px;
+    padding:0 3px;
 }
 
 
@@ -607,30 +622,32 @@ a{
 
 .calendar-button{
 
-    width:38px;
-    height:38px;
+    width:39px;
+    height:39px;
 
-    border-radius:11px;
+    border-radius:50%;
 
     background:
-        rgba(255,255,255,.17);
+        rgba(255,255,255,.08);
 
     color:#fff;
 
     border:
         1px solid
-        rgba(255,255,255,.25);
+        rgba(255,255,255,.10);
 
     display:flex;
 
     align-items:center;
     justify-content:center;
 
-    font-size:16px;
-
-    backdrop-filter:blur(8px);
+    font-size:15px;
 }
 
+
+/* =========================================================
+   WEEK
+========================================================= */
 
 .week{
 
@@ -649,12 +666,11 @@ a{
 
     padding:5px 2px;
 
-    border-radius:13px;
+    border-radius:14px;
 
     cursor:pointer;
 
-    color:
-        rgba(255,255,255,.92);
+    color:#999;
 
     transition:.2s;
 }
@@ -662,14 +678,13 @@ a{
 
 .day-name{
 
-    font-size:10px;
+    font-size:9px;
 
     font-weight:800;
 
-    margin-bottom:4px;
+    margin-bottom:5px;
 
-    color:
-        rgba(255,255,255,.78);
+    color:#777;
 }
 
 
@@ -687,18 +702,18 @@ a{
 
     border-radius:50%;
 
-    font-size:14px;
+    font-size:13px;
 
     font-weight:900;
 
-    color:#fff;
+    color:#ddd;
 }
 
 
 .day.active{
 
     background:
-        rgba(255,255,255,.14);
+        rgba(255,255,255,.07);
 }
 
 
@@ -706,11 +721,11 @@ a{
 
     background:#fff;
 
-    color:#1268BC;
+    color:#000;
 
     box-shadow:
-        0 4px 12px
-        rgba(0,0,0,.16);
+        0 0 16px
+        rgba(255,255,255,.15);
 }
 
 
@@ -718,7 +733,7 @@ a{
 
     border:
         2px solid
-        rgba(255,255,255,.90);
+        var(--pink);
 }
 
 
@@ -726,9 +741,14 @@ a{
 
     border:0;
 
-    background:#fff;
+    background:
+        linear-gradient(
+            135deg,
+            var(--cyan),
+            #fff
+        );
 
-    color:#1268BC;
+    color:#000;
 }
 
 
@@ -745,21 +765,23 @@ a{
     background:
         linear-gradient(
             135deg,
-            #1268BC,
-            #2388E5
+            #161616,
+            #0C0C0C
         );
 
     color:#fff;
 
-    border-radius:22px;
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    border-radius:23px;
 
     padding:17px;
 
-    margin-bottom:23px;
+    margin-bottom:25px;
 
-    box-shadow:
-        0 9px 24px
-        rgba(25,118,210,.19);
+    box-shadow:var(--shadow);
 }
 
 
@@ -769,16 +791,16 @@ a{
 
     position:absolute;
 
-    width:160px;
-    height:160px;
+    width:170px;
+    height:170px;
 
     border-radius:50%;
 
     background:
-        rgba(255,255,255,.06);
+        rgba(254,44,85,.06);
 
-    left:-65px;
-    top:-75px;
+    left:-70px;
+    top:-80px;
 }
 
 
@@ -816,12 +838,11 @@ a{
 
 .score-subtitle{
 
-    font-size:13px;
+    font-size:12px;
 
     line-height:1.9;
 
-    color:
-        rgba(255,255,255,.94);
+    color:#AFAFAF;
 
     font-weight:700;
 }
@@ -829,8 +850,8 @@ a{
 
 .progress-ring{
 
-    width:90px;
-    height:90px;
+    width:88px;
+    height:88px;
 
     position:relative;
 
@@ -857,12 +878,14 @@ a{
 
 .progress-bg{
 
-    stroke:
-        rgba(255,255,255,.20);
+    stroke:#292929;
 }
 
 
 .progress-value{
+
+    stroke:
+        url(#progressGradient);
 
     stroke:#fff;
 
@@ -887,7 +910,7 @@ a{
     align-items:center;
     justify-content:center;
 
-    font-size:20px;
+    font-size:19px;
 
     font-weight:900;
 }
@@ -899,7 +922,7 @@ a{
 
 .section{
 
-    margin-bottom:24px;
+    margin-bottom:25px;
 }
 
 
@@ -929,20 +952,20 @@ a{
 
     font-weight:900;
 
-    color:#18283A;
+    color:#fff;
 }
 
 
 .section-title i{
 
-    color:#1976D2;
+    color:var(--cyan);
 
-    font-size:18px;
+    font-size:17px;
 }
 
 
 /* =========================================================
-   HEALTH SHORTCUTS
+   HEALTH GRID
 ========================================================= */
 
 .health-grid{
@@ -952,26 +975,28 @@ a{
     grid-template-columns:
         repeat(4,1fr);
 
-    gap:9px;
+    gap:8px;
 }
 
 
 .health-item{
 
-    background:#fff;
+    background:
+        #111;
 
     border:
         1px solid
-        var(--border);
+        rgba(255,255,255,.08);
 
     border-radius:18px;
 
-    padding:12px 5px;
+    padding:13px 5px;
 
     text-align:center;
 
     box-shadow:
-        var(--shadow);
+        0 5px 20px
+        rgba(0,0,0,.25);
 
     transition:.2s;
 }
@@ -979,7 +1004,7 @@ a{
 
 .health-item:active{
 
-    transform:scale(.96);
+    transform:scale(.94);
 }
 
 
@@ -997,49 +1022,53 @@ a{
     align-items:center;
     justify-content:center;
 
-    font-size:19px;
+    font-size:18px;
 }
 
 
 .health-name{
 
-    font-size:12px;
+    font-size:11px;
 
     font-weight:900;
 
-    color:#344456;
+    color:#E5E5E5;
 }
 
 
 .blue-icon{
 
-    background:#E7F3FF;
+    background:
+        rgba(41,121,255,.15);
 
-    color:#1268BC;
+    color:#5EA0FF;
 }
 
 
 .pink-icon{
 
-    background:#FFF0F7;
+    background:
+        rgba(254,44,85,.14);
 
-    color:#D94F91;
+    color:#FF5576;
 }
 
 
 .purple-icon{
 
-    background:#F1EEFF;
+    background:
+        rgba(155,108,255,.14);
 
-    color:#7050D8;
+    color:#B28CFF;
 }
 
 
 .green-icon{
 
-    background:#E8F8F3;
+    background:
+        rgba(32,201,151,.14);
 
-    color:#149B7E;
+    color:#45E0B3;
 }
 
 
@@ -1067,24 +1096,26 @@ a{
 
     min-height:78px;
 
-    background:#fff;
+    background:
+        #111;
 
     border:
         1px solid
-        var(--border);
+        rgba(255,255,255,.08);
 
     border-radius:18px;
 
     padding:11px 12px;
 
     box-shadow:
-        var(--shadow);
+        0 6px 22px
+        rgba(0,0,0,.25);
 
     overflow:hidden;
 
     transition:
         transform .15s ease,
-        box-shadow .15s ease;
+        background .15s ease;
 }
 
 
@@ -1098,7 +1129,7 @@ a{
     top:0;
     bottom:0;
 
-    width:4px;
+    width:3px;
 
     background:
         var(--card-color);
@@ -1108,6 +1139,8 @@ a{
 .daily-card:active{
 
     transform:scale(.985);
+
+    background:#181818;
 }
 
 
@@ -1131,7 +1164,7 @@ a{
     color:
         var(--card-color);
 
-    font-size:20px;
+    font-size:19px;
 }
 
 
@@ -1145,9 +1178,9 @@ a{
 
 .daily-name{
 
-    color:#1B2B3D;
+    color:#fff;
 
-    font-size:15px;
+    font-size:14px;
 
     font-weight:900;
 
@@ -1157,9 +1190,9 @@ a{
 
 .daily-value{
 
-    color:#667587;
+    color:#858585;
 
-    font-size:11px;
+    font-size:10px;
 
     font-weight:800;
 
@@ -1175,11 +1208,11 @@ a{
 
 .daily-progress{
 
-    height:6px;
+    height:5px;
 
     width:100%;
 
-    background:#EAF0F5;
+    background:#282828;
 
     border-radius:10px;
 
@@ -1205,14 +1238,14 @@ a{
 
 .daily-percent{
 
-    width:45px;
+    width:42px;
 
     text-align:center;
 
     color:
         var(--card-color);
 
-    font-size:13px;
+    font-size:12px;
 
     font-weight:900;
 
@@ -1221,16 +1254,17 @@ a{
 
 
 /* =========================================================
-   EMPTY STATE
+   EMPTY
 ========================================================= */
 
 .empty-challenges{
 
-    background:#fff;
+    background:
+        #111;
 
     border:
-        2px dashed
-        #C8D8E8;
+        1px dashed
+        #333;
 
     border-radius:20px;
 
@@ -1254,11 +1288,12 @@ a{
     align-items:center;
     justify-content:center;
 
-    background:#EAF5FF;
+    background:
+        rgba(37,244,238,.10);
 
-    color:#1976D2;
+    color:var(--cyan);
 
-    font-size:22px;
+    font-size:21px;
 }
 
 
@@ -1272,15 +1307,15 @@ a{
 
     margin-bottom:6px;
 
-    color:#233447;
+    color:#fff;
 }
 
 
 .empty-challenges p{
 
-    font-size:13px;
+    font-size:12px;
 
-    color:#738193;
+    color:#858585;
 
     line-height:1.9;
 
@@ -1300,21 +1335,22 @@ a{
 
     gap:7px;
 
-    background:#1976D2;
+    background:
+        linear-gradient(
+            135deg,
+            var(--cyan),
+            var(--pink)
+        );
 
-    color:#fff;
+    color:#000;
 
     padding:11px 18px;
 
     border-radius:13px;
 
-    font-size:13px;
+    font-size:12px;
 
     font-weight:900;
-
-    box-shadow:
-        0 5px 14px
-        rgba(25,118,210,.18);
 }
 
 
@@ -1335,13 +1371,13 @@ a{
     width:min(650px,100%);
 
     background:
-        rgba(255,255,255,.97);
+        rgba(8,8,8,.96);
 
-    backdrop-filter:blur(15px);
+    backdrop-filter:blur(18px);
 
     border-top:
         1px solid
-        #DCE5EE;
+        rgba(255,255,255,.09);
 
     display:grid;
 
@@ -1361,9 +1397,9 @@ a{
 
     text-align:center;
 
-    color:#8491A0;
+    color:#777;
 
-    font-size:12px;
+    font-size:10px;
 
     font-weight:800;
 
@@ -1377,7 +1413,7 @@ a{
 
     display:block;
 
-    font-size:20px;
+    font-size:19px;
 
     margin-bottom:4px;
 }
@@ -1385,9 +1421,18 @@ a{
 
 .nav-item.active{
 
-    color:#1976D2;
+    color:#fff;
 
-    font-weight:900;
+}
+
+
+.nav-item.active i{
+
+    color:var(--cyan);
+
+    text-shadow:
+        0 0 10px
+        rgba(37,244,238,.35);
 }
 
 
@@ -1401,7 +1446,7 @@ a{
 
     inset:0;
 
-    background:#fff;
+    background:#000;
 
     z-index:9999;
 
@@ -1436,9 +1481,14 @@ a{
 
     border-radius:22px;
 
-    background:#EAF5FF;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37,244,238,.15),
+            rgba(254,44,85,.15)
+        );
 
-    color:#1976D2;
+    color:#fff;
 
     display:flex;
 
@@ -1447,7 +1497,11 @@ a{
 
     margin:auto auto 12px;
 
-    font-size:30px;
+    font-size:29px;
+
+    box-shadow:
+        0 0 30px
+        rgba(37,244,238,.08);
 }
 
 
@@ -1458,14 +1512,16 @@ a{
     font-size:22px;
 
     font-weight:900;
+
+    color:#fff;
 }
 
 
 .loading-box p{
 
-    font-size:13px;
+    font-size:12px;
 
-    color:#7C8997;
+    color:#777;
 
     font-weight:700;
 
@@ -1478,9 +1534,11 @@ a{
     width:25px;
     height:25px;
 
-    border:3px solid #DCEBFA;
+    border:3px solid #222;
 
-    border-top-color:#1976D2;
+    border-top-color:var(--cyan);
+
+    border-right-color:var(--pink);
 
     border-radius:50%;
 
@@ -1510,9 +1568,9 @@ a{
     inset:0;
 
     background:
-        rgba(20,35,50,.45);
+        rgba(0,0,0,.75);
 
-    backdrop-filter:blur(5px);
+    backdrop-filter:blur(7px);
 
     z-index:500;
 
@@ -1534,7 +1592,11 @@ a{
 
     width:min(650px,100%);
 
-    background:#fff;
+    background:#111;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
 
     border-radius:
         25px
@@ -1579,6 +1641,8 @@ a{
     font-size:18px;
 
     font-weight:900;
+
+    color:#fff;
 }
 
 
@@ -1587,13 +1651,29 @@ a{
     width:38px;
     height:38px;
 
-    border-radius:11px;
+    border-radius:50%;
 
-    background:#F0F4F8;
+    background:#222;
 
-    color:#596979;
+    color:#fff;
 
-    font-size:16px;
+    font-size:15px;
+}
+
+
+/* =========================================================
+   DATE INPUT
+========================================================= */
+
+#calendarInput{
+
+    color:#fff !important;
+
+    background:#1A1A1A !important;
+
+    border:
+        1px solid
+        #333 !important;
 }
 
 
@@ -1605,51 +1685,46 @@ a{
 
     .app{
 
-        padding-left:11px;
-        padding-right:11px;
+        padding-left:9px;
+        padding-right:9px;
     }
 
     .top-medical{
 
-        margin-left:-11px;
-        margin-right:-11px;
+        margin-left:-9px;
+        margin-right:-9px;
 
-        padding-left:11px;
-        padding-right:11px;
-    }
-
-    .profile-card{
-
-        padding:12px;
+        padding-left:9px;
+        padding-right:9px;
     }
 
     .profile-content{
 
         grid-template-columns:
-            58px 1fr;
+            61px 1fr;
 
         gap:10px;
     }
 
     .profile-avatar-wrap{
 
-        width:58px;
-        height:58px;
+        width:61px;
+        height:61px;
     }
 
     .profile-name{
 
-        font-size:17px;
+        font-size:18px;
     }
 
     .profile-detail{
 
-        font-size:11px;
+        font-size:10px;
     }
 
     .health-grid{
 
-        gap:6px;
+        gap:5px;
     }
 
     .health-item{
@@ -1659,21 +1734,21 @@ a{
 
     .health-icon{
 
-        width:43px;
-        height:43px;
+        width:42px;
+        height:42px;
 
-        font-size:18px;
+        font-size:17px;
     }
 
     .health-name{
 
-        font-size:11px;
+        font-size:10px;
     }
 
     .day-number{
 
-        width:32px;
-        height:32px;
+        width:31px;
+        height:31px;
     }
 
     .daily-card{
@@ -1687,13 +1762,6 @@ a{
 
         width:44px;
         height:44px;
-
-        font-size:18px;
-    }
-
-    .daily-name{
-
-        font-size:14px;
     }
 
 }
@@ -1706,11 +1774,6 @@ a{
         grid-template-columns:1fr;
     }
 
-    .profile-card{
-
-        padding-bottom:13px;
-    }
-
     .profile-medical{
 
         grid-template-columns:1fr;
@@ -1718,15 +1781,8 @@ a{
 
     .day-number{
 
-        width:29px;
-        height:29px;
-
-        font-size:12px;
-    }
-
-    .daily-percent{
-
-        width:40px;
+        width:28px;
+        height:28px;
 
         font-size:12px;
     }
@@ -1773,7 +1829,7 @@ a{
 
 
 <!-- =========================================================
-     MEDICAL HEADER
+     HEADER
 ========================================================= -->
 
 <section class="top-medical">
@@ -1783,9 +1839,7 @@ a{
 
     <section class="profile-card">
 
-
         <div class="profile-content">
-
 
             <div class="profile-avatar-wrap">
 
@@ -1799,7 +1853,6 @@ a{
 
             <div class="profile-info">
 
-
                 <div
                     class="profile-name"
                     id="profileName">
@@ -1810,7 +1863,6 @@ a{
 
 
                 <div class="profile-details">
-
 
                     <div class="profile-detail">
 
@@ -1855,19 +1907,14 @@ a{
 
                     </div>
 
-
                 </div>
 
-
             </div>
-
 
         </div>
 
 
-
         <div class="profile-medical">
-
 
             <div class="medical-item">
 
@@ -1878,7 +1925,6 @@ a{
                     مؤشر كتلة الجسم
 
                 </div>
-
 
                 <div
                     class="medical-value"
@@ -1891,7 +1937,6 @@ a{
             </div>
 
 
-
             <div class="medical-item">
 
                 <div class="medical-label">
@@ -1901,7 +1946,6 @@ a{
                     الأمراض المزمنة
 
                 </div>
-
 
                 <div
                     class="medical-value empty"
@@ -1913,9 +1957,7 @@ a{
 
             </div>
 
-
         </div>
-
 
 
         <a
@@ -1927,18 +1969,14 @@ a{
 
         </a>
 
-
     </section>
-
 
 
     <!-- CALENDAR -->
 
     <div class="integrated-calendar">
 
-
         <div class="date-header">
-
 
             <div
                 class="date-title"
@@ -1958,44 +1996,33 @@ a{
 
             </button>
 
-
         </div>
-
 
 
         <div
             class="week"
             id="week">
-
         </div>
 
-
     </div>
-
 
 </section>
 
 
 
 <!-- =========================================================
-     DAILY SCORE
+     SCORE
 ========================================================= -->
 
 <section class="score-card">
 
-
     <div class="score-inner">
-
 
         <div class="score-text">
 
-
             <div class="score-title">
-
                 تقدم تحدياتك
-
             </div>
-
 
             <div
                 class="score-subtitle"
@@ -2005,13 +2032,10 @@ a{
 
             </div>
 
-
         </div>
 
 
-
         <div class="progress-ring">
-
 
             <svg viewBox="0 0 100 100">
 
@@ -2021,7 +2045,6 @@ a{
                     cy="50"
                     r="40">
                 </circle>
-
 
                 <circle
                     class="progress-value"
@@ -2042,12 +2065,9 @@ a{
 
             </div>
 
-
         </div>
 
-
     </div>
-
 
 </section>
 
@@ -2059,9 +2079,7 @@ a{
 
 <section class="section">
 
-
     <div class="section-header">
-
 
         <div class="section-title">
 
@@ -2071,22 +2089,17 @@ a{
 
         </div>
 
-
     </div>
 
 
-
     <div class="health-grid">
-
 
         <a
             href="health.html"
             class="health-item">
 
             <div class="health-icon blue-icon">
-
                 <i class="fa-solid fa-chart-line"></i>
-
             </div>
 
             <div class="health-name">
@@ -2096,15 +2109,12 @@ a{
         </a>
 
 
-
         <a
             href="period.html"
             class="health-item">
 
             <div class="health-icon pink-icon">
-
                 <i class="fa-solid fa-calendar-days"></i>
-
             </div>
 
             <div class="health-name">
@@ -2114,15 +2124,12 @@ a{
         </a>
 
 
-
         <a
             href="pregnancy.html"
             class="health-item">
 
             <div class="health-icon purple-icon">
-
                 <i class="fa-solid fa-baby"></i>
-
             </div>
 
             <div class="health-name">
@@ -2132,15 +2139,12 @@ a{
         </a>
 
 
-
         <a
             href="statistics.html"
             class="health-item">
 
             <div class="health-icon green-icon">
-
                 <i class="fa-solid fa-chart-pie"></i>
-
             </div>
 
             <div class="health-name">
@@ -2149,23 +2153,19 @@ a{
 
         </a>
 
-
     </div>
-
 
 </section>
 
 
 
 <!-- =========================================================
-     DAILY CHALLENGES
+     DAILY
 ========================================================= -->
 
 <section class="section">
 
-
     <div class="section-header">
-
 
         <div class="section-title">
 
@@ -2175,17 +2175,13 @@ a{
 
         </div>
 
-
     </div>
-
 
 
     <div
         class="daily-list"
         id="dailyList">
-
     </div>
-
 
 </section>
 
@@ -2195,11 +2191,10 @@ a{
 
 
 <!-- =========================================================
-     BOTTOM NAV
+     NAV
 ========================================================= -->
 
 <nav class="bottom-nav">
-
 
     <a
         href="dashboard.html"
@@ -2244,7 +2239,6 @@ a{
 
     </a>
 
-
 </nav>
 
 
@@ -2257,17 +2251,13 @@ a{
     class="modal"
     id="calendarModal">
 
-
     <div class="modal-box">
 
-
         <div class="modal-head">
-
 
             <strong>
                 اختيار اليوم
             </strong>
-
 
             <button
                 class="close-modal"
@@ -2276,7 +2266,6 @@ a{
                 <i class="fa-solid fa-xmark"></i>
 
             </button>
-
 
         </div>
 
@@ -2287,19 +2276,14 @@ a{
             style="
                 width:100%;
                 padding:14px;
-                border:1px solid #D8E2EC;
                 border-radius:14px;
                 font-family:inherit;
                 font-size:16px;
                 font-weight:800;
                 outline:none;
-                color:#172333;
-                background:#F8FBFE;
             ">
 
-
     </div>
-
 
 </div>
 
@@ -2351,132 +2335,76 @@ let challengeSettings = {
 
 /* =========================================================
    CHALLENGES
-   يجب أن تكون مطابقة لـ challenges.html
 ========================================================= */
 
 const CHALLENGES = [
 
     {
         id:"water",
-
         name:"شرب الماء",
-
         icon:"fa-droplet",
-
-        color:"#1976D2",
-
-        bg:"#EAF5FF",
-
+        color:"#25A9FF",
+        bg:"rgba(37,169,255,.12)",
         link:"water.html",
-
         target:8,
-
         unit:"كوب",
-
         type:"number"
-
     },
-
 
     {
         id:"walking",
-
         name:"المشي",
-
         icon:"fa-person-walking",
-
-        color:"#149B7E",
-
-        bg:"#E8F8F3",
-
+        color:"#20C997",
+        bg:"rgba(32,201,151,.12)",
         link:"walking.html",
-
         target:3000,
-
         unit:"متر",
-
         type:"number"
-
     },
-
 
     {
         id:"sleep",
-
         name:"النوم",
-
         icon:"fa-moon",
-
-        color:"#7050D8",
-
-        bg:"#F1EEFF",
-
+        color:"#9B6CFF",
+        bg:"rgba(155,108,255,.12)",
         link:"sleep.html",
-
         target:8,
-
         unit:"ساعة",
-
         type:"number"
-
     },
-
 
     {
         id:"sleepSchedule",
-
         name:"موعد النوم والاستيقاظ",
-
         icon:"fa-bed",
-
         color:"#536DFE",
-
-        bg:"#EEF0FF",
-
+        bg:"rgba(83,109,254,.12)",
         link:"sleep.html",
-
         type:"time"
-
     },
-
 
     {
         id:"sugar",
-
         name:"السكريات",
-
         icon:"fa-candy-cane",
-
-        color:"#D94F91",
-
-        bg:"#FFF0F7",
-
+        color:"#FE2C55",
+        bg:"rgba(254,44,85,.12)",
         link:"nutrition.html",
-
         target:"لم آكل",
-
         type:"boolean"
-
     },
-
 
     {
         id:"smoking",
-
         name:"التدخين",
-
         icon:"fa-smoking-ban",
-
-        color:"#607D8B",
-
-        bg:"#EEF2F4",
-
+        color:"#A7A7A7",
+        bg:"rgba(167,167,167,.10)",
         link:"smoking.html",
-
         target:"إيقاف التدخين",
-
         type:"boolean"
-
     }
 
 ];
@@ -2497,7 +2425,7 @@ function createDefaultAvatar(){
             width="200"
             height="200"
             rx="100"
-            fill="#EEF5FA"/>
+            fill="#171717"/>
 
         <circle
             cx="100"
@@ -2537,14 +2465,7 @@ function createDefaultAvatar(){
             d="M45 190
                C48 139 68 119 100 119
                C132 119 152 139 155 190Z"
-            fill="#1976D2"/>
-
-        <path
-            d="M73 125
-               Q100 146 127 125"
-            fill="none"
-            stroke="#F5C6A4"
-            stroke-width="8"/>
+            fill="#333"/>
 
     </svg>`;
 
@@ -2673,15 +2594,11 @@ function renderWeek(){
         item.innerHTML = `
 
             <div class="day-name">
-
                 ${names[i].slice(0,3)}
-
             </div>
 
             <div class="day-number">
-
                 ${d.getDate()}
-
             </div>
 
         `;
@@ -2733,7 +2650,6 @@ function normalizeGender(value){
         return "غير محدد";
 
     }
-
 
     const v =
         String(value).toLowerCase();
@@ -3287,7 +3203,7 @@ function getTarget(challenge){
 
 
 /* =========================================================
-   TIME TARGET
+   SLEEP SCHEDULE
 ========================================================= */
 
 function getSleepSchedule(){
@@ -3319,10 +3235,6 @@ function getDailyValue(id){
 
     switch(id){
 
-        /* =============================================
-           WATER
-        ============================================= */
-
         case "water":
 
             return Number(
@@ -3332,11 +3244,6 @@ function getDailyValue(id){
                 0
             );
 
-
-        /* =============================================
-           WALKING
-           الجديد: بالمتر
-        ============================================= */
 
         case "walking":
 
@@ -3350,11 +3257,6 @@ function getDailyValue(id){
             );
 
 
-        /* =============================================
-           SLEEP
-           الجديد: بالساعات
-        ============================================= */
-
         case "sleep":{
 
             let value =
@@ -3365,12 +3267,6 @@ function getDailyValue(id){
                     0
                 );
 
-
-            /*
-               توافق مع البيانات القديمة:
-               إذا كانت القيمة كبيرة مثل 480
-               نعتبرها دقائق ونحوّلها إلى ساعات.
-            */
 
             if(value > 24){
 
@@ -3384,10 +3280,6 @@ function getDailyValue(id){
 
         }
 
-
-        /* =============================================
-           SLEEP SCHEDULE
-        ============================================= */
 
         case "sleepSchedule":{
 
@@ -3413,11 +3305,6 @@ function getDailyValue(id){
 
         }
 
-
-        /* =============================================
-           SUGAR
-           أكلت / لم آكل
-        ============================================= */
 
         case "sugar":{
 
@@ -3457,11 +3344,6 @@ function getDailyValue(id){
 
         }
 
-
-        /* =============================================
-           SMOKING
-           نعم / لا
-        ============================================= */
 
         case "smoking":{
 
@@ -3509,7 +3391,7 @@ function getDailyValue(id){
 
 
 /* =========================================================
-   FORMAT NUMBER
+   FORMAT
 ========================================================= */
 
 function formatNumber(value){
@@ -3526,10 +3408,6 @@ function formatNumber(value){
 
 }
 
-
-/* =========================================================
-   FORMAT TIME
-========================================================= */
 
 function formatTime(time){
 
@@ -3582,7 +3460,7 @@ function formatTime(time){
 
 
 /* =========================================================
-   FORMAT DAILY VALUE
+   FORMAT DAILY
 ========================================================= */
 
 function formatDailyValue(
@@ -3593,27 +3471,15 @@ function formatDailyValue(
 
     switch(challenge.id){
 
-        /* =============================================
-           WATER
-        ============================================= */
-
         case "water":
 
             return `${formatNumber(value)} / ${formatNumber(target)} كوب`;
 
 
-        /* =============================================
-           WALKING
-        ============================================= */
-
         case "walking":
 
             return `${formatNumber(value)} / ${formatNumber(target)} متر`;
 
-
-        /* =============================================
-           SLEEP
-        ============================================= */
 
         case "sleep":{
 
@@ -3628,10 +3494,6 @@ function formatDailyValue(
 
         }
 
-
-        /* =============================================
-           SLEEP SCHEDULE
-        ============================================= */
 
         case "sleepSchedule":{
 
@@ -3669,10 +3531,6 @@ function formatDailyValue(
         }
 
 
-        /* =============================================
-           SUGAR
-        ============================================= */
-
         case "sugar":
 
             if(value === "أكلت"){
@@ -3691,10 +3549,6 @@ function formatDailyValue(
 
             return "لم يتم التسجيل بعد";
 
-
-        /* =============================================
-           SMOKING
-        ============================================= */
 
         case "smoking":
 
@@ -3733,10 +3587,6 @@ function getPercent(
     value,
     target
 ){
-
-    /* =============================================
-       WATER / WALKING / SLEEP
-    ============================================= */
 
     if(
         challenge.type === "number"
@@ -3779,17 +3629,9 @@ function getPercent(
     }
 
 
-    /* =============================================
-       SLEEP SCHEDULE
-    ============================================= */
-
     if(
         challenge.id === "sleepSchedule"
     ){
-
-        const schedule =
-            getSleepSchedule();
-
 
         const actualSleep =
             value?.sleepTime || "";
@@ -3822,11 +3664,6 @@ function getPercent(
     }
 
 
-    /* =============================================
-       SUGAR
-       الهدف: لم آكل
-    ============================================= */
-
     if(
         challenge.id === "sugar"
     ){
@@ -3849,11 +3686,6 @@ function getPercent(
 
     }
 
-
-    /* =============================================
-       SMOKING
-       الهدف: إيقاف التدخين
-    ============================================= */
 
     if(
         challenge.id === "smoking"
@@ -3902,10 +3734,6 @@ function renderDaily(){
         challengeSettings.selected;
 
 
-    /* =============================================
-       NO CHALLENGES
-    ============================================= */
-
     if(
         !Array.isArray(selected) ||
         selected.length === 0
@@ -3921,18 +3749,15 @@ function renderDaily(){
 
                 </div>
 
-
                 <strong>
                     لم تختر متابعاتك اليومية بعد
                 </strong>
-
 
                 <p>
                     اختر من صفحة «تحدياتي» العادات
                     التي تريد متابعتها، وستظهر هنا
                     تلقائيًا.
                 </p>
-
 
                 <a
                     href="challenges.html"
@@ -4014,8 +3839,7 @@ function renderDaily(){
 
                 <div class="daily-icon">
 
-                    <i class="fa-solid ${challenge.icon}">
-                    </i>
+                    <i class="fa-solid ${challenge.icon}"></i>
 
                 </div>
 
@@ -4023,22 +3847,16 @@ function renderDaily(){
                 <div class="daily-main">
 
                     <div class="daily-name">
-
                         ${challenge.name}
-
                     </div>
 
-
                     <div class="daily-value">
-
                         ${formatDailyValue(
                             challenge,
                             value,
                             target
                         )}
-
                     </div>
-
 
                     <div class="daily-progress">
 
@@ -4052,9 +3870,7 @@ function renderDaily(){
 
 
                 <div class="daily-percent">
-
                     ${percent}%
-
                 </div>
 
             `;
@@ -4230,7 +4046,7 @@ function setProgress(percent){
 
 
 /* =========================================================
-   LOAD DAILY DATA
+   LOAD DAILY
 ========================================================= */
 
 async function loadDailyData(){
