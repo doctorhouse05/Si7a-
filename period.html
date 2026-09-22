@@ -8,9 +8,9 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<meta name="theme-color" content="#E95D8C">
+<meta name="theme-color" content="#F5F5F5">
 
-<title>دورتي الشهرية | Si7a+</title>
+<title>صحتي+ | دورتي الشهرية</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -18,13 +18,18 @@
       href="https://fonts.gstatic.com"
       crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&display=swap"
       rel="stylesheet">
 
 <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     box-sizing:border-box;
@@ -35,52 +40,74 @@
 
 :root{
 
-    --pink:#E95D8C;
-    --pink-dark:#C94372;
-    --pink-light:#FFF0F5;
-    --pink-soft:#FFE4ED;
+    --black:#111111;
+    --black-soft:#202020;
 
-    --purple:#8064D9;
-    --purple-light:#F2EEFF;
+    --pink:#FE2C55;
+    --pink-soft:#FFF0F3;
 
-    --orange:#F28C28;
-    --orange-light:#FFF4E7;
+    --cyan:#25F4EE;
 
-    --green:#26A269;
-    --green-light:#EAF8F1;
+    --text:#171717;
+    --muted:#7A7A7A;
 
-    --red:#E05252;
-    --red-light:#FFF0F0;
+    --bg:#F5F5F5;
+    --card:#FFFFFF;
 
-    --text:#1F2937;
-    --muted:#788292;
-    --border:#E7EBF0;
-    --bg:#F5F7FA;
-    --white:#FFFFFF;
+    --border:#E5E5E5;
 
-    --shadow:0 8px 25px rgba(31,48,72,.07);
+    --purple:#7357D8;
+    --purple-soft:#F1EEFF;
+
+    --orange:#E58A00;
+    --orange-soft:#FFF4DF;
+
+    --green:#16A085;
+    --green-soft:#EAF8F4;
+
+    --red:#D94848;
+    --red-soft:#FFF0F0;
+
+    --shadow:
+        0 4px 16px rgba(0,0,0,.055);
 }
 
-html,
-body{
-    min-height:100%;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
+
     font-family:"Cairo",sans-serif;
+
     background:var(--bg);
+
     color:var(--text);
-    padding-bottom:90px;
+
+    min-height:100vh;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    line-height:1.8;
+
+    padding-bottom:105px;
+
+    -webkit-font-smoothing:antialiased;
 }
 
 button,
 input,
 select{
+
     font-family:inherit;
 }
 
 button{
+
     border:0;
+
     cursor:pointer;
 }
 
@@ -88,39 +115,108 @@ button{
     display:none!important;
 }
 
-/* =========================
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+
+/* =========================================================
    LOADING
-========================= */
+========================================================= */
 
 .loading-screen{
 
     position:fixed;
+
     inset:0;
 
-    background:rgba(255,255,255,.97);
+    background:#fff;
 
     z-index:9999;
 
     display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:.3s;
+}
+
+.loading-screen.hide{
+
+    opacity:0;
+
+    pointer-events:none;
+}
+
+.loading-box{
+
+    text-align:center;
+}
+
+.loading-logo{
+
+    width:72px;
+    height:72px;
+
+    border-radius:22px;
+
+    background:#111;
+
+    color:#fff;
+
+    display:flex;
+
     align-items:center;
     justify-content:center;
 
-    flex-direction:column;
+    margin:auto auto 12px;
 
-    gap:14px;
+    font-size:30px;
+
+    box-shadow:
+        4px 4px 0 #25F4EE,
+        -4px -4px 0 #FE2C55;
 }
 
-.loading-spinner{
+.loading-box strong{
 
-    width:42px;
-    height:42px;
+    display:block;
 
-    border:4px solid #F8D8E3;
-    border-top-color:var(--pink);
+    font-size:22px;
+
+    font-weight:900;
+}
+
+.loading-box span{
+
+    display:block;
+
+    color:#777;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    margin-top:2px;
+}
+
+.spinner{
+
+    width:25px;
+    height:25px;
+
+    border:3px solid #E8E8E8;
+
+    border-top-color:#FE2C55;
 
     border-radius:50%;
 
     animation:spin .8s linear infinite;
+
+    margin:15px auto 0;
 }
 
 @keyframes spin{
@@ -128,180 +224,208 @@ button{
     to{
         transform:rotate(360deg);
     }
-
 }
 
-.loading-screen span{
 
-    color:var(--muted);
-    font-size:13px;
-    font-weight:600;
+/* =========================================================
+   APP
+========================================================= */
+
+.app{
+
+    width:100%;
+
+    max-width:650px;
+
+    margin:auto;
+
+    padding:
+        0
+        15px
+        30px;
 }
 
-/* =========================
-   TOP BAR
-========================= */
 
-.topbar{
+/* =========================================================
+   TOP AREA
+========================================================= */
 
-    height:68px;
+.top-area{
 
-    background:rgba(255,255,255,.96);
+    position:relative;
 
-    border-bottom:1px solid var(--border);
+    margin-left:-15px;
+    margin-right:-15px;
+
+    padding:
+        14px
+        15px
+        18px;
+
+    background:#F5F5F5;
+
+    border-bottom:
+        1px solid
+        #E8E8E8;
+
+    margin-bottom:18px;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header{
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
-    padding:0 16px;
+    gap:10px;
 
-    position:sticky;
-    top:0;
-
-    z-index:100;
-
-    backdrop-filter:blur(12px);
+    margin-bottom:14px;
 }
 
-.top-right{
+.page-heading{
 
     display:flex;
+
     align-items:center;
 
-    gap:11px;
+    gap:10px;
 }
 
-.page-icon{
+.page-heading-icon{
+
+    width:43px;
+    height:43px;
+
+    border-radius:14px;
+
+    background:#111;
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+
+    box-shadow:
+        3px 3px 0 #25F4EE,
+        -3px -3px 0 #FE2C55;
+}
+
+.page-heading-title{
+
+    font-size:20px;
+
+    line-height:1.3;
+
+    font-weight:900;
+}
+
+.page-heading-subtitle{
+
+    color:#777;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    margin-top:2px;
+}
+
+.refresh-btn{
 
     width:40px;
     height:40px;
 
     border-radius:13px;
 
-    background:var(--pink-light);
-    color:var(--pink);
+    background:#fff;
+
+    color:#555;
+
+    border:1px solid #E4E4E4;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
-    font-size:17px;
-}
-
-.page-title{
-
-    font-size:17px;
-    font-weight:800;
-}
-
-.page-subtitle{
-
-    font-size:10px;
-    color:var(--muted);
-
-    margin-top:1px;
-}
-
-.top-actions{
-
-    display:flex;
-    align-items:center;
-
-    gap:8px;
-}
-
-.icon-btn{
-
-    width:38px;
-    height:38px;
-
-    border-radius:12px;
-
-    background:#F4F6F8;
-    color:#5E6875;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    box-shadow:var(--shadow);
 
     transition:.2s;
 }
 
-.icon-btn:active{
+.refresh-btn:active{
 
     transform:scale(.94);
 }
 
-/* =========================
-   PAGE
-========================= */
 
-.container{
-
-    width:min(720px,100%);
-
-    margin:auto;
-
-    padding:17px 14px 30px;
-}
-
-/* =========================
-   HERO PINK
-========================= */
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
 
-    background:
-        linear-gradient(
-            135deg,
-            #D94D7E 0%,
-            #E95D8C 48%,
-            #F58FAF 100%
-        );
+    position:relative;
 
-    border-radius:25px;
+    overflow:hidden;
 
-    padding:21px;
+    background:#111;
 
     color:#fff;
 
-    position:relative;
-    overflow:hidden;
+    border-radius:22px;
+
+    padding:17px;
 
     box-shadow:
-        0 12px 28px rgba(233,93,140,.22);
+        0 7px 20px
+        rgba(0,0,0,.11);
+
+    margin-bottom:12px;
 }
 
-.hero:before{
+.hero::before{
 
     content:"";
 
     position:absolute;
 
-    width:180px;
-    height:180px;
+    width:150px;
+    height:150px;
 
     border-radius:50%;
 
-    background:rgba(255,255,255,.09);
+    background:
+        rgba(37,244,238,.08);
 
-    left:-75px;
-    top:-90px;
+    left:-65px;
+    top:-75px;
 }
 
-.hero:after{
+.hero::after{
 
     content:"";
 
     position:absolute;
 
-    width:140px;
-    height:140px;
+    width:130px;
+    height:130px;
 
     border-radius:50%;
 
-    background:rgba(255,255,255,.07);
+    background:
+        rgba(254,44,85,.10);
 
     right:-55px;
     bottom:-70px;
@@ -310,140 +434,165 @@ button{
 .hero-content{
 
     position:relative;
+
     z-index:1;
 }
 
-.hero-label{
-
-    font-size:11px;
-
-    opacity:.84;
-
-    margin-bottom:5px;
-}
-
-.hero-main{
+.hero-top{
 
     display:flex;
 
     align-items:center;
+
     justify-content:space-between;
 
     gap:15px;
 }
 
+.hero-label{
+
+    color:#BDBDBD;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    margin-bottom:2px;
+}
+
 .hero-day{
 
-    font-size:31px;
+    font-size:29px;
 
-    line-height:1.2;
+    line-height:1.25;
 
-    font-weight:800;
+    font-weight:900;
 }
 
 .hero-state{
 
-    font-size:12px;
+    color:#D2D2D2;
 
-    margin-top:5px;
+    font-size:11px;
 
-    opacity:.93;
+    font-weight:700;
+
+    margin-top:2px;
 }
 
 .cycle-circle{
 
-    width:76px;
-    height:76px;
+    width:75px;
+    height:75px;
 
-    border:5px solid rgba(255,255,255,.30);
-
-    border-top-color:#fff;
+    flex:none;
 
     border-radius:50%;
 
-    display:flex;
+    border:
+        5px solid
+        rgba(255,255,255,.13);
 
-    align-items:center;
-    justify-content:center;
+    border-top-color:#FE2C55;
+
+    border-right-color:#25F4EE;
+
+    display:flex;
 
     flex-direction:column;
 
-    flex:none;
+    align-items:center;
+    justify-content:center;
 }
 
 .cycle-circle strong{
 
-    font-size:17px;
+    font-size:16px;
+
+    font-weight:900;
 }
 
 .cycle-circle span{
 
+    color:#BDBDBD;
+
     font-size:8px;
 
-    opacity:.9;
+    font-weight:700;
 }
 
-/* =========================
+
+/* =========================================================
    MINI STATS
-========================= */
+========================================================= */
 
 .mini-grid{
 
     display:grid;
 
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+        repeat(2,1fr);
 
-    gap:10px;
+    gap:8px;
 
-    margin-top:12px;
+    margin-top:13px;
 }
 
 .mini-card{
 
-    background:#fff;
+    background:
+        rgba(255,255,255,.08);
 
-    border:1px solid rgba(255,255,255,.45);
+    border:
+        1px solid
+        rgba(255,255,255,.08);
 
-    border-radius:16px;
+    border-radius:13px;
 
-    padding:11px 12px;
-
-    color:var(--text);
-
-    box-shadow:
-        0 5px 16px rgba(0,0,0,.04);
+    padding:9px 10px;
 }
 
 .mini-label{
 
-    font-size:9px;
+    color:#AFAFAF;
 
-    color:var(--muted);
+    font-size:8px;
 
-    margin-bottom:3px;
+    font-weight:700;
+
+    margin-bottom:2px;
 }
 
 .mini-value{
 
-    font-size:12px;
+    color:#fff;
 
-    font-weight:800;
+    font-size:11px;
+
+    font-weight:900;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
 }
 
 .mini-value i{
 
-    margin-left:4px;
+    color:#FE2C55;
 
-    color:var(--pink);
+    margin-left:4px;
 }
 
-/* =========================
+
+/* =========================================================
    SECTION
-========================= */
+========================================================= */
 
 .section{
 
-    margin-top:16px;
+    margin-top:17px;
 }
 
 .section-title{
@@ -454,36 +603,59 @@ button{
 
     justify-content:space-between;
 
+    gap:10px;
+
     margin-bottom:10px;
+}
+
+.section-title-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+.section-title-left i{
+
+    color:#FE2C55;
+
+    font-size:15px;
 }
 
 .section-title h2{
 
-    font-size:15px;
+    font-size:16px;
 
-    font-weight:800;
+    font-weight:900;
 }
 
 .section-title small{
 
-    color:var(--muted);
+    color:#777;
 
     font-size:10px;
+
+    font-weight:700;
 }
 
-/* =========================
-   CALENDAR
-========================= */
+
+/* =========================================================
+   CALENDAR CARD
+========================================================= */
 
 .calendar-card{
 
     background:#fff;
 
-    border:1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
-    border-radius:23px;
+    border-radius:20px;
 
-    padding:15px;
+    padding:14px;
 
     box-shadow:var(--shadow);
 }
@@ -496,14 +668,14 @@ button{
 
     justify-content:space-between;
 
-    margin-bottom:14px;
+    margin-bottom:13px;
 }
 
 .month-name{
 
     font-size:15px;
 
-    font-weight:800;
+    font-weight:900;
 }
 
 .month-actions{
@@ -515,14 +687,24 @@ button{
 
 .month-btn{
 
-    width:32px;
-    height:32px;
+    width:34px;
+    height:34px;
 
     border-radius:10px;
 
-    background:#F3F6F9;
+    background:#F4F4F4;
 
-    color:#586575;
+    color:#555;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+}
+
+.month-btn:active{
+
+    transform:scale(.94);
 }
 
 .weekdays,
@@ -530,7 +712,8 @@ button{
 
     display:grid;
 
-    grid-template-columns:repeat(7,1fr);
+    grid-template-columns:
+        repeat(7,1fr);
 
     gap:5px;
 }
@@ -544,33 +727,36 @@ button{
 
     text-align:center;
 
+    color:#999;
+
     font-size:9px;
 
-    color:#98A1AE;
-
-    font-weight:700;
+    font-weight:800;
 }
 
 .day{
 
-    min-height:39px;
+    min-height:40px;
 
     border-radius:11px;
 
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     position:relative;
 
     font-size:11px;
 
-    font-weight:600;
+    font-weight:800;
 
     cursor:pointer;
 
-    transition:.18s;
+    transition:.15s;
+
+    background:#fff;
 }
 
 .day.empty{
@@ -580,35 +766,37 @@ button{
 
 .day:not(.empty):active{
 
-    transform:scale(.94);
+    transform:scale(.93);
 }
 
 .day.period{
 
-    background:var(--pink-light);
+    background:#FFF0F3;
 
-    color:var(--pink);
+    color:#FE2C55;
 }
 
 .day.fertile{
 
-    background:var(--purple-light);
+    background:#F1EEFF;
 
-    color:var(--purple);
+    color:#7357D8;
 }
 
 .day.ovulation{
 
-    background:var(--orange-light);
+    background:#FFF4DF;
 
-    color:var(--orange);
+    color:#E58A00;
 
-    font-weight:800;
+    font-weight:900;
 }
 
 .day.today{
 
-    outline:2px solid var(--pink);
+    outline:
+        2px solid
+        #FE2C55;
 
     outline-offset:-2px;
 }
@@ -616,7 +804,8 @@ button{
 .day.selected{
 
     box-shadow:
-        inset 0 0 0 2px var(--pink);
+        inset 0 0 0 2px
+        #111;
 }
 
 .day-number{
@@ -640,18 +829,23 @@ button{
 
 .period .day-mark{
 
-    background:var(--pink);
+    background:#FE2C55;
 }
 
 .fertile .day-mark{
 
-    background:var(--purple);
+    background:#7357D8;
 }
 
 .ovulation .day-mark{
 
-    background:var(--orange);
+    background:#E58A00;
 }
+
+
+/* =========================================================
+   LEGEND
+========================================================= */
 
 .calendar-legend{
 
@@ -659,13 +853,15 @@ button{
 
     flex-wrap:wrap;
 
-    gap:10px;
+    gap:9px;
 
-    margin-top:13px;
+    margin-top:12px;
 
     padding-top:11px;
 
-    border-top:1px solid #F0F2F5;
+    border-top:
+        1px solid
+        #EEEEEE;
 }
 
 .legend{
@@ -676,9 +872,11 @@ button{
 
     gap:5px;
 
-    color:var(--muted);
+    color:#777;
 
     font-size:9px;
+
+    font-weight:700;
 }
 
 .legend-dot{
@@ -690,45 +888,50 @@ button{
 }
 
 .dot-period{
-    background:var(--pink);
+    background:#FE2C55;
 }
 
 .dot-fertile{
-    background:var(--purple);
+    background:#7357D8;
 }
 
 .dot-ovulation{
-    background:var(--orange);
+    background:#E58A00;
 }
 
 .dot-today{
 
-    border:2px solid var(--pink);
-
     background:#fff;
+
+    border:
+        2px solid
+        #FE2C55;
 }
 
-/* =========================
+
+/* =========================================================
    SELECTED DAY
-========================= */
+========================================================= */
 
 .selected-day{
 
     background:#fff;
 
-    border:1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
-    border-radius:19px;
+    border-radius:17px;
 
-    padding:14px;
+    padding:12px;
 
-    margin-top:10px;
+    margin-top:9px;
 
     display:flex;
 
     align-items:center;
 
-    gap:12px;
+    gap:10px;
 
     box-shadow:var(--shadow);
 }
@@ -738,23 +941,25 @@ button{
     width:42px;
     height:42px;
 
+    flex:none;
+
     border-radius:13px;
 
-    background:var(--pink-light);
+    background:#FFF0F3;
 
-    color:var(--pink);
+    color:#FE2C55;
 
     display:flex;
 
     align-items:center;
     justify-content:center;
-
-    flex:none;
 }
 
 .selected-info{
 
     flex:1;
+
+    min-width:0;
 }
 
 .selected-info strong{
@@ -763,40 +968,43 @@ button{
 
     font-size:12px;
 
-    font-weight:800;
+    font-weight:900;
 }
 
 .selected-info span{
 
     display:block;
 
-    color:var(--muted);
+    color:#777;
 
-    font-size:10px;
+    font-size:9px;
+
+    font-weight:700;
 
     margin-top:2px;
 }
 
 .selected-badge{
 
-    font-size:9px;
-
-    font-weight:700;
+    padding:5px 9px;
 
     border-radius:20px;
 
-    padding:6px 9px;
+    background:#F4F4F4;
 
-    background:#F4F6F8;
+    color:#666;
 
-    color:#66717E;
+    font-size:9px;
+
+    font-weight:900;
 
     white-space:nowrap;
 }
 
-/* =========================
-   ADD PERIOD
-========================= */
+
+/* =========================================================
+   ACTION CARD
+========================================================= */
 
 .add-period{
 
@@ -804,41 +1012,54 @@ button{
 
     background:#fff;
 
-    border:1px dashed #E8A8BD;
+    border:
+        1px solid
+        #E5E5E5;
 
-    border-radius:19px;
+    border-radius:18px;
 
-    padding:14px;
+    padding:13px;
 
     display:flex;
 
     align-items:center;
 
-    gap:12px;
+    gap:11px;
 
     text-align:right;
 
-    box-shadow:
-        0 5px 18px rgba(233,93,140,.05);
+    box-shadow:var(--shadow);
+
+    transition:.15s;
+}
+
+.add-period:active{
+
+    transform:scale(.985);
 }
 
 .add-period-icon{
 
-    width:42px;
-    height:42px;
+    width:44px;
+    height:44px;
 
-    border-radius:13px;
+    flex:none;
 
-    background:var(--pink-light);
+    border-radius:14px;
 
-    color:var(--pink);
+    background:#111;
+
+    color:#fff;
 
     display:flex;
 
     align-items:center;
     justify-content:center;
 
-    flex:none;
+    font-size:17px;
+
+    box-shadow:
+        2px 2px 0 #25F4EE;
 }
 
 .add-period-text{
@@ -850,40 +1071,47 @@ button{
 
     display:block;
 
-    font-size:12px;
+    font-size:13px;
+
+    font-weight:900;
 }
 
 .add-period-text span{
 
     display:block;
 
+    color:#777;
+
     font-size:9px;
 
-    color:var(--muted);
+    font-weight:700;
 
-    margin-top:2px;
+    margin-top:1px;
 }
 
 .add-period-arrow{
 
-    color:#9CA6B2;
+    color:#999;
 
     font-size:12px;
 }
 
-/* =========================
-   STATISTICS
-========================= */
+
+/* =========================================================
+   STATS
+========================================================= */
 
 .stats-card{
 
     background:#fff;
 
-    border:1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
-    border-radius:21px;
+    border-radius:19px;
 
-    padding:14px;
+    padding:13px;
 
     box-shadow:var(--shadow);
 }
@@ -892,46 +1120,52 @@ button{
 
     display:grid;
 
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+        repeat(2,1fr);
 
     gap:8px;
 }
 
 .stat{
 
-    background:#F8FAFC;
+    background:#F7F7F7;
 
-    border-radius:14px;
+    border-radius:13px;
 
-    padding:11px;
+    padding:10px;
 }
 
 .stat-label{
 
-    color:var(--muted);
+    color:#777;
 
     font-size:9px;
+
+    font-weight:700;
 }
 
 .stat-value{
 
-    margin-top:3px;
+    margin-top:2px;
 
-    font-size:15px;
+    font-size:16px;
 
-    font-weight:800;
+    font-weight:900;
 }
 
 .stat-value small{
 
+    color:#888;
+
     font-size:9px;
 
-    color:var(--muted);
+    font-weight:700;
 }
 
-/* =========================
+
+/* =========================================================
    HISTORY
-========================= */
+========================================================= */
 
 .history-list{
 
@@ -939,44 +1173,49 @@ button{
 
     flex-direction:column;
 
-    gap:9px;
+    gap:8px;
 }
 
 .history-empty{
 
     background:#fff;
 
-    border:1px dashed #D8DEE6;
+    border:
+        1px dashed
+        #D8D8D8;
 
-    border-radius:18px;
+    border-radius:17px;
 
-    padding:25px 15px;
+    padding:23px 15px;
 
     text-align:center;
 
-    color:var(--muted);
+    color:#888;
 
     font-size:11px;
+
+    font-weight:700;
 }
 
 .history-item{
 
     background:#fff;
 
-    border:1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
-    border-radius:18px;
+    border-radius:17px;
 
-    padding:12px;
+    padding:11px;
 
     display:flex;
 
     align-items:center;
 
-    gap:11px;
+    gap:10px;
 
-    box-shadow:
-        0 5px 16px rgba(31,48,72,.04);
+    box-shadow:var(--shadow);
 }
 
 .history-icon{
@@ -984,23 +1223,25 @@ button{
     width:40px;
     height:40px;
 
+    flex:none;
+
     border-radius:12px;
 
-    background:var(--pink-light);
+    background:#FFF0F3;
 
-    color:var(--pink);
+    color:#FE2C55;
 
     display:flex;
 
     align-items:center;
     justify-content:center;
-
-    flex:none;
 }
 
 .history-main{
 
     flex:1;
+
+    min-width:0;
 }
 
 .history-main strong{
@@ -1008,15 +1249,19 @@ button{
     display:block;
 
     font-size:11px;
+
+    font-weight:900;
 }
 
 .history-main span{
 
     display:block;
 
+    color:#777;
+
     font-size:9px;
 
-    color:var(--muted);
+    font-weight:700;
 
     margin-top:2px;
 }
@@ -1035,63 +1280,75 @@ button{
 
     border-radius:9px;
 
+    background:#F4F4F4;
+
+    color:#666;
+
     display:flex;
 
     align-items:center;
     justify-content:center;
-
-    background:#F4F6F8;
-
-    color:#67727F;
 }
 
 .small-action.delete{
 
-    color:var(--red);
+    background:#FFF0F0;
 
-    background:var(--red-light);
+    color:#D94848;
 }
 
-/* =========================
+
+/* =========================================================
    NOTE
-========================= */
+========================================================= */
 
 .note{
 
     margin-top:16px;
 
-    background:#FFF9EC;
+    background:#fff;
 
-    border:1px solid #F5E4B8;
+    border:
+        1px solid
+        #E7E7E7;
 
-    border-radius:17px;
+    border-radius:16px;
 
-    padding:12px;
+    padding:11px;
 
     display:flex;
 
-    gap:10px;
+    align-items:flex-start;
+
+    gap:9px;
+
+    box-shadow:
+        0 3px 12px
+        rgba(0,0,0,.035);
 }
 
 .note i{
 
-    color:#D99B1F;
+    color:#E58A00;
 
-    margin-top:2px;
+    margin-top:3px;
 }
 
 .note p{
 
+    color:#777;
+
     font-size:9px;
 
-    color:#76643B;
+    font-weight:700;
 
     line-height:1.9;
 }
 
-/* =========================
+
+/* =========================================================
    BOTTOM NAV
-========================= */
+========================================================= */
 
 .bottom-nav{
 
@@ -1099,76 +1356,82 @@ button{
 
     bottom:0;
 
-    right:0;
-    left:0;
+    left:50%;
 
-    height:72px;
+    transform:
+        translateX(-50%);
 
-    background:rgba(255,255,255,.97);
+    width:min(650px,100%);
 
-    border-top:1px solid var(--border);
-
-    display:flex;
-
-    justify-content:center;
-
-    z-index:200;
+    background:
+        rgba(255,255,255,.98);
 
     backdrop-filter:blur(15px);
-}
 
-.nav-inner{
-
-    width:min(520px,100%);
+    border-top:
+        1px solid
+        #E1E1E1;
 
     display:grid;
 
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:
+        repeat(4,1fr);
+
+    padding:
+        7px
+        8px
+        max(
+            8px,
+            env(safe-area-inset-bottom)
+        );
+
+    z-index:100;
 }
 
 .nav-item{
 
-    display:flex;
+    text-align:center;
 
-    flex-direction:column;
+    color:#999;
 
-    align-items:center;
+    font-size:10px;
 
-    justify-content:center;
+    font-weight:800;
 
-    gap:4px;
+    padding:5px;
 
-    color:#929AA5;
+    border-radius:13px;
 
-    text-decoration:none;
-
-    font-size:9px;
-
-    font-weight:600;
+    transition:.2s;
 }
 
 .nav-item i{
 
-    font-size:16px;
+    display:block;
+
+    font-size:19px;
+
+    margin-bottom:3px;
 }
 
 .nav-item.active{
 
-    color:var(--pink);
+    color:#111;
+
+    font-weight:900;
+
+    background:#F4F4F4;
 }
 
 .nav-item.active i{
 
-    background:var(--pink-light);
-
-    padding:5px 10px;
-
-    border-radius:10px;
+    color:#FE2C55;
 }
 
-/* =========================
+
+/* =========================================================
    MODAL
-========================= */
+========================================================= */
 
 .modal{
 
@@ -1176,7 +1439,8 @@ button{
 
     inset:0;
 
-    background:rgba(17,28,43,.48);
+    background:
+        rgba(0,0,0,.48);
 
     z-index:1000;
 
@@ -1185,8 +1449,6 @@ button{
     align-items:flex-end;
 
     justify-content:center;
-
-    padding:0;
 }
 
 .modal.show{
@@ -1196,34 +1458,35 @@ button{
 
 .modal-box{
 
-    width:min(560px,100%);
+    width:min(650px,100%);
 
     background:#fff;
 
-    border-radius:26px 26px 0 0;
+    border-radius:
+        25px 25px 0 0;
 
-    padding:18px 16px 25px;
+    padding:
+        17px
+        15px
+        25px;
 
     max-height:90vh;
 
     overflow-y:auto;
 
-    animation:slideUp .22s ease;
+    animation:
+        slideUp .22s ease;
 }
 
 @keyframes slideUp{
 
     from{
-
         transform:translateY(35px);
-
         opacity:.5;
     }
 
     to{
-
         transform:translateY(0);
-
         opacity:1;
     }
 }
@@ -1236,7 +1499,7 @@ button{
 
     justify-content:space-between;
 
-    margin-bottom:16px;
+    margin-bottom:17px;
 }
 
 .modal-title-wrap{
@@ -1245,19 +1508,19 @@ button{
 
     align-items:center;
 
-    gap:10px;
+    gap:9px;
 }
 
 .modal-icon{
 
-    width:40px;
-    height:40px;
+    width:41px;
+    height:41px;
 
-    border-radius:12px;
+    border-radius:13px;
 
-    background:var(--pink-light);
+    background:#111;
 
-    color:var(--pink);
+    color:#fff;
 
     display:flex;
 
@@ -1267,21 +1530,21 @@ button{
 
 .modal-title{
 
-    font-size:14px;
+    font-size:15px;
 
-    font-weight:800;
+    font-weight:900;
 }
 
 .modal-close{
 
-    width:34px;
-    height:34px;
+    width:35px;
+    height:35px;
 
     border-radius:10px;
 
-    background:#F3F5F7;
+    background:#F3F3F3;
 
-    color:#6E7782;
+    color:#666;
 }
 
 .form-group{
@@ -1293,9 +1556,11 @@ button{
 
     display:block;
 
+    color:#333;
+
     font-size:10px;
 
-    font-weight:700;
+    font-weight:900;
 
     margin-bottom:6px;
 }
@@ -1304,56 +1569,65 @@ button{
 
     width:100%;
 
-    height:45px;
+    height:46px;
 
-    border:1px solid #DDE3E9;
+    border:
+        1px solid
+        #DCDCDC;
 
-    border-radius:13px;
+    border-radius:12px;
 
-    padding:0 12px;
+    padding:
+        0
+        11px;
 
     outline:none;
 
-    background:#FAFBFC;
+    background:#FAFAFA;
 
-    font-size:12px;
+    color:#171717;
 
-    color:var(--text);
+    font-size:13px;
 
-    direction:rtl;
+    font-weight:800;
 }
 
 .form-control:focus{
 
-    border-color:#E7A0B7;
+    border-color:#111;
 
     box-shadow:
-        0 0 0 3px rgba(233,93,140,.08);
+        0 0 0 3px
+        rgba(0,0,0,.05);
 }
 
 .form-row{
 
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap:9px;
 }
 
 .form-hint{
 
-    color:var(--muted);
+    color:#888;
 
     font-size:9px;
 
-    margin-top:5px;
+    font-weight:600;
+
+    margin-top:4px;
 }
 
 .modal-actions{
 
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap:8px;
 
@@ -1362,54 +1636,59 @@ button{
 
 .btn{
 
-    height:45px;
+    height:47px;
 
     border-radius:13px;
 
-    font-size:11px;
+    font-size:12px;
 
-    font-weight:700;
+    font-weight:900;
 }
 
 .btn-primary{
 
-    background:var(--pink);
+    background:#111;
 
     color:#fff;
 }
 
 .btn-secondary{
 
-    background:#F2F4F6;
+    background:#F1F1F1;
 
-    color:#65707D;
+    color:#666;
 }
 
-/* =========================
+
+/* =========================================================
    TOAST
-========================= */
+========================================================= */
 
 .toast{
 
     position:fixed;
 
-    bottom:86px;
-
     left:50%;
+
+    bottom:90px;
 
     transform:
         translateX(-50%)
         translateY(15px);
 
-    background:#202936;
+    background:#111;
 
     color:#fff;
 
     border-radius:13px;
 
-    padding:10px 15px;
+    padding:
+        10px
+        15px;
 
-    font-size:10px;
+    font-size:11px;
+
+    font-weight:800;
 
     z-index:3000;
 
@@ -1419,9 +1698,9 @@ button{
 
     transition:.25s;
 
-    white-space:nowrap;
-
     max-width:90%;
+
+    text-align:center;
 }
 
 .toast.show{
@@ -1433,21 +1712,36 @@ button{
         translateY(0);
 }
 
-/* =========================
+
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
-@media(max-width:380px){
+@media(max-width:400px){
 
-    .container{
+    .app{
 
-        padding-left:10px;
-        padding-right:10px;
+        padding-left:11px;
+        padding-right:11px;
+    }
+
+    .top-area{
+
+        margin-left:-11px;
+        margin-right:-11px;
+
+        padding-left:11px;
+        padding-right:11px;
+    }
+
+    .page-heading-title{
+
+        font-size:18px;
     }
 
     .hero-day{
 
-        font-size:27px;
+        font-size:26px;
     }
 
     .cycle-circle{
@@ -1458,7 +1752,7 @@ button{
 
     .day{
 
-        min-height:35px;
+        min-height:36px;
 
         font-size:10px;
     }
@@ -1469,236 +1763,303 @@ button{
 
 </head>
 
+
 <body>
 
-<!-- LOADING -->
 
-<div class="loading-screen"
-     id="loadingScreen">
+<!-- =========================================================
+     LOADING
+========================================================= -->
 
-    <div class="loading-spinner"></div>
+<div
+    class="loading-screen"
+    id="loadingScreen">
 
-    <span>
-        جاري تحميل بياناتك...
-    </span>
+    <div class="loading-box">
+
+        <div class="loading-logo">
+
+            <i class="fa-solid fa-heart-pulse"></i>
+
+        </div>
+
+        <strong>Si7a+</strong>
+
+        <span>
+            جاري تحميل بيانات دورتك...
+        </span>
+
+        <div class="spinner"></div>
+
+    </div>
 
 </div>
 
 
-<!-- TOP BAR -->
 
-<header class="topbar">
+<main class="app">
 
-    <div class="top-right">
 
-        <div class="page-icon">
+<!-- =========================================================
+     TOP AREA
+========================================================= -->
 
-            <i class="fa-solid fa-calendar-days"></i>
+<section class="top-area">
+
+
+    <div class="page-header">
+
+
+        <div class="page-heading">
+
+
+            <div class="page-heading-icon">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+            </div>
+
+
+            <div>
+
+                <div class="page-heading-title">
+                    دورتي الشهرية
+                </div>
+
+                <div class="page-heading-subtitle">
+                    متابعة وتنظيم الدورة
+                </div>
+
+            </div>
+
 
         </div>
 
-        <div>
 
-            <div class="page-title">
-                دورتي الشهرية
-            </div>
-
-            <div class="page-subtitle">
-                متابعة وتنظيم الدورة
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="top-actions">
-
-        <button class="icon-btn"
-                id="refreshBtn"
-                aria-label="تحديث">
+        <button
+            class="refresh-btn"
+            id="refreshBtn"
+            aria-label="تحديث">
 
             <i class="fa-solid fa-rotate"></i>
 
         </button>
 
-    </div>
-
-</header>
-
-
-<main class="container">
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <div class="hero-label">
-            حالة الدورة الحالية
-        </div>
-
-        <div class="hero-main">
-
-            <div>
-
-                <div class="hero-day">
-
-                    اليوم
-                    <span id="cycleDay">—</span>
-
-                </div>
-
-                <div class="hero-state"
-                     id="cycleState">
-
-                    أضيفي أول دورة لبدء المتابعة
-
-                </div>
-
-            </div>
-
-            <div class="cycle-circle">
-
-                <strong id="cycleProgress">
-                    0%
-                </strong>
-
-                <span>
-                    من الدورة
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="mini-grid">
-
-            <div class="mini-card">
-
-                <div class="mini-label">
-                    بداية آخر دورة
-                </div>
-
-                <div class="mini-value">
-
-                    <i class="fa-regular fa-calendar"></i>
-
-                    <span id="lastPeriodDate">
-                        —
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="mini-card">
-
-                <div class="mini-label">
-                    الدورة القادمة المتوقعة
-                </div>
-
-                <div class="mini-value">
-
-                    <i class="fa-solid fa-arrow-rotate-right"></i>
-
-                    <span id="nextPeriodDate">
-                        —
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="mini-card">
-
-                <div class="mini-label">
-                    الإباضة المتوقعة
-                </div>
-
-                <div class="mini-value">
-
-                    <i class="fa-solid fa-star"></i>
-
-                    <span id="ovulationDate">
-                        —
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="mini-card">
-
-                <div class="mini-label">
-                    طول الدورة
-                </div>
-
-                <div class="mini-value">
-
-                    <i class="fa-solid fa-clock"></i>
-
-                    <span id="cycleLengthDisplay">
-                        —
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
 
     </div>
+
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero">
+
+
+        <div class="hero-content">
+
+
+            <div class="hero-top">
+
+
+                <div>
+
+                    <div class="hero-label">
+                        حالة الدورة الحالية
+                    </div>
+
+                    <div class="hero-day">
+
+                        اليوم
+                        <span id="cycleDay">—</span>
+
+                    </div>
+
+                    <div
+                        class="hero-state"
+                        id="cycleState">
+
+                        أضيفي أول دورة لبدء المتابعة
+
+                    </div>
+
+                </div>
+
+
+                <div class="cycle-circle">
+
+                    <strong id="cycleProgress">
+                        0%
+                    </strong>
+
+                    <span>
+                        من الدورة
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="mini-grid">
+
+
+                <div class="mini-card">
+
+                    <div class="mini-label">
+                        بداية آخر دورة
+                    </div>
+
+                    <div class="mini-value">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        <span id="lastPeriodDate">
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="mini-card">
+
+                    <div class="mini-label">
+                        الدورة القادمة المتوقعة
+                    </div>
+
+                    <div class="mini-value">
+
+                        <i class="fa-solid fa-arrow-rotate-right"></i>
+
+                        <span id="nextPeriodDate">
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="mini-card">
+
+                    <div class="mini-label">
+                        الإباضة المتوقعة
+                    </div>
+
+                    <div class="mini-value">
+
+                        <i class="fa-solid fa-star"></i>
+
+                        <span id="ovulationDate">
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="mini-card">
+
+                    <div class="mini-label">
+                        طول الدورة
+                    </div>
+
+                    <div class="mini-value">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                        <span id="cycleLengthDisplay">
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
 
 </section>
 
 
-<!-- CALENDAR -->
+
+<!-- =========================================================
+     CALENDAR
+========================================================= -->
 
 <section class="section">
 
+
     <div class="section-title">
 
-        <h2>
-            تقويم الدورة
-        </h2>
+
+        <div class="section-title-left">
+
+            <i class="fa-solid fa-calendar-days"></i>
+
+            <h2>
+                تقويم الدورة
+            </h2>
+
+        </div>
+
 
         <small>
             اضغطي على أي يوم
         </small>
 
+
     </div>
+
 
 
     <div class="calendar-card">
 
+
         <div class="calendar-head">
 
-            <button class="month-btn"
-                    id="prevMonth">
+
+            <button
+                class="month-btn"
+                id="prevMonth">
 
                 <i class="fa-solid fa-chevron-right"></i>
 
             </button>
 
-            <div class="month-name"
-                 id="monthName">
+
+            <div
+                class="month-name"
+                id="monthName">
+
                 —
+
             </div>
 
-            <button class="month-btn"
-                    id="nextMonth">
+
+            <button
+                class="month-btn"
+                id="nextMonth">
 
                 <i class="fa-solid fa-chevron-left"></i>
 
             </button>
 
+
         </div>
+
 
 
         <div class="weekdays">
@@ -1714,12 +2075,17 @@ button{
         </div>
 
 
-        <div class="calendar-grid"
-             id="calendarGrid">
+
+        <div
+            class="calendar-grid"
+            id="calendarGrid">
+
         </div>
 
 
+
         <div class="calendar-legend">
+
 
             <div class="legend">
 
@@ -1729,6 +2095,7 @@ button{
 
             </div>
 
+
             <div class="legend">
 
                 <span class="legend-dot dot-fertile"></span>
@@ -1736,6 +2103,7 @@ button{
                 الخصوبة المتوقعة
 
             </div>
+
 
             <div class="legend">
 
@@ -1745,6 +2113,7 @@ button{
 
             </div>
 
+
             <div class="legend">
 
                 <span class="legend-dot dot-today"></span>
@@ -1753,18 +2122,23 @@ button{
 
             </div>
 
+
         </div>
+
 
     </div>
 
 
+
     <div class="selected-day">
+
 
         <div class="selected-icon">
 
             <i class="fa-regular fa-calendar-check"></i>
 
         </div>
+
 
         <div class="selected-info">
 
@@ -1778,30 +2152,41 @@ button{
 
         </div>
 
-        <div class="selected-badge"
-             id="selectedBadge">
+
+        <div
+            class="selected-badge"
+            id="selectedBadge">
 
             —
 
         </div>
 
+
     </div>
+
 
 </section>
 
 
-<!-- ADD PERIOD -->
+
+<!-- =========================================================
+     ADD PERIOD
+========================================================= -->
 
 <section class="section">
 
-    <button class="add-period"
-            id="addPeriodBtn">
+
+    <button
+        class="add-period"
+        id="addPeriodBtn">
+
 
         <div class="add-period-icon">
 
             <i class="fa-solid fa-plus"></i>
 
         </div>
+
 
         <div class="add-period-text">
 
@@ -1815,37 +2200,56 @@ button{
 
         </div>
 
+
         <div class="add-period-arrow">
 
             <i class="fa-solid fa-chevron-left"></i>
 
         </div>
 
+
     </button>
+
 
 </section>
 
 
-<!-- STATISTICS -->
+
+<!-- =========================================================
+     STATISTICS
+========================================================= -->
 
 <section class="section">
 
+
     <div class="section-title">
 
-        <h2>
-            إحصائيات دورتي
-        </h2>
+
+        <div class="section-title-left">
+
+            <i class="fa-solid fa-chart-simple"></i>
+
+            <h2>
+                إحصائيات دورتي
+            </h2>
+
+        </div>
+
 
         <small>
             بناءً على السجل
         </small>
 
+
     </div>
+
 
 
     <div class="stats-card">
 
+
         <div class="stats-grid">
+
 
             <div class="stat">
 
@@ -1922,32 +2326,50 @@ button{
 
             </div>
 
+
         </div>
 
+
     </div>
+
 
 </section>
 
 
-<!-- HISTORY -->
+
+<!-- =========================================================
+     HISTORY
+========================================================= -->
 
 <section class="section">
 
+
     <div class="section-title">
 
-        <h2>
-            سجل الدورات
-        </h2>
+
+        <div class="section-title-left">
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            <h2>
+                سجل الدورات
+            </h2>
+
+        </div>
+
 
         <small id="historyCount">
             0 دورة
         </small>
 
+
     </div>
 
 
-    <div class="history-list"
-         id="historyList">
+
+    <div
+        class="history-list"
+        id="historyList">
 
         <div class="history-empty">
 
@@ -1957,10 +2379,14 @@ button{
 
     </div>
 
+
 </section>
 
 
-<!-- NOTE -->
+
+<!-- =========================================================
+     NOTE
+========================================================= -->
 
 <div class="note">
 
@@ -1969,84 +2395,90 @@ button{
     <p>
 
         التواريخ الخاصة بالإباضة والخصوبة والدورة القادمة
-        هي تقديرات حسابية تعتمد على البيانات التي يتم إدخالها
+        هي تقديرات حسابية تعتمد على البيانات التي يتم إدخالها،
         وليست وسيلة مؤكدة لتحديد الإباضة أو منع الحمل.
 
     </p>
 
 </div>
 
+
 </main>
 
 
-<!-- BOTTOM NAV -->
+
+<!-- =========================================================
+     BOTTOM NAV
+========================================================= -->
 
 <nav class="bottom-nav">
 
-    <div class="nav-inner">
 
-        <a class="nav-item"
-           href="dashboard.html">
+    <a
+        class="nav-item"
+        href="dashboard.html">
 
-            <i class="fa-solid fa-house"></i>
+        <i class="fa-solid fa-house"></i>
 
-            <span>
-                الرئيسية
-            </span>
+        الرئيسية
 
-        </a>
+    </a>
 
 
-        <a class="nav-item"
-           href="challenges.html">
+    <a
+        class="nav-item"
+        href="challenges.html">
 
-            <i class="fa-solid fa-bullseye"></i>
+        <i class="fa-solid fa-list-check"></i>
 
-            <span>
-                تحدياتي
-            </span>
+        تحدياتي
 
-        </a>
-
-
-        <a class="nav-item"
-           href="health.html">
-
-            <i class="fa-solid fa-heart-pulse"></i>
-
-            <span>
-                صحتي
-            </span>
-
-        </a>
+    </a>
 
 
-        <a class="nav-item"
-           href="more.html">
+    <a
+        class="nav-item active"
+        href="health.html">
 
-            <i class="fa-solid fa-ellipsis"></i>
+        <i class="fa-solid fa-heart-pulse"></i>
 
-            <span>
-                المزيد
-            </span>
+        صحتي
 
-        </a>
+    </a>
 
-    </div>
+
+    <a
+        class="nav-item"
+        href="profile.html">
+
+        <i class="fa-solid fa-user"></i>
+
+        حسابي
+
+    </a>
+
 
 </nav>
 
 
-<!-- MODAL -->
 
-<div class="modal"
-     id="periodModal">
+<!-- =========================================================
+     MODAL
+========================================================= -->
+
+<div
+    class="modal"
+    id="periodModal">
+
 
     <div class="modal-box">
 
+
         <div class="modal-head">
 
+
             <div class="modal-title-wrap">
+
 
                 <div class="modal-icon">
 
@@ -2054,23 +2486,30 @@ button{
 
                 </div>
 
-                <div class="modal-title"
-                     id="modalTitle">
+
+                <div
+                    class="modal-title"
+                    id="modalTitle">
 
                     تسجيل دورة جديدة
 
                 </div>
 
+
             </div>
 
-            <button class="modal-close"
-                    id="closeModal">
+
+            <button
+                class="modal-close"
+                id="closeModal">
 
                 <i class="fa-solid fa-xmark"></i>
 
             </button>
 
+
         </div>
+
 
 
         <div class="form-group">
@@ -2079,20 +2518,21 @@ button{
                 أول يوم لنزول الدورة
             </label>
 
-            <input type="date"
-                   id="periodStart"
-                   class="form-control">
+            <input
+                type="date"
+                id="periodStart"
+                class="form-control">
 
             <div class="form-hint">
-
                 اختاري اليوم الأول من آخر دورة.
-
             </div>
 
         </div>
 
 
+
         <div class="form-row">
+
 
             <div class="form-group">
 
@@ -2100,17 +2540,16 @@ button{
                     طول الدورة
                 </label>
 
-                <input type="number"
-                       id="cycleLength"
-                       class="form-control"
-                       min="15"
-                       max="60"
-                       placeholder="مثال: 28">
+                <input
+                    type="number"
+                    id="cycleLength"
+                    class="form-control"
+                    min="15"
+                    max="60"
+                    placeholder="مثال: 28">
 
                 <div class="form-hint">
-
-                    عدد الأيام من بداية دورة إلى بداية التالية.
-
+                    من بداية دورة إلى بداية الدورة التالية.
                 </div>
 
             </div>
@@ -2122,57 +2561,75 @@ button{
                     مدة الحيض
                 </label>
 
-                <input type="number"
-                       id="periodDuration"
-                       class="form-control"
-                       min="1"
-                       max="15"
-                       placeholder="مثال: 5">
+                <input
+                    type="number"
+                    id="periodDuration"
+                    class="form-control"
+                    min="1"
+                    max="15"
+                    placeholder="مثال: 5">
 
                 <div class="form-hint">
-
                     عدد أيام نزول الدم.
-
                 </div>
 
             </div>
 
+
         </div>
+
 
 
         <div class="modal-actions">
 
-            <button class="btn btn-secondary"
-                    id="cancelModal">
+
+            <button
+                class="btn btn-secondary"
+                id="cancelModal">
 
                 إلغاء
 
             </button>
 
-            <button class="btn btn-primary"
-                    id="savePeriod">
+
+            <button
+                class="btn btn-primary"
+                id="savePeriod">
 
                 حفظ الدورة
 
             </button>
 
+
         </div>
+
 
     </div>
 
 </div>
 
 
-<!-- TOAST -->
 
-<div class="toast"
-     id="toast">
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+    class="toast"
+    id="toast">
+
 </div>
+
 
 
 <script type="module">
 
-import { auth, db } from "./js/firebase.js";
+import {
+    auth,
+    db
+}
+from "./js/firebase.js";
+
 
 import {
     collection,
@@ -2187,15 +2644,17 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
+
 import {
     onAuthStateChanged
 }
 from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
 
-/* =========================================
+
+/* =========================================================
    STATE
-========================================= */
+========================================================= */
 
 let currentUser = null;
 
@@ -2208,29 +2667,41 @@ let selectedDate = new Date();
 let editingId = null;
 
 
-/* =========================================
+
+/* =========================================================
    ELEMENTS
-========================================= */
+========================================================= */
 
 const loadingScreen =
-    document.getElementById("loadingScreen");
+    document.getElementById(
+        "loadingScreen"
+    );
 
 const calendarGrid =
-    document.getElementById("calendarGrid");
+    document.getElementById(
+        "calendarGrid"
+    );
 
 const monthName =
-    document.getElementById("monthName");
+    document.getElementById(
+        "monthName"
+    );
 
 const periodModal =
-    document.getElementById("periodModal");
+    document.getElementById(
+        "periodModal"
+    );
 
 const toast =
-    document.getElementById("toast");
+    document.getElementById(
+        "toast"
+    );
 
 
-/* =========================================
+
+/* =========================================================
    MONTH NAMES
-========================================= */
+========================================================= */
 
 const monthNames = [
 
@@ -2250,9 +2721,10 @@ const monthNames = [
 ];
 
 
-/* =========================================
+
+/* =========================================================
    HELPERS
-========================================= */
+========================================================= */
 
 function pad(n){
 
@@ -2283,11 +2755,13 @@ function parseDate(value){
     const parts =
         value.split("-");
 
+
     if(parts.length !== 3){
 
         return null;
 
     }
+
 
     return new Date(
 
@@ -2307,11 +2781,13 @@ function formatDate(value){
             ? parseDate(value)
             : value;
 
+
     if(!date){
 
         return "—";
 
     }
+
 
     return pad(date.getDate())
         + "/"
@@ -2329,6 +2805,7 @@ function formatLongDate(date){
         return "—";
 
     }
+
 
     return date.getDate()
         + " "
@@ -2353,19 +2830,11 @@ function addDays(date,days){
 }
 
 
-/*
-   حساب الفرق بالأيام فقط.
-
-   مثال:
-   1 سبتمبر → 1 سبتمبر = 0
-   1 سبتمبر → 2 سبتمبر = 1
-   لذلك يوم الدورة = الفرق + 1
-*/
-
 function diffDays(a,b){
 
     const oneDay =
         24 * 60 * 60 * 1000;
+
 
     return Math.round(
         (a.getTime()-b.getTime())
@@ -2380,30 +2849,42 @@ function showToast(message){
     toast.textContent =
         message;
 
-    toast.classList.add("show");
+
+    toast.classList.add(
+        "show"
+    );
+
 
     clearTimeout(
         window.__toastTimer
     );
 
+
     window.__toastTimer =
-        setTimeout(()=>{
+        setTimeout(
+            ()=>{
 
-            toast.classList.remove("show");
+                toast.classList.remove(
+                    "show"
+                );
 
-        },2500);
+            },
+            2500
+        );
 
 }
 
 
-/* =========================================
+
+/* =========================================================
    CYCLE LENGTH
-========================================= */
+========================================================= */
 
 function getCycleLength(){
 
     const last =
         getCurrentPeriod();
+
 
     if(
         last &&
@@ -2441,6 +2922,7 @@ function getCycleLength(){
                 parseDate(
                     sorted[i].startDate
                 );
+
 
             const b =
                 parseDate(
@@ -2487,9 +2969,10 @@ function getCycleLength(){
 }
 
 
-/* =========================================
+
+/* =========================================================
    CURRENT PERIOD
-========================================= */
+========================================================= */
 
 function getCurrentPeriod(){
 
@@ -2498,6 +2981,7 @@ function getCurrentPeriod(){
         return null;
 
     }
+
 
     return [...periods].sort(
 
@@ -2511,9 +2995,10 @@ function getCurrentPeriod(){
 }
 
 
-/* =========================================
+
+/* =========================================================
    PREDICTION
-========================================= */
+========================================================= */
 
 function getPrediction(period){
 
@@ -2551,24 +3036,12 @@ function getPrediction(period){
         );
 
 
-    /*
-       الإباضة التقديرية
-       قبل الدورة التالية بـ 14 يومًا.
-    */
-
     const ovulation =
         addDays(
             next,
             -14
         );
 
-
-    /*
-       نافذة الخصوبة التقديرية:
-       5 أيام قبل الإباضة
-       + يوم الإباضة
-       + يوم بعدها.
-    */
 
     const fertileStart =
         addDays(
@@ -2608,9 +3081,10 @@ function getPrediction(period){
 }
 
 
-/* =========================================
+
+/* =========================================================
    DAY STATUS
-========================================= */
+========================================================= */
 
 function getDayStatus(date){
 
@@ -2671,11 +3145,8 @@ function getDayStatus(date){
 
 
     if(
-
-        target >= periodStart
-        &&
+        target >= periodStart &&
         target <= periodEnd
-
     ){
 
         return "period";
@@ -2684,9 +3155,7 @@ function getDayStatus(date){
 
 
     if(
-
         target === ovulation
-
     ){
 
         return "ovulation";
@@ -2695,11 +3164,8 @@ function getDayStatus(date){
 
 
     if(
-
-        target >= fertileStart
-        &&
+        target >= fertileStart &&
         target <= fertileEnd
-
     ){
 
         return "fertile";
@@ -2712,14 +3178,16 @@ function getDayStatus(date){
 }
 
 
-/* =========================================
+
+/* =========================================================
    CALENDAR
-========================================= */
+========================================================= */
 
 function renderCalendar(){
 
     const year =
         calendarDate.getFullYear();
+
 
     const month =
         calendarDate.getMonth();
@@ -2762,8 +3230,10 @@ function renderCalendar(){
                 "div"
             );
 
+
         empty.className =
             "day empty";
+
 
         calendarGrid.appendChild(
             empty
@@ -2786,6 +3256,7 @@ function renderCalendar(){
             document.createElement(
                 "div"
             );
+
 
         cell.className =
             "day";
@@ -2811,8 +3282,6 @@ function renderCalendar(){
 
         }
 
-
-        /* اليوم الحالي */
 
         if(
 
@@ -2840,8 +3309,6 @@ function renderCalendar(){
 
         }
 
-
-        /* اليوم المحدد */
 
         if(
 
@@ -2879,11 +3346,14 @@ function renderCalendar(){
                 "span"
             );
 
+
         number.className =
             "day-number";
 
+
         number.textContent =
             day;
+
 
         cell.appendChild(
             number
@@ -2897,8 +3367,10 @@ function renderCalendar(){
                     "span"
                 );
 
+
             mark.className =
                 "day-mark";
+
 
             cell.appendChild(
                 mark
@@ -2931,9 +3403,10 @@ function renderCalendar(){
 }
 
 
-/* =========================================
+
+/* =========================================================
    SELECTED DAY
-========================================= */
+========================================================= */
 
 function renderSelectedDay(){
 
@@ -2972,14 +3445,18 @@ function renderSelectedDay(){
         descriptionEl.textContent =
             "هذا اليوم يقع ضمن أيام الحيض المتوقعة.";
 
+
         badgeEl.textContent =
             "الحيض";
 
+
         badgeEl.style.background =
-            "var(--pink-light)";
+            "#FFF0F3";
+
 
         badgeEl.style.color =
-            "var(--pink)";
+            "#FE2C55";
+
 
         return;
 
@@ -2991,14 +3468,18 @@ function renderSelectedDay(){
         descriptionEl.textContent =
             "هذا اليوم يقع ضمن نافذة الخصوبة المتوقعة.";
 
+
         badgeEl.textContent =
             "خصوبة";
 
+
         badgeEl.style.background =
-            "var(--purple-light)";
+            "#F1EEFF";
+
 
         badgeEl.style.color =
-            "var(--purple)";
+            "#7357D8";
+
 
         return;
 
@@ -3010,14 +3491,18 @@ function renderSelectedDay(){
         descriptionEl.textContent =
             "هذا هو يوم الإباضة المتوقع حسابيًا.";
 
+
         badgeEl.textContent =
             "إباضة";
 
+
         badgeEl.style.background =
-            "var(--orange-light)";
+            "#FFF4DF";
+
 
         badgeEl.style.color =
-            "var(--orange)";
+            "#E58A00";
+
 
         return;
 
@@ -3027,11 +3512,14 @@ function renderSelectedDay(){
     badgeEl.textContent =
         "يوم عادي";
 
+
     badgeEl.style.background =
-        "#F4F6F8";
+        "#F4F4F4";
+
 
     badgeEl.style.color =
-        "#66717E";
+        "#666";
+
 
     descriptionEl.textContent =
         "لا توجد مناسبة متوقعة مسجلة لهذا اليوم.";
@@ -3039,9 +3527,10 @@ function renderSelectedDay(){
 }
 
 
-/* =========================================
+
+/* =========================================================
    HERO
-========================================= */
+========================================================= */
 
 function renderHero(){
 
@@ -3053,7 +3542,8 @@ function renderHero(){
 
         document.getElementById(
             "cycleDay"
-        ).textContent = "—";
+        ).textContent =
+            "—";
 
 
         document.getElementById(
@@ -3106,16 +3596,10 @@ function renderHero(){
 
 
     /*
-       مهم جدًا:
-
        أول يوم للدورة = اليوم 1
 
-       لذلك:
-       فرق 0 أيام = اليوم 1
-       فرق 1 يوم = اليوم 2
-       فرق 15 يوم = اليوم 16
-
-       ولا نقوم بتحديد الرقم عند طول الدورة.
+       الفرق 0 = اليوم 1
+       الفرق 1 = اليوم 2
     */
 
     const cycleDay =
@@ -3124,11 +3608,6 @@ function renderHero(){
             prediction.start
         ) + 1;
 
-
-    /*
-       النسبة فقط يتم تحديدها حتى 100%
-       أما رقم اليوم نفسه فيستمر فعليًا.
-    */
 
     const progress =
         Math.min(
@@ -3151,11 +3630,8 @@ function renderHero(){
 
 
     if(
-
-        today >= prediction.start
-        &&
+        today >= prediction.start &&
         today <= prediction.periodEnd
-
     ){
 
         state =
@@ -3164,11 +3640,8 @@ function renderHero(){
     }
 
     else if(
-
-        today >= prediction.fertileStart
-        &&
+        today >= prediction.fertileStart &&
         today <= prediction.fertileEnd
-
     ){
 
         state =
@@ -3177,13 +3650,11 @@ function renderHero(){
     }
 
     else if(
-
         localDateString(today)
         ===
         localDateString(
             prediction.ovulation
         )
-
     ){
 
         state =
@@ -3192,9 +3663,7 @@ function renderHero(){
     }
 
     else if(
-
         today > prediction.next
-
     ){
 
         state =
@@ -3254,9 +3723,10 @@ function renderHero(){
 }
 
 
-/* =========================================
+
+/* =========================================================
    STATISTICS
-========================================= */
+========================================================= */
 
 function renderStatistics(){
 
@@ -3270,8 +3740,7 @@ function renderStatistics(){
             )
             .filter(
                 n =>
-                    n >= 15
-                    &&
+                    n >= 15 &&
                     n <= 60
             );
 
@@ -3286,8 +3755,7 @@ function renderStatistics(){
             )
             .filter(
                 n =>
-                    n >= 1
-                    &&
+                    n >= 1 &&
                     n <= 15
             );
 
@@ -3386,9 +3854,10 @@ function renderStatistics(){
 }
 
 
-/* =========================================
+
+/* =========================================================
    HISTORY
-========================================= */
+========================================================= */
 
 function renderHistory(){
 
@@ -3462,6 +3931,7 @@ function renderHistory(){
 
                 </div>
 
+
                 <div class="history-main">
 
                     <strong>
@@ -3475,13 +3945,13 @@ function renderHistory(){
                         يوم
 
                         · مدة الحيض:
-
                         ${Number(period.periodDuration) || "—"}
                         يوم
 
                     </span>
 
                 </div>
+
 
                 <div class="history-actions">
 
@@ -3492,6 +3962,7 @@ function renderHistory(){
                         <i class="fa-solid fa-pen"></i>
 
                     </button>
+
 
                     <button
                         class="small-action delete"
@@ -3548,9 +4019,10 @@ function renderHistory(){
 }
 
 
-/* =========================================
+
+/* =========================================================
    FIRESTORE
-========================================= */
+========================================================= */
 
 function periodsCollection(){
 
@@ -3633,9 +4105,10 @@ async function loadPeriods(){
 }
 
 
-/* =========================================
-   SAVE
-========================================= */
+
+/* =========================================================
+   SAVE PERIOD
+========================================================= */
 
 async function savePeriod(){
 
@@ -3673,13 +4146,9 @@ async function savePeriod(){
 
 
     if(
-
-        !cycleLength
-        ||
-        cycleLength < 15
-        ||
+        !cycleLength ||
+        cycleLength < 15 ||
         cycleLength > 60
-
     ){
 
         showToast(
@@ -3692,13 +4161,9 @@ async function savePeriod(){
 
 
     if(
-
-        !periodDuration
-        ||
-        periodDuration < 1
-        ||
+        !periodDuration ||
+        periodDuration < 1 ||
         periodDuration > 15
-
     ){
 
         showToast(
@@ -3749,9 +4214,7 @@ async function savePeriod(){
             key => {
 
                 if(
-                    data[key]
-                    ===
-                    undefined
+                    data[key] === undefined
                 ){
 
                     delete data[key];
@@ -3767,13 +4230,11 @@ async function savePeriod(){
             await updateDoc(
 
                 doc(
-
                     db,
                     "users",
                     currentUser.uid,
                     "periods",
                     editingId
-
                 ),
 
                 data
@@ -3807,17 +4268,13 @@ async function savePeriod(){
 
         closeModal();
 
-
         await loadPeriods();
 
     }
 
     catch(error){
 
-        console.error(
-            error
-        );
-
+        console.error(error);
 
         showToast(
             "حدث خطأ أثناء حفظ البيانات"
@@ -3830,7 +4287,6 @@ async function savePeriod(){
         button.disabled =
             false;
 
-
         button.textContent =
             "حفظ الدورة";
 
@@ -3839,9 +4295,10 @@ async function savePeriod(){
 }
 
 
-/* =========================================
+
+/* =========================================================
    DELETE
-========================================= */
+========================================================= */
 
 async function deletePeriod(id){
 
@@ -3854,9 +4311,7 @@ async function deletePeriod(id){
 
     const confirmed =
         confirm(
-
             "هل تريدين حذف هذه الدورة؟\nسيتم حذفها نهائيًا من حسابك."
-
         );
 
 
@@ -3872,13 +4327,11 @@ async function deletePeriod(id){
         await deleteDoc(
 
             doc(
-
                 db,
                 "users",
                 currentUser.uid,
                 "periods",
                 id
-
             )
 
         );
@@ -3895,10 +4348,7 @@ async function deletePeriod(id){
 
     catch(error){
 
-        console.error(
-            error
-        );
-
+        console.error(error);
 
         showToast(
             "تعذر حذف الدورة"
@@ -3909,9 +4359,10 @@ async function deletePeriod(id){
 }
 
 
-/* =========================================
+
+/* =========================================================
    MODAL
-========================================= */
+========================================================= */
 
 function openAddModal(){
 
@@ -4010,9 +4461,10 @@ function closeModal(){
 }
 
 
-/* =========================================
+
+/* =========================================================
    RENDER ALL
-========================================= */
+========================================================= */
 
 function renderAll(){
 
@@ -4029,9 +4481,10 @@ function renderAll(){
 }
 
 
-/* =========================================
+
+/* =========================================================
    EVENTS
-========================================= */
+========================================================= */
 
 document
     .getElementById(
@@ -4114,8 +4567,7 @@ periodModal.addEventListener(
     event => {
 
         if(
-            event.target
-            ===
+            event.target ===
             periodModal
         ){
 
@@ -4176,9 +4628,10 @@ document
     );
 
 
-/* =========================================
+
+/* =========================================================
    AUTH
-========================================= */
+========================================================= */
 
 onAuthStateChanged(
 
@@ -4220,8 +4673,15 @@ onAuthStateChanged(
         }
 
 
-        loadingScreen.classList.add(
-            "hidden"
+        setTimeout(
+            ()=>{
+
+                loadingScreen.classList.add(
+                    "hide"
+                );
+
+            },
+            300
         );
 
     }
