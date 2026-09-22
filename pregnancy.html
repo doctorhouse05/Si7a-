@@ -751,15 +751,35 @@ a{
     box-shadow:var(--shadow);
 }
 
+.summary-card.full-width{
+    grid-column:1 / -1;
+    min-height:88px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.summary-card.full-width .summary-icon{
+    flex:none;
+    margin-bottom:0;
+}
+
+.summary-card.full-width .summary-content{
+    position:relative;
+    z-index:2;
+    min-width:0;
+}
+
 .summary-card::after{
     content:"";
     position:absolute;
-    width:45px;
-    height:45px;
+    width:55px;
+    height:55px;
     border-radius:50%;
     right:-18px;
-    bottom:-20px;
+    bottom:-22px;
     background:var(--soft);
+    opacity:.9;
 }
 
 .summary-icon{
@@ -773,6 +793,8 @@ a{
     margin-bottom:8px;
     background:var(--soft);
     color:var(--color);
+    position:relative;
+    z-index:2;
 }
 
 .summary-label{
@@ -890,74 +912,7 @@ a{
 
 
 /* =====================================================
-   CALCULATION
-===================================================== */
-
-.calculation-card{
-    background:#fff;
-    border:1px solid #E5E5E5;
-    border-radius:19px;
-    padding:14px;
-    box-shadow:var(--shadow);
-    margin-bottom:10px;
-}
-
-.calculation-title{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    color:#171717;
-    font-size:12px;
-    font-weight:900;
-    margin-bottom:12px;
-}
-
-.calculation-title i{
-    color:#FE2C55;
-}
-
-.calculation-line{
-    background:#FAFAFA;
-    border:1px solid #EEE;
-    border-radius:14px;
-    padding:11px 12px;
-    margin-bottom:8px;
-}
-
-.calculation-label{
-    display:block;
-    color:#777;
-    font-size:9px;
-    font-weight:800;
-    margin-bottom:3px;
-}
-
-.calculation-value{
-    display:block;
-    color:#171717;
-    font-size:14px;
-    font-weight:900;
-}
-
-.calculation-note{
-    text-align:center;
-    color:#666;
-    font-size:10px;
-    line-height:1.9;
-    font-weight:700;
-    margin-top:10px;
-    padding-top:10px;
-    border-top:1px solid #EEE;
-}
-
-.calculation-note strong{
-    color:#171717;
-    font-weight:900;
-}
-
-
-/* =====================================================
-   TABLE
+   PREGNANCY TABLE
 ===================================================== */
 
 .table-card{
@@ -994,7 +949,7 @@ a{
 
 table{
     width:100%;
-    min-width:620px;
+    min-width:720px;
     border-collapse:collapse;
 }
 
@@ -1014,19 +969,67 @@ th{
 td{
     padding:10px 8px;
     text-align:center;
-    border-top:1px solid #EEE;
+    border-top:1px solid rgba(0,0,0,.055);
     font-size:9px;
     white-space:nowrap;
     font-weight:700;
 }
 
-tbody tr.current-week{
+
+/* =====================================================
+   MONTH COLORS
+   ===================================================== */
+
+/*
+   الأسابيع:
+   الشهر 1 = 1 - 4
+   الشهر 2 = 5 - 8
+   الشهر 3 = 9 - 13
+   الشهر 4 = 14 - 17
+   الشهر 5 = 18 - 22
+   الشهر 6 = 23 - 26
+   الشهر 7 = 27 - 30
+   الشهر 8 = 31 - 34
+   الشهر 9 = 35 - 39
+
+   الأسبوعان 40 و41:
+   نهاية الحمل، بنفس لون الشهر التاسع.
+*/
+
+tbody tr.month-odd{
     background:#FFF0F3;
 }
 
+tbody tr.month-even{
+    background:#EDF5FF;
+}
+
+tbody tr.month-odd td:first-child{
+    border-right:4px solid #FE2C55;
+}
+
+tbody tr.month-even td:first-child{
+    border-right:4px solid #1976D2;
+}
+
+
+/* =====================================================
+   CURRENT WEEK
+===================================================== */
+
+tbody tr.current-week{
+    outline:2px solid #111;
+    outline-offset:-2px;
+    position:relative;
+}
+
 tbody tr.current-week td{
-    color:#FE2C55;
+    color:#111;
     font-weight:900;
+}
+
+tbody tr.current-week td:first-child{
+    border-right:5px solid #111;
 }
 
 .status-current{
@@ -1036,7 +1039,7 @@ tbody tr.current-week td{
     padding:4px 8px;
     border-radius:20px;
     background:#111;
-    color:#fff;
+    color:#fff !important;
     font-size:8px;
     font-weight:900;
 }
@@ -1046,13 +1049,39 @@ tbody tr.current-week td{
 }
 
 .status-past{
-    color:#777;
+    color:#555;
     font-size:8px;
 }
 
 .status-future{
-    color:#AAA;
+    color:#888;
     font-size:8px;
+}
+
+.month-badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:72px;
+    padding:5px 8px;
+    border-radius:20px;
+    font-size:8px;
+    font-weight:900;
+}
+
+.month-badge.odd{
+    background:#FE2C55;
+    color:#fff;
+}
+
+.month-badge.even{
+    background:#1976D2;
+    color:#fff;
+}
+
+.month-badge.end{
+    background:#7357D8;
+    color:#fff;
 }
 
 
@@ -1221,6 +1250,10 @@ tbody tr.current-week td{
         min-height:95px;
     }
 
+    .summary-card.full-width{
+        min-height:84px;
+    }
+
     .summary-value{
         font-size:12px;
     }
@@ -1238,6 +1271,10 @@ tbody tr.current-week td{
 
     .summary-grid{
         grid-template-columns:1fr;
+    }
+
+    .summary-card.full-width{
+        grid-column:auto;
     }
 
     .actions{
@@ -1494,102 +1531,9 @@ button:disabled{
 </div>
 
 
-<!-- CALCULATION -->
-
-<section class="section">
-
-<div class="section-header">
-
-<div class="section-title">
-
-    <i class="fa-solid fa-calculator"></i>
-
-    حساب عمر الحمل
-
-</div>
-
-<div class="section-subtitle">
-    حسب التاريخ المدخل
-</div>
-
-</div>
-
-
-<div class="calculation-card">
-
-<div class="calculation-title">
-
-    <i class="fa-solid fa-calendar-check"></i>
-
-    تاريخ الحساب
-
-</div>
-
-
-<div class="calculation-line">
-
-<span class="calculation-label">
-    تاريخ أول يوم من آخر دورة
-</span>
-
-<strong
-    class="calculation-value"
-    id="calculationLmp">
-
-    —
-
-</strong>
-
-</div>
-
-
-<div class="calculation-line">
-
-<span class="calculation-label">
-    تاريخ الحمل أو الإخصاب التقريبي
-</span>
-
-<strong
-    class="calculation-value"
-    id="calculationConception">
-
-    —
-
-</strong>
-
-</div>
-
-
-<div class="calculation-note">
-
-    اليوم أنتِ في
-
-    <strong id="calculationSG">—</strong>
-
-    من عمر الحمل،
-
-    و
-
-    <strong id="calculationSA">—</strong>
-
-    من انقطاع الطمث.
-
-    <br>
-
-    أنتِ في
-
-    <strong id="calculationMonth">—</strong>
-
-    من الحمل.
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- SUMMARY -->
+<!-- =====================================================
+     SUMMARY
+===================================================== -->
 
 <section class="section">
 
@@ -1612,11 +1556,43 @@ button:disabled{
 
 <div class="summary-grid">
 
-<div class="summary-card summary-blue">
+
+<!-- SA FIRST -->
+
+<div class="summary-card summary-pink full-width">
 
 <div class="summary-icon">
     <i class="fa-solid fa-calendar-week"></i>
 </div>
+
+<div class="summary-content">
+
+<span class="summary-label">
+    عمر الحمل من انقطاع الطمث
+</span>
+
+<strong
+    class="summary-value"
+    id="saValue">
+
+    —
+
+</strong>
+
+</div>
+
+</div>
+
+
+<!-- SG SECOND -->
+
+<div class="summary-card summary-blue full-width">
+
+<div class="summary-icon">
+    <i class="fa-solid fa-heart-pulse"></i>
+</div>
+
+<div class="summary-content">
 
 <span class="summary-label">
     عمر الحمل
@@ -1631,25 +1607,6 @@ button:disabled{
 </strong>
 
 </div>
-
-
-<div class="summary-card summary-pink">
-
-<div class="summary-icon">
-    <i class="fa-solid fa-heart-pulse"></i>
-</div>
-
-<span class="summary-label">
-    عمر الحمل SA
-</span>
-
-<strong
-    class="summary-value"
-    id="saValue">
-
-    —
-
-</strong>
 
 </div>
 
@@ -1700,7 +1657,9 @@ button:disabled{
 </section>
 
 
-<!-- IMPORTANT DATES -->
+<!-- =====================================================
+     IMPORTANT DATES
+===================================================== -->
 
 <section class="section">
 
@@ -1849,7 +1808,9 @@ button:disabled{
 </section>
 
 
-<!-- CALENDAR TABLE -->
+<!-- =====================================================
+     PREGNANCY CALENDAR
+===================================================== -->
 
 <section class="section">
 
@@ -1864,7 +1825,7 @@ button:disabled{
 </div>
 
 <div class="section-subtitle">
-    40 أسبوعًا
+    حتى 41 أسبوعًا
 </div>
 
 </div>
@@ -1874,10 +1835,10 @@ button:disabled{
 
 <div class="table-info">
 
-    <i class="fa-solid fa-arrows-left-right"></i>
+    <i class="fa-solid fa-palette"></i>
 
     <span>
-        مرري أفقيًا لرؤية جميع أسابيع الحمل
+        كل شهر بلون مختلف للتمييز بين مراحل الحمل
     </span>
 
 </div>
@@ -1893,9 +1854,11 @@ button:disabled{
 
 <th>التاريخ</th>
 
-<th>أسابيع الحمل</th>
+<th>الشهر</th>
 
 <th>أسابيع انقطاع الطمث</th>
+
+<th>عمر الحمل</th>
 
 <th>الحالة</th>
 
@@ -2032,7 +1995,9 @@ button:disabled{
 </div>
 
 
-<!-- NAV -->
+<!-- =====================================================
+     NAV
+===================================================== -->
 
 <nav class="bottom-nav">
 
@@ -2316,13 +2281,6 @@ function formatShortDate(date){
 
 function formatDuration(weeks,days){
 
-    if(
-        weeks === 0 &&
-        days === 0
-    ){
-        return "0 أسبوع و0 يوم";
-    }
-
     return `${weeks} أسبوع و${days} ${days === 1 ? "يوم" : "أيام"}`;
 }
 
@@ -2354,42 +2312,96 @@ function formatRemaining(days){
 
 /* =====================================================
    PREGNANCY MONTH
+   BASED ON SA
 ===================================================== */
 
-function getPregnancyMonth(
-    sgWeeks,
-    sgDays
-){
+function getPregnancyMonthBySAWeek(saWeek){
 
-    const totalDays =
-        sgWeeks * 7 +
-        sgDays;
+    /*
+       التوزيع المطلوب:
 
-    if(totalDays < 5 * 7)
+       الشهر 1 = 4 أسابيع
+       الشهر 2 = 4 أسابيع
+       الشهر 3 = 5 أسابيع
+       الشهر 4 = 4 أسابيع
+       الشهر 5 = 5 أسابيع
+       الشهر 6 = 4 أسابيع
+       الشهر 7 = 4 أسابيع
+       الشهر 8 = 4 أسابيع
+       الشهر 9 = 5 أسابيع
+
+       المجموع = 39 أسبوعًا
+
+       لذلك الأسبوعان 40 و41
+       يعتبران نهاية الحمل
+       ويأخذان لون الشهر التاسع.
+    */
+
+    if(saWeek <= 4)
         return 1;
 
-    if(totalDays < 9 * 7)
+    if(saWeek <= 8)
         return 2;
 
-    if(totalDays < 14 * 7)
+    if(saWeek <= 13)
         return 3;
 
-    if(totalDays < 18 * 7)
+    if(saWeek <= 17)
         return 4;
 
-    if(totalDays < 23 * 7)
+    if(saWeek <= 22)
         return 5;
 
-    if(totalDays < 28 * 7)
+    if(saWeek <= 26)
         return 6;
 
-    if(totalDays < 32 * 7)
+    if(saWeek <= 30)
         return 7;
 
-    if(totalDays < 36 * 7)
+    if(saWeek <= 34)
         return 8;
 
     return 9;
+}
+
+
+function getMonthLabel(saWeek){
+
+    if(saWeek >= 40){
+
+        return "نهاية الحمل";
+
+    }
+
+    return `الشهر ${getPregnancyMonthBySAWeek(saWeek)}`;
+}
+
+
+function getMonthClass(saWeek){
+
+    const month =
+        getPregnancyMonthBySAWeek(saWeek);
+
+    if(month === 9)
+        return "month-odd";
+
+    return month % 2 === 1
+        ? "month-odd"
+        : "month-even";
+}
+
+
+function getMonthBadgeClass(saWeek){
+
+    if(saWeek >= 40)
+        return "end";
+
+    const month =
+        getPregnancyMonthBySAWeek(saWeek);
+
+    return month % 2 === 1
+        ? "odd"
+        : "even";
 }
 
 
@@ -2420,6 +2432,16 @@ function calculatePregnancy(lmpDate){
 
     }
 
+
+    /*
+       SA:
+       عمر الحمل من انقطاع الطمث
+
+       SG:
+       عمر الحمل الفعلي
+       ويكون عادة أقل بحوالي أسبوعين.
+    */
+
     const saDays =
         saElapsed;
 
@@ -2429,11 +2451,13 @@ function calculatePregnancy(lmpDate){
             saElapsed - 14
         );
 
+
     const saWeeks =
         Math.floor(saDays / 7);
 
     const saRemainingDays =
         saDays % 7;
+
 
     const sgWeeks =
         Math.floor(sgDays / 7);
@@ -2441,17 +2465,32 @@ function calculatePregnancy(lmpDate){
     const sgRemainingDays =
         sgDays % 7;
 
+
+    /*
+       الأسبوع الحالي من الحمل
+       حسب عمر الحمل SG.
+    */
+
     const currentWeek =
         Math.min(
-            40,
+            41,
             Math.floor(sgDays / 7) + 1
         );
+
+
+    const currentSAWeek =
+        Math.min(
+            41,
+            Math.floor(saDays / 7) + 1
+        );
+
 
     const dueDate =
         addDays(
             lmp,
             PREGNANCY_DAYS
         );
+
 
     const daysRemaining =
         Math.max(
@@ -2462,6 +2501,12 @@ function calculatePregnancy(lmpDate){
             )
         );
 
+
+    /*
+       نسبة التقدم مبنية على 40 أسبوعًا
+       من آخر دورة، أي 280 يومًا.
+    */
+
     const progress =
         Math.min(
             100,
@@ -2469,24 +2514,29 @@ function calculatePregnancy(lmpDate){
                 0,
                 Math.round(
                     (
-                        sgDays /
-                        (39 * 7)
+                        saDays /
+                        PREGNANCY_DAYS
                     ) * 100
                 )
             )
         );
 
+
     const month =
-        getPregnancyMonth(
-            sgWeeks,
-            sgRemainingDays
+        getPregnancyMonthBySAWeek(
+            Math.max(
+                1,
+                currentSAWeek
+            )
         );
+
 
     const conceptionDate =
         addDays(
             lmp,
             14
         );
+
 
     return {
 
@@ -2501,6 +2551,7 @@ function calculatePregnancy(lmpDate){
         sgRemainingDays,
 
         currentWeek,
+        currentSAWeek,
 
         dueDate,
 
@@ -2521,6 +2572,7 @@ function calculatePregnancy(lmpDate){
 ===================================================== */
 
 const arabicMonths = [
+
     "يناير",
     "فبراير",
     "مارس",
@@ -2533,6 +2585,7 @@ const arabicMonths = [
     "أكتوبر",
     "نوفمبر",
     "ديسمبر"
+
 ];
 
 
@@ -2556,18 +2609,26 @@ function openCalendar(target){
 
     let currentValue = "";
 
+
     if(target === "lmp"){
+
         currentValue =
             lmpInput.dataset.value || "";
+
     }
 
+
     if(target === "conception"){
+
         currentValue =
             conceptionInput.dataset.value || "";
+
     }
+
 
     const parsed =
         parseDate(currentValue);
+
 
     if(parsed){
 
@@ -2587,14 +2648,18 @@ function openCalendar(target){
 
     }
 
+
     lmpInput.classList.remove("active");
     conceptionInput.classList.remove("active");
+
 
     if(target === "lmp")
         lmpInput.classList.add("active");
 
+
     if(target === "conception")
         conceptionInput.classList.add("active");
+
 
     renderCalendar();
 
@@ -2626,6 +2691,7 @@ function renderCalendar(){
     const month =
         calendarViewDate.getMonth();
 
+
     calendarMonth.textContent =
         arabicMonths[month];
 
@@ -2634,12 +2700,14 @@ function renderCalendar(){
 
     calendarDays.innerHTML = "";
 
+
     const firstDay =
         new Date(
             year,
             month,
             1
         );
+
 
     const lastDay =
         new Date(
@@ -2648,11 +2716,14 @@ function renderCalendar(){
             0
         );
 
+
     const startWeekday =
         firstDay.getDay();
 
+
     const daysInMonth =
         lastDay.getDate();
+
 
     for(
         let i = 0;
@@ -2666,7 +2737,10 @@ function renderCalendar(){
         empty.className =
             "calendar-day empty";
 
-        calendarDays.appendChild(empty);
+        calendarDays.appendChild(
+            empty
+        );
+
     }
 
 
@@ -2689,17 +2763,22 @@ function renderCalendar(){
                 day
             );
 
+
         const button =
             document.createElement("button");
+
 
         button.type =
             "button";
 
+
         button.className =
             "calendar-day";
 
+
         button.textContent =
             day;
+
 
         if(
             sameDate(
@@ -2707,8 +2786,13 @@ function renderCalendar(){
                 today
             )
         ){
-            button.classList.add("today");
+
+            button.classList.add(
+                "today"
+            );
+
         }
+
 
         if(
             sameDate(
@@ -2716,8 +2800,13 @@ function renderCalendar(){
                 calendarSelectedDate
             )
         ){
-            button.classList.add("selected");
+
+            button.classList.add(
+                "selected"
+            );
+
         }
+
 
         button.addEventListener(
             "click",
@@ -2731,6 +2820,7 @@ function renderCalendar(){
             }
         );
 
+
         calendarDays.appendChild(
             button
         );
@@ -2739,6 +2829,10 @@ function renderCalendar(){
 
 }
 
+
+/* =====================================================
+   CONFIRM CALENDAR
+===================================================== */
 
 function confirmCalendarDate(){
 
@@ -2751,10 +2845,12 @@ function confirmCalendarDate(){
         return;
     }
 
+
     const value =
         dateToInput(
             calendarSelectedDate
         );
+
 
     if(calendarTarget === "lmp"){
 
@@ -2766,9 +2862,10 @@ function confirmCalendarDate(){
                 calendarSelectedDate
             );
 
+
         /*
            عند اختيار آخر دورة:
-           الحمل التقريبي = آخر دورة + 14 يوم
+           تاريخ الحمل التقريبي = آخر دورة + 14 يوم.
         */
 
         const conception =
@@ -2777,8 +2874,10 @@ function confirmCalendarDate(){
                 14
             );
 
+
         conceptionInput.dataset.value =
             dateToInput(conception);
+
 
         conceptionInput.value =
             formatDate(conception);
@@ -2796,6 +2895,7 @@ function confirmCalendarDate(){
                 calendarSelectedDate
             );
 
+
         /*
            إذا لم يوجد تاريخ آخر دورة،
            نحسبه تلقائيًا.
@@ -2809,10 +2909,12 @@ function confirmCalendarDate(){
                     -14
                 );
 
+
             lmpInput.dataset.value =
                 dateToInput(
                     estimatedLMP
                 );
+
 
             lmpInput.value =
                 formatDate(
@@ -2823,6 +2925,7 @@ function confirmCalendarDate(){
 
     }
 
+
     closeCalendar();
 }
 
@@ -2830,7 +2933,9 @@ function confirmCalendarDate(){
 lmpInput.addEventListener(
     "click",
     () => {
+
         openCalendar("lmp");
+
     }
 );
 
@@ -2838,7 +2943,9 @@ lmpInput.addEventListener(
 conceptionInput.addEventListener(
     "click",
     () => {
+
         openCalendar("conception");
+
     }
 );
 
@@ -2912,7 +3019,9 @@ calendarOverlay.addEventListener(
             event.target ===
             calendarOverlay
         ){
+
             closeCalendar();
+
         }
 
     }
@@ -2939,6 +3048,7 @@ async function savePregnancyData(){
         parseDate(
             lmpInput.dataset.value
         );
+
 
     let conceptionDate =
         parseDate(
@@ -3016,6 +3126,7 @@ async function savePregnancyData(){
         saveInitialButton.disabled =
             true;
 
+
         saveInitialButton.innerHTML =
             `
             <i class="fa-solid fa-spinner fa-spin"></i>
@@ -3045,7 +3156,9 @@ async function savePregnancyData(){
         pregnancyData =
             data;
 
+
         showDashboard();
+
 
         showToast(
             "تم حفظ بيانات الحمل"
@@ -3059,14 +3172,17 @@ async function savePregnancyData(){
             error
         );
 
+
         showToast(
             "حدث خطأ أثناء حفظ البيانات"
         );
+
 
     }finally{
 
         saveInitialButton.disabled =
             false;
+
 
         saveInitialButton.innerHTML =
             `
@@ -3088,6 +3204,7 @@ async function loadPregnancyData(){
     if(!currentUser)
         return;
 
+
     try{
 
         const ref =
@@ -3099,6 +3216,7 @@ async function loadPregnancyData(){
                 "profile"
             );
 
+
         const snapshot =
             await getDoc(ref);
 
@@ -3107,6 +3225,7 @@ async function loadPregnancyData(){
 
             pregnancyData =
                 snapshot.data();
+
 
             if(
                 pregnancyData.lmpDate
@@ -3126,6 +3245,7 @@ async function loadPregnancyData(){
 
         }
 
+
     }catch(error){
 
         console.error(
@@ -3133,7 +3253,9 @@ async function loadPregnancyData(){
             error
         );
 
+
         showSetup();
+
 
         showToast(
             "تعذر تحميل بيانات الحمل"
@@ -3168,8 +3290,10 @@ function showSetup(){
                 pregnancyData.lmpDate
             );
 
+
         lmpInput.dataset.value =
             pregnancyData.lmpDate;
+
 
         lmpInput.value =
             formatDate(lmp);
@@ -3194,8 +3318,10 @@ function showSetup(){
                 pregnancyData.conceptionDate
             );
 
+
         conceptionInput.dataset.value =
             pregnancyData.conceptionDate;
+
 
         conceptionInput.value =
             formatDate(conception);
@@ -3252,9 +3378,11 @@ function showDashboard(){
 
         showSetup();
 
+
         showToast(
             "تاريخ آخر دورة غير صالح"
         );
+
 
         return;
     }
@@ -3269,7 +3397,7 @@ function showDashboard(){
 
 
 /* =====================================================
-   RENDER
+   RENDER DASHBOARD
 ===================================================== */
 
 function renderDashboard(
@@ -3277,16 +3405,25 @@ function renderDashboard(
     result
 ){
 
+    /*
+       العمر الرئيسي:
+       عمر الحمل الفعلي SG
+    */
+
     document.getElementById(
         "heroWeek"
     ).textContent =
         `${result.sgWeeks} أسبوع و${result.sgRemainingDays} يوم`;
 
 
+    /*
+       SA يظهر أسفل العمر الرئيسي.
+    */
+
     document.getElementById(
         "heroDetail"
     ).textContent =
-        `عمر الحمل SG • ${result.saWeeks} أسبوع و${result.saRemainingDays} يوم من انقطاع الطمث`;
+        `${result.saWeeks} أسبوع و${result.saRemainingDays} يوم من انقطاع الطمث (SA)`;
 
 
     document.getElementById(
@@ -3301,42 +3438,19 @@ function renderDashboard(
         `${result.progress}%`;
 
 
-    document.getElementById(
-        "calculationLmp"
-    ).textContent =
-        formatShortDate(lmp);
-
-
-    document.getElementById(
-        "calculationConception"
-    ).textContent =
-        formatShortDate(
-            result.conceptionDate
-        );
-
+    /*
+       الملخص:
+       SA أولًا
+       SG ثانيًا
+    */
 
     document.getElementById(
-        "calculationSG"
-    ).textContent =
-        formatDuration(
-            result.sgWeeks,
-            result.sgRemainingDays
-        );
-
-
-    document.getElementById(
-        "calculationSA"
+        "saValue"
     ).textContent =
         formatDuration(
             result.saWeeks,
             result.saRemainingDays
         );
-
-
-    document.getElementById(
-        "calculationMonth"
-    ).textContent =
-        `الشهر ${result.month}`;
 
 
     document.getElementById(
@@ -3345,15 +3459,6 @@ function renderDashboard(
         formatDuration(
             result.sgWeeks,
             result.sgRemainingDays
-        );
-
-
-    document.getElementById(
-        "saValue"
-    ).textContent =
-        formatDuration(
-            result.saWeeks,
-            result.saRemainingDays
         );
 
 
@@ -3370,6 +3475,10 @@ function renderDashboard(
             result.daysRemaining
         );
 
+
+    /*
+       التواريخ المهمة.
+    */
 
     document.getElementById(
         "lmpDisplay"
@@ -3423,26 +3532,31 @@ function generateWeekTable(
             "weekTableBody"
         );
 
+
     tbody.innerHTML = "";
 
 
-    const pregnancyStart =
-        addDays(
-            lmp,
-            14
-        );
+    /*
+       التقويم يبدأ من تاريخ أول يوم
+       من آخر دورة، وليس من تاريخ الحمل.
 
+       الأسابيع 1 - 41 من SA.
+    */
 
     for(
-        let week = 1;
-        week <= 40;
-        week++
+        let saWeek = 1;
+        saWeek <= 41;
+        saWeek++
     ){
+
+        /*
+           بداية كل أسبوع من انقطاع الطمث.
+        */
 
         const start =
             addDays(
-                pregnancyStart,
-                (week - 1) * 7
+                lmp,
+                (saWeek - 1) * 7
             );
 
 
@@ -3453,20 +3567,50 @@ function generateWeekTable(
             );
 
 
+        /*
+           عمر الحمل SG أقل بحوالي أسبوعين
+           من SA.
+        */
+
         const sgWeek =
-            week;
+            saWeek - 2;
 
-        const saWeek =
-            week + 2;
 
-        const currentSGWeek =
-            result.sgWeeks + 1;
+        let sgText;
+
+
+        if(sgWeek <= 0){
+
+            sgText =
+                "لم يبدأ عمر الحمل الفعلي بعد";
+
+        }else{
+
+            sgText =
+                `${sgWeek} أسبوع SG`;
+
+        }
+
+
+        /*
+           تحديد الأسبوع الحالي.
+        */
+
+        const currentSAWeek =
+            Math.min(
+                41,
+                Math.floor(
+                    result.saDays / 7
+                ) + 1
+            );
+
 
         const isCurrent =
-            week === currentSGWeek;
+            saWeek === currentSAWeek;
+
 
         const isPast =
-            week < currentSGWeek;
+            saWeek < currentSAWeek;
 
 
         let status = "";
@@ -3503,8 +3647,36 @@ function generateWeekTable(
         }
 
 
+        /*
+           الشهر حسب SA.
+        */
+
+        const monthNumber =
+            getPregnancyMonthBySAWeek(
+                saWeek
+            );
+
+
+        const monthLabel =
+            getMonthLabel(
+                saWeek
+            );
+
+
         const row =
             document.createElement("tr");
+
+
+        /*
+           لون الشهر:
+           شهر فردي = وردي
+           شهر زوجي = أزرق
+           الأسبوعان 40 و41 = لون نهاية الحمل.
+        */
+
+        row.classList.add(
+            getMonthClass(saWeek)
+        );
 
 
         if(isCurrent){
@@ -3516,6 +3688,12 @@ function generateWeekTable(
         }
 
 
+        const badgeClass =
+            getMonthBadgeClass(
+                saWeek
+            );
+
+
         row.innerHTML =
             `
             <td>
@@ -3525,15 +3703,23 @@ function generateWeekTable(
             </td>
 
             <td>
-                ${sgWeek}
-                أسبوع من الحمل
-                : ${sgWeek} SG
+                <span class="month-badge ${badgeClass}">
+                    ${monthLabel}
+                </span>
             </td>
 
             <td>
-                ${saWeek}
-                أسبوع من انقطاع الطمث
-                : ${saWeek} SA
+                ${saWeek} أسبوع
+                <br>
+                SA
+            </td>
+
+            <td>
+                ${
+                    sgWeek <= 0
+                    ? "—"
+                    : `${sgWeek} أسبوع SG`
+                }
             </td>
 
             <td>
@@ -3542,7 +3728,9 @@ function generateWeekTable(
             `;
 
 
-        tbody.appendChild(row);
+        tbody.appendChild(
+            row
+        );
 
     }
 
@@ -3622,6 +3810,7 @@ async function deletePregnancy(){
             error
         );
 
+
         showToast(
             "تعذر حذف البيانات"
         );
@@ -3637,6 +3826,7 @@ async function deletePregnancy(){
 
 let toastTimer;
 
+
 function showToast(message){
 
     const toast =
@@ -3644,16 +3834,20 @@ function showToast(message){
             "toast"
         );
 
+
     toast.textContent =
         message;
+
 
     toast.classList.add(
         "show"
     );
 
+
     clearTimeout(
         toastTimer
     );
+
 
     toastTimer =
         setTimeout(
@@ -3685,6 +3879,7 @@ editButton.addEventListener(
     () => {
 
         showSetup();
+
 
         window.scrollTo({
             top:0,
@@ -3760,6 +3955,7 @@ onAuthStateChanged(
 
                     loadingScreen.style.opacity =
                         "0";
+
 
                     setTimeout(
                         () => {
