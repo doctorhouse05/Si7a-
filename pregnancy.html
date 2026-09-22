@@ -15,11 +15,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&display=swap"
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&display=swap"
       rel="stylesheet">
 
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 
 <style>
 
@@ -36,40 +37,40 @@
 :root{
 
     --black:#111111;
-    --black-soft:#202020;
+    --black-2:#1D1D1D;
 
     --pink:#FE2C55;
-    --pink-soft:#FFF0F3;
+    --pink-light:#FFF1F4;
 
     --cyan:#25F4EE;
-    --cyan-soft:#E9FFFF;
-
-    --text:#171717;
-    --muted:#7A7A7A;
-
-    --bg:#F5F5F5;
-    --card:#FFFFFF;
-
-    --border:#E6E6E6;
-
-    --green:#18A878;
-    --green-soft:#EAF9F3;
-
-    --purple:#7357D8;
-    --purple-soft:#F1EEFF;
-
-    --orange:#E58A00;
-    --orange-soft:#FFF4DF;
-
-    --red:#D94848;
-    --red-soft:#FFF0F0;
+    --cyan-light:#EFFFFF;
 
     --blue:#2878D7;
-    --blue-soft:#EDF5FF;
+    --blue-light:#EDF5FF;
 
-    --shadow:0 4px 16px rgba(0,0,0,.055);
+    --purple:#7357D8;
+    --purple-light:#F1EEFF;
 
-    --radius:20px;
+    --green:#18A878;
+    --green-light:#EAF9F3;
+
+    --orange:#E58A00;
+    --orange-light:#FFF4DF;
+
+    --red:#D94848;
+    --red-light:#FFF0F0;
+
+    --text:#161616;
+    --muted:#777777;
+    --light:#A0A0A0;
+
+    --bg:#F5F5F5;
+    --white:#FFFFFF;
+    --border:#E7E7E7;
+
+    --shadow:0 5px 20px rgba(0,0,0,.055);
+
+    --radius:22px;
 }
 
 html{
@@ -118,7 +119,7 @@ button{
 
     z-index:99999;
 
-    background:#F5F5F5;
+    background:var(--bg);
 
     display:flex;
 
@@ -133,10 +134,10 @@ button{
 
 .loading-logo{
 
-    width:70px;
-    height:70px;
+    width:68px;
+    height:68px;
 
-    border-radius:22px;
+    border-radius:20px;
 
     background:var(--black);
 
@@ -148,21 +149,21 @@ button{
 
     justify-content:center;
 
-    font-size:28px;
+    font-size:27px;
 
     box-shadow:
-        7px 7px 0 var(--pink),
+        6px 6px 0 var(--pink),
         -5px -5px 0 var(--cyan);
 
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
 
 .loading-spinner{
 
-    width:30px;
-    height:30px;
+    width:28px;
+    height:28px;
 
-    border:3px solid #DDDDDD;
+    border:3px solid #DEDEDE;
 
     border-top-color:var(--pink);
 
@@ -189,25 +190,25 @@ button{
 
     margin:auto;
 
-    padding:18px 16px 10px;
+    padding:16px 16px 8px;
 
     display:flex;
 
     align-items:center;
 
-    gap:12px;
+    gap:11px;
 }
 
 .back-button{
 
-    width:44px;
-    height:44px;
+    width:43px;
+    height:43px;
 
     flex-shrink:0;
 
     border-radius:14px;
 
-    background:white;
+    background:var(--white);
 
     color:var(--black);
 
@@ -219,7 +220,7 @@ button{
 
     justify-content:center;
 
-    font-size:17px;
+    font-size:16px;
 
     box-shadow:var(--shadow);
 
@@ -227,7 +228,7 @@ button{
 }
 
 .back-button:active{
-    transform:scale(.95);
+    transform:scale(.94);
 }
 
 .header-title{
@@ -241,7 +242,7 @@ button{
 
     font-size:22px;
 
-    line-height:1.3;
+    line-height:1.25;
 
     font-weight:900;
 
@@ -250,19 +251,19 @@ button{
 
 .header-title p{
 
-    font-size:11px;
+    font-size:10px;
 
     color:var(--muted);
 
-    margin-top:2px;
+    margin-top:3px;
 
     font-weight:700;
 }
 
 .header-icon{
 
-    width:44px;
-    height:44px;
+    width:43px;
+    height:43px;
 
     flex-shrink:0;
 
@@ -278,7 +279,7 @@ button{
 
     justify-content:center;
 
-    font-size:18px;
+    font-size:17px;
 
     box-shadow:
         4px 4px 0 var(--pink);
@@ -305,17 +306,17 @@ button{
 
 .setup-card{
 
-    background:var(--card);
+    background:var(--white);
 
     border:1px solid var(--border);
 
-    border-radius:24px;
+    border-radius:26px;
 
-    padding:22px 18px;
+    padding:21px 18px;
 
     box-shadow:var(--shadow);
 
-    margin-top:8px;
+    margin-top:7px;
 }
 
 .setup-top{
@@ -326,17 +327,17 @@ button{
 
     gap:13px;
 
-    margin-bottom:18px;
+    margin-bottom:17px;
 }
 
 .setup-icon{
 
-    width:56px;
-    height:56px;
+    width:55px;
+    height:55px;
 
     flex-shrink:0;
 
-    border-radius:17px;
+    border-radius:18px;
 
     background:var(--black);
 
@@ -348,7 +349,7 @@ button{
 
     justify-content:center;
 
-    font-size:23px;
+    font-size:22px;
 
     box-shadow:
         5px 5px 0 var(--pink);
@@ -356,31 +357,55 @@ button{
 
 .setup-heading h2{
 
-    font-size:19px;
+    font-size:18px;
 
     font-weight:900;
-
-    color:var(--black);
 }
 
 .setup-heading p{
 
     color:var(--muted);
 
-    font-size:11px;
+    font-size:10px;
 
     margin-top:2px;
 }
 
-.setup-card > p{
+.setup-description{
 
-    font-size:12px;
+    background:#FAFAFA;
+
+    border:1px solid #EEEEEE;
+
+    border-radius:16px;
+
+    padding:12px 13px;
+
+    margin-bottom:19px;
+
+    display:flex;
+
+    gap:10px;
+
+    align-items:flex-start;
+}
+
+.setup-description i{
+
+    color:var(--pink);
+
+    margin-top:3px;
+
+    font-size:13px;
+}
+
+.setup-description p{
+
+    font-size:10px;
 
     line-height:1.9;
 
-    color:#666;
-
-    margin-bottom:20px;
+    color:#686868;
 }
 
 
@@ -390,45 +415,56 @@ button{
 
 .field{
 
-    margin-bottom:17px;
+    margin-bottom:16px;
 }
 
 .field label{
 
-    display:block;
+    display:flex;
 
-    font-size:12px;
+    align-items:center;
 
-    font-weight:800;
+    gap:6px;
 
-    color:var(--text);
+    font-size:11px;
 
-    margin-bottom:8px;
+    font-weight:900;
+
+    margin-bottom:7px;
 }
 
 .field label i{
 
-    margin-left:5px;
-
     color:var(--pink);
+
+    font-size:12px;
 }
 
 .optional{
 
-    font-size:10px;
-
     color:#999;
+
+    font-size:9px;
 
     font-weight:600;
 
-    margin-right:4px;
+    background:#F3F3F3;
+
+    padding:2px 7px;
+
+    border-radius:20px;
+}
+
+.input-wrap{
+
+    position:relative;
 }
 
 .date-input{
 
     width:100%;
 
-    height:52px;
+    height:51px;
 
     padding:0 14px;
 
@@ -442,9 +478,9 @@ button{
 
     outline:none;
 
-    font-size:13px;
+    font-size:12px;
 
-    font-weight:700;
+    font-weight:800;
 
     transition:.2s;
 }
@@ -456,25 +492,25 @@ button{
     border-color:var(--pink);
 
     box-shadow:
-        0 0 0 4px rgba(254,44,85,.08);
+        0 0 0 4px rgba(254,44,85,.07);
 }
 
 .helper{
 
-    font-size:10px;
+    font-size:9px;
 
     color:#888;
 
     line-height:1.7;
 
-    margin-top:6px;
+    margin-top:5px;
 }
 
 .primary-button{
 
     width:100%;
 
-    min-height:53px;
+    min-height:52px;
 
     border-radius:15px;
 
@@ -482,7 +518,7 @@ button{
 
     color:white;
 
-    font-size:13px;
+    font-size:12px;
 
     font-weight:900;
 
@@ -490,6 +526,10 @@ button{
         5px 5px 0 var(--pink);
 
     transition:.2s;
+}
+
+.primary-button i{
+    margin-left:7px;
 }
 
 .primary-button:active{
@@ -500,13 +540,9 @@ button{
         3px 3px 0 var(--pink);
 }
 
-.primary-button i{
-    margin-left:7px;
-}
-
 
 /* =========================================================
-   HERO
+   PREGNANCY HERO
 ========================================================= */
 
 .hero{
@@ -517,9 +553,9 @@ button{
 
     margin-top:8px;
 
-    border-radius:25px;
+    border-radius:27px;
 
-    padding:23px 20px;
+    padding:21px 19px;
 
     color:white;
 
@@ -534,18 +570,18 @@ button{
 
     position:absolute;
 
-    width:145px;
-    height:145px;
+    width:150px;
+    height:150px;
 
     border-radius:50%;
 
     background:var(--pink);
 
-    opacity:.9;
+    opacity:.85;
 
-    top:-85px;
+    top:-95px;
 
-    left:-55px;
+    left:-65px;
 }
 
 .hero::after{
@@ -554,16 +590,16 @@ button{
 
     position:absolute;
 
-    width:120px;
-    height:120px;
+    width:115px;
+    height:115px;
 
     border-radius:50%;
 
     background:var(--cyan);
 
-    opacity:.9;
+    opacity:.8;
 
-    bottom:-80px;
+    bottom:-78px;
 
     right:-35px;
 }
@@ -575,6 +611,22 @@ button{
     z-index:2;
 }
 
+
+/* HERO TOP */
+
+.hero-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+    margin-bottom:13px;
+}
+
 .hero-label{
 
     display:flex;
@@ -583,27 +635,49 @@ button{
 
     gap:7px;
 
-    font-size:11px;
-
     color:#D5D5D5;
 
-    margin-bottom:5px;
+    font-size:10px;
+
+    font-weight:700;
 }
 
 .hero-label i{
 
     color:var(--cyan);
 
-    font-size:10px;
+    font-size:8px;
+}
+
+.hero-baby{
+
+    width:39px;
+    height:39px;
+
+    border-radius:13px;
+
+    background:rgba(255,255,255,.1);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:white;
+
+    font-size:15px;
 }
 
 .hero-week{
 
-    font-size:31px;
-
-    font-weight:900;
+    font-size:30px;
 
     line-height:1.2;
+
+    font-weight:900;
 
     letter-spacing:-.5px;
 }
@@ -612,29 +686,32 @@ button{
 
     margin-top:6px;
 
-    font-size:11px;
+    color:#D2D2D2;
 
-    color:#D6D6D6;
+    font-size:10px;
 
-    line-height:1.7;
+    line-height:1.8;
 }
+
+
+/* PROGRESS */
 
 .hero-progress{
 
-    margin-top:22px;
+    margin-top:19px;
 }
 
 .progress-top{
 
     display:flex;
 
-    align-items:center;
-
     justify-content:space-between;
 
-    font-size:10px;
+    align-items:center;
 
-    color:#D0D0D0;
+    color:#CFCFCF;
+
+    font-size:9px;
 
     margin-bottom:7px;
 }
@@ -643,7 +720,7 @@ button{
 
     color:white;
 
-    font-size:12px;
+    font-size:11px;
 }
 
 .progress-track{
@@ -654,7 +731,7 @@ button{
 
     border-radius:20px;
 
-    background:#343434;
+    background:#363636;
 
     overflow:hidden;
 }
@@ -679,7 +756,7 @@ button{
 
 
 /* =========================================================
-   SECTION TITLE
+   SECTION HEADER
 ========================================================= */
 
 .section-title{
@@ -690,165 +767,64 @@ button{
 
     justify-content:space-between;
 
-    margin:23px 2px 11px;
+    margin:23px 2px 10px;
 }
 
 .section-title h2{
 
-    font-size:16px;
+    font-size:15px;
 
     font-weight:900;
-
-    color:var(--black);
 }
 
 .section-title span{
 
-    font-size:10px;
-
     color:var(--muted);
+
+    font-size:9px;
 
     font-weight:700;
 }
 
 
 /* =========================================================
-   SUMMARY
+   SUMMARY NEW DESIGN
 ========================================================= */
 
-.summary-grid{
+.summary-list{
 
-    display:grid;
+    display:flex;
 
-    grid-template-columns:
-        repeat(2,minmax(0,1fr));
+    flex-direction:column;
 
-    gap:10px;
+    gap:8px;
 }
 
-.summary-card{
+.summary-item{
 
-    position:relative;
-
-    background:white;
+    background:var(--white);
 
     border:1px solid var(--border);
 
-    border-radius:18px;
+    border-radius:17px;
 
-    padding:14px;
+    min-height:68px;
 
-    min-height:112px;
+    padding:10px 12px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
 
     box-shadow:var(--shadow);
 }
 
 .summary-icon{
 
-    width:38px;
-    height:38px;
-
-    border-radius:12px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:15px;
-
-    margin-bottom:10px;
-}
-
-.blue-icon{
-
-    background:var(--blue-soft);
-
-    color:var(--blue);
-}
-
-.pink-icon{
-
-    background:var(--pink-soft);
-
-    color:var(--pink);
-}
-
-.purple-icon{
-
-    background:var(--purple-soft);
-
-    color:var(--purple);
-}
-
-.green-icon{
-
-    background:var(--green-soft);
-
-    color:var(--green);
-}
-
-.summary-label{
-
-    font-size:10px;
-
-    color:var(--muted);
-
-    font-weight:700;
-}
-
-.summary-value{
-
-    font-size:14px;
-
-    font-weight:900;
-
-    margin-top:3px;
-
-    color:var(--black);
-
-    line-height:1.5;
-}
-
-
-/* =========================================================
-   INFORMATION CARD
-========================================================= */
-
-.info-card{
-
-    background:white;
-
-    border:1px solid var(--border);
-
-    border-radius:20px;
-
-    padding:7px 16px;
-
-    box-shadow:var(--shadow);
-}
-
-.info-row{
-
-    min-height:67px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-}
-
-.info-row + .info-row{
-
-    border-top:1px solid #EEEEEE;
-}
-
-.info-row-icon{
-
-    width:41px;
-    height:41px;
+    width:42px;
+    height:42px;
 
     flex-shrink:0;
 
@@ -860,42 +836,191 @@ button{
 
     justify-content:center;
 
-    background:var(--blue-soft);
-
-    color:var(--blue);
-
     font-size:15px;
 }
 
-.info-row-icon.pink{
+.blue-icon{
 
-    background:var(--pink-soft);
+    background:var(--blue-light);
+
+    color:var(--blue);
+}
+
+.pink-icon{
+
+    background:var(--pink-light);
 
     color:var(--pink);
 }
 
-.info-row-icon.purple{
+.purple-icon{
 
-    background:var(--purple-soft);
+    background:var(--purple-light);
 
     color:var(--purple);
 }
 
-.info-row-icon.orange{
+.green-icon{
 
-    background:var(--orange-soft);
+    background:var(--green-light);
 
-    color:var(--orange);
+    color:var(--green);
 }
 
-.info-text{
+.summary-text{
 
     flex:1;
 
     min-width:0;
 }
 
-.info-text small{
+.summary-label{
+
+    display:block;
+
+    font-size:9px;
+
+    color:var(--muted);
+
+    font-weight:700;
+}
+
+.summary-value{
+
+    display:block;
+
+    font-size:12px;
+
+    color:var(--black);
+
+    font-weight:900;
+
+    margin-top:2px;
+}
+
+.summary-arrow{
+
+    width:28px;
+    height:28px;
+
+    border-radius:10px;
+
+    background:#F7F7F7;
+
+    color:#999;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:9px;
+}
+
+
+/* =========================================================
+   DATES TIMELINE
+========================================================= */
+
+.timeline-card{
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:21px;
+
+    padding:8px 14px;
+
+    box-shadow:var(--shadow);
+}
+
+.timeline-item{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    min-height:70px;
+}
+
+.timeline-item:not(:last-child)::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:20px;
+
+    top:50px;
+
+    width:1px;
+
+    height:30px;
+
+    background:#E5E5E5;
+}
+
+.timeline-icon{
+
+    width:41px;
+    height:41px;
+
+    flex-shrink:0;
+
+    border-radius:13px;
+
+    background:var(--blue-light);
+
+    color:var(--blue);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:14px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.timeline-icon.pink{
+
+    background:var(--pink-light);
+
+    color:var(--pink);
+}
+
+.timeline-icon.purple{
+
+    background:var(--purple-light);
+
+    color:var(--purple);
+}
+
+.timeline-icon.orange{
+
+    background:var(--orange-light);
+
+    color:var(--orange);
+}
+
+.timeline-content{
+
+    flex:1;
+
+    min-width:0;
+}
+
+.timeline-content small{
 
     display:block;
 
@@ -908,44 +1033,38 @@ button{
     margin-bottom:2px;
 }
 
-.info-text strong{
+.timeline-content strong{
 
     display:block;
 
     color:var(--black);
 
-    font-size:12px;
+    font-size:11px;
 
     font-weight:900;
 }
 
 
 /* =========================================================
-   ACTIONS
+   ACTION BUTTONS
 ========================================================= */
 
 .actions{
 
     display:grid;
 
-    grid-template-columns:
-        repeat(2,minmax(0,1fr));
+    grid-template-columns:1fr 1fr;
 
     gap:9px;
 
-    margin-top:12px;
+    margin-top:11px;
 }
 
-.secondary-button,
-.danger-button{
+.action-button{
 
-    min-height:47px;
+    min-height:46px;
 
     border-radius:14px;
-
-    font-size:11px;
-
-    font-weight:900;
 
     display:flex;
 
@@ -955,39 +1074,42 @@ button{
 
     gap:7px;
 
+    font-size:10px;
+
+    font-weight:900;
+
     transition:.2s;
 }
 
-.secondary-button{
+.action-edit{
 
     background:var(--black);
 
     color:white;
 }
 
-.secondary-button i{
+.action-edit i{
 
     color:var(--cyan);
 }
 
-.danger-button{
+.action-delete{
 
-    background:var(--red-soft);
+    background:var(--red-light);
 
     color:var(--red);
 
-    border:1px solid #F5DADA;
+    border:1px solid #F3D7D7;
 }
 
-.secondary-button:active,
-.danger-button:active{
+.action-button:active{
 
     transform:scale(.98);
 }
 
 
 /* =========================================================
-   WEEK TABLE
+   WEEK CALENDAR
 ========================================================= */
 
 .week-table-card{
@@ -996,11 +1118,42 @@ button{
 
     border:1px solid var(--border);
 
-    border-radius:20px;
+    border-radius:21px;
 
     overflow:hidden;
 
     box-shadow:var(--shadow);
+}
+
+.table-header-info{
+
+    padding:13px 15px;
+
+    background:#FAFAFA;
+
+    border-bottom:1px solid #EEEEEE;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+.table-header-info i{
+
+    color:var(--pink);
+
+    font-size:12px;
+}
+
+.table-header-info span{
+
+    font-size:9px;
+
+    color:#777;
+
+    font-weight:700;
 }
 
 .table-scroll{
@@ -1023,16 +1176,16 @@ table{
 
 thead{
 
-    background:#FAFAFA;
+    background:#FCFCFC;
 }
 
 th{
 
-    padding:12px 9px;
+    padding:11px 9px;
 
     color:#777;
 
-    font-size:10px;
+    font-size:9px;
 
     font-weight:900;
 
@@ -1041,13 +1194,13 @@ th{
 
 td{
 
-    padding:12px 9px;
+    padding:11px 9px;
 
     text-align:center;
 
     border-top:1px solid #EEEEEE;
 
-    font-size:10px;
+    font-size:9px;
 
     white-space:nowrap;
 
@@ -1056,7 +1209,7 @@ td{
 
 tbody tr.current-week{
 
-    background:#FFF0F3;
+    background:#FFF1F4;
 }
 
 tbody tr.current-week td{
@@ -1064,6 +1217,35 @@ tbody tr.current-week td{
     color:var(--pink);
 
     font-weight:900;
+}
+
+.week-number{
+
+    width:28px;
+    height:28px;
+
+    margin:auto;
+
+    border-radius:9px;
+
+    background:#F5F5F5;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#555;
+
+    font-weight:900;
+}
+
+.current-week .week-number{
+
+    background:var(--pink);
+
+    color:white;
 }
 
 .current-badge{
@@ -1091,6 +1273,20 @@ tbody tr.current-week td{
 
     color:var(--cyan);
 
+    font-size:7px;
+}
+
+.status-past{
+
+    color:#777;
+
+    font-size:8px;
+}
+
+.status-future{
+
+    color:#AAA;
+
     font-size:8px;
 }
 
@@ -1103,17 +1299,19 @@ tbody tr.current-week td{
 
     display:flex;
 
+    align-items:flex-start;
+
     gap:10px;
 
-    margin-top:13px;
+    margin-top:12px;
 
-    padding:14px;
+    padding:13px;
 
     border-radius:17px;
 
     background:#FFF9EC;
 
-    border:1px solid #F3E5BE;
+    border:1px solid #F2E4BD;
 }
 
 .medical-note > i{
@@ -1122,7 +1320,7 @@ tbody tr.current-week td{
 
     color:#D79614;
 
-    font-size:14px;
+    font-size:13px;
 
     margin-top:3px;
 }
@@ -1131,7 +1329,7 @@ tbody tr.current-week td{
 
     color:#74602A;
 
-    font-size:10px;
+    font-size:9px;
 
     line-height:1.9;
 
@@ -1140,7 +1338,7 @@ tbody tr.current-week td{
 
 
 /* =========================================================
-   BOTTOM NAVIGATION
+   BOTTOM NAV
 ========================================================= */
 
 .bottom-nav{
@@ -1164,8 +1362,7 @@ tbody tr.current-week td{
 
     display:grid;
 
-    grid-template-columns:
-        repeat(4,1fr);
+    grid-template-columns:repeat(4,1fr);
 
     backdrop-filter:blur(12px);
 }
@@ -1188,7 +1385,7 @@ tbody tr.current-week td{
 
     color:#858585;
 
-    font-size:10px;
+    font-size:9px;
 
     font-weight:700;
 }
@@ -1217,8 +1414,7 @@ tbody tr.current-week td{
 
     height:3px;
 
-    border-radius:
-        0 0 5px 5px;
+    border-radius:0 0 5px 5px;
 
     background:var(--pink);
 }
@@ -1236,8 +1432,7 @@ tbody tr.current-week td{
 
     bottom:88px;
 
-    transform:
-        translate(-50%,20px);
+    transform:translate(-50%,20px);
 
     opacity:0;
 
@@ -1245,8 +1440,7 @@ tbody tr.current-week td{
 
     z-index:10000;
 
-    max-width:
-        calc(100% - 35px);
+    max-width:calc(100% - 35px);
 
     padding:11px 17px;
 
@@ -1256,12 +1450,11 @@ tbody tr.current-week td{
 
     color:white;
 
-    font-size:11px;
+    font-size:10px;
 
     font-weight:800;
 
-    box-shadow:
-        4px 4px 0 var(--pink);
+    box-shadow:4px 4px 0 var(--pink);
 
     transition:.3s;
 
@@ -1274,8 +1467,7 @@ tbody tr.current-week td{
 
     opacity:1;
 
-    transform:
-        translate(-50%,0);
+    transform:translate(-50%,0);
 }
 
 
@@ -1298,8 +1490,7 @@ tbody tr.current-week td{
 
         transform:translateX(-50%);
 
-        border-radius:
-            20px 20px 0 0;
+        border-radius:20px 20px 0 0;
     }
 }
 
@@ -1307,6 +1498,7 @@ tbody tr.current-week td{
 
     .container,
     .top-header{
+
         padding-left:12px;
         padding-right:12px;
     }
@@ -1315,13 +1507,26 @@ tbody tr.current-week td{
         font-size:27px;
     }
 
-    .summary-value{
-        font-size:13px;
+    .setup-card{
+        padding:18px 14px;
     }
 
-    .setup-card{
-        padding:19px 15px;
+    .summary-value{
+        font-size:11px;
     }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+button:disabled{
+
+    opacity:.65;
+
+    cursor:not-allowed;
 }
 
 </style>
@@ -1339,7 +1544,9 @@ tbody tr.current-week td{
 <div id="loadingScreen">
 
     <div class="loading-logo">
+
         <i class="fa-solid fa-heart-pulse"></i>
+
     </div>
 
     <div class="loading-spinner"></div>
@@ -1414,7 +1621,7 @@ tbody tr.current-week td{
             </h2>
 
             <p>
-                أدخلي التاريخ لبدء الحساب
+                أدخلي البيانات للبدء
             </p>
 
         </div>
@@ -1422,13 +1629,19 @@ tbody tr.current-week td{
     </div>
 
 
-    <p>
+    <div class="setup-description">
 
-        أدخلي تاريخ أول يوم من آخر دورة شهرية،
-        وسيقوم التطبيق بحساب عمر الحمل وموعد الولادة
-        والجدول الأسبوعي تلقائيًا.
+        <i class="fa-solid fa-circle-info"></i>
 
-    </p>
+        <p>
+
+            أدخلي تاريخ أول يوم من آخر دورة شهرية،
+            وسيحسب التطبيق عمر الحمل وموعد الولادة
+            المتوقع تلقائيًا.
+
+        </p>
+
+    </div>
 
 
     <div class="field">
@@ -1448,7 +1661,7 @@ tbody tr.current-week td{
 
         <div class="helper">
 
-            هذا هو التاريخ الذي يبدأ منه حساب عمر الحمل.
+            هذا هو التاريخ الأساسي لحساب عمر الحمل.
 
         </div>
 
@@ -1477,7 +1690,7 @@ tbody tr.current-week td{
         <div class="helper">
 
             إذا كنتِ تعرفين تاريخ الحمل تقريبًا،
-            يمكنك إدخاله وسيتم حساب آخر دورة تقريبيًا.
+            يمكنك إدخاله بدلًا من ذلك.
 
         </div>
 
@@ -1507,17 +1720,29 @@ tbody tr.current-week td{
     class="hidden">
 
 
-<!-- HERO -->
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <div class="hero">
 
     <div class="hero-content">
 
-        <div class="hero-label">
+        <div class="hero-top">
 
-            <i class="fa-solid fa-circle"></i>
+            <div class="hero-label">
 
-            أنتِ الآن في
+                <i class="fa-solid fa-circle"></i>
+
+                أنتِ الآن في
+
+            </div>
+
+            <div class="hero-baby">
+
+                <i class="fa-solid fa-baby"></i>
+
+            </div>
 
         </div>
 
@@ -1571,7 +1796,9 @@ tbody tr.current-week td{
 </div>
 
 
-<!-- SUMMARY -->
+<!-- =====================================================
+     SUMMARY
+===================================================== -->
 
 <div class="section-title">
 
@@ -1586,10 +1813,10 @@ tbody tr.current-week td{
 </div>
 
 
-<div class="summary-grid">
+<div class="summary-list">
 
 
-    <div class="summary-card">
+    <div class="summary-item">
 
         <div class="summary-icon blue-icon">
 
@@ -1597,22 +1824,32 @@ tbody tr.current-week td{
 
         </div>
 
-        <div class="summary-label">
-            عمر الحمل
+        <div class="summary-text">
+
+            <span class="summary-label">
+                عمر الحمل
+            </span>
+
+            <strong
+                class="summary-value"
+                id="sgValue">
+
+                —
+
+            </strong>
+
         </div>
 
-        <div
-            class="summary-value"
-            id="sgValue">
+        <div class="summary-arrow">
 
-            —
+            <i class="fa-solid fa-chevron-left"></i>
 
         </div>
 
     </div>
 
 
-    <div class="summary-card">
+    <div class="summary-item">
 
         <div class="summary-icon pink-icon">
 
@@ -1620,22 +1857,32 @@ tbody tr.current-week td{
 
         </div>
 
-        <div class="summary-label">
-            عمر الحمل SA
+        <div class="summary-text">
+
+            <span class="summary-label">
+                عمر الحمل SA
+            </span>
+
+            <strong
+                class="summary-value"
+                id="saValue">
+
+                —
+
+            </strong>
+
         </div>
 
-        <div
-            class="summary-value"
-            id="saValue">
+        <div class="summary-arrow">
 
-            —
+            <i class="fa-solid fa-chevron-left"></i>
 
         </div>
 
     </div>
 
 
-    <div class="summary-card">
+    <div class="summary-item">
 
         <div class="summary-icon purple-icon">
 
@@ -1643,22 +1890,32 @@ tbody tr.current-week td{
 
         </div>
 
-        <div class="summary-label">
-            شهر الحمل
+        <div class="summary-text">
+
+            <span class="summary-label">
+                شهر الحمل
+            </span>
+
+            <strong
+                class="summary-value"
+                id="monthValue">
+
+                —
+
+            </strong>
+
         </div>
 
-        <div
-            class="summary-value"
-            id="monthValue">
+        <div class="summary-arrow">
 
-            —
+            <i class="fa-solid fa-chevron-left"></i>
 
         </div>
 
     </div>
 
 
-    <div class="summary-card">
+    <div class="summary-item">
 
         <div class="summary-icon green-icon">
 
@@ -1666,24 +1923,37 @@ tbody tr.current-week td{
 
         </div>
 
-        <div class="summary-label">
-            المتبقي تقريبًا
+        <div class="summary-text">
+
+            <span class="summary-label">
+                المتبقي تقريبًا
+            </span>
+
+            <strong
+                class="summary-value"
+                id="remainingValue">
+
+                —
+
+            </strong>
+
         </div>
 
-        <div
-            class="summary-value"
-            id="remainingValue">
+        <div class="summary-arrow">
 
-            —
+            <i class="fa-solid fa-chevron-left"></i>
 
         </div>
 
     </div>
 
+
 </div>
 
 
-<!-- IMPORTANT DATES -->
+<!-- =====================================================
+     IMPORTANT DATES
+===================================================== -->
 
 <div class="section-title">
 
@@ -1694,18 +1964,18 @@ tbody tr.current-week td{
 </div>
 
 
-<div class="info-card">
+<div class="timeline-card">
 
 
-    <div class="info-row">
+    <div class="timeline-item">
 
-        <div class="info-row-icon">
+        <div class="timeline-icon">
 
             <i class="fa-regular fa-calendar"></i>
 
         </div>
 
-        <div class="info-text">
+        <div class="timeline-content">
 
             <small>
                 أول يوم من آخر دورة
@@ -1720,15 +1990,15 @@ tbody tr.current-week td{
     </div>
 
 
-    <div class="info-row">
+    <div class="timeline-item">
 
-        <div class="info-row-icon pink">
+        <div class="timeline-icon pink">
 
             <i class="fa-solid fa-baby"></i>
 
         </div>
 
-        <div class="info-text">
+        <div class="timeline-content">
 
             <small>
                 تاريخ الحمل التقريبي
@@ -1743,15 +2013,15 @@ tbody tr.current-week td{
     </div>
 
 
-    <div class="info-row">
+    <div class="timeline-item">
 
-        <div class="info-row-icon purple">
+        <div class="timeline-icon purple">
 
             <i class="fa-solid fa-calendar-check"></i>
 
         </div>
 
-        <div class="info-text">
+        <div class="timeline-content">
 
             <small>
                 موعد الولادة المتوقع
@@ -1766,15 +2036,15 @@ tbody tr.current-week td{
     </div>
 
 
-    <div class="info-row">
+    <div class="timeline-item">
 
-        <div class="info-row-icon orange">
+        <div class="timeline-icon orange">
 
             <i class="fa-solid fa-clock"></i>
 
         </div>
 
-        <div class="info-text">
+        <div class="timeline-content">
 
             <small>
                 تاريخ اليوم
@@ -1788,15 +2058,18 @@ tbody tr.current-week td{
 
     </div>
 
+
 </div>
 
 
-<!-- ACTIONS -->
+<!-- =====================================================
+     ACTIONS
+===================================================== -->
 
 <div class="actions">
 
     <button
-        class="secondary-button"
+        class="action-button action-edit"
         id="editButton">
 
         <i class="fa-solid fa-pen"></i>
@@ -1807,7 +2080,7 @@ tbody tr.current-week td{
 
 
     <button
-        class="danger-button"
+        class="action-button action-delete"
         id="deleteButton">
 
         <i class="fa-solid fa-trash"></i>
@@ -1819,7 +2092,9 @@ tbody tr.current-week td{
 </div>
 
 
-<!-- WEEK TABLE -->
+<!-- =====================================================
+     WEEK TABLE
+===================================================== -->
 
 <div class="section-title">
 
@@ -1828,13 +2103,24 @@ tbody tr.current-week td{
     </h2>
 
     <span>
-        أسبوعًا بأسبوع
+        40 أسبوعًا
     </span>
 
 </div>
 
 
 <div class="week-table-card">
+
+    <div class="table-header-info">
+
+        <i class="fa-solid fa-calendar-week"></i>
+
+        <span>
+            مرري أفقيًا لرؤية جميع تفاصيل الأسابيع
+        </span>
+
+    </div>
+
 
     <div class="table-scroll">
 
@@ -1879,7 +2165,9 @@ tbody tr.current-week td{
 </div>
 
 
-<!-- MEDICAL NOTE -->
+<!-- =====================================================
+     MEDICAL NOTE
+===================================================== -->
 
 <div class="medical-note">
 
@@ -1888,9 +2176,9 @@ tbody tr.current-week td{
     <p>
 
         هذه الحسابات تقديرية اعتمادًا على التاريخ
-        الذي أدخلته المستخدمة. قد يختلف موعد الولادة
-        وعمر الحمل المعتمد طبيًا بعد فحص الطبيب أو
-        التصوير بالأمواج فوق الصوتية.
+        المدخل. قد يختلف موعد الولادة وعمر الحمل
+        المعتمد طبيًا بعد تقييم الطبيب أو التصوير
+        بالأمواج فوق الصوتية.
 
     </p>
 
@@ -1963,7 +2251,9 @@ tbody tr.current-week td{
 </nav>
 
 
-<!-- TOAST -->
+<!-- =====================================================
+     TOAST
+===================================================== -->
 
 <div id="toast"></div>
 
@@ -2064,6 +2354,7 @@ function parseDate(value){
         parts[1] - 1,
         parts[2]
     );
+
 }
 
 
@@ -2085,6 +2376,7 @@ function dateToInput(date){
         ).padStart(2,"0");
 
     return `${y}-${m}-${d}`;
+
 }
 
 
@@ -2095,6 +2387,7 @@ function startOfDay(date){
         date.getMonth(),
         date.getDate()
     );
+
 }
 
 
@@ -2108,6 +2401,7 @@ function addDays(date,days){
     );
 
     return result;
+
 }
 
 
@@ -2122,6 +2416,7 @@ function differenceInDays(start,end){
     return Math.floor(
         (b - a) / DAY
     );
+
 }
 
 
@@ -2141,6 +2436,7 @@ function formatDate(date){
             year:"numeric"
         }
     ).format(date);
+
 }
 
 
@@ -2309,6 +2605,7 @@ function getPregnancyMonth(
         return 8;
 
     return 9;
+
 }
 
 
@@ -2728,6 +3025,7 @@ function formatRemaining(days){
     if(days <= 0){
 
         return "الموعد قريب";
+
     }
 
 
@@ -2838,7 +3136,7 @@ function generateWeekTable(
 
             status =
                 `
-                <span style="color:#777;font-weight:700;">
+                <span class="status-past">
                     مكتمل
                 </span>
                 `;
@@ -2847,7 +3145,7 @@ function generateWeekTable(
 
             status =
                 `
-                <span style="color:#AAA;">
+                <span class="status-future">
                     قادم
                 </span>
                 `;
@@ -2871,9 +3169,11 @@ function generateWeekTable(
         row.innerHTML =
             `
             <td>
-                <strong>
+
+                <div class="week-number">
                     ${week}
-                </strong>
+                </div>
+
             </td>
 
             <td>
