@@ -799,18 +799,27 @@ a{
 
 .summary-label{
     color:#777;
-    font-size:9px;
+    font-size:10px;
     font-weight:800;
     display:block;
 }
 
 .summary-value{
     color:#171717;
-    font-size:13px;
+    font-size:16px;
     font-weight:900;
-    margin-top:3px;
+    margin-top:2px;
     display:block;
     line-height:1.6;
+}
+
+.summary-card.full-width:first-child .summary-value{
+    font-size:19px;
+}
+
+.summary-card.full-width:nth-child(2) .summary-value{
+    font-size:15px;
+    color:#333;
 }
 
 .summary-blue{
@@ -949,7 +958,7 @@ a{
 
 table{
     width:100%;
-    min-width:720px;
+    min-width:760px;
     border-collapse:collapse;
 }
 
@@ -978,22 +987,34 @@ td{
 
 /* =====================================================
    MONTH COLORS
-   ===================================================== */
+===================================================== */
 
 /*
-   الأسابيع:
-   الشهر 1 = 1 - 4
-   الشهر 2 = 5 - 8
-   الشهر 3 = 9 - 13
-   الشهر 4 = 14 - 17
-   الشهر 5 = 18 - 22
-   الشهر 6 = 23 - 26
-   الشهر 7 = 27 - 30
-   الشهر 8 = 31 - 34
-   الشهر 9 = 35 - 39
+   التوزيع حسب عمر انقطاع الطمث:
 
-   الأسبوعان 40 و41:
-   نهاية الحمل، بنفس لون الشهر التاسع.
+   الشهر 1 = 0 - 3 أسبوع
+   الشهر 2 = 4 - 7 أسبوع
+   الشهر 3 = 8 - 12 أسبوع
+   الشهر 4 = 13 - 16 أسبوع
+   الشهر 5 = 17 - 21 أسبوع
+   الشهر 6 = 22 - 25 أسبوع
+   الشهر 7 = 26 - 29 أسبوع
+   الشهر 8 = 30 - 33 أسبوع
+   الشهر 9 = 34 - 38 أسبوع
+
+   وبحسب ترقيم أسابيع التقويم:
+   الشهر 1 = 4 أسابيع
+   الشهر 2 = 4
+   الشهر 3 = 5
+   الشهر 4 = 4
+   الشهر 5 = 5
+   الشهر 6 = 4
+   الشهر 7 = 4
+   الشهر 8 = 4
+   الشهر 9 = 5
+
+   الأسبوعان الأخيران من التقويم
+   يعرضان كنهاية الحمل مع لون الشهر التاسع.
 */
 
 tbody tr.month-odd{
@@ -1255,7 +1276,15 @@ tbody tr.current-week td:first-child{
     }
 
     .summary-value{
-        font-size:12px;
+        font-size:14px;
+    }
+
+    .summary-card.full-width:first-child .summary-value{
+        font-size:17px;
+    }
+
+    .summary-card.full-width:nth-child(2) .summary-value{
+        font-size:14px;
     }
 
     .hero-week{
@@ -1557,7 +1586,9 @@ button:disabled{
 <div class="summary-grid">
 
 
-<!-- SA FIRST -->
+<!-- =====================================================
+     SA
+===================================================== -->
 
 <div class="summary-card summary-pink full-width">
 
@@ -1568,7 +1599,7 @@ button:disabled{
 <div class="summary-content">
 
 <span class="summary-label">
-    عمر الحمل من انقطاع الطمث
+    عمر الحمل (من انقطاع الطمث)
 </span>
 
 <strong
@@ -1584,7 +1615,9 @@ button:disabled{
 </div>
 
 
-<!-- SG SECOND -->
+<!-- =====================================================
+     SG
+===================================================== -->
 
 <div class="summary-card summary-blue full-width">
 
@@ -1825,7 +1858,7 @@ button:disabled{
 </div>
 
 <div class="section-subtitle">
-    حتى 41 أسبوعًا
+    يبدأ من أول يوم من آخر دورة • حتى 41 أسبوعًا
 </div>
 
 </div>
@@ -1838,7 +1871,7 @@ button:disabled{
     <i class="fa-solid fa-palette"></i>
 
     <span>
-        كل شهر بلون مختلف للتمييز بين مراحل الحمل
+        يبدأ التقويم من تاريخ أول يوم من آخر دورة، وكل شهر بلون مختلف للتمييز.
     </span>
 
 </div>
@@ -1856,9 +1889,9 @@ button:disabled{
 
 <th>الشهر</th>
 
-<th>أسابيع انقطاع الطمث</th>
+<th>عمر الحمل (SA)</th>
 
-<th>عمر الحمل</th>
+<th>عمر الحمل (SG)</th>
 
 <th>الحالة</th>
 
@@ -1883,9 +1916,9 @@ button:disabled{
 
 <p>
 
-هذه الحسابات تقديرية اعتمادًا على التاريخ
-المدخل. قد يختلف عمر الحمل وموعد الولادة
-المعتمد طبيًا بعد تقييم الطبيب أو التصوير
+هذه الحسابات تقديرية اعتمادًا على تاريخ أول يوم
+من آخر دورة المدخل. قد يختلف عمر الحمل وموعد
+الولادة المعتمد طبيًا بعد تقييم الطبيب أو التصوير
 بالأمواج فوق الصوتية.
 
 </p>
@@ -2318,6 +2351,9 @@ function formatRemaining(days){
 function getPregnancyMonthBySAWeek(saWeek){
 
     /*
+       saWeek هنا هو عمر الحمل المكتمل
+       من انقطاع الطمث.
+
        التوزيع المطلوب:
 
        الشهر 1 = 4 أسابيع
@@ -2330,11 +2366,20 @@ function getPregnancyMonthBySAWeek(saWeek){
        الشهر 8 = 4 أسابيع
        الشهر 9 = 5 أسابيع
 
-       المجموع = 39 أسبوعًا
+       لذلك:
 
-       لذلك الأسبوعان 40 و41
-       يعتبران نهاية الحمل
-       ويأخذان لون الشهر التاسع.
+       0 - 4  = الشهر 1
+       5 - 8  = الشهر 2
+       9 - 13 = الشهر 3
+       14 -17 = الشهر 4
+       18 -22 = الشهر 5
+       23 -26 = الشهر 6
+       27 -30 = الشهر 7
+       31 -34 = الشهر 8
+       35 -39 = الشهر 9
+
+       وفي الأسبوعين 40 و41:
+       نهاية الحمل.
     */
 
     if(saWeek <= 4)
@@ -2382,8 +2427,10 @@ function getMonthClass(saWeek){
     const month =
         getPregnancyMonthBySAWeek(saWeek);
 
-    if(month === 9)
-        return "month-odd";
+    /*
+       الشهر التاسع والأسبوعان 40 و41
+       يحافظان على لون الشهر التاسع.
+    */
 
     return month % 2 === 1
         ? "month-odd"
@@ -2417,6 +2464,11 @@ function calculatePregnancy(lmpDate){
     const lmp =
         startOfDay(lmpDate);
 
+    /*
+       الحساب الأساسي يبدأ من أول يوم
+       من آخر دورة.
+    */
+
     const saElapsed =
         differenceInDays(
             lmp,
@@ -2435,11 +2487,11 @@ function calculatePregnancy(lmpDate){
 
     /*
        SA:
-       عمر الحمل من انقطاع الطمث
+       عمر الحمل من انقطاع الطمث.
 
        SG:
-       عمر الحمل الفعلي
-       ويكون عادة أقل بحوالي أسبوعين.
+       عمر الحمل الفعلي ويكون أقل
+       بحوالي أسبوعين.
     */
 
     const saDays =
@@ -2467,21 +2519,31 @@ function calculatePregnancy(lmpDate){
 
 
     /*
-       الأسبوع الحالي من الحمل
-       حسب عمر الحمل SG.
+       الأسبوع الحالي في التقويم.
+       يبدأ التقويم من أول يوم من آخر دورة.
+       
+       مثال:
+       25 فيفري = بداية الأسبوع الأول.
+       بعد 30 أسبوعًا كاملًا:
+       23 سبتمبر = بداية الأسبوع الذي
+       عمره 30 أسبوعًا و0 يوم.
+    */
+
+    const currentSAWeek =
+        Math.min(
+            41,
+            Math.floor(saDays / 7) + 1
+        );
+
+
+    /*
+       الأسبوع الحالي حسب SG.
     */
 
     const currentWeek =
         Math.min(
             41,
             Math.floor(sgDays / 7) + 1
-        );
-
-
-    const currentSAWeek =
-        Math.min(
-            41,
-            Math.floor(saDays / 7) + 1
         );
 
 
@@ -2504,7 +2566,7 @@ function calculatePregnancy(lmpDate){
 
     /*
        نسبة التقدم مبنية على 40 أسبوعًا
-       من آخر دورة، أي 280 يومًا.
+       من أول يوم من آخر دورة.
     */
 
     const progress =
@@ -2522,12 +2584,16 @@ function calculatePregnancy(lmpDate){
         );
 
 
+    /*
+       الشهر حسب عمر SA المكتمل.
+       
+       مثال:
+       30 أسبوعًا و0 يومًا = الشهر 7.
+    */
+
     const month =
         getPregnancyMonthBySAWeek(
-            Math.max(
-                1,
-                currentSAWeek
-            )
+            saWeeks
         );
 
 
@@ -2864,8 +2930,9 @@ function confirmCalendarDate(){
 
 
         /*
-           عند اختيار آخر دورة:
-           تاريخ الحمل التقريبي = آخر دورة + 14 يوم.
+           عند اختيار أول يوم من آخر دورة:
+           تاريخ الحمل أو الإخصاب التقريبي
+           = آخر دورة + 14 يومًا.
         */
 
         const conception =
@@ -2898,7 +2965,7 @@ function confirmCalendarDate(){
 
         /*
            إذا لم يوجد تاريخ آخر دورة،
-           نحسبه تلقائيًا.
+           نحسبه تلقائيًا بطرح 14 يومًا.
         */
 
         if(!lmpInput.dataset.value){
@@ -3406,8 +3473,9 @@ function renderDashboard(
 ){
 
     /*
-       العمر الرئيسي:
-       عمر الحمل الفعلي SG
+       في الواجهة الرئيسية:
+       نعرض عمر الحمل SG أولًا
+       ثم نوضح SA أسفله.
     */
 
     document.getElementById(
@@ -3416,14 +3484,10 @@ function renderDashboard(
         `${result.sgWeeks} أسبوع و${result.sgRemainingDays} يوم`;
 
 
-    /*
-       SA يظهر أسفل العمر الرئيسي.
-    */
-
     document.getElementById(
         "heroDetail"
     ).textContent =
-        `${result.saWeeks} أسبوع و${result.saRemainingDays} يوم من انقطاع الطمث (SA)`;
+        `عمر الحمل (من انقطاع الطمث): ${result.saWeeks} أسبوع و${result.saRemainingDays} يوم`;
 
 
     document.getElementById(
@@ -3440,8 +3504,8 @@ function renderDashboard(
 
     /*
        الملخص:
-       SA أولًا
-       SG ثانيًا
+       أولًا SA
+       ثم SG
     */
 
     document.getElementById(
@@ -3537,26 +3601,52 @@ function generateWeekTable(
 
 
     /*
-       التقويم يبدأ من تاريخ أول يوم
-       من آخر دورة، وليس من تاريخ الحمل.
+       مهم جدًا:
 
-       الأسابيع 1 - 41 من SA.
+       التقويم يبدأ من أول يوم من آخر دورة.
+
+       مثال:
+       LMP = 25/02/2026
+
+       الأسبوع الأول:
+       25/02 → 03/03
+
+       بعد 30 أسبوعًا كاملًا:
+       23/09/2026
+
+       لذلك الصف الذي يبدأ في 23/09
+       يعرض:
+
+       عمر الحمل من انقطاع الطمث:
+       30 أسبوع و0 يوم
+
+       عمر الحمل:
+       28 أسبوع و0 يوم
     */
 
+    const currentSAWeekIndex =
+        Math.min(
+            41,
+            Math.floor(
+                result.saDays / 7
+            ) + 1
+        );
+
+
     for(
-        let saWeek = 1;
-        saWeek <= 41;
-        saWeek++
+        let calendarWeek = 1;
+        calendarWeek <= 41;
+        calendarWeek++
     ){
 
         /*
-           بداية كل أسبوع من انقطاع الطمث.
+           بداية الأسبوع من تاريخ آخر دورة.
         */
 
         const start =
             addDays(
                 lmp,
-                (saWeek - 1) * 7
+                (calendarWeek - 1) * 7
             );
 
 
@@ -3568,49 +3658,92 @@ function generateWeekTable(
 
 
         /*
-           عمر الحمل SG أقل بحوالي أسبوعين
-           من SA.
+           عمر SA عند بداية هذا الصف.
+
+           الصف الأول = 0 أسبوع
+           الصف الثاني = 1 أسبوع
+           الصف الثالث = 2 أسبوع
+           ...
+           الصف 31 = 30 أسبوع
         */
 
-        const sgWeek =
-            saWeek - 2;
+        const saAgeWeeks =
+            calendarWeek - 1;
+
+
+        /*
+           في أول يوم من كل صف:
+           الأيام = 0.
+
+           لذلك نعرض عمر SA كـ:
+           30 أسبوع و0 يوم
+           مثل المثال المطلوب.
+        */
+
+        const saText =
+            `${saAgeWeeks} أسبوع و0 يوم`;
+
+
+        /*
+           SG أقل من SA بحوالي أسبوعين.
+        */
+
+        const sgAgeWeeks =
+            Math.max(
+                0,
+                saAgeWeeks - 2
+            );
 
 
         let sgText;
 
 
-        if(sgWeek <= 0){
+        if(saAgeWeeks < 2){
 
             sgText =
-                "لم يبدأ عمر الحمل الفعلي بعد";
+                "—";
 
         }else{
 
             sgText =
-                `${sgWeek} أسبوع SG`;
+                `${sgAgeWeeks} أسبوع و0 يوم`;
 
         }
+
+
+        /*
+           تحديد الشهر.
+
+           نستخدم عمر SA وليس رقم الصف.
+
+           مثال:
+           الصف 31
+           عمر SA = 30
+           الشهر = 7
+        */
+
+        const monthNumber =
+            getPregnancyMonthBySAWeek(
+                saAgeWeeks
+            );
+
+
+        const monthLabel =
+            getMonthLabel(
+                saAgeWeeks
+            );
 
 
         /*
            تحديد الأسبوع الحالي.
         */
 
-        const currentSAWeek =
-            Math.min(
-                41,
-                Math.floor(
-                    result.saDays / 7
-                ) + 1
-            );
-
-
         const isCurrent =
-            saWeek === currentSAWeek;
+            calendarWeek === currentSAWeekIndex;
 
 
         const isPast =
-            saWeek < currentSAWeek;
+            calendarWeek < currentSAWeekIndex;
 
 
         let status = "";
@@ -3648,34 +3781,24 @@ function generateWeekTable(
 
 
         /*
-           الشهر حسب SA.
+           لون الشهر.
+
+           الأسابيع التي تنتمي إلى:
+           الشهر 1 = وردي
+           الشهر 2 = أزرق
+           الشهر 3 = وردي
+           الشهر 4 = أزرق
+           وهكذا.
         */
-
-        const monthNumber =
-            getPregnancyMonthBySAWeek(
-                saWeek
-            );
-
-
-        const monthLabel =
-            getMonthLabel(
-                saWeek
-            );
-
 
         const row =
             document.createElement("tr");
 
 
-        /*
-           لون الشهر:
-           شهر فردي = وردي
-           شهر زوجي = أزرق
-           الأسبوعان 40 و41 = لون نهاية الحمل.
-        */
-
         row.classList.add(
-            getMonthClass(saWeek)
+            getMonthClass(
+                saAgeWeeks
+            )
         );
 
 
@@ -3690,7 +3813,7 @@ function generateWeekTable(
 
         const badgeClass =
             getMonthBadgeClass(
-                saWeek
+                saAgeWeeks
             );
 
 
@@ -3709,16 +3832,16 @@ function generateWeekTable(
             </td>
 
             <td>
-                ${saWeek} أسبوع
+                ${saText}
                 <br>
-                SA
+                <strong>SA</strong>
             </td>
 
             <td>
                 ${
-                    sgWeek <= 0
+                    sgText === "—"
                     ? "—"
-                    : `${sgWeek} أسبوع SG`
+                    : `${sgText}<br><strong>SG</strong>`
                 }
             </td>
 
