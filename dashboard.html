@@ -8,7 +8,7 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#F5F5F5">
 
 <title>صحتي+ | الرئيسية</title>
 
@@ -18,7 +18,7 @@
       href="https://fonts.gstatic.com"
       crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&display=swap"
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&display=swap"
       rel="stylesheet">
 
 <link rel="stylesheet"
@@ -46,7 +46,7 @@
     --pink-soft:#FFF0F3;
 
     --cyan:#25F4EE;
-    --red:#FE2C55;
+    --cyan-soft:#EFFFFE;
 
     --text:#171717;
     --text-soft:#444;
@@ -63,11 +63,13 @@
     --purple:#7357D8;
     --purple-soft:#F1EEFF;
 
+    --blue:#2677E8;
+    --blue-soft:#EDF5FF;
+
     --orange:#E58A00;
     --orange-soft:#FFF4DF;
 
-    --blue:#1976D2;
-    --blue-soft:#EDF5FF;
+    --red:#FE2C55;
 
     --shadow:
         0 4px 16px rgba(0,0,0,.055);
@@ -86,7 +88,7 @@ body{
 
     font-family:"Cairo",sans-serif;
 
-    background:#F5F5F5;
+    background:var(--bg);
 
     color:var(--text);
 
@@ -97,6 +99,8 @@ body{
     font-weight:700;
 
     -webkit-font-smoothing:antialiased;
+
+    padding-bottom:100px;
 }
 
 button,
@@ -131,12 +135,12 @@ a{
     padding:
         0
         15px
-        105px;
+        30px;
 }
 
 
 /* =========================================================
-   TOP AREA
+   TOP MEDICAL AREA
 ========================================================= */
 
 .top-medical{
@@ -151,7 +155,7 @@ a{
         15px
         18px;
 
-    background:#F5F5F5;
+    background:var(--bg);
 
     border-bottom:
         1px solid
@@ -177,19 +181,19 @@ a{
 
     border:
         1px solid
-        #E4E4E4;
+        #E3E3E3;
 
-    border-radius:20px;
+    border-radius:21px;
 
-    padding:14px;
+    padding:15px;
 
     box-shadow:
-        0 4px 15px
-        rgba(0,0,0,.06);
+        0 5px 18px
+        rgba(0,0,0,.065);
 }
 
 
-/* TikTok style accent */
+/* TikTok-inspired Si7a+ accent */
 
 .profile-card::before{
 
@@ -206,10 +210,10 @@ a{
     background:
         linear-gradient(
             90deg,
-            #25F4EE 0%,
-            #25F4EE 42%,
-            #FE2C55 58%,
-            #FE2C55 100%
+            var(--cyan) 0%,
+            var(--cyan) 42%,
+            var(--pink) 58%,
+            var(--pink) 100%
         );
 }
 
@@ -220,15 +224,16 @@ a{
 
     position:absolute;
 
-    width:100px;
-    height:100px;
+    width:115px;
+    height:115px;
 
     border-radius:50%;
 
-    background:#FFF3F5;
+    background:
+        rgba(254,44,85,.045);
 
-    left:-45px;
-    bottom:-55px;
+    left:-55px;
+    bottom:-65px;
 
     z-index:0;
 }
@@ -266,7 +271,7 @@ a{
 
     border-radius:50%;
 
-    background:#F4F4F4;
+    background:#F3F3F3;
 
     padding:3px;
 
@@ -277,8 +282,10 @@ a{
     overflow:hidden;
 
     box-shadow:
-        0 3px 10px
-        rgba(0,0,0,.08);
+        3px 3px 0
+        rgba(37,244,238,.65),
+        -3px -3px 0
+        rgba(254,44,85,.65);
 }
 
 
@@ -392,7 +399,7 @@ a{
 
     z-index:2;
 
-    margin-top:12px;
+    margin-top:13px;
 
     display:grid;
 
@@ -411,9 +418,9 @@ a{
 
     background:#FAFAFA;
 
-    border-radius:13px;
+    border-radius:14px;
 
-    padding:9px 10px;
+    padding:10px;
 
     min-width:0;
 }
@@ -439,7 +446,7 @@ a{
 
 .medical-label i{
 
-    color:#FE2C55;
+    color:var(--pink);
 
     font-size:10px;
 }
@@ -478,12 +485,12 @@ a{
 
     z-index:5;
 
-    width:31px;
-    height:31px;
+    width:32px;
+    height:32px;
 
     border-radius:10px;
 
-    background:#111;
+    background:var(--black);
 
     color:#fff;
 
@@ -495,8 +502,10 @@ a{
     font-size:12px;
 
     box-shadow:
-        0 3px 8px
-        rgba(0,0,0,.15);
+        3px 3px 0
+        rgba(37,244,238,.45),
+        -3px -3px 0
+        rgba(254,44,85,.45);
 
     transition:.2s;
 }
@@ -518,7 +527,7 @@ a{
 
     z-index:4;
 
-    margin-top:16px;
+    margin-top:17px;
 }
 
 
@@ -532,7 +541,7 @@ a{
 
     gap:10px;
 
-    margin-bottom:8px;
+    margin-bottom:9px;
 
     padding:0 2px;
 }
@@ -540,7 +549,7 @@ a{
 
 .date-title{
 
-    font-size:15px;
+    font-size:16px;
 
     font-weight:900;
 
@@ -553,7 +562,7 @@ a{
     width:38px;
     height:38px;
 
-    border-radius:11px;
+    border-radius:12px;
 
     background:#FFFFFF;
 
@@ -571,8 +580,9 @@ a{
     font-size:15px;
 
     box-shadow:
-        0 2px 8px
-        rgba(0,0,0,.04);
+        var(--shadow);
+
+    transition:.2s;
 }
 
 
@@ -599,7 +609,7 @@ a{
 
     padding:5px 2px;
 
-    border-radius:13px;
+    border-radius:14px;
 
     cursor:pointer;
 
@@ -656,8 +666,10 @@ a{
     color:#fff;
 
     box-shadow:
-        0 3px 8px
-        rgba(0,0,0,.15);
+        3px 3px 0
+        rgba(37,244,238,.45),
+        -3px -3px 0
+        rgba(254,44,85,.45);
 }
 
 
@@ -665,7 +677,7 @@ a{
 
     border:
         2px solid
-        #FE2C55;
+        var(--pink);
 }
 
 
@@ -680,7 +692,7 @@ a{
 
 
 /* =========================================================
-   SCORE CARD
+   DAILY SCORE
 ========================================================= */
 
 .score-card{
@@ -693,15 +705,15 @@ a{
 
     color:#fff;
 
-    border-radius:21px;
+    border-radius:22px;
 
-    padding:17px;
+    padding:18px;
 
-    margin-bottom:23px;
+    margin-bottom:25px;
 
     box-shadow:
-        0 6px 18px
-        rgba(0,0,0,.12);
+        0 6px 20px
+        rgba(0,0,0,.13);
 }
 
 
@@ -711,16 +723,16 @@ a{
 
     position:absolute;
 
-    width:120px;
-    height:120px;
+    width:130px;
+    height:130px;
 
     border-radius:50%;
 
     background:
         rgba(37,244,238,.09);
 
-    left:-55px;
-    top:-55px;
+    left:-58px;
+    top:-58px;
 }
 
 
@@ -730,16 +742,16 @@ a{
 
     position:absolute;
 
-    width:90px;
-    height:90px;
+    width:100px;
+    height:100px;
 
     border-radius:50%;
 
     background:
         rgba(254,44,85,.10);
 
-    right:-40px;
-    bottom:-50px;
+    right:-45px;
+    bottom:-55px;
 }
 
 
@@ -782,7 +794,7 @@ a{
     line-height:1.9;
 
     color:
-        rgba(255,255,255,.85);
+        rgba(255,255,255,.84);
 
     font-weight:700;
 }
@@ -825,7 +837,7 @@ a{
 
 .progress-value{
 
-    stroke:#FE2C55;
+    stroke:var(--pink);
 
     stroke-linecap:round;
 
@@ -860,7 +872,7 @@ a{
 
 .section{
 
-    margin-bottom:24px;
+    margin-bottom:25px;
 }
 
 
@@ -896,7 +908,7 @@ a{
 
 .section-title i{
 
-    color:#FE2C55;
+    color:var(--pink);
 
     font-size:17px;
 }
@@ -919,6 +931,10 @@ a{
 
 .health-item{
 
+    position:relative;
+
+    overflow:hidden;
+
     background:#FFFFFF;
 
     border:
@@ -934,7 +950,32 @@ a{
     box-shadow:
         var(--shadow);
 
-    transition:.2s;
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.health-item::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    right:0;
+
+    width:100%;
+    height:3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--pink)
+        );
+
+    opacity:.7;
 }
 
 
@@ -974,7 +1015,7 @@ a{
 
 .blue-icon{
 
-    background:#EDF5FF;
+    background:var(--blue-soft);
 
     color:#1976D2;
 }
@@ -982,23 +1023,23 @@ a{
 
 .pink-icon{
 
-    background:#FFF0F3;
+    background:var(--pink-soft);
 
-    color:#FE2C55;
+    color:var(--pink);
 }
 
 
 .purple-icon{
 
-    background:#F1EEFF;
+    background:var(--purple-soft);
 
-    color:#7357D8;
+    color:var(--purple);
 }
 
 
 .green-icon{
 
-    background:#EAF8F4;
+    background:var(--green-soft);
 
     color:#149B7E;
 }
@@ -1186,6 +1227,10 @@ a{
 
 .empty-challenges{
 
+    position:relative;
+
+    overflow:hidden;
+
     background:#FFFFFF;
 
     border:
@@ -1204,6 +1249,27 @@ a{
 }
 
 
+.empty-challenges::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    right:0;
+
+    width:100%;
+    height:3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--pink)
+        );
+}
+
+
 .empty-icon{
 
     width:56px;
@@ -1218,9 +1284,9 @@ a{
     align-items:center;
     justify-content:center;
 
-    background:#FFF0F3;
+    background:var(--pink-soft);
 
-    color:#FE2C55;
+    color:var(--pink);
 
     font-size:22px;
 }
@@ -1277,8 +1343,10 @@ a{
     font-weight:900;
 
     box-shadow:
-        0 5px 14px
-        rgba(0,0,0,.12);
+        3px 3px 0
+        rgba(37,244,238,.45),
+        -3px -3px 0
+        rgba(254,44,85,.45);
 }
 
 
@@ -1357,7 +1425,7 @@ a{
 
 .nav-item.active i{
 
-    color:#FE2C55;
+    color:var(--pink);
 }
 
 
@@ -1420,8 +1488,8 @@ a{
     font-size:30px;
 
     box-shadow:
-        4px 4px 0 #25F4EE,
-        -4px -4px 0 #FE2C55;
+        4px 4px 0 var(--cyan),
+        -4px -4px 0 var(--pink);
 }
 
 
@@ -1454,7 +1522,7 @@ a{
 
     border:3px solid #E8E8E8;
 
-    border-top-color:#FE2C55;
+    border-top-color:var(--pink);
 
     border-radius:50%;
 
@@ -1506,6 +1574,8 @@ a{
 
 .modal-box{
 
+    position:relative;
+
     width:min(650px,100%);
 
     background:#FFFFFF;
@@ -1520,6 +1590,33 @@ a{
 
     animation:
         slideUp .25s ease;
+}
+
+
+.modal-box::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+    right:0;
+
+    height:4px;
+
+    border-radius:
+        25px
+        25px
+        0
+        0;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--pink)
+        );
 }
 
 
@@ -1545,6 +1642,8 @@ a{
     justify-content:space-between;
 
     margin-bottom:15px;
+
+    padding-top:2px;
 }
 
 
@@ -1707,6 +1806,21 @@ a{
 
 }
 
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *{
+        scroll-behavior:auto !important;
+        animation-duration:.01ms !important;
+        transition-duration:.01ms !important;
+    }
+
+}
+
 </style>
 
 </head>
@@ -1719,7 +1833,9 @@ a{
      LOADING
 ========================================================= -->
 
-<div class="loading-screen" id="loadingScreen">
+<div
+    class="loading-screen"
+    id="loadingScreen">
 
     <div class="loading-box">
 
@@ -1729,7 +1845,9 @@ a{
 
         </div>
 
-        <strong>Si7a+</strong>
+        <strong>
+            Si7a+
+        </strong>
 
         <p>
             صحتي+ — مساحتك الصحية الشخصية
@@ -1752,9 +1870,7 @@ a{
 <section class="top-medical">
 
 
-    <!-- =====================================================
-         PROFILE
-    ====================================================== -->
+    <!-- PROFILE -->
 
     <section class="profile-card">
 
@@ -1840,7 +1956,6 @@ a{
         </div>
 
 
-
         <div class="profile-medical">
 
 
@@ -1864,7 +1979,6 @@ a{
                 </div>
 
             </div>
-
 
 
             <div class="medical-item">
@@ -1892,7 +2006,6 @@ a{
         </div>
 
 
-
         <a
             href="profile.html"
             class="profile-edit"
@@ -1906,10 +2019,7 @@ a{
     </section>
 
 
-
-    <!-- =====================================================
-         CALENDAR
-    ====================================================== -->
+    <!-- CALENDAR -->
 
     <div class="integrated-calendar">
 
@@ -1939,7 +2049,6 @@ a{
         </div>
 
 
-
         <div
             class="week"
             id="week">
@@ -1951,7 +2060,6 @@ a{
 
 
 </section>
-
 
 
 <!-- =========================================================
@@ -1984,7 +2092,6 @@ a{
 
 
         </div>
-
 
 
         <div class="progress-ring">
@@ -2029,7 +2136,6 @@ a{
 </section>
 
 
-
 <!-- =========================================================
      HEALTH
 ========================================================= -->
@@ -2052,7 +2158,6 @@ a{
     </div>
 
 
-
     <div class="health-grid">
 
 
@@ -2073,7 +2178,6 @@ a{
         </a>
 
 
-
         <a
             href="period.html"
             class="health-item">
@@ -2091,7 +2195,6 @@ a{
         </a>
 
 
-
         <a
             href="pregnancy.html"
             class="health-item">
@@ -2107,7 +2210,6 @@ a{
             </div>
 
         </a>
-
 
 
         <a
@@ -2133,7 +2235,6 @@ a{
 </section>
 
 
-
 <!-- =========================================================
      DAILY CHALLENGES
 ========================================================= -->
@@ -2156,7 +2257,6 @@ a{
     </div>
 
 
-
     <div
         class="daily-list"
         id="dailyList">
@@ -2168,7 +2268,6 @@ a{
 
 
 </main>
-
 
 
 <!-- =========================================================
@@ -2225,7 +2324,6 @@ a{
 </nav>
 
 
-
 <!-- =========================================================
      CALENDAR MODAL
 ========================================================= -->
@@ -2279,7 +2377,6 @@ a{
 
 
 </div>
-
 
 
 <script type="module">
