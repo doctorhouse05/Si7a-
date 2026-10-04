@@ -2,19 +2,21 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<meta name="theme-color" content="#f5f8fc">
+<meta name="theme-color" content="#8b63d9">
 
 <title>صحتي+ | الرئيسية</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+<!-- الخط الرسمي للتطبيق -->
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap"
       rel="stylesheet">
 
 <link rel="stylesheet"
@@ -30,6 +32,7 @@
     box-sizing:border-box;
     margin:0;
     padding:0;
+    -webkit-tap-highlight-color:transparent;
 }
 
 html{
@@ -37,14 +40,17 @@ html{
 }
 
 body{
-    font-family:"Cairo",sans-serif;
-    background:#f4f7fb;
-    color:#182433;
+    font-family:"Tajawal",sans-serif;
+    background:#f1f1f6;
+    color:#302c3d;
     min-height:100vh;
-    padding-bottom:95px;
+    padding-bottom:105px;
 }
 
 button,
+input,
+select,
+textarea,
 a{
     font-family:inherit;
 }
@@ -55,8 +61,8 @@ button{
 }
 
 a{
-    text-decoration:none;
     color:inherit;
+    text-decoration:none;
 }
 
 
@@ -68,241 +74,581 @@ a{
     width:100%;
     max-width:760px;
     margin:auto;
-}
-
-
-/* =========================================================
-   NEW TOP AREA
-========================================================= */
-
-.top-area{
-    position:relative;
-    padding:22px 18px 28px;
-    background:
-        radial-gradient(circle at 10% 10%,rgba(255,255,255,.28),transparent 27%),
-        linear-gradient(145deg,#075fc8,#1688e9);
-    color:#fff;
-    border-radius:0 0 34px 34px;
     overflow:hidden;
 }
 
-.top-area::before{
-    content:"";
-    position:absolute;
-    width:190px;
-    height:190px;
-    border-radius:50%;
-    background:rgba(255,255,255,.07);
-    left:-65px;
-    top:-80px;
-}
 
-.top-area::after{
-    content:"";
-    position:absolute;
-    width:130px;
-    height:130px;
-    border-radius:50%;
-    border:20px solid rgba(255,255,255,.05);
-    right:-40px;
-    bottom:-45px;
-}
+/* =========================================================
+   HERO
+========================================================= */
 
-.top-content{
+.hero{
+
     position:relative;
-    z-index:2;
+
+    min-height:360px;
+
+    padding:
+        22px
+        18px
+        95px;
+
+    color:#fff;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #7654cf 0%,
+            #9567dc 48%,
+            #b36fe8 100%
+        );
+
+    border-radius:
+        0
+        0
+        42px
+        42px;
+
+}
+
+
+/* large decorative circles */
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:330px;
+    height:330px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.075);
+
+    top:-170px;
+    left:-100px;
+
+}
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:270px;
+    height:270px;
+
+    border-radius:50%;
+
+    border:
+        42px solid
+        rgba(255,255,255,.055);
+
+    right:-115px;
+    bottom:-120px;
+
+}
+
+
+/* additional background shape */
+
+.hero-shape{
+
+    position:absolute;
+
+    width:170px;
+    height:170px;
+
+    border-radius:45%;
+
+    background:
+        rgba(255,255,255,.045);
+
+    left:35%;
+    bottom:-85px;
+
+    transform:rotate(25deg);
+
 }
 
 
 /* =========================================================
-   TOP HEADER
+   HERO CONTENT
 ========================================================= */
 
-.header-row{
+.hero-content{
+
+    position:relative;
+
+    z-index:3;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
-    gap:14px;
+
+    gap:15px;
+
 }
 
-.user-mini{
+
+/* profile */
+
+.profile-info{
+
     display:flex;
+
     align-items:center;
+
     gap:12px;
+
     min-width:0;
+
 }
 
-.user-avatar{
-    width:55px;
-    height:55px;
+
+.avatar{
+
+    width:54px;
+    height:54px;
+
     flex:none;
-    border-radius:18px;
-    background:rgba(255,255,255,.20);
-    border:2px solid rgba(255,255,255,.55);
+
+    border-radius:19px;
+
+    background:
+        rgba(255,255,255,.20);
+
+    border:
+        2px solid
+        rgba(255,255,255,.65);
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     overflow:hidden;
+
+    box-shadow:
+        0 8px 25px
+        rgba(61,33,121,.16);
+
 }
 
-.user-avatar img{
+
+.avatar img{
+
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     display:none;
+
 }
 
-.user-avatar i{
-    font-size:23px;
+
+.avatar i{
+
     color:#fff;
+
+    font-size:21px;
+
 }
 
-.user-text{
+
+.profile-text{
+
     min-width:0;
+
 }
 
-.user-text small{
+
+.profile-text small{
+
     display:block;
+
     font-size:11px;
+
+    font-weight:500;
+
     opacity:.78;
-    margin-bottom:1px;
+
+    margin-bottom:2px;
+
 }
 
-.user-text strong{
+
+.profile-text strong{
+
     display:block;
+
     font-size:18px;
+
     font-weight:800;
+
     white-space:nowrap;
+
     overflow:hidden;
+
     text-overflow:ellipsis;
-    max-width:190px;
+
+    max-width:185px;
+
 }
 
-.profile-open{
+
+/* settings */
+
+.settings-button{
+
     width:43px;
     height:43px;
-    border-radius:14px;
-    background:rgba(255,255,255,.15);
-    color:#fff;
+
+    flex:none;
+
+    border-radius:15px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
-    border:1px solid rgba(255,255,255,.18);
+
+    color:#fff;
+
+    background:
+        rgba(255,255,255,.15);
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
     transition:.2s;
+
 }
 
-.profile-open:active{
-    transform:scale(.94);
+
+.settings-button:active{
+
+    transform:scale(.92);
+
 }
 
 
 /* =========================================================
-   HEALTH STATUS
+   HERO TITLE
 ========================================================= */
 
-.status-line{
-    margin-top:25px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
+.hero-title{
+
+    margin-top:38px;
+
 }
 
-.status-title{
-    font-size:25px;
-    line-height:1.35;
-    font-weight:900;
-}
 
-.status-date{
+.hero-title small{
+
+    display:block;
+
     font-size:12px;
-    opacity:.82;
-    margin-top:4px;
+
+    opacity:.78;
+
+    margin-bottom:6px;
+
 }
 
-.health-status{
-    min-width:92px;
-    height:92px;
-    border-radius:28px;
-    background:#fff;
-    color:#0870d7;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    box-shadow:0 15px 35px rgba(0,48,120,.15);
-}
 
-.health-status strong{
-    font-size:27px;
-    line-height:1;
+.hero-title h1{
+
+    font-size:31px;
+
+    line-height:1.35;
+
     font-weight:900;
+
+    letter-spacing:-.5px;
+
 }
 
-.health-status span{
-    font-size:10px;
-    color:#718096;
+
+.hero-title p{
+
+    font-size:12px;
+
+    opacity:.80;
+
     margin-top:5px;
+
 }
 
 
 /* =========================================================
-   MAIN CONTENT
+   PROGRESS CARD
+========================================================= */
+
+.progress-card{
+
+    position:absolute;
+
+    z-index:10;
+
+    left:18px;
+    right:18px;
+
+    bottom:-55px;
+
+    min-height:110px;
+
+    background:#fff;
+
+    color:#322d40;
+
+    border-radius:27px;
+
+    padding:17px 18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    box-shadow:
+        0 14px 40px
+        rgba(65,48,104,.14);
+
+}
+
+
+/* circular progress */
+
+.progress-circle{
+
+    width:76px;
+    height:76px;
+
+    flex:none;
+
+    border-radius:50%;
+
+    background:
+        conic-gradient(
+            #8b63d9 var(--progress,0%),
+            #eeeaf5 0
+        );
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+
+}
+
+
+.progress-circle::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+}
+
+
+.progress-number{
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+}
+
+
+.progress-number strong{
+
+    display:block;
+
+    font-size:18px;
+
+    line-height:1;
+
+    font-weight:900;
+
+    color:#7654cf;
+
+}
+
+
+.progress-number span{
+
+    display:block;
+
+    font-size:8px;
+
+    color:#92909b;
+
+    margin-top:4px;
+
+}
+
+
+.progress-info{
+
+    min-width:0;
+
+    flex:1;
+
+}
+
+
+.progress-info strong{
+
+    display:block;
+
+    font-size:15px;
+
+    font-weight:900;
+
+}
+
+
+.progress-info p{
+
+    font-size:10px;
+
+    line-height:1.7;
+
+    color:#92909b;
+
+    margin-top:4px;
+
+}
+
+
+.progress-arrow{
+
+    width:35px;
+    height:35px;
+
+    border-radius:12px;
+
+    background:#f3effb;
+
+    color:#805fd0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:11px;
+
+}
+
+
+/* =========================================================
+   MAIN
 ========================================================= */
 
 .main{
-    padding:0 16px;
+
+    padding:
+        75px
+        16px
+        15px;
+
 }
 
 
 /* =========================================================
-   TODAY PANEL
+   SECTION
 ========================================================= */
 
-.today-panel{
-    position:relative;
-    margin-top:-18px;
-    background:#fff;
-    border-radius:25px;
-    padding:18px;
-    box-shadow:0 10px 35px rgba(25,56,90,.08);
-    border:1px solid #edf1f6;
-    z-index:5;
+.section{
+
+    margin-top:27px;
+
 }
 
-.panel-head{
+
+.section:first-child{
+
+    margin-top:0;
+
+}
+
+
+.section-heading{
+
     display:flex;
-    align-items:center;
+
+    align-items:flex-end;
+
     justify-content:space-between;
-    margin-bottom:16px;
+
+    margin-bottom:13px;
+
 }
 
-.panel-title{
-    display:flex;
-    align-items:center;
-    gap:9px;
+
+.section-heading h2{
+
+    font-size:19px;
+
+    font-weight:900;
+
+    color:#302b3c;
+
 }
 
-.panel-title .title-icon{
-    width:34px;
-    height:34px;
-    border-radius:11px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#e9f4ff;
-    color:#0875da;
+
+.section-heading p{
+
+    font-size:10px;
+
+    color:#9995a3;
+
+    margin-top:3px;
+
 }
 
-.panel-title h2{
-    font-size:15px;
+
+.section-link{
+
+    font-size:10px;
+
     font-weight:800;
-}
 
-.panel-link{
-    font-size:11px;
-    color:#0875da;
-    font-weight:700;
+    color:#805fd0;
+
 }
 
 
@@ -310,273 +656,534 @@ a{
    WEEK CALENDAR
 ========================================================= */
 
-.week{
-    display:grid;
-    grid-template-columns:repeat(7,1fr);
-    gap:5px;
+.calendar-card{
+
+    background:#fff;
+
+    border-radius:25px;
+
+    padding:16px 13px;
+
+    border:
+        1px solid
+        #eae7ef;
+
+    box-shadow:
+        0 8px 25px
+        rgba(55,45,80,.045);
+
 }
+
+
+.week{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(7,1fr);
+
+    gap:5px;
+
+}
+
 
 .day{
+
     min-width:0;
-    padding:9px 3px 10px;
-    border-radius:15px;
-    background:#f7f9fc;
-    border:1px solid transparent;
+
+    padding:
+        8px
+        3px
+        9px;
+
+    border-radius:16px;
+
     text-align:center;
-    cursor:pointer;
+
+    background:#f8f7fa;
+
+    border:
+        1px solid
+        transparent;
+
     transition:.2s;
+
+    cursor:pointer;
+
 }
+
 
 .day:active{
-    transform:scale(.95);
+
+    transform:scale(.94);
+
 }
+
 
 .day-name{
+
     font-size:9px;
-    color:#8a96a5;
+
     font-weight:700;
+
+    color:#aaa6b2;
+
 }
+
 
 .day-number{
-    width:29px;
-    height:29px;
-    margin:5px auto 0;
+
+    width:31px;
+    height:31px;
+
+    margin:6px auto 0;
+
+    border-radius:11px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
-    border-radius:10px;
+
     font-size:12px;
+
     font-weight:800;
-    color:#263445;
+
+    color:#45404e;
+
 }
+
 
 .day.today{
-    background:#eef7ff;
-    border-color:#d4eaff;
+
+    background:#f3effb;
+
+    border-color:#e5dcf7;
+
 }
+
 
 .day.today .day-number{
-    background:#0875da;
+
+    background:#8863d5;
+
     color:#fff;
-    box-shadow:0 5px 12px rgba(8,117,218,.25);
+
+    box-shadow:
+        0 6px 14px
+        rgba(136,99,213,.25);
+
 }
+
 
 .day.selected{
-    background:#edf9f7;
-    border-color:#cceee9;
+
+    background:#edf8f6;
+
+    border-color:#d2eee8;
+
 }
+
 
 .day.selected .day-number{
-    background:#12a897;
+
+    background:#18a995;
+
     color:#fff;
+
 }
 
 
 /* =========================================================
-   QUICK HEALTH ACCESS
+   QUICK ACCESS
 ========================================================= */
-
-.section{
-    margin-top:26px;
-}
-
-.section-heading{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    margin-bottom:12px;
-}
-
-.section-heading h2{
-    font-size:19px;
-    font-weight:900;
-    color:#152333;
-}
-
-.section-heading p{
-    font-size:10px;
-    color:#8995a5;
-    margin-top:2px;
-}
 
 .quick-grid{
+
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:11px;
+
 }
+
 
 .quick-card{
+
     position:relative;
-    min-height:128px;
-    background:#fff;
-    border:1px solid #e9eef4;
-    border-radius:22px;
-    padding:17px;
+
+    min-height:145px;
+
     overflow:hidden;
+
+    background:#fff;
+
+    border:
+        1px solid
+        #e9e6ee;
+
+    border-radius:24px;
+
+    padding:17px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(55,45,80,.045);
+
     transition:.2s;
-    box-shadow:0 7px 20px rgba(25,56,90,.045);
+
 }
+
 
 .quick-card:active{
-    transform:scale(.975);
+
+    transform:scale(.97);
+
 }
 
-.quick-card::after{
+
+.quick-card::before{
+
     content:"";
+
     position:absolute;
-    width:75px;
-    height:75px;
+
+    width:100px;
+    height:100px;
+
     border-radius:50%;
-    right:-30px;
-    bottom:-30px;
+
     background:var(--soft);
+
+    left:-38px;
+    bottom:-45px;
+
 }
+
 
 .quick-icon{
-    width:43px;
-    height:43px;
-    border-radius:14px;
+
+    width:46px;
+    height:46px;
+
+    border-radius:15px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     background:var(--soft);
+
     color:var(--main);
-    font-size:18px;
-    margin-bottom:13px;
+
+    font-size:19px;
+
+    margin-bottom:14px;
+
 }
+
 
 .quick-card strong{
+
+    position:relative;
+
     display:block;
+
     font-size:14px;
-    font-weight:800;
+
+    font-weight:900;
+
+    color:#373140;
+
 }
+
 
 .quick-card span{
+
+    position:relative;
+
     display:block;
-    font-size:10px;
-    color:#8a96a5;
+
+    font-size:9px;
+
+    line-height:1.7;
+
+    color:#9a96a3;
+
     margin-top:4px;
+
 }
+
 
 .quick-arrow{
+
     position:absolute;
+
     left:15px;
+
     bottom:15px;
-    color:#9ba6b3;
-    font-size:11px;
+
+    width:25px;
+    height:25px;
+
+    border-radius:8px;
+
+    background:#f7f5fa;
+
+    color:#96919f;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:9px;
+
 }
+
 
 .blue{
-    --main:#0875da;
-    --soft:#eaf5ff;
+
+    --main:#7160ce;
+
+    --soft:#f0edfc;
+
 }
+
 
 .teal{
-    --main:#0b9d8e;
-    --soft:#e8f8f6;
+
+    --main:#139f90;
+
+    --soft:#e8f7f5;
+
 }
 
-.purple{
-    --main:#7657d8;
-    --soft:#f1edff;
+
+.pink{
+
+    --main:#d56a9b;
+
+    --soft:#fcecf4;
+
 }
+
 
 .orange{
-    --main:#ed8a20;
-    --soft:#fff3e4;
+
+    --main:#e58a3e;
+
+    --soft:#fff2e6;
+
 }
 
 
 /* =========================================================
-   MEDICAL IDENTITY
+   MEDICAL PROFILE
 ========================================================= */
 
-.identity{
-    background:#182d45;
-    color:#fff;
-    border-radius:25px;
-    padding:20px;
-    margin-top:12px;
+.medical-card{
+
     position:relative;
+
     overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3a3156,
+            #4c3e6e
+        );
+
+    color:#fff;
+
+    border-radius:27px;
+
+    padding:20px;
+
+    box-shadow:
+        0 12px 30px
+        rgba(49,39,74,.12);
+
 }
 
-.identity::after{
+
+.medical-card::before{
+
     content:"";
+
     position:absolute;
-    width:170px;
-    height:170px;
-    border:30px solid rgba(255,255,255,.035);
+
+    width:190px;
+    height:190px;
+
     border-radius:50%;
-    left:-70px;
-    top:-80px;
+
+    border:
+        35px solid
+        rgba(255,255,255,.045);
+
+    left:-80px;
+    top:-95px;
+
 }
 
-.identity-head{
+
+.medical-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:130px;
+    height:130px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.025);
+
+    right:-50px;
+    bottom:-60px;
+
+}
+
+
+.medical-content{
+
     position:relative;
+
     z-index:2;
+
+}
+
+
+.medical-top{
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
 }
 
-.identity-label{
-    font-size:11px;
-    color:#aebdce;
-    margin-bottom:5px;
+
+.medical-label{
+
+    font-size:10px;
+
+    color:#c5bfd5;
+
 }
 
-.identity-name{
+
+.medical-name{
+
     font-size:18px;
+
     font-weight:900;
+
+    margin-top:3px;
+
 }
 
-.identity-edit{
-    width:39px;
-    height:39px;
-    border-radius:13px;
-    background:rgba(255,255,255,.09);
+
+.medical-edit{
+
+    width:38px;
+    height:38px;
+
+    border-radius:12px;
+
+    color:#fff;
+
+    background:
+        rgba(255,255,255,.10);
+
     display:flex;
+
     align-items:center;
     justify-content:center;
-    color:#fff;
+
 }
 
-.identity-data{
-    position:relative;
-    z-index:2;
+
+.medical-data{
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    margin-top:20px;
-    border-top:1px solid rgba(255,255,255,.10);
-    padding-top:17px;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    margin-top:19px;
+
+    padding-top:16px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.10);
+
 }
 
-.identity-item{
+
+.medical-item{
+
     text-align:center;
-    border-left:1px solid rgba(255,255,255,.10);
+
+    border-left:
+        1px solid
+        rgba(255,255,255,.09);
+
 }
 
-.identity-item:last-child{
+
+.medical-item:last-child{
+
     border-left:0;
+
 }
 
-.identity-item i{
+
+.medical-item i{
+
     display:block;
-    color:#6ec8ff;
-    margin-bottom:5px;
+
+    color:#c3a6ff;
+
+    font-size:13px;
+
+    margin-bottom:6px;
+
 }
 
-.identity-item span{
+
+.medical-item span{
+
     display:block;
+
+    color:#b7b0c7;
+
     font-size:9px;
-    color:#9eafc2;
+
 }
 
-.identity-item strong{
+
+.medical-item strong{
+
     display:block;
+
+    color:#fff;
+
     font-size:12px;
-    margin-top:2px;
+
+    margin-top:3px;
+
+    font-weight:800;
+
 }
 
 
@@ -585,350 +1192,672 @@ a{
 ========================================================= */
 
 .challenge-box{
-    background:#fff;
-    border-radius:25px;
-    border:1px solid #e9eef4;
-    box-shadow:0 7px 22px rgba(25,56,90,.045);
+
     overflow:hidden;
-}
 
-.challenge-summary{
-    padding:18px;
-    display:flex;
-    align-items:center;
-    gap:15px;
-    border-bottom:1px solid #edf1f5;
-}
-
-.progress-ring{
-    width:62px;
-    height:62px;
-    border-radius:50%;
-    background:conic-gradient(#0875da var(--progress,0%),#e8eef4 0);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex:none;
-}
-
-.progress-ring::before{
-    content:"";
-    position:absolute;
-}
-
-.progress-inner{
-    width:48px;
-    height:48px;
-    border-radius:50%;
     background:#fff;
+
+    border:
+        1px solid
+        #e9e6ee;
+
+    border-radius:27px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(55,45,80,.045);
+
+}
+
+
+.challenge-head{
+
+    padding:18px;
+
     display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    border-bottom:
+        1px solid
+        #f0edf3;
+
+}
+
+
+.challenge-progress{
+
+    width:59px;
+    height:59px;
+
+    flex:none;
+
+    border-radius:50%;
+
+    background:
+        conic-gradient(
+            #8b63d9 var(--progress,0%),
+            #eeeaf2 0
+        );
+
+    display:flex;
+
     align-items:center;
     justify-content:center;
-    font-size:12px;
-    font-weight:900;
-    color:#1b2c3f;
+
+    position:relative;
+
 }
 
-.challenge-summary-text{
+
+.challenge-progress::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+}
+
+
+.challenge-percent{
+
+    position:relative;
+
+    z-index:2;
+
+    color:#7654cf;
+
+    font-size:11px;
+
+    font-weight:900;
+
+}
+
+
+.challenge-title{
+
     flex:1;
+
 }
 
-.challenge-summary-text strong{
+
+.challenge-title strong{
+
+    display:block;
+
     font-size:14px;
+
     font-weight:900;
+
 }
 
-.challenge-summary-text p{
-    font-size:10px;
-    color:#8a96a5;
+
+.challenge-title p{
+
+    font-size:9px;
+
+    color:#9b97a4;
+
     margin-top:3px;
+
 }
+
 
 .challenge-settings{
-    width:38px;
-    height:38px;
+
+    width:37px;
+    height:37px;
+
     border-radius:12px;
-    background:#f1f6fb;
-    color:#0875da;
+
+    background:#f4f1f9;
+
+    color:#805fd0;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
+    font-size:12px;
+
 }
+
+
+/* challenge list */
 
 .challenge-list{
-    padding:4px 17px 8px;
+
+    padding:
+        4px
+        17px
+        7px;
+
 }
+
 
 .challenge-item{
+
     display:flex;
+
     align-items:center;
-    gap:12px;
+
+    gap:11px;
+
     padding:13px 0;
-    border-bottom:1px solid #f0f2f5;
+
+    border-bottom:
+        1px solid
+        #f1eef4;
+
 }
+
 
 .challenge-item:last-child{
+
     border-bottom:0;
+
 }
+
 
 .challenge-icon{
+
     width:40px;
     height:40px;
+
+    flex:none;
+
     border-radius:13px;
-    background:#eef6ff;
-    color:#0875da;
+
+    background:#f1edfb;
+
+    color:#8060d1;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
-    flex:none;
+
 }
+
 
 .challenge-info{
+
     min-width:0;
+
     flex:1;
+
 }
+
 
 .challenge-info strong{
+
     display:block;
+
     font-size:12px;
+
     font-weight:800;
+
 }
+
 
 .challenge-info span{
+
     display:block;
-    color:#96a0ad;
+
     font-size:9px;
+
+    color:#9a96a2;
+
     margin-top:2px;
+
 }
+
 
 .challenge-value{
+
+    min-width:85px;
+
     text-align:left;
+
 }
+
 
 .challenge-value strong{
+
     display:block;
-    font-size:11px;
-    color:#344456;
+
+    font-size:9px;
+
+    color:#4d4757;
+
+    white-space:nowrap;
+
 }
+
 
 .mini-progress{
-    width:54px;
+
+    width:65px;
+
     height:4px;
-    background:#e9eef3;
-    border-radius:10px;
-    overflow:hidden;
+
     margin-top:5px;
+
     margin-right:auto;
+
+    overflow:hidden;
+
+    background:#ebe8ef;
+
+    border-radius:10px;
+
 }
+
 
 .mini-progress i{
+
     display:block;
-    height:100%;
+
     width:0%;
-    background:#0875da;
+
+    height:100%;
+
+    background:#8b63d9;
+
     border-radius:10px;
+
 }
 
 
 /* =========================================================
-   PROFILE DETAILS
+   HEALTH DETAILS
 ========================================================= */
 
-.health-details{
+.details-grid{
+
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:9px;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:10px;
+
 }
 
-.detail{
+
+.detail-card{
+
+    min-height:88px;
+
+    padding:15px;
+
+    border-radius:20px;
+
     background:#fff;
-    border:1px solid #e8edf3;
-    border-radius:18px;
-    padding:14px;
-    min-height:82px;
+
+    border:
+        1px solid
+        #e9e6ee;
+
+    box-shadow:
+        0 6px 18px
+        rgba(55,45,80,.035);
+
 }
+
 
 .detail-label{
+
     display:flex;
+
     align-items:center;
+
     gap:7px;
-    color:#8793a1;
+
     font-size:9px;
-    margin-bottom:7px;
+
+    color:#9995a1;
+
 }
+
 
 .detail-label i{
-    color:#0875da;
+
+    color:#8060d1;
+
 }
 
+
 .detail-value{
+
+    margin-top:9px;
+
     font-size:13px;
+
     font-weight:800;
-    color:#243447;
+
+    color:#373140;
+
 }
 
 
 /* =========================================================
-   EMPTY STATE
+   EMPTY
 ========================================================= */
 
 .empty{
+
     padding:25px 10px;
+
     text-align:center;
-    color:#8995a5;
+
+    color:#9894a1;
+
 }
+
 
 .empty i{
-    font-size:27px;
-    margin-bottom:9px;
-    color:#b9c4d0;
+
+    display:block;
+
+    font-size:25px;
+
+    color:#c4c0cb;
+
+    margin-bottom:8px;
+
 }
 
+
 .empty p{
-    font-size:11px;
+
+    font-size:10px;
+
 }
 
 
 /* =========================================================
-   BOTTOM NAVIGATION
+   BOTTOM NAV
 ========================================================= */
 
 .bottom-nav{
+
     position:fixed;
+
     z-index:100;
-    bottom:13px;
+
     left:50%;
+
+    bottom:13px;
+
     transform:translateX(-50%);
-    width:calc(100% - 26px);
-    max-width:600px;
-    height:69px;
+
+    width:
+        calc(100% - 26px);
+
+    max-width:610px;
+
+    height:70px;
+
     padding:6px;
-    background:rgba(255,255,255,.94);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-    border:1px solid rgba(218,226,235,.95);
-    border-radius:24px;
-    box-shadow:0 15px 45px rgba(21,45,70,.16);
+
+    background:
+        rgba(255,255,255,.96);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    border:
+        1px solid
+        #e5e1ea;
+
+    border-radius:25px;
+
+    box-shadow:
+        0 15px 45px
+        rgba(48,39,67,.17);
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
 }
+
 
 .nav-item{
+
     position:relative;
+
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
+
     justify-content:center;
-    gap:3px;
-    color:#8995a3;
-    border-radius:18px;
+
+    gap:4px;
+
+    border-radius:19px;
+
+    color:#aaa6b1;
+
     font-size:9px;
+
     font-weight:700;
+
     transition:.2s;
+
 }
+
 
 .nav-item i{
+
     font-size:17px;
+
 }
+
 
 .nav-item.active{
-    background:#eaf4ff;
-    color:#0875da;
+
+    color:#805fd0;
+
+    background:#f0ecfa;
+
 }
 
+
 .nav-item.active::after{
+
     content:"";
+
     position:absolute;
+
+    bottom:5px;
+
     width:4px;
     height:4px;
+
     border-radius:50%;
-    background:#0875da;
-    bottom:5px;
+
+    background:#805fd0;
+
 }
 
 
 /* =========================================================
-   DATE MODAL
+   MODAL
 ========================================================= */
 
 .modal{
+
     position:fixed;
+
     inset:0;
-    background:rgba(8,25,45,.48);
-    z-index:300;
+
+    z-index:500;
+
     display:none;
+
     align-items:flex-end;
+
     justify-content:center;
-    padding:15px;
+
+    padding:14px;
+
+    background:
+        rgba(34,25,51,.48);
+
 }
+
 
 .modal.show{
+
     display:flex;
+
 }
+
 
 .modal-card{
+
     width:100%;
-    max-width:600px;
+
+    max-width:610px;
+
     background:#fff;
-    border-radius:28px;
+
+    border-radius:
+        29px
+        29px
+        24px
+        24px;
+
     padding:22px;
-    animation:slideUp .25s ease;
+
+    animation:
+        modalUp .25s ease;
+
 }
 
-@keyframes slideUp{
+
+@keyframes modalUp{
+
     from{
-        transform:translateY(30px);
+
         opacity:0;
+
+        transform:
+            translateY(30px);
+
     }
+
     to{
-        transform:translateY(0);
+
         opacity:1;
+
+        transform:
+            translateY(0);
+
     }
+
 }
+
 
 .modal-top{
+
     display:flex;
-    justify-content:space-between;
+
     align-items:center;
-    margin-bottom:18px;
+
+    justify-content:space-between;
+
+    margin-bottom:17px;
+
 }
+
 
 .modal-top strong{
+
     font-size:17px;
+
     font-weight:900;
+
 }
+
 
 .close-modal{
-    width:36px;
-    height:36px;
+
+    width:37px;
+    height:37px;
+
     border-radius:12px;
-    background:#f1f4f7;
-    color:#667587;
+
+    background:#f3f1f5;
+
+    color:#6f6a78;
+
 }
+
 
 .modal-date{
-    background:#f4f8fc;
-    border-radius:18px;
-    padding:18px;
+
+    padding:20px;
+
+    border-radius:19px;
+
     text-align:center;
+
+    background:#f6f3fa;
+
 }
+
 
 .modal-date i{
-    color:#0875da;
-    font-size:24px;
+
+    display:block;
+
+    color:#8060d1;
+
+    font-size:25px;
+
     margin-bottom:8px;
+
 }
+
 
 .modal-date strong{
+
     display:block;
+
     font-size:14px;
+
 }
 
+
 .modal-date span{
+
     display:block;
-    color:#8995a5;
+
     font-size:10px;
+
+    color:#9995a2;
+
     margin-top:4px;
+
 }
 
 
@@ -937,126 +1866,217 @@ a{
 ========================================================= */
 
 .loading{
+
     position:fixed;
+
     inset:0;
+
     z-index:9999;
-    background:#f5f8fc;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     flex-direction:column;
+
+    background:
+        linear-gradient(
+            145deg,
+            #7654cf,
+            #a86de5
+        );
+
+    color:#fff;
+
     transition:.3s;
+
 }
+
 
 .loading-logo{
-    width:72px;
-    height:72px;
-    border-radius:23px;
-    background:#0875da;
-    color:#fff;
+
+    width:74px;
+    height:74px;
+
+    border-radius:24px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
-    font-size:27px;
-    box-shadow:0 15px 35px rgba(8,117,218,.25);
+
+    background:
+        rgba(255,255,255,.18);
+
+    border:
+        1px solid
+        rgba(255,255,255,.30);
+
+    font-size:28px;
+
     margin-bottom:15px;
+
+    box-shadow:
+        0 15px 35px
+        rgba(62,37,118,.20);
+
 }
+
 
 .loading strong{
-    font-size:18px;
+
+    font-size:20px;
+
     font-weight:900;
-    color:#1d3044;
+
 }
+
 
 .loading span{
+
     font-size:10px;
-    color:#8a96a5;
+
+    opacity:.75;
+
     margin-top:3px;
+
 }
+
 
 .spinner{
-    width:25px;
-    height:25px;
-    border:3px solid #dce8f5;
-    border-top-color:#0875da;
-    border-radius:50%;
-    animation:spin .8s linear infinite;
+
+    width:26px;
+    height:26px;
+
     margin-top:20px;
+
+    border:
+        3px solid
+        rgba(255,255,255,.30);
+
+    border-top-color:#fff;
+
+    border-radius:50%;
+
+    animation:
+        spin .8s linear infinite;
+
 }
 
+
 @keyframes spin{
+
     to{
+
         transform:rotate(360deg);
+
     }
+
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   SMALL PHONES
 ========================================================= */
 
 @media(max-width:390px){
 
-    .top-area{
+    .hero{
+
+        min-height:340px;
+
         padding-left:14px;
         padding-right:14px;
+
     }
+
+
+    .progress-card{
+
+        left:14px;
+        right:14px;
+
+    }
+
 
     .main{
+
         padding-left:12px;
         padding-right:12px;
+
     }
 
-    .status-title{
-        font-size:22px;
+
+    .hero-title h1{
+
+        font-size:27px;
+
     }
 
-    .health-status{
-        width:82px;
-        min-width:82px;
-        height:82px;
-    }
-
-    .health-status strong{
-        font-size:24px;
-    }
 
     .quick-card{
-        min-height:118px;
+
+        min-height:135px;
+
         padding:14px;
+
     }
+
 
     .quick-icon{
-        width:39px;
-        height:39px;
-        margin-bottom:10px;
+
+        width:42px;
+        height:42px;
+
     }
 
-    .day{
-        padding-left:1px;
-        padding-right:1px;
+
+    .challenge-value{
+
+        min-width:72px;
+
     }
+
+
+    .mini-progress{
+
+        width:55px;
+
+    }
+
 }
 
+
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- =======================================================
+<!-- =========================================================
      LOADING
-======================================================= -->
+========================================================= -->
 
-<div class="loading" id="loadingScreen">
+<div class="loading"
+     id="loadingScreen">
 
     <div class="loading-logo">
+
         <i class="fa-solid fa-heart-pulse"></i>
+
     </div>
 
-    <strong>صحتي+</strong>
-    <span>مساحتك الصحية الشخصية</span>
+    <strong>
+        صحتي+
+    </strong>
+
+    <span>
+        مساحتك الصحية الشخصية
+    </span>
 
     <div class="spinner"></div>
 
@@ -1067,30 +2087,43 @@ a{
 <div class="app">
 
 
-<!-- =======================================================
-     NEW HEADER
-======================================================= -->
+<!-- =========================================================
+     HERO
+========================================================= -->
 
-<header class="top-area">
+<header class="hero">
 
-    <div class="top-content">
+    <div class="hero-shape"></div>
 
-        <div class="header-row">
+    <div class="hero-content">
 
-            <div class="user-mini">
 
-                <div class="user-avatar">
+        <!-- HEADER -->
 
-                    <img id="headerPhoto" alt="الصورة الشخصية">
+        <div class="header">
 
-                    <i id="headerAvatarIcon"
-                       class="fa-solid fa-user"></i>
+
+            <div class="profile-info">
+
+                <div class="avatar">
+
+                    <img
+                        id="headerPhoto"
+                        alt="الصورة الشخصية">
+
+                    <i
+                        id="headerAvatarIcon"
+                        class="fa-solid fa-user">
+                    </i>
 
                 </div>
 
-                <div class="user-text">
 
-                    <small>ملفك الصحي</small>
+                <div class="profile-text">
+
+                    <small>
+                        ملفك الصحي
+                    </small>
 
                     <strong id="headerName">
                         أهلاً بك
@@ -1101,9 +2134,10 @@ a{
             </div>
 
 
-            <a href="profile.html"
-               class="profile-open"
-               aria-label="الحساب">
+            <a
+                href="profile.html"
+                class="settings-button"
+                aria-label="الحساب">
 
                 <i class="fa-solid fa-sliders"></i>
 
@@ -1112,35 +2146,74 @@ a{
         </div>
 
 
-        <div class="status-line">
 
-            <div>
+        <!-- HERO TITLE -->
 
-                <div class="status-title">
-                    صحتي بين يديك
-                </div>
+        <div class="hero-title">
 
-                <div class="status-date"
-                     id="currentDate">
-                    اليوم
-                </div>
+            <small>
+                مساحتك الصحية
+            </small>
 
-            </div>
+            <h1>
+                صحتي بين يديك
+            </h1>
+
+            <p id="currentDate">
+                اليوم
+            </p>
+
+        </div>
 
 
-            <div class="health-status">
+    </div>
+
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress-card">
+
+
+        <div
+            class="progress-circle"
+            id="progressCircle">
+
+            <div class="progress-number">
 
                 <strong id="overallPercent">
                     0%
                 </strong>
 
                 <span>
-                    تقدم اليوم
+                    اليوم
                 </span>
 
             </div>
 
         </div>
+
+
+        <div class="progress-info">
+
+            <strong>
+                تقدمك الصحي اليوم
+            </strong>
+
+            <p id="challengeSummary">
+                جارٍ تحميل التحديات...
+            </p>
+
+        </div>
+
+
+        <a
+            href="challenges.html"
+            class="progress-arrow">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+        </a>
 
     </div>
 
@@ -1148,55 +2221,69 @@ a{
 
 
 
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
 <main class="main">
 
 
-<!-- =======================================================
+<!-- =========================================================
      CALENDAR
-======================================================= -->
+========================================================= -->
 
-<section class="today-panel">
+<section class="section">
 
-    <div class="panel-head">
 
-        <div class="panel-title">
+    <div class="section-heading">
 
-            <div class="title-icon">
-                <i class="fa-regular fa-calendar"></i>
-            </div>
+        <div>
 
             <h2>
                 هذا الأسبوع
             </h2>
 
-        </div>
+            <p>
+                اختر يومًا لمراجعة معلوماتك
+            </p>
 
-        <span class="panel-link">
-            اختر يومًا
-        </span>
+        </div>
 
     </div>
 
 
-    <div class="week"
-         id="weekCalendar">
+    <div class="calendar-card">
+
+        <div
+            class="week"
+            id="weekCalendar">
+        </div>
+
     </div>
 
 </section>
 
 
 
-<!-- =======================================================
+<!-- =========================================================
      QUICK ACCESS
-======================================================= -->
+========================================================= -->
 
 <section class="section">
+
 
     <div class="section-heading">
 
         <div>
-            <h2>الوصول السريع</h2>
-            <p>أهم أقسامك الصحية</p>
+
+            <h2>
+                الوصول السريع
+            </h2>
+
+            <p>
+                أهم أقسامك الصحية
+            </p>
+
         </div>
 
     </div>
@@ -1205,11 +2292,16 @@ a{
     <div class="quick-grid">
 
 
-        <a href="health.html"
-           class="quick-card blue">
+        <!-- MEASUREMENTS -->
+
+        <a
+            href="health.html"
+            class="quick-card blue">
 
             <div class="quick-icon">
+
                 <i class="fa-solid fa-heart-pulse"></i>
+
             </div>
 
             <strong>
@@ -1221,18 +2313,25 @@ a{
             </span>
 
             <div class="quick-arrow">
+
                 <i class="fa-solid fa-arrow-left"></i>
+
             </div>
 
         </a>
 
 
 
-        <a href="statistics.html"
-           class="quick-card teal">
+        <!-- STATISTICS -->
+
+        <a
+            href="statistics.html"
+            class="quick-card teal">
 
             <div class="quick-icon">
+
                 <i class="fa-solid fa-chart-line"></i>
+
             </div>
 
             <strong>
@@ -1240,22 +2339,29 @@ a{
             </strong>
 
             <span>
-                تابع تغيرات بياناتك
+                تابع تغيرات بياناتك الصحية
             </span>
 
             <div class="quick-arrow">
+
                 <i class="fa-solid fa-arrow-left"></i>
+
             </div>
 
         </a>
 
 
 
-        <a href="period.html"
-           class="quick-card purple">
+        <!-- PERIOD -->
+
+        <a
+            href="period.html"
+            class="quick-card pink">
 
             <div class="quick-icon">
+
                 <i class="fa-solid fa-calendar-days"></i>
+
             </div>
 
             <strong>
@@ -1267,18 +2373,25 @@ a{
             </span>
 
             <div class="quick-arrow">
+
                 <i class="fa-solid fa-arrow-left"></i>
+
             </div>
 
         </a>
 
 
 
-        <a href="pregnancy.html"
-           class="quick-card orange">
+        <!-- PREGNANCY -->
+
+        <a
+            href="pregnancy.html"
+            class="quick-card orange">
 
             <div class="quick-icon">
+
                 <i class="fa-solid fa-person-pregnant"></i>
+
             </div>
 
             <strong>
@@ -1290,88 +2403,136 @@ a{
             </span>
 
             <div class="quick-arrow">
+
                 <i class="fa-solid fa-arrow-left"></i>
+
             </div>
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     MEDICAL PROFILE
+========================================================= -->
+
+<section class="section">
+
+
+    <div class="section-heading">
+
+        <div>
+
+            <h2>
+                ملفك الصحي
+            </h2>
+
+            <p>
+                المعلومات الأساسية المسجلة
+            </p>
+
+        </div>
+
+
+        <a
+            href="profile.html"
+            class="section-link">
+
+            تعديل
 
         </a>
 
     </div>
 
-</section>
+
+    <div class="medical-card">
+
+        <div class="medical-content">
 
 
+            <div class="medical-top">
 
-<!-- =======================================================
-     MEDICAL IDENTITY
-======================================================= -->
+                <div>
 
-<section class="section">
+                    <div class="medical-label">
+                        الملف الشخصي
+                    </div>
 
-    <div class="identity">
+                    <div
+                        class="medical-name"
+                        id="identityName">
 
-        <div class="identity-head">
+                        ملف صحي شخصي
 
-            <div>
+                    </div>
 
-                <div class="identity-label">
-                    معلوماتك الصحية
                 </div>
 
-                <div class="identity-name"
-                     id="identityName">
-                    ملف صحي شخصي
+
+                <a
+                    href="profile.html"
+                    class="medical-edit">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                </a>
+
+            </div>
+
+
+
+            <div class="medical-data">
+
+
+                <div class="medical-item">
+
+                    <i class="fa-solid fa-venus-mars"></i>
+
+                    <span>
+                        الجنس
+                    </span>
+
+                    <strong id="genderValue">
+                        —
+                    </strong>
+
                 </div>
 
-            </div>
+
+                <div class="medical-item">
+
+                    <i class="fa-solid fa-droplet"></i>
+
+                    <span>
+                        فصيلة الدم
+                    </span>
+
+                    <strong id="bloodValue">
+                        —
+                    </strong>
+
+                </div>
 
 
-            <a href="profile.html"
-               class="identity-edit">
+                <div class="medical-item">
 
-                <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-weight-scale"></i>
 
-            </a>
+                    <span>
+                        مؤشر الكتلة
+                    </span>
 
-        </div>
+                    <strong id="bmiValue">
+                        —
+                    </strong>
 
+                </div>
 
-        <div class="identity-data">
-
-            <div class="identity-item">
-
-                <i class="fa-solid fa-venus-mars"></i>
-
-                <span>الجنس</span>
-
-                <strong id="genderValue">
-                    —
-                </strong>
-
-            </div>
-
-
-            <div class="identity-item">
-
-                <i class="fa-solid fa-droplet"></i>
-
-                <span>فصيلة الدم</span>
-
-                <strong id="bloodValue">
-                    —
-                </strong>
-
-            </div>
-
-
-            <div class="identity-item">
-
-                <i class="fa-solid fa-weight-scale"></i>
-
-                <span>مؤشر الكتلة</span>
-
-                <strong id="bmiValue">
-                    —
-                </strong>
 
             </div>
 
@@ -1383,11 +2544,12 @@ a{
 
 
 
-<!-- =======================================================
+<!-- =========================================================
      DAILY CHALLENGES
-======================================================= -->
+========================================================= -->
 
 <section class="section">
+
 
     <div class="section-heading">
 
@@ -1403,8 +2565,10 @@ a{
 
         </div>
 
-        <a href="challenges.html"
-           class="panel-link">
+
+        <a
+            href="challenges.html"
+            class="section-link">
 
             ضبط التحديات
 
@@ -1413,47 +2577,57 @@ a{
     </div>
 
 
+
     <div class="challenge-box">
 
 
-        <div class="challenge-summary">
+        <div class="challenge-head">
 
-            <div class="progress-ring"
-                 id="progressRing">
 
-                <div class="progress-inner"
-                     id="challengePercent">
+            <div
+                class="challenge-progress"
+                id="progressRing">
+
+                <div
+                    class="challenge-percent"
+                    id="challengePercent">
+
                     0%
+
                 </div>
 
             </div>
 
 
-            <div class="challenge-summary-text">
+            <div class="challenge-title">
 
                 <strong>
                     تقدمك اليوم
                 </strong>
 
-                <p id="challengeSummary">
-                    جارٍ تحميل التحديات...
+                <p>
+                    استمر في عاداتك الصحية
                 </p>
 
             </div>
 
 
-            <a href="challenges.html"
-               class="challenge-settings">
+            <a
+                href="challenges.html"
+                class="challenge-settings">
 
                 <i class="fa-solid fa-sliders"></i>
 
             </a>
 
+
         </div>
 
 
-        <div class="challenge-list"
-             id="challengeList">
+
+        <div
+            class="challenge-list"
+            id="challengeList">
 
             <div class="empty">
 
@@ -1467,17 +2641,19 @@ a{
 
         </div>
 
+
     </div>
 
 </section>
 
 
 
-<!-- =======================================================
+<!-- =========================================================
      HEALTH DETAILS
-======================================================= -->
+========================================================= -->
 
 <section class="section">
+
 
     <div class="section-heading">
 
@@ -1493,8 +2669,10 @@ a{
 
         </div>
 
-        <a href="profile.html"
-           class="panel-link">
+
+        <a
+            href="profile.html"
+            class="section-link">
 
             تعديل
 
@@ -1503,10 +2681,11 @@ a{
     </div>
 
 
-    <div class="health-details">
+
+    <div class="details-grid">
 
 
-        <div class="detail">
+        <div class="detail-card">
 
             <div class="detail-label">
 
@@ -1516,15 +2695,19 @@ a{
 
             </div>
 
-            <div class="detail-value"
-                 id="heightValue">
+            <div
+                class="detail-value"
+                id="heightValue">
+
                 —
+
             </div>
 
         </div>
 
 
-        <div class="detail">
+
+        <div class="detail-card">
 
             <div class="detail-label">
 
@@ -1534,15 +2717,19 @@ a{
 
             </div>
 
-            <div class="detail-value"
-                 id="weightValue">
+            <div
+                class="detail-value"
+                id="weightValue">
+
                 —
+
             </div>
 
         </div>
 
 
-        <div class="detail">
+
+        <div class="detail-card">
 
             <div class="detail-label">
 
@@ -1552,15 +2739,19 @@ a{
 
             </div>
 
-            <div class="detail-value"
-                 id="bmiStatus">
+            <div
+                class="detail-value"
+                id="bmiStatus">
+
                 —
+
             </div>
 
         </div>
 
 
-        <div class="detail">
+
+        <div class="detail-card">
 
             <div class="detail-label">
 
@@ -1570,9 +2761,12 @@ a{
 
             </div>
 
-            <div class="detail-value"
-                 id="diseaseValue">
+            <div
+                class="detail-value"
+                id="diseaseValue">
+
                 لا توجد بيانات
+
             </div>
 
         </div>
@@ -1589,63 +2783,83 @@ a{
 
 
 
-<!-- =======================================================
+<!-- =========================================================
      BOTTOM NAVIGATION
-======================================================= -->
+========================================================= -->
 
 <nav class="bottom-nav">
 
-    <a href="dashboard.html"
-       class="nav-item active">
+
+    <a
+        href="dashboard.html"
+        class="nav-item active">
 
         <i class="fa-solid fa-house"></i>
 
-        <span>الرئيسية</span>
+        <span>
+            الرئيسية
+        </span>
 
     </a>
 
 
-    <a href="challenges.html"
-       class="nav-item">
+
+    <a
+        href="challenges.html"
+        class="nav-item">
 
         <i class="fa-solid fa-bullseye"></i>
 
-        <span>تحدياتي</span>
+        <span>
+            تحدياتي
+        </span>
 
     </a>
 
 
-    <a href="health.html"
-       class="nav-item">
+
+    <a
+        href="health.html"
+        class="nav-item">
 
         <i class="fa-solid fa-heart-pulse"></i>
 
-        <span>صحتي</span>
+        <span>
+            صحتي
+        </span>
 
     </a>
 
 
-    <a href="profile.html"
-       class="nav-item">
+
+    <a
+        href="profile.html"
+        class="nav-item">
 
         <i class="fa-solid fa-user"></i>
 
-        <span>حسابي</span>
+        <span>
+            حسابي
+        </span>
 
     </a>
+
 
 </nav>
 
 
 
-<!-- =======================================================
+<!-- =========================================================
      DATE MODAL
-======================================================= -->
+========================================================= -->
 
-<div class="modal"
-     id="dateModal">
+<div
+    class="modal"
+    id="dateModal">
+
 
     <div class="modal-card">
+
 
         <div class="modal-top">
 
@@ -1653,8 +2867,10 @@ a{
                 معلومات اليوم
             </strong>
 
-            <button class="close-modal"
-                    id="closeModal">
+
+            <button
+                class="close-modal"
+                id="closeModal">
 
                 <i class="fa-solid fa-xmark"></i>
 
@@ -1677,6 +2893,7 @@ a{
 
         </div>
 
+
     </div>
 
 </div>
@@ -1684,6 +2901,7 @@ a{
 
 
 <script type="module">
+
 
 /* =========================================================
    FIREBASE
@@ -1694,14 +2912,17 @@ import {
     db
 } from "./js/firebase.js";
 
+
 import {
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
 
 import {
     doc,
     getDoc
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
 
 
 /* =========================================================
@@ -1716,7 +2937,9 @@ let selectedChallenges = [];
 
 let dailyData = {};
 
+
 const today = new Date();
+
 
 const todayKey =
     today.getFullYear() +
@@ -1726,11 +2949,16 @@ const todayKey =
     String(today.getDate()).padStart(2,"0");
 
 
+
 /* =========================================================
    HELPERS
 ========================================================= */
 
-function getFirst(obj, keys, fallback = ""){
+function getFirst(
+    obj,
+    keys,
+    fallback = ""
+){
 
     for(const key of keys){
 
@@ -1748,7 +2976,9 @@ function getFirst(obj, keys, fallback = ""){
     }
 
     return fallback;
+
 }
+
 
 
 function normalize(value){
@@ -1758,6 +2988,7 @@ function normalize(value){
         .toLowerCase();
 
 }
+
 
 
 function escapeHTML(value){
@@ -1772,11 +3003,13 @@ function escapeHTML(value){
 }
 
 
+
 /* =========================================================
    DATE
 ========================================================= */
 
 const arabicDays = [
+
     "الأحد",
     "الإثنين",
     "الثلاثاء",
@@ -1784,9 +3017,12 @@ const arabicDays = [
     "الخميس",
     "الجمعة",
     "السبت"
+
 ];
 
+
 const shortDays = [
+
     "أحد",
     "إثن",
     "ثلا",
@@ -1794,9 +3030,12 @@ const shortDays = [
     "خمي",
     "جمع",
     "سبت"
+
 ];
 
+
 const arabicMonths = [
+
     "يناير",
     "فبراير",
     "مارس",
@@ -1809,26 +3048,40 @@ const arabicMonths = [
     "أكتوبر",
     "نوفمبر",
     "ديسمبر"
+
 ];
+
 
 
 function formatArabicDate(date){
 
     return (
+
         arabicDays[date.getDay()] +
+
         "، " +
+
         date.getDate() +
+
         " " +
+
         arabicMonths[date.getMonth()] +
+
         " " +
+
         date.getFullYear()
+
     );
 
 }
 
 
-document.getElementById("currentDate").textContent =
-    formatArabicDate(today);
+
+document
+    .getElementById("currentDate")
+    .textContent =
+        formatArabicDate(today);
+
 
 
 /* =========================================================
@@ -1838,17 +3091,17 @@ document.getElementById("currentDate").textContent =
 function renderCalendar(){
 
     const container =
-        document.getElementById("weekCalendar");
+        document.getElementById(
+            "weekCalendar"
+        );
+
 
     container.innerHTML = "";
+
 
     const currentDay =
         today.getDay();
 
-    /*
-      تحويل الأحد = 0
-      إلى الإثنين = 0
-    */
 
     const mondayOffset =
         currentDay === 0
@@ -1856,9 +3109,15 @@ function renderCalendar(){
             : 1 - currentDay;
 
 
-    for(let i = 0; i < 7; i++){
+    for(
+        let i = 0;
+        i < 7;
+        i++
+    ){
 
-        const date = new Date(today);
+        const date =
+            new Date(today);
+
 
         date.setDate(
             today.getDate() +
@@ -1870,20 +3129,30 @@ function renderCalendar(){
         const key =
             date.getFullYear() +
             "-" +
-            String(date.getMonth()+1).padStart(2,"0") +
+            String(
+                date.getMonth()+1
+            ).padStart(2,"0") +
             "-" +
-            String(date.getDate()).padStart(2,"0");
+            String(
+                date.getDate()
+            ).padStart(2,"0");
 
 
         const item =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
-        item.className = "day";
+
+        item.className =
+            "day";
 
 
         if(key === todayKey){
 
-            item.classList.add("today");
+            item.classList.add(
+                "today"
+            );
 
         }
 
@@ -1891,41 +3160,71 @@ function renderCalendar(){
         item.innerHTML = `
 
             <div class="day-name">
+
                 ${shortDays[date.getDay()]}
+
             </div>
 
             <div class="day-number">
+
                 ${date.getDate()}
+
             </div>
 
         `;
 
 
-        item.addEventListener("click",()=>{
+        item.addEventListener(
+            "click",
+            ()=>{
 
-            document
-                .querySelectorAll(".day")
-                .forEach(x =>
-                    x.classList.remove("selected")
+                document
+                    .querySelectorAll(
+                        ".day"
+                    )
+                    .forEach(
+                        x =>
+                        x.classList.remove(
+                            "selected"
+                        )
+                    );
+
+
+                item.classList.add(
+                    "selected"
                 );
 
-            item.classList.add("selected");
 
-            document.getElementById("modalDate")
-                .textContent =
-                    formatArabicDate(date);
+                document
+                    .getElementById(
+                        "modalDate"
+                    )
+                    .textContent =
+                        formatArabicDate(
+                            date
+                        );
 
-            document.getElementById("dateModal")
-                .classList.add("show");
 
-        });
+                document
+                    .getElementById(
+                        "dateModal"
+                    )
+                    .classList.add(
+                        "show"
+                    );
+
+            }
+        );
 
 
-        container.appendChild(item);
+        container.appendChild(
+            item
+        );
 
     }
 
 }
+
 
 
 /* =========================================================
@@ -1933,27 +3232,48 @@ function renderCalendar(){
 ========================================================= */
 
 document
-    .getElementById("closeModal")
-    .addEventListener("click",()=>{
+    .getElementById(
+        "closeModal"
+    )
+    .addEventListener(
+        "click",
+        ()=>{
 
-        document
-            .getElementById("dateModal")
-            .classList.remove("show");
+            document
+                .getElementById(
+                    "dateModal"
+                )
+                .classList.remove(
+                    "show"
+                );
 
-    });
+        }
+    );
 
 
 document
-    .getElementById("dateModal")
-    .addEventListener("click",(e)=>{
+    .getElementById(
+        "dateModal"
+    )
+    .addEventListener(
+        "click",
+        e => {
 
-        if(e.target.id === "dateModal"){
+            if(
+                e.target.id ===
+                "dateModal"
+            ){
 
-            e.currentTarget.classList.remove("show");
+                e.currentTarget
+                    .classList.remove(
+                        "show"
+                    );
+
+            }
 
         }
+    );
 
-    });
 
 
 /* =========================================================
@@ -1961,6 +3281,7 @@ document
 ========================================================= */
 
 function renderProfile(){
+
 
     const name =
         getFirst(
@@ -2046,34 +3367,52 @@ function renderProfile(){
         );
 
 
-    document.getElementById("headerName")
+    document
+        .getElementById(
+            "headerName"
+        )
         .textContent =
             `أهلاً ${name}`;
 
 
-    document.getElementById("identityName")
+    document
+        .getElementById(
+            "identityName"
+        )
         .textContent =
             name;
 
 
-    document.getElementById("genderValue")
+    document
+        .getElementById(
+            "genderValue"
+        )
         .textContent =
             gender || "—";
 
 
-    document.getElementById("bloodValue")
+    document
+        .getElementById(
+            "bloodValue"
+        )
         .textContent =
             blood || "—";
 
 
-    document.getElementById("heightValue")
+    document
+        .getElementById(
+            "heightValue"
+        )
         .textContent =
             heightRaw
                 ? `${heightRaw} سم`
                 : "غير مسجل";
 
 
-    document.getElementById("weightValue")
+    document
+        .getElementById(
+            "weightValue"
+        )
         .textContent =
             weightRaw
                 ? `${weightRaw} كغ`
@@ -2084,44 +3423,69 @@ function renderProfile(){
 
 
     const height =
-        parseFloat(heightRaw);
+        parseFloat(
+            heightRaw
+        );
+
 
     const weight =
-        parseFloat(weightRaw);
+        parseFloat(
+            weightRaw
+        );
 
 
     if(
+
         Number.isFinite(height) &&
+
         Number.isFinite(weight) &&
+
         height > 0 &&
+
         weight > 0
+
     ){
 
         bmi =
             weight /
-            Math.pow(height / 100,2);
+            Math.pow(
+                height / 100,
+                2
+            );
+
 
         bmi =
-            Math.round(bmi * 10) / 10;
+            Math.round(
+                bmi * 10
+            ) / 10;
 
     }
 
 
-    document.getElementById("bmiValue")
+    document
+        .getElementById(
+            "bmiValue"
+        )
         .textContent =
             bmi !== null
                 ? bmi
                 : "—";
 
 
-    document.getElementById("bmiStatus")
+    document
+        .getElementById(
+            "bmiStatus"
+        )
         .textContent =
             bmi !== null
                 ? getBMIStatus(bmi)
                 : "غير محسوب";
 
 
-    document.getElementById("diseaseValue")
+    document
+        .getElementById(
+            "diseaseValue"
+        )
         .textContent =
             diseases
                 ? diseases
@@ -2131,17 +3495,30 @@ function renderProfile(){
     if(photo){
 
         const img =
-            document.getElementById("headerPhoto");
+            document.getElementById(
+                "headerPhoto"
+            );
 
-        img.src = photo;
-        img.style.display = "block";
 
-        document.getElementById("headerAvatarIcon")
-            .style.display = "none";
+        img.src =
+            photo;
+
+
+        img.style.display =
+            "block";
+
+
+        document
+            .getElementById(
+                "headerAvatarIcon"
+            )
+            .style.display =
+                "none";
 
     }
 
 }
+
 
 
 function getBMIStatus(bmi){
@@ -2149,15 +3526,19 @@ function getBMIStatus(bmi){
     if(bmi < 18.5)
         return "أقل من الطبيعي";
 
+
     if(bmi < 25)
         return "طبيعي";
+
 
     if(bmi < 30)
         return "زيادة في الوزن";
 
+
     return "سمنة";
 
 }
+
 
 
 /* =========================================================
@@ -2166,61 +3547,110 @@ function getBMIStatus(bmi){
 
 const challengeDefinitions = {
 
+
     water:{
+
         name:"شرب الماء",
+
         icon:"fa-droplet",
+
         link:"water.html",
+
         type:"number",
+
         target:8,
+
         unit:"كوب"
+
     },
+
 
     walking:{
+
         name:"المشي",
+
         icon:"fa-person-walking",
+
         link:"walking.html",
+
         type:"number",
+
         target:3000,
+
         unit:"متر"
+
     },
+
 
     sleep:{
+
         name:"النوم",
+
         icon:"fa-moon",
+
         link:"sleep.html",
+
         type:"number",
+
         target:8,
+
         unit:"ساعة"
+
     },
+
 
     sleepSchedule:{
+
         name:"موعد النوم والاستيقاظ",
+
         icon:"fa-bed",
+
         link:"sleep.html",
+
         type:"time",
+
         target:1,
+
         unit:""
+
     },
+
 
     sugar:{
+
         name:"السكريات",
+
         icon:"fa-candy-cane",
+
         link:"nutrition.html",
+
         type:"boolean",
+
         target:1,
+
         unit:"لم آكل"
+
     },
 
+
     smoking:{
+
         name:"التدخين",
+
         icon:"fa-smoking-ban",
+
         link:"smoking.html",
+
         type:"boolean",
+
         target:1,
+
         unit:"إيقاف التدخين"
+
     }
 
 };
+
 
 
 /* =========================================================
@@ -2229,7 +3659,8 @@ const challengeDefinitions = {
 
 async function loadChallengeSettings(){
 
-    if(!currentUser) return;
+    if(!currentUser)
+        return;
 
 
     const uid =
@@ -2255,10 +3686,15 @@ async function loadChallengeSettings(){
         try{
 
             const ref =
-                doc(db,path);
+                doc(
+                    db,
+                    path
+                );
+
 
             const snap =
                 await getDoc(ref);
+
 
             if(snap.exists()){
 
@@ -2285,16 +3721,14 @@ async function loadChallengeSettings(){
     if(!settings){
 
         selectedChallenges =
-            Object.keys(challengeDefinitions);
+            Object.keys(
+                challengeDefinitions
+            );
 
         return;
 
     }
 
-
-    /*
-      دعم أكثر من شكل للبيانات القديمة
-    */
 
     let selected =
         getFirst(
@@ -2310,13 +3744,19 @@ async function loadChallengeSettings(){
 
 
     if(
+
         typeof selected === "object" &&
+
         !Array.isArray(selected)
+
     ){
 
         selected =
             Object.keys(selected)
-                .filter(key => selected[key] === true);
+                .filter(
+                    key =>
+                        selected[key] === true
+                );
 
     }
 
@@ -2332,21 +3772,23 @@ async function loadChallengeSettings(){
     }
 
 
-    /*
-      إذا كان هناك نظام قديم يستخدم true/false
-    */
-
-    if(selectedChallenges.length === 0){
+    if(
+        selectedChallenges.length === 0
+    ){
 
         selectedChallenges =
-            Object.keys(challengeDefinitions)
-                .filter(key =>
+            Object.keys(
+                challengeDefinitions
+            )
+            .filter(
+                key =>
                     settings[key] === true
-                );
+            );
 
     }
 
 }
+
 
 
 /* =========================================================
@@ -2355,7 +3797,8 @@ async function loadChallengeSettings(){
 
 async function loadDailyData(){
 
-    if(!currentUser) return;
+    if(!currentUser)
+        return;
 
 
     const uid =
@@ -2376,7 +3819,13 @@ async function loadDailyData(){
         try{
 
             const snap =
-                await getDoc(doc(db,path));
+                await getDoc(
+                    doc(
+                        db,
+                        path
+                    )
+                );
+
 
             if(snap.exists()){
 
@@ -2405,6 +3854,7 @@ async function loadDailyData(){
 }
 
 
+
 /* =========================================================
    DAILY VALUE
 ========================================================= */
@@ -2413,58 +3863,82 @@ function getDailyValue(key){
 
     const aliases = {
 
+
         water:[
+
             "water",
             "waterCups",
             "cups",
             "waterCount"
+
         ],
 
+
         walking:[
+
             "walking",
             "walkingMeters",
             "stepsDistance",
             "distance",
             "walkingDistance"
+
         ],
 
+
         sleep:[
+
             "sleep",
             "sleepHours",
             "hoursSleep"
+
         ],
 
+
         sleepSchedule:[
+
             "sleepSchedule",
             "sleepTime",
             "wakeTime",
             "sleepCompleted"
+
         ],
 
+
         sugar:[
+
             "sugar",
             "sugarFree",
             "noSugar"
+
         ],
 
+
         smoking:[
+
             "smoking",
             "smokingFree",
             "noSmoking"
+
         ]
 
     };
 
 
     const keys =
-        aliases[key] || [key];
+        aliases[key] ||
+        [key];
 
 
-    for(const field of keys){
+    for(
+        const field of keys
+    ){
 
         if(
+
             dailyData[field] !== undefined &&
+
             dailyData[field] !== null
+
         ){
 
             return dailyData[field];
@@ -2479,6 +3953,7 @@ function getDailyValue(key){
 }
 
 
+
 /* =========================================================
    CHALLENGE PROGRESS
 ========================================================= */
@@ -2488,6 +3963,7 @@ function getChallengeProgress(key){
     const definition =
         challengeDefinitions[key];
 
+
     const value =
         getDailyValue(key);
 
@@ -2496,31 +3972,43 @@ function getChallengeProgress(key){
         return 0;
 
 
-    if(definition.type === "boolean"){
+    if(
+        definition.type ===
+        "boolean"
+    ){
 
         if(
+
             value === true ||
+
             value === 1 ||
+
             value === "true" ||
+
             value === "yes" ||
+
             value === "done"
+
         ){
 
             return 100;
 
         }
 
+
         return 0;
 
     }
 
 
-    if(definition.type === "time"){
+    if(
+        definition.type ===
+        "time"
+    ){
 
-        if(value)
-            return 100;
-
-        return 0;
+        return value
+            ? 100
+            : 0;
 
     }
 
@@ -2534,13 +4022,22 @@ function getChallengeProgress(key){
 
 
     return Math.min(
+
         100,
+
         Math.round(
-            (number / definition.target) * 100
+
+            (
+                number /
+                definition.target
+            ) * 100
+
         )
+
     );
 
 }
+
 
 
 /* =========================================================
@@ -2550,10 +4047,14 @@ function getChallengeProgress(key){
 function renderChallenges(){
 
     const container =
-        document.getElementById("challengeList");
+        document.getElementById(
+            "challengeList"
+        );
 
 
-    if(selectedChallenges.length === 0){
+    if(
+        selectedChallenges.length === 0
+    ){
 
         container.innerHTML = `
 
@@ -2569,6 +4070,7 @@ function renderChallenges(){
 
         `;
 
+
         updateOverallProgress(0);
 
         return;
@@ -2582,175 +4084,245 @@ function renderChallenges(){
     container.innerHTML = "";
 
 
-    selectedChallenges.forEach(key => {
+    selectedChallenges.forEach(
+        key => {
 
-        const definition =
-            challengeDefinitions[key];
-
-
-        if(!definition)
-            return;
+            const definition =
+                challengeDefinitions[key];
 
 
-        const progress =
-            getChallengeProgress(key);
+            if(!definition)
+                return;
 
 
-        total += progress;
+            const progress =
+                getChallengeProgress(
+                    key
+                );
 
 
-        const value =
-            getDailyValue(key);
+            total += progress;
 
 
-        let valueText =
-            "لم يبدأ";
+            const value =
+                getDailyValue(key);
 
 
-        if(definition.type === "number"){
+            let valueText =
+                "لم يبدأ";
 
-            if(value !== null){
+
+            if(
+                definition.type ===
+                "number"
+            ){
 
                 valueText =
-                    `${value} / ${definition.target} ${definition.unit}`;
+                    value !== null
 
-            }else{
+                        ? `${value} / ${definition.target} ${definition.unit}`
 
-                valueText =
-                    `0 / ${definition.target} ${definition.unit}`;
+                        : `0 / ${definition.target} ${definition.unit}`;
 
             }
 
-        }
+
+            if(
+                definition.type ===
+                "boolean"
+            ){
+
+                valueText =
+                    progress === 100
+                        ? "مكتمل"
+                        : "غير مكتمل";
+
+            }
 
 
-        if(definition.type === "boolean"){
+            if(
+                definition.type ===
+                "time"
+            ){
 
-            valueText =
-                progress === 100
-                    ? "مكتمل"
-                    : "غير مكتمل";
+                valueText =
+                    progress === 100
+                        ? "مكتمل"
+                        : "لم يسجل";
 
-        }
-
-
-        if(definition.type === "time"){
-
-            valueText =
-                progress === 100
-                    ? "مكتمل"
-                    : "لم يسجل";
-
-        }
+            }
 
 
-        const item =
-            document.createElement("a");
-
-        item.href =
-            definition.link;
-
-        item.className =
-            "challenge-item";
+            const item =
+                document.createElement(
+                    "a"
+                );
 
 
-        item.innerHTML = `
-
-            <div class="challenge-icon">
-
-                <i class="fa-solid ${definition.icon}"></i>
-
-            </div>
+            item.href =
+                definition.link;
 
 
-            <div class="challenge-info">
-
-                <strong>
-                    ${escapeHTML(definition.name)}
-                </strong>
-
-                <span>
-                    ${progress === 100
-                        ? "تم إنجاز التحدي اليوم"
-                        : "استمر للوصول إلى هدفك"}
-                </span>
-
-            </div>
+            item.className =
+                "challenge-item";
 
 
-            <div class="challenge-value">
+            item.innerHTML = `
 
-                <strong>
-                    ${escapeHTML(valueText)}
-                </strong>
+                <div class="challenge-icon">
 
-                <div class="mini-progress">
-
-                    <i style="width:${progress}%"></i>
+                    <i class="fa-solid ${definition.icon}"></i>
 
                 </div>
 
-            </div>
 
-        `;
+                <div class="challenge-info">
+
+                    <strong>
+
+                        ${escapeHTML(
+                            definition.name
+                        )}
+
+                    </strong>
+
+                    <span>
+
+                        ${
+                            progress === 100
+
+                            ? "تم إنجاز التحدي اليوم"
+
+                            : "استمر للوصول إلى هدفك"
+
+                        }
+
+                    </span>
+
+                </div>
 
 
-        container.appendChild(item);
+                <div class="challenge-value">
 
-    });
+                    <strong>
+
+                        ${escapeHTML(
+                            valueText
+                        )}
+
+                    </strong>
+
+
+                    <div class="mini-progress">
+
+                        <i
+                            style="
+                                width:${progress}%
+                            ">
+                        </i>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                item
+            );
+
+        }
+    );
 
 
     const overall =
         selectedChallenges.length
+
             ? Math.round(
                 total /
                 selectedChallenges.length
             )
+
             : 0;
 
 
-    updateOverallProgress(overall);
+    updateOverallProgress(
+        overall
+    );
 
 }
+
 
 
 /* =========================================================
    PROGRESS
 ========================================================= */
 
-function updateOverallProgress(percent){
+function updateOverallProgress(
+    percent
+){
 
     percent =
         Math.max(
             0,
-            Math.min(100,percent)
+            Math.min(
+                100,
+                percent
+            )
         );
 
 
-    document.getElementById("overallPercent")
+    document
+        .getElementById(
+            "overallPercent"
+        )
         .textContent =
             `${percent}%`;
 
 
-    document.getElementById("challengePercent")
+    document
+        .getElementById(
+            "challengePercent"
+        )
         .textContent =
             `${percent}%`;
 
 
-    document.getElementById("progressRing")
+    document
+        .getElementById(
+            "progressCircle"
+        )
         .style.setProperty(
             "--progress",
             `${percent}%`
         );
 
 
-    document.getElementById("challengeSummary")
+    document
+        .getElementById(
+            "progressRing"
+        )
+        .style.setProperty(
+            "--progress",
+            `${percent}%`
+        );
+
+
+    document
+        .getElementById(
+            "challengeSummary"
+        )
         .textContent =
+
             selectedChallenges.length
+
                 ? `${selectedChallenges.length} تحديات محددة • ${percent}% مكتمل`
+
                 : "لم يتم اختيار تحديات";
 
 }
+
 
 
 /* =========================================================
@@ -2804,13 +4376,17 @@ async function loadProfile(){
 }
 
 
+
 /* =========================================================
    AUTH
 ========================================================= */
 
 onAuthStateChanged(
+
     auth,
+
     async user => {
+
 
         if(!user){
 
@@ -2828,20 +4404,27 @@ onAuthStateChanged(
 
         try{
 
+
             await loadProfile();
+
 
             await loadChallengeSettings();
 
+
             await loadDailyData();
 
+
             renderChallenges();
+
 
             renderCalendar();
 
 
         }catch(error){
 
-            console.error(error);
+            console.error(
+                error
+            );
 
         }
 
@@ -2852,17 +4435,23 @@ onAuthStateChanged(
             );
 
 
-        loading.style.opacity = "0";
+        loading.style.opacity =
+            "0";
 
 
-        setTimeout(()=>{
+        setTimeout(
+            ()=>{
 
-            loading.style.display =
-                "none";
+                loading.style.display =
+                    "none";
 
-        },300);
+            },
+            300
+        );
+
 
     }
+
 );
 
 </script>
