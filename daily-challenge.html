@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2563EB">
+    <title>Si7a | Daily Challenge</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(165deg, #3B82F6 0%, #2563EB 40%, #1E3A8A 100%);
+            color: #fff;
+        }
+
+        .full-screen-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            padding: 15px 15px 70px 15px; /* Space for bottom nav */
+        }
+
+        /* Background Shapes */
+        .wave-bg-1 {
+            position: absolute;
+            top: -80px;
+            left: -80px;
+            width: 350px;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 45%;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .wave-bg-2 {
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 40%;
+            transform: rotate(25deg);
+            pointer-events: none;
+        }
+
+        /* Header */
+        .app-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 5;
+            margin-bottom: 10px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .avatar-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .welcome-text {
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content Container */
+        .page-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 2;
+            overflow-y: auto;
+            padding-bottom: 10px;
+        }
+
+        .page-content::-webkit-scrollbar { display: none; }
+
+        /* Metallic White Container */
+        .metallic-white-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(230, 240, 255, 0.8) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 22px;
+            padding: 16px;
+            color: #1E293B;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(255, 255, 255, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .card-header-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #1E3A8A;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(30, 58, 138, 0.12);
+        }
+
+        /* Form Controls & Challenge Items */
+        .challenge-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 10px 0;
+            border-bottom: 1px dashed rgba(30, 58, 138, 0.15);
+        }
+
+        .challenge-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-label {
+            font-size: 13px;
+            font-weight: bold;
+            color: #1E3A8A;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-number, .input-time, .input-select {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(30, 58, 138, 0.2);
+            background: #fff;
+            color: #0F172A;
+            font-size: 13px;
+            outline: none;
+        }
+
+        /* Toggle Switch */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #475569;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 38px;
+            height: 22px;
+        }
+
+        .switch input { opacity: 0; width: 0; height: 0; }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #CBD5E1;
+            transition: .3s;
+            border-radius: 20px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider { background-color: #2563EB; }
+        input:checked + .slider:before { transform: translateX(16px); }
+
+        /* Radio Options Group */
+        .radio-group {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .radio-btn {
+            flex: 1;
+            text-align: center;
+        }
+
+        .radio-btn input { display: none; }
+
+        .radio-btn label {
+            display: block;
+            padding: 8px;
+            background: #F1F5F9;
+            border: 1px solid #CBD5E1;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #334155;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .radio-btn input:checked + label {
+            background: #2563EB;
+            color: #fff;
+            border-color: #2563EB;
+        }
+
+        .submit-btn {
+            background: linear-gradient(90deg, #2563EB, #1D4ED8);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            margin-top: 10px;
+            transition: transform 0.2s;
+        }
+
+        .submit-btn:active { transform: scale(0.98); }
+
+        /* Sidebar Drawer (Support Left/Right RTL) */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            display: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            width: 270px;
+            height: 100%;
+            background: rgba(30, 58, 138, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 101;
+            transition: all 0.3s ease;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        html[dir="ltr"] .sidebar { left: -280px; border-right: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="ltr"] .sidebar.active { left: 0; }
+
+        html[dir="rtl"] .sidebar { right: -280px; border-left: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="rtl"] .sidebar.active { right: 0; }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 12px;
+        }
+
+        .sidebar-logo {
+            width: 38px;
+            height: 38px;
+            background: #fff;
+            color: #2563EB;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .language-selector-top {
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .language-selector-top label {
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+            color: rgba(255, 255, 255, 0.85);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .lang-select {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+            font-weight: bold;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .lang-select option {
+            background: #1E3A8A;
+            color: #fff;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .sidebar-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 12px;
+            font-size: 13px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.2s;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Bottom Navigation Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .nav-item {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-item i { font-size: 18px; }
+
+        .nav-item.active {
+            color: #ffffff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="full-screen-container">
+        <div class="wave-bg-1"></div>
+        <div class="wave-bg-2"></div>
+
+        <!-- Header -->
+        <header class="app-header">
+            <a href="settings.html" class="user-profile">
+                <img src="https://via.placeholder.com/100" id="userAvatar" class="avatar-img" alt="User Avatar">
+                <span class="welcome-text"><span data-i18n="welcome">Welcome</span>, <span id="userName">Sarah</span></span>
+            </a>
+            <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
+        </header>
+
+        <!-- Main Content (Daily Challenge Settings) -->
+        <main class="page-content">
+
+            <div class="metallic-white-card">
+                <div class="card-header-title">
+                    <i class="fa-solid fa-trophy" style="color: #D97706;"></i>
+                    <span data-i18n="daily_challenge_title">Daily Challenge Settings</span>
+                </div>
+
+                <!-- 1. Water Intake -->
+                <div class="challenge-item">
+                    <div class="item-label">
+                        <span><i class="fa-solid fa-glass-water" style="color: #2563EB;"></i> <span data-i18n="water_intake">Water Intake</span></span>
+                        <div class="toggle-container">
+                            <span data-i18n="show_on_home">Show on Home</span>
+                            <label class="switch">
+                                <input type="checkbox" id="showWaterOnHome" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <input type="number" class="input-number" id="targetWaterCups" value="10" placeholder="Target cups number">
+                </div>
+
+                <!-- 2. Sleep Time -->
+                <div class="challenge-item">
+                    <div class="item-label">
+                        <span><i class="fa-solid fa-bed" style="color: #1E3A8A;"></i> <span data-i18n="sleep_time">Sleep Time</span></span>
+                    </div>
+                    <input type="time" class="input-time" id="sleepTime" value="23:00">
+                </div>
+
+                <!-- 3. Wake Up Time -->
+                <div class="challenge-item">
+                    <div class="item-label">
+                        <span><i class="fa-solid fa-sun" style="color: #D97706;"></i> <span data-i18n="wake_time">Wake Up Time</span></span>
+                    </div>
+                    <input type="time" class="input-time" id="wakeTime" value="07:00">
+                </div>
+
+                <!-- 4. Total Sleep Hours -->
+                <div class="challenge-item">
+                    <div class="item-label">
+                        <span><i class="fa-solid fa-moon" style="color: #4F46E5;"></i> <span data-i18n="sleep_hours">Sleep Duration (Hours)</span></span>
+                    </div>
+                    <input type="number" class="input-number" id="sleepHours" value="8" readonly style="background: #F1F5F9;">
+                </div>
+
+                <!-- 5. Walking Duration -->
+                <div class="challenge-item">
+                    <div class="item-label">
+                        <span><i class="fa-solid fa-person-walking" style="color: #059669;"></i> <span data-i18n="walking_time">Walking Duration</span></span>
+                    </div>
+                    <div class="item-controls">
+                        <input type="number" class="input-number" id="walkHours" placeholder="Hours" value="0">
+                        <input type="number" class="input-number" id="walkMinutes" placeholder="Minutes" value="30">
+                    </div>
+                </div>
+
+                <!-- 6. Phone Usage -->
+                <div class="challenge-item">
+                    <div class="item-label">
+                        <span><i class="fa-solid fa-mobile-screen-button" style="color: #DC2626;"></i> <span data-i18n="phone_usage">Phone Usage (Hours)</span></span>
+                    </div>
+                    <input type="number" class="input-number" id="phoneHours" value="3" placeholder="Hours spent">
+                </div>
+
+                <!-- 7. Sugar Intake -->
+                <div class="challenge-item">
+                    <div class="item-label">
+                        <span><i class="fa-solid fa-candy-cane" style="color: #EC4899;"></i> <span data-i18n="sugar_intake">Sugar Intake</span></span>
+                    </div>
+                    <div class="radio-group">
+                        <div class="radio-btn">
+                            <input type="radio" name="sugar" id="sugarYes" value="yes">
+                            <label for="sugarYes" data-i18n="yes">Yes</label>
+                        </div>
+                        <div class="radio-btn">
+                            <input type="radio" name="sugar" id="sugarNo" value="no" checked>
+                            <label for="sugarNo" data-i18n="no">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Smoking -->
+                <div class="challenge-item">
+                    <div class="item-label">
+                        <span><i class="fa-solid fa-smoking" style="color: #4B5563;"></i> <span data-i18n="smoking">Smoking</span></span>
+                    </div>
+                    <div class="radio-group">
+                        <div class="radio-btn">
+                            <input type="radio" name="smoking" id="smokeYes" value="yes">
+                            <label for="smokeYes" data-i18n="yes">Yes</label>
+                        </div>
+                        <div class="radio-btn">
+                            <input type="radio" name="smoking" id="smokeNo" value="no" checked>
+                            <label for="smokeNo" data-i18n="no">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Mental State -->
+                <div class="challenge-item">
+                    <div class="item-label">
+                        <span><i class="fa-solid fa-face-smile" style="color: #8B5CF6;"></i> <span data-i18n="mental_state">Mental State</span></span>
+                    </div>
+                    <select class="input-select" id="mentalState">
+                        <option value="calm" data-i18n="mood_calm">Relaxed / Calm</option>
+                        <option value="happy" data-i18n="mood_happy">Happy</option>
+                        <option value="sad" data-i18n="mood_sad">Sad</option>
+                        <option value="angry" data-i18n="mood_angry">Angry</option>
+                        <option value="stressed" data-i18n="mood_stressed">Stressed</option>
+                    </select>
+                </div>
+
+                <!-- Save Button -->
+                <button class="submit-btn" id="saveChallengeBtn" data-i18n="save_changes">Save Challenge</button>
+            </div>
+
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="bottom-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span data-i18n="home">Home</span>
+            </a>
+            <a href="daily-challenge.html" class="nav-item active">
+                <i class="fa-solid fa-person-running"></i>
+                <span data-i18n="challenge">Challenge</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-notes-medical"></i>
+                <span data-i18n="health_file">Health File</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fa-solid fa-gear"></i>
+                <span data-i18n="settings">Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Sidebar Drawer -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div style="font-weight: bold; font-size: 18px;">Si7a</div>
+        </div>
+
+        <!-- Top Language Selector -->
+        <div class="language-selector-top">
+            <label for="languageSelect"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">Language</span></label>
+            <select id="languageSelect" class="lang-select">
+                <option value="en" selected>English</option>
+                <option value="ar">العربية</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">Home</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">Health Metrics</span></a></li>
+            <li><a href="daily-challenge.html" class="active"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">Daily Challenge</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">Diet Plan</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">Health File</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">Period Tracker</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">Pregnancy Calculator</span></a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">Settings</span></a></li>
+        </ul>
+    </aside>
+
+    <script type="module">
+        import { auth } from "./js/firebase.js";
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+        let currentLang = 'en';
+
+        // Check authentication state
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                if (user.displayName) document.getElementById("userName").textContent = user.displayName;
+                if (user.photoURL) document.getElementById("userAvatar").src = user.photoURL;
+            } else {
+                window.location.href = "login.html";
+            }
+        });
+
+        // Translations Dictionary
+        const translations = {
+            en: {
+                welcome: "Welcome",
+                home: "Home",
+                challenge: "Challenge",
+                health_file: "Health File",
+                settings: "Settings",
+                select_language: "Language",
+                health_metrics: "Health Metrics",
+                daily_challenge: "Daily Challenge",
+                diet_plan: "Diet Plan",
+                period_tracker: "Period Tracker",
+                pregnancy_calc: "Pregnancy Calculator",
+                daily_challenge_title: "Daily Challenge Settings",
+                water_intake: "Target Water Intake (Cups)",
+                show_on_home: "Show on Home",
+                sleep_time: "Sleep Time",
+                wake_time: "Wake Up Time",
+                sleep_hours: "Sleep Duration (Hours)",
+                walking_time: "Walking Duration (Hours/Min)",
+                phone_usage: "Phone Usage (Hours)",
+                sugar_intake: "Sugar Intake",
+                smoking: "Smoking",
+                mental_state: "Mental State",
+                yes: "Yes",
+                no: "No",
+                mood_calm: "Relaxed / Calm",
+                mood_happy: "Happy",
+                mood_sad: "Sad",
+                mood_angry: "Angry",
+                mood_stressed: "Stressed",
+                save_changes: "Save Challenge"
+            },
+            ar: {
+                welcome: "أهلاً بك",
+                home: "الرئيسية",
+                challenge: "التحدي",
+                health_file: "ملفي الصحي",
+                settings: "الإعدادات",
+                select_language: "اللغة",
+                health_metrics: "قياساتي الصحية",
+                daily_challenge: "التحدي اليومي",
+                diet_plan: "نظامي الغذائي",
+                period_tracker: "دورتي الشهرية",
+                pregnancy_calc: "حاسبة الحمل",
+                daily_challenge_title: "إعدادات التحدي اليومي",
+                water_intake: "شرب الماء (عدد الأكواب المستهدفة)",
+                show_on_home: "عرض في الرئيسية",
+                sleep_time: "وقت النوم",
+                wake_time: "وقت الاستيقاظ",
+                sleep_hours: "عدد ساعات النوم",
+                walking_time: "مدة المشي (ساعات/دقائق)",
+                phone_usage: "استعمال الهاتف (ساعات)",
+                sugar_intake: "تناول السكريات",
+                smoking: "التدخين",
+                mental_state: "الحالة النفسية",
+                yes: "نعم",
+                no: "لا",
+                mood_calm: "راحة / هدوء",
+                mood_happy: "سعادة",
+                mood_sad: "حزن",
+                mood_angry: "غضب",
+                mood_stressed: "توتر",
+                save_changes: "حفظ التحدي"
+            },
+            fr: {
+                welcome: "Bienvenue",
+                home: "Accueil",
+                challenge: "Défi",
+                health_file: "Dossier Santé",
+                settings: "Paramètres",
+                select_language: "Langue",
+                health_metrics: "Mesures de santé",
+                daily_challenge: "Défi quotidien",
+                diet_plan: "Régime alimentaire",
+                period_tracker: "Suivi des règles",
+                pregnancy_calc: "Calculateur de grossesse",
+                daily_challenge_title: "Paramètres du défi quotidien",
+                water_intake: "Objectif d'eau (Verres)",
+                show_on_home: "Afficher sur l'accueil",
+                sleep_time: "Heure de coucher",
+                wake_time: "Heure de réveil",
+                sleep_hours: "Durée du sommeil (Heures)",
+                walking_time: "Durée de marche (Heures/Min)",
+                phone_usage: "Utilisation du téléphone (Heures)",
+                sugar_intake: "Consommation de sucre",
+                smoking: "Tabagisme",
+                mental_state: "État mental",
+                yes: "Oui",
+                no: "Non",
+                mood_calm: "Calme",
+                mood_happy: "Heureux",
+                mood_sad: "Triste",
+                mood_angry: "En colère",
+                mood_stressed: "Stressé",
+                save_changes: "Enregistrer"
+            },
+            es: {
+                welcome: "Bienvenido",
+                home: "Inicio",
+                challenge: "Desafío",
+                health_file: "Perfil de salud",
+                settings: "Ajustes",
+                select_language: "Idioma",
+                health_metrics: "Métricas de salud",
+                daily_challenge: "Desafío diario",
+                diet_plan: "Plan de dieta",
+                period_tracker: "Control del periodo",
+                pregnancy_calc: "Calculadora de embarazo",
+                daily_challenge_title: "Ajustes del desafío diario",
+                water_intake: "Objetivo de agua (Vasos)",
+                show_on_home: "Mostrar en inicio",
+                sleep_time: "Hora de dormir",
+                wake_time: "Hora de despertar",
+                sleep_hours: "Horas de sueño",
+                walking_time: "Tiempo de caminata (Horas/Min)",
+                phone_usage: "Uso del teléfono (Horas)",
+                sugar_intake: "Consumo de azúcar",
+                smoking: "Fumar",
+                mental_state: "Estado de ánimo",
+                yes: "Sí",
+                no: "No",
+                mood_calm: "Relajado",
+                mood_happy: "Feliz",
+                mood_sad: "Triste",
+                mood_angry: "Enojado",
+                mood_stressed: "Estresado",
+                save_changes: "Guardar"
+            }
+        };
+
+        // Change Language Function
+        function setLanguage(lang) {
+            currentLang = lang;
+            const html = document.documentElement;
+            
+            if (lang === 'ar') {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+            } else {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', lang);
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // Language Switch Event
+        document.getElementById("languageSelect").addEventListener("change", (e) => {
+            setLanguage(e.target.value);
+        });
+
+        // Auto Calculate Sleep Duration
+        function calculateSleepHours() {
+            const sleepVal = document.getElementById("sleepTime").value;
+            const wakeVal = document.getElementById("wakeTime").value;
+
+            if (sleepVal && wakeVal) {
+                const [sHours, sMin] = sleepVal.split(':').map(Number);
+                const [wHours, wMin] = wakeVal.split(':').map(Number);
+
+                let start = sHours + (sMin / 60);
+                let end = wHours + (wMin / 60);
+
+                if (end <= start) end += 24; // Crossed midnight
+
+                const diff = (end - start).toFixed(1);
+                document.getElementById("sleepHours").value = diff;
+            }
+        }
+
+        document.getElementById("sleepTime").addEventListener("change", calculateSleepHours);
+        document.getElementById("wakeTime").addEventListener("change", calculateSleepHours);
+
+        // Sidebar Controls
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebarOverlay");
+
+        document.getElementById("openSidebar").addEventListener("click", () => {
+            sidebar.classList.add("active");
+            overlay.style.display = "block";
+        });
+
+        overlay.addEventListener("click", () => {
+            sidebar.classList.remove("active");
+            overlay.style.display = "none";
+        });
+
+        // Save Button Event Handler
+        document.getElementById("saveChallengeBtn").addEventListener("click", () => {
+            alert(currentLang === 'ar' ? 'تم حفظ التحدي بنجاح!' : 'Challenge saved successfully!');
+        });
+
+        calculateSleepHours();
+    </script>
+</body>
+
+</html>
