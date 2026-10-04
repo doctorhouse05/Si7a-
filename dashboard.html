@@ -2,20 +2,28 @@
 <html lang="ar" dir="rtl">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<meta name="theme-color" content="#FFFFFF">
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<meta name="theme-color" content="#F8FAFC">
 
 <title>صحتي+ | الرئيسية</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&display=swap"
+      rel="stylesheet">
 
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 
 <style>
 
@@ -30,51 +38,64 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 }
 
 :root{
-    --blue:#1976D2;
-    --blue2:#2588EA;
-    --blue-light:#EDF6FF;
 
-    --pink:#FE2C55;
-    --pink-light:#FFF0F3;
+    --primary:#1976D2;
+    --primary-dark:#125EA8;
+    --primary-soft:#EAF4FF;
+
+    --green:#159A78;
+    --green-soft:#EAF8F3;
 
     --purple:#7357D8;
-    --purple-light:#F1EEFF;
+    --purple-soft:#F1EEFF;
 
-    --green:#159A7C;
-    --green-light:#EAF8F4;
+    --pink:#E85A7A;
+    --pink-soft:#FFF0F4;
 
-    --cyan:#13B8C4;
-    --cyan-light:#EAFBFC;
+    --orange:#E48A16;
+    --orange-soft:#FFF5E6;
 
-    --orange:#E58A00;
-    --orange-light:#FFF5E4;
+    --red:#D94747;
+    --red-soft:#FFF0F0;
 
-    --red:#E53935;
-    --red-light:#FFF0F0;
+    --text:#17202A;
+    --text-2:#46515D;
+    --muted:#89939E;
 
-    --text:#16181B;
-    --muted:#7B8188;
-
-    --bg:#F7F9FC;
+    --background:#F6F8FA;
     --white:#FFFFFF;
 
-    --border:#E8ECF1;
+    --border:#E5EAF0;
 
-    --shadow:0 5px 20px rgba(24,39,75,.055);
-    --shadow-soft:0 2px 12px rgba(24,39,75,.045);
+    --radius:18px;
+
+    --shadow:
+        0 5px 20px rgba(28,54,82,.055);
 }
+
+
+/* =========================================================
+   BASE
+========================================================= */
 
 html{
     scroll-behavior:smooth;
 }
 
 body{
+
     min-height:100vh;
-    background:var(--bg);
+
+    background:var(--background);
+
     color:var(--text);
+
     font-family:"Cairo",sans-serif;
+
     font-size:14px;
+
     font-weight:600;
+
     -webkit-font-smoothing:antialiased;
 }
 
@@ -90,8 +111,8 @@ button{
 }
 
 a{
-    color:inherit;
     text-decoration:none;
+    color:inherit;
 }
 
 
@@ -100,10 +121,17 @@ a{
 ========================================================= */
 
 .app{
+
     width:100%;
-    max-width:650px;
+
+    max-width:680px;
+
     margin:auto;
-    padding:0 15px 105px;
+
+    padding:
+        0
+        16px
+        105px;
 }
 
 
@@ -112,457 +140,957 @@ a{
 ========================================================= */
 
 .header{
-    padding:20px 2px 12px;
-}
 
-.header-top{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
-    gap:12px;
+
+    padding:
+        18px
+        0
+        14px;
 }
 
-.user-area{
+
+.brand{
+
     display:flex;
+
     align-items:center;
-    gap:11px;
-    min-width:0;
+
+    gap:10px;
 }
 
-.avatar{
-    width:48px;
-    height:48px;
-    flex:none;
-    border-radius:50%;
-    overflow:hidden;
-    border:2px solid #fff;
-    box-shadow:0 2px 10px rgba(0,0,0,.09);
-    background:#F0F2F5;
-}
 
-.avatar img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
+.brand-logo{
 
-.greeting{
-    min-width:0;
-}
-
-.greeting-small{
-    color:#7A8189;
-    font-size:11px;
-    font-weight:700;
-    margin-bottom:1px;
-}
-
-.greeting-name{
-    color:#15171A;
-    font-size:18px;
-    line-height:1.4;
-    font-weight:900;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-}
-
-.notification{
     width:42px;
     height:42px;
-    flex:none;
 
     display:flex;
-    align-items:center;
-    justify-content:center;
 
-    border-radius:14px;
-    background:#fff;
-    border:1px solid var(--border);
-
-    color:#30343A;
-    font-size:16px;
-
-    box-shadow:var(--shadow-soft);
-}
-
-.date-line{
-    margin-top:8px;
-    color:#7C838B;
-    font-size:11px;
-    font-weight:700;
-}
-
-
-/* =========================================================
-   TODAY SUMMARY
-========================================================= */
-
-.summary-card{
-    position:relative;
-    overflow:hidden;
-
-    margin-top:10px;
-    padding:17px;
-
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:23px;
-
-    box-shadow:var(--shadow);
-}
-
-.summary-card::before{
-    content:"";
-    position:absolute;
-
-    width:150px;
-    height:150px;
-
-    border-radius:50%;
-
-    left:-80px;
-    top:-85px;
-
-    background:rgba(37,136,234,.055);
-}
-
-.summary-card::after{
-    content:"";
-    position:absolute;
-
-    width:120px;
-    height:120px;
-
-    border-radius:50%;
-
-    right:-70px;
-    bottom:-80px;
-
-    background:rgba(254,44,85,.045);
-}
-
-.summary-content{
-    position:relative;
-    z-index:2;
-
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.summary-text{
-    flex:1;
-    min-width:0;
-}
-
-.summary-title{
-    color:#181A1D;
-    font-size:16px;
-    font-weight:900;
-    margin-bottom:3px;
-}
-
-.summary-subtitle{
-    color:#858B92;
-    font-size:11px;
-    line-height:1.8;
-    font-weight:600;
-}
-
-.summary-button{
-    display:inline-flex;
-    align-items:center;
-    gap:5px;
-
-    margin-top:9px;
-    padding:7px 11px;
-
-    border-radius:10px;
-
-    background:var(--blue-light);
-    color:var(--blue);
-
-    font-size:10px;
-    font-weight:900;
-}
-
-.summary-ring{
-    position:relative;
-    width:78px;
-    height:78px;
-    flex:none;
-}
-
-.summary-ring svg{
-    width:100%;
-    height:100%;
-    transform:rotate(-90deg);
-}
-
-.summary-ring circle{
-    fill:none;
-    stroke-width:8;
-}
-
-.ring-bg{
-    stroke:#EAF0F5;
-}
-
-.ring-value{
-    stroke:var(--blue);
-    stroke-linecap:round;
-    transition:.6s ease;
-}
-
-.ring-number{
-    position:absolute;
-    inset:0;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:#17191C;
-    font-size:16px;
-    font-weight:900;
-}
-
-
-/* =========================================================
-   SECTION
-========================================================= */
-
-.section{
-    margin-top:23px;
-}
-
-.section-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:11px;
-}
-
-.section-title{
-    color:#17191C;
-    font-size:16px;
-    font-weight:900;
-}
-
-.section-more{
-    color:var(--blue);
-    font-size:10px;
-    font-weight:800;
-}
-
-
-/* =========================================================
-   HEALTH GRID
-========================================================= */
-
-.health-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-}
-
-.health-card{
-    position:relative;
-    overflow:hidden;
-
-    min-height:91px;
-
-    padding:13px;
-
-    background:#fff;
-
-    border:1px solid var(--border);
-    border-radius:19px;
-
-    box-shadow:var(--shadow-soft);
-
-    transition:.18s ease;
-}
-
-.health-card:active{
-    transform:scale(.97);
-}
-
-.health-card::after{
-    content:"";
-    position:absolute;
-
-    width:65px;
-    height:65px;
-
-    border-radius:50%;
-
-    left:-30px;
-    bottom:-35px;
-
-    background:var(--card-light);
-}
-
-.health-card-top{
-    position:relative;
-    z-index:2;
-
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.health-icon{
-    width:43px;
-    height:43px;
-    flex:none;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:14px;
-
-    background:var(--card-light);
-    color:var(--card-color);
-
-    font-size:17px;
-}
-
-.health-info{
-    min-width:0;
-}
-
-.health-name{
-    color:#24272B;
-    font-size:13px;
-    font-weight:900;
-    margin-bottom:2px;
-}
-
-.health-desc{
-    color:#8A9097;
-    font-size:9px;
-    font-weight:600;
-}
-
-.health-arrow{
-    position:absolute;
-
-    left:12px;
-    top:15px;
-
-    color:#A2A8AE;
-    font-size:10px;
-}
-
-
-/* =========================================================
-   DAILY CHALLENGES
-========================================================= */
-
-.challenge-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-}
-
-.challenge-card{
-    position:relative;
-    overflow:hidden;
-
-    min-height:91px;
-
-    padding:12px;
-
-    background:#fff;
-
-    border:1px solid var(--border);
-    border-radius:19px;
-
-    box-shadow:var(--shadow-soft);
-
-    transition:.18s ease;
-}
-
-.challenge-card:active{
-    transform:scale(.97);
-}
-
-.challenge-top{
-    display:flex;
-    align-items:center;
-    gap:9px;
-}
-
-.challenge-icon{
-    width:40px;
-    height:40px;
-    flex:none;
-
-    display:flex;
     align-items:center;
     justify-content:center;
 
     border-radius:13px;
 
-    background:var(--icon-bg);
-    color:var(--challenge-color);
+    background:var(--primary);
 
-    font-size:16px;
+    color:#FFF;
+
+    font-size:18px;
+
+    box-shadow:
+        0 5px 13px
+        rgba(25,118,210,.20);
 }
 
-.challenge-name{
-    color:#24272B;
-    font-size:12px;
+
+.brand-text strong{
+
+    display:block;
+
+    color:var(--text);
+
+    font-size:17px;
+
     font-weight:900;
+
+    line-height:1.2;
 }
 
-.challenge-value{
-    margin-top:7px;
 
-    color:#858B92;
+.brand-text span{
+
+    display:block;
+
+    margin-top:2px;
+
+    color:var(--muted);
 
     font-size:9px;
+
     font-weight:700;
+}
+
+
+.header-action{
+
+    width:40px;
+    height:40px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:13px;
+
+    background:#FFF;
+
+    color:var(--text-2);
+
+    box-shadow:var(--shadow);
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile{
+
+    position:relative;
+
+    padding:17px;
+
+    background:#FFF;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:22px;
+
+    box-shadow:var(--shadow);
+}
+
+
+.profile-main{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+
+.avatar{
+
+    width:58px;
+    height:58px;
+
+    flex:none;
+
+    overflow:hidden;
+
+    border-radius:17px;
+
+    border:
+        2px solid
+        #EDF3F9;
+
+    background:#F4F7FA;
+}
+
+
+.avatar img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+
+.profile-info{
+
+    min-width:0;
+
+    flex:1;
+}
+
+
+.profile-name{
+
+    color:var(--text);
+
+    font-size:17px;
+
+    font-weight:900;
+
+    line-height:1.4;
 
     white-space:nowrap;
+
     overflow:hidden;
+
     text-overflow:ellipsis;
 }
 
-.challenge-progress{
-    height:4px;
-    overflow:hidden;
 
-    margin-top:6px;
+.profile-meta{
 
-    background:#EDF0F3;
-    border-radius:10px;
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:5px 11px;
+
+    margin-top:5px;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    font-weight:700;
 }
 
-.challenge-progress span{
-    display:block;
-    height:100%;
 
-    border-radius:10px;
+.meta-item{
 
-    background:var(--challenge-color);
+    display:flex;
 
-    transition:.5s ease;
+    align-items:center;
+
+    gap:4px;
 }
 
-.challenge-percent{
-    position:absolute;
 
-    left:10px;
-    bottom:12px;
+.meta-item i{
 
-    color:var(--challenge-color);
+    color:var(--primary);
 
     font-size:9px;
+}
+
+
+.edit-profile{
+
+    width:34px;
+    height:34px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex:none;
+
+    border-radius:10px;
+
+    background:var(--primary-soft);
+
+    color:var(--primary);
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   MEDICAL SUMMARY
+========================================================= */
+
+.medical-summary{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:7px;
+
+    margin-top:14px;
+}
+
+
+.summary-item{
+
+    min-width:0;
+
+    padding:9px 8px;
+
+    background:#F8FAFC;
+
+    border:
+        1px solid
+        #EDF0F3;
+
+    border-radius:12px;
+}
+
+
+.summary-label{
+
+    color:var(--muted);
+
+    font-size:8px;
+
+    font-weight:800;
+
+    margin-bottom:3px;
+}
+
+
+.summary-value{
+
+    color:var(--text);
+
+    font-size:10px;
+
     font-weight:900;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+.summary-value.empty{
+
+    color:#A5ADB5;
+
+}
+
+
+/* =========================================================
+   DATE BAR
+========================================================= */
+
+.date-bar{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-top:18px;
+
+    padding:
+        0
+        2px;
+}
+
+
+.date-info{
+
+    min-width:0;
+}
+
+
+.date-small{
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    font-weight:700;
+}
+
+
+.date-title{
+
+    margin-top:1px;
+
+    color:var(--text);
+
+    font-size:16px;
+
+    font-weight:900;
+}
+
+
+.open-calendar{
+
+    width:39px;
+    height:39px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:12px;
+
+    background:#FFF;
+
+    color:var(--primary);
+
+    box-shadow:var(--shadow);
+}
+
+
+/* =========================================================
+   WEEK STRIP
+========================================================= */
+
+.week-strip{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(7,1fr);
+
+    gap:5px;
+
+    margin-top:11px;
+}
+
+
+.day{
+
+    min-width:0;
+
+    padding:7px 2px 8px;
+
+    text-align:center;
+
+    border:
+        1px solid
+        transparent;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:.18s;
+}
+
+
+.day-name{
+
+    color:#9AA3AC;
+
+    font-size:8px;
+
+    font-weight:800;
+
+    margin-bottom:6px;
+}
+
+
+.day-number{
+
+    width:31px;
+    height:31px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    color:var(--text-2);
+
+    font-size:12px;
+
+    font-weight:900;
+}
+
+
+.day.active{
+
+    background:var(--primary-soft);
+
+    border-color:#D8EAFE;
+}
+
+
+.day.active .day-name{
+
+    color:var(--primary);
+}
+
+
+.day.active .day-number{
+
+    background:var(--primary);
+
+    color:#FFF;
+
+    box-shadow:
+        0 4px 10px
+        rgba(25,118,210,.18);
+}
+
+
+.day.today:not(.active) .day-number{
+
+    border:
+        1px solid
+        var(--primary);
+
+    color:var(--primary);
+}
+
+
+/* =========================================================
+   QUICK ACCESS
+========================================================= */
+
+.section{
+
+    margin-top:23px;
+}
+
+
+.section-head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:11px;
+}
+
+
+.section-title{
+
+    color:var(--text);
+
+    font-size:16px;
+
+    font-weight:900;
+}
+
+
+.section-link{
+
+    color:var(--primary);
+
+    font-size:10px;
+
+    font-weight:800;
+}
+
+
+.quick-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:8px;
+}
+
+
+.quick-card{
+
+    position:relative;
+
+    min-width:0;
+
+    padding:
+        12px
+        5px
+        11px;
+
+    text-align:center;
+
+    background:#FFF;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:17px;
+
+    box-shadow:var(--shadow);
+
+    transition:
+        transform .15s ease;
+}
+
+
+.quick-card:active{
+
+    transform:scale(.95);
+}
+
+
+.quick-icon{
+
+    width:43px;
+    height:43px;
+
+    margin:
+        0 auto 7px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:13px;
+
+    font-size:17px;
+}
+
+
+.quick-name{
+
+    color:var(--text-2);
+
+    font-size:9px;
+
+    font-weight:900;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+.blue{
+    background:var(--primary-soft);
+    color:var(--primary);
+}
+
+
+.green{
+    background:var(--green-soft);
+    color:var(--green);
+}
+
+
+.purple{
+    background:var(--purple-soft);
+    color:var(--purple);
+}
+
+
+.pink{
+    background:var(--pink-soft);
+    color:var(--pink);
+}
+
+
+/* =========================================================
+   DAILY OVERVIEW
+========================================================= */
+
+.daily-overview{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1976D2,
+            #3188D8
+        );
+
+    border-radius:21px;
+
+    color:#FFF;
+
+    box-shadow:
+        0 8px 22px
+        rgba(25,118,210,.18);
+}
+
+
+.overview-ring{
+
+    position:relative;
+
+    width:72px;
+    height:72px;
+
+    flex:none;
+}
+
+
+.overview-ring svg{
+
+    width:100%;
+    height:100%;
+
+    transform:rotate(-90deg);
+}
+
+
+.overview-ring circle{
+
+    fill:none;
+
+    stroke-width:8;
+}
+
+
+.ring-bg{
+
+    stroke:
+        rgba(255,255,255,.18);
+}
+
+
+.ring-value{
+
+    stroke:#FFF;
+
+    stroke-linecap:round;
+
+    transition:
+        stroke-dashoffset .5s ease;
+}
+
+
+.ring-number{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    color:#FFF;
+
+    font-size:14px;
+
+    font-weight:900;
+}
+
+
+.overview-text{
+
+    min-width:0;
+
+    flex:1;
+}
+
+
+.overview-title{
+
+    font-size:16px;
+
+    font-weight:900;
+}
+
+
+.overview-subtitle{
+
+    margin-top:3px;
+
+    color:
+        rgba(255,255,255,.80);
+
+    font-size:10px;
+
+    line-height:1.8;
+
+    font-weight:600;
+}
+
+
+.overview-button{
+
+    width:34px;
+    height:34px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex:none;
+
+    border-radius:10px;
+
+    background:
+        rgba(255,255,255,.13);
+
+    color:#FFF;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   DAILY TRACKING
+========================================================= */
+
+.daily-list{
+
+    display:grid;
+
+    gap:8px;
+}
+
+
+.daily-card{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+    min-height:70px;
+
+    padding:10px 12px;
+
+    overflow:hidden;
+
+    background:#FFF;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:17px;
+
+    box-shadow:var(--shadow);
+
+    transition:.15s;
+}
+
+
+.daily-card:active{
+
+    transform:scale(.985);
+}
+
+
+.daily-icon{
+
+    width:43px;
+    height:43px;
+
+    flex:none;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:13px;
+
+    background:var(--daily-bg);
+
+    color:var(--daily-color);
+
+    font-size:17px;
+}
+
+
+.daily-content{
+
+    min-width:0;
+
+    flex:1;
+}
+
+
+.daily-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:8px;
+
+    margin-bottom:4px;
+}
+
+
+.daily-name{
+
+    min-width:0;
+
+    color:var(--text);
+
+    font-size:12px;
+
+    font-weight:900;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+.daily-percent{
+
+    color:var(--daily-color);
+
+    font-size:10px;
+
+    font-weight:900;
+}
+
+
+.daily-value{
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    margin-bottom:5px;
+}
+
+
+.progress{
+
+    width:100%;
+
+    height:4px;
+
+    overflow:hidden;
+
+    background:#EDF0F3;
+
+    border-radius:10px;
+}
+
+
+.progress span{
+
+    display:block;
+
+    height:100%;
+
+    background:var(--daily-color);
+
+    border-radius:10px;
+
+    transition:
+        width .5s ease;
 }
 
 
@@ -571,67 +1099,90 @@ a{
 ========================================================= */
 
 .empty{
-    padding:24px 16px;
+
+    padding:24px 15px;
 
     text-align:center;
 
-    background:#fff;
+    background:#FFF;
 
-    border:1px dashed #D9DEE5;
-    border-radius:20px;
+    border:
+        1px dashed
+        #D8DEE5;
+
+    border-radius:18px;
 }
 
+
 .empty-icon{
+
     width:48px;
     height:48px;
 
-    margin:0 auto 9px;
+    margin:
+        0 auto 10px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
-    border-radius:15px;
+    border-radius:14px;
 
-    background:var(--blue-light);
-    color:var(--blue);
+    background:var(--primary-soft);
+
+    color:var(--primary);
 
     font-size:18px;
 }
 
+
 .empty strong{
+
     display:block;
 
-    color:#24272B;
+    color:var(--text);
 
     font-size:13px;
-    font-weight:900;
 
-    margin-bottom:4px;
+    font-weight:900;
 }
+
 
 .empty p{
-    color:#858B92;
+
+    margin-top:5px;
+
+    color:var(--muted);
 
     font-size:10px;
-    line-height:1.8;
 
-    margin-bottom:12px;
+    line-height:1.8;
 }
 
+
 .empty-button{
+
     display:inline-flex;
+
     align-items:center;
+
+    justify-content:center;
+
     gap:6px;
 
-    padding:8px 13px;
+    margin-top:12px;
 
-    background:#15171A;
-    color:#fff;
+    padding:9px 14px;
 
     border-radius:11px;
 
+    background:var(--primary);
+
+    color:#FFF;
+
     font-size:10px;
+
     font-weight:900;
 }
 
@@ -641,70 +1192,104 @@ a{
 ========================================================= */
 
 .bottom-nav{
+
     position:fixed;
+
     z-index:100;
 
+    right:0;
+    left:0;
     bottom:0;
-    left:50%;
 
-    width:min(650px,100%);
+    display:flex;
 
-    transform:translateX(-50%);
-
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
+    justify-content:center;
 
     padding:
-        8px
-        8px
+        7px
+        10px
         max(8px,env(safe-area-inset-bottom));
 
-    background:rgba(255,255,255,.96);
+    background:
+        rgba(255,255,255,.96);
 
     backdrop-filter:blur(18px);
 
-    border-top:1px solid #E3E7EC;
+    border-top:
+        1px solid
+        var(--border);
 }
+
+
+.nav-inner{
+
+    width:min(680px,100%);
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:4px;
+}
+
 
 .nav-item{
+
     position:relative;
 
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+    padding:6px 3px;
 
-    gap:3px;
+    text-align:center;
 
-    padding:5px;
-
-    color:#9AA0A7;
+    color:#9AA3AC;
 
     font-size:9px;
-    font-weight:700;
+
+    font-weight:800;
 }
 
+
 .nav-item i{
+
+    display:block;
+
+    margin-bottom:4px;
+
     font-size:17px;
 }
 
+
 .nav-item.active{
-    color:var(--blue);
+
+    color:var(--primary);
+}
+
+
+.nav-item.active i{
+
     font-weight:900;
 }
 
-.nav-item.active::after{
+
+.nav-item.active::before{
+
     content:"";
 
     position:absolute;
 
-    bottom:-2px;
+    top:-7px;
 
-    width:5px;
-    height:5px;
+    left:50%;
 
-    border-radius:50%;
+    width:25px;
+    height:3px;
 
-    background:var(--blue);
+    transform:translateX(-50%);
+
+    border-radius:0 0 5px 5px;
+
+    background:var(--primary);
 }
 
 
@@ -712,86 +1297,114 @@ a{
    LOADING
 ========================================================= */
 
-.loading-screen{
+.loading{
+
     position:fixed;
+
     z-index:9999;
+
     inset:0;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
-    background:#fff;
+    background:#FFF;
 
     transition:.3s;
 }
 
-.loading-screen.hide{
+
+.loading.hide{
+
     opacity:0;
+
     pointer-events:none;
 }
 
-.loading-box{
+
+.loading-content{
+
     text-align:center;
 }
 
-.loading-logo{
-    width:65px;
-    height:65px;
 
-    margin:0 auto 10px;
+.loading-logo{
+
+    width:64px;
+    height:64px;
+
+    margin:
+        0 auto 12px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
-    border-radius:20px;
+    border-radius:19px;
 
-    background:var(--blue);
+    background:var(--primary);
 
-    color:#fff;
+    color:#FFF;
 
-    font-size:26px;
+    font-size:25px;
 
     box-shadow:
-        0 7px 20px rgba(25,118,210,.2);
+        0 8px 20px
+        rgba(25,118,210,.20);
 }
 
-.loading-box strong{
+
+.loading-content strong{
+
     display:block;
 
-    color:#17191C;
+    color:var(--text);
 
     font-size:20px;
+
     font-weight:900;
 }
 
-.loading-box p{
-    margin-top:2px;
 
-    color:#858B92;
+.loading-content p{
+
+    margin-top:3px;
+
+    color:var(--muted);
 
     font-size:10px;
 }
 
+
 .spinner{
-    width:23px;
-    height:23px;
 
-    margin:14px auto 0;
+    width:22px;
+    height:22px;
 
-    border:3px solid #E8EDF2;
-    border-top-color:var(--blue);
+    margin:15px auto 0;
+
+    border:
+        3px solid
+        #E7EDF3;
+
+    border-top-color:var(--primary);
 
     border-radius:50%;
 
-    animation:spin .8s linear infinite;
+    animation:
+        spin .8s linear infinite;
 }
 
+
 @keyframes spin{
+
     to{
         transform:rotate(360deg);
     }
+
 }
 
 
@@ -800,111 +1413,242 @@ a{
 ========================================================= */
 
 .modal{
+
     position:fixed;
+
     z-index:500;
 
     inset:0;
 
     display:none;
+
     align-items:flex-end;
-    justify-content:center;
 
-    background:rgba(0,0,0,.42);
+    background:
+        rgba(13,24,35,.38);
 
-    backdrop-filter:blur(5px);
+    backdrop-filter:blur(4px);
 }
 
+
 .modal.show{
+
     display:flex;
 }
 
+
 .modal-box{
-    width:min(650px,100%);
+
+    width:min(680px,100%);
 
     padding:20px;
 
-    background:#fff;
+    background:#FFF;
 
-    border-radius:24px 24px 0 0;
+    border-radius:
+        23px
+        23px
+        0
+        0;
 
-    animation:slideUp .25s ease;
+    animation:
+        slideUp .25s ease;
 }
 
+
 @keyframes slideUp{
+
     from{
         transform:translateY(100%);
     }
+
     to{
         transform:translateY(0);
     }
+
 }
 
+
 .modal-head{
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     margin-bottom:14px;
 }
 
+
 .modal-head strong{
+
+    color:var(--text);
+
     font-size:16px;
+
     font-weight:900;
 }
 
+
 .close-modal{
+
     width:36px;
     height:36px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
-    border-radius:11px;
+    border-radius:10px;
 
-    background:#F0F2F5;
+    background:#F1F4F7;
 
-    color:#333;
+    color:var(--text-2);
 }
 
 
 /* =========================================================
-   SMALL SCREENS
+   SMALL DEVICES
 ========================================================= */
 
-@media(max-width:380px){
+@media(max-width:390px){
 
     .app{
+
         padding-left:11px;
         padding-right:11px;
     }
 
-    .greeting-name{
-        font-size:16px;
+
+    .header{
+
+        padding-top:14px;
     }
 
-    .health-grid,
-    .challenge-grid{
-        gap:7px;
-    }
 
-    .health-card,
-    .challenge-card{
-        padding:10px;
-    }
+    .brand-logo{
 
-    .health-icon{
         width:39px;
         height:39px;
     }
 
-    .challenge-icon{
-        width:37px;
-        height:37px;
+
+    .profile{
+
+        padding:14px;
     }
+
+
+    .avatar{
+
+        width:53px;
+        height:53px;
+    }
+
+
+    .profile-name{
+
+        font-size:15px;
+    }
+
+
+    .medical-summary{
+
+        gap:5px;
+    }
+
+
+    .summary-item{
+
+        padding:8px 6px;
+    }
+
+
+    .summary-value{
+
+        font-size:9px;
+    }
+
+
+    .quick-grid{
+
+        gap:5px;
+    }
+
+
+    .quick-card{
+
+        padding-left:3px;
+        padding-right:3px;
+    }
+
+
+    .quick-icon{
+
+        width:40px;
+        height:40px;
+    }
+
+
+    .quick-name{
+
+        font-size:8px;
+    }
+
+
+    .day-number{
+
+        width:29px;
+        height:29px;
+
+        font-size:11px;
+    }
+
+
+    .daily-card{
+
+        padding:9px;
+
+        gap:9px;
+    }
+
+
+    .daily-icon{
+
+        width:40px;
+        height:40px;
+    }
+
+}
+
+
+@media(max-width:340px){
+
+    .medical-summary{
+
+        grid-template-columns:1fr 1fr;
+    }
+
+
+    .summary-item:last-child{
+
+        grid-column:
+            1 / -1;
+    }
+
+
+    .quick-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
 }
 
 </style>
+
 </head>
 
 
@@ -915,12 +1659,14 @@ a{
      LOADING
 ========================================================= -->
 
-<div class="loading-screen" id="loadingScreen">
+<div class="loading" id="loadingScreen">
 
-    <div class="loading-box">
+    <div class="loading-content">
 
         <div class="loading-logo">
+
             <i class="fa-solid fa-heart-pulse"></i>
+
         </div>
 
         <strong>صحتي+</strong>
@@ -945,92 +1691,241 @@ a{
 
 <header class="header">
 
-    <div class="header-top">
+    <div class="brand">
 
-        <div class="user-area">
+        <div class="brand-logo">
 
-            <div class="avatar">
-
-                <img
-                    id="profileAvatar"
-                    alt="صورة المستخدم">
-
-            </div>
-
-            <div class="greeting">
-
-                <div class="greeting-small">
-                    أهلاً بك
-                </div>
-
-                <div
-                    class="greeting-name"
-                    id="profileName">
-                    مستخدم صحتي
-                </div>
-
-            </div>
+            <i class="fa-solid fa-heart-pulse"></i>
 
         </div>
 
+        <div class="brand-text">
 
-        <button
-            class="notification"
-            aria-label="الإشعارات"
-            onclick="location.href='notifications.html'">
+            <strong>صحتي+</strong>
 
-            <i class="fa-regular fa-bell"></i>
+            <span>
+                ملفك الصحي في مكان واحد
+            </span>
 
-        </button>
+        </div>
 
     </div>
 
 
-    <div
-        class="date-line"
-        id="selectedDateText">
-        اليوم
-    </div>
+    <a
+        href="profile.html"
+        class="header-action"
+        aria-label="الحساب">
+
+        <i class="fa-solid fa-user"></i>
+
+    </a>
 
 </header>
 
 
 <!-- =========================================================
-     TODAY SUMMARY
+     PROFILE
 ========================================================= -->
 
-<section class="summary-card">
+<section class="profile">
 
-    <div class="summary-content">
+    <div class="profile-main">
 
-        <div class="summary-text">
 
-            <div class="summary-title">
-                ملخص اليوم
-            </div>
+        <div class="avatar">
 
-            <div
-                class="summary-subtitle"
-                id="scoreSubtitle">
-
-                اختر تحدياتك اليومية لتظهر نسبة تقدمك هنا.
-
-            </div>
-
-            <button
-                class="summary-button"
-                onclick="location.href='challenges.html'">
-
-                عرض التفاصيل
-
-                <i class="fa-solid fa-chevron-left"></i>
-
-            </button>
+            <img
+                id="profileAvatar"
+                alt="صورة المستخدم">
 
         </div>
 
 
-        <div class="summary-ring">
+        <div class="profile-info">
+
+            <div
+                class="profile-name"
+                id="profileName">
+
+                مستخدم صحتي
+
+            </div>
+
+
+            <div class="profile-meta">
+
+                <div class="meta-item">
+
+                    <i class="fa-solid fa-venus-mars"></i>
+
+                    <span id="profileGender">
+                        غير محدد
+                    </span>
+
+                </div>
+
+
+                <div class="meta-item">
+
+                    <i class="fa-solid fa-droplet"></i>
+
+                    <span id="profileBlood">
+                        غير محددة
+                    </span>
+
+                </div>
+
+
+                <div class="meta-item">
+
+                    <i class="fa-solid fa-ruler-vertical"></i>
+
+                    <span id="profileHeight">
+                        غير محدد
+                    </span>
+
+                </div>
+
+
+                <div class="meta-item">
+
+                    <i class="fa-solid fa-weight-scale"></i>
+
+                    <span id="profileWeight">
+                        غير محدد
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <a
+            href="profile.html"
+            class="edit-profile"
+            aria-label="تعديل الملف">
+
+            <i class="fa-solid fa-pen"></i>
+
+        </a>
+
+    </div>
+
+
+    <div class="medical-summary">
+
+
+        <div class="summary-item">
+
+            <div class="summary-label">
+                مؤشر كتلة الجسم
+            </div>
+
+            <div
+                class="summary-value"
+                id="profileBMI">
+
+                —
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-item">
+
+            <div class="summary-label">
+                الأمراض المزمنة
+            </div>
+
+            <div
+                class="summary-value empty"
+                id="profileDiseases">
+
+                لا توجد معلومات
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-item">
+
+            <div class="summary-label">
+                آخر تحديث
+            </div>
+
+            <div
+                class="summary-value"
+                id="profileUpdated">
+
+                اليوم
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     DATE
+========================================================= -->
+
+<section class="date-bar">
+
+    <div class="date-info">
+
+        <div class="date-small">
+            المتابعة اليومية
+        </div>
+
+        <div
+            class="date-title"
+            id="selectedDateText">
+
+            اليوم
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="open-calendar"
+        id="openCalendar"
+        aria-label="اختيار التاريخ">
+
+        <i class="fa-regular fa-calendar-days"></i>
+
+    </button>
+
+</section>
+
+
+<div
+    class="week-strip"
+    id="week">
+</div>
+
+
+<!-- =========================================================
+     DAILY OVERVIEW
+========================================================= -->
+
+<section class="section">
+
+
+    <div class="daily-overview">
+
+
+        <div class="overview-ring">
 
             <svg viewBox="0 0 100 100">
 
@@ -1051,13 +1946,44 @@ a{
 
             </svg>
 
+
             <div
                 class="ring-number"
                 id="progressNumber">
+
                 0%
+
             </div>
 
         </div>
+
+
+        <div class="overview-text">
+
+            <div class="overview-title">
+                المتابعة اليومية
+            </div>
+
+            <div
+                class="overview-subtitle"
+                id="scoreSubtitle">
+
+                اختر التحديات التي تريد متابعتها.
+
+            </div>
+
+        </div>
+
+
+        <a
+            href="challenges.html"
+            class="overview-button"
+            aria-label="ضبط التحديات">
+
+            <i class="fa-solid fa-sliders"></i>
+
+        </a>
+
 
     </div>
 
@@ -1065,59 +1991,44 @@ a{
 
 
 <!-- =========================================================
-     HEALTH
+     QUICK ACCESS
 ========================================================= -->
 
 <section class="section">
 
-    <div class="section-header">
+
+    <div class="section-head">
 
         <div class="section-title">
-            صحتي
+            الوصول السريع
         </div>
 
         <a
             href="health.html"
-            class="section-more">
-            عرض الكل
+            class="section-link">
+
+            عرض صحتي
+
         </a>
 
     </div>
 
 
-    <div class="health-grid">
+    <div class="quick-grid">
 
 
         <a
             href="health.html"
-            class="health-card"
-            style="
-                --card-color:#1976D2;
-                --card-light:#EDF6FF;
-            ">
+            class="quick-card">
 
-            <i class="fa-solid fa-chevron-left health-arrow"></i>
+            <div class="quick-icon blue">
 
-            <div class="health-card-top">
+                <i class="fa-solid fa-chart-line"></i>
 
-                <div class="health-icon">
+            </div>
 
-                    <i class="fa-solid fa-chart-line"></i>
-
-                </div>
-
-                <div class="health-info">
-
-                    <div class="health-name">
-                        قياساتي الصحية
-                    </div>
-
-                    <div class="health-desc">
-                        الوزن والضغط والسكر
-                    </div>
-
-                </div>
-
+            <div class="quick-name">
+                قياساتي
             </div>
 
         </a>
@@ -1125,34 +2036,16 @@ a{
 
         <a
             href="period.html"
-            class="health-card"
-            style="
-                --card-color:#FE2C55;
-                --card-light:#FFF0F3;
-            ">
+            class="quick-card">
 
-            <i class="fa-solid fa-chevron-left health-arrow"></i>
+            <div class="quick-icon pink">
 
-            <div class="health-card-top">
+                <i class="fa-solid fa-calendar-days"></i>
 
-                <div class="health-icon">
+            </div>
 
-                    <i class="fa-solid fa-calendar-days"></i>
-
-                </div>
-
-                <div class="health-info">
-
-                    <div class="health-name">
-                        دورتي الشهرية
-                    </div>
-
-                    <div class="health-desc">
-                        متابعة الدورة
-                    </div>
-
-                </div>
-
+            <div class="quick-name">
+                دورتي
             </div>
 
         </a>
@@ -1160,34 +2053,16 @@ a{
 
         <a
             href="pregnancy.html"
-            class="health-card"
-            style="
-                --card-color:#7357D8;
-                --card-light:#F1EEFF;
-            ">
+            class="quick-card">
 
-            <i class="fa-solid fa-chevron-left health-arrow"></i>
+            <div class="quick-icon purple">
 
-            <div class="health-card-top">
+                <i class="fa-solid fa-baby"></i>
 
-                <div class="health-icon">
+            </div>
 
-                    <i class="fa-solid fa-baby"></i>
-
-                </div>
-
-                <div class="health-info">
-
-                    <div class="health-name">
-                        الحمل
-                    </div>
-
-                    <div class="health-desc">
-                        متابعة الحمل
-                    </div>
-
-                </div>
-
+            <div class="quick-name">
+                الحمل
             </div>
 
         </a>
@@ -1195,34 +2070,16 @@ a{
 
         <a
             href="statistics.html"
-            class="health-card"
-            style="
-                --card-color:#159A7C;
-                --card-light:#EAF8F4;
-            ">
+            class="quick-card">
 
-            <i class="fa-solid fa-chevron-left health-arrow"></i>
+            <div class="quick-icon green">
 
-            <div class="health-card-top">
+                <i class="fa-solid fa-chart-pie"></i>
 
-                <div class="health-icon">
+            </div>
 
-                    <i class="fa-solid fa-chart-pie"></i>
-
-                </div>
-
-                <div class="health-info">
-
-                    <div class="health-name">
-                        إحصائياتي
-                    </div>
-
-                    <div class="health-desc">
-                        نظرة على بياناتك
-                    </div>
-
-                </div>
-
+            <div class="quick-name">
+                إحصائياتي
             </div>
 
         </a>
@@ -1234,29 +2091,33 @@ a{
 
 
 <!-- =========================================================
-     DAILY CHALLENGES
+     DAILY TRACKING
 ========================================================= -->
 
 <section class="section">
 
-    <div class="section-header">
+
+    <div class="section-head">
 
         <div class="section-title">
-            تحدياتي اليومية
+            متابعتي اليوم
         </div>
 
         <a
             href="challenges.html"
-            class="section-more">
+            class="section-link">
+
             ضبط التحديات
+
         </a>
 
     </div>
 
 
     <div
-        class="challenge-grid"
+        class="daily-list"
         id="dailyList">
+
     </div>
 
 </section>
@@ -1271,48 +2132,54 @@ a{
 
 <nav class="bottom-nav">
 
-    <a
-        href="dashboard.html"
-        class="nav-item active">
-
-        <i class="fa-solid fa-house"></i>
-
-        الرئيسية
-
-    </a>
+    <div class="nav-inner">
 
 
-    <a
-        href="challenges.html"
-        class="nav-item">
+        <a
+            href="dashboard.html"
+            class="nav-item active">
 
-        <i class="fa-solid fa-person-walking"></i>
+            <i class="fa-solid fa-house"></i>
 
-        تحدياتي
+            الرئيسية
 
-    </a>
-
-
-    <a
-        href="health.html"
-        class="nav-item">
-
-        <i class="fa-solid fa-heart-pulse"></i>
-
-        صحتي
-
-    </a>
+        </a>
 
 
-    <a
-        href="more.html"
-        class="nav-item">
+        <a
+            href="challenges.html"
+            class="nav-item">
 
-        <i class="fa-solid fa-grid-2"></i>
+            <i class="fa-solid fa-list-check"></i>
 
-        المزيد
+            تحدياتي
 
-    </a>
+        </a>
+
+
+        <a
+            href="health.html"
+            class="nav-item">
+
+            <i class="fa-solid fa-heart-pulse"></i>
+
+            صحتي
+
+        </a>
+
+
+        <a
+            href="profile.html"
+            class="nav-item">
+
+            <i class="fa-solid fa-user"></i>
+
+            حسابي
+
+        </a>
+
+
+    </div>
 
 </nav>
 
@@ -1325,13 +2192,16 @@ a{
     class="modal"
     id="calendarModal">
 
+
     <div class="modal-box">
+
 
         <div class="modal-head">
 
             <strong>
                 اختيار اليوم
             </strong>
+
 
             <button
                 class="close-modal"
@@ -1343,20 +2213,21 @@ a{
 
         </div>
 
+
         <input
             type="date"
             id="calendarInput"
             style="
                 width:100%;
-                padding:14px;
-                border:1px solid #D8DDE3;
-                border-radius:14px;
+                padding:13px;
+                border:1px solid #DDE4EB;
+                border-radius:13px;
                 font-family:inherit;
-                font-size:16px;
+                font-size:15px;
                 font-weight:800;
                 outline:none;
-                color:#171717;
-                background:#F8FAFC;
+                color:#17202A;
+                background:#F7F9FB;
             ">
 
     </div>
@@ -1366,13 +2237,20 @@ a{
 
 <script type="module">
 
+
+/* =========================================================
+   FIREBASE
+========================================================= */
+
 import { auth, db }
 from "./js/firebase.js";
+
 
 import {
     onAuthStateChanged
 }
 from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
 
 import {
     doc,
@@ -1392,6 +2270,7 @@ let userData = {};
 let dailyData = {};
 
 let selectedDate = new Date();
+
 
 let challengeSettings = {
 
@@ -1415,7 +2294,7 @@ const CHALLENGES = [
         name:"شرب الماء",
         icon:"fa-droplet",
         color:"#1976D2",
-        bg:"#EDF5FF",
+        bg:"#EAF4FF",
         link:"water.html",
         target:8,
         unit:"كوب",
@@ -1426,8 +2305,8 @@ const CHALLENGES = [
         id:"walking",
         name:"المشي",
         icon:"fa-person-walking",
-        color:"#159A7C",
-        bg:"#EAF8F4",
+        color:"#159A78",
+        bg:"#EAF8F3",
         link:"walking.html",
         target:3000,
         unit:"متر",
@@ -1461,7 +2340,7 @@ const CHALLENGES = [
         name:"السكريات",
         icon:"fa-candy-cane",
         color:"#D94F91",
-        bg:"#FFF0F3",
+        bg:"#FFF0F4",
         link:"nutrition.html",
         target:"لم آكل",
         type:"boolean"
@@ -1470,7 +2349,7 @@ const CHALLENGES = [
     {
         id:"smoking",
         name:"التدخين",
-        icon:"fa-ban-smoking",
+        icon:"fa-smoking-ban",
         color:"#607D8B",
         bg:"#EEF2F4",
         link:"smoking.html",
@@ -1492,15 +2371,17 @@ function createDefaultAvatar(){
     <svg xmlns="http://www.w3.org/2000/svg"
          viewBox="0 0 200 200">
 
-        <rect width="200"
-              height="200"
-              rx="100"
-              fill="#F1F1F1"/>
+        <rect
+            width="200"
+            height="200"
+            rx="100"
+            fill="#EEF3F7"/>
 
-        <circle cx="100"
-                cy="76"
-                r="42"
-                fill="#E7A77D"/>
+        <circle
+            cx="100"
+            cy="76"
+            r="42"
+            fill="#E7A77D"/>
 
         <path
             d="M58 73
@@ -1510,18 +2391,21 @@ function createDefaultAvatar(){
                C82 53 70 60 58 73Z"
             fill="#29323D"/>
 
-        <circle cx="84"
-                cy="78"
-                r="4"
-                fill="#263238"/>
+        <circle
+            cx="84"
+            cy="78"
+            r="4"
+            fill="#263238"/>
 
-        <circle cx="116"
-                cy="78"
-                r="4"
-                fill="#263238"/>
+        <circle
+            cx="116"
+            cy="78"
+            r="4"
+            fill="#263238"/>
 
         <path
-            d="M88 98 Q100 105 112 98"
+            d="M88 98
+               Q100 105 112 98"
             fill="none"
             stroke="#9C5B45"
             stroke-width="4"
@@ -1531,7 +2415,7 @@ function createDefaultAvatar(){
             d="M45 190
                C48 139 68 119 100 119
                C132 119 152 139 155 190Z"
-            fill="#222"/>
+            fill="#1976D2"/>
 
     </svg>`;
 
@@ -1551,12 +2435,14 @@ function formatDateKey(date){
         date.getFullYear();
 
     const month =
-        String(date.getMonth()+1)
-        .padStart(2,"0");
+        String(
+            date.getMonth()+1
+        ).padStart(2,"0");
 
     const day =
-        String(date.getDate())
-        .padStart(2,"0");
+        String(
+            date.getDate()
+        ).padStart(2,"0");
 
     return `${year}-${month}-${day}`;
 
@@ -1578,6 +2464,295 @@ function arabicDate(date){
 
 
 /* =========================================================
+   WEEK
+========================================================= */
+
+function renderWeek(){
+
+    const week =
+        document.getElementById("week");
+
+    week.innerHTML = "";
+
+    const selectedKey =
+        formatDateKey(selectedDate);
+
+    const start =
+        new Date(selectedDate);
+
+    const day =
+        start.getDay();
+
+    const mondayOffset =
+        day === 0
+            ? -6
+            : 1 - day;
+
+    start.setDate(
+        start.getDate() +
+        mondayOffset
+    );
+
+    const names = [
+
+        "الإثنين",
+        "الثلاثاء",
+        "الأربعاء",
+        "الخميس",
+        "الجمعة",
+        "السبت",
+        "الأحد"
+
+    ];
+
+
+    for(let i=0;i<7;i++){
+
+        const d =
+            new Date(start);
+
+        d.setDate(
+            start.getDate()+i
+        );
+
+        const key =
+            formatDateKey(d);
+
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "day";
+
+
+        if(key === selectedKey){
+
+            item.classList.add("active");
+
+        }
+
+
+        if(
+            key ===
+            formatDateKey(new Date())
+        ){
+
+            item.classList.add("today");
+
+        }
+
+
+        item.innerHTML = `
+
+            <div class="day-name">
+                ${names[i].slice(0,3)}
+            </div>
+
+            <div class="day-number">
+                ${d.getDate()}
+            </div>
+
+        `;
+
+
+        item.addEventListener(
+            "click",
+            async ()=>{
+
+                selectedDate =
+                    new Date(d);
+
+                renderWeek();
+
+                await loadDailyData();
+
+            }
+        );
+
+
+        week.appendChild(item);
+
+    }
+
+
+    document.getElementById(
+        "selectedDateText"
+    ).textContent =
+        arabicDate(selectedDate);
+
+}
+
+
+/* =========================================================
+   PROFILE HELPERS
+========================================================= */
+
+function normalizeGender(value){
+
+    if(!value){
+
+        return "غير محدد";
+
+    }
+
+
+    const v =
+        String(value).toLowerCase();
+
+
+    if(
+        v === "male" ||
+        v === "ذكر" ||
+        v === "homme" ||
+        v === "m"
+    ){
+
+        return "ذكر";
+
+    }
+
+
+    if(
+        v === "female" ||
+        v === "أنثى" ||
+        v === "femme" ||
+        v === "f"
+    ){
+
+        return "أنثى";
+
+    }
+
+
+    return String(value);
+
+}
+
+
+function normalizeBlood(value){
+
+    if(!value){
+
+        return "غير محددة";
+
+    }
+
+    return String(value);
+
+}
+
+
+function calculateBMI(weight,height){
+
+    const w =
+        Number(weight);
+
+    const h =
+        Number(height);
+
+
+    if(
+        !Number.isFinite(w) ||
+        !Number.isFinite(h) ||
+        w <= 0 ||
+        h <= 0
+    ){
+
+        return null;
+
+    }
+
+
+    const meters =
+        h / 100;
+
+
+    return w /
+        (meters * meters);
+
+}
+
+
+function bmiStatus(bmi){
+
+    if(bmi === null){
+
+        return "";
+
+    }
+
+
+    if(bmi < 18.5){
+
+        return "نحافة";
+
+    }
+
+
+    if(bmi < 25){
+
+        return "طبيعي";
+
+    }
+
+
+    if(bmi < 30){
+
+        return "زيادة وزن";
+
+    }
+
+
+    return "سمنة";
+
+}
+
+
+function getDiseases(data){
+
+    const value =
+
+        data.chronicDiseases ??
+        data.chronicDisease ??
+        data.diseases ??
+        data.medicalConditions ??
+        data.chronicConditions ??
+        "";
+
+
+    if(Array.isArray(value)){
+
+        return value.length
+            ? value.join("، ")
+            : "لا توجد معلومات";
+
+    }
+
+
+    if(value === true){
+
+        return "موجودة";
+
+    }
+
+
+    if(
+        !value ||
+        String(value).trim() === ""
+    ){
+
+        return "لا توجد معلومات";
+
+    }
+
+
+    return String(value);
+
+}
+
+
+/* =========================================================
    PROFILE
 ========================================================= */
 
@@ -1586,26 +2761,151 @@ function renderProfile(){
     const data =
         userData || {};
 
+
     const name =
+
         data.name ||
         data.displayName ||
         currentUser?.displayName ||
         "مستخدم صحتي";
 
+
+    const gender =
+
+        normalizeGender(
+            data.gender ??
+            data.sex
+        );
+
+
+    const blood =
+
+        normalizeBlood(
+            data.bloodType ??
+            data.bloodGroup ??
+            data.blood
+        );
+
+
+    const height =
+        Number(
+            data.heightCm ??
+            data.height
+        );
+
+
+    const weight =
+        Number(
+            data.weightKg ??
+            data.weight
+        );
+
+
     const photo =
+
         data.photoURL ||
         data.photoUrl ||
         data.avatar ||
         currentUser?.photoURL ||
         createDefaultAvatar();
 
+
     document.getElementById(
         "profileName"
-    ).textContent = name;
+    ).textContent =
+        name;
+
+
+    document.getElementById(
+        "profileGender"
+    ).textContent =
+        gender;
+
+
+    document.getElementById(
+        "profileBlood"
+    ).textContent =
+        blood;
+
+
+    document.getElementById(
+        "profileHeight"
+    ).textContent =
+
+        Number.isFinite(height) &&
+        height > 0
+
+            ? `${height} سم`
+
+            : "غير محدد";
+
+
+    document.getElementById(
+        "profileWeight"
+    ).textContent =
+
+        Number.isFinite(weight) &&
+        weight > 0
+
+            ? `${weight} كغ`
+
+            : "غير محدد";
+
 
     document.getElementById(
         "profileAvatar"
-    ).src = photo;
+    ).src =
+        photo;
+
+
+    const bmi =
+        calculateBMI(
+            weight,
+            height
+        );
+
+
+    document.getElementById(
+        "profileBMI"
+    ).textContent =
+
+        bmi !== null
+
+            ? `${bmi.toFixed(1)} — ${bmiStatus(bmi)}`
+
+            : "غير متاح";
+
+
+    const diseaseElement =
+        document.getElementById(
+            "profileDiseases"
+        );
+
+
+    const diseases =
+        getDiseases(data);
+
+
+    diseaseElement.textContent =
+        diseases;
+
+
+    if(
+        diseases ===
+        "لا توجد معلومات"
+    ){
+
+        diseaseElement.classList.add(
+            "empty"
+        );
+
+    }else{
+
+        diseaseElement.classList.remove(
+            "empty"
+        );
+
+    }
 
 }
 
@@ -1616,7 +2916,12 @@ function renderProfile(){
 
 async function loadUser(){
 
-    if(!currentUser) return;
+    if(!currentUser){
+
+        return;
+
+    }
+
 
     try{
 
@@ -1627,13 +2932,22 @@ async function loadUser(){
                 currentUser.uid
             );
 
+
         const snap =
             await getDoc(ref);
 
-        userData =
-            snap.exists()
-                ? snap.data() || {}
-                : {};
+
+        if(snap.exists()){
+
+            userData =
+                snap.data() || {};
+
+        }else{
+
+            userData = {};
+
+        }
+
 
         renderProfile();
 
@@ -1654,673 +2968,39 @@ async function loadUser(){
 
 
 /* =========================================================
-   TARGET
-========================================================= */
-
-function getTarget(challenge){
-
-    const custom =
-        challengeSettings.targets?.[
-            challenge.id
-        ];
-
-    if(
-        custom !== undefined &&
-        custom !== null &&
-        custom !== ""
-    ){
-
-        if(
-            challenge.type === "number"
-        ){
-
-            const value =
-                Number(custom);
-
-            if(
-                Number.isFinite(value) &&
-                value > 0
-            ){
-
-                return value;
-
-            }
-
-        }
-
-        return custom;
-
-    }
-
-    return challenge.target;
-
-}
-
-
-/* =========================================================
-   DAILY VALUE
-========================================================= */
-
-function getDailyValue(id){
-
-    const d =
-        dailyData || {};
-
-    switch(id){
-
-        case "water":
-
-            return Number(
-                d.waterCups ??
-                d.water ??
-                d.waterIntake ??
-                0
-            );
-
-
-        case "walking":
-
-            return Number(
-                d.walkingMeters ??
-                d.distanceMeters ??
-                d.meters ??
-                d.walking ??
-                d.distance ??
-                0
-            );
-
-
-        case "sleep":{
-
-            let value =
-                Number(
-                    d.sleepHours ??
-                    d.hoursSleep ??
-                    d.sleep ??
-                    0
-                );
-
-            if(value > 24){
-                value = value / 60;
-            }
-
-            return value;
-        }
-
-
-        case "sleepSchedule":
-
-            return {
-                sleepTime:
-                    d.sleepTime ??
-                    d.bedTime ??
-                    "",
-                wakeTime:
-                    d.wakeTime ??
-                    d.wakeUpTime ??
-                    ""
-            };
-
-
-        case "sugar":{
-
-            const value =
-                d.sugar ??
-                d.sugars ??
-                d.ateSugar ??
-                d.sugarEaten ??
-                "";
-
-            if(
-                value === true ||
-                value === "yes" ||
-                value === "ate" ||
-                value === "أكلت"
-            ){
-                return "أكلت";
-            }
-
-            if(
-                value === false ||
-                value === "no" ||
-                value === "not_eaten" ||
-                value === "لم آكل"
-            ){
-                return "لم آكل";
-            }
-
-            return "";
-        }
-
-
-        case "smoking":{
-
-            const value =
-                d.smoking ??
-                d.smoked ??
-                d.smokingToday ??
-                "";
-
-            if(
-                value === true ||
-                value === "yes" ||
-                value === "نعم"
-            ){
-                return "نعم";
-            }
-
-            if(
-                value === false ||
-                value === "no" ||
-                value === "لا"
-            ){
-                return "لا";
-            }
-
-            return "";
-        }
-
-        default:
-            return 0;
-    }
-
-}
-
-
-/* =========================================================
-   PERCENT
-========================================================= */
-
-function getPercent(
-    challenge,
-    value,
-    target
-){
-
-    if(challenge.type === "number"){
-
-        const t = Number(target);
-        const v = Number(value);
-
-        if(
-            !Number.isFinite(t) ||
-            t <= 0 ||
-            !Number.isFinite(v)
-        ){
-            return 0;
-        }
-
-        return Math.min(
-            100,
-            Math.round((v/t)*100)
-        );
-    }
-
-
-    if(challenge.id === "sleepSchedule"){
-
-        let completed = 0;
-
-        if(value?.sleepTime) completed++;
-        if(value?.wakeTime) completed++;
-
-        return Math.round(
-            (completed/2)*100
-        );
-    }
-
-
-    if(challenge.id === "sugar"){
-
-        if(value === "لم آكل") return 100;
-
-        return 0;
-    }
-
-
-    if(challenge.id === "smoking"){
-
-        if(value === "لا") return 100;
-
-        return 0;
-    }
-
-    return 0;
-
-}
-
-
-/* =========================================================
-   FORMAT
-========================================================= */
-
-function formatNumber(value){
-
-    return Number(value || 0)
-        .toLocaleString("ar-DZ");
-
-}
-
-
-function formatTime(time){
-
-    if(!time){
-        return "لم يسجل";
-    }
-
-    const parts =
-        String(time).split(":");
-
-    if(parts.length < 2){
-        return String(time);
-    }
-
-    let hour =
-        Number(parts[0]);
-
-    const minute =
-        String(parts[1]).padStart(2,"0");
-
-    const period =
-        hour >= 12
-            ? "مساءً"
-            : "صباحًا";
-
-    hour =
-        hour % 12 || 12;
-
-    return `${hour}:${minute} ${period}`;
-
-}
-
-
-function formatDailyValue(
-    challenge,
-    value,
-    target
-){
-
-    switch(challenge.id){
-
-        case "water":
-
-            return `${formatNumber(value)} / ${formatNumber(target)} كوب`;
-
-
-        case "walking":
-
-            return `${formatNumber(value)} / ${formatNumber(target)} متر`;
-
-
-        case "sleep":
-
-            return `${Number(value || 0).toFixed(1)} / ${Number(target || 0).toFixed(1)} ساعة`;
-
-
-        case "sleepSchedule":{
-
-            const sleep =
-                value?.sleepTime || "";
-
-            const wake =
-                value?.wakeTime || "";
-
-            if(sleep || wake){
-
-                return `
-                    ${formatTime(sleep)}
-                    •
-                    ${formatTime(wake)}
-                `;
-            }
-
-            return "لم يتم التسجيل بعد";
-        }
-
-
-        case "sugar":
-
-            if(value === "لم آكل"){
-                return "لم آكل السكريات اليوم";
-            }
-
-            if(value === "أكلت"){
-                return "تم تسجيل تناول السكريات";
-            }
-
-            return "لم يتم التسجيل";
-
-
-        case "smoking":
-
-            if(value === "لا"){
-                return "لم أدخن اليوم";
-            }
-
-            if(value === "نعم"){
-                return "تم تسجيل التدخين";
-            }
-
-            return "لم يتم التسجيل";
-
-
-        default:
-            return "";
-    }
-
-}
-
-
-/* =========================================================
-   RENDER DAILY
-========================================================= */
-
-function renderDaily(){
-
-    const list =
-        document.getElementById(
-            "dailyList"
-        );
-
-    list.innerHTML = "";
-
-    const selected =
-        challengeSettings.selected;
-
-
-    if(
-        !Array.isArray(selected) ||
-        selected.length === 0
-    ){
-
-        list.innerHTML = `
-
-            <div class="empty"
-                 style="grid-column:1/-1">
-
-                <div class="empty-icon">
-                    <i class="fa-solid fa-list-check"></i>
-                </div>
-
-                <strong>
-                    لم تختر تحدياتك بعد
-                </strong>
-
-                <p>
-                    اختر العادات التي تريد متابعتها
-                    من صفحة تحدياتي.
-                </p>
-
-                <a
-                    href="challenges.html"
-                    class="empty-button">
-
-                    <i class="fa-solid fa-sliders"></i>
-
-                    ضبط تحدياتي
-
-                </a>
-
-            </div>
-        `;
-
-        setProgress(0);
-
-        return;
-    }
-
-
-    const definitions =
-        CHALLENGES.filter(
-            challenge =>
-                selected.includes(
-                    challenge.id
-                )
-        );
-
-
-    definitions.forEach(
-        challenge => {
-
-            const target =
-                getTarget(challenge);
-
-            const value =
-                getDailyValue(
-                    challenge.id
-                );
-
-            const percent =
-                getPercent(
-                    challenge,
-                    value,
-                    target
-                );
-
-            const card =
-                document.createElement("a");
-
-            card.href =
-                challenge.link;
-
-            card.className =
-                "challenge-card";
-
-            card.style.setProperty(
-                "--challenge-color",
-                challenge.color
-            );
-
-            card.style.setProperty(
-                "--icon-bg",
-                challenge.bg
-            );
-
-            card.innerHTML = `
-
-                <div class="challenge-top">
-
-                    <div class="challenge-icon">
-
-                        <i class="fa-solid ${challenge.icon}"></i>
-
-                    </div>
-
-                    <div class="challenge-name">
-                        ${challenge.name}
-                    </div>
-
-                </div>
-
-                <div class="challenge-value">
-
-                    ${formatDailyValue(
-                        challenge,
-                        value,
-                        target
-                    )}
-
-                </div>
-
-                <div class="challenge-progress">
-
-                    <span
-                        style="width:${percent}%">
-                    </span>
-
-                </div>
-
-                <div class="challenge-percent">
-                    ${percent}%
-                </div>
-
-            `;
-
-            list.appendChild(card);
-
-        }
-    );
-
-
-    updateOverallProgress();
-
-}
-
-
-/* =========================================================
-   OVERALL
-========================================================= */
-
-function updateOverallProgress(){
-
-    const selected =
-        challengeSettings.selected;
-
-    if(
-        !Array.isArray(selected) ||
-        selected.length === 0
-    ){
-
-        setProgress(0);
-        return;
-
-    }
-
-    const definitions =
-        CHALLENGES.filter(
-            challenge =>
-                selected.includes(
-                    challenge.id
-                )
-        );
-
-    if(!definitions.length){
-
-        setProgress(0);
-        return;
-
-    }
-
-    let total = 0;
-
-    definitions.forEach(
-        challenge => {
-
-            const target =
-                getTarget(challenge);
-
-            const value =
-                getDailyValue(
-                    challenge.id
-                );
-
-            total +=
-                getPercent(
-                    challenge,
-                    value,
-                    target
-                );
-
-        }
-    );
-
-    const average =
-        Math.round(
-            total /
-            definitions.length
-        );
-
-    setProgress(average);
-
-}
-
-
-/* =========================================================
-   PROGRESS
-========================================================= */
-
-function setProgress(percent){
-
-    const circle =
-        document.getElementById(
-            "progressCircle"
-        );
-
-    const number =
-        document.getElementById(
-            "progressNumber"
-        );
-
-    const subtitle =
-        document.getElementById(
-            "scoreSubtitle"
-        );
-
-    const circumference =
-        2 * Math.PI * 40;
-
-    const offset =
-        circumference -
-        (percent / 100) *
-        circumference;
-
-    circle.style.strokeDasharray =
-        circumference;
-
-    circle.style.strokeDashoffset =
-        offset;
-
-    number.textContent =
-        `${percent}%`;
-
-
-    if(percent === 0){
-
-        subtitle.textContent =
-            "اختر تحدياتك اليومية لتظهر نسبة تقدمك هنا.";
-
-    }
-    else if(percent < 50){
-
-        subtitle.textContent =
-            "بداية جيدة، واصل تسجيل عاداتك.";
-
-    }
-    else if(percent < 100){
-
-        subtitle.textContent =
-            "أنت في الطريق الصحيح، استمر.";
-
-    }
-    else{
-
-        subtitle.textContent =
-            "رائع! أكملت جميع تحدياتك اليوم.";
-
-    }
-
-}
-
-
-/* =========================================================
    LOAD CHALLENGES
 ========================================================= */
 
 async function loadChallenges(){
 
-    if(!currentUser) return;
+    if(!currentUser){
+
+        return;
+
+    }
+
 
     let found = false;
+
 
     try{
 
         const paths = [
 
-            ["challengeSettings","main"],
+            [
+                "challengeSettings",
+                "main"
+            ],
 
-            ["challenges","settings"],
+            [
+                "challenges",
+                "settings"
+            ],
 
-            ["healthSettings","challenges"]
+            [
+                "healthSettings",
+                "challenges"
+            ]
 
         ];
 
@@ -2336,6 +3016,7 @@ async function loadChallenges(){
                     path[1]
                 );
 
+
             const snap =
                 await getDoc(ref);
 
@@ -2344,6 +3025,7 @@ async function loadChallenges(){
 
                 const data =
                     snap.data() || {};
+
 
                 let selected =
                     data.selected ??
@@ -2369,7 +3051,8 @@ async function loadChallenges(){
 
                 challengeSettings = {
 
-                    selected:selected || [],
+                    selected:
+                        selected || [],
 
                     targets:
                         data.targets || {},
@@ -2379,9 +3062,11 @@ async function loadChallenges(){
 
                 };
 
+
                 found = true;
 
                 break;
+
             }
 
         }
@@ -2417,32 +3102,948 @@ async function loadChallenges(){
 
 
 /* =========================================================
-   LOAD DAILY
+   TARGET
+========================================================= */
+
+function getTarget(challenge){
+
+    const custom =
+        challengeSettings.targets?.[
+            challenge.id
+        ];
+
+
+    if(
+        custom !== undefined &&
+        custom !== null &&
+        custom !== ""
+    ){
+
+        if(
+            challenge.type === "number"
+        ){
+
+            const value =
+                Number(custom);
+
+
+            if(
+                Number.isFinite(value) &&
+                value > 0
+            ){
+
+                return value;
+
+            }
+
+        }
+
+
+        return custom;
+
+    }
+
+
+    return challenge.target;
+
+}
+
+
+/* =========================================================
+   SLEEP SCHEDULE
+========================================================= */
+
+function getSleepSchedule(){
+
+    return {
+
+        sleepTime:
+            challengeSettings.targets?.sleepTime ||
+            "23:00",
+
+        wakeTime:
+            challengeSettings.targets?.wakeTime ||
+            "07:00"
+
+    };
+
+}
+
+
+/* =========================================================
+   DAILY VALUE
+========================================================= */
+
+function getDailyValue(id){
+
+    const d =
+        dailyData || {};
+
+
+    switch(id){
+
+        case "water":
+
+            return Number(
+                d.waterCups ??
+                d.water ??
+                d.waterIntake ??
+                0
+            );
+
+
+        case "walking":
+
+            return Number(
+                d.walkingMeters ??
+                d.distanceMeters ??
+                d.meters ??
+                d.walking ??
+                d.distance ??
+                0
+            );
+
+
+        case "sleep":{
+
+            let value =
+                Number(
+                    d.sleepHours ??
+                    d.hoursSleep ??
+                    d.sleep ??
+                    0
+                );
+
+
+            if(value > 24){
+
+                value =
+                    value / 60;
+
+            }
+
+
+            return value;
+
+        }
+
+
+        case "sleepSchedule":{
+
+            return {
+
+                sleepTime:
+                    d.sleepTime ??
+                    d.bedTime ??
+                    d.bedtime ??
+                    "",
+
+                wakeTime:
+                    d.wakeTime ??
+                    d.wakeUpTime ??
+                    d.wakeupTime ??
+                    ""
+
+            };
+
+        }
+
+
+        case "sugar":{
+
+            const value =
+                d.sugar ??
+                d.sugars ??
+                d.ateSugar ??
+                d.sugarEaten ??
+                "";
+
+
+            if(
+                value === true ||
+                value === "yes" ||
+                value === "ate" ||
+                value === "أكلت"
+            ){
+
+                return "أكلت";
+
+            }
+
+
+            if(
+                value === false ||
+                value === "no" ||
+                value === "not_eaten" ||
+                value === "لم آكل"
+            ){
+
+                return "لم آكل";
+
+            }
+
+
+            return "";
+
+        }
+
+
+        case "smoking":{
+
+            const value =
+                d.smoking ??
+                d.smoked ??
+                d.smokingToday ??
+                "";
+
+
+            if(
+                value === true ||
+                value === "yes" ||
+                value === "نعم"
+            ){
+
+                return "نعم";
+
+            }
+
+
+            if(
+                value === false ||
+                value === "no" ||
+                value === "لا"
+            ){
+
+                return "لا";
+
+            }
+
+
+            return "";
+
+        }
+
+
+        default:
+
+            return 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   FORMAT
+========================================================= */
+
+function formatNumber(value){
+
+    if(
+        !Number.isFinite(
+            Number(value)
+        )
+    ){
+
+        return "0";
+
+    }
+
+
+    return Number(value)
+        .toLocaleString("ar-DZ");
+
+}
+
+
+function formatTime(time){
+
+    if(!time){
+
+        return "لم يتم التسجيل";
+
+    }
+
+
+    const parts =
+        String(time).split(":");
+
+
+    if(parts.length < 2){
+
+        return String(time);
+
+    }
+
+
+    let hour =
+        Number(parts[0]);
+
+
+    const minute =
+        String(parts[1])
+        .padStart(2,"0");
+
+
+    if(!Number.isFinite(hour)){
+
+        return String(time);
+
+    }
+
+
+    const period =
+        hour >= 12
+            ? "مساءً"
+            : "صباحًا";
+
+
+    hour =
+        hour % 12 || 12;
+
+
+    return `${hour}:${minute} ${period}`;
+
+}
+
+
+/* =========================================================
+   DAILY TEXT
+========================================================= */
+
+function formatDailyValue(
+    challenge,
+    value,
+    target
+){
+
+    switch(challenge.id){
+
+        case "water":
+
+            return `${formatNumber(value)} / ${formatNumber(target)} كوب`;
+
+
+        case "walking":
+
+            return `${formatNumber(value)} / ${formatNumber(target)} متر`;
+
+
+        case "sleep":{
+
+            const hours =
+                Number(value) || 0;
+
+            const targetHours =
+                Number(target) || 0;
+
+
+            return `${hours.toFixed(1)} / ${targetHours.toFixed(1)} ساعة`;
+
+        }
+
+
+        case "sleepSchedule":{
+
+            const actualSleep =
+                value?.sleepTime || "";
+
+            const actualWake =
+                value?.wakeTime || "";
+
+
+            if(
+                actualSleep ||
+                actualWake
+            ){
+
+                return `
+                    نوم ${formatTime(actualSleep)}
+                    • استيقاظ ${formatTime(actualWake)}
+                `;
+
+            }
+
+
+            const schedule =
+                getSleepSchedule();
+
+
+            return `
+                الهدف:
+                ${formatTime(schedule.sleepTime)}
+                →
+                ${formatTime(schedule.wakeTime)}
+            `;
+
+        }
+
+
+        case "sugar":
+
+            if(value === "أكلت"){
+
+                return "أكلت السكريات اليوم";
+
+            }
+
+
+            if(value === "لم آكل"){
+
+                return "لم آكل السكريات اليوم";
+
+            }
+
+
+            return "لم يتم التسجيل بعد";
+
+
+        case "smoking":
+
+            if(value === "نعم"){
+
+                return "تم تسجيل التدخين اليوم";
+
+            }
+
+
+            if(value === "لا"){
+
+                return "لم أدخن اليوم";
+
+            }
+
+
+            return "لم يتم التسجيل بعد";
+
+
+        default:
+
+            return "";
+
+    }
+
+}
+
+
+/* =========================================================
+   PERCENT
+========================================================= */
+
+function getPercent(
+    challenge,
+    value,
+    target
+){
+
+    if(
+        challenge.type === "number"
+    ){
+
+        const numericTarget =
+            Number(target);
+
+        const numericValue =
+            Number(value);
+
+
+        if(
+            !Number.isFinite(numericTarget) ||
+            numericTarget <= 0
+        ){
+
+            return 0;
+
+        }
+
+
+        if(
+            !Number.isFinite(numericValue)
+        ){
+
+            return 0;
+
+        }
+
+
+        return Math.min(
+            100,
+            Math.round(
+                (
+                    numericValue /
+                    numericTarget
+                ) * 100
+            )
+        );
+
+    }
+
+
+    if(
+        challenge.id === "sleepSchedule"
+    ){
+
+        const sleep =
+            value?.sleepTime || "";
+
+        const wake =
+            value?.wakeTime || "";
+
+
+        let completed = 0;
+
+
+        if(sleep){
+
+            completed++;
+
+        }
+
+
+        if(wake){
+
+            completed++;
+
+        }
+
+
+        return Math.round(
+            (completed / 2) * 100
+        );
+
+    }
+
+
+    if(
+        challenge.id === "sugar"
+    ){
+
+        if(value === "لم آكل"){
+
+            return 100;
+
+        }
+
+
+        if(value === "أكلت"){
+
+            return 0;
+
+        }
+
+
+        return 0;
+
+    }
+
+
+    if(
+        challenge.id === "smoking"
+    ){
+
+        if(value === "لا"){
+
+            return 100;
+
+        }
+
+
+        if(value === "نعم"){
+
+            return 0;
+
+        }
+
+
+        return 0;
+
+    }
+
+
+    return 0;
+
+}
+
+
+/* =========================================================
+   RENDER DAILY
+========================================================= */
+
+function renderDaily(){
+
+    const list =
+        document.getElementById(
+            "dailyList"
+        );
+
+
+    list.innerHTML = "";
+
+
+    const selected =
+        challengeSettings.selected;
+
+
+    if(
+        !Array.isArray(selected) ||
+        selected.length === 0
+    ){
+
+        list.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+
+                    <i class="fa-solid fa-list-check"></i>
+
+                </div>
+
+                <strong>
+                    لم تختر متابعاتك اليومية
+                </strong>
+
+                <p>
+                    اختر العادات التي تريد متابعتها
+                    وستظهر هنا تلقائيًا.
+                </p>
+
+                <a
+                    href="challenges.html"
+                    class="empty-button">
+
+                    <i class="fa-solid fa-sliders"></i>
+
+                    ضبط تحدياتي
+
+                </a>
+
+            </div>
+
+        `;
+
+
+        setProgress(0);
+
+        return;
+
+    }
+
+
+    const selectedDefinitions =
+        CHALLENGES.filter(
+            challenge =>
+                selected.includes(
+                    challenge.id
+                )
+        );
+
+
+    selectedDefinitions.forEach(
+        challenge => {
+
+            const target =
+                getTarget(challenge);
+
+
+            const value =
+                getDailyValue(
+                    challenge.id
+                );
+
+
+            const percent =
+                getPercent(
+                    challenge,
+                    value,
+                    target
+                );
+
+
+            const card =
+                document.createElement("a");
+
+
+            card.href =
+                challenge.link;
+
+
+            card.className =
+                "daily-card";
+
+
+            card.style.setProperty(
+                "--daily-color",
+                challenge.color
+            );
+
+
+            card.style.setProperty(
+                "--daily-bg",
+                challenge.bg
+            );
+
+
+            card.innerHTML = `
+
+                <div class="daily-icon">
+
+                    <i class="fa-solid ${challenge.icon}"></i>
+
+                </div>
+
+
+                <div class="daily-content">
+
+                    <div class="daily-top">
+
+                        <div class="daily-name">
+                            ${challenge.name}
+                        </div>
+
+                        <div class="daily-percent">
+                            ${percent}%
+                        </div>
+
+                    </div>
+
+
+                    <div class="daily-value">
+
+                        ${formatDailyValue(
+                            challenge,
+                            value,
+                            target
+                        )}
+
+                    </div>
+
+
+                    <div class="progress">
+
+                        <span
+                            style="width:${percent}%">
+                        </span>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            list.appendChild(card);
+
+        }
+    );
+
+
+    updateOverallProgress();
+
+}
+
+
+/* =========================================================
+   OVERALL PROGRESS
+========================================================= */
+
+function updateOverallProgress(){
+
+    const selected =
+        challengeSettings.selected;
+
+
+    if(
+        !Array.isArray(selected) ||
+        selected.length === 0
+    ){
+
+        setProgress(0);
+
+        return;
+
+    }
+
+
+    const selectedDefinitions =
+        CHALLENGES.filter(
+            challenge =>
+                selected.includes(
+                    challenge.id
+                )
+        );
+
+
+    if(
+        !selectedDefinitions.length
+    ){
+
+        setProgress(0);
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+
+    selectedDefinitions.forEach(
+        challenge => {
+
+            const target =
+                getTarget(challenge);
+
+
+            const value =
+                getDailyValue(
+                    challenge.id
+                );
+
+
+            total +=
+                getPercent(
+                    challenge,
+                    value,
+                    target
+                );
+
+        }
+    );
+
+
+    const average =
+        Math.round(
+            total /
+            selectedDefinitions.length
+        );
+
+
+    setProgress(average);
+
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+function setProgress(percent){
+
+    const circle =
+        document.getElementById(
+            "progressCircle"
+        );
+
+
+    const number =
+        document.getElementById(
+            "progressNumber"
+        );
+
+
+    const subtitle =
+        document.getElementById(
+            "scoreSubtitle"
+        );
+
+
+    const circumference =
+        2 * Math.PI * 40;
+
+
+    const offset =
+        circumference -
+        (
+            percent /
+            100
+        ) *
+        circumference;
+
+
+    circle.style.strokeDasharray =
+        circumference;
+
+
+    circle.style.strokeDashoffset =
+        offset;
+
+
+    number.textContent =
+        `${percent}%`;
+
+
+    if(percent === 0){
+
+        subtitle.textContent =
+            "اختر التحديات التي تريد متابعتها.";
+
+    }
+
+    else if(percent < 50){
+
+        subtitle.textContent =
+            "بداية جيدة، واصل تسجيل عاداتك.";
+
+    }
+
+    else if(percent < 100){
+
+        subtitle.textContent =
+            "أنت في الطريق الصحيح، استمر.";
+
+    }
+
+    else{
+
+        subtitle.textContent =
+            "رائع! أكملت جميع متابعاتك اليوم.";
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD DAILY DATA
 ========================================================= */
 
 async function loadDailyData(){
 
-    if(!currentUser) return;
+    if(!currentUser){
+
+        return;
+
+    }
+
 
     const dateKey =
-        formatDateKey(
-            selectedDate
-        );
+        formatDateKey(selectedDate);
+
 
     dailyData = {};
 
+
     const paths = [
 
-        ["dailyTracking",dateKey],
+        [
+            "dailyTracking",
+            dateKey
+        ],
 
-        ["daily",dateKey]
+        [
+            "daily",
+            dateKey
+        ]
 
     ];
 
 
     try{
 
-        for(const path of paths){
+        for(
+            const path of paths
+        ){
 
             const ref =
                 doc(
@@ -2453,8 +4054,10 @@ async function loadDailyData(){
                     path[1]
                 );
 
+
             const snap =
                 await getDoc(ref);
+
 
             if(snap.exists()){
 
@@ -2462,9 +4065,11 @@ async function loadDailyData(){
                     snap.data() || {};
 
                 break;
+
             }
 
         }
+
 
     }catch(error){
 
@@ -2482,27 +4087,71 @@ async function loadDailyData(){
 
 
 /* =========================================================
-   CALENDAR CLICK
+   CALENDAR
 ========================================================= */
 
-document
-.getElementById("selectedDateText")
-.addEventListener(
-    "click",
-    async ()=>{
+const calendarModal =
+    document.getElementById(
+        "calendarModal"
+    );
 
-        const value =
-            prompt(
-                "أدخل التاريخ بصيغة YYYY-MM-DD",
-                formatDateKey(selectedDate)
+
+const calendarInput =
+    document.getElementById(
+        "calendarInput"
+    );
+
+
+document.getElementById(
+    "openCalendar"
+).addEventListener(
+    "click",
+    ()=>{
+
+        calendarInput.value =
+            formatDateKey(
+                selectedDate
             );
 
-        if(!value) return;
+
+        calendarModal.classList.add(
+            "show"
+        );
+
+    }
+);
+
+
+document.getElementById(
+    "closeCalendar"
+).addEventListener(
+    "click",
+    ()=>{
+
+        calendarModal.classList.remove(
+            "show"
+        );
+
+    }
+);
+
+
+calendarInput.addEventListener(
+    "change",
+    async ()=>{
+
+        if(!calendarInput.value){
+
+            return;
+
+        }
+
 
         const parts =
-            value.split("-").map(Number);
+            calendarInput.value
+            .split("-")
+            .map(Number);
 
-        if(parts.length !== 3) return;
 
         selectedDate =
             new Date(
@@ -2511,12 +4160,34 @@ document
                 parts[2]
             );
 
-        document.getElementById(
-            "selectedDateText"
-        ).textContent =
-            arabicDate(selectedDate);
+
+        calendarModal.classList.remove(
+            "show"
+        );
+
+
+        renderWeek();
 
         await loadDailyData();
+
+    }
+);
+
+
+calendarModal.addEventListener(
+    "click",
+    event => {
+
+        if(
+            event.target ===
+            calendarModal
+        ){
+
+            calendarModal.classList.remove(
+                "show"
+            );
+
+        }
 
     }
 );
@@ -2540,7 +4211,8 @@ onAuthStateChanged(
         }
 
 
-        currentUser = user;
+        currentUser =
+            user;
 
 
         try{
@@ -2550,6 +4222,8 @@ onAuthStateChanged(
             await loadChallenges();
 
             await loadDailyData();
+
+            renderWeek();
 
         }catch(error){
 
@@ -2563,6 +4237,7 @@ onAuthStateChanged(
 
         setTimeout(
             ()=>{
+
                 document
                     .getElementById(
                         "loadingScreen"
@@ -2570,8 +4245,9 @@ onAuthStateChanged(
                     .classList.add(
                         "hide"
                     );
+
             },
-            300
+            250
         );
 
     }
@@ -2580,4 +4256,5 @@ onAuthStateChanged(
 </script>
 
 </body>
+
 </html>
