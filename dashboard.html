@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#2563EB">
-    <title>Si7a | لوحة التحكم</title>
+    <title>Si7a | Dashboard</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -19,7 +19,7 @@
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden; /* منع التمرير العام للصفحة */
+            overflow: hidden; /* Prevent page scrolling */
             font-family: Arial, Helvetica, sans-serif;
             background: linear-gradient(165deg, #3B82F6 0%, #2563EB 40%, #1E3A8A 100%);
             color: #fff;
@@ -33,14 +33,14 @@
             justify-content: space-between;
             position: relative;
             overflow: hidden;
-            padding: 15px 15px 70px 15px; /* مساحة للشريط السفلي */
+            padding: 15px 15px 70px 15px; /* Space for bottom nav */
         }
 
-        /* خلفية الأشكال */
+        /* Background Shapes */
         .wave-bg-1 {
             position: absolute;
             top: -80px;
-            right: -80px;
+            left: -80px;
             width: 350px;
             height: 350px;
             background: rgba(255, 255, 255, 0.12);
@@ -52,7 +52,7 @@
         .wave-bg-2 {
             position: absolute;
             bottom: -100px;
-            left: -100px;
+            right: -100px;
             width: 400px;
             height: 400px;
             background: rgba(255, 255, 255, 0.08);
@@ -61,7 +61,7 @@
             pointer-events: none;
         }
 
-        /* 1. الشريط العلوي Header */
+        /* Header */
         .app-header {
             display: flex;
             align-items: center;
@@ -109,7 +109,7 @@
             justify-content: center;
         }
 
-        /* 2. المحتوى الرئيسي Main Dashboard */
+        /* Main Dashboard Content */
         .dashboard-content {
             flex: 1;
             display: flex;
@@ -122,7 +122,6 @@
 
         .dashboard-content::-webkit-scrollbar { display: none; }
 
-        /* الكارت الزجاجي المصغر */
         .glass-card {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(16px);
@@ -133,7 +132,7 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
-        /* 1. الإطار المدمج باللون الأبيض المعدني (التاريخ + تقدم التحدي) */
+        /* Metallic White Combined Card (Date + Challenge) */
         .metallic-white-card {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(230, 240, 255, 0.65) 100%);
             backdrop-filter: blur(20px);
@@ -141,7 +140,7 @@
             border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 22px;
             padding: 16px;
-            color: #1E293B; /* لون الخط أسود/رمادي داكن ليتناسب مع الأبيض المعدني */
+            color: #1E293B;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(255, 255, 255, 1);
             display: flex;
             flex-direction: column;
@@ -203,14 +202,14 @@
         }
 
         .progress-fill {
-            width: 65%; /* نسبة التقدم */
+            width: 65%;
             height: 100%;
             background: linear-gradient(90deg, #3B82F6, #1D4ED8);
             border-radius: 10px;
             transition: width 0.3s ease;
         }
 
-        /* شبكة الأيقونات التفاعلية */
+        /* Widgets Grid */
         .widgets-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -251,7 +250,6 @@
             color: #ffffff;
         }
 
-        /* أزرار التحكم بالزيادة والنقصان */
         .counter-controls {
             display: flex;
             align-items: center;
@@ -290,7 +288,7 @@
             color: #fff;
         }
 
-        /* 3. القائمة الجانبية Drawer */
+        /* Sidebar Drawer */
         .sidebar-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -302,21 +300,21 @@
 
         .sidebar {
             position: fixed;
-            top: 0; right: -280px;
+            top: 0; left: -280px;
             width: 260px;
             height: 100%;
             background: rgba(30, 58, 138, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
             z-index: 101;
-            transition: right 0.3s ease;
+            transition: left 0.3s ease;
             padding: 20px 15px;
             display: flex;
             flex-direction: column;
         }
 
-        .sidebar.active { right: 0; }
+        .sidebar.active { left: 0; }
 
         .sidebar-header {
             display: flex;
@@ -345,6 +343,7 @@
             flex-direction: column;
             gap: 6px;
             overflow-y: auto;
+            flex: 1;
         }
 
         .sidebar-menu a {
@@ -363,7 +362,40 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
-        /* 4. الشريط السفلي Navigation Bar */
+        /* Language Selector Container */
+        .language-selector {
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 10px;
+        }
+
+        .language-selector label {
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .lang-select {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 13px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .lang-select option {
+            background: #1E3A8A;
+            color: #fff;
+        }
+
+        /* Bottom Navigation Bar */
         .bottom-nav {
             position: fixed;
             bottom: 0; left: 0; right: 0;
@@ -395,7 +427,7 @@
             font-weight: bold;
         }
 
-        /* نافذة عرض التقويم Modal */
+        /* Calendar Modal */
         .modal {
             display: none;
             position: fixed;
@@ -463,35 +495,35 @@
         <div class="wave-bg-1"></div>
         <div class="wave-bg-2"></div>
 
-        <!-- 1. الشريط العلوي -->
+        <!-- Header -->
         <header class="app-header">
             <a href="settings.html" class="user-profile">
-                <img src="https://via.placeholder.com/100" id="userAvatar" class="avatar-img" alt="صورة المستخدم">
-                <span class="welcome-text">أهلاً بك، <span id="userName">سارة</span></span>
+                <img src="https://via.placeholder.com/100" id="userAvatar" class="avatar-img" alt="User Avatar">
+                <span class="welcome-text">Welcome, <span id="userName">Sarah</span></span>
             </a>
             <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
         </header>
 
-        <!-- 2. المحتوى الرئيسي -->
+        <!-- Main Content -->
         <main class="dashboard-content">
 
-            <!-- إطار مدمج ملون بالأبيض المعدني يجمع التاريخ وتقدم التحدي -->
+            <!-- Metallic White Card (Date + Challenge) -->
             <div class="metallic-white-card">
-                <!-- قسم التاريخ والتقويم -->
+                <!-- Date Section -->
                 <div class="date-section">
                     <div class="date-info">
                         <i class="fa-regular fa-calendar-days"></i>
-                        <span id="currentDate">الأحد، 4 أكتوبر 2026</span>
+                        <span id="currentDate">Sunday, Oct 4, 2026</span>
                     </div>
                     <button class="calendar-btn" id="openCalendarBtn">
-                        <i class="fa-solid fa-calendar-week"></i> التقويم
+                        <i class="fa-solid fa-calendar-week"></i> Calendar
                     </button>
                 </div>
 
-                <!-- قسم تقدم التحدي اليومي -->
+                <!-- Daily Challenge Section -->
                 <div class="challenge-section">
                     <h3>
-                        <span><i class="fa-solid fa-trophy" style="color: #D97706;"></i> تقدم التحدي اليومي</span>
+                        <span><i class="fa-solid fa-trophy" style="color: #D97706;"></i> Daily Challenge Progress</span>
                         <span id="challengePercent">65%</span>
                     </h3>
                     <div class="progress-bar-bg">
@@ -500,63 +532,63 @@
                 </div>
             </div>
 
-            <!-- شبكة الأيقونات التفاعلية -->
+            <!-- Widgets Grid -->
             <div class="widgets-grid">
-                <!-- شرب الماء مع أزرار التحكم -->
+                <!-- Water Tracker -->
                 <div class="glass-card widget-item">
                     <div class="widget-icon"><i class="fa-solid fa-glass-water"></i></div>
-                    <div class="widget-title">شرب الماء</div>
-                    <div class="widget-value"><span id="waterCount">6</span> / 10 أكواب</div>
+                    <div class="widget-title">Water Intake</div>
+                    <div class="widget-value"><span id="waterCount">6</span> / 10 Cups</div>
                     <div class="counter-controls">
                         <button class="counter-btn" onclick="updateCount('waterCount', -1)">-</button>
                         <button class="counter-btn" onclick="updateCount('waterCount', 1)">+</button>
                     </div>
                 </div>
 
-                <!-- ساعات النوم مع أزرار التحكم -->
+                <!-- Sleep Tracker -->
                 <div class="glass-card widget-item">
                     <div class="widget-icon"><i class="fa-solid fa-moon"></i></div>
-                    <div class="widget-title">ساعات النوم</div>
-                    <div class="widget-value"><span id="sleepCount">7</span> ساعات</div>
+                    <div class="widget-title">Sleep Tracker</div>
+                    <div class="widget-value"><span id="sleepCount">7</span> Hours</div>
                     <div class="counter-controls">
                         <button class="counter-btn" onclick="updateCount('sleepCount', -1)">-</button>
                         <button class="counter-btn" onclick="updateCount('sleepCount', 1)">+</button>
                     </div>
                 </div>
 
-                <!-- إضافة عنصر جديد ينقل مباشرة إلى ملف التحدي اليومي daily-challenge.html -->
+                <!-- Add Widget Link -->
                 <a href="daily-challenge.html" class="glass-card widget-item add-widget-btn">
                     <div class="widget-icon" style="background: transparent; color: #fff; border: 1px dashed #fff;">
                         <i class="fa-solid fa-plus"></i>
                     </div>
-                    <div class="widget-title">إضافة عنصر</div>
+                    <div class="widget-title">Add Item</div>
                 </a>
             </div>
 
         </main>
 
-        <!-- 4. الشريط السفلي ثابت -->
+        <!-- Bottom Navigation Bar -->
         <nav class="bottom-nav">
             <a href="dashboard.html" class="nav-item active">
                 <i class="fa-solid fa-house"></i>
-                <span>الرئيسية</span>
+                <span>Home</span>
             </a>
             <a href="daily-challenge.html" class="nav-item">
                 <i class="fa-solid fa-person-running"></i>
-                <span>التحدي</span>
+                <span>Challenge</span>
             </a>
             <a href="#" class="nav-item">
                 <i class="fa-solid fa-notes-medical"></i>
-                <span>الملف الصحي</span>
+                <span>Health Profile</span>
             </a>
             <a href="settings.html" class="nav-item">
                 <i class="fa-solid fa-gear"></i>
-                <span>الإعدادات</span>
+                <span>Settings</span>
             </a>
         </nav>
     </div>
 
-    <!-- القائمة الجانبية Drawer -->
+    <!-- Sidebar Drawer -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
@@ -564,31 +596,45 @@
             <div style="font-weight: bold; font-size: 18px;">Si7a</div>
         </div>
         <ul class="sidebar-menu">
-            <li><a href="dashboard.html" class="active"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
-            <li><a href="#"><i class="fa-solid fa-chart-line"></i> قياساتي الصحية</a></li>
-            <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> التحدي اليومي</a></li>
-            <li><a href="#"><i class="fa-solid fa-utensils"></i> نظامي الغذائي</a></li>
-            <li><a href="#"><i class="fa-solid fa-notes-medical"></i> ملفي الصحي</a></li>
-            <li><a href="#"><i class="fa-solid fa-droplet"></i> دورتي الشهرية</a></li>
-            <li><a href="#"><i class="fa-solid fa-baby"></i> حاسبة الحمل</a></li>
-            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> الإعدادات</a></li>
+            <li><a href="dashboard.html" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="#"><i class="fa-solid fa-chart-line"></i> Health Metrics</a></li>
+            <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> Daily Challenge</a></li>
+            <li><a href="#"><i class="fa-solid fa-utensils"></i> Diet Plan</a></li>
+            <li><a href="#"><i class="fa-solid fa-notes-medical"></i> Health File</a></li>
+            <li><a href="#"><i class="fa-solid fa-droplet"></i> Period Tracker</a></li>
+            <li><a href="#"><i class="fa-solid fa-baby"></i> Pregnancy Calculator</a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
         </ul>
+
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <label for="languageSelect"><i class="fa-solid fa-globe"></i> Select Language</label>
+            <select id="languageSelect" class="lang-select">
+                <option value="en" selected>English</option>
+                <option value="ar">العربية (Arabic)</option>
+                <option value="fr">Français (French)</option>
+                <option value="es">Español (Spanish)</option>
+                <option value="de">Deutsch (German)</option>
+                <option value="zh">中文 (Chinese)</option>
+                <option value="tr">Türkçe (Turkish)</option>
+            </select>
+        </div>
     </aside>
 
-    <!-- نافذة التقويم المنبثقة Modal -->
+    <!-- Calendar Modal -->
     <div class="modal" id="calendarModal">
         <div class="calendar-modal-content">
-            <h3 style="margin-bottom: 5px;">أكتوبر 2026</h3>
-            <p style="font-size: 12px; opacity: 0.8;">تابع إنجازاتك اليومية</p>
+            <h3 style="margin-bottom: 5px;">October 2026</h3>
+            <p style="font-size: 12px; opacity: 0.8;">Track your daily progress</p>
             
             <div class="calendar-grid">
-                <div class="calendar-day-header">أح</div>
-                <div class="calendar-day-header">إث</div>
-                <div class="calendar-day-header">ثل</div>
-                <div class="calendar-day-header">أر</div>
-                <div class="calendar-day-header">خم</div>
-                <div class="calendar-day-header">جم</div>
-                <div class="calendar-day-header">سب</div>
+                <div class="calendar-day-header">Sun</div>
+                <div class="calendar-day-header">Mon</div>
+                <div class="calendar-day-header">Tue</div>
+                <div class="calendar-day-header">Wed</div>
+                <div class="calendar-day-header">Thu</div>
+                <div class="calendar-day-header">Fri</div>
+                <div class="calendar-day-header">Sat</div>
 
                 <div class="calendar-day">1</div>
                 <div class="calendar-day">2</div>
@@ -599,7 +645,7 @@
                 <div class="calendar-day">7</div>
             </div>
 
-            <button class="close-modal-btn" id="closeCalendarBtn">إغلاق</button>
+            <button class="close-modal-btn" id="closeCalendarBtn">Close</button>
         </div>
     </div>
 
@@ -607,7 +653,7 @@
         import { auth } from "./js/firebase.js";
         import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
-        // التحقق من حالة تسجيل الدخول
+        // Check authentication state
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 if (user.displayName) document.getElementById("userName").textContent = user.displayName;
@@ -617,7 +663,7 @@
             }
         });
 
-        // القائمة الجانبية
+        // Sidebar Navigation
         const sidebar = document.getElementById("sidebar");
         const overlay = document.getElementById("sidebarOverlay");
 
@@ -631,7 +677,7 @@
             overlay.style.display = "none";
         });
 
-        // فتح وإغلاق التقويم
+        // Calendar Modal
         const calendarModal = document.getElementById("calendarModal");
         document.getElementById("openCalendarBtn").addEventListener("click", () => {
             calendarModal.style.display = "flex";
@@ -640,14 +686,21 @@
             calendarModal.style.display = "none";
         });
 
-        // زيادة ونقصان القيم وتعديل الخطأ
+        // Counter Controls
         window.updateCount = function(id, change) {
             const element = document.getElementById(id);
             let currentVal = parseInt(element.textContent, 10) || 0;
             currentVal += change;
-            if (currentVal < 0) currentVal = 0; // لمنع القيم السالبة
+            if (currentVal < 0) currentVal = 0;
             element.textContent = currentVal;
         }
+
+        // Language Change Handler
+        document.getElementById("languageSelect").addEventListener("change", (e) => {
+            const selectedLang = e.target.value;
+            // You can implement translation logic or redirect to corresponding language pages
+            console.log("Language changed to:", selectedLang);
+        });
     </script>
 </body>
 
