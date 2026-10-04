@@ -33,7 +33,7 @@
             justify-content: space-between;
             position: relative;
             overflow: hidden;
-            padding: 15px 15px 70px 15px; /* Space for bottom nav */
+            padding: 15px 15px 0px 15px;
         }
 
         /* Background Shapes */
@@ -117,7 +117,7 @@
             gap: 12px;
             z-index: 2;
             overflow-y: auto;
-            padding-bottom: 10px;
+            padding-bottom: 140px; /* Extracted space to clear the action bar & bottom nav */
         }
 
         .page-content::-webkit-scrollbar { display: none; }
@@ -168,6 +168,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 8px;
         }
 
         .item-controls {
@@ -191,16 +192,18 @@
         .toggle-container {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 12px;
+            gap: 6px;
+            font-size: 11px;
             color: #475569;
+            font-weight: normal;
         }
 
         .switch {
             position: relative;
             display: inline-block;
-            width: 38px;
-            height: 22px;
+            width: 34px;
+            height: 20px;
+            flex-shrink: 0;
         }
 
         .switch input { opacity: 0; width: 0; height: 0; }
@@ -217,8 +220,8 @@
         .slider:before {
             position: absolute;
             content: "";
-            height: 16px;
-            width: 16px;
+            height: 14px;
+            width: 14px;
             left: 3px;
             bottom: 3px;
             background-color: white;
@@ -227,7 +230,7 @@
         }
 
         input:checked + .slider { background-color: #2563EB; }
-        input:checked + .slider:before { transform: translateX(16px); }
+        input:checked + .slider:before { transform: translateX(14px); }
 
         /* Radio Options Group */
         .radio-group {
@@ -262,7 +265,25 @@
             border-color: #2563EB;
         }
 
+        /* Fixed Action Bar for Save Button */
+        .fixed-action-bar {
+            position: fixed;
+            bottom: 60px; /* Exactly above the bottom navigation bar */
+            left: 0;
+            right: 0;
+            padding: 10px 15px;
+            background: rgba(30, 58, 138, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 15;
+            display: flex;
+            justify-content: center;
+        }
+
         .submit-btn {
+            width: 100%;
+            max-width: 400px;
             background: linear-gradient(90deg, #2563EB, #1D4ED8);
             color: #fff;
             border: none;
@@ -271,8 +292,7 @@
             font-size: 14px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.2s;
         }
 
@@ -467,6 +487,13 @@
                 <div class="challenge-item">
                     <div class="item-label">
                         <span><i class="fa-solid fa-bed" style="color: #1E3A8A;"></i> <span data-i18n="sleep_time">Sleep Time</span></span>
+                        <div class="toggle-container">
+                            <span data-i18n="show_on_home">Show on Home</span>
+                            <label class="switch">
+                                <input type="checkbox" id="showSleepTimeOnHome">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
                     </div>
                     <input type="time" class="input-time" id="sleepTime" value="23:00">
                 </div>
@@ -475,6 +502,13 @@
                 <div class="challenge-item">
                     <div class="item-label">
                         <span><i class="fa-solid fa-sun" style="color: #D97706;"></i> <span data-i18n="wake_time">Wake Up Time</span></span>
+                        <div class="toggle-container">
+                            <span data-i18n="show_on_home">Show on Home</span>
+                            <label class="switch">
+                                <input type="checkbox" id="showWakeTimeOnHome">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
                     </div>
                     <input type="time" class="input-time" id="wakeTime" value="07:00">
                 </div>
@@ -483,6 +517,13 @@
                 <div class="challenge-item">
                     <div class="item-label">
                         <span><i class="fa-solid fa-moon" style="color: #4F46E5;"></i> <span data-i18n="sleep_hours">Sleep Duration (Hours)</span></span>
+                        <div class="toggle-container">
+                            <span data-i18n="show_on_home">Show on Home</span>
+                            <label class="switch">
+                                <input type="checkbox" id="showSleepHoursOnHome" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
                     </div>
                     <input type="number" class="input-number" id="sleepHours" value="8" readonly style="background: #F1F5F9;">
                 </div>
@@ -491,6 +532,13 @@
                 <div class="challenge-item">
                     <div class="item-label">
                         <span><i class="fa-solid fa-person-walking" style="color: #059669;"></i> <span data-i18n="walking_time">Walking Duration</span></span>
+                        <div class="toggle-container">
+                            <span data-i18n="show_on_home">Show on Home</span>
+                            <label class="switch">
+                                <input type="checkbox" id="showWalkingOnHome" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
                     </div>
                     <div class="item-controls">
                         <input type="number" class="input-number" id="walkHours" placeholder="Hours" value="0">
@@ -502,6 +550,13 @@
                 <div class="challenge-item">
                     <div class="item-label">
                         <span><i class="fa-solid fa-mobile-screen-button" style="color: #DC2626;"></i> <span data-i18n="phone_usage">Phone Usage (Hours)</span></span>
+                        <div class="toggle-container">
+                            <span data-i18n="show_on_home">Show on Home</span>
+                            <label class="switch">
+                                <input type="checkbox" id="showPhoneOnHome">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
                     </div>
                     <input type="number" class="input-number" id="phoneHours" value="3" placeholder="Hours spent">
                 </div>
@@ -510,6 +565,13 @@
                 <div class="challenge-item">
                     <div class="item-label">
                         <span><i class="fa-solid fa-candy-cane" style="color: #EC4899;"></i> <span data-i18n="sugar_intake">Sugar Intake</span></span>
+                        <div class="toggle-container">
+                            <span data-i18n="show_on_home">Show on Home</span>
+                            <label class="switch">
+                                <input type="checkbox" id="showSugarOnHome">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
                     </div>
                     <div class="radio-group">
                         <div class="radio-btn">
@@ -527,6 +589,13 @@
                 <div class="challenge-item">
                     <div class="item-label">
                         <span><i class="fa-solid fa-smoking" style="color: #4B5563;"></i> <span data-i18n="smoking">Smoking</span></span>
+                        <div class="toggle-container">
+                            <span data-i18n="show_on_home">Show on Home</span>
+                            <label class="switch">
+                                <input type="checkbox" id="showSmokingOnHome">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
                     </div>
                     <div class="radio-group">
                         <div class="radio-btn">
@@ -544,6 +613,13 @@
                 <div class="challenge-item">
                     <div class="item-label">
                         <span><i class="fa-solid fa-face-smile" style="color: #8B5CF6;"></i> <span data-i18n="mental_state">Mental State</span></span>
+                        <div class="toggle-container">
+                            <span data-i18n="show_on_home">Show on Home</span>
+                            <label class="switch">
+                                <input type="checkbox" id="showMentalOnHome">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
                     </div>
                     <select class="input-select" id="mentalState">
                         <option value="calm" data-i18n="mood_calm">Relaxed / Calm</option>
@@ -554,11 +630,14 @@
                     </select>
                 </div>
 
-                <!-- Save Button -->
-                <button class="submit-btn" id="saveChallengeBtn" data-i18n="save_changes">Save Challenge</button>
             </div>
 
         </main>
+
+        <!-- Fixed Save Button Action Bar (Guaranteed Visibility Above Bottom Navigation) -->
+        <div class="fixed-action-bar">
+            <button class="submit-btn" id="saveChallengeBtn" data-i18n="save_changes">Save Challenge</button>
+        </div>
 
         <!-- Bottom Navigation Bar -->
         <nav class="bottom-nav">
