@@ -117,7 +117,7 @@
             gap: 12px;
             z-index: 2;
             overflow-y: auto;
-            padding-bottom: 140px; /* Extracted space to clear the action bar & bottom nav */
+            padding-bottom: 140px;
         }
 
         .page-content::-webkit-scrollbar { display: none; }
@@ -268,7 +268,7 @@
         /* Fixed Action Bar for Save Button */
         .fixed-action-bar {
             position: fixed;
-            bottom: 60px; /* Exactly above the bottom navigation bar */
+            bottom: 60px;
             left: 0;
             right: 0;
             padding: 10px 15px;
@@ -298,7 +298,7 @@
 
         .submit-btn:active { transform: scale(0.98); }
 
-        /* Sidebar Drawer (Support Left/Right RTL) */
+        /* Sidebar Drawer */
         .sidebar-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -459,7 +459,7 @@
             <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
         </header>
 
-        <!-- Main Content (Daily Challenge Settings) -->
+        <!-- Main Content -->
         <main class="page-content">
 
             <div class="metallic-white-card">
@@ -634,7 +634,7 @@
 
         </main>
 
-        <!-- Fixed Save Button Action Bar (Guaranteed Visibility Above Bottom Navigation) -->
+        <!-- Fixed Action Bar -->
         <div class="fixed-action-bar">
             <button class="submit-btn" id="saveChallengeBtn" data-i18n="save_changes">Save Challenge</button>
         </div>
@@ -672,7 +672,7 @@
         <div class="language-selector-top">
             <label for="languageSelect"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">Language</span></label>
             <select id="languageSelect" class="lang-select">
-                <option value="en" selected>English</option>
+                <option value="en">English</option>
                 <option value="ar">العربية</option>
                 <option value="fr">Français</option>
                 <option value="es">Español</option>
@@ -694,8 +694,6 @@
     <script type="module">
         import { auth } from "./js/firebase.js";
         import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
-
-        let currentLang = 'en';
 
         // Check authentication state
         onAuthStateChanged(auth, (user) => {
@@ -839,9 +837,14 @@
             }
         };
 
-        // Change Language Function
+        // Get saved language or fallback to English
+        let currentLang = localStorage.getItem('appLanguage') || 'en';
+
+        // Set Language Function
         function setLanguage(lang) {
             currentLang = lang;
+            localStorage.setItem('appLanguage', lang); // Save to local storage for all pages
+
             const html = document.documentElement;
             
             if (lang === 'ar') {
@@ -858,9 +861,16 @@
                     element.textContent = translations[lang][key];
                 }
             });
+
+            // Keep language select input in sync
+            const langSelect = document.getElementById("languageSelect");
+            if (langSelect) langSelect.value = lang;
         }
 
-        // Language Switch Event
+        // Initialize language state
+        setLanguage(currentLang);
+
+        // Language Select Event Listener
         document.getElementById("languageSelect").addEventListener("change", (e) => {
             setLanguage(e.target.value);
         });
@@ -877,7 +887,7 @@
                 let start = sHours + (sMin / 60);
                 let end = wHours + (wMin / 60);
 
-                if (end <= start) end += 24; // Crossed midnight
+                if (end <= start) end += 24;
 
                 const diff = (end - start).toFixed(1);
                 document.getElementById("sleepHours").value = diff;
