@@ -116,11 +116,10 @@
             flex-direction: column;
             gap: 12px;
             z-index: 2;
-            overflow-y: auto; /* للسماح بالتمرير داخل المحتوى فقط إذا زادت الأيقونات */
+            overflow-y: auto;
             padding-bottom: 5px;
         }
 
-        /* إخفاء شريط التمرير */
         .dashboard-content::-webkit-scrollbar { display: none; }
 
         /* الكارت الزجاجي المصغر */
@@ -134,11 +133,27 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
-        /* إطار التاريخ والتقويم */
-        .date-card {
+        /* 1. الإطار المدمج باللون الأبيض المعدني (التاريخ + تقدم التحدي) */
+        .metallic-white-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(230, 240, 255, 0.65) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 22px;
+            padding: 16px;
+            color: #1E293B; /* لون الخط أسود/رمادي داكن ليتناسب مع الأبيض المعدني */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(255, 255, 255, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .date-section {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(30, 58, 138, 0.12);
         }
 
         .date-info {
@@ -146,14 +161,15 @@
             align-items: center;
             gap: 8px;
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.95);
+            font-weight: bold;
+            color: #1E3A8A;
         }
 
         .calendar-btn {
-            background: #ffffff;
-            color: #2563EB;
+            background: #2563EB;
+            color: #ffffff;
             border: none;
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 6px 12px;
             font-size: 12px;
             font-weight: bold;
@@ -161,20 +177,27 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
+            transition: transform 0.2s;
         }
 
-        /* تقدم التحدي اليومي */
-        .challenge-card h3 {
-            font-size: 14px;
+        .calendar-btn:active {
+            transform: scale(0.95);
+        }
+
+        .challenge-section h3 {
+            font-size: 13.5px;
             margin-bottom: 8px;
             display: flex;
             justify-content: space-between;
+            color: #0F172A;
+            font-weight: bold;
         }
 
         .progress-bar-bg {
             width: 100%;
             height: 10px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.08);
             border-radius: 10px;
             overflow: hidden;
         }
@@ -182,8 +205,9 @@
         .progress-fill {
             width: 65%; /* نسبة التقدم */
             height: 100%;
-            background: #ffffff;
+            background: linear-gradient(90deg, #3B82F6, #1D4ED8);
             border-radius: 10px;
+            transition: width 0.3s ease;
         }
 
         /* شبكة الأيقونات التفاعلية */
@@ -205,15 +229,15 @@
         }
 
         .widget-icon {
-            width: 42px;
-            height: 42px;
+            width: 38px;
+            height: 38px;
             background: rgba(255, 255, 255, 0.9);
             color: #2563EB;
-            border-radius: 14px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .widget-title {
@@ -222,14 +246,48 @@
         }
 
         .widget-value {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.85);
+            font-size: 12px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        /* أزرار التحكم بالزيادة والنقصان */
+        .counter-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 4px;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+
+        .counter-btn {
+            background: rgba(255, 255, 255, 0.9);
+            color: #2563EB;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .counter-btn:active {
+            transform: scale(0.9);
         }
 
         .add-widget-btn {
             border: 1px dashed rgba(255, 255, 255, 0.5);
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.08);
             cursor: pointer;
+            text-decoration: none;
+            color: #fff;
         }
 
         /* 3. القائمة الجانبية Drawer */
@@ -337,41 +395,62 @@
             font-weight: bold;
         }
 
-        /* النافذة المنبثقة للإضافة */
+        /* نافذة عرض التقويم Modal */
         .modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
             z-index: 200;
             align-items: center;
             justify-content: center;
             padding: 20px;
         }
 
-        .modal-content {
+        .calendar-modal-content {
             width: 100%;
             max-width: 320px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #1E3A8A;
+            border-radius: 20px;
+            padding: 18px;
+            text-align: center;
         }
 
-        .modal-content input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.4);
-            background: transparent;
-            color: #fff;
-            outline: none;
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            margin-top: 12px;
+            font-size: 12px;
         }
 
-        .modal-btn {
-            width: 100%;
-            padding: 10px;
-            border-radius: 10px;
-            border: none;
-            background: #fff;
+        .calendar-day-header {
+            font-weight: bold;
             color: #2563EB;
+        }
+
+        .calendar-day {
+            padding: 8px 0;
+            border-radius: 8px;
+            background: rgba(37, 99, 235, 0.08);
+        }
+
+        .calendar-day.active-day {
+            background: #2563EB;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .close-modal-btn {
+            margin-top: 14px;
+            width: 100%;
+            padding: 8px;
+            background: #2563EB;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
             font-weight: bold;
             cursor: pointer;
         }
@@ -396,51 +475,62 @@
         <!-- 2. المحتوى الرئيسي -->
         <main class="dashboard-content">
 
-            <!-- بطاقة التاريخ -->
-            <div class="glass-card date-card">
-                <div class="date-info">
-                    <i class="fa-regular fa-calendar-days"></i>
-                    <span id="currentDate">الأحد، 4 أكتوبر 2026</span>
+            <!-- إطار مدمج ملون بالأبيض المعدني يجمع التاريخ وتقدم التحدي -->
+            <div class="metallic-white-card">
+                <!-- قسم التاريخ والتقويم -->
+                <div class="date-section">
+                    <div class="date-info">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        <span id="currentDate">الأحد، 4 أكتوبر 2026</span>
+                    </div>
+                    <button class="calendar-btn" id="openCalendarBtn">
+                        <i class="fa-solid fa-calendar-week"></i> التقويم
+                    </button>
                 </div>
-                <button class="calendar-btn" onclick="alert('فتح التقويم اليومي')">
-                    <i class="fa-solid fa-calendar-week"></i> التقويم
-                </button>
+
+                <!-- قسم تقدم التحدي اليومي -->
+                <div class="challenge-section">
+                    <h3>
+                        <span><i class="fa-solid fa-trophy" style="color: #D97706;"></i> تقدم التحدي اليومي</span>
+                        <span id="challengePercent">65%</span>
+                    </h3>
+                    <div class="progress-bar-bg">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
             </div>
 
-            <!-- بطاقة التحدي اليومي -->
-            <div class="glass-card challenge-card">
-                <h3>
-                    <span><i class="fa-solid fa-trophy" style="color: #FBBF24;"></i> التحدي اليومي</span>
-                    <span>65%</span>
-                </h3>
-                <div class="progress-bar-bg">
-                    <div class="progress-fill"></div>
-                </div>
-            </div>
-
-            <!-- شبكة الأيقونات القابلة للتخصيص -->
-            <div class="widgets-grid" id="widgetsContainer">
-                <!-- شرب الماء -->
+            <!-- شبكة الأيقونات التفاعلية -->
+            <div class="widgets-grid">
+                <!-- شرب الماء مع أزرار التحكم -->
                 <div class="glass-card widget-item">
                     <div class="widget-icon"><i class="fa-solid fa-glass-water"></i></div>
                     <div class="widget-title">شرب الماء</div>
-                    <div class="widget-value">1.5 / 2.5 ليتر</div>
+                    <div class="widget-value"><span id="waterCount">6</span> / 10 أكواب</div>
+                    <div class="counter-controls">
+                        <button class="counter-btn" onclick="updateCount('waterCount', -1)">-</button>
+                        <button class="counter-btn" onclick="updateCount('waterCount', 1)">+</button>
+                    </div>
                 </div>
 
-                <!-- ساعات النوم -->
+                <!-- ساعات النوم مع أزرار التحكم -->
                 <div class="glass-card widget-item">
                     <div class="widget-icon"><i class="fa-solid fa-moon"></i></div>
                     <div class="widget-title">ساعات النوم</div>
-                    <div class="widget-value">7.5 ساعات</div>
+                    <div class="widget-value"><span id="sleepCount">7</span> ساعات</div>
+                    <div class="counter-controls">
+                        <button class="counter-btn" onclick="updateCount('sleepCount', -1)">-</button>
+                        <button class="counter-btn" onclick="updateCount('sleepCount', 1)">+</button>
+                    </div>
                 </div>
 
-                <!-- زر إضافة ميزة جديدة -->
-                <div class="glass-card widget-item add-widget-btn" onclick="openAddModal()">
+                <!-- إضافة عنصر جديد ينقل مباشرة إلى ملف التحدي اليومي daily-challenge.html -->
+                <a href="daily-challenge.html" class="glass-card widget-item add-widget-btn">
                     <div class="widget-icon" style="background: transparent; color: #fff; border: 1px dashed #fff;">
                         <i class="fa-solid fa-plus"></i>
                     </div>
                     <div class="widget-title">إضافة عنصر</div>
-                </div>
+                </a>
             </div>
 
         </main>
@@ -451,13 +541,13 @@
                 <i class="fa-solid fa-house"></i>
                 <span>الرئيسية</span>
             </a>
-            <a href="#" class="nav-item">
+            <a href="daily-challenge.html" class="nav-item">
                 <i class="fa-solid fa-person-running"></i>
                 <span>التحدي</span>
             </a>
             <a href="#" class="nav-item">
                 <i class="fa-solid fa-notes-medical"></i>
-                <span>ملفي الصحي</span>
+                <span>الملف الصحي</span>
             </a>
             <a href="settings.html" class="nav-item">
                 <i class="fa-solid fa-gear"></i>
@@ -466,7 +556,7 @@
         </nav>
     </div>
 
-    <!-- 3. القائمة الجانبية Overlay + Sidebar -->
+    <!-- القائمة الجانبية Drawer -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
@@ -476,7 +566,7 @@
         <ul class="sidebar-menu">
             <li><a href="dashboard.html" class="active"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
             <li><a href="#"><i class="fa-solid fa-chart-line"></i> قياساتي الصحية</a></li>
-            <li><a href="#"><i class="fa-solid fa-trophy"></i> التحدي اليومي</a></li>
+            <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> التحدي اليومي</a></li>
             <li><a href="#"><i class="fa-solid fa-utensils"></i> نظامي الغذائي</a></li>
             <li><a href="#"><i class="fa-solid fa-notes-medical"></i> ملفي الصحي</a></li>
             <li><a href="#"><i class="fa-solid fa-droplet"></i> دورتي الشهرية</a></li>
@@ -485,13 +575,31 @@
         </ul>
     </aside>
 
-    <!-- نافذة إضافة عنصر -->
-    <div class="modal" id="addModal">
-        <div class="glass-card modal-content">
-            <h3 style="margin-bottom: 10px;">إضافة عنصر جديد</h3>
-            <input type="text" id="newWidgetTitle" placeholder="اسم النشاط (مثل: المشي)">
-            <input type="text" id="newWidgetValue" placeholder="القيمة (مثل: 5000 خطوة)">
-            <button class="modal-btn" onclick="addNewWidget()">إضافة</button>
+    <!-- نافذة التقويم المنبثقة Modal -->
+    <div class="modal" id="calendarModal">
+        <div class="calendar-modal-content">
+            <h3 style="margin-bottom: 5px;">أكتوبر 2026</h3>
+            <p style="font-size: 12px; opacity: 0.8;">تابع إنجازاتك اليومية</p>
+            
+            <div class="calendar-grid">
+                <div class="calendar-day-header">أح</div>
+                <div class="calendar-day-header">إث</div>
+                <div class="calendar-day-header">ثل</div>
+                <div class="calendar-day-header">أر</div>
+                <div class="calendar-day-header">خم</div>
+                <div class="calendar-day-header">جم</div>
+                <div class="calendar-day-header">سب</div>
+
+                <div class="calendar-day">1</div>
+                <div class="calendar-day">2</div>
+                <div class="calendar-day">3</div>
+                <div class="calendar-day active-day">4</div>
+                <div class="calendar-day">5</div>
+                <div class="calendar-day">6</div>
+                <div class="calendar-day">7</div>
+            </div>
+
+            <button class="close-modal-btn" id="closeCalendarBtn">إغلاق</button>
         </div>
     </div>
 
@@ -499,7 +607,7 @@
         import { auth } from "./js/firebase.js";
         import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
-        // التحقق من تسجيل الدخول وجلب بيانات المستخدم
+        // التحقق من حالة تسجيل الدخول
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 if (user.displayName) document.getElementById("userName").textContent = user.displayName;
@@ -523,32 +631,22 @@
             overlay.style.display = "none";
         });
 
-        // إضافة عنصر جديد
-        window.openAddModal = function() {
-            document.getElementById("addModal").style.display = "flex";
-        }
+        // فتح وإغلاق التقويم
+        const calendarModal = document.getElementById("calendarModal");
+        document.getElementById("openCalendarBtn").addEventListener("click", () => {
+            calendarModal.style.display = "flex";
+        });
+        document.getElementById("closeCalendarBtn").addEventListener("click", () => {
+            calendarModal.style.display = "none";
+        });
 
-        window.addNewWidget = function() {
-            const title = document.getElementById("newWidgetTitle").value.trim();
-            const value = document.getElementById("newWidgetValue").value.trim();
-
-            if (title && value) {
-                const container = document.getElementById("widgetsContainer");
-                const addBtn = container.querySelector(".add-widget-btn");
-
-                const newCard = document.createElement("div");
-                newCard.className = "glass-card widget-item";
-                newCard.innerHTML = `
-                    <div class="widget-icon"><i class="fa-solid fa-star"></i></div>
-                    <div class="widget-title">${title}</div>
-                    <div class="widget-value">${value}</div>
-                `;
-
-                container.insertBefore(newCard, addBtn);
-                document.getElementById("addModal").style.display = "none";
-                document.getElementById("newWidgetTitle").value = "";
-                document.getElementById("newWidgetValue").value = "";
-            }
+        // زيادة ونقصان القيم وتعديل الخطأ
+        window.updateCount = function(id, change) {
+            const element = document.getElementById(id);
+            let currentVal = parseInt(element.textContent, 10) || 0;
+            currentVal += change;
+            if (currentVal < 0) currentVal = 0; // لمنع القيم السالبة
+            element.textContent = currentVal;
         }
     </script>
 </body>
