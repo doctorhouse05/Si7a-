@@ -288,7 +288,7 @@
             color: #fff;
         }
 
-        /* Sidebar Drawer */
+        /* Sidebar Drawer (Support Left/Right RTL) */
         .sidebar-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -300,41 +300,81 @@
 
         .sidebar {
             position: fixed;
-            top: 0; left: -280px;
-            width: 260px;
+            top: 0;
+            width: 270px;
             height: 100%;
-            background: rgba(30, 58, 138, 0.85);
+            background: rgba(30, 58, 138, 0.92);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-right: 1px solid rgba(255, 255, 255, 0.2);
             z-index: 101;
-            transition: left 0.3s ease;
+            transition: all 0.3s ease;
             padding: 20px 15px;
             display: flex;
             flex-direction: column;
         }
 
-        .sidebar.active { left: 0; }
+        /* Support LTR & RTL Sidebar Positions */
+        html[dir="ltr"] .sidebar { left: -280px; border-right: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="ltr"] .sidebar.active { left: 0; }
+
+        html[dir="rtl"] .sidebar { right: -280px; border-left: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="rtl"] .sidebar.active { right: 0; }
 
         .sidebar-header {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding-bottom: 15px;
+            padding-bottom: 12px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .sidebar-logo {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             background: #fff;
             color: #2563EB;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 18px;
+        }
+
+        /* Top Language Selector Container */
+        .language-selector-top {
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .language-selector-top label {
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+            color: rgba(255, 255, 255, 0.85);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .lang-select {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+            font-weight: bold;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .lang-select option {
+            background: #1E3A8A;
+            color: #fff;
         }
 
         .sidebar-menu {
@@ -360,39 +400,6 @@
 
         .sidebar-menu a:hover, .sidebar-menu a.active {
             background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Language Selector Container */
-        .language-selector {
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            margin-top: 10px;
-        }
-
-        .language-selector label {
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .lang-select {
-            width: 100%;
-            padding: 8px 12px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            font-size: 13px;
-            outline: none;
-            cursor: pointer;
-        }
-
-        .lang-select option {
-            background: #1E3A8A;
-            color: #fff;
         }
 
         /* Bottom Navigation Bar */
@@ -499,7 +506,7 @@
         <header class="app-header">
             <a href="settings.html" class="user-profile">
                 <img src="https://via.placeholder.com/100" id="userAvatar" class="avatar-img" alt="User Avatar">
-                <span class="welcome-text">Welcome, <span id="userName">Sarah</span></span>
+                <span class="welcome-text"><span data-i18n="welcome">Welcome</span>, <span id="userName">Sarah</span></span>
             </a>
             <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
         </header>
@@ -516,14 +523,14 @@
                         <span id="currentDate">Sunday, Oct 4, 2026</span>
                     </div>
                     <button class="calendar-btn" id="openCalendarBtn">
-                        <i class="fa-solid fa-calendar-week"></i> Calendar
+                        <i class="fa-solid fa-calendar-week"></i> <span data-i18n="calendar">Calendar</span>
                     </button>
                 </div>
 
                 <!-- Daily Challenge Section -->
                 <div class="challenge-section">
                     <h3>
-                        <span><i class="fa-solid fa-trophy" style="color: #D97706;"></i> Daily Challenge Progress</span>
+                        <span><i class="fa-solid fa-trophy" style="color: #D97706;"></i> <span data-i18n="challenge_progress">Daily Challenge Progress</span></span>
                         <span id="challengePercent">65%</span>
                     </h3>
                     <div class="progress-bar-bg">
@@ -537,8 +544,8 @@
                 <!-- Water Tracker -->
                 <div class="glass-card widget-item">
                     <div class="widget-icon"><i class="fa-solid fa-glass-water"></i></div>
-                    <div class="widget-title">Water Intake</div>
-                    <div class="widget-value"><span id="waterCount">6</span> / 10 Cups</div>
+                    <div class="widget-title" data-i18n="water_intake">Water Intake</div>
+                    <div class="widget-value"><span id="waterCount">6</span> / 10 <span data-i18n="cups">Cups</span></div>
                     <div class="counter-controls">
                         <button class="counter-btn" onclick="updateCount('waterCount', -1)">-</button>
                         <button class="counter-btn" onclick="updateCount('waterCount', 1)">+</button>
@@ -548,8 +555,8 @@
                 <!-- Sleep Tracker -->
                 <div class="glass-card widget-item">
                     <div class="widget-icon"><i class="fa-solid fa-moon"></i></div>
-                    <div class="widget-title">Sleep Tracker</div>
-                    <div class="widget-value"><span id="sleepCount">7</span> Hours</div>
+                    <div class="widget-title" data-i18n="sleep_tracker">Sleep Tracker</div>
+                    <div class="widget-value"><span id="sleepCount">7</span> <span data-i18n="hours">Hours</span></div>
                     <div class="counter-controls">
                         <button class="counter-btn" onclick="updateCount('sleepCount', -1)">-</button>
                         <button class="counter-btn" onclick="updateCount('sleepCount', 1)">+</button>
@@ -561,7 +568,7 @@
                     <div class="widget-icon" style="background: transparent; color: #fff; border: 1px dashed #fff;">
                         <i class="fa-solid fa-plus"></i>
                     </div>
-                    <div class="widget-title">Add Item</div>
+                    <div class="widget-title" data-i18n="add_item">Add Item</div>
                 </a>
             </div>
 
@@ -571,19 +578,19 @@
         <nav class="bottom-nav">
             <a href="dashboard.html" class="nav-item active">
                 <i class="fa-solid fa-house"></i>
-                <span>Home</span>
+                <span data-i18n="home">Home</span>
             </a>
             <a href="daily-challenge.html" class="nav-item">
                 <i class="fa-solid fa-person-running"></i>
-                <span>Challenge</span>
+                <span data-i18n="challenge">Challenge</span>
             </a>
             <a href="#" class="nav-item">
                 <i class="fa-solid fa-notes-medical"></i>
-                <span>Health Profile</span>
+                <span data-i18n="health_file">Health File</span>
             </a>
             <a href="settings.html" class="nav-item">
                 <i class="fa-solid fa-gear"></i>
-                <span>Settings</span>
+                <span data-i18n="settings">Settings</span>
             </a>
         </nav>
     </div>
@@ -595,46 +602,44 @@
             <div class="sidebar-logo"><i class="fa-solid fa-heart-pulse"></i></div>
             <div style="font-weight: bold; font-size: 18px;">Si7a</div>
         </div>
-        <ul class="sidebar-menu">
-            <li><a href="dashboard.html" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li><a href="#"><i class="fa-solid fa-chart-line"></i> Health Metrics</a></li>
-            <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> Daily Challenge</a></li>
-            <li><a href="#"><i class="fa-solid fa-utensils"></i> Diet Plan</a></li>
-            <li><a href="#"><i class="fa-solid fa-notes-medical"></i> Health File</a></li>
-            <li><a href="#"><i class="fa-solid fa-droplet"></i> Period Tracker</a></li>
-            <li><a href="#"><i class="fa-solid fa-baby"></i> Pregnancy Calculator</a></li>
-            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
-        </ul>
 
-        <!-- Language Selector -->
-        <div class="language-selector">
-            <label for="languageSelect"><i class="fa-solid fa-globe"></i> Select Language</label>
+        <!-- Top Language Selector -->
+        <div class="language-selector-top">
+            <label for="languageSelect"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">Language</span></label>
             <select id="languageSelect" class="lang-select">
                 <option value="en" selected>English</option>
-                <option value="ar">العربية (Arabic)</option>
-                <option value="fr">Français (French)</option>
-                <option value="es">Español (Spanish)</option>
-                <option value="de">Deutsch (German)</option>
-                <option value="zh">中文 (Chinese)</option>
-                <option value="tr">Türkçe (Turkish)</option>
+                <option value="ar">العربية</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
             </select>
         </div>
+
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html" class="active"><i class="fa-solid fa-house"></i> <span data-i18n="home">Home</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">Health Metrics</span></a></li>
+            <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">Daily Challenge</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">Diet Plan</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">Health File</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">Period Tracker</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">Pregnancy Calculator</span></a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">Settings</span></a></li>
+        </ul>
     </aside>
 
     <!-- Calendar Modal -->
     <div class="modal" id="calendarModal">
         <div class="calendar-modal-content">
             <h3 style="margin-bottom: 5px;">October 2026</h3>
-            <p style="font-size: 12px; opacity: 0.8;">Track your daily progress</p>
+            <p style="font-size: 12px; opacity: 0.8;" data-i18n="track_progress">Track your daily progress</p>
             
             <div class="calendar-grid">
-                <div class="calendar-day-header">Sun</div>
-                <div class="calendar-day-header">Mon</div>
-                <div class="calendar-day-header">Tue</div>
-                <div class="calendar-day-header">Wed</div>
-                <div class="calendar-day-header">Thu</div>
-                <div class="calendar-day-header">Fri</div>
-                <div class="calendar-day-header">Sat</div>
+                <div class="calendar-day-header" data-i18n="sun">Sun</div>
+                <div class="calendar-day-header" data-i18n="mon">Mon</div>
+                <div class="calendar-day-header" data-i18n="tue">Tue</div>
+                <div class="calendar-day-header" data-i18n="wed">Wed</div>
+                <div class="calendar-day-header" data-i18n="thu">Thu</div>
+                <div class="calendar-day-header" data-i18n="fri">Fri</div>
+                <div class="calendar-day-header" data-i18n="sat">Sat</div>
 
                 <div class="calendar-day">1</div>
                 <div class="calendar-day">2</div>
@@ -645,7 +650,7 @@
                 <div class="calendar-day">7</div>
             </div>
 
-            <button class="close-modal-btn" id="closeCalendarBtn">Close</button>
+            <button class="close-modal-btn" id="closeCalendarBtn" data-i18n="close">Close</button>
         </div>
     </div>
 
@@ -661,6 +666,139 @@
             } else {
                 window.location.href = "login.html";
             }
+        });
+
+        // Dictionary for Multi-language translation
+        const translations = {
+            en: {
+                welcome: "Welcome",
+                calendar: "Calendar",
+                challenge_progress: "Daily Challenge Progress",
+                water_intake: "Water Intake",
+                cups: "Cups",
+                sleep_tracker: "Sleep Tracker",
+                hours: "Hours",
+                add_item: "Add Item",
+                home: "Home",
+                challenge: "Challenge",
+                health_file: "Health File",
+                settings: "Settings",
+                select_language: "Language",
+                health_metrics: "Health Metrics",
+                daily_challenge: "Daily Challenge",
+                diet_plan: "Diet Plan",
+                period_tracker: "Period Tracker",
+                pregnancy_calc: "Pregnancy Calculator",
+                track_progress: "Track your daily progress",
+                close: "Close",
+                date_str: "Sunday, Oct 4, 2026",
+                sun: "Sun", mon: "Mon", tue: "Tue", wed: "Wed", thu: "Thu", fri: "Fri", sat: "Sat"
+            },
+            ar: {
+                welcome: "أهلاً بك",
+                calendar: "التقويم",
+                challenge_progress: "تقدم التحدي اليومي",
+                water_intake: "شرب الماء",
+                cups: "أكواب",
+                sleep_tracker: "ساعات النوم",
+                hours: "ساعات",
+                add_item: "إضافة عنصر",
+                home: "الرئيسية",
+                challenge: "التحدي",
+                health_file: "ملفي الصحي",
+                settings: "الإعدادات",
+                select_language: "اللغة",
+                health_metrics: "قياساتي الصحية",
+                daily_challenge: "التحدي اليومي",
+                diet_plan: "نظامي الغذائي",
+                period_tracker: "دورتي الشهرية",
+                pregnancy_calc: "حاسبة الحمل",
+                track_progress: "تابع إنجازاتك اليومية",
+                close: "إغلاق",
+                date_str: "الأحد، 4 أكتوبر 2026",
+                sun: "أح", mon: "إث", tue: "ثل", wed: "أر", thu: "خم", fri: "جم", sat: "سب"
+            },
+            fr: {
+                welcome: "Bienvenue",
+                calendar: "Calendrier",
+                challenge_progress: "Progrès du défi quotidien",
+                water_intake: "Consommation d'eau",
+                cups: "Verres",
+                sleep_tracker: "Suivi du sommeil",
+                hours: "Heures",
+                add_item: "Ajouter",
+                home: "Accueil",
+                challenge: "Défi",
+                health_file: "Dossier Santé",
+                settings: "Paramètres",
+                select_language: "Langue",
+                health_metrics: "Mesures de santé",
+                daily_challenge: "Défi quotidien",
+                diet_plan: "Régime alimentaire",
+                period_tracker: "Suivi des règles",
+                pregnancy_calc: "Calculateur de grossesse",
+                track_progress: "Suivez vos progrès quotidiens",
+                close: "Fermer",
+                date_str: "Dimanche 4 Oct 2026",
+                sun: "Dim", mon: "Lun", tue: "Mar", wed: "Mer", thu: "Jeu", fri: "Ven", sat: "Sam"
+            },
+            es: {
+                welcome: "Bienvenido",
+                calendar: "Calendario",
+                challenge_progress: "Progreso del desafío diario",
+                water_intake: "Toma de agua",
+                cups: "Vasos",
+                sleep_tracker: "Control del sueño",
+                hours: "Horas",
+                add_item: "Añadir elemento",
+                home: "Inicio",
+                challenge: "Desafío",
+                health_file: "Perfil de salud",
+                settings: "Ajustes",
+                select_language: "Idioma",
+                health_metrics: "Métricas de salud",
+                daily_challenge: "Desafío diario",
+                diet_plan: "Plan de dieta",
+                period_tracker: "Control del periodo",
+                pregnancy_calc: "Calculadora de embarazo",
+                track_progress: "Sigue tu progreso diario",
+                close: "Cerrar",
+                date_str: "Domingo, 4 Oct 2026",
+                sun: "Dom", mon: "Lun", tue: "Mar", wed: "Mié", thu: "Jue", fri: "Vie", sat: "Sáb"
+            }
+        };
+
+        // Change Language Function
+        function setLanguage(lang) {
+            const html = document.documentElement;
+            
+            // Set RTL for Arabic, LTR for others
+            if (lang === 'ar') {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+            } else {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', lang);
+            }
+
+            // Update Text Contents
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Update Date string
+            if(translations[lang] && translations[lang].date_str) {
+                document.getElementById('currentDate').textContent = translations[lang].date_str;
+            }
+        }
+
+        // Language Selector Change Event
+        document.getElementById("languageSelect").addEventListener("change", (e) => {
+            const selectedLang = e.target.value;
+            setLanguage(selectedLang);
         });
 
         // Sidebar Navigation
@@ -694,13 +832,6 @@
             if (currentVal < 0) currentVal = 0;
             element.textContent = currentVal;
         }
-
-        // Language Change Handler
-        document.getElementById("languageSelect").addEventListener("change", (e) => {
-            const selectedLang = e.target.value;
-            // You can implement translation logic or redirect to corresponding language pages
-            console.log("Language changed to:", selectedLang);
-        });
     </script>
 </body>
 
