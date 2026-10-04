@@ -313,7 +313,6 @@
             flex-direction: column;
         }
 
-        /* Support LTR & RTL Sidebar Positions */
         html[dir="ltr"] .sidebar { left: -280px; border-right: 1px solid rgba(255, 255, 255, 0.2); }
         html[dir="ltr"] .sidebar.active { left: 0; }
 
@@ -341,7 +340,6 @@
             font-size: 18px;
         }
 
-        /* Top Language Selector Container */
         .language-selector-top {
             margin-bottom: 15px;
             padding-bottom: 12px;
@@ -434,7 +432,7 @@
             font-weight: bold;
         }
 
-        /* Calendar Modal */
+        /* Interactive Dynamic Calendar Modal */
         .modal {
             display: none;
             position: fixed;
@@ -449,34 +447,73 @@
 
         .calendar-modal-content {
             width: 100%;
-            max-width: 320px;
+            max-width: 340px;
             background: rgba(255, 255, 255, 0.95);
             color: #1E3A8A;
             border-radius: 20px;
             padding: 18px;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .calendar-nav-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .calendar-nav-btn {
+            background: rgba(37, 99, 235, 0.1);
+            color: #2563EB;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-nav-btn:hover {
+            background: #2563EB;
+            color: #fff;
         }
 
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 6px;
-            margin-top: 12px;
+            gap: 4px;
+            margin-top: 10px;
             font-size: 12px;
         }
 
         .calendar-day-header {
             font-weight: bold;
             color: #2563EB;
+            padding: 4px 0;
         }
 
         .calendar-day {
             padding: 8px 0;
             border-radius: 8px;
-            background: rgba(37, 99, 235, 0.08);
+            background: rgba(37, 99, 235, 0.05);
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .calendar-day.active-day {
+        .calendar-day:hover {
+            background: rgba(37, 99, 235, 0.2);
+        }
+
+        .calendar-day.empty {
+            background: transparent;
+            cursor: default;
+        }
+
+        .calendar-day.selected-day {
             background: #2563EB;
             color: #fff;
             font-weight: bold;
@@ -485,7 +522,7 @@
         .close-modal-btn {
             margin-top: 14px;
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             background: #2563EB;
             color: #fff;
             border: none;
@@ -626,11 +663,17 @@
         </ul>
     </aside>
 
-    <!-- Calendar Modal -->
+    <!-- Interactive Calendar Modal -->
     <div class="modal" id="calendarModal">
         <div class="calendar-modal-content">
-            <h3 style="margin-bottom: 5px;">October 2026</h3>
-            <p style="font-size: 12px; opacity: 0.8;" data-i18n="track_progress">Track your daily progress</p>
+            <div class="calendar-nav-header">
+                <button class="calendar-nav-btn" id="prevMonthBtn"><i class="fa-solid fa-chevron-left"></i></button>
+                <div>
+                    <h3 id="calendarMonthYear" style="font-size: 15px;">October 2026</h3>
+                    <p style="font-size: 11px; opacity: 0.8;" data-i18n="track_progress">Select any date</p>
+                </div>
+                <button class="calendar-nav-btn" id="nextMonthBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
             
             <div class="calendar-grid">
                 <div class="calendar-day-header" data-i18n="sun">Sun</div>
@@ -640,15 +683,10 @@
                 <div class="calendar-day-header" data-i18n="thu">Thu</div>
                 <div class="calendar-day-header" data-i18n="fri">Fri</div>
                 <div class="calendar-day-header" data-i18n="sat">Sat</div>
-
-                <div class="calendar-day">1</div>
-                <div class="calendar-day">2</div>
-                <div class="calendar-day">3</div>
-                <div class="calendar-day active-day">4</div>
-                <div class="calendar-day">5</div>
-                <div class="calendar-day">6</div>
-                <div class="calendar-day">7</div>
             </div>
+
+            <!-- Dynamic days container -->
+            <div class="calendar-grid" id="calendarDaysGrid"></div>
 
             <button class="close-modal-btn" id="closeCalendarBtn" data-i18n="close">Close</button>
         </div>
@@ -657,6 +695,10 @@
     <script type="module">
         import { auth } from "./js/firebase.js";
         import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+        let currentLang = 'en';
+        let selectedDate = new Date(2026, 9, 4); // Default: Oct 4, 2026
+        let viewDate = new Date(selectedDate); // Date for navigating inside the calendar
 
         // Check authentication state
         onAuthStateChanged(auth, (user) => {
@@ -689,9 +731,8 @@
                 diet_plan: "Diet Plan",
                 period_tracker: "Period Tracker",
                 pregnancy_calc: "Pregnancy Calculator",
-                track_progress: "Track your daily progress",
+                track_progress: "Select any date to view",
                 close: "Close",
-                date_str: "Sunday, Oct 4, 2026",
                 sun: "Sun", mon: "Mon", tue: "Tue", wed: "Wed", thu: "Thu", fri: "Fri", sat: "Sat"
             },
             ar: {
@@ -713,9 +754,8 @@
                 diet_plan: "نظامي الغذائي",
                 period_tracker: "دورتي الشهرية",
                 pregnancy_calc: "حاسبة الحمل",
-                track_progress: "تابع إنجازاتك اليومية",
+                track_progress: "اختر أي تاريخ لعرضه",
                 close: "إغلاق",
-                date_str: "الأحد، 4 أكتوبر 2026",
                 sun: "أح", mon: "إث", tue: "ثل", wed: "أر", thu: "خم", fri: "جم", sat: "سب"
             },
             fr: {
@@ -737,9 +777,8 @@
                 diet_plan: "Régime alimentaire",
                 period_tracker: "Suivi des règles",
                 pregnancy_calc: "Calculateur de grossesse",
-                track_progress: "Suivez vos progrès quotidiens",
+                track_progress: "Sélectionnez une date",
                 close: "Fermer",
-                date_str: "Dimanche 4 Oct 2026",
                 sun: "Dim", mon: "Lun", tue: "Mar", wed: "Mer", thu: "Jeu", fri: "Ven", sat: "Sam"
             },
             es: {
@@ -761,18 +800,74 @@
                 diet_plan: "Plan de dieta",
                 period_tracker: "Control del periodo",
                 pregnancy_calc: "Calculadora de embarazo",
-                track_progress: "Sigue tu progreso diario",
+                track_progress: "Selecciona una fecha",
                 close: "Cerrar",
-                date_str: "Domingo, 4 Oct 2026",
                 sun: "Dom", mon: "Lun", tue: "Mar", wed: "Mié", thu: "Jue", fri: "Vie", sat: "Sáb"
             }
         };
 
+        // Format Date to Display on Top
+        function updateDateDisplay() {
+            const options = { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' };
+            const langCode = currentLang === 'ar' ? 'ar-EG' : (currentLang === 'fr' ? 'fr-FR' : (currentLang === 'es' ? 'es-ES' : 'en-US'));
+            document.getElementById('currentDate').textContent = selectedDate.toLocaleDateString(langCode, options);
+        }
+
+        // Dynamic Calendar Render Engine
+        function renderCalendar() {
+            const year = viewDate.getFullYear();
+            const month = viewDate.getMonth();
+
+            const monthNames = {
+                en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                ar: ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"],
+                fr: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+                es: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+            };
+
+            document.getElementById("calendarMonthYear").textContent = `${monthNames[currentLang][month]} ${year}`;
+
+            const daysContainer = document.getElementById("calendarDaysGrid");
+            daysContainer.innerHTML = "";
+
+            const firstDayIndex = new Date(year, month, 1).getDay();
+            const totalDays = new Date(year, month + 1, 0).getDate(); // Get total days in month (30, 31, etc.)
+
+            // Fill Empty slots before start of the month
+            for (let i = 0; i < firstDayIndex; i++) {
+                const emptyDiv = document.createElement("div");
+                emptyDiv.classList.add("calendar-day", "empty");
+                daysContainer.appendChild(emptyDiv);
+            }
+
+            // Fill Month Days
+            for (let day = 1; day <= totalDays; day++) {
+                const dayDiv = document.createElement("div");
+                dayDiv.classList.add("calendar-day");
+                dayDiv.textContent = day;
+
+                // Highlight currently selected date
+                if (selectedDate.getFullYear() === year && selectedDate.getMonth() === month && selectedDate.getDate() === day) {
+                    dayDiv.classList.add("selected-day");
+                }
+
+                // Date Selection Event Listener
+                dayDiv.addEventListener("click", () => {
+                    selectedDate = new Date(year, month, day);
+                    updateDateDisplay();
+                    renderCalendar(); // Refresh highlight
+                    document.getElementById("calendarModal").style.display = "none"; // Close modal
+                });
+
+                daysContainer.appendChild(dayDiv);
+            }
+        }
+
         // Change Language Function
         function setLanguage(lang) {
+            currentLang = lang;
             const html = document.documentElement;
             
-            // Set RTL for Arabic, LTR for others
             if (lang === 'ar') {
                 html.setAttribute('dir', 'rtl');
                 html.setAttribute('lang', 'ar');
@@ -781,7 +876,6 @@
                 html.setAttribute('lang', lang);
             }
 
-            // Update Text Contents
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang] && translations[lang][key]) {
@@ -789,16 +883,13 @@
                 }
             });
 
-            // Update Date string
-            if(translations[lang] && translations[lang].date_str) {
-                document.getElementById('currentDate').textContent = translations[lang].date_str;
-            }
+            updateDateDisplay();
+            renderCalendar();
         }
 
-        // Language Selector Change Event
+        // Language Switch Event
         document.getElementById("languageSelect").addEventListener("change", (e) => {
-            const selectedLang = e.target.value;
-            setLanguage(selectedLang);
+            setLanguage(e.target.value);
         });
 
         // Sidebar Navigation
@@ -815,13 +906,26 @@
             overlay.style.display = "none";
         });
 
-        // Calendar Modal
+        // Calendar Navigation Events
         const calendarModal = document.getElementById("calendarModal");
         document.getElementById("openCalendarBtn").addEventListener("click", () => {
+            viewDate = new Date(selectedDate); // Reset view to active date
+            renderCalendar();
             calendarModal.style.display = "flex";
         });
+
         document.getElementById("closeCalendarBtn").addEventListener("click", () => {
             calendarModal.style.display = "none";
+        });
+
+        document.getElementById("prevMonthBtn").addEventListener("click", () => {
+            viewDate.setMonth(viewDate.getMonth() - 1);
+            renderCalendar();
+        });
+
+        document.getElementById("nextMonthBtn").addEventListener("click", () => {
+            viewDate.setMonth(viewDate.getMonth() + 1);
+            renderCalendar();
         });
 
         // Counter Controls
@@ -832,6 +936,9 @@
             if (currentVal < 0) currentVal = 0;
             element.textContent = currentVal;
         }
+
+        // Initial setup
+        updateDateDisplay();
     </script>
 </body>
 
