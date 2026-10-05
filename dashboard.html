@@ -30,7 +30,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            padding: 15px 15px 90px 15px; /* مسافة سفلية للتنقل السفلي */
+            padding: 15px 15px 80px 15px; /* مسافة للتنقل السفلي */
         }
 
         /* Background Shapes */
@@ -64,7 +64,7 @@
             align-items: center;
             justify-content: space-between;
             z-index: 5;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .user-profile {
@@ -82,11 +82,13 @@
             border-radius: 50%;
             border: 2px solid rgba(255, 255, 255, 0.8);
             object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
 
         .welcome-text {
             font-size: 14px;
             font-weight: bold;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 
         .menu-btn {
@@ -104,23 +106,23 @@
             justify-content: center;
         }
 
-        /* Main Content Container */
-        .page-content {
+        /* Main Dashboard Content */
+        .dashboard-content {
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
             z-index: 2;
         }
 
-        /* Metallic White Card */
+        /* Metallic White Combined Card (Date + Challenge) */
         .metallic-white-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(230, 240, 255, 0.88) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(230, 240, 255, 0.85) 100%);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 22px;
-            padding: 18px;
+            padding: 16px;
             color: #1E293B;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
             display: flex;
@@ -128,43 +130,75 @@
             gap: 14px;
         }
 
-        .card-header-title {
+        .date-section {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            font-size: 16px;
-            font-weight: bold;
-            color: #1E3A8A;
             padding-bottom: 10px;
             border-bottom: 1px solid rgba(30, 58, 138, 0.12);
         }
 
-        /* Active Challenges Grid */
-        .challenges-grid {
+        .date-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #1E3A8A;
+        }
+
+        .calendar-btn {
+            background: #2563EB;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .calendar-btn:active {
+            transform: scale(0.95);
+        }
+
+        .card-header-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 15px;
+            font-weight: bold;
+            color: #1E3A8A;
+        }
+
+        /* Active Widgets / Cards Grid */
+        .widgets-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 12px;
         }
 
         .dash-item-card {
-            background: #ffffff;
-            border: 1px solid rgba(30, 58, 138, 0.1);
-            border-radius: 16px;
-            padding: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 18px;
+            padding: 14px;
             display: flex;
             flex-direction: column;
             gap: 6px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-            transition: transform 0.2s;
-        }
-
-        .dash-item-card:active {
-            transform: scale(0.97);
+            color: #1E293B;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
         }
 
         .dash-item-icon {
-            font-size: 20px;
-            margin-bottom: 4px;
+            font-size: 22px;
+            margin-bottom: 2px;
         }
 
         .dash-item-title {
@@ -179,9 +213,30 @@
             font-weight: bold;
         }
 
+        .add-widget-btn {
+            border: 2px dashed rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.12);
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 18px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            min-height: 100px;
+            transition: background 0.2s;
+        }
+
+        .add-widget-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
         .empty-state {
             text-align: center;
-            padding: 30px 10px;
+            padding: 25px 10px;
             color: #64748B;
             font-size: 13px;
         }
@@ -192,20 +247,24 @@
             color: #94A3B8;
         }
 
-        /* Sidebar & Bottom Nav */
+        /* Sidebar Drawer (Support Left/Right RTL) */
         .sidebar-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
             z-index: 100;
             display: none;
         }
 
         .sidebar {
             position: fixed;
-            top: 0; width: 270px; height: 100%;
+            top: 0;
+            width: 270px;
+            height: 100%;
             background: rgba(30, 58, 138, 0.95);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 101;
             transition: all 0.3s ease;
             padding: 20px 15px;
@@ -213,25 +272,100 @@
             flex-direction: column;
         }
 
-        html[dir="ltr"] .sidebar { left: -280px; }
+        html[dir="ltr"] .sidebar { left: -280px; border-right: 1px solid rgba(255, 255, 255, 0.2); }
         html[dir="ltr"] .sidebar.active { left: 0; }
-        html[dir="rtl"] .sidebar { right: -280px; }
+
+        html[dir="rtl"] .sidebar { right: -280px; border-left: 1px solid rgba(255, 255, 255, 0.2); }
         html[dir="rtl"] .sidebar.active { right: 0; }
 
-        .language-selector-top { margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
-        .lang-select { width: 100%; padding: 8px; border-radius: 10px; background: rgba(255, 255, 255, 0.25); color: #fff; border: 1px solid rgba(255, 255, 255, 0.4); font-weight: bold; outline: none; }
-        .lang-select option { background: #1E3A8A; color: #fff; }
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 12px;
+        }
 
-        .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-        .sidebar-menu a { color: #fff; text-decoration: none; padding: 10px; font-size: 13px; border-radius: 10px; display: flex; align-items: center; gap: 10px; }
-        .sidebar-menu a.active { background: rgba(255, 255, 255, 0.2); }
+        .sidebar-logo {
+            width: 38px;
+            height: 38px;
+            background: #fff;
+            color: #2563EB;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
 
+        .language-selector-top {
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .language-selector-top label {
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+            color: rgba(255, 255, 255, 0.85);
+            text-transform: uppercase;
+        }
+
+        .lang-select {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+            font-weight: bold;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .lang-select option {
+            background: #1E3A8A;
+            color: #fff;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .sidebar-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 12px;
+            font-size: 13px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.2s;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Bottom Navigation Bar */
         .bottom-nav {
             position: fixed;
             bottom: 0; left: 0; right: 0;
             height: 60px;
             background: rgba(255, 255, 255, 0.18);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid rgba(255, 255, 255, 0.25);
             display: flex;
             justify-content: space-around;
@@ -239,9 +373,121 @@
             z-index: 10;
         }
 
-        .nav-item { color: rgba(255, 255, 255, 0.7); text-decoration: none; font-size: 10px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .nav-item {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
         .nav-item i { font-size: 18px; }
-        .nav-item.active { color: #ffffff; font-weight: bold; }
+
+        .nav-item.active {
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        /* Interactive Dynamic Calendar Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .calendar-modal-content {
+            width: 100%;
+            max-width: 340px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #1E3A8A;
+            border-radius: 20px;
+            padding: 18px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .calendar-nav-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .calendar-nav-btn {
+            background: rgba(37, 99, 235, 0.1);
+            color: #2563EB;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-nav-btn:hover {
+            background: #2563EB;
+            color: #fff;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        .calendar-day-header {
+            font-weight: bold;
+            color: #2563EB;
+            padding: 4px 0;
+        }
+
+        .calendar-day {
+            padding: 8px 0;
+            border-radius: 8px;
+            background: rgba(37, 99, 235, 0.05);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .calendar-day:hover {
+            background: rgba(37, 99, 235, 0.2);
+        }
+
+        .calendar-day.empty {
+            background: transparent;
+            cursor: default;
+        }
+
+        .calendar-day.selected-day {
+            background: #2563EB;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .close-modal-btn {
+            margin-top: 14px;
+            width: 100%;
+            padding: 10px;
+            background: #2563EB;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -260,35 +506,66 @@
             <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
         </header>
 
-        <!-- Main Dashboard Body -->
-        <main class="page-content">
+        <!-- Main Content -->
+        <main class="dashboard-content">
+
+            <!-- Date Card Section -->
             <div class="metallic-white-card">
+                <div class="date-section">
+                    <div class="date-info">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        <span id="currentDate">Sunday, Oct 4, 2026</span>
+                    </div>
+                    <button class="calendar-btn" id="openCalendarBtn">
+                        <i class="fa-solid fa-calendar-week"></i> <span data-i18n="calendar">Calendar</span>
+                    </button>
+                </div>
+
                 <div class="card-header-title">
                     <span><i class="fa-solid fa-gauge-high" style="color: #2563EB;"></i> <span data-i18n="active_challenges">Active Challenges</span></span>
                     <a href="daily-challenge.html" style="font-size: 12px; color: #2563EB; text-decoration: none;"><i class="fa-solid fa-pen-to-square"></i> <span data-i18n="edit">Edit</span></a>
                 </div>
-
-                <!-- Active Cards Container -->
-                <div class="challenges-grid" id="challengesDisplay">
-                    <!-- سيتم ملء الكروت هنا تلقائياً عبر JS -->
-                </div>
             </div>
+
+            <!-- Dynamic Active Widgets Container -->
+            <div class="widgets-grid" id="challengesDisplay">
+                <!-- العناصر المحددة ستُعرض هنا تلقائياً -->
+            </div>
+
         </main>
 
         <!-- Bottom Navigation Bar -->
         <nav class="bottom-nav">
-            <a href="dashboard.html" class="nav-item active"><i class="fa-solid fa-house"></i><span data-i18n="home">Home</span></a>
-            <a href="daily-challenge.html" class="nav-item"><i class="fa-solid fa-person-running"></i><span data-i18n="challenge">Challenge</span></a>
-            <a href="#" class="nav-item"><i class="fa-solid fa-notes-medical"></i><span data-i18n="health_file">Health File</span></a>
-            <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i><span data-i18n="settings">Settings</span></a>
+            <a href="dashboard.html" class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span data-i18n="home">Home</span>
+            </a>
+            <a href="daily-challenge.html" class="nav-item">
+                <i class="fa-solid fa-person-running"></i>
+                <span data-i18n="challenge">Challenge</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-notes-medical"></i>
+                <span data-i18n="health_file">Health File</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fa-solid fa-gear"></i>
+                <span data-i18n="settings">Settings</span>
+            </a>
         </nav>
     </div>
 
     <!-- Sidebar Drawer -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div style="font-weight: bold; font-size: 18px;">Si7a</div>
+        </div>
+
+        <!-- Top Language Selector -->
         <div class="language-selector-top">
-            <label style="font-size:11px; margin-bottom:5px; display:block; color: #fff;"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">Language</span></label>
+            <label for="languageSelect"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">Language</span></label>
             <select id="languageSelect" class="lang-select">
                 <option value="en">English</option>
                 <option value="ar">العربية</option>
@@ -296,76 +573,107 @@
                 <option value="es">Español</option>
             </select>
         </div>
+
         <ul class="sidebar-menu">
             <li><a href="dashboard.html" class="active"><i class="fa-solid fa-house"></i> <span data-i18n="home">Home</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">Health Metrics</span></a></li>
             <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">Daily Challenge</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">Diet Plan</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">Health File</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">Period Tracker</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">Pregnancy Calculator</span></a></li>
             <li><a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">Settings</span></a></li>
         </ul>
     </aside>
+
+    <!-- Interactive Calendar Modal -->
+    <div class="modal" id="calendarModal">
+        <div class="calendar-modal-content">
+            <div class="calendar-nav-header">
+                <button class="calendar-nav-btn" id="prevMonthBtn"><i class="fa-solid fa-chevron-left"></i></button>
+                <div>
+                    <h3 id="calendarMonthYear" style="font-size: 15px;">October 2026</h3>
+                    <p style="font-size: 11px; opacity: 0.8;" data-i18n="track_progress">Select any date</p>
+                </div>
+                <button class="calendar-nav-btn" id="nextMonthBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            
+            <div class="calendar-grid">
+                <div class="calendar-day-header" data-i18n="sun">Sun</div>
+                <div class="calendar-day-header" data-i18n="mon">Mon</div>
+                <div class="calendar-day-header" data-i18n="tue">Tue</div>
+                <div class="calendar-day-header" data-i18n="wed">Wed</div>
+                <div class="calendar-day-header" data-i18n="thu">Thu</div>
+                <div class="calendar-day-header" data-i18n="fri">Fri</div>
+                <div class="calendar-day-header" data-i18n="sat">Sat</div>
+            </div>
+
+            <!-- Dynamic days container -->
+            <div class="calendar-grid" id="calendarDaysGrid"></div>
+
+            <button class="close-modal-btn" id="closeCalendarBtn" data-i18n="close">Close</button>
+        </div>
+    </div>
 
     <script type="module">
         import { auth } from "./js/firebase.js";
         import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
+        let currentLang = localStorage.getItem('appLanguage') || 'en';
+        let selectedDate = new Date(2026, 9, 4);
+        let viewDate = new Date(selectedDate);
+
+        // Authentication state
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 if (user.displayName) document.getElementById("userName").textContent = user.displayName;
                 if (user.photoURL) document.getElementById("userAvatar").src = user.photoURL;
+            } else {
+                window.location.href = "login.html";
             }
         });
 
         // Dictionary
         const translations = {
             en: {
-                welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", daily_challenge: "Daily Challenge", active_challenges: "Active Challenges", edit: "Edit",
+                welcome: "Welcome", calendar: "Calendar", active_challenges: "Active Challenges", edit: "Edit",
                 water_intake: "Water Intake", sleep_time: "Sleep Time", wake_time: "Wake Time", sleep_hours: "Sleep Duration", walking_time: "Walking", phone_usage: "Phone Usage", sugar_intake: "Sugar Intake", smoking: "Smoking", mental_state: "Mental State",
-                cups: "cups", hours: "hrs", mins: "mins", yes: "Yes", no: "No", no_challenges: "No challenges pinned to home yet. Click Edit to add some!",
-                mood_calm: "Relaxed / Calm", mood_happy: "Happy", mood_sad: "Sad", mood_angry: "Angry", mood_stressed: "Stressed"
+                cups: "cups", hours: "hrs", mins: "mins", yes: "Yes", no: "No", add_item: "Add Item",
+                home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
+                track_progress: "Select any date to view", close: "Close", no_challenges: "No active challenges selected yet.",
+                mood_calm: "Relaxed / Calm", mood_happy: "Happy", mood_sad: "Sad", mood_angry: "Angry", mood_stressed: "Stressed",
+                sun: "Sun", mon: "Mon", tue: "Tue", wed: "Wed", thu: "Thu", fri: "Fri", sat: "Sat"
             },
             ar: {
-                welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", daily_challenge: "التحدي اليومي", active_challenges: "التحديات المفعلة", edit: "تعديل",
+                welcome: "أهلاً بك", calendar: "التقويم", active_challenges: "التحديات المفعلة", edit: "تعديل",
                 water_intake: "شرب الماء", sleep_time: "وقت النوم", wake_time: "وقت الاستيقاظ", sleep_hours: "مدة النوم", walking_time: "المشي", phone_usage: "استعمال الهاتف", sugar_intake: "تناول السكريات", smoking: "التدخين", mental_state: "الحالة النفسية",
-                cups: "أكواب", hours: "ساعة", mins: "دقيقة", yes: "نعم", no: "لا", no_challenges: "لا توجد تحديات معروضة حالياً. اضغط على تعديل لإضافتها!",
-                mood_calm: "راحة / هدوء", mood_happy: "سعادة", mood_sad: "حزن", mood_angry: "غضب", mood_stressed: "توتر"
+                cups: "أكواب", hours: "ساعة", mins: "دقيقة", yes: "نعم", no: "لا", add_item: "إضافة عنصر",
+                home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
+                track_progress: "اختر أي تاريخ لعرضه", close: "إغلاق", no_challenges: "لا توجد تحديات مفعلة حالياً.",
+                mood_calm: "راحة / هدوء", mood_happy: "سعادة", mood_sad: "حزن", mood_angry: "غضب", mood_stressed: "توتر",
+                sun: "أح", mon: "إث", tue: "ثل", wed: "أر", thu: "خم", fri: "جم", sat: "سب"
             },
             fr: {
-                welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", daily_challenge: "Défi quotidien", active_challenges: "Défis actifs", edit: "Modifier",
+                welcome: "Bienvenue", calendar: "Calendrier", active_challenges: "Défis actifs", edit: "Modifier",
                 water_intake: "Consommation d'eau", sleep_time: "Heure de coucher", wake_time: "Heure de réveil", sleep_hours: "Durée du sommeil", walking_time: "Marche", phone_usage: "Usage téléphone", sugar_intake: "Sucre", smoking: "Tabagisme", mental_state: "État mental",
-                cups: "verres", hours: "h", mins: "m", yes: "Oui", no: "Non", no_challenges: "Aucun défi affiché. Cliquez sur Modifier pour en ajouter!",
-                mood_calm: "Calme", mood_happy: "Heureux", mood_sad: "Triste", mood_angry: "En colère", mood_stressed: "Stressé"
+                cups: "verres", hours: "h", mins: "m", yes: "Oui", no: "Non", add_item: "Ajouter",
+                home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
+                track_progress: "Sélectionnez une date", close: "Fermer", no_challenges: "Aucun défi actif sélectionné.",
+                mood_calm: "Calme", mood_happy: "Heureux", mood_sad: "Triste", mood_angry: "En colère", mood_stressed: "Stressé",
+                sun: "Dim", mon: "Lun", tue: "Mar", wed: "Mer", thu: "Jeu", fri: "Ven", sat: "Sam"
             },
             es: {
-                welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", daily_challenge: "Desafío diario", active_challenges: "Desafíos activos", edit: "Editar",
+                welcome: "Bienvenido", calendar: "Calendario", active_challenges: "Desafíos activos", edit: "Editar",
                 water_intake: "Consumo de agua", sleep_time: "Hora de dormir", wake_time: "Hora de despertar", sleep_hours: "Duración del sueño", walking_time: "Caminata", phone_usage: "Uso del teléfono", sugar_intake: "Azúcar", smoking: "Fumar", mental_state: "Estado de ánimo",
-                cups: "vasos", hours: "h", mins: "m", yes: "Sí", no: "No", no_challenges: "¡No hay desafíos fijados aún. Haz clic en Editar para agregar!",
-                mood_calm: "Relajado", mood_happy: "Feliz", mood_sad: "Triste", mood_angry: "Enojado", mood_stressed: "Estresado"
+                cups: "vasos", hours: "h", mins: "m", yes: "Sí", no: "No", add_item: "Añadir elemento",
+                home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario", diet_plan: "Plan de dieta", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
+                track_progress: "Selecciona una fecha", close: "Cerrar", no_challenges: "No hay desafíos activos seleccionados.",
+                mood_calm: "Relajado", mood_happy: "Feliz", mood_sad: "Triste", mood_angry: "Enojado", mood_stressed: "Estresado",
+                sun: "Dom", mon: "Lun", tue: "Mar", wed: "Mié", thu: "Jue", fri: "Vie", sat: "Sáb"
             }
         };
 
-        // --- 1. إعدادات اللغة المزامن مع الصفحة الأخرى ---
-        let currentLang = localStorage.getItem('appLanguage') || 'en';
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            localStorage.setItem('appLanguage', lang);
-            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-            document.documentElement.setAttribute('lang', lang);
-
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
-            });
-
-            const langSelect = document.getElementById("languageSelect");
-            if (langSelect) langSelect.value = lang;
-
-            // إعادة رسم العناصر لترجمة القيم الداخلية
-            renderActiveChallenges();
-        }
-
-        // --- 2. قراءة وعرض العناصر المختارة فقط ---
+        // Render Active Challenges from LocalStorage
         function renderActiveChallenges() {
             const display = document.getElementById("challengesDisplay");
             display.innerHTML = "";
@@ -416,24 +724,102 @@
                 display.innerHTML += createCard("fa-solid fa-face-smile", "#8B5CF6", "mental_state", t[moodKey] || savedData.mental.value);
             }
 
-            if (count === 0) {
-                display.innerHTML = `
-                    <div class="empty-state" style="grid-column: 1 / -1;">
-                        <i class="fa-solid fa-list-check"></i>
-                        <p>${t.no_challenges}</p>
-                    </div>
-                `;
+            // إضافة زر إضافة عنصر آخر
+            display.innerHTML += `
+                <a href="daily-challenge.html" class="add-widget-btn">
+                    <div style="font-size: 20px;"><i class="fa-solid fa-plus"></i></div>
+                    <div style="font-size: 12px; font-weight: bold;">${t.add_item}</div>
+                </a>
+            `;
+        }
+
+        // Format Date to Display on Top
+        function updateDateDisplay() {
+            const options = { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' };
+            const langCode = currentLang === 'ar' ? 'ar-EG' : (currentLang === 'fr' ? 'fr-FR' : (currentLang === 'es' ? 'es-ES' : 'en-US'));
+            document.getElementById('currentDate').textContent = selectedDate.toLocaleDateString(langCode, options);
+        }
+
+        // Calendar Render
+        function renderCalendar() {
+            const year = viewDate.getFullYear();
+            const month = viewDate.getMonth();
+
+            const monthNames = {
+                en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                ar: ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"],
+                fr: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+                es: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+            };
+
+            document.getElementById("calendarMonthYear").textContent = `${monthNames[currentLang][month]} ${year}`;
+
+            const daysContainer = document.getElementById("calendarDaysGrid");
+            daysContainer.innerHTML = "";
+
+            const firstDayIndex = new Date(year, month, 1).getDay();
+            const totalDays = new Date(year, month + 1, 0).getDate();
+
+            for (let i = 0; i < firstDayIndex; i++) {
+                const emptyDiv = document.createElement("div");
+                emptyDiv.classList.add("calendar-day", "empty");
+                daysContainer.appendChild(emptyDiv);
+            }
+
+            for (let day = 1; day <= totalDays; day++) {
+                const dayDiv = document.createElement("div");
+                dayDiv.classList.add("calendar-day");
+                dayDiv.textContent = day;
+
+                if (selectedDate.getFullYear() === year && selectedDate.getMonth() === month && selectedDate.getDate() === day) {
+                    dayDiv.classList.add("selected-day");
+                }
+
+                dayDiv.addEventListener("click", () => {
+                    selectedDate = new Date(year, month, day);
+                    updateDateDisplay();
+                    renderCalendar();
+                    document.getElementById("calendarModal").style.display = "none";
+                });
+
+                daysContainer.appendChild(dayDiv);
             }
         }
 
-        // Initialize App State
-        setLanguage(currentLang);
+        // Change Language
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('appLanguage', lang);
+            const html = document.documentElement;
+            
+            if (lang === 'ar') {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+            } else {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', lang);
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            const langSelect = document.getElementById("languageSelect");
+            if (langSelect) langSelect.value = lang;
+
+            updateDateDisplay();
+            renderCalendar();
+            renderActiveChallenges();
+        }
 
         document.getElementById("languageSelect").addEventListener("change", (e) => {
             setLanguage(e.target.value);
         });
 
-        // Sidebar Events
+        // Sidebar Navigation
         const sidebar = document.getElementById("sidebar");
         const overlay = document.getElementById("sidebarOverlay");
 
@@ -446,6 +832,31 @@
             sidebar.classList.remove("active");
             overlay.style.display = "none";
         });
+
+        // Calendar Events
+        const calendarModal = document.getElementById("calendarModal");
+        document.getElementById("openCalendarBtn").addEventListener("click", () => {
+            viewDate = new Date(selectedDate);
+            renderCalendar();
+            calendarModal.style.display = "flex";
+        });
+
+        document.getElementById("closeCalendarBtn").addEventListener("click", () => {
+            calendarModal.style.display = "none";
+        });
+
+        document.getElementById("prevMonthBtn").addEventListener("click", () => {
+            viewDate.setMonth(viewDate.getMonth() - 1);
+            renderCalendar();
+        });
+
+        document.getElementById("nextMonthBtn").addEventListener("click", () => {
+            viewDate.setMonth(viewDate.getMonth() + 1);
+            renderCalendar();
+        });
+
+        // Initialize App
+        setLanguage(currentLang);
     </script>
 </body>
 
