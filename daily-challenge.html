@@ -19,7 +19,6 @@
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden;
             font-family: Arial, Helvetica, sans-serif;
             background: linear-gradient(165deg, #3B82F6 0%, #2563EB 40%, #1E3A8A 100%);
             color: #fff;
@@ -27,18 +26,16 @@
 
         .full-screen-container {
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             position: relative;
-            overflow: hidden;
-            padding: 15px 15px 0px 15px;
+            padding: 15px 15px 140px 15px; /* مسافة سفلية كافية لظهور كل العناصر فوق الأزرار المثبتة */
         }
 
         /* Background Shapes */
         .wave-bg-1 {
-            position: absolute;
+            position: fixed;
             top: -80px;
             left: -80px;
             width: 350px;
@@ -50,7 +47,7 @@
         }
 
         .wave-bg-2 {
-            position: absolute;
+            position: fixed;
             bottom: -100px;
             right: -100px;
             width: 400px;
@@ -67,7 +64,7 @@
             align-items: center;
             justify-content: space-between;
             z-index: 5;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .user-profile {
@@ -85,13 +82,11 @@
             border-radius: 50%;
             border: 2px solid rgba(255, 255, 255, 0.8);
             object-fit: cover;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
 
         .welcome-text {
             font-size: 14px;
             font-weight: bold;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 
         .menu-btn {
@@ -116,22 +111,18 @@
             flex-direction: column;
             gap: 12px;
             z-index: 2;
-            overflow-y: auto;
-            padding-bottom: 140px;
         }
 
-        .page-content::-webkit-scrollbar { display: none; }
-
-        /* Metallic White Container */
+        /* Metallic White Card */
         .metallic-white-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(230, 240, 255, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(230, 240, 255, 0.88) 100%);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 22px;
             padding: 16px;
             color: #1E293B;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(255, 255, 255, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
             display: flex;
             flex-direction: column;
             gap: 14px;
@@ -148,7 +139,6 @@
             border-bottom: 1px solid rgba(30, 58, 138, 0.12);
         }
 
-        /* Form Controls & Challenge Items */
         .challenge-item {
             display: flex;
             flex-direction: column;
@@ -157,9 +147,7 @@
             border-bottom: 1px dashed rgba(30, 58, 138, 0.15);
         }
 
-        .challenge-item:last-child {
-            border-bottom: none;
-        }
+        .challenge-item:last-child { border-bottom: none; }
 
         .item-label {
             font-size: 13px;
@@ -188,7 +176,6 @@
             outline: none;
         }
 
-        /* Toggle Switch */
         .toggle-container {
             display: flex;
             align-items: center;
@@ -220,10 +207,8 @@
         .slider:before {
             position: absolute;
             content: "";
-            height: 14px;
-            width: 14px;
-            left: 3px;
-            bottom: 3px;
+            height: 14px; width: 14px;
+            left: 3px; bottom: 3px;
             background-color: white;
             transition: .3s;
             border-radius: 50%;
@@ -232,20 +217,9 @@
         input:checked + .slider { background-color: #2563EB; }
         input:checked + .slider:before { transform: translateX(14px); }
 
-        /* Radio Options Group */
-        .radio-group {
-            display: flex;
-            gap: 12px;
-            width: 100%;
-        }
-
-        .radio-btn {
-            flex: 1;
-            text-align: center;
-        }
-
+        .radio-group { display: flex; gap: 12px; width: 100%; }
+        .radio-btn { flex: 1; text-align: center; }
         .radio-btn input { display: none; }
-
         .radio-btn label {
             display: block;
             padding: 8px;
@@ -256,25 +230,21 @@
             font-weight: bold;
             color: #334155;
             cursor: pointer;
-            transition: all 0.2s;
         }
-
         .radio-btn input:checked + label {
             background: #2563EB;
             color: #fff;
             border-color: #2563EB;
         }
 
-        /* Fixed Action Bar for Save Button */
+        /* Fixed Action Bar */
         .fixed-action-bar {
             position: fixed;
             bottom: 60px;
-            left: 0;
-            right: 0;
+            left: 0; right: 0;
             padding: 10px 15px;
-            background: rgba(30, 58, 138, 0.85);
+            background: rgba(30, 58, 138, 0.9);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             z-index: 15;
             display: flex;
@@ -292,30 +262,22 @@
             font-size: 14px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s;
         }
 
-        .submit-btn:active { transform: scale(0.98); }
-
-        /* Sidebar Drawer */
+        /* Sidebar & Bottom Nav */
         .sidebar-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(4px);
             z-index: 100;
             display: none;
         }
 
         .sidebar {
             position: fixed;
-            top: 0;
-            width: 270px;
-            height: 100%;
-            background: rgba(30, 58, 138, 0.92);
+            top: 0; width: 270px; height: 100%;
+            background: rgba(30, 58, 138, 0.95);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             z-index: 101;
             transition: all 0.3s ease;
             padding: 20px 15px;
@@ -323,101 +285,25 @@
             flex-direction: column;
         }
 
-        html[dir="ltr"] .sidebar { left: -280px; border-right: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="ltr"] .sidebar { left: -280px; }
         html[dir="ltr"] .sidebar.active { left: 0; }
-
-        html[dir="rtl"] .sidebar { right: -280px; border-left: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="rtl"] .sidebar { right: -280px; }
         html[dir="rtl"] .sidebar.active { right: 0; }
 
-        .sidebar-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            margin-bottom: 12px;
-        }
+        .language-selector-top { margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+        .lang-select { width: 100%; padding: 8px; border-radius: 10px; background: rgba(255, 255, 255, 0.25); color: #fff; border: 1px solid rgba(255, 255, 255, 0.4); font-weight: bold; outline: none; }
+        .lang-select option { background: #1E3A8A; color: #fff; }
 
-        .sidebar-logo {
-            width: 38px;
-            height: 38px;
-            background: #fff;
-            color: #2563EB;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
+        .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .sidebar-menu a { color: #fff; text-decoration: none; padding: 10px; font-size: 13px; border-radius: 10px; display: flex; align-items: center; gap: 10px; }
+        .sidebar-menu a.active { background: rgba(255, 255, 255, 0.2); }
 
-        .language-selector-top {
-            margin-bottom: 15px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .language-selector-top label {
-            font-size: 11px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 6px;
-            color: rgba(255, 255, 255, 0.85);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .lang-select {
-            width: 100%;
-            padding: 8px 10px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.25);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            font-size: 13px;
-            font-weight: bold;
-            outline: none;
-            cursor: pointer;
-        }
-
-        .lang-select option {
-            background: #1E3A8A;
-            color: #fff;
-        }
-
-        .sidebar-menu {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            overflow-y: auto;
-            flex: 1;
-        }
-
-        .sidebar-menu a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 12px;
-            font-size: 13px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: background 0.2s;
-        }
-
-        .sidebar-menu a:hover, .sidebar-menu a.active {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Bottom Navigation Bar */
         .bottom-nav {
             position: fixed;
             bottom: 0; left: 0; right: 0;
             height: 60px;
             background: rgba(255, 255, 255, 0.18);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid rgba(255, 255, 255, 0.25);
             display: flex;
             justify-content: space-around;
@@ -425,22 +311,9 @@
             z-index: 10;
         }
 
-        .nav-item {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-        }
-
+        .nav-item { color: rgba(255, 255, 255, 0.7); text-decoration: none; font-size: 10px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
         .nav-item i { font-size: 18px; }
-
-        .nav-item.active {
-            color: #ffffff;
-            font-weight: bold;
-        }
+        .nav-item.active { color: #ffffff; font-weight: bold; }
     </style>
 </head>
 
@@ -450,7 +323,6 @@
         <div class="wave-bg-1"></div>
         <div class="wave-bg-2"></div>
 
-        <!-- Header -->
         <header class="app-header">
             <a href="settings.html" class="user-profile">
                 <img src="https://via.placeholder.com/100" id="userAvatar" class="avatar-img" alt="User Avatar">
@@ -459,9 +331,7 @@
             <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
         </header>
 
-        <!-- Main Content -->
         <main class="page-content">
-
             <div class="metallic-white-card">
                 <div class="card-header-title">
                     <i class="fa-solid fa-trophy" style="color: #D97706;"></i>
@@ -475,12 +345,12 @@
                         <div class="toggle-container">
                             <span data-i18n="show_on_home">Show on Home</span>
                             <label class="switch">
-                                <input type="checkbox" id="showWaterOnHome" checked>
+                                <input type="checkbox" id="showWaterOnHome">
                                 <span class="slider"></span>
                             </label>
                         </div>
                     </div>
-                    <input type="number" class="input-number" id="targetWaterCups" value="10" placeholder="Target cups number">
+                    <input type="number" class="input-number" id="targetWaterCups" value="10">
                 </div>
 
                 <!-- 2. Sleep Time -->
@@ -516,11 +386,11 @@
                 <!-- 4. Total Sleep Hours -->
                 <div class="challenge-item">
                     <div class="item-label">
-                        <span><i class="fa-solid fa-moon" style="color: #4F46E5;"></i> <span data-i18n="sleep_hours">Sleep Duration (Hours)</span></span>
+                        <span><i class="fa-solid fa-moon" style="color: #4F46E5;"></i> <span data-i18n="sleep_hours">Sleep Duration</span></span>
                         <div class="toggle-container">
                             <span data-i18n="show_on_home">Show on Home</span>
                             <label class="switch">
-                                <input type="checkbox" id="showSleepHoursOnHome" checked>
+                                <input type="checkbox" id="showSleepHoursOnHome">
                                 <span class="slider"></span>
                             </label>
                         </div>
@@ -535,21 +405,21 @@
                         <div class="toggle-container">
                             <span data-i18n="show_on_home">Show on Home</span>
                             <label class="switch">
-                                <input type="checkbox" id="showWalkingOnHome" checked>
+                                <input type="checkbox" id="showWalkingOnHome">
                                 <span class="slider"></span>
                             </label>
                         </div>
                     </div>
                     <div class="item-controls">
-                        <input type="number" class="input-number" id="walkHours" placeholder="Hours" value="0">
-                        <input type="number" class="input-number" id="walkMinutes" placeholder="Minutes" value="30">
+                        <input type="number" class="input-number" id="walkHours" value="0">
+                        <input type="number" class="input-number" id="walkMinutes" value="30">
                     </div>
                 </div>
 
                 <!-- 6. Phone Usage -->
                 <div class="challenge-item">
                     <div class="item-label">
-                        <span><i class="fa-solid fa-mobile-screen-button" style="color: #DC2626;"></i> <span data-i18n="phone_usage">Phone Usage (Hours)</span></span>
+                        <span><i class="fa-solid fa-mobile-screen-button" style="color: #DC2626;"></i> <span data-i18n="phone_usage">Phone Usage</span></span>
                         <div class="toggle-container">
                             <span data-i18n="show_on_home">Show on Home</span>
                             <label class="switch">
@@ -558,7 +428,7 @@
                             </label>
                         </div>
                     </div>
-                    <input type="number" class="input-number" id="phoneHours" value="3" placeholder="Hours spent">
+                    <input type="number" class="input-number" id="phoneHours" value="3">
                 </div>
 
                 <!-- 7. Sugar Intake -->
@@ -631,46 +501,25 @@
                 </div>
 
             </div>
-
         </main>
 
-        <!-- Fixed Action Bar -->
         <div class="fixed-action-bar">
             <button class="submit-btn" id="saveChallengeBtn" data-i18n="save_changes">Save Challenge</button>
         </div>
 
-        <!-- Bottom Navigation Bar -->
         <nav class="bottom-nav">
-            <a href="dashboard.html" class="nav-item">
-                <i class="fa-solid fa-house"></i>
-                <span data-i18n="home">Home</span>
-            </a>
-            <a href="daily-challenge.html" class="nav-item active">
-                <i class="fa-solid fa-person-running"></i>
-                <span data-i18n="challenge">Challenge</span>
-            </a>
-            <a href="#" class="nav-item">
-                <i class="fa-solid fa-notes-medical"></i>
-                <span data-i18n="health_file">Health File</span>
-            </a>
-            <a href="settings.html" class="nav-item">
-                <i class="fa-solid fa-gear"></i>
-                <span data-i18n="settings">Settings</span>
-            </a>
+            <a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span data-i18n="home">Home</span></a>
+            <a href="daily-challenge.html" class="nav-item active"><i class="fa-solid fa-person-running"></i><span data-i18n="challenge">Challenge</span></a>
+            <a href="#" class="nav-item"><i class="fa-solid fa-notes-medical"></i><span data-i18n="health_file">Health File</span></a>
+            <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i><span data-i18n="settings">Settings</span></a>
         </nav>
     </div>
 
-    <!-- Sidebar Drawer -->
+    <!-- Sidebar -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <div class="sidebar-logo"><i class="fa-solid fa-heart-pulse"></i></div>
-            <div style="font-weight: bold; font-size: 18px;">Si7a</div>
-        </div>
-
-        <!-- Top Language Selector -->
         <div class="language-selector-top">
-            <label for="languageSelect"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">Language</span></label>
+            <label style="font-size:11px; margin-bottom:5px; display:block;"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">Language</span></label>
             <select id="languageSelect" class="lang-select">
                 <option value="en">English</option>
                 <option value="ar">العربية</option>
@@ -678,15 +527,9 @@
                 <option value="es">Español</option>
             </select>
         </div>
-
         <ul class="sidebar-menu">
             <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">Home</span></a></li>
-            <li><a href="#"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">Health Metrics</span></a></li>
             <li><a href="daily-challenge.html" class="active"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">Daily Challenge</span></a></li>
-            <li><a href="#"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">Diet Plan</span></a></li>
-            <li><a href="#"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">Health File</span></a></li>
-            <li><a href="#"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">Period Tracker</span></a></li>
-            <li><a href="#"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">Pregnancy Calculator</span></a></li>
             <li><a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">Settings</span></a></li>
         </ul>
     </aside>
@@ -695,165 +538,28 @@
         import { auth } from "./js/firebase.js";
         import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
-        // Check authentication state
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 if (user.displayName) document.getElementById("userName").textContent = user.displayName;
                 if (user.photoURL) document.getElementById("userAvatar").src = user.photoURL;
-            } else {
-                window.location.href = "login.html";
             }
         });
 
-        // Translations Dictionary
         const translations = {
-            en: {
-                welcome: "Welcome",
-                home: "Home",
-                challenge: "Challenge",
-                health_file: "Health File",
-                settings: "Settings",
-                select_language: "Language",
-                health_metrics: "Health Metrics",
-                daily_challenge: "Daily Challenge",
-                diet_plan: "Diet Plan",
-                period_tracker: "Period Tracker",
-                pregnancy_calc: "Pregnancy Calculator",
-                daily_challenge_title: "Daily Challenge Settings",
-                water_intake: "Target Water Intake (Cups)",
-                show_on_home: "Show on Home",
-                sleep_time: "Sleep Time",
-                wake_time: "Wake Up Time",
-                sleep_hours: "Sleep Duration (Hours)",
-                walking_time: "Walking Duration (Hours/Min)",
-                phone_usage: "Phone Usage (Hours)",
-                sugar_intake: "Sugar Intake",
-                smoking: "Smoking",
-                mental_state: "Mental State",
-                yes: "Yes",
-                no: "No",
-                mood_calm: "Relaxed / Calm",
-                mood_happy: "Happy",
-                mood_sad: "Sad",
-                mood_angry: "Angry",
-                mood_stressed: "Stressed",
-                save_changes: "Save Challenge"
-            },
-            ar: {
-                welcome: "أهلاً بك",
-                home: "الرئيسية",
-                challenge: "التحدي",
-                health_file: "ملفي الصحي",
-                settings: "الإعدادات",
-                select_language: "اللغة",
-                health_metrics: "قياساتي الصحية",
-                daily_challenge: "التحدي اليومي",
-                diet_plan: "نظامي الغذائي",
-                period_tracker: "دورتي الشهرية",
-                pregnancy_calc: "حاسبة الحمل",
-                daily_challenge_title: "إعدادات التحدي اليومي",
-                water_intake: "شرب الماء (عدد الأكواب المستهدفة)",
-                show_on_home: "عرض في الرئيسية",
-                sleep_time: "وقت النوم",
-                wake_time: "وقت الاستيقاظ",
-                sleep_hours: "عدد ساعات النوم",
-                walking_time: "مدة المشي (ساعات/دقائق)",
-                phone_usage: "استعمال الهاتف (ساعات)",
-                sugar_intake: "تناول السكريات",
-                smoking: "التدخين",
-                mental_state: "الحالة النفسية",
-                yes: "نعم",
-                no: "لا",
-                mood_calm: "راحة / هدوء",
-                mood_happy: "سعادة",
-                mood_sad: "حزن",
-                mood_angry: "غضب",
-                mood_stressed: "توتر",
-                save_changes: "حفظ التحدي"
-            },
-            fr: {
-                welcome: "Bienvenue",
-                home: "Accueil",
-                challenge: "Défi",
-                health_file: "Dossier Santé",
-                settings: "Paramètres",
-                select_language: "Langue",
-                health_metrics: "Mesures de santé",
-                daily_challenge: "Défi quotidien",
-                diet_plan: "Régime alimentaire",
-                period_tracker: "Suivi des règles",
-                pregnancy_calc: "Calculateur de grossesse",
-                daily_challenge_title: "Paramètres du défi quotidien",
-                water_intake: "Objectif d'eau (Verres)",
-                show_on_home: "Afficher sur l'accueil",
-                sleep_time: "Heure de coucher",
-                wake_time: "Heure de réveil",
-                sleep_hours: "Durée du sommeil (Heures)",
-                walking_time: "Durée de marche (Heures/Min)",
-                phone_usage: "Utilisation du téléphone (Heures)",
-                sugar_intake: "Consommation de sucre",
-                smoking: "Tabagisme",
-                mental_state: "État mental",
-                yes: "Oui",
-                no: "Non",
-                mood_calm: "Calme",
-                mood_happy: "Heureux",
-                mood_sad: "Triste",
-                mood_angry: "En colère",
-                mood_stressed: "Stressé",
-                save_changes: "Enregistrer"
-            },
-            es: {
-                welcome: "Bienvenido",
-                home: "Inicio",
-                challenge: "Desafío",
-                health_file: "Perfil de salud",
-                settings: "Ajustes",
-                select_language: "Idioma",
-                health_metrics: "Métricas de salud",
-                daily_challenge: "Desafío diario",
-                diet_plan: "Plan de dieta",
-                period_tracker: "Control del periodo",
-                pregnancy_calc: "Calculadora de embarazo",
-                daily_challenge_title: "Ajustes del desafío diario",
-                water_intake: "Objetivo de agua (Vasos)",
-                show_on_home: "Mostrar en inicio",
-                sleep_time: "Hora de dormir",
-                wake_time: "Hora de despertar",
-                sleep_hours: "Horas de sueño",
-                walking_time: "Tiempo de caminata (Horas/Min)",
-                phone_usage: "Uso del teléfono (Horas)",
-                sugar_intake: "Consumo de azúcar",
-                smoking: "Fumar",
-                mental_state: "Estado de ánimo",
-                yes: "Sí",
-                no: "No",
-                mood_calm: "Relajado",
-                mood_happy: "Feliz",
-                mood_sad: "Triste",
-                mood_angry: "Enojado",
-                mood_stressed: "Estresado",
-                save_changes: "Guardar"
-            }
+            en: { welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", daily_challenge: "Daily Challenge", daily_challenge_title: "Daily Challenge Settings", water_intake: "Water Intake", show_on_home: "Show on Home", sleep_time: "Sleep Time", wake_time: "Wake Up Time", sleep_hours: "Sleep Duration", walking_time: "Walking Duration", phone_usage: "Phone Usage", sugar_intake: "Sugar Intake", smoking: "Smoking", mental_state: "Mental State", yes: "Yes", no: "No", mood_calm: "Relaxed / Calm", mood_happy: "Happy", mood_sad: "Sad", mood_angry: "Angry", mood_stressed: "Stressed", save_changes: "Save Challenge" },
+            ar: { welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", daily_challenge: "التحدي اليومي", daily_challenge_title: "إعدادات التحدي اليومي", water_intake: "شرب الماء", show_on_home: "عرض في الرئيسية", sleep_time: "وقت النوم", wake_time: "وقت الاستيقاظ", sleep_hours: "مدة النوم", walking_time: "مدة المشي", phone_usage: "استعمال الهاتف", sugar_intake: "تناول السكريات", smoking: "التدخين", mental_state: "الحالة النفسية", yes: "نعم", no: "لا", mood_calm: "راحة / هدوء", mood_happy: "سعادة", mood_sad: "حزن", mood_angry: "غضب", mood_stressed: "توتر", save_changes: "حفظ التحدي" },
+            fr: { welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", daily_challenge: "Défi quotidien", daily_challenge_title: "Paramètres du défi", water_intake: "Consommation d'eau", show_on_home: "Afficher sur l'accueil", sleep_time: "Heure de coucher", wake_time: "Heure de réveil", sleep_hours: "Durée du sommeil", walking_time: "Durée de marche", phone_usage: "Utilisation du téléphone", sugar_intake: "Sucre", smoking: "Tabagisme", mental_state: "État mental", yes: "Oui", no: "Non", mood_calm: "Calme", mood_happy: "Heureux", mood_sad: "Triste", mood_angry: "En colère", mood_stressed: "Stressé", save_changes: "Enregistrer" },
+            es: { welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", daily_challenge: "Desafío diario", daily_challenge_title: "Ajustes del desafío", water_intake: "Consumo de agua", show_on_home: "Mostrar en inicio", sleep_time: "Hora de dormir", wake_time: "Hora de despertar", sleep_hours: "Duración del sueño", walking_time: "Duración de caminata", phone_usage: "Uso del teléfono", sugar_intake: "Azúcar", smoking: "Fumar", mental_state: "Estado de ánimo", yes: "Sí", no: "No", mood_calm: "Relajado", mood_happy: "Feliz", mood_sad: "Triste", mood_angry: "Enojado", mood_stressed: "Estresado", save_changes: "Guardar" }
         };
 
-        // Get saved language or fallback to English
+        // --- 1. إعدادات اللغة ---
         let currentLang = localStorage.getItem('appLanguage') || 'en';
 
-        // Set Language Function
         function setLanguage(lang) {
             currentLang = lang;
-            localStorage.setItem('appLanguage', lang); // Save to local storage for all pages
-
-            const html = document.documentElement;
-            
-            if (lang === 'ar') {
-                html.setAttribute('dir', 'rtl');
-                html.setAttribute('lang', 'ar');
-            } else {
-                html.setAttribute('dir', 'ltr');
-                html.setAttribute('lang', lang);
-            }
+            localStorage.setItem('appLanguage', lang);
+            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            document.documentElement.setAttribute('lang', lang);
 
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
@@ -862,42 +568,100 @@
                 }
             });
 
-            // Keep language select input in sync
             const langSelect = document.getElementById("languageSelect");
             if (langSelect) langSelect.value = lang;
         }
 
-        // Initialize language state
         setLanguage(currentLang);
 
-        // Language Select Event Listener
         document.getElementById("languageSelect").addEventListener("change", (e) => {
             setLanguage(e.target.value);
         });
 
-        // Auto Calculate Sleep Duration
+        // --- 2. تحميل البيانات المحفوظة سابقاً ---
+        function loadSavedSettings() {
+            const savedData = JSON.parse(localStorage.getItem('userChallenges')) || {};
+
+            if (savedData.water) {
+                document.getElementById('showWaterOnHome').checked = savedData.water.show;
+                document.getElementById('targetWaterCups').value = savedData.water.value || 10;
+            }
+            if (savedData.sleepTime) {
+                document.getElementById('showSleepTimeOnHome').checked = savedData.sleepTime.show;
+                document.getElementById('sleepTime').value = savedData.sleepTime.value || "23:00";
+            }
+            if (savedData.wakeTime) {
+                document.getElementById('showWakeTimeOnHome').checked = savedData.wakeTime.show;
+                document.getElementById('wakeTime').value = savedData.wakeTime.value || "07:00";
+            }
+            if (savedData.sleepHours) {
+                document.getElementById('showSleepHoursOnHome').checked = savedData.sleepHours.show;
+            }
+            if (savedData.walking) {
+                document.getElementById('showWalkingOnHome').checked = savedData.walking.show;
+                document.getElementById('walkHours').value = savedData.walking.hours || 0;
+                document.getElementById('walkMinutes').value = savedData.walking.minutes || 30;
+            }
+            if (savedData.phone) {
+                document.getElementById('showPhoneOnHome').checked = savedData.phone.show;
+                document.getElementById('phoneHours').value = savedData.phone.value || 3;
+            }
+            if (savedData.sugar) {
+                document.getElementById('showSugarOnHome').checked = savedData.sugar.show;
+                if(savedData.sugar.value === 'yes') document.getElementById('sugarYes').checked = true;
+            }
+            if (savedData.smoking) {
+                document.getElementById('showSmokingOnHome').checked = savedData.smoking.show;
+                if(savedData.smoking.value === 'yes') document.getElementById('smokeYes').checked = true;
+            }
+            if (savedData.mental) {
+                document.getElementById('showMentalOnHome').checked = savedData.mental.show;
+                document.getElementById('mentalState').value = savedData.mental.value || 'calm';
+            }
+        }
+
+        loadSavedSettings();
+
+        // --- 3. حساب ساعات النوم تلقائياً ---
         function calculateSleepHours() {
             const sleepVal = document.getElementById("sleepTime").value;
             const wakeVal = document.getElementById("wakeTime").value;
-
             if (sleepVal && wakeVal) {
                 const [sHours, sMin] = sleepVal.split(':').map(Number);
                 const [wHours, wMin] = wakeVal.split(':').map(Number);
-
                 let start = sHours + (sMin / 60);
                 let end = wHours + (wMin / 60);
-
                 if (end <= start) end += 24;
-
-                const diff = (end - start).toFixed(1);
-                document.getElementById("sleepHours").value = diff;
+                document.getElementById("sleepHours").value = (end - start).toFixed(1);
             }
         }
 
         document.getElementById("sleepTime").addEventListener("change", calculateSleepHours);
         document.getElementById("wakeTime").addEventListener("change", calculateSleepHours);
+        calculateSleepHours();
 
-        // Sidebar Controls
+        // --- 4. حفظ البيانات عند الضغط على زر الحفظ ---
+        document.getElementById("saveChallengeBtn").addEventListener("click", () => {
+            const challengeData = {
+                water: { show: document.getElementById('showWaterOnHome').checked, value: document.getElementById('targetWaterCups').value },
+                sleepTime: { show: document.getElementById('showSleepTimeOnHome').checked, value: document.getElementById('sleepTime').value },
+                wakeTime: { show: document.getElementById('showWakeTimeOnHome').checked, value: document.getElementById('wakeTime').value },
+                sleepHours: { show: document.getElementById('showSleepHoursOnHome').checked, value: document.getElementById('sleepHours').value },
+                walking: { show: document.getElementById('showWalkingOnHome').checked, hours: document.getElementById('walkHours').value, minutes: document.getElementById('walkMinutes').value },
+                phone: { show: document.getElementById('showPhoneOnHome').checked, value: document.getElementById('phoneHours').value },
+                sugar: { show: document.getElementById('showSugarOnHome').checked, value: document.querySelector('input[name="sugar"]:checked').value },
+                smoking: { show: document.getElementById('showSmokingOnHome').checked, value: document.querySelector('input[name="smoking"]:checked').value },
+                mental: { show: document.getElementById('showMentalOnHome').checked, value: document.getElementById('mentalState').value }
+            };
+
+            // حفظ البيانات في localStorage لتستطيع الداشبورد قراءتها
+            localStorage.setItem('userChallenges', JSON.stringify(challengeData));
+            
+            alert(currentLang === 'ar' ? 'تم حفظ التحدي بنجاح!' : 'Challenge saved successfully!');
+            window.location.href = "dashboard.html"; // التوجيه للداشبورد مباشرة
+        });
+
+        // Sidebar Events
         const sidebar = document.getElementById("sidebar");
         const overlay = document.getElementById("sidebarOverlay");
 
@@ -910,13 +674,6 @@
             sidebar.classList.remove("active");
             overlay.style.display = "none";
         });
-
-        // Save Button Event Handler
-        document.getElementById("saveChallengeBtn").addEventListener("click", () => {
-            alert(currentLang === 'ar' ? 'تم حفظ التحدي بنجاح!' : 'Challenge saved successfully!');
-        });
-
-        calculateSleepHours();
     </script>
 </body>
 
