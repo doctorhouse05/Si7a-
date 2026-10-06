@@ -30,7 +30,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            padding: 15px 15px 85px 15px; /* مسافة كافية للشريط السفلي الثابت */
+            padding: 15px 15px 85px 15px;
         }
 
         /* Background Shapes */
@@ -238,12 +238,12 @@
         }
 
         .dash-item-value {
-            font-size: 14px;
+            font-size: 13px;
             color: #0F172A;
             font-weight: bold;
         }
 
-        /* Interactive Counter Controls */
+        /* Interactive Input Controls */
         .counter-controls {
             display: flex;
             align-items: center;
@@ -271,6 +271,48 @@
 
         .counter-btn:active {
             transform: scale(0.9);
+        }
+
+        .input-time-mini {
+            width: 100%;
+            padding: 4px 6px;
+            border-radius: 8px;
+            border: 1px solid rgba(30, 58, 138, 0.2);
+            background: #fff;
+            color: #0F172A;
+            font-size: 12px;
+            font-weight: bold;
+            outline: none;
+            text-align: center;
+        }
+
+        /* Toggle Buttons for Yes/No Options */
+        .option-toggle-group {
+            display: flex;
+            width: 100%;
+            background: rgba(30, 58, 138, 0.08);
+            border-radius: 8px;
+            padding: 2px;
+            gap: 2px;
+        }
+
+        .option-btn {
+            flex: 1;
+            padding: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            border: none;
+            background: transparent;
+            color: #475569;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-btn.active {
+            background: #2563EB;
+            color: #fff;
+            box-shadow: 0 2px 5px rgba(37, 99, 235, 0.3);
         }
 
         .input-select-mini {
@@ -311,7 +353,7 @@
             position: fixed;
             bottom: 0; left: 0; right: 0;
             height: 62px;
-            background: #1E3A8A; /* لون صلب غير شفاف وواضح تماماً */
+            background: #1E3A8A;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             display: flex;
             justify-content: space-around;
@@ -732,7 +774,11 @@
             sleepHours: 0,
             walkMins: 0,
             phoneHours: 0,
-            mental: 'calm'
+            mental: 'calm',
+            sleepTime: '23:00',
+            wakeTime: '07:00',
+            sugar: 'no',
+            smoking: 'no'
         };
 
         // Render Active Challenges & Dynamic Inputs
@@ -763,8 +809,9 @@
                 `;
             }
 
-            // 2. Sleep Time (Display Target)
+            // 2. Sleep Time (Interactive Time Input)
             if (savedData.sleepTime?.show) {
+                const curTime = loggedValues.sleepTime || savedData.sleepTime.value || '23:00';
                 display.innerHTML += `
                     <div class="dash-item-card">
                         <div class="dash-item-header">
@@ -772,14 +819,15 @@
                             <span class="dash-item-title">${t.sleep_time}</span>
                         </div>
                         <div class="dash-item-body">
-                            <span class="dash-item-value">${savedData.sleepTime.value}</span>
+                            <input type="time" class="input-time-mini" value="${curTime}" onchange="updateTimeVal('sleepTime', this.value)">
                         </div>
                     </div>
                 `;
             }
 
-            // 3. Wake Time
+            // 3. Wake Time (Interactive Time Input)
             if (savedData.wakeTime?.show) {
+                const curTime = loggedValues.wakeTime || savedData.wakeTime.value || '07:00';
                 display.innerHTML += `
                     <div class="dash-item-card">
                         <div class="dash-item-header">
@@ -787,7 +835,7 @@
                             <span class="dash-item-title">${t.wake_time}</span>
                         </div>
                         <div class="dash-item-body">
-                            <span class="dash-item-value">${savedData.wakeTime.value}</span>
+                            <input type="time" class="input-time-mini" value="${curTime}" onchange="updateTimeVal('wakeTime', this.value)">
                         </div>
                     </div>
                 `;
@@ -853,9 +901,9 @@
                 `;
             }
 
-            // 7. Sugar Intake
+            // 7. Sugar Intake (Yes / No Toggle Buttons)
             if (savedData.sugar?.show) {
-                const sugarVal = savedData.sugar.value === 'yes' ? t.yes : t.no;
+                const curSugar = loggedValues.sugar || 'no';
                 display.innerHTML += `
                     <div class="dash-item-card">
                         <div class="dash-item-header">
@@ -863,15 +911,18 @@
                             <span class="dash-item-title">${t.sugar_intake}</span>
                         </div>
                         <div class="dash-item-body">
-                            <span class="dash-item-value">${sugarVal}</span>
+                            <div class="option-toggle-group">
+                                <button class="option-btn ${curSugar==='yes'?'active':''}" onclick="updateToggleOption('sugar', 'yes')">${t.yes}</button>
+                                <button class="option-btn ${curSugar==='no'?'active':''}" onclick="updateToggleOption('sugar', 'no')">${t.no}</button>
+                            </div>
                         </div>
                     </div>
                 `;
             }
 
-            // 8. Smoking
+            // 8. Smoking (Yes / No Toggle Buttons)
             if (savedData.smoking?.show) {
-                const smokeVal = savedData.smoking.value === 'yes' ? t.yes : t.no;
+                const curSmoke = loggedValues.smoking || 'no';
                 display.innerHTML += `
                     <div class="dash-item-card">
                         <div class="dash-item-header">
@@ -879,7 +930,10 @@
                             <span class="dash-item-title">${t.smoking}</span>
                         </div>
                         <div class="dash-item-body">
-                            <span class="dash-item-value">${smokeVal}</span>
+                            <div class="option-toggle-group">
+                                <button class="option-btn ${curSmoke==='yes'?'active':''}" onclick="updateToggleOption('smoking', 'yes')">${t.yes}</button>
+                                <button class="option-btn ${curSmoke==='no'?'active':''}" onclick="updateToggleOption('smoking', 'no')">${t.no}</button>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -917,7 +971,7 @@
             calculateTotalProgress();
         }
 
-        // Global functions for widget interactions
+        // Global functions for interactive widget updates
         window.updateWidgetVal = function(key, delta, min, max) {
             if (loggedValues[key] === undefined) loggedValues[key] = 0;
             let newVal = loggedValues[key] + delta;
@@ -926,7 +980,17 @@
             
             loggedValues[key] = newVal;
             localStorage.setItem('dashboardLogs', JSON.stringify(loggedValues));
-            
+            renderActiveChallenges();
+        };
+
+        window.updateTimeVal = function(key, value) {
+            loggedValues[key] = value;
+            localStorage.setItem('dashboardLogs', JSON.stringify(loggedValues));
+        };
+
+        window.updateToggleOption = function(key, val) {
+            loggedValues[key] = val;
+            localStorage.setItem('dashboardLogs', JSON.stringify(loggedValues));
             renderActiveChallenges();
         };
 
