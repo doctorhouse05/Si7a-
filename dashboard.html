@@ -234,19 +234,6 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
-        .empty-state {
-            text-align: center;
-            padding: 25px 10px;
-            color: #64748B;
-            font-size: 13px;
-        }
-
-        .empty-state i {
-            font-size: 32px;
-            margin-bottom: 8px;
-            color: #94A3B8;
-        }
-
         /* Sidebar Drawer (Support Left/Right RTL) */
         .sidebar-overlay {
             position: fixed;
@@ -501,9 +488,9 @@
         <header class="app-header">
             <a href="settings.html" class="user-profile">
                 <img src="https://via.placeholder.com/100" id="userAvatar" class="avatar-img" alt="User Avatar">
-                <span class="welcome-text"><span data-i18n="welcome">Welcome</span>, <span id="userName">Sarah</span></span>
+                <span class="welcome-text"><span data-i18n="welcome">Welcome</span>, <span id="userName">User</span></span>
             </a>
-            <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
+            <button class="menu-btn" id="openSidebar" aria-label="Open Navigation"><i class="fa-solid fa-bars"></i></button>
         </header>
 
         <!-- Main Content -->
@@ -514,7 +501,7 @@
                 <div class="date-section">
                     <div class="date-info">
                         <i class="fa-regular fa-calendar-days"></i>
-                        <span id="currentDate">Sunday, Oct 4, 2026</span>
+                        <span id="currentDate">--</span>
                     </div>
                     <button class="calendar-btn" id="openCalendarBtn">
                         <i class="fa-solid fa-calendar-week"></i> <span data-i18n="calendar">Calendar</span>
@@ -590,12 +577,12 @@
     <div class="modal" id="calendarModal">
         <div class="calendar-modal-content">
             <div class="calendar-nav-header">
-                <button class="calendar-nav-btn" id="prevMonthBtn"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="calendar-nav-btn" id="prevMonthBtn" aria-label="Previous Month"><i class="fa-solid fa-chevron-left"></i></button>
                 <div>
-                    <h3 id="calendarMonthYear" style="font-size: 15px;">October 2026</h3>
+                    <h3 id="calendarMonthYear" style="font-size: 15px;">--</h3>
                     <p style="font-size: 11px; opacity: 0.8;" data-i18n="track_progress">Select any date</p>
                 </div>
-                <button class="calendar-nav-btn" id="nextMonthBtn"><i class="fa-solid fa-chevron-right"></i></button>
+                <button class="calendar-nav-btn" id="nextMonthBtn" aria-label="Next Month"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
             
             <div class="calendar-grid">
@@ -620,7 +607,7 @@
         import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
         let currentLang = localStorage.getItem('appLanguage') || 'en';
-        let selectedDate = new Date(2026, 9, 4);
+        let selectedDate = new Date();
         let viewDate = new Date(selectedDate);
 
         // Authentication state
@@ -678,12 +665,16 @@
             const display = document.getElementById("challengesDisplay");
             display.innerHTML = "";
 
-            const savedData = JSON.parse(localStorage.getItem('userChallenges')) || {};
+            let savedData = {};
+            try {
+                savedData = JSON.parse(localStorage.getItem('userChallenges')) || {};
+            } catch (e) {
+                console.error("Failed to parse userChallenges from LocalStorage", e);
+            }
+
             const t = translations[currentLang] || translations['en'];
-            let count = 0;
 
             const createCard = (icon, iconColor, titleKey, value) => {
-                count++;
                 return `
                     <div class="dash-item-card">
                         <div class="dash-item-icon" style="color: ${iconColor};"><i class="${icon}"></i></div>
@@ -724,7 +715,7 @@
                 display.innerHTML += createCard("fa-solid fa-face-smile", "#8B5CF6", "mental_state", t[moodKey] || savedData.mental.value);
             }
 
-            // إضافة زر إضافة عنصر آخر
+            // زر إضافة عنصر جديد
             display.innerHTML += `
                 <a href="daily-challenge.html" class="add-widget-btn">
                     <div style="font-size: 20px;"><i class="fa-solid fa-plus"></i></div>
