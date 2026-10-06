@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2563EB">
+    <title>Si7a | الإعدادات</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(165deg, #3B82F6 0%, #2563EB 40%, #1E3A8A 100%);
+            color: #fff;
+        }
+
+        .full-screen-container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 15px 15px 85px 15px;
+        }
+
+        /* Background Shapes */
+        .wave-bg-1 {
+            position: fixed;
+            top: -80px;
+            right: -80px;
+            width: 350px;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 45%;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .wave-bg-2 {
+            position: fixed;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 40%;
+            transform: rotate(25deg);
+            pointer-events: none;
+        }
+
+        /* Header */
+        .app-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 5;
+            margin-bottom: 15px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .avatar-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .welcome-text {
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content Container */
+        .page-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            z-index: 2;
+        }
+
+        /* Metallic White Cards */
+        .metallic-white-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(230, 240, 255, 0.88) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 22px;
+            padding: 16px;
+            color: #1E293B;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card-header-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #1E3A8A;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(30, 58, 138, 0.12);
+        }
+
+        /* Profile Edit Form */
+        .profile-edit-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+        }
+
+        .profile-avatar-wrapper {
+            position: relative;
+        }
+
+        .profile-avatar-large {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            border: 3px solid #2563EB;
+            object-fit: cover;
+        }
+
+        .change-avatar-btn {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: #2563EB;
+            color: #fff;
+            border: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .setting-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(30, 58, 138, 0.12);
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            font-size: 13px;
+            font-weight: bold;
+            color: #1E3A8A;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .input-text, .select-input {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(30, 58, 138, 0.2);
+            background: #fff;
+            color: #0F172A;
+            font-size: 13px;
+            outline: none;
+        }
+
+        /* Switch Toggle */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 38px;
+            height: 22px;
+            flex-shrink: 0;
+        }
+
+        .switch input { opacity: 0; width: 0; height: 0; }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #CBD5E1;
+            transition: .3s;
+            border-radius: 20px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px; width: 16px;
+            left: 3px; bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider { background-color: #2563EB; }
+        input:checked + .slider:before { transform: translateX(16px); }
+
+        /* Action Buttons */
+        .btn-save {
+            width: 100%;
+            background: linear-gradient(90deg, #2563EB, #1D4ED8);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 6px;
+        }
+
+        .btn-danger {
+            width: 100%;
+            background: rgba(220, 38, 38, 0.1);
+            color: #DC2626;
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .btn-danger:hover {
+            background: #DC2626;
+            color: #fff;
+        }
+
+        /* Solid Bottom Navigation Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            height: 62px;
+            background: #1E3A8A;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .nav-item {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-item i { font-size: 18px; }
+
+        .nav-item.active { color: #ffffff; font-weight: bold; }
+
+        /* Sidebar Drawer */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 1100;
+            display: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0; width: 270px; height: 100%;
+            background: #1E3A8A;
+            z-index: 1101;
+            transition: all 0.3s ease;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        html[dir="ltr"] .sidebar { left: -280px; border-right: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="ltr"] .sidebar.active { left: 0; }
+
+        html[dir="rtl"] .sidebar { right: -280px; border-left: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="rtl"] .sidebar.active { right: 0; }
+
+        .sidebar-header {
+            display: flex; align-items: center; gap: 10px;
+            padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 12px;
+        }
+
+        .sidebar-logo {
+            width: 38px; height: 38px; background: #fff; color: #2563EB;
+            border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px;
+        }
+
+        .language-selector-top {
+            margin-bottom: 15px; padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .language-selector-top label {
+            font-size: 11px; display: flex; align-items: center; gap: 6px;
+            margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); text-transform: uppercase;
+        }
+
+        .lang-select {
+            width: 100%; padding: 8px 10px; border-radius: 10px;
+            background: rgba(255, 255, 255, 0.25); color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4); font-size: 13px; font-weight: bold; outline: none;
+        }
+
+        .lang-select option { background: #1E3A8A; color: #fff; }
+
+        .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 6px; overflow-y: auto; flex: 1; }
+        .sidebar-menu a { color: #fff; text-decoration: none; padding: 10px 12px; font-size: 13px; border-radius: 10px; display: flex; align-items: center; gap: 10px; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { background: rgba(255, 255, 255, 0.2); }
+    </style>
+</head>
+
+<body>
+
+    <div class="full-screen-container">
+        <div class="wave-bg-1"></div>
+        <div class="wave-bg-2"></div>
+
+        <!-- Header -->
+        <header class="app-header">
+            <a href="settings.html" class="user-profile">
+                <img src="https://via.placeholder.com/100" id="userAvatar" class="avatar-img" alt="User Avatar">
+                <span class="welcome-text"><span data-i18n="welcome">أهلاً بك</span>، <span id="userName">سارة</span></span>
+            </a>
+            <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="page-content">
+
+            <!-- 1. الملف الشخصي -->
+            <div class="metallic-white-card">
+                <div class="card-header-title">
+                    <i class="fa-solid fa-user-gear" style="color: #2563EB;"></i>
+                    <span data-i18n="profile_settings">إعدادات الملف الشخصي</span>
+                </div>
+                <div class="profile-edit-section">
+                    <div class="profile-avatar-wrapper">
+                        <img src="https://via.placeholder.com/100" id="editUserAvatar" class="profile-avatar-large" alt="Profile Picture">
+                        <button class="change-avatar-btn" id="uploadAvatarBtn"><i class="fa-solid fa-camera"></i></button>
+                        <input type="file" id="avatarFileInput" accept="image/*" style="display: none;">
+                    </div>
+                    <input type="text" id="editUserName" class="input-text" placeholder="اسم المستخدم">
+                    <button class="btn-save" id="saveProfileBtn" data-i18n="save_profile">حفظ الملف الشخصي</button>
+                </div>
+            </div>
+
+            <!-- 2. تفضيلات التطبيق -->
+            <div class="metallic-white-card">
+                <div class="card-header-title">
+                    <i class="fa-solid fa-sliders" style="color: #059669;"></i>
+                    <span data-i18n="app_preferences">تفضيلات التطبيق</span>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <i class="fa-solid fa-globe" style="color: #2563EB;"></i>
+                        <span data-i18n="language">لغة التطبيق</span>
+                    </div>
+                    <select id="appLangSelect" class="select-input" style="width: 120px;">
+                        <option value="ar">العربية</option>
+                        <option value="en">English</option>
+                        <option value="fr">Français</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <i class="fa-solid fa-bell" style="color: #D97706;"></i>
+                        <span data-i18n="notifications">التنبيهات والإشعارات</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="notificationsToggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <i class="fa-solid fa-moon" style="color: #4F46E5;"></i>
+                        <span data-i18n="dark_mode">الوضع الداكن</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="darkModeToggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 3. إدارة البيانات والحساب -->
+            <div class="metallic-white-card">
+                <div class="card-header-title">
+                    <i class="fa-solid fa-database" style="color: #DC2626;"></i>
+                    <span data-i18n="data_and_account">إدارة البيانات والحساب</span>
+                </div>
+
+                <button class="btn-danger" id="resetDataBtn">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    <span data-i18n="reset_data">إعادة ضبط وقياسات التطبيق</span>
+                </button>
+
+                <button class="btn-danger" id="logoutBtn" style="background: rgba(220, 38, 38, 0.2); margin-top: 6px;">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span data-i18n="logout">تسجيل الخروج</span>
+                </button>
+            </div>
+
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="bottom-nav">
+            <a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span data-i18n="home">الرئيسية</span></a>
+            <a href="daily-challenge.html" class="nav-item"><i class="fa-solid fa-person-running"></i><span data-i18n="challenge">التحدي</span></a>
+            <a href="health-metrics.html" class="nav-item"><i class="fa-solid fa-notes-medical"></i><span data-i18n="health_file">ملفي الصحي</span></a>
+            <a href="settings.html" class="nav-item active"><i class="fa-solid fa-gear"></i><span data-i18n="settings">الإعدادات</span></a>
+        </nav>
+    </div>
+
+    <!-- Sidebar Drawer -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div style="font-weight: bold; font-size: 18px;">Si7a</div>
+        </div>
+
+        <div class="language-selector-top">
+            <label for="languageSelect"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">اللغة</span></label>
+            <select id="languageSelect" class="lang-select">
+                <option value="ar">العربية</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">الرئيسية</span></a></li>
+            <li><a href="health-metrics.html"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">قياساتي الصحية</span></a></li>
+            <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">التحدي اليومي</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">نظامي الغذائي</span></a></li>
+            <li><a href="health-metrics.html"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">ملفي الصحي</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">دورتي الشهرية</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">حاسبة الحمل</span></a></li>
+            <li><a href="settings.html" class="active"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">الإعدادات</span></a></li>
+        </ul>
+    </aside>
+
+    <script type="module">
+        import { auth } from "./js/firebase.js";
+        import { onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+        let currentLang = localStorage.getItem('appLanguage') || 'ar';
+
+        // Translations
+        const translations = {
+            ar: {
+                welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
+                profile_settings: "إعدادات الملف الشخصي", app_preferences: "تفضيلات التطبيق", language: "لغة التطبيق", notifications: "التنبيهات والإشعارات", dark_mode: "الوضع الداكن", data_and_account: "إدارة البيانات والحساب",
+                save_profile: "حفظ الملف الشخصي", reset_data: "إعادة ضبط وقياسات التطبيق", logout: "تسجيل الخروج"
+            },
+            en: {
+                welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
+                profile_settings: "Profile Settings", app_preferences: "App Preferences", language: "App Language", notifications: "Notifications", dark_mode: "Dark Mode", data_and_account: "Data & Account Management",
+                save_profile: "Save Profile", reset_data: "Reset App Data", logout: "Log Out"
+            },
+            fr: {
+                welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
+                profile_settings: "Paramètres du profil", app_preferences: "Préférences", language: "Langue de l'application", notifications: "Notifications", dark_mode: "Mode sombre", data_and_account: "Gestion des données",
+                save_profile: "Enregistrer le profil", reset_data: "Réinitialiser les données", logout: "Déconnexion"
+            },
+            es: {
+                welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario", diet_plan: "Plan de dieta", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
+                profile_settings: "Ajustes del perfil", app_preferences: "Preferencias de la aplicación", language: "Idioma de la aplicación", notifications: "Notificaciones", dark_mode: "Modo oscuro", data_and_account: "Gestión de datos y cuenta",
+                save_profile: "Guardar perfil", reset_data: "Restablecer datos", logout: "Cerrar sesión"
+            }
+        };
+
+        // Auth listener
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const name = user.displayName || localStorage.getItem('userDisplayName') || 'سارة';
+                const avatar = user.photoURL || localStorage.getItem('userPhotoURL') || 'https://via.placeholder.com/100';
+
+                document.getElementById("userName").textContent = name;
+                document.getElementById("userAvatar").src = avatar;
+                document.getElementById("editUserName").value = name;
+                document.getElementById("editUserAvatar").src = avatar;
+            } else {
+                window.location.href = "login.html";
+            }
+        });
+
+        // Save Profile Function
+        document.getElementById("saveProfileBtn").addEventListener("click", async () => {
+            const newName = document.getElementById("editUserName").value.trim();
+            if (newName && auth.currentUser) {
+                try {
+                    await updateProfile(auth.currentUser, { displayName: newName });
+                    localStorage.setItem('userDisplayName', newName);
+                    document.getElementById("userName").textContent = newName;
+                    alert(currentLang === 'ar' ? 'تم تحديث الملف الشخصي بنجاح!' : 'Profile updated successfully!');
+                } catch (e) {
+                    alert(e.message);
+                }
+            }
+        });
+
+        // Image Upload
+        document.getElementById("uploadAvatarBtn").addEventListener("click", () => {
+            document.getElementById("avatarFileInput").click();
+        });
+
+        document.getElementById("avatarFileInput").addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    const imgUrl = evt.target.result;
+                    document.getElementById("editUserAvatar").src = imgUrl;
+                    document.getElementById("userAvatar").src = imgUrl;
+                    localStorage.setItem('userPhotoURL', imgUrl);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Reset Data
+        document.getElementById("resetDataBtn").addEventListener("click", () => {
+            const confirmMsg = currentLang === 'ar' ? 'هل أنت تأكد من إرادة مسح كافة القياسات والتحديات المحفوظة؟' : 'Are you sure you want to reset all saved app data?';
+            if (confirm(confirmMsg)) {
+                localStorage.removeItem('si7aHealthMetrics');
+                localStorage.removeItem('userChallenges');
+                localStorage.removeItem('dashboardLogs');
+                alert(currentLang === 'ar' ? 'تمت إعادة ضبط البيانات بنجاح!' : 'Data reset successfully!');
+                window.location.reload();
+            }
+        });
+
+        // Logout
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+            signOut(auth).then(() => {
+                window.location.href = "login.html";
+            });
+        });
+
+        // Language Changer
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('appLanguage', lang);
+            const html = document.documentElement;
+            
+            if (lang === 'ar') {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+            } else {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', lang);
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            document.getElementById("appLangSelect").value = lang;
+            document.getElementById("languageSelect").value = lang;
+        }
+
+        document.getElementById("appLangSelect").addEventListener("change", (e) => setLanguage(e.target.value));
+        document.getElementById("languageSelect").addEventListener("change", (e) => setLanguage(e.target.value));
+
+        // Sidebar
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebarOverlay");
+
+        document.getElementById("openSidebar").addEventListener("click", () => {
+            sidebar.classList.add("active");
+            overlay.style.display = "block";
+        });
+
+        overlay.addEventListener("click", () => {
+            sidebar.classList.remove("active");
+            overlay.style.display = "none";
+        });
+
+        setLanguage(currentLang);
+    </script>
+</body>
+
+</html>
