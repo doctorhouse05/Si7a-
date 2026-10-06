@@ -141,49 +141,62 @@
             border-bottom: 1px solid rgba(30, 58, 138, 0.12);
         }
 
-        /* Profile Edit Form */
+        /* Profile Edit Section & Improved Circle Avatar */
         .profile-edit-section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             padding: 10px 0;
         }
 
         .profile-avatar-wrapper {
             position: relative;
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3B82F6, #1E3A8A);
+            padding: 3px;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
         }
 
         .profile-avatar-large {
-            width: 75px;
-            height: 75px;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
-            border: 3px solid #2563EB;
+            border: 2px solid #ffffff;
             object-fit: cover;
+            background: #fff;
         }
 
         .change-avatar-btn {
             position: absolute;
-            bottom: 0;
-            right: 0;
+            bottom: 2px;
+            left: 2px;
             background: #2563EB;
             color: #fff;
-            border: none;
-            width: 26px;
-            height: 26px;
+            border: 2px solid #ffffff;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 12px;
             cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .change-avatar-btn:active {
+            transform: scale(0.9);
         }
 
         .setting-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 8px 0;
+            padding: 10px 0;
             border-bottom: 1px dashed rgba(30, 58, 138, 0.12);
         }
 
@@ -255,7 +268,49 @@
             font-size: 13px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 6px;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-secondary {
+            width: 100%;
+            background: rgba(30, 58, 138, 0.08);
+            color: #1E3A8A;
+            border: 1px solid rgba(30, 58, 138, 0.2);
+            padding: 9px;
+            border-radius: 10px;
+            font-size: 12.5px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(30, 58, 138, 0.15);
+        }
+
+        .btn-contact {
+            width: 100%;
+            background: linear-gradient(90deg, #059669, #047857);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 11px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+            transition: transform 0.2s;
+        }
+
+        .btn-contact:active {
+            transform: scale(0.97);
         }
 
         .btn-danger {
@@ -278,6 +333,16 @@
         .btn-danger:hover {
             background: #DC2626;
             color: #fff;
+        }
+
+        .about-owner-text {
+            font-size: 12px;
+            color: #475569;
+            line-height: 1.6;
+            background: rgba(30, 58, 138, 0.04);
+            padding: 10px 12px;
+            border-radius: 10px;
+            border-right: 3px solid #2563EB;
         }
 
         /* Solid Bottom Navigation Bar */
@@ -388,7 +453,7 @@
         <!-- Main Content -->
         <main class="page-content">
 
-            <!-- 1. الملف الشخصي -->
+            <!-- 1. الملف الشخصي والصورة المحدثة -->
             <div class="metallic-white-card">
                 <div class="card-header-title">
                     <i class="fa-solid fa-user-gear" style="color: #2563EB;"></i>
@@ -397,7 +462,7 @@
                 <div class="profile-edit-section">
                     <div class="profile-avatar-wrapper">
                         <img src="https://via.placeholder.com/100" id="editUserAvatar" class="profile-avatar-large" alt="Profile Picture">
-                        <button class="change-avatar-btn" id="uploadAvatarBtn"><i class="fa-solid fa-camera"></i></button>
+                        <button class="change-avatar-btn" id="uploadAvatarBtn" title="تغيير الصورة"><i class="fa-solid fa-camera"></i></button>
                         <input type="file" id="avatarFileInput" accept="image/*" style="display: none;">
                     </div>
                     <input type="text" id="editUserName" class="input-text" placeholder="اسم المستخدم">
@@ -405,13 +470,14 @@
                 </div>
             </div>
 
-            <!-- 2. تفضيلات التطبيق -->
+            <!-- 2. تفضيلات التطبيق والإعدادات الإضافية -->
             <div class="metallic-white-card">
                 <div class="card-header-title">
                     <i class="fa-solid fa-sliders" style="color: #059669;"></i>
                     <span data-i18n="app_preferences">تفضيلات التطبيق</span>
                 </div>
 
+                <!-- لغة التطبيق -->
                 <div class="setting-item">
                     <div class="setting-label">
                         <i class="fa-solid fa-globe" style="color: #2563EB;"></i>
@@ -425,6 +491,7 @@
                     </select>
                 </div>
 
+                <!-- التنبيهات والإشعارات -->
                 <div class="setting-item">
                     <div class="setting-label">
                         <i class="fa-solid fa-bell" style="color: #D97706;"></i>
@@ -436,34 +503,70 @@
                     </label>
                 </div>
 
+                <!-- إعداد نظام القياس (جديد) -->
                 <div class="setting-item">
                     <div class="setting-label">
-                        <i class="fa-solid fa-moon" style="color: #4F46E5;"></i>
-                        <span data-i18n="dark_mode">الوضع الداكن</span>
+                        <i class="fa-solid fa-ruler-combined" style="color: #059669;"></i>
+                        <span data-i18n="unit_system">نظام القياس</span>
+                    </div>
+                    <select id="unitSystemSelect" class="select-input" style="width: 130px;">
+                        <option value="metric" data-i18n="unit_metric">Metric (kg, cm)</option>
+                        <option value="imperial" data-i18n="unit_imperial">Imperial (lbs, in)</option>
+                    </select>
+                </div>
+
+                <!-- إعداد تذكير الماء اليومي (جديد) -->
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <i class="fa-solid fa-glass-water" style="color: #0284C7;"></i>
+                        <span data-i18n="water_reminder">تذكير شرب الماء</span>
                     </div>
                     <label class="switch">
-                        <input type="checkbox" id="darkModeToggle">
+                        <input type="checkbox" id="waterReminderToggle" checked>
                         <span class="slider"></span>
                     </label>
                 </div>
             </div>
 
-            <!-- 3. إدارة البيانات والحساب -->
+            <!-- 3. إدارة البيانات والنسخ الاحتياطي -->
             <div class="metallic-white-card">
                 <div class="card-header-title">
-                    <i class="fa-solid fa-database" style="color: #DC2626;"></i>
-                    <span data-i18n="data_and_account">إدارة البيانات والحساب</span>
+                    <i class="fa-solid fa-database" style="color: #4F46E5;"></i>
+                    <span data-i18n="data_and_account">إدارة البيانات والنسخ الاحتياطي</span>
                 </div>
+
+                <button class="btn-secondary" id="exportDataBtn">
+                    <i class="fa-solid fa-download"></i>
+                    <span data-i18n="export_backup">تصدير نسخة احتياطية للبيانات</span>
+                </button>
 
                 <button class="btn-danger" id="resetDataBtn">
                     <i class="fa-solid fa-rotate-left"></i>
                     <span data-i18n="reset_data">إعادة ضبط وقياسات التطبيق</span>
                 </button>
 
-                <button class="btn-danger" id="logoutBtn" style="background: rgba(220, 38, 38, 0.2); margin-top: 6px;">
+                <button class="btn-danger" id="logoutBtn" style="background: rgba(220, 38, 38, 0.2); margin-top: 4px;">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <span data-i18n="logout">تسجيل الخروج</span>
                 </button>
+            </div>
+
+            <!-- 4. قسم صاحبة التطبيق والتواصل (جديد) -->
+            <div class="metallic-white-card">
+                <div class="card-header-title">
+                    <i class="fa-solid fa-heart-pulse" style="color: #EC4899;"></i>
+                    <span data-i18n="about_app">حول تطبيق Si7a</span>
+                </div>
+
+                <p class="about-owner-text" data-i18n="owner_description">
+                    تطبيق **Si7a** هو رفيقك الصحّي اليومي الشامل لمتابعة قياساتك الفيزيولوجية والتحديات الصحية وتطوير نمط حياة صحي ومتوازن بأسلوب سلس ومبتكر.
+                </p>
+
+                <!-- زر التواصل مع صاحبة التطبيق (رابط فارغ جاهز لإضافة الرابط لاحقاً) -->
+                <a href="#" id="ownerContactLink" target="_blank" class="btn-contact">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span data-i18n="contact_owner">التواصل مع صاحبة التطبيق</span>
+                </a>
             </div>
 
         </main>
@@ -513,31 +616,35 @@
 
         let currentLang = localStorage.getItem('appLanguage') || 'ar';
 
-        // Translations
+        // Translations Dictionary
         const translations = {
             ar: {
                 welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
-                profile_settings: "إعدادات الملف الشخصي", app_preferences: "تفضيلات التطبيق", language: "لغة التطبيق", notifications: "التنبيهات والإشعارات", dark_mode: "الوضع الداكن", data_and_account: "إدارة البيانات والحساب",
-                save_profile: "حفظ الملف الشخصي", reset_data: "إعادة ضبط وقياسات التطبيق", logout: "تسجيل الخروج"
+                profile_settings: "إعدادات الملف الشخصي", app_preferences: "تفضيلات التطبيق", language: "لغة التطبيق", notifications: "التنبيهات والإشعارات", unit_system: "نظام القياس", unit_metric: "متري (كجم، سم)", unit_imperial: "إمبراطوري (رطل، بوصة)", water_reminder: "تذكير شرب الماء", data_and_account: "إدارة البيانات والنسخ الاحتياطي",
+                save_profile: "حفظ الملف الشخصي", export_backup: "تصدير نسخة احتياطية للبيانات", reset_data: "إعادة ضبط وقياسات التطبيق", logout: "تسجيل الخروج",
+                about_app: "حول تطبيق Si7a", owner_description: "تطبيق Si7a هو رفيقك الصحّي اليومي الشامل لمتابعة قياساتك الفيزيولوجية والتحديات الصحية وتطوير نمط حياة صحي ومتوازن بأسلوب سلس ومبتكر.", contact_owner: "التواصل مع صاحبة التطبيق"
             },
             en: {
                 welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
-                profile_settings: "Profile Settings", app_preferences: "App Preferences", language: "App Language", notifications: "Notifications", dark_mode: "Dark Mode", data_and_account: "Data & Account Management",
-                save_profile: "Save Profile", reset_data: "Reset App Data", logout: "Log Out"
+                profile_settings: "Profile Settings", app_preferences: "App Preferences", language: "App Language", notifications: "Notifications", unit_system: "Unit System", unit_metric: "Metric (kg, cm)", unit_imperial: "Imperial (lbs, in)", water_reminder: "Water Intake Reminder", data_and_account: "Data & Backup Management",
+                save_profile: "Save Profile", export_backup: "Export Data Backup", reset_data: "Reset App Data", logout: "Log Out",
+                about_app: "About Si7a App", owner_description: "Si7a is your daily health companion designed to track physiological metrics, manage daily wellness challenges, and foster a healthy lifestyle seamlessly.", contact_owner: "Contact Application Owner"
             },
             fr: {
                 welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
-                profile_settings: "Paramètres du profil", app_preferences: "Préférences", language: "Langue de l'application", notifications: "Notifications", dark_mode: "Mode sombre", data_and_account: "Gestion des données",
-                save_profile: "Enregistrer le profil", reset_data: "Réinitialiser les données", logout: "Déconnexion"
+                profile_settings: "Paramètres du profil", app_preferences: "Préférences", language: "Langue de l'application", notifications: "Notifications", unit_system: "Système d'unités", unit_metric: "Métrique (kg, cm)", unit_imperial: "Impérial (lbs, in)", water_reminder: "Rappel d'eau", data_and_account: "Gestion des données et sauvegardes",
+                save_profile: "Enregistrer le profil", export_backup: "Exporter la sauvegarde", reset_data: "Réinitialiser les données", logout: "Déconnexion",
+                about_app: "À propos de Si7a", owner_description: "Si7a est votre compagnon de santé quotidien conçu pour suivre vos données physiologiques et relever vos défis de santé au quotidien.", contact_owner: "Contacter la propriétaire"
             },
             es: {
                 welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario", diet_plan: "Plan de dieta", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
-                profile_settings: "Ajustes del perfil", app_preferences: "Preferencias de la aplicación", language: "Idioma de la aplicación", notifications: "Notificaciones", dark_mode: "Modo oscuro", data_and_account: "Gestión de datos y cuenta",
-                save_profile: "Guardar perfil", reset_data: "Restablecer datos", logout: "Cerrar sesión"
+                profile_settings: "Ajustes del perfil", app_preferences: "Preferencias de la aplicación", language: "Idioma de la aplicación", notifications: "Notificaciones", unit_system: "Sistema de unidades", unit_metric: "Métrico (kg, cm)", unit_imperial: "Imperial (lbs, in)", water_reminder: "Recordatorio de agua", data_and_account: "Gestión de datos y copias",
+                save_profile: "Guardar perfil", export_backup: "Exportar copia de seguridad", reset_data: "Restablecer datos", logout: "Cerrar sesión",
+                about_app: "Sobre la aplicación Si7a", owner_description: "Si7a es tu compañero de salud diario para realizar un seguimiento de tus métricas fisiológicas y gestionar tus desafíos con facilidad.", contact_owner: "Contactar con la propietaria"
             }
         };
 
-        // Auth listener
+        // Auth Listener
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 const name = user.displayName || localStorage.getItem('userDisplayName') || 'سارة';
@@ -552,7 +659,7 @@
             }
         });
 
-        // Save Profile Function
+        // Save Profile
         document.getElementById("saveProfileBtn").addEventListener("click", async () => {
             const newName = document.getElementById("editUserName").value.trim();
             if (newName && auth.currentUser) {
@@ -586,6 +693,23 @@
             }
         });
 
+        // Export Backup JSON
+        document.getElementById("exportDataBtn").addEventListener("click", () => {
+            const dataBackup = {
+                healthMetrics: JSON.parse(localStorage.getItem('si7aHealthMetrics')) || {},
+                userChallenges: JSON.parse(localStorage.getItem('userChallenges')) || {},
+                dashboardLogs: JSON.parse(localStorage.getItem('dashboardLogs')) || {}
+            };
+            
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(dataBackup, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `Si7a_Backup_${new Date().toISOString().split('T')[0]}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        });
+
         // Reset Data
         document.getElementById("resetDataBtn").addEventListener("click", () => {
             const confirmMsg = currentLang === 'ar' ? 'هل أنت تأكد من إرادة مسح كافة القياسات والتحديات المحفوظة؟' : 'Are you sure you want to reset all saved app data?';
@@ -605,7 +729,7 @@
             });
         });
 
-        // Language Changer
+        // Language Switcher
         function setLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('appLanguage', lang);
@@ -633,7 +757,7 @@
         document.getElementById("appLangSelect").addEventListener("change", (e) => setLanguage(e.target.value));
         document.getElementById("languageSelect").addEventListener("change", (e) => setLanguage(e.target.value));
 
-        // Sidebar
+        // Sidebar Events
         const sidebar = document.getElementById("sidebar");
         const overlay = document.getElementById("sidebarOverlay");
 
