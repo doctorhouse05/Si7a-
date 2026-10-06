@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#2563EB">
-    <title>Si7a | Health Metrics</title>
+    <title>Si7a | قياساتي الصحية</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- Chart.js for Rendering Graphs -->
+    <!-- Chart.js لرسم المخططات البيانية -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
@@ -39,7 +39,7 @@
         .wave-bg-1 {
             position: fixed;
             top: -80px;
-            left: -80px;
+            right: -80px;
             width: 350px;
             height: 350px;
             background: rgba(255, 255, 255, 0.12);
@@ -51,7 +51,7 @@
         .wave-bg-2 {
             position: fixed;
             bottom: -100px;
-            right: -100px;
+            left: -100px;
             width: 400px;
             height: 400px;
             background: rgba(255, 255, 255, 0.08);
@@ -161,6 +161,7 @@
             cursor: pointer;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
             transition: transform 0.2s, background 0.2s;
         }
@@ -190,7 +191,7 @@
 
         .input-mini, .select-mini {
             flex: 1;
-            min-width: 90px;
+            min-width: 80px;
             padding: 8px 10px;
             border-radius: 10px;
             border: 1px solid rgba(30, 58, 138, 0.2);
@@ -201,7 +202,7 @@
             outline: none;
         }
 
-        /* Expandable View Panel (Tables & Charts) */
+        /* View Panel (Tables & Charts) */
         .view-panel {
             display: none;
             flex-direction: column;
@@ -221,7 +222,7 @@
             max-height: 220px;
         }
 
-        /* Custom Data Table */
+        /* Data Table */
         .custom-table-container {
             width: 100%;
             overflow-x: auto;
@@ -258,16 +259,17 @@
             background: #F8FAFC;
             border: 1px dashed #CBD5E1;
             border-radius: 12px;
-            padding: 10px;
+            padding: 12px;
             text-align: center;
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 4px;
         }
 
         .bmi-badge {
             display: inline-block;
-            padding: 4px 10px;
+            padding: 4px 14px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: bold;
@@ -375,7 +377,7 @@
         <header class="app-header">
             <a href="settings.html" class="user-profile">
                 <img src="https://via.placeholder.com/100" id="userAvatar" class="avatar-img" alt="User Avatar">
-                <span class="welcome-text"><span data-i18n="welcome">Welcome</span>, <span id="userName">Sarah</span></span>
+                <span class="welcome-text"><span data-i18n="welcome">أهلاً بك</span>، <span id="userName">سارة</span></span>
             </a>
             <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
         </header>
@@ -383,103 +385,103 @@
         <!-- Main Content -->
         <main class="page-content">
 
-            <!-- 1. Weight Tracking -->
+            <!-- 1. قياس الوزن -->
             <div class="metallic-white-card">
                 <div class="card-header-title">
-                    <span><i class="fa-solid fa-weight-scale" style="color: #2563EB;"></i> <span data-i18n="weight_measurement">Weight Measurement</span></span>
-                    <button class="btn-toggle-view" onclick="toggleView('weightView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">View</span></button>
+                    <span><i class="fa-solid fa-weight-scale" style="color: #2563EB;"></i> <span data-i18n="weight_measurement">قياس الوزن</span></span>
+                    <button class="btn-toggle-view" onclick="toggleView('weightView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">عرض</span></button>
                 </div>
                 <div class="input-row">
-                    <input type="number" step="0.1" id="inputWeight" class="input-mini" placeholder="kg">
-                    <button class="btn-action" onclick="addRecord('weight')"><i class="fa-solid fa-plus"></i> <span data-i18n="add">Add Weight</span></button>
+                    <input type="number" step="0.1" id="inputWeight" class="input-mini" placeholder="أدخل الوزن (كجم)">
+                    <button class="btn-action" onclick="addRecord('weight')"><i class="fa-solid fa-plus"></i> <span data-i18n="add">إضافة</span></button>
                 </div>
                 <div class="view-panel" id="weightView">
                     <div class="chart-box"><canvas id="weightChart"></canvas></div>
                     <div class="custom-table-container">
                         <table class="custom-table">
-                            <thead><tr><th data-i18n="date">Date</th><th data-i18n="weight">Weight (kg)</th></tr></thead>
+                            <thead><tr><th data-i18n="date">التاريخ</th><th data-i18n="weight">الوزن (كجم)</th></tr></thead>
                             <tbody id="weightTableBody"></tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <!-- 2. Height Tracking -->
+            <!-- 2. قياس الطول -->
             <div class="metallic-white-card">
                 <div class="card-header-title">
-                    <span><i class="fa-solid fa-ruler-vertical" style="color: #059669;"></i> <span data-i18n="height_measurement">Height Measurement</span></span>
-                    <button class="btn-toggle-view" onclick="toggleView('heightView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">View</span></button>
+                    <span><i class="fa-solid fa-ruler-vertical" style="color: #059669;"></i> <span data-i18n="height_measurement">قياس الطول</span></span>
+                    <button class="btn-toggle-view" onclick="toggleView('heightView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">عرض</span></button>
                 </div>
                 <div class="input-row">
-                    <input type="number" step="0.1" id="inputHeight" class="input-mini" placeholder="cm">
-                    <button class="btn-action" onclick="addRecord('height')" style="background: #059669;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">Add Height</span></button>
+                    <input type="number" step="0.1" id="inputHeight" class="input-mini" placeholder="أدخل الطول (سم)">
+                    <button class="btn-action" onclick="addRecord('height')" style="background: #059669;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">إضافة</span></button>
                 </div>
                 <div class="view-panel" id="heightView">
                     <div class="chart-box"><canvas id="heightChart"></canvas></div>
                     <div class="custom-table-container">
                         <table class="custom-table">
-                            <thead><tr><th data-i18n="date">Date</th><th data-i18n="height">Height (cm)</th></tr></thead>
+                            <thead><tr><th data-i18n="date">التاريخ</th><th data-i18n="height">الطول (سم)</th></tr></thead>
                             <tbody id="heightTableBody"></tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <!-- 3. BMI Calculator -->
+            <!-- 3. حاسبة مؤشر كتلة الجسم (BMI) -->
             <div class="metallic-white-card">
                 <div class="card-header-title">
-                    <span><i class="fa-solid fa-calculator" style="color: #D97706;"></i> <span data-i18n="bmi_calculator">BMI Calculator</span></span>
+                    <span><i class="fa-solid fa-calculator" style="color: #D97706;"></i> <span data-i18n="bmi_calculator">حاسبة مؤشر كتلة الجسم (BMI)</span></span>
                 </div>
                 <div class="bmi-box">
-                    <div style="font-size: 12px; color: #64748B;" data-i18n="bmi_score">Body Mass Index</div>
+                    <div style="font-size: 12px; color: #64748B;" data-i18n="bmi_score">النتيجة الحالية</div>
                     <div style="font-size: 22px; font-weight: bold; color: #1E3A8A;" id="bmiValue">--</div>
-                    <div id="bmiBadge" class="bmi-badge" style="background: #94A3B8;">--</div>
+                    <div id="bmiBadge" class="bmi-badge" style="background: #94A3B8;">أدخل الوزن والطول لحساب المؤشر</div>
                 </div>
             </div>
 
-            <!-- 4. Waist Circumference -->
+            <!-- 4. محيط الخصر -->
             <div class="metallic-white-card">
                 <div class="card-header-title">
-                    <span><i class="fa-solid fa-tape" style="color: #EC4899;"></i> <span data-i18n="waist_measurement">Waist Circumference</span></span>
-                    <button class="btn-toggle-view" onclick="toggleView('waistView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">View</span></button>
+                    <span><i class="fa-solid fa-tape" style="color: #EC4899;"></i> <span data-i18n="waist_measurement">محيط الخصر</span></span>
+                    <button class="btn-toggle-view" onclick="toggleView('waistView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">عرض</span></button>
                 </div>
                 <div class="input-row">
-                    <input type="number" step="0.1" id="inputWaist" class="input-mini" placeholder="cm">
-                    <button class="btn-action" onclick="addRecord('waist')" style="background: #EC4899;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">Add Waist</span></button>
+                    <input type="number" step="0.1" id="inputWaist" class="input-mini" placeholder="محيط الخصر (سم)">
+                    <button class="btn-action" onclick="addRecord('waist')" style="background: #EC4899;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">إضافة</span></button>
                 </div>
                 <div class="view-panel" id="waistView">
                     <div class="chart-box"><canvas id="waistChart"></canvas></div>
                     <div class="custom-table-container">
                         <table class="custom-table">
-                            <thead><tr><th data-i18n="date">Date</th><th data-i18n="waist">Waist (cm)</th></tr></thead>
+                            <thead><tr><th data-i18n="date">التاريخ</th><th data-i18n="waist">الخصر (سم)</th></tr></thead>
                             <tbody id="waistTableBody"></tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <!-- 5. Blood Pressure & Heart Rate -->
+            <!-- 5. ضغط الدم ونبضات القلب -->
             <div class="metallic-white-card">
                 <div class="card-header-title">
-                    <span><i class="fa-solid fa-heart-pulse" style="color: #DC2626;"></i> <span data-i18n="blood_pressure">Blood Pressure & Pulse</span></span>
-                    <button class="btn-toggle-view" onclick="toggleView('bpView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">View</span></button>
+                    <span><i class="fa-solid fa-heart-pulse" style="color: #DC2626;"></i> <span data-i18n="blood_pressure">ضغط الدم ونبضات القلب</span></span>
+                    <button class="btn-toggle-view" onclick="toggleView('bpView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">عرض</span></button>
                 </div>
                 <div class="input-row">
-                    <input type="number" id="inputSys" class="input-mini" placeholder="Sys (120)">
-                    <input type="number" id="inputDia" class="input-mini" placeholder="Dia (80)">
-                    <input type="number" id="inputPulse" class="input-mini" placeholder="Pulse (bpm)">
-                    <button class="btn-action" onclick="addBPRecord()" style="background: #DC2626; width: 100%; margin-top: 4px;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">Add BP & Pulse</span></button>
+                    <input type="number" id="inputSys" class="input-mini" placeholder="الانقباضي (120)">
+                    <input type="number" id="inputDia" class="input-mini" placeholder="الانبساطي (80)">
+                    <input type="number" id="inputPulse" class="input-mini" placeholder="النبض/د">
+                    <button class="btn-action" onclick="addBPRecord()" style="background: #DC2626; width: 100%; margin-top: 4px;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">إضافة القراءة</span></button>
                 </div>
                 <div class="view-panel" id="bpView">
                     <div class="custom-table-container">
                         <table class="custom-table">
                             <thead>
                                 <tr>
-                                    <th data-i18n="date">Date</th>
-                                    <th data-i18n="time">Time</th>
-                                    <th data-i18n="systolic">Sys</th>
-                                    <th data-i18n="diastolic">Dia</th>
-                                    <th data-i18n="pulse">Pulse</th>
+                                    <th data-i18n="date">التاريخ</th>
+                                    <th data-i18n="time">التوقيت</th>
+                                    <th data-i18n="systolic">الانقباضي</th>
+                                    <th data-i18n="diastolic">الانبساطي</th>
+                                    <th data-i18n="pulse">النبض</th>
                                 </tr>
                             </thead>
                             <tbody id="bpTableBody"></tbody>
@@ -488,32 +490,32 @@
                 </div>
             </div>
 
-            <!-- 6. Blood Sugar -->
+            <!-- 6. قياس السكر في الدم -->
             <div class="metallic-white-card">
                 <div class="card-header-title">
-                    <span><i class="fa-solid fa-droplet" style="color: #2563EB;"></i> <span data-i18n="blood_sugar">Blood Sugar</span></span>
-                    <button class="btn-toggle-view" onclick="toggleView('sugarView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">View</span></button>
+                    <span><i class="fa-solid fa-droplet" style="color: #2563EB;"></i> <span data-i18n="blood_sugar">قياس السكر في الدم</span></span>
+                    <button class="btn-toggle-view" onclick="toggleView('sugarView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">عرض</span></button>
                 </div>
                 <div class="input-row">
-                    <input type="number" step="0.01" id="inputSugar" class="input-mini" placeholder="g/L">
+                    <input type="number" step="0.01" id="inputSugar" class="input-mini" placeholder="القيمة g/L">
                     <select id="inputSugarTiming" class="select-mini">
-                        <option value="fasting" data-i18n="fasting">Fasting</option>
-                        <option value="after_bf" data-i18n="after_bf">2h After Breakfast</option>
-                        <option value="before_lunch" data-i18n="before_lunch">Before Lunch</option>
-                        <option value="after_lunch" data-i18n="after_lunch">2h After Lunch</option>
-                        <option value="before_dinner" data-i18n="before_dinner">Before Dinner</option>
-                        <option value="after_dinner" data-i18n="after_dinner">2h After Dinner</option>
+                        <option value="fasting" data-i18n="fasting">صيام</option>
+                        <option value="after_bf" data-i18n="after_bf">بعد الفطور (2h)</option>
+                        <option value="before_lunch" data-i18n="before_lunch">قبل الغداء</option>
+                        <option value="after_lunch" data-i18n="after_lunch">بعد الغداء (2h)</option>
+                        <option value="before_dinner" data-i18n="before_dinner">قبل العشاء</option>
+                        <option value="after_dinner" data-i18n="after_dinner">بعد العشاء (2h)</option>
                     </select>
-                    <button class="btn-action" onclick="addSugarRecord()" style="background: #2563EB; width: 100%; margin-top: 4px;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">Add Glucose</span></button>
+                    <button class="btn-action" onclick="addSugarRecord()" style="background: #2563EB; width: 100%; margin-top: 4px;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">إضافة القراءة</span></button>
                 </div>
                 <div class="view-panel" id="sugarView">
                     <div class="custom-table-container">
                         <table class="custom-table">
                             <thead>
                                 <tr>
-                                    <th data-i18n="date">Date</th>
-                                    <th data-i18n="timing">Timing</th>
-                                    <th data-i18n="value">Value (g/L)</th>
+                                    <th data-i18n="date">التاريخ</th>
+                                    <th data-i18n="timing">التوقيت</th>
+                                    <th data-i18n="value">القيمة (g/L)</th>
                                 </tr>
                             </thead>
                             <tbody id="sugarTableBody"></tbody>
@@ -522,41 +524,41 @@
                 </div>
             </div>
 
-            <!-- 7. Body Temperature -->
+            <!-- 7. درجة الحرارة -->
             <div class="metallic-white-card">
                 <div class="card-header-title">
-                    <span><i class="fa-solid fa-temperature-three-quarters" style="color: #EA580C;"></i> <span data-i18n="temperature">Body Temperature</span></span>
-                    <button class="btn-toggle-view" onclick="toggleView('tempView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">View</span></button>
+                    <span><i class="fa-solid fa-temperature-three-quarters" style="color: #EA580C;"></i> <span data-i18n="temperature">درجة الحرارة</span></span>
+                    <button class="btn-toggle-view" onclick="toggleView('tempView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">عرض</span></button>
                 </div>
                 <div class="input-row">
-                    <input type="number" step="0.1" id="inputTemp" class="input-mini" placeholder="°C">
-                    <button class="btn-action" onclick="addRecord('temp')" style="background: #EA580C;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">Add Temp</span></button>
+                    <input type="number" step="0.1" id="inputTemp" class="input-mini" placeholder="درجة الحرارة (°C)">
+                    <button class="btn-action" onclick="addRecord('temp')" style="background: #EA580C;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">إضافة</span></button>
                 </div>
                 <div class="view-panel" id="tempView">
                     <div class="chart-box"><canvas id="tempChart"></canvas></div>
                     <div class="custom-table-container">
                         <table class="custom-table">
-                            <thead><tr><th data-i18n="date">Date</th><th data-i18n="temp">Temp (°C)</th></tr></thead>
+                            <thead><tr><th data-i18n="date">التاريخ</th><th data-i18n="temp">الحرارة (°C)</th></tr></thead>
                             <tbody id="tempTableBody"></tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <!-- 8. Oxygen Saturation (SpO2) -->
+            <!-- 8. نسبة الأكسجين -->
             <div class="metallic-white-card">
                 <div class="card-header-title">
-                    <span><i class="fa-solid fa-lungs" style="color: #0284C7;"></i> <span data-i18n="oxygen">Oxygen Saturation (SpO2)</span></span>
-                    <button class="btn-toggle-view" onclick="toggleView('oxyView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">View</span></button>
+                    <span><i class="fa-solid fa-lungs" style="color: #0284C7;"></i> <span data-i18n="oxygen">نسبة الأكسجين (SpO2)</span></span>
+                    <button class="btn-toggle-view" onclick="toggleView('oxyView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">عرض</span></button>
                 </div>
                 <div class="input-row">
-                    <input type="number" id="inputOxy" class="input-mini" placeholder="%">
-                    <button class="btn-action" onclick="addRecord('oxy')" style="background: #0284C7;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">Add Oxygen</span></button>
+                    <input type="number" id="inputOxy" class="input-mini" placeholder="نسبة الأكسجين (%)">
+                    <button class="btn-action" onclick="addRecord('oxy')" style="background: #0284C7;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">إضافة</span></button>
                 </div>
                 <div class="view-panel" id="oxyView">
                     <div class="custom-table-container">
                         <table class="custom-table">
-                            <thead><tr><th data-i18n="date">Date</th><th data-i18n="oxygen">SpO2 (%)</th></tr></thead>
+                            <thead><tr><th data-i18n="date">التاريخ</th><th data-i18n="oxygen">SpO2 (%)</th></tr></thead>
                             <tbody id="oxyTableBody"></tbody>
                         </table>
                     </div>
@@ -567,10 +569,10 @@
 
         <!-- Bottom Navigation Bar -->
         <nav class="bottom-nav">
-            <a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span data-i18n="home">Home</span></a>
-            <a href="daily-challenge.html" class="nav-item"><i class="fa-solid fa-person-running"></i><span data-i18n="challenge">Challenge</span></a>
-            <a href="health-metrics.html" class="nav-item active"><i class="fa-solid fa-notes-medical"></i><span data-i18n="health_file">Health File</span></a>
-            <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i><span data-i18n="settings">Settings</span></a>
+            <a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span data-i18n="home">الرئيسية</span></a>
+            <a href="daily-challenge.html" class="nav-item"><i class="fa-solid fa-person-running"></i><span data-i18n="challenge">التحدي</span></a>
+            <a href="health-metrics.html" class="nav-item active"><i class="fa-solid fa-notes-medical"></i><span data-i18n="health_file">ملفي الصحي</span></a>
+            <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i><span data-i18n="settings">الإعدادات</span></a>
         </nav>
     </div>
 
@@ -583,24 +585,24 @@
         </div>
 
         <div class="language-selector-top">
-            <label for="languageSelect"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">Language</span></label>
+            <label for="languageSelect"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">اللغة</span></label>
             <select id="languageSelect" class="lang-select">
-                <option value="en">English</option>
                 <option value="ar">العربية</option>
+                <option value="en">English</option>
                 <option value="fr">Français</option>
                 <option value="es">Español</option>
             </select>
         </div>
 
         <ul class="sidebar-menu">
-            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">Home</span></a></li>
-            <li><a href="health-metrics.html" class="active"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">Health Metrics</span></a></li>
-            <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">Daily Challenge</span></a></li>
-            <li><a href="#"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">Diet Plan</span></a></li>
-            <li><a href="health-metrics.html"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">Health File</span></a></li>
-            <li><a href="#"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">Period Tracker</span></a></li>
-            <li><a href="#"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">Pregnancy Calculator</span></a></li>
-            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">Settings</span></a></li>
+            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">الرئيسية</span></a></li>
+            <li><a href="health-metrics.html" class="active"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">قياساتي الصحية</span></a></li>
+            <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">التحدي اليومي</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">نظامي الغذائي</span></a></li>
+            <li><a href="health-metrics.html"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">ملفي الصحي</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">دورتي الشهرية</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">حاسبة الحمل</span></a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">الإعدادات</span></a></li>
         </ul>
     </aside>
 
@@ -608,10 +610,10 @@
         import { auth } from "./js/firebase.js";
         import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
-        let currentLang = localStorage.getItem('appLanguage') || 'en';
+        let currentLang = localStorage.getItem('appLanguage') || 'ar';
         let charts = {};
 
-        // Authentication State
+        // Auth Listener
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 if (user.displayName) document.getElementById("userName").textContent = user.displayName;
@@ -619,21 +621,20 @@
             }
         });
 
-        // Dictionary
         const translations = {
+            ar: {
+                welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
+                weight_measurement: "قياس الوزن", height_measurement: "قياس الطول", bmi_calculator: "حاسبة مؤشر كتلة الجسم (BMI)", waist_measurement: "محيط الخصر", blood_pressure: "ضغط الدم ونبضات القلب", blood_sugar: "قياس السكر في الدم", temperature: "درجة الحرارة", oxygen: "نسبة الأكسجين (SpO2)",
+                view: "عرض", add: "إضافة", date: "التاريخ", time: "التوقيت", weight: "الوزن (كجم)", height: "الطول (سم)", waist: "الخصر (سم)", temp: "الحرارة (°م)", systolic: "الانقباضي", diastolic: "الانبساطي", pulse: "النبض", timing: "التوقيت", value: "القيمة",
+                bmi_score: "النتيجة الحالية", underweight: "نحافة", normal: "وزن مثالي", overweight: "زيادة وزن", mod_obesity: "سمنة معتدلة", sev_obesity: "سمنة مفرطة",
+                fasting: "صيام", after_bf: "بعد الفطور (2h)", before_lunch: "قبل الغداء", after_lunch: "بعد الغداء (2h)", before_dinner: "قبل العشاء", after_dinner: "بعد العشاء (2h)"
+            },
             en: {
                 welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
                 weight_measurement: "Weight Tracking", height_measurement: "Height Tracking", bmi_calculator: "BMI Calculator", waist_measurement: "Waist Circumference", blood_pressure: "Blood Pressure & Pulse", blood_sugar: "Blood Sugar", temperature: "Body Temperature", oxygen: "Oxygen Saturation (SpO2)",
                 view: "View", add: "Add", date: "Date", time: "Time", weight: "Weight (kg)", height: "Height (cm)", waist: "Waist (cm)", temp: "Temp (°C)", systolic: "Sys", diastolic: "Dia", pulse: "Pulse", timing: "Timing", value: "Value",
                 bmi_score: "Body Mass Index", underweight: "Underweight", normal: "Normal Weight", overweight: "Overweight", mod_obesity: "Moderate Obesity", sev_obesity: "Severe Obesity",
                 fasting: "Fasting", after_bf: "2h After Breakfast", before_lunch: "Before Lunch", after_lunch: "2h After Lunch", before_dinner: "Before Dinner", after_dinner: "2h After Dinner"
-            },
-            ar: {
-                welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
-                weight_measurement: "قياس الوزن", height_measurement: "قياس الطول", bmi_calculator: "حاسبة مؤشر كتلة الجسم", waist_measurement: "محيط الخصر", blood_pressure: "ضغط الدم ونبضات القلب", blood_sugar: "قياس السكر في الدم", temperature: "درجة الحرارة", oxygen: "نسبة الأكسجين (SpO2)",
-                view: "عرض", add: "إضافة", date: "التاريخ", time: "التوقيت", weight: "الوزن (كجم)", height: "الطول (سم)", waist: "الخصر (سم)", temp: "الحرارة (°م)", systolic: "الانقباضي", diastolic: "الانبساطي", pulse: "النبض", timing: "التوقيت", value: "القيمة",
-                bmi_score: "مؤشر كتلة الجسم", underweight: "نحافة", normal: "وزن مثالي", overweight: "زيادة وزن", mod_obesity: "سمنة معتدلة", sev_obesity: "سمنة مفرطة",
-                fasting: "صيام", after_bf: "بعد الفطور (2h)", before_lunch: "قبل الغداء", after_lunch: "بعد الغداء (2h)", before_dinner: "قبل العشاء", after_dinner: "بعد العشاء (2h)"
             },
             fr: {
                 welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
@@ -651,7 +652,7 @@
             }
         };
 
-        // Data Storage Engine
+        // Local Storage System
         let metricsData = JSON.parse(localStorage.getItem('si7aHealthMetrics')) || {
             weight: [{ date: '2026-10-01', val: 70 }],
             height: [{ date: '2026-10-01', val: 170 }],
@@ -668,13 +669,11 @@
             calculateBMI();
         }
 
-        // Toggle View Panel
         window.toggleView = function(panelId) {
             const panel = document.getElementById(panelId);
             panel.classList.toggle('active');
         }
 
-        // Add Simple Single Record (Weight, Height, Waist, Temp, Oxy)
         window.addRecord = function(type) {
             const inputMap = { weight: 'inputWeight', height: 'inputHeight', waist: 'inputWaist', temp: 'inputTemp', oxy: 'inputOxy' };
             const input = document.getElementById(inputMap[type]);
@@ -687,7 +686,6 @@
             saveMetrics();
         }
 
-        // Add Blood Pressure Record
         window.addBPRecord = function() {
             const sys = parseInt(document.getElementById('inputSys').value);
             const dia = parseInt(document.getElementById('inputDia').value);
@@ -705,7 +703,6 @@
             saveMetrics();
         }
 
-        // Add Blood Sugar Record
         window.addSugarRecord = function() {
             const val = parseFloat(document.getElementById('inputSugar').value);
             const timing = document.getElementById('inputSugarTiming').value;
@@ -717,14 +714,13 @@
             saveMetrics();
         }
 
-        // Calculate BMI
         function calculateBMI() {
             const latestWeight = metricsData.weight.length ? metricsData.weight[metricsData.weight.length - 1].val : null;
             const latestHeight = metricsData.height.length ? metricsData.height[metricsData.height.length - 1].val : null;
 
             const bmiValueEl = document.getElementById('bmiValue');
             const bmiBadgeEl = document.getElementById('bmiBadge');
-            const t = translations[currentLang] || translations['en'];
+            const t = translations[currentLang] || translations['ar'];
 
             if (latestWeight && latestHeight) {
                 const heightMeters = latestHeight / 100;
@@ -749,16 +745,14 @@
                 }
             } else {
                 bmiValueEl.textContent = '--';
-                bmiBadgeEl.textContent = '--';
+                bmiBadgeEl.textContent = 'أدخل الوزن والطول لحساب المؤشر';
                 bmiBadgeEl.style.background = '#94A3B8';
             }
         }
 
-        // Render Tables & Charts
         function updateAllTablesAndCharts() {
-            const t = translations[currentLang] || translations['en'];
+            const t = translations[currentLang] || translations['ar'];
 
-            // Simple Metrics Array
             const simpleTypes = [
                 { type: 'weight', tableId: 'weightTableBody', canvasId: 'weightChart', color: '#2563EB' },
                 { type: 'height', tableId: 'heightTableBody', canvasId: 'heightChart', color: '#059669' },
@@ -784,14 +778,14 @@
                 }
             });
 
-            // Render BP Table
+            // BP Table
             const bpTbody = document.getElementById('bpTableBody');
             bpTbody.innerHTML = '';
             metricsData.bp.forEach(row => {
                 bpTbody.innerHTML += `<tr><td>${row.date}</td><td>${row.time}</td><td>${row.sys}</td><td>${row.dia}</td><td>${row.pulse}</td></tr>`;
             });
 
-            // Render Sugar Table
+            // Sugar Table
             const sugarTbody = document.getElementById('sugarTableBody');
             sugarTbody.innerHTML = '';
             metricsData.sugar.forEach(row => {
@@ -824,7 +818,6 @@
             });
         }
 
-        // Change Language Function
         function setLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('appLanguage', lang);
@@ -856,7 +849,7 @@
             setLanguage(e.target.value);
         });
 
-        // Sidebar Controls
+        // Sidebar
         const sidebar = document.getElementById("sidebar");
         const overlay = document.getElementById("sidebarOverlay");
 
@@ -870,7 +863,6 @@
             overlay.style.display = "none";
         });
 
-        // Initialize App
         setLanguage(currentLang);
     </script>
 </body>
