@@ -30,7 +30,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            padding: 15px 15px 140px 15px; /* مسافة سفلية كافية لظهور كل العناصر فوق الأزرار المثبتة */
+            padding: 15px 15px 140px 15px;
         }
 
         /* Background Shapes */
@@ -240,7 +240,7 @@
         /* Fixed Action Bar for Save Button */
         .fixed-action-bar {
             position: fixed;
-            bottom: 62px; /* يوضع مباشرة فوق الشريط السفلي الثابت */
+            bottom: 62px;
             left: 0; right: 0;
             padding: 10px 15px;
             background: rgba(30, 58, 138, 0.95);
@@ -264,7 +264,7 @@
             cursor: pointer;
         }
 
-        /* Sidebar Drawer */
+        /* Sidebar Drawer (نفس تصميم الداشبورد بالضبط) */
         .sidebar-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -293,20 +293,92 @@
         html[dir="rtl"] .sidebar { right: -280px; border-left: 1px solid rgba(255, 255, 255, 0.2); }
         html[dir="rtl"] .sidebar.active { right: 0; }
 
-        .language-selector-top { margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
-        .lang-select { width: 100%; padding: 8px; border-radius: 10px; background: rgba(255, 255, 255, 0.25); color: #fff; border: 1px solid rgba(255, 255, 255, 0.4); font-weight: bold; outline: none; }
-        .lang-select option { background: #1E3A8A; color: #fff; }
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 12px;
+        }
 
-        .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-        .sidebar-menu a { color: #fff; text-decoration: none; padding: 10px; font-size: 13px; border-radius: 10px; display: flex; align-items: center; gap: 10px; }
-        .sidebar-menu a.active { background: rgba(255, 255, 255, 0.2); }
+        .sidebar-logo {
+            width: 38px;
+            height: 38px;
+            background: #fff;
+            color: #2563EB;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
 
-        /* Solid & Clear Bottom Navigation Bar (نفس تصميم الداشبورد تماماً) */
+        .language-selector-top {
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .language-selector-top label {
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+            color: rgba(255, 255, 255, 0.85);
+            text-transform: uppercase;
+        }
+
+        .lang-select {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+            font-weight: bold;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .lang-select option {
+            background: #1E3A8A;
+            color: #fff;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .sidebar-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 12px;
+            font-size: 13px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.2s;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Solid & Clear Bottom Navigation Bar */
         .bottom-nav {
             position: fixed;
             bottom: 0; left: 0; right: 0;
             height: 62px;
-            background: #1E3A8A; /* لون صلب واضح وغير شفاف */
+            background: #1E3A8A;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             display: flex;
             justify-content: space-around;
@@ -533,11 +605,17 @@
         </nav>
     </div>
 
-    <!-- Sidebar -->
+    <!-- Sidebar (مطابق للداشبورد بالكامل) -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div style="font-weight: bold; font-size: 18px;">Si7a</div>
+        </div>
+
+        <!-- Top Language Selector -->
         <div class="language-selector-top">
-            <label style="font-size:11px; margin-bottom:5px; display:block;"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">Language</span></label>
+            <label for="languageSelect"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">Language</span></label>
             <select id="languageSelect" class="lang-select">
                 <option value="en">English</option>
                 <option value="ar">العربية</option>
@@ -545,9 +623,15 @@
                 <option value="es">Español</option>
             </select>
         </div>
+
         <ul class="sidebar-menu">
             <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">Home</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">Health Metrics</span></a></li>
             <li><a href="daily-challenge.html" class="active"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">Daily Challenge</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">Diet Plan</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">Health File</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">Period Tracker</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">Pregnancy Calculator</span></a></li>
             <li><a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">Settings</span></a></li>
         </ul>
     </aside>
@@ -564,10 +648,10 @@
         });
 
         const translations = {
-            en: { welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", daily_challenge: "Daily Challenge", daily_challenge_title: "Daily Challenge Settings", water_intake: "Water Intake", show_on_home: "Show on Home", sleep_time: "Sleep Time", wake_time: "Wake Up Time", sleep_hours: "Sleep Duration", walking_time: "Walking Duration", phone_usage: "Phone Usage", sugar_intake: "Sugar Intake", smoking: "Smoking", mental_state: "Mental State", yes: "Yes", no: "No", mood_calm: "Relaxed / Calm", mood_happy: "Happy", mood_sad: "Sad", mood_angry: "Angry", mood_stressed: "Stressed", save_changes: "Save Challenge" },
-            ar: { welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", daily_challenge: "التحدي اليومي", daily_challenge_title: "إعدادات التحدي اليومي", water_intake: "شرب الماء", show_on_home: "عرض في الرئيسية", sleep_time: "وقت النوم", wake_time: "وقت الاستيقاظ", sleep_hours: "مدة النوم", walking_time: "مدة المشي", phone_usage: "استعمال الهاتف", sugar_intake: "تناول السكريات", smoking: "التدخين", mental_state: "الحالة النفسية", yes: "نعم", no: "لا", mood_calm: "راحة / هدوء", mood_happy: "سعادة", mood_sad: "حزن", mood_angry: "غضب", mood_stressed: "توتر", save_changes: "حفظ التحدي" },
-            fr: { welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", daily_challenge: "Défi quotidien", daily_challenge_title: "Paramètres du défi", water_intake: "Consommation d'eau", show_on_home: "Afficher sur l'accueil", sleep_time: "Heure de coucher", wake_time: "Heure de réveil", sleep_hours: "Durée du sommeil", walking_time: "Durée de marche", phone_usage: "Utilisation du téléphone", sugar_intake: "Sucre", smoking: "Tabagisme", mental_state: "État mental", yes: "Oui", no: "Non", mood_calm: "Calme", mood_happy: "Heureux", mood_sad: "Triste", mood_angry: "En colère", mood_stressed: "Stressé", save_changes: "Enregistrer" },
-            es: { welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", daily_challenge: "Desafío diario", daily_challenge_title: "Ajustes del desafío", water_intake: "Consumo de agua", show_on_home: "Mostrar en inicio", sleep_time: "Hora de dormir", wake_time: "Hora de despertar", sleep_hours: "Duración del sueño", walking_time: "Duración de caminata", phone_usage: "Uso del teléfono", sugar_intake: "Azúcar", smoking: "Fumar", mental_state: "Estado de ánimo", yes: "Sí", no: "No", mood_calm: "Relajado", mood_happy: "Feliz", mood_sad: "Triste", mood_angry: "Enojado", mood_stressed: "Estresado", save_changes: "Guardar" }
+            en: { welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator", daily_challenge_title: "Daily Challenge Settings", water_intake: "Water Intake", show_on_home: "Show on Home", sleep_time: "Sleep Time", wake_time: "Wake Up Time", sleep_hours: "Sleep Duration", walking_time: "Walking Duration", phone_usage: "Phone Usage", sugar_intake: "Sugar Intake", smoking: "Smoking", mental_state: "Mental State", yes: "Yes", no: "No", mood_calm: "Relaxed / Calm", mood_happy: "Happy", mood_sad: "Sad", mood_angry: "Angry", mood_stressed: "Stressed", save_changes: "Save Challenge" },
+            ar: { welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل", daily_challenge_title: "إعدادات التحدي اليومي", water_intake: "شرب الماء", show_on_home: "عرض في الرئيسية", sleep_time: "وقت النوم", wake_time: "وقت الاستيقاظ", sleep_hours: "مدة النوم", walking_time: "مدة المشي", phone_usage: "استعمال الهاتف", sugar_intake: "تناول السكريات", smoking: "التدخين", mental_state: "الحالة النفسية", yes: "نعم", no: "لا", mood_calm: "راحة / هدوء", mood_happy: "سعادة", mood_sad: "حزن", mood_angry: "غضب", mood_stressed: "توتر", save_changes: "حفظ التحدي" },
+            fr: { welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse", daily_challenge_title: "Paramètres du défi", water_intake: "Consommation d'eau", show_on_home: "Afficher sur l'accueil", sleep_time: "Heure de coucher", wake_time: "Heure de réveil", sleep_hours: "Durée du sommeil", walking_time: "Durée de marche", phone_usage: "Utilisation du téléphone", sugar_intake: "Sucre", smoking: "Tabagisme", mental_state: "État mental", yes: "Oui", no: "Non", mood_calm: "Calme", mood_happy: "Heureux", mood_sad: "Triste", mood_angry: "En colère", mood_stressed: "Stressé", save_changes: "Enregistrer" },
+            es: { welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario", diet_plan: "Plan de dieta", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo", daily_challenge_title: "Ajustes del desafío", water_intake: "Consumo de agua", show_on_home: "Mostrar en inicio", sleep_time: "Hora de dormir", wake_time: "Hora de despertar", sleep_hours: "Duración del sueño", walking_time: "Duración de caminata", phone_usage: "Uso del teléfono", sugar_intake: "Azúcar", smoking: "Fumar", mental_state: "Estado de ánimo", yes: "Sí", no: "No", mood_calm: "Relajado", mood_happy: "Feliz", mood_sad: "Triste", mood_angry: "Enojado", mood_stressed: "Estresado", save_changes: "Guardar" }
         };
 
         // --- 1. إعدادات اللغة ---
