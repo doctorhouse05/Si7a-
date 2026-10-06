@@ -254,6 +254,24 @@
 
         .custom-table tr:last-child td { border-bottom: none; }
 
+        /* Delete Button in Table */
+        .btn-delete-row {
+            background: rgba(220, 38, 38, 0.1);
+            color: #DC2626;
+            border: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+
+        .btn-delete-row:hover {
+            background: #DC2626;
+            color: #fff;
+        }
+
         /* BMI Result Display Box */
         .bmi-box {
             background: #F8FAFC;
@@ -399,7 +417,7 @@
                     <div class="chart-box"><canvas id="weightChart"></canvas></div>
                     <div class="custom-table-container">
                         <table class="custom-table">
-                            <thead><tr><th data-i18n="date">التاريخ</th><th data-i18n="weight">الوزن (كجم)</th></tr></thead>
+                            <thead><tr><th data-i18n="date">التاريخ</th><th data-i18n="weight">الوزن (كجم)</th><th data-i18n="action">إجراء</th></tr></thead>
                             <tbody id="weightTableBody"></tbody>
                         </table>
                     </div>
@@ -420,7 +438,7 @@
                     <div class="chart-box"><canvas id="heightChart"></canvas></div>
                     <div class="custom-table-container">
                         <table class="custom-table">
-                            <thead><tr><th data-i18n="date">التاريخ</th><th data-i18n="height">الطول (سم)</th></tr></thead>
+                            <thead><tr><th data-i18n="date">التاريخ</th><th data-i18n="height">الطول (سم)</th><th data-i18n="action">إجراء</th></tr></thead>
                             <tbody id="heightTableBody"></tbody>
                         </table>
                     </div>
@@ -453,7 +471,7 @@
                     <div class="chart-box"><canvas id="waistChart"></canvas></div>
                     <div class="custom-table-container">
                         <table class="custom-table">
-                            <thead><tr><th data-i18n="date">التاريخ</th><th data-i18n="waist">الخصر (سم)</th></tr></thead>
+                            <thead><tr><th data-i18n="date">التاريخ</th><th data-i18n="waist">الخصر (سم)</th><th data-i18n="action">إجراء</th></tr></thead>
                             <tbody id="waistTableBody"></tbody>
                         </table>
                     </div>
@@ -482,6 +500,7 @@
                                     <th data-i18n="systolic">الانقباضي</th>
                                     <th data-i18n="diastolic">الانبساطي</th>
                                     <th data-i18n="pulse">النبض</th>
+                                    <th data-i18n="action">إجراء</th>
                                 </tr>
                             </thead>
                             <tbody id="bpTableBody"></tbody>
@@ -516,6 +535,7 @@
                                     <th data-i18n="date">التاريخ</th>
                                     <th data-i18n="timing">التوقيت</th>
                                     <th data-i18n="value">القيمة (g/L)</th>
+                                    <th data-i18n="action">إجراء</th>
                                 </tr>
                             </thead>
                             <tbody id="sugarTableBody"></tbody>
@@ -538,7 +558,7 @@
                     <div class="chart-box"><canvas id="tempChart"></canvas></div>
                     <div class="custom-table-container">
                         <table class="custom-table">
-                            <thead><tr><th data-i18n="date">التاريخ</th><th data-i18n="temp">الحرارة (°C)</th></tr></thead>
+                            <thead><tr><th data-i18n="date">التاريخ</th><th data-i18n="temp">الحرارة (°C)</th><th data-i18n="action">إجراء</th></tr></thead>
                             <tbody id="tempTableBody"></tbody>
                         </table>
                     </div>
@@ -558,7 +578,7 @@
                 <div class="view-panel" id="oxyView">
                     <div class="custom-table-container">
                         <table class="custom-table">
-                            <thead><tr><th data-i18n="date">التاريخ</th><th data-i18n="oxygen">SpO2 (%)</th></tr></thead>
+                            <thead><tr><th data-i18n="date">التاريخ</th><th data-i18n="oxygen">SpO2 (%)</th><th data-i18n="action">إجراء</th></tr></thead>
                             <tbody id="oxyTableBody"></tbody>
                         </table>
                     </div>
@@ -625,28 +645,28 @@
             ar: {
                 welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
                 weight_measurement: "قياس الوزن", height_measurement: "قياس الطول", bmi_calculator: "حاسبة مؤشر كتلة الجسم (BMI)", waist_measurement: "محيط الخصر", blood_pressure: "ضغط الدم ونبضات القلب", blood_sugar: "قياس السكر في الدم", temperature: "درجة الحرارة", oxygen: "نسبة الأكسجين (SpO2)",
-                view: "عرض", add: "إضافة", date: "التاريخ", time: "التوقيت", weight: "الوزن (كجم)", height: "الطول (سم)", waist: "الخصر (سم)", temp: "الحرارة (°م)", systolic: "الانقباضي", diastolic: "الانبساطي", pulse: "النبض", timing: "التوقيت", value: "القيمة",
+                view: "عرض", add: "إضافة", action: "إجراء", date: "التاريخ", time: "التوقيت", weight: "الوزن (كجم)", height: "الطول (سم)", waist: "الخصر (سم)", temp: "الحرارة (°م)", systolic: "الانقباضي", diastolic: "الانبساطي", pulse: "النبض", timing: "التوقيت", value: "القيمة",
                 bmi_score: "النتيجة الحالية", underweight: "نحافة", normal: "وزن مثالي", overweight: "زيادة وزن", mod_obesity: "سمنة معتدلة", sev_obesity: "سمنة مفرطة",
                 fasting: "صيام", after_bf: "بعد الفطور (2h)", before_lunch: "قبل الغداء", after_lunch: "بعد الغداء (2h)", before_dinner: "قبل العشاء", after_dinner: "بعد العشاء (2h)"
             },
             en: {
                 welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
                 weight_measurement: "Weight Tracking", height_measurement: "Height Tracking", bmi_calculator: "BMI Calculator", waist_measurement: "Waist Circumference", blood_pressure: "Blood Pressure & Pulse", blood_sugar: "Blood Sugar", temperature: "Body Temperature", oxygen: "Oxygen Saturation (SpO2)",
-                view: "View", add: "Add", date: "Date", time: "Time", weight: "Weight (kg)", height: "Height (cm)", waist: "Waist (cm)", temp: "Temp (°C)", systolic: "Sys", diastolic: "Dia", pulse: "Pulse", timing: "Timing", value: "Value",
+                view: "View", add: "Add", action: "Action", date: "Date", time: "Time", weight: "Weight (kg)", height: "Height (cm)", waist: "Waist (cm)", temp: "Temp (°C)", systolic: "Sys", diastolic: "Dia", pulse: "Pulse", timing: "Timing", value: "Value",
                 bmi_score: "Body Mass Index", underweight: "Underweight", normal: "Normal Weight", overweight: "Overweight", mod_obesity: "Moderate Obesity", sev_obesity: "Severe Obesity",
                 fasting: "Fasting", after_bf: "2h After Breakfast", before_lunch: "Before Lunch", after_lunch: "2h After Lunch", before_dinner: "Before Dinner", after_dinner: "2h After Dinner"
             },
             fr: {
                 welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
                 weight_measurement: "Suivi du poids", height_measurement: "Suivi de la taille", bmi_calculator: "Calculateur IMC", waist_measurement: "Tour de taille", blood_pressure: "Pression artérielle & Pouls", blood_sugar: "Glycémie", temperature: "Température corporel", oxygen: "Saturation en oxygène (SpO2)",
-                view: "Voir", add: "Ajouter", date: "Date", time: "Heure", weight: "Poids (kg)", height: "Taille (cm)", waist: "Taille (cm)", temp: "Temp (°C)", systolic: "Sys", diastolic: "Dia", pulse: "Pouls", timing: "Moment", value: "Valeur",
+                view: "Voir", add: "Ajouter", action: "Action", date: "Date", time: "Heure", weight: "Poids (kg)", height: "Taille (cm)", waist: "Taille (cm)", temp: "Temp (°C)", systolic: "Sys", diastolic: "Dia", pulse: "Pouls", timing: "Moment", value: "Valeur",
                 bmi_score: "Indice de masse corporelle", underweight: "Insuffisance pondérale", normal: "Poids normal", overweight: "Surpoids", mod_obesity: "Obésité modérée", sev_obesity: "Obésité sévère",
                 fasting: "À jeun", after_bf: "2h Après Petit-déjeuner", before_lunch: "Avant Déjeuner", after_lunch: "2h Après Déjeuner", before_dinner: "Avant Dîner", after_dinner: "2h Après Dîner"
             },
             es: {
                 welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario", diet_plan: "Plan de dieta", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
                 weight_measurement: "Control de peso", height_measurement: "Control de altura", bmi_calculator: "Calculadora IMC", waist_measurement: "Perímetro de cintura", blood_pressure: "Presión arterial y Pulso", blood_sugar: "Glucosa en sangre", temperature: "Temperatura corporal", oxygen: "Saturación de oxígeno (SpO2)",
-                view: "Ver", add: "Añadir", date: "Fecha", time: "Hora", weight: "Peso (kg)", height: "Altura (cm)", waist: "Cintura (cm)", temp: "Temp (°C)", systolic: "Sys", diastolic: "Dia", pulse: "Pulso", timing: "Momento", value: "Valor",
+                view: "Ver", add: "Añadir", action: "Acción", date: "Fecha", time: "Hora", weight: "Peso (kg)", height: "Altura (cm)", waist: "Cintura (cm)", temp: "Temp (°C)", systolic: "Sys", diastolic: "Dia", pulse: "Pulso", timing: "Momento", value: "Valor",
                 bmi_score: "Índice de Masa Corporal", underweight: "Bajo peso", normal: "Peso normal", overweight: "Sobrepeso", mod_obesity: "Obesidad moderada", sev_obesity: "Obesidad severa",
                 fasting: "Ayunas", after_bf: "2h Después del desayuno", before_lunch: "Antes del almuerzo", after_lunch: "2h Después del almuerzo", before_dinner: "Antes de la cena", after_dinner: "2h Después de la cena"
             }
@@ -714,6 +734,14 @@
             saveMetrics();
         }
 
+        // Delete Row Functions
+        window.deleteRecord = function(type, index) {
+            if (metricsData[type] && metricsData[type][index] !== undefined) {
+                metricsData[type].splice(index, 1);
+                saveMetrics();
+            }
+        }
+
         function calculateBMI() {
             const latestWeight = metricsData.weight.length ? metricsData.weight[metricsData.weight.length - 1].val : null;
             const latestHeight = metricsData.height.length ? metricsData.height[metricsData.height.length - 1].val : null;
@@ -767,10 +795,19 @@
                 const labels = [];
                 const dataValues = [];
 
-                metricsData[item.type].forEach(row => {
+                metricsData[item.type].forEach((row, index) => {
                     labels.push(row.date);
                     dataValues.push(row.val);
-                    tbody.innerHTML += `<tr><td>${row.date}</td><td>${row.val}</td></tr>`;
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${row.date}</td>
+                            <td>${row.val}</td>
+                            <td>
+                                <button class="btn-delete-row" onclick="deleteRecord('${item.type}', ${index})">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>`;
                 });
 
                 if (item.canvasId) {
@@ -781,15 +818,37 @@
             // BP Table
             const bpTbody = document.getElementById('bpTableBody');
             bpTbody.innerHTML = '';
-            metricsData.bp.forEach(row => {
-                bpTbody.innerHTML += `<tr><td>${row.date}</td><td>${row.time}</td><td>${row.sys}</td><td>${row.dia}</td><td>${row.pulse}</td></tr>`;
+            metricsData.bp.forEach((row, index) => {
+                bpTbody.innerHTML += `
+                    <tr>
+                        <td>${row.date}</td>
+                        <td>${row.time}</td>
+                        <td>${row.sys}</td>
+                        <td>${row.dia}</td>
+                        <td>${row.pulse}</td>
+                        <td>
+                            <button class="btn-delete-row" onclick="deleteRecord('bp', ${index})">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>`;
             });
 
             // Sugar Table
             const sugarTbody = document.getElementById('sugarTableBody');
             sugarTbody.innerHTML = '';
-            metricsData.sugar.forEach(row => {
-                sugarTbody.innerHTML += `<tr><td>${row.date}</td><td>${t[row.timing] || row.timing}</td><td>${row.val}</td></tr>`;
+            metricsData.sugar.forEach((row, index) => {
+                sugarTbody.innerHTML += `
+                    <tr>
+                        <td>${row.date}</td>
+                        <td>${t[row.timing] || row.timing}</td>
+                        <td>${row.val}</td>
+                        <td>
+                            <button class="btn-delete-row" onclick="deleteRecord('sugar', ${index})">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>`;
             });
         }
 
