@@ -30,7 +30,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            padding: 15px 15px 80px 15px; /* مسافة للتنقل السفلي */
+            padding: 15px 15px 85px 15px; /* مسافة كافية للشريط السفلي الثابت */
         }
 
         /* Background Shapes */
@@ -115,9 +115,9 @@
             z-index: 2;
         }
 
-        /* Metallic White Combined Card (Date + Challenge) */
+        /* Metallic White Combined Card (Date + Daily Progress) */
         .metallic-white-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(230, 240, 255, 0.85) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(230, 240, 255, 0.88) 100%);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.9);
@@ -167,50 +167,122 @@
             transform: scale(0.95);
         }
 
-        .card-header-title {
+        /* Daily Progress Section */
+        .challenge-progress-section h3 {
+            font-size: 13.5px;
+            margin-bottom: 8px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            font-size: 15px;
+            color: #0F172A;
             font-weight: bold;
-            color: #1E3A8A;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 10px;
+            background: rgba(30, 58, 138, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #3B82F6, #1D4ED8);
+            border-radius: 10px;
+            transition: width 0.4s ease;
         }
 
         /* Active Widgets / Cards Grid */
         .widgets-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
             gap: 12px;
         }
 
         .dash-item-card {
             background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 18px;
-            padding: 14px;
+            padding: 12px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
             color: #1E293B;
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .dash-item-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .dash-item-icon {
-            font-size: 22px;
-            margin-bottom: 2px;
+            font-size: 18px;
         }
 
         .dash-item-title {
             font-size: 12px;
-            color: #64748B;
+            color: #1E3A8A;
             font-weight: bold;
         }
 
+        .dash-item-body {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+            margin-top: 2px;
+        }
+
         .dash-item-value {
-            font-size: 15px;
-            color: #1E3A8A;
+            font-size: 14px;
+            color: #0F172A;
             font-weight: bold;
+        }
+
+        /* Interactive Counter Controls */
+        .counter-controls {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(30, 58, 138, 0.08);
+            padding: 3px 6px;
+            border-radius: 10px;
+        }
+
+        .counter-btn {
+            background: #2563EB;
+            color: #fff;
+            border: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .counter-btn:active {
+            transform: scale(0.9);
+        }
+
+        .input-select-mini {
+            width: 100%;
+            padding: 5px 8px;
+            border-radius: 8px;
+            border: 1px solid rgba(30, 58, 138, 0.2);
+            background: #fff;
+            color: #0F172A;
+            font-size: 12px;
+            font-weight: bold;
+            outline: none;
         }
 
         .add-widget-btn {
@@ -226,7 +298,7 @@
             align-items: center;
             justify-content: center;
             gap: 6px;
-            min-height: 100px;
+            min-height: 95px;
             transition: background 0.2s;
         }
 
@@ -234,13 +306,44 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Sidebar Drawer (Support Left/Right RTL) */
+        /* Solid & Clear Bottom Navigation Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            height: 62px;
+            background: #1E3A8A; /* لون صلب غير شفاف وواضح تماماً */
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .nav-item {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-item i { font-size: 18px; }
+
+        .nav-item.active {
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        /* Sidebar Drawer */
         .sidebar-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(4px);
-            z-index: 100;
+            z-index: 1100;
             display: none;
         }
 
@@ -249,10 +352,8 @@
             top: 0;
             width: 270px;
             height: 100%;
-            background: rgba(30, 58, 138, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 101;
+            background: #1E3A8A;
+            z-index: 1101;
             transition: all 0.3s ease;
             padding: 20px 15px;
             display: flex;
@@ -345,46 +446,14 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Bottom Navigation Bar */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.18);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(255, 255, 255, 0.25);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            z-index: 10;
-        }
-
-        .nav-item {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .nav-item i { font-size: 18px; }
-
-        .nav-item.active {
-            color: #ffffff;
-            font-weight: bold;
-        }
-
-        /* Interactive Dynamic Calendar Modal */
+        /* Interactive Calendar Modal */
         .modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.5);
             backdrop-filter: blur(5px);
-            z-index: 200;
+            z-index: 1200;
             align-items: center;
             justify-content: center;
             padding: 20px;
@@ -393,7 +462,7 @@
         .calendar-modal-content {
             width: 100%;
             max-width: 340px;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             color: #1E3A8A;
             border-radius: 20px;
             padding: 18px;
@@ -422,11 +491,6 @@
             justify-content: center;
         }
 
-        .calendar-nav-btn:hover {
-            background: #2563EB;
-            color: #fff;
-        }
-
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
@@ -447,10 +511,6 @@
             background: rgba(37, 99, 235, 0.05);
             cursor: pointer;
             transition: all 0.2s;
-        }
-
-        .calendar-day:hover {
-            background: rgba(37, 99, 235, 0.2);
         }
 
         .calendar-day.empty {
@@ -488,29 +548,36 @@
         <header class="app-header">
             <a href="settings.html" class="user-profile">
                 <img src="https://via.placeholder.com/100" id="userAvatar" class="avatar-img" alt="User Avatar">
-                <span class="welcome-text"><span data-i18n="welcome">Welcome</span>, <span id="userName">User</span></span>
+                <span class="welcome-text"><span data-i18n="welcome">Welcome</span>, <span id="userName">Sarah</span></span>
             </a>
-            <button class="menu-btn" id="openSidebar" aria-label="Open Navigation"><i class="fa-solid fa-bars"></i></button>
+            <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
         </header>
 
         <!-- Main Content -->
         <main class="dashboard-content">
 
-            <!-- Date Card Section -->
+            <!-- Combined Metallic Card: Date + Daily Challenge Progress -->
             <div class="metallic-white-card">
+                <!-- Date Section -->
                 <div class="date-section">
                     <div class="date-info">
                         <i class="fa-regular fa-calendar-days"></i>
-                        <span id="currentDate">--</span>
+                        <span id="currentDate">Sunday, Oct 4, 2026</span>
                     </div>
                     <button class="calendar-btn" id="openCalendarBtn">
                         <i class="fa-solid fa-calendar-week"></i> <span data-i18n="calendar">Calendar</span>
                     </button>
                 </div>
 
-                <div class="card-header-title">
-                    <span><i class="fa-solid fa-gauge-high" style="color: #2563EB;"></i> <span data-i18n="active_challenges">Active Challenges</span></span>
-                    <a href="daily-challenge.html" style="font-size: 12px; color: #2563EB; text-decoration: none;"><i class="fa-solid fa-pen-to-square"></i> <span data-i18n="edit">Edit</span></a>
+                <!-- Daily Challenge Progress Section -->
+                <div class="challenge-progress-section">
+                    <h3>
+                        <span><i class="fa-solid fa-trophy" style="color: #D97706;"></i> <span data-i18n="challenge_progress">Daily Challenge Progress</span></span>
+                        <span id="challengePercent">0%</span>
+                    </h3>
+                    <div class="progress-bar-bg">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
                 </div>
             </div>
 
@@ -521,7 +588,7 @@
 
         </main>
 
-        <!-- Bottom Navigation Bar -->
+        <!-- Fixed & Clear Bottom Navigation Bar -->
         <nav class="bottom-nav">
             <a href="dashboard.html" class="nav-item active">
                 <i class="fa-solid fa-house"></i>
@@ -577,12 +644,12 @@
     <div class="modal" id="calendarModal">
         <div class="calendar-modal-content">
             <div class="calendar-nav-header">
-                <button class="calendar-nav-btn" id="prevMonthBtn" aria-label="Previous Month"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="calendar-nav-btn" id="prevMonthBtn"><i class="fa-solid fa-chevron-left"></i></button>
                 <div>
-                    <h3 id="calendarMonthYear" style="font-size: 15px;">--</h3>
+                    <h3 id="calendarMonthYear" style="font-size: 15px;">October 2026</h3>
                     <p style="font-size: 11px; opacity: 0.8;" data-i18n="track_progress">Select any date</p>
                 </div>
-                <button class="calendar-nav-btn" id="nextMonthBtn" aria-label="Next Month"><i class="fa-solid fa-chevron-right"></i></button>
+                <button class="calendar-nav-btn" id="nextMonthBtn"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
             
             <div class="calendar-grid">
@@ -595,7 +662,6 @@
                 <div class="calendar-day-header" data-i18n="sat">Sat</div>
             </div>
 
-            <!-- Dynamic days container -->
             <div class="calendar-grid" id="calendarDaysGrid"></div>
 
             <button class="close-modal-btn" id="closeCalendarBtn" data-i18n="close">Close</button>
@@ -607,7 +673,7 @@
         import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
         let currentLang = localStorage.getItem('appLanguage') || 'en';
-        let selectedDate = new Date();
+        let selectedDate = new Date(2026, 9, 4);
         let viewDate = new Date(selectedDate);
 
         // Authentication state
@@ -620,111 +686,286 @@
             }
         });
 
-        // Dictionary
+        // Translations Dictionary
         const translations = {
             en: {
-                welcome: "Welcome", calendar: "Calendar", active_challenges: "Active Challenges", edit: "Edit",
+                welcome: "Welcome", calendar: "Calendar", challenge_progress: "Daily Challenge Progress",
                 water_intake: "Water Intake", sleep_time: "Sleep Time", wake_time: "Wake Time", sleep_hours: "Sleep Duration", walking_time: "Walking", phone_usage: "Phone Usage", sugar_intake: "Sugar Intake", smoking: "Smoking", mental_state: "Mental State",
                 cups: "cups", hours: "hrs", mins: "mins", yes: "Yes", no: "No", add_item: "Add Item",
                 home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
-                track_progress: "Select any date to view", close: "Close", no_challenges: "No active challenges selected yet.",
+                track_progress: "Select any date to view", close: "Close",
                 mood_calm: "Relaxed / Calm", mood_happy: "Happy", mood_sad: "Sad", mood_angry: "Angry", mood_stressed: "Stressed",
                 sun: "Sun", mon: "Mon", tue: "Tue", wed: "Wed", thu: "Thu", fri: "Fri", sat: "Sat"
             },
             ar: {
-                welcome: "أهلاً بك", calendar: "التقويم", active_challenges: "التحديات المفعلة", edit: "تعديل",
+                welcome: "أهلاً بك", calendar: "التقويم", challenge_progress: "تقدم التحدي اليومي",
                 water_intake: "شرب الماء", sleep_time: "وقت النوم", wake_time: "وقت الاستيقاظ", sleep_hours: "مدة النوم", walking_time: "المشي", phone_usage: "استعمال الهاتف", sugar_intake: "تناول السكريات", smoking: "التدخين", mental_state: "الحالة النفسية",
                 cups: "أكواب", hours: "ساعة", mins: "دقيقة", yes: "نعم", no: "لا", add_item: "إضافة عنصر",
                 home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
-                track_progress: "اختر أي تاريخ لعرضه", close: "إغلاق", no_challenges: "لا توجد تحديات مفعلة حالياً.",
+                track_progress: "اختر أي تاريخ لعرضه", close: "إغلاق",
                 mood_calm: "راحة / هدوء", mood_happy: "سعادة", mood_sad: "حزن", mood_angry: "غضب", mood_stressed: "توتر",
                 sun: "أح", mon: "إث", tue: "ثل", wed: "أر", thu: "خم", fri: "جم", sat: "سب"
             },
             fr: {
-                welcome: "Bienvenue", calendar: "Calendrier", active_challenges: "Défis actifs", edit: "Modifier",
+                welcome: "Bienvenue", calendar: "Calendrier", challenge_progress: "Progrès du défi quotidien",
                 water_intake: "Consommation d'eau", sleep_time: "Heure de coucher", wake_time: "Heure de réveil", sleep_hours: "Durée du sommeil", walking_time: "Marche", phone_usage: "Usage téléphone", sugar_intake: "Sucre", smoking: "Tabagisme", mental_state: "État mental",
                 cups: "verres", hours: "h", mins: "m", yes: "Oui", no: "Non", add_item: "Ajouter",
                 home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
-                track_progress: "Sélectionnez une date", close: "Fermer", no_challenges: "Aucun défi actif sélectionné.",
+                track_progress: "Sélectionnez une date", close: "Fermer",
                 mood_calm: "Calme", mood_happy: "Heureux", mood_sad: "Triste", mood_angry: "En colère", mood_stressed: "Stressé",
                 sun: "Dim", mon: "Lun", tue: "Mar", wed: "Mer", thu: "Jeu", fri: "Ven", sat: "Sam"
             },
             es: {
-                welcome: "Bienvenido", calendar: "Calendario", active_challenges: "Desafíos activos", edit: "Editar",
+                welcome: "Bienvenido", calendar: "Calendario", challenge_progress: "Progreso del desafío diario",
                 water_intake: "Consumo de agua", sleep_time: "Hora de dormir", wake_time: "Hora de despertar", sleep_hours: "Duración del sueño", walking_time: "Caminata", phone_usage: "Uso del teléfono", sugar_intake: "Azúcar", smoking: "Fumar", mental_state: "Estado de ánimo",
                 cups: "vasos", hours: "h", mins: "m", yes: "Sí", no: "No", add_item: "Añadir elemento",
                 home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario", diet_plan: "Plan de dieta", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
-                track_progress: "Selecciona una fecha", close: "Cerrar", no_challenges: "No hay desafíos activos seleccionados.",
+                track_progress: "Selecciona una fecha", close: "Cerrar",
                 mood_calm: "Relajado", mood_happy: "Feliz", mood_sad: "Triste", mood_angry: "Enojado", mood_stressed: "Estresado",
                 sun: "Dom", mon: "Lun", tue: "Mar", wed: "Mié", thu: "Jue", fri: "Vie", sat: "Sáb"
             }
         };
 
-        // Render Active Challenges from LocalStorage
+        // State for dynamic tracking
+        let loggedValues = JSON.parse(localStorage.getItem('dashboardLogs')) || {
+            water: 0,
+            sleepHours: 0,
+            walkMins: 0,
+            phoneHours: 0,
+            mental: 'calm'
+        };
+
+        // Render Active Challenges & Dynamic Inputs
         function renderActiveChallenges() {
             const display = document.getElementById("challengesDisplay");
             display.innerHTML = "";
 
-            let savedData = {};
-            try {
-                savedData = JSON.parse(localStorage.getItem('userChallenges')) || {};
-            } catch (e) {
-                console.error("Failed to parse userChallenges from LocalStorage", e);
-            }
-
+            const savedData = JSON.parse(localStorage.getItem('userChallenges')) || {};
             const t = translations[currentLang] || translations['en'];
 
-            const createCard = (icon, iconColor, titleKey, value) => {
-                return `
+            // 1. Water Intake (Counter + / -)
+            if (savedData.water?.show) {
+                const target = savedData.water.value || 10;
+                display.innerHTML += `
                     <div class="dash-item-card">
-                        <div class="dash-item-icon" style="color: ${iconColor};"><i class="${icon}"></i></div>
-                        <div class="dash-item-title">${t[titleKey] || titleKey}</div>
-                        <div class="dash-item-value">${value}</div>
+                        <div class="dash-item-header">
+                            <i class="fa-solid fa-glass-water dash-item-icon" style="color: #2563EB;"></i>
+                            <span class="dash-item-title">${t.water_intake}</span>
+                        </div>
+                        <div class="dash-item-body">
+                            <span class="dash-item-value"><span id="valWater">${loggedValues.water}</span> / ${target} ${t.cups}</span>
+                            <div class="counter-controls">
+                                <button class="counter-btn" onclick="updateWidgetVal('water', -1, 0, ${target})">-</button>
+                                <button class="counter-btn" onclick="updateWidgetVal('water', 1, 0, ${target})">+</button>
+                            </div>
+                        </div>
                     </div>
                 `;
-            };
+            }
 
-            if (savedData.water?.show) {
-                display.innerHTML += createCard("fa-solid fa-glass-water", "#2563EB", "water_intake", `${savedData.water.value} ${t.cups}`);
-            }
+            // 2. Sleep Time (Display Target)
             if (savedData.sleepTime?.show) {
-                display.innerHTML += createCard("fa-solid fa-bed", "#1E3A8A", "sleep_time", savedData.sleepTime.value);
+                display.innerHTML += `
+                    <div class="dash-item-card">
+                        <div class="dash-item-header">
+                            <i class="fa-solid fa-bed dash-item-icon" style="color: #1E3A8A;"></i>
+                            <span class="dash-item-title">${t.sleep_time}</span>
+                        </div>
+                        <div class="dash-item-body">
+                            <span class="dash-item-value">${savedData.sleepTime.value}</span>
+                        </div>
+                    </div>
+                `;
             }
+
+            // 3. Wake Time
             if (savedData.wakeTime?.show) {
-                display.innerHTML += createCard("fa-solid fa-sun", "#D97706", "wake_time", savedData.wakeTime.value);
+                display.innerHTML += `
+                    <div class="dash-item-card">
+                        <div class="dash-item-header">
+                            <i class="fa-solid fa-sun dash-item-icon" style="color: #D97706;"></i>
+                            <span class="dash-item-title">${t.wake_time}</span>
+                        </div>
+                        <div class="dash-item-body">
+                            <span class="dash-item-value">${savedData.wakeTime.value}</span>
+                        </div>
+                    </div>
+                `;
             }
+
+            // 4. Sleep Duration Counter
             if (savedData.sleepHours?.show) {
-                display.innerHTML += createCard("fa-solid fa-moon", "#4F46E5", "sleep_hours", `${savedData.sleepHours.value} ${t.hours}`);
+                const target = savedData.sleepHours.value || 8;
+                display.innerHTML += `
+                    <div class="dash-item-card">
+                        <div class="dash-item-header">
+                            <i class="fa-solid fa-moon dash-item-icon" style="color: #4F46E5;"></i>
+                            <span class="dash-item-title">${t.sleep_hours}</span>
+                        </div>
+                        <div class="dash-item-body">
+                            <span class="dash-item-value"><span id="valSleep">${loggedValues.sleepHours}</span> / ${target} ${t.hours}</span>
+                            <div class="counter-controls">
+                                <button class="counter-btn" onclick="updateWidgetVal('sleepHours', -1, 0, 24)">-</button>
+                                <button class="counter-btn" onclick="updateWidgetVal('sleepHours', 1, 0, 24)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
             }
+
+            // 5. Walking Duration Counter
             if (savedData.walking?.show) {
-                display.innerHTML += createCard("fa-solid fa-person-walking", "#059669", "walking_time", `${savedData.walking.hours}${t.hours} ${savedData.walking.minutes}${t.mins}`);
+                const targetMins = (parseInt(savedData.walking.hours || 0) * 60) + parseInt(savedData.walking.minutes || 30);
+                display.innerHTML += `
+                    <div class="dash-item-card">
+                        <div class="dash-item-header">
+                            <i class="fa-solid fa-person-walking dash-item-icon" style="color: #059669;"></i>
+                            <span class="dash-item-title">${t.walking_time}</span>
+                        </div>
+                        <div class="dash-item-body">
+                            <span class="dash-item-value"><span id="valWalk">${loggedValues.walkMins}</span> / ${targetMins} ${t.mins}</span>
+                            <div class="counter-controls">
+                                <button class="counter-btn" onclick="updateWidgetVal('walkMins', -10, 0, 300)">-</button>
+                                <button class="counter-btn" onclick="updateWidgetVal('walkMins', 10, 0, 300)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
             }
+
+            // 6. Phone Usage Counter
             if (savedData.phone?.show) {
-                display.innerHTML += createCard("fa-solid fa-mobile-screen-button", "#DC2626", "phone_usage", `${savedData.phone.value} ${t.hours}`);
+                const target = savedData.phone.value || 3;
+                display.innerHTML += `
+                    <div class="dash-item-card">
+                        <div class="dash-item-header">
+                            <i class="fa-solid fa-mobile-screen-button dash-item-icon" style="color: #DC2626;"></i>
+                            <span class="dash-item-title">${t.phone_usage}</span>
+                        </div>
+                        <div class="dash-item-body">
+                            <span class="dash-item-value"><span id="valPhone">${loggedValues.phoneHours}</span> / ${target} ${t.hours}</span>
+                            <div class="counter-controls">
+                                <button class="counter-btn" onclick="updateWidgetVal('phoneHours', -1, 0, 24)">-</button>
+                                <button class="counter-btn" onclick="updateWidgetVal('phoneHours', 1, 0, 24)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
             }
+
+            // 7. Sugar Intake
             if (savedData.sugar?.show) {
                 const sugarVal = savedData.sugar.value === 'yes' ? t.yes : t.no;
-                display.innerHTML += createCard("fa-solid fa-candy-cane", "#EC4899", "sugar_intake", sugarVal);
-            }
-            if (savedData.smoking?.show) {
-                const smokeVal = savedData.smoking.value === 'yes' ? t.yes : t.no;
-                display.innerHTML += createCard("fa-solid fa-smoking", "#4B5563", "smoking", smokeVal);
-            }
-            if (savedData.mental?.show) {
-                const moodKey = `mood_${savedData.mental.value}`;
-                display.innerHTML += createCard("fa-solid fa-face-smile", "#8B5CF6", "mental_state", t[moodKey] || savedData.mental.value);
+                display.innerHTML += `
+                    <div class="dash-item-card">
+                        <div class="dash-item-header">
+                            <i class="fa-solid fa-candy-cane dash-item-icon" style="color: #EC4899;"></i>
+                            <span class="dash-item-title">${t.sugar_intake}</span>
+                        </div>
+                        <div class="dash-item-body">
+                            <span class="dash-item-value">${sugarVal}</span>
+                        </div>
+                    </div>
+                `;
             }
 
-            // زر إضافة عنصر جديد
+            // 8. Smoking
+            if (savedData.smoking?.show) {
+                const smokeVal = savedData.smoking.value === 'yes' ? t.yes : t.no;
+                display.innerHTML += `
+                    <div class="dash-item-card">
+                        <div class="dash-item-header">
+                            <i class="fa-solid fa-smoking dash-item-icon" style="color: #4B5563;"></i>
+                            <span class="dash-item-title">${t.smoking}</span>
+                        </div>
+                        <div class="dash-item-body">
+                            <span class="dash-item-value">${smokeVal}</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // 9. Mental State Select Input
+            if (savedData.mental?.show) {
+                display.innerHTML += `
+                    <div class="dash-item-card">
+                        <div class="dash-item-header">
+                            <i class="fa-solid fa-face-smile dash-item-icon" style="color: #8B5CF6;"></i>
+                            <span class="dash-item-title">${t.mental_state}</span>
+                        </div>
+                        <div class="dash-item-body">
+                            <select class="input-select-mini" onchange="updateMentalState(this.value)">
+                                <option value="calm" ${loggedValues.mental==='calm'?'selected':''}>${t.mood_calm}</option>
+                                <option value="happy" ${loggedValues.mental==='happy'?'selected':''}>${t.mood_happy}</option>
+                                <option value="sad" ${loggedValues.mental==='sad'?'selected':''}>${t.mood_sad}</option>
+                                <option value="angry" ${loggedValues.mental==='angry'?'selected':''}>${t.mood_angry}</option>
+                                <option value="stressed" ${loggedValues.mental==='stressed'?'selected':''}>${t.mood_stressed}</option>
+                            </select>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Add Item Card Always at the end
             display.innerHTML += `
                 <a href="daily-challenge.html" class="add-widget-btn">
                     <div style="font-size: 20px;"><i class="fa-solid fa-plus"></i></div>
                     <div style="font-size: 12px; font-weight: bold;">${t.add_item}</div>
                 </a>
             `;
+
+            calculateTotalProgress();
         }
 
-        // Format Date to Display on Top
+        // Global functions for widget interactions
+        window.updateWidgetVal = function(key, delta, min, max) {
+            if (loggedValues[key] === undefined) loggedValues[key] = 0;
+            let newVal = loggedValues[key] + delta;
+            if (newVal < min) newVal = min;
+            if (newVal > max) newVal = max;
+            
+            loggedValues[key] = newVal;
+            localStorage.setItem('dashboardLogs', JSON.stringify(loggedValues));
+            
+            renderActiveChallenges();
+        };
+
+        window.updateMentalState = function(val) {
+            loggedValues.mental = val;
+            localStorage.setItem('dashboardLogs', JSON.stringify(loggedValues));
+        };
+
+        // Calculate Challenge Overall Progress Percentage
+        function calculateTotalProgress() {
+            const savedData = JSON.parse(localStorage.getItem('userChallenges')) || {};
+            let totalTracked = 0;
+            let completedTracked = 0;
+
+            if (savedData.water?.show) {
+                totalTracked++;
+                const target = parseInt(savedData.water.value) || 10;
+                if ((loggedValues.water || 0) >= target) completedTracked++;
+                else completedTracked += (loggedValues.water || 0) / target;
+            }
+            if (savedData.sleepHours?.show) {
+                totalTracked++;
+                const target = parseInt(savedData.sleepHours.value) || 8;
+                if ((loggedValues.sleepHours || 0) >= target) completedTracked++;
+                else completedTracked += (loggedValues.sleepHours || 0) / target;
+            }
+            if (savedData.walking?.show) {
+                totalTracked++;
+                const target = (parseInt(savedData.walking.hours || 0) * 60) + parseInt(savedData.walking.minutes || 30);
+                if ((loggedValues.walkMins || 0) >= target) completedTracked++;
+                else completedTracked += (loggedValues.walkMins || 0) / (target || 1);
+            }
+
+            let percent = totalTracked > 0 ? Math.min(100, Math.round((completedTracked / totalTracked) * 100)) : 0;
+            document.getElementById('challengePercent').textContent = percent + '%';
+            document.getElementById('progressFill').style.width = percent + '%';
+        }
+
+        // Format Date
         function updateDateDisplay() {
             const options = { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' };
             const langCode = currentLang === 'ar' ? 'ar-EG' : (currentLang === 'fr' ? 'fr-FR' : (currentLang === 'es' ? 'es-ES' : 'en-US'));
@@ -777,7 +1018,7 @@
             }
         }
 
-        // Change Language
+        // Change Language Function
         function setLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('appLanguage', lang);
@@ -810,7 +1051,7 @@
             setLanguage(e.target.value);
         });
 
-        // Sidebar Navigation
+        // Sidebar Controls
         const sidebar = document.getElementById("sidebar");
         const overlay = document.getElementById("sidebarOverlay");
 
