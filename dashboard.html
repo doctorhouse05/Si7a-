@@ -317,12 +317,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .counter-btn:disabled {
-            background: #94A3B8;
-            cursor: not-allowed;
-        }
-
-        .counter-btn:active:not(:disabled) {
+        .counter-btn:active {
             transform: scale(0.9);
         }
 
@@ -337,12 +332,6 @@
             font-weight: bold;
             outline: none;
             text-align: center;
-        }
-
-        .input-time-mini:disabled, .input-select-mini:disabled {
-            background: #F1F5F9;
-            color: #64748B;
-            cursor: not-allowed;
         }
 
         /* Toggle Buttons for Yes/No Options */
@@ -372,11 +361,6 @@
             background: #2563EB;
             color: #fff;
             box-shadow: 0 2px 5px rgba(37, 99, 235, 0.3);
-        }
-
-        .option-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
         }
 
         .input-select-mini {
@@ -978,8 +962,6 @@
 
             const activeDateKey = formatDateKey(selectedDate);
             const loggedValues = getLogForDate(activeDateKey);
-            const isToday = activeDateKey === formatDateKey(new Date());
-            const disabledAttr = isToday ? '' : 'disabled';
 
             // 1. Water Intake
             if (savedData.water?.show && isWaterEnabled) {
@@ -993,8 +975,8 @@
                         <div class="dash-item-body">
                             <span class="dash-item-value"><span id="valWater">${loggedValues.water || 0}</span> / ${target} ${t.cups}</span>
                             <div class="counter-controls">
-                                <button class="counter-btn" ${disabledAttr} onclick="updateWidgetVal('water', -1, 0, ${target})">-</button>
-                                <button class="counter-btn" ${disabledAttr} onclick="updateWidgetVal('water', 1, 0, ${target})">+</button>
+                                <button class="counter-btn" onclick="updateWidgetVal('water', -1, 0, ${target})">-</button>
+                                <button class="counter-btn" onclick="updateWidgetVal('water', 1, 0, ${target})">+</button>
                             </div>
                         </div>
                     </div>
@@ -1011,7 +993,7 @@
                             <span class="dash-item-title">${t.sleep_time}</span>
                         </div>
                         <div class="dash-item-body">
-                            <input type="time" class="input-time-mini" ${disabledAttr} value="${curTime}" onchange="updateTimeVal('sleepTime', this.value)">
+                            <input type="time" class="input-time-mini" value="${curTime}" onchange="updateTimeVal('sleepTime', this.value)">
                         </div>
                     </div>
                 `;
@@ -1027,7 +1009,7 @@
                             <span class="dash-item-title">${t.wake_time}</span>
                         </div>
                         <div class="dash-item-body">
-                            <input type="time" class="input-time-mini" ${disabledAttr} value="${curTime}" onchange="updateTimeVal('wakeTime', this.value)">
+                            <input type="time" class="input-time-mini" value="${curTime}" onchange="updateTimeVal('wakeTime', this.value)">
                         </div>
                     </div>
                 `;
@@ -1045,8 +1027,8 @@
                         <div class="dash-item-body">
                             <span class="dash-item-value"><span id="valSleep">${loggedValues.sleepHours || 0}</span> / ${target} ${t.hours}</span>
                             <div class="counter-controls">
-                                <button class="counter-btn" ${disabledAttr} onclick="updateWidgetVal('sleepHours', -1, 0, 24)">-</button>
-                                <button class="counter-btn" ${disabledAttr} onclick="updateWidgetVal('sleepHours', 1, 0, 24)">+</button>
+                                <button class="counter-btn" onclick="updateWidgetVal('sleepHours', -1, 0, 24)">-</button>
+                                <button class="counter-btn" onclick="updateWidgetVal('sleepHours', 1, 0, 24)">+</button>
                             </div>
                         </div>
                     </div>
@@ -1065,8 +1047,8 @@
                         <div class="dash-item-body">
                             <span class="dash-item-value"><span id="valWalk">${loggedValues.walkMins || 0}</span> / ${targetMins} ${t.mins}</span>
                             <div class="counter-controls">
-                                <button class="counter-btn" ${disabledAttr} onclick="updateWidgetVal('walkMins', -10, 0, 300)">-</button>
-                                <button class="counter-btn" ${disabledAttr} onclick="updateWidgetVal('walkMins', 10, 0, 300)">+</button>
+                                <button class="counter-btn" onclick="updateWidgetVal('walkMins', -10, 0, 300)">-</button>
+                                <button class="counter-btn" onclick="updateWidgetVal('walkMins', 10, 0, 300)">+</button>
                             </div>
                         </div>
                     </div>
@@ -1085,8 +1067,8 @@
                         <div class="dash-item-body">
                             <span class="dash-item-value"><span id="valPhone">${loggedValues.phoneHours || 0}</span> / ${target} ${t.hours}</span>
                             <div class="counter-controls">
-                                <button class="counter-btn" ${disabledAttr} onclick="updateWidgetVal('phoneHours', -1, 0, 24)">-</button>
-                                <button class="counter-btn" ${disabledAttr} onclick="updateWidgetVal('phoneHours', 1, 0, 24)">+</button>
+                                <button class="counter-btn" onclick="updateWidgetVal('phoneHours', -1, 0, 24)">-</button>
+                                <button class="counter-btn" onclick="updateWidgetVal('phoneHours', 1, 0, 24)">+</button>
                             </div>
                         </div>
                     </div>
@@ -1104,8 +1086,8 @@
                         </div>
                         <div class="dash-item-body">
                             <div class="option-toggle-group">
-                                <button class="option-btn ${curSugar==='yes'?'active':''}" ${disabledAttr} onclick="updateToggleOption('sugar', 'yes')">${t.yes}</button>
-                                <button class="option-btn ${curSugar==='no'?'active':''}" ${disabledAttr} onclick="updateToggleOption('sugar', 'no')">${t.no}</button>
+                                <button class="option-btn ${curSugar==='yes'?'active':''}" onclick="updateToggleOption('sugar', 'yes')">${t.yes}</button>
+                                <button class="option-btn ${curSugar==='no'?'active':''}" onclick="updateToggleOption('sugar', 'no')">${t.no}</button>
                             </div>
                         </div>
                     </div>
@@ -1123,8 +1105,8 @@
                         </div>
                         <div class="dash-item-body">
                             <div class="option-toggle-group">
-                                <button class="option-btn ${curSmoke==='yes'?'active':''}" ${disabledAttr} onclick="updateToggleOption('smoking', 'yes')">${t.yes}</button>
-                                <button class="option-btn ${curSmoke==='no'?'active':''}" ${disabledAttr} onclick="updateToggleOption('smoking', 'no')">${t.no}</button>
+                                <button class="option-btn ${curSmoke==='yes'?'active':''}" onclick="updateToggleOption('smoking', 'yes')">${t.yes}</button>
+                                <button class="option-btn ${curSmoke==='no'?'active':''}" onclick="updateToggleOption('smoking', 'no')">${t.no}</button>
                             </div>
                         </div>
                     </div>
@@ -1140,7 +1122,7 @@
                             <span class="dash-item-title">${t.mental_state}</span>
                         </div>
                         <div class="dash-item-body">
-                            <select class="input-select-mini" ${disabledAttr} onchange="updateMentalState(this.value)">
+                            <select class="input-select-mini" onchange="updateMentalState(this.value)">
                                 <option value="calm" ${loggedValues.mental==='calm'?'selected':''}>${t.mood_calm}</option>
                                 <option value="happy" ${loggedValues.mental==='happy'?'selected':''}>${t.mood_happy}</option>
                                 <option value="sad" ${loggedValues.mental==='sad'?'selected':''}>${t.mood_sad}</option>
