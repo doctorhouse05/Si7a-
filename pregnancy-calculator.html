@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#2563EB">
-    <title>Si7a | Pregnancy Calculator</title>
+    <title>Si7a | Pregnancy Calculator (SA)</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -336,7 +336,7 @@
             <div class="metallic-white-card">
                 <div class="card-header-title">
                     <i class="fa-solid fa-baby" style="color: #2563EB;"></i>
-                    <span data-i18n="pregnancy_calc">حاسبة الحمل</span>
+                    <span data-i18n="pregnancy_calc">حاسبة الحمل (SA)</span>
                 </div>
 
                 <div class="form-group">
@@ -346,7 +346,7 @@
 
                 <button class="calc-btn" id="calculatePregnancyBtn">
                     <i class="fa-solid fa-calculator"></i>
-                    <span data-i18n="calculate">حساب موعد الولادة</span>
+                    <span data-i18n="calculate">حساب تفاصيل الحمل</span>
                 </button>
             </div>
 
@@ -354,7 +354,7 @@
             <div class="metallic-white-card" id="resultsCard" style="display: none;">
                 <div class="card-header-title">
                     <i class="fa-solid fa-calendar-check" style="color: #059669;"></i>
-                    <span data-i18n="calculation_results">نتائج الحمل</span>
+                    <span data-i18n="calculation_results">نتائج الحمل (الطبية)</span>
                 </div>
 
                 <div class="results-box">
@@ -363,8 +363,8 @@
                         <span class="result-value" id="currentMonthVal">--</span>
                     </div>
                     <div class="result-card-item">
-                        <span class="result-title"><i class="fa-solid fa-clock" style="color: #D97706;"></i> <span data-i18n="current_week">الأسبوع الحالي:</span></span>
-                        <span class="result-value" id="currentWeekVal">--</span>
+                        <span class="result-title"><i class="fa-solid fa-clock" style="color: #D97706;"></i> <span data-i18n="current_sa">عمر الحمل (SA):</span></span>
+                        <span class="result-value" id="currentSaVal">--</span>
                     </div>
                     <div class="result-card-item">
                         <span class="result-title"><i class="fa-solid fa-flag-checkered" style="color: #2563EB;"></i> <span data-i18n="due_date">المتوقع للولادة:</span></span>
@@ -457,25 +457,44 @@
         const translations = {
             ar: {
                 welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
-                last_period_date: "تاريخ بداية آخر دورة شهرية", calculate: "حساب موعد الولادة", calculation_results: "نتائج الحمل",
-                current_month: "الشهر الحالي:", due_date: "المتوقع للولادة:", current_week: "الأسبوع الحالي:", remaining_days: "الأيام المتبقية:", week: "الأسبوع", day: "يوم", month: "الشهر"
+                last_period_date: "تاريخ بداية آخر دورة شهرية", calculate: "حساب تفاصيل الحمل", calculation_results: "نتائج الحمل الطبية",
+                current_month: "الشهر الحالي:", current_sa: "عمر الحمل (SA):", due_date: "المتوقع للولادة:", remaining_days: "الأيام المتبقية:", 
+                month_1: "الشهر الاول", month_2: "الشهر الثاني", month_3: "الشهر الثالث", month_4: "الشهر الرابع", month_5: "الشهر الخامس", month_6: "الشهر السادس", month_7: "الشهر السابع", month_8: "الشهر الثامن", month_9: "الشهر التاسع", full_term: "اكتمل الحمل (Terme)", day: "يوم"
             },
             en: {
                 welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
-                last_period_date: "Last Period Start Date", calculate: "Calculate Due Date", calculation_results: "Pregnancy Results",
-                current_month: "Current Month:", due_date: "Estimated Due Date:", current_week: "Current Week:", remaining_days: "Remaining Days:", week: "Week", day: "days", month: "Month"
+                last_period_date: "Last Period Start Date", calculate: "Calculate Pregnancy", calculation_results: "Medical Pregnancy Results",
+                current_month: "Current Month:", current_sa: "Gestational Age (SA):", due_date: "Estimated Due Date:", remaining_days: "Remaining Days:", 
+                month_1: "1st Month", month_2: "2nd Month", month_3: "3rd Month", month_4: "4th Month", month_5: "5th Month", month_6: "6th Month", month_7: "7th Month", month_8: "8th Month", month_9: "9th Month", full_term: "Full Term", day: "days"
             },
             fr: {
                 welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
-                last_period_date: "Date des dernières règles", calculate: "Calculer la date d'accouchement", calculation_results: "Résultats de grossesse",
-                current_month: "Mois actuel:", due_date: "Date d'accouchement prévue:", current_week: "Semaine actuelle:", remaining_days: "Jours restants:", week: "Semaine", day: "jours", month: "Mois"
+                last_period_date: "Date des dernières règles", calculate: "Calculer la grossesse", calculation_results: "Résultats médicaux de grossesse",
+                current_month: "Mois actuel:", current_sa: "Âge gestationnel (SA):", due_date: "Date d'accouchement prévue:", remaining_days: "Jours restants:", 
+                month_1: "1er Mois", month_2: "2ème Mois", month_3: "3ème Mois", month_4: "4ème Mois", month_5: "5ème Mois", month_6: "6ème Mois", month_7: "7ème Mois", month_8: "8ème Mois", month_9: "9ème Mois", full_term: "À terme", day: "jours"
             },
             es: {
                 welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario", diet_plan: "Plan de dieta", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
-                last_period_date: "Fecha del último periodo", calculate: "Calcular fecha de parto", calculation_results: "Resultados del embarazo",
-                current_month: "Mes actual:", due_date: "Fecha estimada de parto:", current_week: "Semana actual:", remaining_days: "Días restantes:", week: "Semana", day: "días", month: "Mes"
+                last_period_date: "Fecha del último periodo", calculate: "Calcular embarazo", calculation_results: "Resultados médicos de embarazo",
+                current_month: "Mes actual:", current_sa: "Edad gestacional (SA):", due_date: "Fecha estimada de parto:", remaining_days: "Días restantes:", 
+                month_1: "1er Mes", month_2: "2do Mes", month_3: "3er Mes", month_4: "4to Mes", month_5: "5to Mes", month_6: "6to Mes", month_7: "7mo Mes", month_8: "8vo Mes", month_9: "9no Mes", full_term: "A término", day: "días"
             }
         };
+
+        // Mapping based on "Calendrier de grossesse" (Semaines d'Aménorrhée - SA)
+        function getMonthFromSA(saWeeks) {
+            if (saWeeks <= 2) return 'month_1'; // 1-2 SA
+            if (saWeeks >= 3 && saWeeks <= 6) return 'month_1'; // 3 SA to 6 SA -> 1er mois
+            if (saWeeks >= 7 && saWeeks <= 10) return 'month_2'; // 7 SA to 10 SA -> 2ème mois
+            if (saWeeks >= 11 && saWeeks <= 15) return 'month_3'; // 11 SA to 15 SA -> 3ème mois
+            if (saWeeks >= 16 && saWeeks <= 19) return 'month_4'; // 16 SA to 19 SA -> 4ème mois
+            if (saWeeks >= 20 && saWeeks <= 24) return 'month_5'; // 20 SA to 24 SA -> 5ème mois
+            if (saWeeks >= 25 && saWeeks <= 28) return 'month_6'; // 25 SA to 28 SA -> 6ème mois
+            if (saWeeks >= 29 && saWeeks <= 32) return 'month_7'; // 29 SA to 32 SA -> 7ème mois
+            if (saWeeks >= 33 && saWeeks <= 36) return 'month_8'; // 33 SA to 36 SA -> 8ème mois
+            if (saWeeks >= 37 && saWeeks <= 41) return 'month_9'; // 37 SA to 41 SA -> 9ème mois
+            return 'full_term';
+        }
 
         function calculatePregnancy() {
             const dateVal = document.getElementById("lastPeriodDateInput").value;
@@ -488,7 +507,7 @@
             const dueDate = new Date(lmpDate);
             dueDate.setDate(lmpDate.getDate() + 280);
 
-            // Elapsed Days
+            // Elapsed Days (Semaines d'Aménorrhée based on last menstrual period)
             const diffTime = today - lmpDate;
             const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
@@ -497,11 +516,8 @@
                 return;
             }
 
-            const currentWeek = Math.floor(diffDays / 7);
-            const currentDayOfWk = diffDays % 7;
-            
-            // Calculate Current Month (Each month is approx 4.33 weeks or 30 days)
-            const currentMonth = Math.min(9, Math.floor(diffDays / 30) + 1);
+            const saWeeks = Math.floor(diffDays / 7);
+            const saDays = diffDays % 7;
 
             // Remaining Days to Due Date
             const remTime = dueDate - today;
@@ -510,8 +526,10 @@
             const t = translations[currentLang] || translations['ar'];
             const langCode = currentLang === 'ar' ? 'ar-EG' : (currentLang === 'fr' ? 'fr-FR' : (currentLang === 'es' ? 'es-ES' : 'en-US'));
 
-            document.getElementById("currentMonthVal").textContent = `${t.month} ${currentMonth}`;
-            document.getElementById("currentWeekVal").textContent = `${currentWeek} ${t.week} (${currentDayOfWk} ${t.day})`;
+            const monthKey = getMonthFromSA(saWeeks);
+
+            document.getElementById("currentMonthVal").textContent = t[monthKey] || monthKey;
+            document.getElementById("currentSaVal").textContent = `${saWeeks} SA + ${saDays} ${t.day}`;
             document.getElementById("dueDateVal").textContent = dueDate.toLocaleDateString(langCode, { year: 'numeric', month: 'short', day: 'numeric' });
             document.getElementById("remainingDaysVal").textContent = `${remDays} ${t.day}`;
 
