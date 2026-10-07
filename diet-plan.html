@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2563EB">
+    <title>Si7a | Diet Plan</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(165deg, #3B82F6 0%, #2563EB 40%, #1E3A8A 100%);
+            color: #fff;
+        }
+
+        .full-screen-container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 15px 15px 85px 15px;
+        }
+
+        /* Background Shapes */
+        .wave-bg-1 {
+            position: fixed;
+            top: -80px;
+            right: -80px;
+            width: 350px;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 45%;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .wave-bg-2 {
+            position: fixed;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 40%;
+            transform: rotate(25deg);
+            pointer-events: none;
+        }
+
+        /* Header */
+        .app-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 5;
+            margin-bottom: 15px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .avatar-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .welcome-text {
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content */
+        .page-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            z-index: 2;
+        }
+
+        /* Diet Card Container */
+        .diet-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(240, 245, 255, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 22px;
+            padding: 18px;
+            color: #1E293B;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #2563EB;
+            padding-bottom: 10px;
+        }
+
+        .doc-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #1E3A8A;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Goal Selection Tabs */
+        .goal-tabs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            background: #E2E8F0;
+            padding: 4px;
+            border-radius: 12px;
+        }
+
+        .goal-tab {
+            background: transparent;
+            border: none;
+            padding: 8px 4px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #475569;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .goal-tab.active {
+            background: #2563EB;
+            color: #fff;
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Summary Info Box */
+        .summary-box {
+            background: #EFF6FF;
+            border: 1px solid #BFDBFE;
+            border-radius: 14px;
+            padding: 12px;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .summary-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .summary-label {
+            font-size: 10px;
+            color: #64748B;
+            font-weight: bold;
+        }
+
+        .summary-value {
+            font-size: 14px;
+            font-weight: bold;
+            color: #1E3A8A;
+        }
+
+        /* Meal Section Box */
+        .meal-section {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 14px;
+            padding: 12px;
+            border-right: 4px solid #059669;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        html[dir="ltr"] .meal-section {
+            border-right: none;
+            border-left: 4px solid #059669;
+        }
+
+        .meal-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #065F46;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .meal-desc {
+            font-size: 12px;
+            color: #334155;
+            line-height: 1.5;
+        }
+
+        /* Water Intake Tracker */
+        .water-tracker {
+            background: #F0FDF4;
+            border: 1px solid #BBF7D0;
+            border-radius: 14px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .water-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .water-title {
+            font-size: 12px;
+            font-weight: bold;
+            color: #166534;
+        }
+
+        .water-count {
+            font-size: 14px;
+            font-weight: bold;
+            color: #15803D;
+        }
+
+        .water-btn {
+            background: #16A34A;
+            color: #fff;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(22, 163, 74, 0.3);
+        }
+
+        /* Solid Bottom Navigation Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            height: 62px;
+            background: #1E3A8A;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .nav-item {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-item i { font-size: 18px; }
+        .nav-item.active { color: #ffffff; font-weight: bold; }
+
+        /* Sidebar Drawer */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 1100;
+            display: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0; width: 270px; height: 100%;
+            background: #1E3A8A;
+            z-index: 1101;
+            transition: all 0.3s ease;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        html[dir="ltr"] .sidebar { left: -280px; border-right: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="ltr"] .sidebar.active { left: 0; }
+        html[dir="rtl"] .sidebar { right: -280px; border-left: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="rtl"] .sidebar.active { right: 0; }
+
+        .sidebar-header {
+            display: flex; align-items: center; gap: 10px;
+            padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 12px;
+        }
+
+        .sidebar-logo {
+            width: 38px; height: 38px; background: #fff; color: #2563EB;
+            border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px;
+        }
+
+        .language-selector-top {
+            margin-bottom: 15px; padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .language-selector-top label {
+            font-size: 11px; display: flex; align-items: center; gap: 6px;
+            margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); text-transform: uppercase;
+        }
+
+        .lang-select {
+            width: 100%; padding: 8px 10px; border-radius: 10px;
+            background: rgba(255, 255, 255, 0.25); color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4); font-size: 13px; font-weight: bold; outline: none;
+        }
+
+        .lang-select option { background: #1E3A8A; color: #fff; }
+
+        .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 6px; overflow-y: auto; flex: 1; }
+        .sidebar-menu a { color: #fff; text-decoration: none; padding: 10px 12px; font-size: 13px; border-radius: 10px; display: flex; align-items: center; gap: 10px; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { background: rgba(255, 255, 255, 0.2); }
+    </style>
+</head>
+
+<body>
+
+    <div class="full-screen-container">
+        <div class="wave-bg-1"></div>
+        <div class="wave-bg-2"></div>
+
+        <!-- Header -->
+        <header class="app-header">
+            <a href="settings.html" class="user-profile">
+                <img src="https://via.placeholder.com/100" id="userAvatar" class="avatar-img" alt="User Avatar">
+                <span class="welcome-text"><span data-i18n="welcome">أهلاً بك</span>، <span id="userName">سارة</span></span>
+            </a>
+            <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="page-content">
+
+            <!-- Diet Plan Card -->
+            <div class="diet-card">
+                <div class="doc-header">
+                    <div class="doc-title">
+                        <i class="fa-solid fa-utensils" style="color: #2563EB;"></i>
+                        <span data-i18n="diet_title">نظامي الغذائي المخصص</span>
+                    </div>
+                </div>
+
+                <!-- Goal Selector Tabs -->
+                <div class="goal-tabs">
+                    <button class="goal-tab active" id="btnLoss" onclick="setGoal('loss')" data-i18n="goal_loss">إنقاص الوزن</button>
+                    <button class="goal-tab" id="btnMaintain" onclick="setGoal('maintain')" data-i18n="goal_maintain">الحفاظ على الوزن</button>
+                    <button class="goal-tab" id="btnGain" onclick="setGoal('gain')" data-i18n="goal_gain">زيادة الكتلة</button>
+                </div>
+
+                <!-- Summary Nutrients -->
+                <div class="summary-box">
+                    <div class="summary-item">
+                        <span class="summary-label" data-i18n="calories">السعرات</span>
+                        <span class="summary-value" id="valCalories">1600 kcal</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label" data-i18n="protein">البروتين</span>
+                        <span class="summary-value" id="valProtein">110g</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label" data-i18n="carbs">الكربوهيدرات</span>
+                        <span class="summary-value" id="valCarbs">160g</span>
+                    </div>
+                </div>
+
+                <!-- Meals Schedule -->
+                <div class="meal-section">
+                    <div class="meal-title"><i class="fa-solid fa-sun"></i> <span data-i18n="breakfast">وجبة الإفطار</span></div>
+                    <div class="meal-desc" id="txtBreakfast">بيضتان مسلوقتان + شريحة خبز أسمر + حبة أفوكادو أو جبن قريش + شاي أو قهوة بدون سكر.</div>
+                </div>
+
+                <div class="meal-section">
+                    <div class="meal-title"><i class="fa-solid fa-bowl-food"></i> <span data-i18n="lunch">وجبة الغداء</span></div>
+                    <div class="meal-desc" id="txtLunch">صدر دجاج مشوي أو سمك (200غ) + طبق سلطة خضراء كبير + 4 ملاعق أرز بني أو كوسة مسلوقة.</div>
+                </div>
+
+                <div class="meal-section">
+                    <div class="meal-title"><i class="fa-solid fa-moon"></i> <span data-i18n="dinner">وجبة العشاء</span></div>
+                    <div class="meal-desc" id="txtDinner">علبة تونة مصفاة من الزيت أو زبادي يوناني + خيار وثمرات خس + شريحة توست خفيف.</div>
+                </div>
+
+                <!-- Water Tracker -->
+                <div class="water-tracker">
+                    <div class="water-info">
+                        <span class="water-title" data-i18n="water_title">شرب الماء اليومي</span>
+                        <span class="water-count"><span id="waterGlasses">5</span> / 8 <span data-i18n="glasses">أكواب</span></span>
+                    </div>
+                    <button class="water-btn" onclick="addWater()"><i class="fa-solid fa-plus"></i></button>
+                </div>
+
+            </div>
+
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="bottom-nav">
+            <a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span data-i18n="home">الرئيسية</span></a>
+            <a href="daily-challenge.html" class="nav-item"><i class="fa-solid fa-person-running"></i><span data-i18n="challenge">التحدي</span></a>
+            <a href="health-file.html" class="nav-item"><i class="fa-solid fa-notes-medical"></i><span data-i18n="health_file">ملفي الصحي</span></a>
+            <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i><span data-i18n="settings">الإعدادات</span></a>
+        </nav>
+    </div>
+
+    <!-- Sidebar Drawer -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div style="font-weight: bold; font-size: 18px;">Si7a</div>
+        </div>
+
+        <div class="language-selector-top">
+            <label for="languageSelect"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">اللغة</span></label>
+            <select id="languageSelect" class="lang-select">
+                <option value="ar">العربية</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">الرئيسية</span></a></li>
+            <li><a href="health-metrics.html"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">قياساتي الصحية</span></a></li>
+            <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">التحدي اليومي</span></a></li>
+            <li><a href="diet-plan.html" class="active"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">نظامي الغذائي</span></a></li>
+            <li><a href="health-file.html"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">ملفي الصحي</span></a></li>
+            <li><a href="period-tracker.html"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">دورتي الشهرية</span></a></li>
+            <li><a href="pregnancy-calculator.html"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">حاسبة الحمل</span></a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">الإعدادات</span></a></li>
+        </ul>
+    </aside>
+
+    <script type="module">
+        import { auth } from "./js/firebase.js";
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+        let currentLang = localStorage.getItem('appLanguage') || 'ar';
+        let currentGoal = localStorage.getItem('si7aDietGoal') || 'loss';
+        let waterCount = parseInt(localStorage.getItem('si7aWaterCount') || '5');
+
+        function syncSettingsAndProfile(user = null) {
+            const storedName = localStorage.getItem('userDisplayName');
+            const storedAvatar = localStorage.getItem('userPhotoURL');
+
+            if (storedName) {
+                document.getElementById("userName").textContent = storedName;
+            } else if (user && user.displayName) {
+                document.getElementById("userName").textContent = user.displayName;
+            }
+
+            if (storedAvatar) {
+                document.getElementById("userAvatar").src = storedAvatar;
+            } else if (user && user.photoURL) {
+                document.getElementById("userAvatar").src = user.photoURL;
+            }
+
+            const savedLang = localStorage.getItem('appLanguage') || 'ar';
+            if (savedLang !== currentLang) {
+                setLanguage(savedLang);
+            }
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) syncSettingsAndProfile(user);
+        });
+
+        window.addEventListener('storage', () => { syncSettingsAndProfile(auth.currentUser); });
+        window.addEventListener('focus', () => { syncSettingsAndProfile(auth.currentUser); });
+
+        const translations = {
+            ar: {
+                welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
+                diet_title: "نظامي الغذائي المخصص", goal_loss: "إنقاص الوزن", goal_maintain: "الحفاظ على الوزن", goal_gain: "زيادة الكتلة",
+                calories: "السعرات", protein: "البروتين", carbs: "الكربوهيدرات",
+                breakfast: "وجبة الإفطار", lunch: "وجبة الغداء", dinner: "وجبة العشاء",
+                water_title: "شرب الماء اليومي", glasses: "أكواب",
+                meals: {
+                    loss: {
+                        cal: "1500 kcal", pro: "110g", carb: "140g",
+                        bf: "بيضتان مسلوقتان + شريحة خبز أسمر + حبة أفوكادو أو جبن قريش + شاي أو قهوة بدون سكر.",
+                        lu: "صدر دجاج مشوي أو سمك (200غ) + طبق سلطة خضراء كبير + 4 ملاعق أرز بني أو كوسة مسلوقة.",
+                        di: "علبة تونة مصفاة من الزيت أو زبادي يوناني + خيار وثمرات خس + شريحة توست خفيف."
+                    },
+                    maintain: {
+                        cal: "2000 kcal", pro: "130g", carb: "210g",
+                        bf: "شوفان بالحليب والموز + بيضتان مقلاتان بزيت الزيتون + كوب عصير برتقال طبيعي.",
+                        lu: "طبق لحم بقري مشوي أو دجاج (250غ) + مكرونة مسلوقة أو خضار سوتيه + سلطة.",
+                        di: "طبق شوربة خضار + ساندويتش خبز أبيض بجبن ومشروبات طبيعية خفيفة."
+                    },
+                    gain: {
+                        cal: "2600 kcal", pro: "160g", carb: "320g",
+                        bf: "عصير سموذي الموز وزبدة الفول السوداني والشوفان + 3 بيضات + خبز توست.",
+                        lu: "أرز بسمتي بكمية وفيرة + صدر دجاج أو لحم (300غ) + بطاطس مشوية + خضار بالزبدة.",
+                        di: "طبق فول أو عدس بالمكسرات والزبدة + خبز بر + كوب حليب كامل الدسم."
+                    }
+                }
+            },
+            en: {
+                welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
+                diet_title: "My Personalized Diet Plan", goal_loss: "Weight Loss", goal_maintain: "Maintain Weight", goal_gain: "Muscle Gain",
+                calories: "Calories", protein: "Protein", carbs: "Carbs",
+                breakfast: "Breakfast", lunch: "Lunch", dinner: "Dinner",
+                water_title: "Daily Water Intake", glasses: "glasses",
+                meals: {
+                    loss: {
+                        cal: "1500 kcal", pro: "110g", carb: "140g",
+                        bf: "2 boiled eggs + whole wheat toast + avocado or cottage cheese + black coffee/tea.",
+                        lu: "Grilled chicken breast or fish (200g) + large green salad + 4 spoons brown rice.",
+                        di: "Drained canned tuna or Greek yogurt + cucumber & lettuce + light toast."
+                    },
+                    maintain: {
+                        cal: "2000 kcal", pro: "130g", carb: "210g",
+                        bf: "Oatmeal with milk and banana + 2 eggs cooked in olive oil + fresh orange juice.",
+                        lu: "Grilled beef or chicken (250g) + pasta or sautéed vegetables + salad.",
+                        di: "Vegetable soup bowl + cheese sandwich and light beverage."
+                    },
+                    gain: {
+                        cal: "2600 kcal", pro: "160g", carb: "320g",
+                        bf: "Banana peanut butter oatmeal smoothie + 3 eggs + toast bread.",
+                        lu: "Generous basmati rice + chicken or meat (300g) + baked potatoes + butter veggies.",
+                        di: "Beans or lentils with nuts and butter + whole grain bread + whole milk."
+                    }
+                }
+            },
+            fr: {
+                welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
+                diet_title: "Mon Programme Nutritionnel", goal_loss: "Perte de Poids", goal_maintain: "Maintenir", goal_gain: "Prise de Masse",
+                calories: "Calories", protein: "Protéines", carbs: "Glucides",
+                breakfast: "Petit-déjeuner", lunch: "Déjeuner", dinner: "Dîner",
+                water_title: "Consommation d'eau", glasses: "verres",
+                meals: {
+                    loss: {
+                        cal: "1500 kcal", pro: "110g", carb: "140g",
+                        bf: "2 œufs durs + pain complet + avocat ou fromage blanc + thé ou café sans sucre.",
+                        lu: "Blanc de poulet ou poisson grillé (200g) + grande salade verte + 4 cuillères de riz complet.",
+                        di: "Thon en boîte égoutté ou yaourt grec + concombre et laitue + toast léger."
+                    },
+                    maintain: {
+                        cal: "2000 kcal", pro: "130g", carb: "210g",
+                        bf: "Flocons d'avoine au lait et banane + 2 œufs à l'huile d'olive + jus d'orange frais.",
+                        lu: "Viande de bœuf ou poulet grillé (250g) + pâtes ou légumes sautés + salade.",
+                        di: "Bol de soupe de légumes + sandwich au fromage et boisson légère."
+                    },
+                    gain: {
+                        cal: "2600 kcal", pro: "160g", carb: "320g",
+                        bf: "Smoothie avoine banane beurre de cacahuète + 3 œufs + pain grillé.",
+                        lu: "Riz basmati généreux + poulet ou viande (300g) + pommes de terre au four + légumes.",
+                        di: "Plat de lentilles ou fèves aux noix et beurre + pain complet + lait entier."
+                    }
+                }
+            },
+            es: {
+                welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario", diet_plan: "Plan de dieta", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
+                diet_title: "Mi Plan de Dieta Personalizado", goal_loss: "Pérdida de Peso", goal_maintain: "Mantener Peso", goal_gain: "Ganar Músculo",
+                calories: "Calorías", protein: "Proteína", carbs: "Carbohidratos",
+                breakfast: "Desayuno", lunch: "Almuerzo", dinner: "Cena",
+                water_title: "Consumo de Agua", glasses: "vasos",
+                meals: {
+                    loss: {
+                        cal: "1500 kcal", pro: "110g", carb: "140g",
+                        bf: "2 huevos cocidos + pan integral + aguacate o queso requesón + café o té sin azúcar.",
+                        lu: "Pechuga de pollo o pescado a la parrilla (200g) + ensalada verde + 4 cucharadas de arroz integral.",
+                        di: "Atún en lata escurrido o yogur griego + pepino y lechuga + tostada ligera."
+                    },
+                    maintain: {
+                        cal: "2000 kcal", pro: "130g", carb: "210g",
+                        bf: "Avena con leche y plátano + 2 huevos en aceite de oliva + zumo de naranja.",
+                        lu: "Carne de res o pollo a la parrilla (250g) + pasta o verduras salteadas + ensalada.",
+                        di: "Tazón de sopa de verduras + sándwich de queso y bebida ligera."
+                    },
+                    gain: {
+                        cal: "2600 kcal", pro: "160g", carb: "320g",
+                        bf: "Batido de avena, plátano y mantequilla de maní + 3 huevos + tostadas.",
+                        lu: "Arroz basmati abundante + pollo o carne (300g) + papas al horno + verduras.",
+                        di: "Plato de lentejas o habas con nueces y mantequilla + pan integral + leche entera."
+                    }
+                }
+            }
+        };
+
+        window.setGoal = function(goal) {
+            currentGoal = goal;
+            localStorage.setItem('si7aDietGoal', goal);
+
+            document.getElementById("btnLoss").classList.remove("active");
+            document.getElementById("btnMaintain").classList.remove("active");
+            document.getElementById("btnGain").classList.remove("active");
+
+            if (goal === 'loss') document.getElementById("btnLoss").classList.add("active");
+            else if (goal === 'maintain') document.getElementById("btnMaintain").classList.add("active");
+            else if (goal === 'gain') document.getElementById("btnGain").classList.add("active");
+
+            renderDietContent();
+        }
+
+        window.addWater = function() {
+            if (waterCount < 15) {
+                waterCount++;
+                localStorage.setItem('si7aWaterCount', waterCount);
+                document.getElementById("waterGlasses").textContent = waterCount;
+            }
+        }
+
+        function renderDietContent() {
+            const t = translations[currentLang] || translations['ar'];
+            const mealData = t.meals[currentGoal] || t.meals['loss'];
+
+            document.getElementById("valCalories").textContent = mealData.cal;
+            document.getElementById("valProtein").textContent = mealData.pro;
+            document.getElementById("valCarbs").textContent = mealData.carb;
+
+            document.getElementById("txtBreakfast").textContent = mealData.bf;
+            document.getElementById("txtLunch").textContent = mealData.lu;
+            document.getElementById("txtDinner").textContent = mealData.di;
+
+            document.getElementById("waterGlasses").textContent = waterCount;
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('appLanguage', lang);
+            const html = document.documentElement;
+            
+            if (lang === 'ar') {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+            } else {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', lang);
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            const langSelect = document.getElementById("languageSelect");
+            if (langSelect) langSelect.value = lang;
+
+            renderDietContent();
+        }
+
+        document.getElementById("languageSelect").addEventListener("change", (e) => {
+            setLanguage(e.target.value);
+        });
+
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebarOverlay");
+
+        document.getElementById("openSidebar").addEventListener("click", () => {
+            sidebar.classList.add("active");
+            overlay.style.display = "block";
+        });
+
+        overlay.addEventListener("click", () => {
+            sidebar.classList.remove("active");
+            overlay.style.display = "none";
+        });
+
+        setLanguage(currentLang);
+        setGoal(currentGoal);
+    </script>
+</body>
+
+</html>
