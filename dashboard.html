@@ -604,7 +604,7 @@
                 <div class="date-section">
                     <div class="date-info">
                         <i class="fa-regular fa-calendar-days"></i>
-                        <span id="currentDate">Sunday, Oct 4, 2026</span>
+                        <span id="currentDate">--</span>
                     </div>
                     <button class="calendar-btn" id="openCalendarBtn">
                         <i class="fa-solid fa-calendar-week"></i> <span data-i18n="calendar">Calendar</span>
@@ -640,7 +640,7 @@
                 <i class="fa-solid fa-person-running"></i>
                 <span data-i18n="challenge">Challenge</span>
             </a>
-            <a href="#" class="nav-item">
+            <a href="health-metrics.html" class="nav-item">
                 <i class="fa-solid fa-notes-medical"></i>
                 <span data-i18n="health_file">Health File</span>
             </a>
@@ -672,12 +672,12 @@
 
         <ul class="sidebar-menu">
             <li><a href="dashboard.html" class="active"><i class="fa-solid fa-house"></i> <span data-i18n="home">Home</span></a></li>
-            <li><a href="#"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">Health Metrics</span></a></li>
+            <li><a href="health-metrics.html"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">Health Metrics</span></a></li>
             <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">Daily Challenge</span></a></li>
-            <li><a href="#"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">Diet Plan</span></a></li>
-            <li><a href="#"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">Health File</span></a></li>
-            <li><a href="#"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">Period Tracker</span></a></li>
-            <li><a href="#"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">Pregnancy Calculator</span></a></li>
+            <li><a href="diet-plan.html"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">Diet Plan</span></a></li>
+            <li><a href="health-file.html"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">Health File</span></a></li>
+            <li><a href="period-tracker.html"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">Period Tracker</span></a></li>
+            <li><a href="pregnancy-calculator.html"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">Pregnancy Calculator</span></a></li>
             <li><a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">Settings</span></a></li>
         </ul>
     </aside>
@@ -688,7 +688,7 @@
             <div class="calendar-nav-header">
                 <button class="calendar-nav-btn" id="prevMonthBtn"><i class="fa-solid fa-chevron-left"></i></button>
                 <div>
-                    <h3 id="calendarMonthYear" style="font-size: 15px;">October 2026</h3>
+                    <h3 id="calendarMonthYear" style="font-size: 15px;">--</h3>
                     <p style="font-size: 11px; opacity: 0.8;" data-i18n="track_progress">Select any date</p>
                 </div>
                 <button class="calendar-nav-btn" id="nextMonthBtn"><i class="fa-solid fa-chevron-right"></i></button>
@@ -715,14 +715,21 @@
         import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
         let currentLang = localStorage.getItem('appLanguage') || 'en';
-        let selectedDate = new Date(2026, 9, 4);
+        
+        // ضبط التاريخ التلقائي على اليوم الحالي الحقيقي للجهاز
+        let selectedDate = new Date();
         let viewDate = new Date(selectedDate);
 
         // Authentication state
         onAuthStateChanged(auth, (user) => {
+            const storedName = localStorage.getItem('userDisplayName');
+            const storedAvatar = localStorage.getItem('userPhotoURL');
+
             if (user) {
-                if (user.displayName) document.getElementById("userName").textContent = user.displayName;
-                if (user.photoURL) document.getElementById("userAvatar").src = user.photoURL;
+                document.getElementById("userName").textContent = storedName || user.displayName || "Sarah";
+                if (storedAvatar || user.photoURL) {
+                    document.getElementById("userAvatar").src = storedAvatar || user.photoURL;
+                }
             } else {
                 window.location.href = "login.html";
             }
@@ -789,7 +796,7 @@
             const savedData = JSON.parse(localStorage.getItem('userChallenges')) || {};
             const t = translations[currentLang] || translations['en'];
 
-            // 1. Water Intake (Counter + / -)
+            // 1. Water Intake
             if (savedData.water?.show) {
                 const target = savedData.water.value || 10;
                 display.innerHTML += `
@@ -809,7 +816,7 @@
                 `;
             }
 
-            // 2. Sleep Time (Interactive Time Input)
+            // 2. Sleep Time
             if (savedData.sleepTime?.show) {
                 const curTime = loggedValues.sleepTime || savedData.sleepTime.value || '23:00';
                 display.innerHTML += `
@@ -825,7 +832,7 @@
                 `;
             }
 
-            // 3. Wake Time (Interactive Time Input)
+            // 3. Wake Time
             if (savedData.wakeTime?.show) {
                 const curTime = loggedValues.wakeTime || savedData.wakeTime.value || '07:00';
                 display.innerHTML += `
@@ -841,7 +848,7 @@
                 `;
             }
 
-            // 4. Sleep Duration Counter
+            // 4. Sleep Duration
             if (savedData.sleepHours?.show) {
                 const target = savedData.sleepHours.value || 8;
                 display.innerHTML += `
@@ -861,7 +868,7 @@
                 `;
             }
 
-            // 5. Walking Duration Counter
+            // 5. Walking Duration
             if (savedData.walking?.show) {
                 const targetMins = (parseInt(savedData.walking.hours || 0) * 60) + parseInt(savedData.walking.minutes || 30);
                 display.innerHTML += `
@@ -881,7 +888,7 @@
                 `;
             }
 
-            // 6. Phone Usage Counter
+            // 6. Phone Usage
             if (savedData.phone?.show) {
                 const target = savedData.phone.value || 3;
                 display.innerHTML += `
@@ -901,7 +908,7 @@
                 `;
             }
 
-            // 7. Sugar Intake (Yes / No Toggle Buttons)
+            // 7. Sugar Intake
             if (savedData.sugar?.show) {
                 const curSugar = loggedValues.sugar || 'no';
                 display.innerHTML += `
@@ -920,7 +927,7 @@
                 `;
             }
 
-            // 8. Smoking (Yes / No Toggle Buttons)
+            // 8. Smoking
             if (savedData.smoking?.show) {
                 const curSmoke = loggedValues.smoking || 'no';
                 display.innerHTML += `
@@ -939,7 +946,7 @@
                 `;
             }
 
-            // 9. Mental State Select Input
+            // 9. Mental State
             if (savedData.mental?.show) {
                 display.innerHTML += `
                     <div class="dash-item-card">
@@ -960,7 +967,7 @@
                 `;
             }
 
-            // Add Item Card Always at the end
+            // Add Item Card
             display.innerHTML += `
                 <a href="daily-challenge.html" class="add-widget-btn">
                     <div style="font-size: 20px;"><i class="fa-solid fa-plus"></i></div>
@@ -1029,7 +1036,7 @@
             document.getElementById('progressFill').style.width = percent + '%';
         }
 
-        // Format Date
+        // Format Date to current day
         function updateDateDisplay() {
             const options = { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' };
             const langCode = currentLang === 'ar' ? 'ar-EG' : (currentLang === 'fr' ? 'fr-FR' : (currentLang === 'es' ? 'es-ES' : 'en-US'));
