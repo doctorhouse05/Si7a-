@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#2563EB">
-    <title>Si7a | Comprehensive Health File</title>
+    <title>Si7a | Medical Document</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -115,87 +115,184 @@
             z-index: 2;
         }
 
-        /* Metallic White Cards */
-        .metallic-white-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(230, 240, 255, 0.88) 100%);
+        /* Document Container Style */
+        .medical-document {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(240, 245, 255, 0.9) 100%);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 22px;
-            padding: 16px;
+            padding: 18px;
             color: #1E293B;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
         }
 
-        .card-header-title {
+        .doc-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 8px;
+            border-bottom: 2px solid #2563EB;
+            padding-bottom: 10px;
+        }
+
+        .doc-title {
             font-size: 15px;
             font-weight: bold;
             color: #1E3A8A;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(30, 58, 138, 0.12);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .form-group {
+        .edit-toggle-btn {
+            background: #2563EB;
+            color: #fff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
             display: flex;
-            flex-direction: column;
+            align-items: center;
             gap: 5px;
         }
 
-        .form-label {
+        .section-box {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 14px;
+            padding: 12px;
+            border-right: 4px solid #2563EB;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #1E3A8A;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
             font-size: 12px;
+            padding: 5px 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.08);
+        }
+
+        .info-label { color: #64748B; font-weight: bold; }
+        .info-val { color: #0F172A; font-weight: bold; text-align: left; }
+
+        /* Form Inputs for Edit Mode */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .form-label-edit {
+            font-size: 11px;
             font-weight: bold;
             color: #1E3A8A;
         }
 
         .input-field, .select-field, .textarea-field {
             width: 100%;
-            padding: 9px 10px;
-            border-radius: 10px;
-            border: 1px solid rgba(30, 58, 138, 0.2);
-            font-size: 13px;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid rgba(30, 58, 138, 0.25);
+            font-size: 12px;
             font-weight: bold;
             outline: none;
             background: #fff;
             color: #0F172A;
         }
 
-        .textarea-field {
-            resize: vertical;
-            min-height: 60px;
-        }
+        .textarea-field { resize: vertical; min-height: 50px; }
 
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 8px;
+        }
+
+        /* Emergency Numbers Grid */
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .emergency-item {
+            background: #FEF2F2;
+            border: 1px solid #FCA5A5;
+            border-radius: 10px;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: #991B1B;
+            text-decoration: none;
+        }
+
+        .emergency-item i { font-size: 16px; margin-bottom: 2px; }
+        .emergency-name { font-size: 11px; font-weight: bold; }
+        .emergency-number { font-size: 13px; font-weight: bold; color: #DC2626; }
+
+        /* Image Upload Box */
+        .upload-box {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .file-input {
+            font-size: 11px;
+            color: #1E3A8A;
+        }
+
+        .preview-container {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .thumb-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #ccc;
         }
 
         .save-btn {
-            background: #2563EB;
+            background: #059669;
             color: #fff;
             border: none;
-            border-radius: 12px;
-            padding: 12px;
-            font-size: 14px;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 13px;
             font-weight: bold;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-            transition: transform 0.2s;
-            margin-top: 6px;
-        }
-
-        .save-btn:active {
-            transform: scale(0.97);
+            gap: 6px;
+            box-shadow: 0 4px 10px rgba(5, 150, 105, 0.3);
+            margin-top: 10px;
         }
 
         /* Solid Bottom Navigation Bar */
@@ -304,107 +401,185 @@
         <!-- Main Content -->
         <main class="page-content">
 
-            <!-- Comprehensive Health File Card -->
-            <div class="metallic-white-card">
-                <div class="card-header-title">
-                    <i class="fa-solid id-card" style="color: #2563EB;"></i>
-                    <span data-i18n="general_info">البيانات الأساسية والخصائص الحيوية</span>
+            <!-- Medical Document Card -->
+            <div class="medical-document">
+                <div class="doc-header">
+                    <div class="doc-title">
+                        <i class="fa-solid fa-file-medical" style="color: #2563EB;"></i>
+                        <span data-i18n="doc_title">الوثيقة الطبية الشخصية</span>
+                    </div>
+                    <button class="edit-toggle-btn" id="toggleEditModeBtn">
+                        <i class="fa-solid fa-pen-to-square"></i> <span id="editBtnText">تعديل</span>
+                    </button>
                 </div>
 
-                <div class="grid-2">
+                <!-- VIEW MODE -->
+                <div id="viewModeContainer" style="display: flex; flex-direction: column; gap: 12px;">
+                    <!-- Basic Info -->
+                    <div class="section-box">
+                        <div class="section-title"><i class="fa-solid fa-user"></i> <span data-i18n="sec_basic">البيانات الشخصية</span></div>
+                        <div class="info-row"><span class="info-label" data-i18n="full_name">الاسم واللقب:</span><span class="info-val" id="viewFullName">--</span></div>
+                        <div class="info-row"><span class="info-label" data-i18n="birth_date">تاريخ الميلاد:</span><span class="info-val" id="viewBirthDate">--</span></div>
+                        <div class="info-row"><span class="info-label" data-i18n="blood_type">الزمرة الدموية:</span><span class="info-val" id="viewBloodType">--</span></div>
+                        <div class="info-row"><span class="info-label" data-i18n="height_cm">الطول:</span><span class="info-val" id="viewHeight">--</span></div>
+                        <div class="info-row"><span class="info-label" data-i18n="weight_kg">الوزن (من القياسات):</span><span class="info-val" id="viewWeight">--</span></div>
+                        <div class="info-row"><span class="info-label" data-i18n="pregnancy_status">الحالة (هل أنتِ حامل؟):</span><span class="info-val" id="viewPregnancyStatus">--</span></div>
+                    </div>
+
+                    <!-- Medical History -->
+                    <div class="section-box">
+                        <div class="section-title"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="sec_history">التاريخ المرضي والجراحي</span></div>
+                        <div class="info-row"><span class="info-label" data-i18n="chronic_diseases">الأمراض المزمنة:</span><span class="info-val" id="viewChronic">--</span></div>
+                        <div class="info-row"><span class="info-label" data-i18n="genetic_diseases">الأمراض الوراثية:</span><span class="info-val" id="viewGenetic">--</span></div>
+                        <div class="info-row"><span class="info-label" data-i18n="surgeries">التاريخ الجراحي:</span><span class="info-val" id="viewSurgeries">--</span></div>
+                    </div>
+
+                    <!-- Allergies -->
+                    <div class="section-box">
+                        <div class="section-title"><i class="fa-solid fa-triangle-exclamation"></i> <span data-i18n="sec_allergies">الحساسية</span></div>
+                        <div class="info-row"><span class="info-label" data-i18n="drug_allergy">الحساسية من الأدوية:</span><span class="info-val" id="viewDrugAllergy">--</span></div>
+                        <div class="info-row"><span class="info-label" data-i18n="food_allergy">الحساسية من الطعام:</span><span class="info-val" id="viewFoodAllergy">--</span></div>
+                    </div>
+
+                    <!-- Meds & Tests Photos -->
+                    <div class="section-box">
+                        <div class="section-title"><i class="fa-solid fa-pills"></i> <span data-i18n="sec_meds_tests">الأدوية والتحاليل الطبية</span></div>
+                        <div class="info-label" data-i18n="meds_photos">صور الأدوية:</div>
+                        <div class="preview-container" id="viewMedsContainer">لا توجد صور مضافة</div>
+                        <div class="info-label" data-i18n="tests_photos" style="margin-top: 6px;">صور التحاليل حسب التاريخ:</div>
+                        <div class="preview-container" id="viewTestsContainer">لا توجد تحاليل مضافة</div>
+                    </div>
+
+                    <!-- Emergency Numbers -->
+                    <div class="section-box" style="border-right-color: #DC2626;">
+                        <div class="section-title" style="color: #991B1B;"><i class="fa-solid fa-phone-volume"></i> <span data-i18n="sec_emergency">أرقام الطوارئ والمقربين</span></div>
+                        <div class="info-row"><span class="info-label" data-i18n="close_person">شخص قريب:</span><span class="info-val" id="viewClosePerson">--</span></div>
+                        <div class="emergency-grid" style="margin-top: 8px;">
+                            <a href="tel:14" class="emergency-item">
+                                <i class="fa-solid fa-fire-extinguisher"></i>
+                                <span class="emergency-name">الحماية المدنية</span>
+                                <span class="emergency-number">14</span>
+                            </a>
+                            <a href="tel:1548" class="emergency-item">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <span class="emergency-name">الشرطة (1548 / 17)</span>
+                                <span class="emergency-number">1548</span>
+                            </a>
+                            <a href="tel:1055" class="emergency-item">
+                                <i class="fa-solid fa-user-shield"></i>
+                                <span class="emergency-name">الدرك الوطني</span>
+                                <span class="emergency-number">1055</span>
+                            </a>
+                            <a href="tel:14" class="emergency-item">
+                                <i class="fa-solid fa-truck-medical"></i>
+                                <span class="emergency-name">الإسعاف SAMU</span>
+                                <span class="emergency-number">14</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EDIT MODE -->
+                <div id="editModeContainer" style="display: none; flex-direction: column; gap: 12px;">
                     <div class="form-group">
-                        <label class="form-label" data-i18n="blood_type">فصيلة الدم</label>
-                        <select id="bloodTypeInput" class="select-field">
-                            <option value="A+">A+</option>
-                            <option value="A-">A-</option>
-                            <option value="B+">B+</option>
-                            <option value="B-">B-</option>
-                            <option value="AB+">AB+</option>
-                            <option value="AB-">AB-</option>
-                            <option value="O+">O+</option>
-                            <option value="O-">O-</option>
+                        <label class="form-label-edit" data-i18n="full_name">الاسم واللقب</label>
+                        <input type="text" id="editFullName" class="input-field" placeholder="مثال: سارة بن علي">
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label-edit" data-i18n="birth_date">تاريخ الميلاد</label>
+                            <input type="date" id="editBirthDate" class="input-field">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label-edit" data-i18n="blood_type">الزمرة الدموية</label>
+                            <select id="editBloodType" class="select-field">
+                                <option value="A+">A+</option><option value="A-">A-</option>
+                                <option value="B+">B+</option><option value="B-">B-</option>
+                                <option value="AB+">AB+</option><option value="AB-">AB-</option>
+                                <option value="O+">O+</option><option value="O-">O-</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label-edit" data-i18n="height_cm">الطول (سم)</label>
+                            <input type="text" id="editHeight" class="input-field" placeholder="مثال: 165">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label-edit" data-i18n="weight_kg">الوزن (كغ) - (يُجلب تلقائياً من القياسات)</label>
+                            <input type="text" id="editWeight" class="input-field" placeholder="مثال: 65">
+                        </div>
+                    </div>
+
+                    <!-- Pregnancy Status -->
+                    <div class="form-group">
+                        <label class="form-label-edit" data-i18n="pregnancy_status">الحالة (هل أنتِ حامل؟)</label>
+                        <select id="editPregnancyChoice" class="select-field" onchange="togglePregnancyInput(this.value)">
+                            <option value="لا">لا</option>
+                            <option value="نعم">نعم</option>
                         </select>
+                        <input type="text" id="editPregnancyDetails" class="input-field" style="margin-top: 4px; display: none;" placeholder="اذكر الشهر أو التفاصيل (مثلاً: الشهر الثالث)...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label-edit" data-i18n="chronic_diseases">الأمراض المزمنة</label>
+                        <textarea id="editChronic" class="textarea-field" placeholder="مثال: ضغط الدم..."></textarea>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" data-i18n="birth_date">تاريخ الميلاد</label>
-                        <input type="date" id="birthDateInput" class="input-field">
-                    </div>
-                </div>
-
-                <div class="grid-2">
-                    <div class="form-group">
-                        <label class="form-label" data-i18n="height_cm">الطول (سم)</label>
-                        <input type="number" id="heightInput" class="input-field" placeholder="165">
+                        <label class="form-label-edit" data-i18n="genetic_diseases">الأمراض الوراثية</label>
+                        <textarea id="editGenetic" class="textarea-field" placeholder="مثال: لا يوجد..."></textarea>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" data-i18n="weight_kg">الوزن الحالي (كغ)</label>
-                        <input type="number" step="0.1" id="weightInput" class="input-field" placeholder="68">
+                        <label class="form-label-edit" data-i18n="surgeries">التاريخ الجراحي</label>
+                        <textarea id="editSurgeries" class="textarea-field" placeholder="مثال: لا يوجد..."></textarea>
                     </div>
-                </div>
-            </div>
 
-            <!-- Medical History & Conditions -->
-            <div class="metallic-white-card">
-                <div class="card-header-title">
-                    <i class="fa-solid fa-stethoscope" style="color: #059669;"></i>
-                    <span data-i18n="medical_history">التاريخ المرضي والأمراض المزمنة</span>
-                </div>
+                    <!-- Drug Allergy -->
+                    <div class="form-group">
+                        <label class="form-label-edit" data-i18n="drug_allergy">الحساسية من الأدوية</label>
+                        <select id="editDrugAllergyChoice" class="select-field" onchange="toggleDrugInput(this.value)">
+                            <option value="لا">لا</option>
+                            <option value="نعم">نعم</option>
+                        </select>
+                        <input type="text" id="editDrugAllergyDetails" class="input-field" style="margin-top: 4px; display: none;" placeholder="اذكر الأدوية التي لديك حساسية منها...">
+                    </div>
 
-                <div class="form-group">
-                    <label class="form-label" data-i18n="chronic_diseases">الأمراض المزمنة (إن وجدت)</label>
-                    <textarea id="chronicInput" class="textarea-field" data-i18n-placeholder="chronic_placeholder" placeholder="مثال: ارتفاع ضغط الدم، السكري، الربو..."></textarea>
-                </div>
+                    <!-- Food Allergy -->
+                    <div class="form-group">
+                        <label class="form-label-edit" data-i18n="food_allergy">الحساسية من الطعام</label>
+                        <select id="editFoodAllergyChoice" class="select-field" onchange="toggleFoodInput(this.value)">
+                            <option value="لا">لا</option>
+                            <option value="نعم">نعم</option>
+                        </select>
+                        <input type="text" id="editFoodAllergyDetails" class="input-field" style="margin-top: 4px; display: none;" placeholder="اذكر الطعام الذي لديك حساسية منه...">
+                    </div>
 
-                <div class="form-group">
-                    <label class="form-label" data-i18n="family_history">التاريخ العائلي الوراثي</label>
-                    <textarea id="familyHistoryInput" class="textarea-field" data-i18n-placeholder="family_placeholder" placeholder="مثال: أمراض القلب، أورام بالوراثة..."></textarea>
-                </div>
-            </div>
+                    <!-- Meds Photos Upload -->
+                    <div class="form-group upload-box">
+                        <label class="form-label-edit" data-i18n="meds_photos">تصوير الأدوية الحالية</label>
+                        <input type="file" id="editMedsFiles" class="file-input" accept="image/*" multiple>
+                        <div class="preview-container" id="editMedsPreview"></div>
+                    </div>
 
-            <!-- Allergies & Medications -->
-            <div class="metallic-white-card">
-                <div class="card-header-title">
-                    <i class="fa-solid fa-pills" style="color: #D97706;"></i>
-                    <span data-i18n="allergies_meds">الحساسية والأدوية الحالية</span>
-                </div>
+                    <!-- Tests Photos Upload -->
+                    <div class="form-group upload-box">
+                        <label class="form-label-edit" data-i18n="tests_photos">تصوير التحاليل حسب التاريخ</label>
+                        <input type="file" id="editTestsFiles" class="file-input" accept="image/*" multiple>
+                        <div class="preview-container" id="editTestsPreview"></div>
+                    </div>
 
-                <div class="form-group">
-                    <label class="form-label" data-i18n="allergies">الحساسية (أدوية، أطعمة، بيئة...)</label>
-                    <textarea id="allergiesInput" class="textarea-field" data-i18n-placeholder="allergies_placeholder" placeholder="مثال: حساسية البنسلين، المكسرات، الغبار..."></textarea>
-                </div>
+                    <!-- Emergency Contact Close Person -->
+                    <div class="form-group">
+                        <label class="form-label-edit" data-i18n="close_person">شخص قريب (الاسم ورقم الهاتف)</label>
+                        <input type="text" id="editClosePerson" class="input-field" placeholder="مثال: أحمد (زوج) - 0600000000">
+                    </div>
 
-                <div class="form-group">
-                    <label class="form-label" data-i18n="current_medications">الأدوية والمكملات الغذائية الحالية</label>
-                    <textarea id="medicationsInput" class="textarea-field" data-i18n-placeholder="medications_placeholder" placeholder="مثال: حمض الفوليك، أوميغا 3، أدوية ضغط..."></textarea>
-                </div>
-            </div>
-
-            <!-- Surgeries & Emergency -->
-            <div class="metallic-white-card">
-                <div class="card-header-title">
-                    <i class="fa-solid fa-kit-medical" style="color: #DC2626;"></i>
-                    <span data-i18n="surgeries_emergency">العمليات الجراحية والطوارئ</span>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" data-i18n="surgeries">العمليات الجراحية والعمليات السابقة</label>
-                    <textarea id="surgeriesInput" class="textarea-field" data-i18n-placeholder="surgeries_placeholder" placeholder="مثال: استئصال الزائدة الدودية، جراحة قيصرية..."></textarea>
+                    <button class="save-btn" id="saveDocBtn">
+                        <i class="fa-solid fa-floppy-disk"></i> <span data-i18n="save_changes">حفظ التغييرات</span>
+                    </button>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label" data-i18n="doctor_notes">ملاحظات الطبيب أو توصيات خاصة</label>
-                    <textarea id="doctorNotesInput" class="textarea-field" data-i18n-placeholder="notes_placeholder" placeholder="أي إرشادات أو ملاحظات طبية موصى بها..."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" data-i18n="emergency_contact">جهة الاتصال للطوارئ (الاسم ورقم الهاتف)</label>
-                    <input type="text" id="emergencyInput" class="input-field" data-i18n-placeholder="emergency_placeholder" placeholder="مثال: أحمد (زوج) - 0600000000">
-                </div>
-
-                <button class="save-btn" id="saveHealthFileBtn">
-                    <i class="fa-solid fa-floppy-disk"></i>
-                    <span data-i18n="save_file">حفظ الملف الصحي الشامل</span>
-                </button>
             </div>
 
         </main>
@@ -453,6 +628,10 @@
         import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
         let currentLang = localStorage.getItem('appLanguage') || 'ar';
+        let isEditing = false;
+
+        let medsImages = [];
+        let testsImages = [];
 
         function syncSettingsAndProfile(user = null) {
             const storedName = localStorage.getItem('userDisplayName');
@@ -486,73 +665,237 @@
         const translations = {
             ar: {
                 welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
-                general_info: "البيانات الأساسية والخصائص الحيوية", blood_type: "فصيلة الدم", birth_date: "تاريخ الميلاد", height_cm: "الطول (سم)", weight_kg: "الوزن الحالي (كغ)",
-                medical_history: "التاريخ المرضي والأمراض المزمنة", chronic_diseases: "الأمراض المزمنة (إن وجدت)", family_history: "التاريخ العائلي الوراثي",
-                allergies_meds: "الحساسية والأدوية الحالية", allergies: "الحساسية (أدوية، أطعمة، بيئة...)", current_medications: "الأدوية والمكملات الغذائية الحالية",
-                surgeries_emergency: "العمليات الجراحية والطوارئ", surgeries: "العمليات الجراحية والعمليات السابقة", doctor_notes: "ملاحظات الطبيب أو توصيات خاصة", emergency_contact: "جهة الاتصال للطوارئ (الاسم ورقم الهاتف)", save_file: "حفظ الملف الصحي الشامل",
-                chronic_placeholder: "مثال: ارتفاع ضغط الدم، السكري، الربو...", family_placeholder: "مثال: أمراض القلب، أورام بالوراثة...", allergies_placeholder: "مثال: حساسية البنسلين، المكسرات، الغبار...", medications_placeholder: "مثال: حمض الفوليك، أوميغا 3، أدوية ضغط...", surgeries_placeholder: "مثال: استئصال الزائدة الدودية، جراحة قيصرية...", notes_placeholder: "أي إرشادات أو ملاحظات طبية موصى بها...", emergency_placeholder: "مثال: أحمد (زوج) - 0600000000"
+                doc_title: "الوثيقة الطبية الشخصية", edit: "تعديل", view: "معاينة الوثيقة", save_changes: "حفظ التغييرات",
+                sec_basic: "البيانات الشخصية", full_name: "الاسم واللقب", birth_date: "تاريخ الميلاد", blood_type: "الزمرة الدموية", height_cm: "الطول", weight_kg: "الوزن", pregnancy_status: "الحالة (هل أنتِ حامل؟)",
+                sec_history: "التاريخ المرضي والجراحي", chronic_diseases: "الأمراض المزمنة", genetic_diseases: "الأمراض الوراثية", surgeries: "التاريخ الجراحي",
+                sec_allergies: "الحساسية", drug_allergy: "الحساسية من الأدوية", food_allergy: "الحساسية من الطعام",
+                sec_meds_tests: "الأدوية والتحاليل الطبية", meds_photos: "صور الأدوية الحالية", tests_photos: "صور التحاليل حسب التاريخ",
+                sec_emergency: "أرقام الطوارئ والمقربين", close_person: "شخص قريب للتواصل"
             },
             en: {
                 welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
-                general_info: "Basic Info & Vital Stats", blood_type: "Blood Type", birth_date: "Date of Birth", height_cm: "Height (cm)", weight_kg: "Current Weight (kg)",
-                medical_history: "Medical History & Chronic Conditions", chronic_diseases: "Chronic Diseases", family_history: "Family Genetic History",
-                allergies_meds: "Allergies & Current Medications", allergies: "Allergies (Meds, Foods...)", current_medications: "Current Medications & Supplements",
-                surgeries_emergency: "Surgeries & Emergency", surgeries: "Previous Surgeries", doctor_notes: "Doctor Notes & Recommendations", emergency_contact: "Emergency Contact (Name & Phone)", save_file: "Save Comprehensive Health File",
-                chronic_placeholder: "e.g., Hypertension, Diabetes...", family_placeholder: "e.g., Heart disease, hereditary conditions...", allergies_placeholder: "e.g., Penicillin allergy, nuts...", medications_placeholder: "e.g., Folic acid, Omega 3...", surgeries_placeholder: "e.g., Appendectomy, C-section...", notes_placeholder: "Any special medical instructions...", emergency_placeholder: "Name and phone number"
+                doc_title: "Personal Medical Document", edit: "Edit", view: "View Document", save_changes: "Save Changes",
+                sec_basic: "Personal Info", full_name: "Full Name", birth_date: "Date of Birth", blood_type: "Blood Type", height_cm: "Height", weight_kg: "Weight", pregnancy_status: "Pregnancy Status",
+                sec_history: "Medical & Surgical History", chronic_diseases: "Chronic Diseases", genetic_diseases: "Genetic Diseases", surgeries: "Surgeries",
+                sec_allergies: "Allergies", drug_allergy: "Drug Allergy", food_allergy: "Food Allergy",
+                sec_meds_tests: "Meds & Medical Tests", meds_photos: "Current Meds Photos", tests_photos: "Tests Photos by Date",
+                sec_emergency: "Emergency & Contacts", close_person: "Close Contact Person"
             },
             fr: {
                 welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
-                general_info: "Informations de Base & Statistiques", blood_type: "Groupe Sanguin", birth_date: "Date de Naissance", height_cm: "Taille (cm)", weight_kg: "Poids Actuel (kg)",
-                medical_history: "Historique Médical & Maladies Chroniques", chronic_diseases: "Maladies Chroniques", family_history: "Antécédents Familiaux",
-                allergies_meds: "Allergies & Médicaments Actuels", allergies: "Allergies (Médicaments, Aliments...)", current_medications: "Médicaments & Suppléments Actuels",
-                surgeries_emergency: "Chirurgies & Urgences", surgeries: "Chirurgies Antérieures", doctor_notes: "Notes du Médecin", emergency_contact: "Contact d'Urgence (Nom & Téléphone)", save_file: "Enregistrer le Dossier Complet",
-                chronic_placeholder: "ex: Hypertension, Diabète...", family_placeholder: "ex: Maladies cardiaques...", allergies_placeholder: "ex: Pénicilline, arachides...", medications_placeholder: "ex: Acide folique, Oméga 3...", surgeries_placeholder: "ex: Appendicectomie, césarienne...", notes_placeholder: "Instructions médicales...", emergency_placeholder: "Nom et numéro de téléphone"
+                doc_title: "Document Médical Personnel", edit: "Modifier", view: "Voir le Document", save_changes: "Enregistrer les Modifications",
+                sec_basic: "Informations Personnelles", full_name: "Nom et Prénom", birth_date: "Date de Naissance", blood_type: "Groupe Sanguin", height_cm: "Taille", weight_kg: "Poids", pregnancy_status: "Statut de Grossesse",
+                sec_history: "Historique Médical & Chirurgical", chronic_diseases: "Maladies Chroniques", genetic_diseases: "Maladies Génétiques", surgeries: "Chirurgies",
+                sec_allergies: "Allergies", drug_allergy: "Allergie Médicamenteuse", food_allergy: "Allergie Alimentaire",
+                sec_meds_tests: "Médicaments & Analyses", meds_photos: "Photos des Médicaments", tests_photos: "Analyses par Date",
+                sec_emergency: "Urgences & Contacts", close_person: "Personne Proche"
             },
             es: {
                 welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario", diet_plan: "Plan de dieta", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
-                general_info: "Información Básica y Estadísticas", blood_type: "Tipo de Sangre", birth_date: "Fecha de Nacimiento", height_cm: "Altura (cm)", weight_kg: "Peso Actual (kg)",
-                medical_history: "Historial Médico y Enfermedades Crónicas", chronic_diseases: "Enfermedades Crónicas", family_history: "Historial Familiar",
-                allergies_meds: "Alergias y Medicamentos Actuales", allergies: "Alergias (Medicamentos, Alimentos...)", current_medications: "Medicamentos y Suplementos Actuales",
-                surgeries_emergency: "Cirugías y Emergencias", surgeries: "Cirugías Previas", doctor_notes: "Notas del Médico", emergency_contact: "Contacto de Emergencia (Nombre y Teléfono)", save_file: "Guardar Perfil de Salud Completo",
-                chronic_placeholder: "ej., Hipertensión, Diabetes...", family_placeholder: "ej., Enfermedades cardíacas...", allergies_placeholder: "ej., Penicilina, frutos secos...", medications_placeholder: "ej., Ácido fólico, Omega 3...", surgeries_placeholder: "ej., Apendicectomía, cesárea...", notes_placeholder: "Instrucciones médicas...", emergency_placeholder: "Nombre y número de teléfono"
+                doc_title: "Documento Médico Personal", edit: "Editar", view: "Ver Documento", save_changes: "Guardar Cambios",
+                sec_basic: "Información Personal", full_name: "Nombre y Apellido", birth_date: "Fecha de Nacimiento", blood_type: "Tipo de Sangre", height_cm: "Altura", weight_kg: "Peso", pregnancy_status: "Estado de Embarazo",
+                sec_history: "Historial Médico y Quirúrgico", chronic_diseases: "Enfermedades Crónicas", genetic_diseases: "Enfermedades Genéticas", surgeries: "Cirugías",
+                sec_allergies: "Alergias", drug_allergy: "Alergia a Medicamentos", food_allergy: "Alergia Alimentaria",
+                sec_meds_tests: "Medicamentos y Análisis", meds_photos: "Fotos de Medicamentos", tests_photos: "Análisis por Fecha",
+                sec_emergency: "Emergencias y Contactos", close_person: "Persona Cercana"
             }
         };
 
-        function saveHealthData() {
-            const healthData = {
-                bloodType: document.getElementById("bloodTypeInput").value,
-                birthDate: document.getElementById("birthDateInput").value,
-                height: document.getElementById("heightInput").value,
-                weight: document.getElementById("weightInput").value,
-                chronic: document.getElementById("chronicInput").value,
-                familyHistory: document.getElementById("familyHistoryInput").value,
-                allergies: document.getElementById("allergiesInput").value,
-                medications: document.getElementById("medicationsInput").value,
-                surgeries: document.getElementById("surgeriesInput").value,
-                doctorNotes: document.getElementById("doctorNotesInput").value,
-                emergency: document.getElementById("emergencyInput").value
-            };
-            localStorage.setItem('si7aComprehensiveHealthFile', JSON.stringify(healthData));
-            alert(currentLang === 'ar' ? "تم حفظ الملف الصحي الشامل بنجاح!" : "Comprehensive health file saved successfully!");
+        window.togglePregnancyInput = function(val) {
+            const details = document.getElementById("editPregnancyDetails");
+            details.style.display = (val === 'نعم') ? 'block' : 'none';
         }
 
-        document.getElementById("saveHealthFileBtn").addEventListener("click", saveHealthData);
+        window.toggleDrugInput = function(val) {
+            const details = document.getElementById("editDrugAllergyDetails");
+            details.style.display = (val === 'نعم') ? 'block' : 'none';
+        }
 
-        function loadHealthData() {
-            const saved = JSON.parse(localStorage.getItem('si7aComprehensiveHealthFile'));
-            if (saved) {
-                document.getElementById("bloodTypeInput").value = saved.bloodType || 'A+';
-                document.getElementById("birthDateInput").value = saved.birthDate || '';
-                document.getElementById("heightInput").value = saved.height || '';
-                document.getElementById("weightInput").value = saved.weight || '';
-                document.getElementById("chronicInput").value = saved.chronic || '';
-                document.getElementById("familyHistoryInput").value = saved.familyHistory || '';
-                document.getElementById("allergiesInput").value = saved.allergies || '';
-                document.getElementById("medicationsInput").value = saved.medications || '';
-                document.getElementById("surgeriesInput").value = saved.surgeries || '';
-                document.getElementById("doctorNotesInput").value = saved.doctorNotes || '';
-                document.getElementById("emergencyInput").value = saved.emergency || '';
+        window.toggleFoodInput = function(val) {
+            const details = document.getElementById("editFoodAllergyDetails");
+            details.style.display = (val === 'نعم') ? 'block' : 'none';
+        }
+
+        // Toggle Edit / View Mode
+        const toggleBtn = document.getElementById("toggleEditModeBtn");
+        toggleBtn.addEventListener("click", () => {
+            isEditing = !isEditing;
+            const viewContainer = document.getElementById("viewModeContainer");
+            const editContainer = document.getElementById("editModeContainer");
+            const btnText = document.getElementById("editBtnText");
+            const btnIcon = toggleBtn.querySelector("i");
+
+            if (isEditing) {
+                viewContainer.style.display = "none";
+                editContainer.style.display = "flex";
+                btnText.textContent = translations[currentLang]['view'] || 'معاينة الوثيقة';
+                btnIcon.className = "fa-solid fa-file-lines";
+            } else {
+                editContainer.style.display = "none";
+                viewContainer.style.display = "flex";
+                btnText.textContent = translations[currentLang]['edit'] || 'تعديل';
+                btnIcon.className = "fa-solid fa-pen-to-square";
             }
+        });
+
+        // دالة لجلب أحدث وزن مسجل من قياسات الصحة
+        function getLatestWeightFromMetrics() {
+            try {
+                const metrics = JSON.parse(localStorage.getItem('si7aHealthMetrics')) || [];
+                if (metrics.length > 0) {
+                    // فرز حسب التاريخ أو اختيار الأحدث
+                    const latest = metrics[metrics.length - 1];
+                    if (latest && latest.weight) {
+                        return latest.weight + " كغ";
+                    }
+                }
+            } catch (e) {}
+            return null;
+        }
+
+        // Handle Image Uploads
+        document.getElementById("editMedsFiles").addEventListener("change", function(e) {
+            const files = e.target.files;
+            medsImages = [];
+            const preview = document.getElementById("editMedsPreview");
+            preview.innerHTML = "";
+            for (let file of files) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    medsImages.push(event.target.result);
+                    const img = document.createElement("img");
+                    img.src = event.target.result;
+                    img.className = "thumb-img";
+                    preview.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById("editTestsFiles").addEventListener("change", function(e) {
+            const files = e.target.files;
+            testsImages = [];
+            const preview = document.getElementById("editTestsPreview");
+            preview.innerHTML = "";
+            for (let file of files) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    testsImages.push({ date: new Date().toLocaleDateString(), src: event.target.result });
+                    const img = document.createElement("img");
+                    img.src = event.target.result;
+                    img.className = "thumb-img";
+                    preview.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function saveDocument() {
+            const docData = {
+                fullName: document.getElementById("editFullName").value,
+                birthDate: document.getElementById("editBirthDate").value,
+                bloodType: document.getElementById("editBloodType").value,
+                height: document.getElementById("editHeight").value,
+                weight: document.getElementById("editWeight").value,
+                pregnancyChoice: document.getElementById("editPregnancyChoice").value,
+                pregnancyDetails: document.getElementById("editPregnancyDetails").value,
+                chronic: document.getElementById("editChronic").value,
+                genetic: document.getElementById("editGenetic").value,
+                surgeries: document.getElementById("editSurgeries").value,
+                drugAllergyChoice: document.getElementById("editDrugAllergyChoice").value,
+                drugAllergyDetails: document.getElementById("editDrugAllergyDetails").value,
+                foodAllergyChoice: document.getElementById("editFoodAllergyChoice").value,
+                foodAllergyDetails: document.getElementById("editFoodAllergyDetails").value,
+                closePerson: document.getElementById("editClosePerson").value,
+                medsImages: medsImages,
+                testsImages: testsImages
+            };
+
+            localStorage.setItem('si7aInteractiveMedicalDoc', JSON.stringify(docData));
+            alert(currentLang === 'ar' ? "تم حفظ التغييرات بنجاح وعرض الوثيقة!" : "Changes saved successfully!");
+            loadDocument();
+            toggleBtn.click();
+        }
+
+        document.getElementById("saveDocBtn").addEventListener("click", saveDocument);
+
+        function loadDocument() {
+            const saved = JSON.parse(localStorage.getItem('si7aInteractiveMedicalDoc')) || {};
+            
+            // جلب الوزن من القياسات الصحية إذا لم يكن محفوظاً مسبقاً في الوثيقة
+            const liveWeight = getLatestWeightFromMetrics();
+            const displayWeight = saved.weight || liveWeight || '--';
+
+            document.getElementById("viewFullName").textContent = saved.fullName || '--';
+            document.getElementById("viewBirthDate").textContent = saved.birthDate || '--';
+            document.getElementById("viewBloodType").textContent = saved.bloodType || 'A+';
+            document.getElementById("viewHeight").textContent = saved.height ? saved.height + " سم" : '--';
+            document.getElementById("viewWeight").textContent = displayWeight;
+            document.getElementById("viewPregnancyStatus").textContent = saved.pregnancyChoice === 'نعم' ? `نعم (${saved.pregnancyDetails || ''})` : 'لا';
+            document.getElementById("viewChronic").textContent = saved.chronic || 'لا يوجد';
+            document.getElementById("viewGenetic").textContent = saved.genetic || 'لا يوجد';
+            document.getElementById("viewSurgeries").textContent = saved.surgeries || 'لا يوجد';
+            
+            document.getElementById("viewDrugAllergy").textContent = saved.drugAllergyChoice === 'نعم' ? `نعم (${saved.drugAllergyDetails})` : 'لا';
+            document.getElementById("viewFoodAllergy").textContent = saved.foodAllergyChoice === 'نعم' ? `نعم (${saved.foodAllergyDetails})` : 'لا';
+            document.getElementById("viewClosePerson").textContent = saved.closePerson || '--';
+
+            // Populate edit fields
+            document.getElementById("editFullName").value = saved.fullName || '';
+            document.getElementById("editBirthDate").value = saved.birthDate || '';
+            document.getElementById("editBloodType").value = saved.bloodType || 'A+';
+            document.getElementById("editHeight").value = saved.height || '';
+            document.getElementById("editWeight").value = saved.weight || liveWeight || '';
+            
+            document.getElementById("editPregnancyChoice").value = saved.pregnancyChoice || 'لا';
+            togglePregnancyInput(saved.pregnancyChoice);
+            document.getElementById("editPregnancyDetails").value = saved.pregnancyDetails || '';
+
+            document.getElementById("editChronic").value = saved.chronic || '';
+            document.getElementById("editGenetic").value = saved.genetic || '';
+            document.getElementById("editSurgeries").value = saved.surgeries || '';
+            
+            document.getElementById("editDrugAllergyChoice").value = saved.drugAllergyChoice || 'لا';
+            toggleDrugInput(saved.drugAllergyChoice);
+            document.getElementById("editDrugAllergyDetails").value = saved.drugAllergyDetails || '';
+
+            document.getElementById("editFoodAllergyChoice").value = saved.foodAllergyChoice || 'لا';
+            toggleFoodInput(saved.foodAllergyChoice);
+            document.getElementById("editFoodAllergyDetails").value = saved.foodAllergyDetails || '';
+
+            document.getElementById("editClosePerson").value = saved.closePerson || '';
+
+            medsImages = saved.medsImages || [];
+            testsImages = saved.testsImages || [];
+
+            // Render view images
+            const medsView = document.getElementById("viewMedsContainer");
+            medsView.innerHTML = medsImages.length > 0 ? "" : "لا توجد صور مضافة";
+            medsImages.forEach(src => {
+                const img = document.createElement("img");
+                img.src = src;
+                img.className = "thumb-img";
+                medsView.appendChild(img);
+            });
+
+            const testsView = document.getElementById("viewTestsContainer");
+            testsView.innerHTML = testsImages.length > 0 ? "" : "لا توجد تحاليل مضافة";
+            testsImages.forEach(item => {
+                const wrapper = document.createElement("div");
+                wrapper.style.display = "flex";
+                wrapper.style.flexDirection = "column";
+                wrapper.style.alignItems = "center";
+                const img = document.createElement("img");
+                img.src = item.src;
+                img.className = "thumb-img";
+                const span = document.createElement("span");
+                span.style.fontSize = "9px";
+                span.style.color = "#1E3A8A";
+                span.textContent = item.date;
+                wrapper.appendChild(img);
+                wrapper.appendChild(span);
+                testsView.appendChild(wrapper);
+            });
         }
 
         function setLanguage(lang) {
@@ -572,13 +915,6 @@
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang] && translations[lang][key]) {
                     element.textContent = translations[lang][key];
-                }
-            });
-
-            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
-                const key = element.getAttribute('data-i18n-placeholder');
-                if (translations[lang] && translations[lang][key]) {
-                    element.placeholder = translations[lang][key];
                 }
             });
 
@@ -604,7 +940,7 @@
         });
 
         setLanguage(currentLang);
-        loadHealthData();
+        loadDocument();
     </script>
 </body>
 
