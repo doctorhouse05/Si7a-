@@ -359,12 +359,16 @@
 
                 <div class="results-box">
                     <div class="result-card-item">
-                        <span class="result-title"><i class="fa-solid fa-flag-checkered" style="color: #2563EB;"></i> <span data-i18n="due_date">المتوقع للولادة:</span></span>
-                        <span class="result-value" id="dueDateVal">--</span>
+                        <span class="result-title"><i class="fa-solid fa-calendar-days" style="color: #8B5CF6;"></i> <span data-i18n="current_month">الشهر الحالي:</span></span>
+                        <span class="result-value" id="currentMonthVal">--</span>
                     </div>
                     <div class="result-card-item">
                         <span class="result-title"><i class="fa-solid fa-clock" style="color: #D97706;"></i> <span data-i18n="current_week">الأسبوع الحالي:</span></span>
                         <span class="result-value" id="currentWeekVal">--</span>
+                    </div>
+                    <div class="result-card-item">
+                        <span class="result-title"><i class="fa-solid fa-flag-checkered" style="color: #2563EB;"></i> <span data-i18n="due_date">المتوقع للولادة:</span></span>
+                        <span class="result-value" id="dueDateVal">--</span>
                     </div>
                     <div class="result-card-item">
                         <span class="result-title"><i class="fa-solid fa-hourglass-half" style="color: #EC4899;"></i> <span data-i18n="remaining_days">الأيام المتبقية:</span></span>
@@ -454,22 +458,22 @@
             ar: {
                 welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
                 last_period_date: "تاريخ بداية آخر دورة شهرية", calculate: "حساب موعد الولادة", calculation_results: "نتائج الحمل",
-                due_date: "المتوقع للولادة:", current_week: "الأسبوع الحالي:", remainingDays: "الأيام المتبقية:", week: "الأسبوع", day: "يوم"
+                current_month: "الشهر الحالي:", due_date: "المتوقع للولادة:", current_week: "الأسبوع الحالي:", remaining_days: "الأيام المتبقية:", week: "الأسبوع", day: "يوم", month: "الشهر"
             },
             en: {
                 welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
                 last_period_date: "Last Period Start Date", calculate: "Calculate Due Date", calculation_results: "Pregnancy Results",
-                due_date: "Estimated Due Date:", current_week: "Current Week:", remainingDays: "Remaining Days:", week: "Week", day: "days"
+                current_month: "Current Month:", due_date: "Estimated Due Date:", current_week: "Current Week:", remaining_days: "Remaining Days:", week: "Week", day: "days", month: "Month"
             },
             fr: {
                 welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
                 last_period_date: "Date des dernières règles", calculate: "Calculer la date d'accouchement", calculation_results: "Résultats de grossesse",
-                due_date: "Date d'accouchement prévue:", current_week: "Semaine actuelle:", remainingDays: "Jours restants:", week: "Semaine", day: "jours"
+                current_month: "Mois actuel:", due_date: "Date d'accouchement prévue:", current_week: "Semaine actuelle:", remaining_days: "Jours restants:", week: "Semaine", day: "jours", month: "Mois"
             },
             es: {
                 welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario", diet_plan: "Plan de dieta", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
                 last_period_date: "Fecha del último periodo", calculate: "Calcular fecha de parto", calculation_results: "Resultados del embarazo",
-                due_date: "Fecha estimada de parto:", current_week: "Semana actual:", remainingDays: "Días restantes:", week: "Semana", day: "días"
+                current_month: "Mes actual:", due_date: "Fecha estimada de parto:", current_week: "Semana actual:", remaining_days: "Días restantes:", week: "Semana", day: "días", month: "Mes"
             }
         };
 
@@ -495,6 +499,9 @@
 
             const currentWeek = Math.floor(diffDays / 7);
             const currentDayOfWk = diffDays % 7;
+            
+            // Calculate Current Month (Each month is approx 4.33 weeks or 30 days)
+            const currentMonth = Math.min(9, Math.floor(diffDays / 30) + 1);
 
             // Remaining Days to Due Date
             const remTime = dueDate - today;
@@ -503,8 +510,9 @@
             const t = translations[currentLang] || translations['ar'];
             const langCode = currentLang === 'ar' ? 'ar-EG' : (currentLang === 'fr' ? 'fr-FR' : (currentLang === 'es' ? 'es-ES' : 'en-US'));
 
-            document.getElementById("dueDateVal").textContent = dueDate.toLocaleDateString(langCode, { year: 'numeric', month: 'short', day: 'numeric' });
+            document.getElementById("currentMonthVal").textContent = `${t.month} ${currentMonth}`;
             document.getElementById("currentWeekVal").textContent = `${currentWeek} ${t.week} (${currentDayOfWk} ${t.day})`;
+            document.getElementById("dueDateVal").textContent = dueDate.toLocaleDateString(langCode, { year: 'numeric', month: 'short', day: 'numeric' });
             document.getElementById("remainingDaysVal").textContent = `${remDays} ${t.day}`;
 
             document.getElementById("resultsCard").style.display = "flex";
