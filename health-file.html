@@ -180,6 +180,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            justify-content: space-between;
         }
 
         .info-row {
@@ -251,7 +252,7 @@
         .emergency-name { font-size: 11px; font-weight: bold; }
         .emergency-number { font-size: 13px; font-weight: bold; color: #DC2626; }
 
-        /* Image Upload Box */
+        /* Image Upload Box & Thumbnails */
         .upload-box {
             display: flex;
             flex-direction: column;
@@ -265,17 +266,58 @@
 
         .preview-container {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             flex-wrap: wrap;
             margin-top: 4px;
         }
 
         .thumb-img {
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             object-fit: cover;
             border-radius: 8px;
             border: 1px solid #ccc;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .thumb-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Lightbox Modal for Image Zoom */
+        .lightbox-modal {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .save-btn {
@@ -444,43 +486,41 @@
                     <!-- Meds & Tests Photos -->
                     <div class="section-box">
                         <div class="section-title"><i class="fa-solid fa-pills"></i> <span data-i18n="sec_meds_tests">الأدوية والتحاليل الطبية</span></div>
-                        <div class="info-label" data-i18n="meds_photos">صور الأدوية:</div>
+                        <div class="info-label" data-i18n="meds_photos">صور الأدوية (اضغط للتكبير):</div>
                         <div class="preview-container" id="viewMedsContainer">لا توجد صور مضافة</div>
-                        <div class="info-label" data-i18n="tests_photos" style="margin-top: 6px;">صور التحاليل حسب التاريخ:</div>
+                        <div class="info-label" data-i18n="tests_photos" style="margin-top: 6px;">صور التحاليل حسب التاريخ (اضغط للتكبير):</div>
                         <div class="preview-container" id="viewTestsContainer">لا توجد تحاليل مضافة</div>
                     </div>
 
-                    <!-- Emergency Numbers -->
+                    <!-- Emergency Numbers (Country Dynamic) -->
                     <div class="section-box" style="border-right-color: #DC2626;">
-                        <div class="section-title" style="color: #991B1B;"><i class="fa-solid fa-phone-volume"></i> <span data-i18n="sec_emergency">أرقام الطوارئ والمقربين</span></div>
+                        <div class="section-title" style="color: #991B1B;">
+                            <span><i class="fa-solid fa-phone-volume"></i> <span data-i18n="sec_emergency">أرقام الطوارئ والمقربين</span></span>
+                            <span id="displayCountryBadge" style="font-size: 10px; background: #fee2e2; padding: 2px 6px; border-radius: 6px;">الجزائر</span>
+                        </div>
                         <div class="info-row"><span class="info-label" data-i18n="close_person">شخص قريب:</span><span class="info-val" id="viewClosePerson">--</span></div>
-                        <div class="emergency-grid" style="margin-top: 8px;">
-                            <a href="tel:14" class="emergency-item">
-                                <i class="fa-solid fa-fire-extinguisher"></i>
-                                <span class="emergency-name">الحماية المدنية</span>
-                                <span class="emergency-number">14</span>
-                            </a>
-                            <a href="tel:1548" class="emergency-item">
-                                <i class="fa-solid fa-shield-halved"></i>
-                                <span class="emergency-name">الشرطة (1548 / 17)</span>
-                                <span class="emergency-number">1548</span>
-                            </a>
-                            <a href="tel:1055" class="emergency-item">
-                                <i class="fa-solid fa-user-shield"></i>
-                                <span class="emergency-name">الدرك الوطني</span>
-                                <span class="emergency-number">1055</span>
-                            </a>
-                            <a href="tel:14" class="emergency-item">
-                                <i class="fa-solid fa-truck-medical"></i>
-                                <span class="emergency-name">الإسعاف SAMU</span>
-                                <span class="emergency-number">14</span>
-                            </a>
+                        <div class="emergency-grid" style="margin-top: 8px;" id="viewEmergencyGrid">
+                            <!-- Populated dynamically based on country -->
                         </div>
                     </div>
                 </div>
 
                 <!-- EDIT MODE -->
                 <div id="editModeContainer" style="display: none; flex-direction: column; gap: 12px;">
+                    <!-- Country Selector for Emergency Numbers -->
+                    <div class="form-group" style="background: rgba(37, 99, 235, 0.08); padding: 8px; border-radius: 10px;">
+                        <label class="form-label-edit" data-i18n="select_country">اختر الدولة لتحديد أرقام الطوارئ تلقائياً</label>
+                        <select id="editCountrySelect" class="select-field" onchange="updateEmergencyNumbersPreview(this.value)">
+                            <option value="DZ">الجزائر (Algeria)</option>
+                            <option value="MA">المغرب (Morocco)</option>
+                            <option value="TN">تونس (Tunisia)</option>
+                            <option value="EG">مصر (Egypt)</option>
+                            <option value="FR">فرنسا (France)</option>
+                            <option value="SA">المملكة العربية السعودية (KSA)</option>
+                            <option value="OTHER">دولة أخرى (Other)</option>
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label class="form-label-edit" data-i18n="full_name">الاسم واللقب</label>
                         <input type="text" id="editFullName" class="input-field" placeholder="مثال: سارة بن علي">
@@ -507,7 +547,7 @@
                             <input type="text" id="editHeight" class="input-field" placeholder="مثال: 165">
                         </div>
                         <div class="form-group">
-                            <label class="form-label-edit" data-i18n="weight_kg">الوزن (كغ) - (يُجلب تلقائياً من القياسات)</label>
+                            <label class="form-label-edit" data-i18n="weight_kg">الوزن (كغ) - (من القياسات)</label>
                             <input type="text" id="editWeight" class="input-field" placeholder="مثال: 65">
                         </div>
                     </div>
@@ -555,16 +595,16 @@
                         <input type="text" id="editFoodAllergyDetails" class="input-field" style="margin-top: 4px; display: none;" placeholder="اذكر الطعام الذي لديك حساسية منه...">
                     </div>
 
-                    <!-- Meds Photos Upload -->
+                    <!-- Meds Photos Upload (Multiple) -->
                     <div class="form-group upload-box">
-                        <label class="form-label-edit" data-i18n="meds_photos">تصوير الأدوية الحالية</label>
+                        <label class="form-label-edit" data-i18n="meds_photos">تصوير الأدوية الحالية (يمكنك اختيار عدة صور)</label>
                         <input type="file" id="editMedsFiles" class="file-input" accept="image/*" multiple>
                         <div class="preview-container" id="editMedsPreview"></div>
                     </div>
 
-                    <!-- Tests Photos Upload -->
+                    <!-- Tests Photos Upload (Multiple) -->
                     <div class="form-group upload-box">
-                        <label class="form-label-edit" data-i18n="tests_photos">تصوير التحاليل حسب التاريخ</label>
+                        <label class="form-label-edit" data-i18n="tests_photos">تصوير التحاليل حسب التاريخ (يمكنك اختيار عدة صور)</label>
                         <input type="file" id="editTestsFiles" class="file-input" accept="image/*" multiple>
                         <div class="preview-container" id="editTestsPreview"></div>
                     </div>
@@ -583,6 +623,12 @@
             </div>
 
         </main>
+
+        <!-- Lightbox Modal for Image Zoom -->
+        <div class="lightbox-modal" id="lightboxModal">
+            <span class="lightbox-close" id="lightboxClose">&times;</span>
+            <img class="lightbox-content" id="lightboxImg" alt="Enlarged Medical Image">
+        </div>
 
         <!-- Bottom Navigation Bar -->
         <nav class="bottom-nav">
@@ -633,6 +679,17 @@
         let medsImages = [];
         let testsImages = [];
 
+        // قواعد أرقام الطوارئ حسب الدول العربية والعالمية
+        const emergencyData = {
+            DZ: { name: "الجزائر", civil: "14", police: "1548", gendarmerie: "1055", samu: "14" },
+            MA: { name: "المغرب", civil: "15", police: "19", gendarmerie: "177", samu: "15" },
+            TN: { name: "تونس", civil: "198", police: "197", gendarmerie: "193", samu: "190" },
+            EG: { name: "مصر", civil: "180", police: "122", gendarmerie: "122", samu: "123" },
+            FR: { name: "فرنسا", civil: "18", police: "17", gendarmerie: "17", samu: "15" },
+            SA: { name: "السعودية", civil: "998", police: "999", gendarmerie: "999", samu: "997" },
+            OTHER: { name: "دولي / عام", civil: "112", police: "911", gendarmerie: "911", samu: "112" }
+        };
+
         function syncSettingsAndProfile(user = null) {
             const storedName = localStorage.getItem('userDisplayName');
             const storedAvatar = localStorage.getItem('userPhotoURL');
@@ -670,7 +727,8 @@
                 sec_history: "التاريخ المرضي والجراحي", chronic_diseases: "الأمراض المزمنة", genetic_diseases: "الأمراض الوراثية", surgeries: "التاريخ الجراحي",
                 sec_allergies: "الحساسية", drug_allergy: "الحساسية من الأدوية", food_allergy: "الحساسية من الطعام",
                 sec_meds_tests: "الأدوية والتحاليل الطبية", meds_photos: "صور الأدوية الحالية", tests_photos: "صور التحاليل حسب التاريخ",
-                sec_emergency: "أرقام الطوارئ والمقربين", close_person: "شخص قريب للتواصل"
+                sec_emergency: "أرقام الطوارئ والمقربين", close_person: "شخص قريب للتواصل", select_country: "اختر الدولة لتحديد أرقام الطوارئ",
+                civil_defense: "الحماية المدنية", police_name: "الشرطة", gendarmerie_name: "الدرك الوطني", samu_name: "الإسعاف SAMU"
             },
             en: {
                 welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
@@ -679,7 +737,8 @@
                 sec_history: "Medical & Surgical History", chronic_diseases: "Chronic Diseases", genetic_diseases: "Genetic Diseases", surgeries: "Surgeries",
                 sec_allergies: "Allergies", drug_allergy: "Drug Allergy", food_allergy: "Food Allergy",
                 sec_meds_tests: "Meds & Medical Tests", meds_photos: "Current Meds Photos", tests_photos: "Tests Photos by Date",
-                sec_emergency: "Emergency & Contacts", close_person: "Close Contact Person"
+                sec_emergency: "Emergency & Contacts", close_person: "Close Contact Person", select_country: "Select Country for Emergency Numbers",
+                civil_defense: "Civil Defense", police_name: "Police", gendarmerie_name: "Gendarmerie", samu_name: "SAMU Ambulance"
             },
             fr: {
                 welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
@@ -688,7 +747,8 @@
                 sec_history: "Historique Médical & Chirurgical", chronic_diseases: "Maladies Chroniques", genetic_diseases: "Maladies Génétiques", surgeries: "Chirurgies",
                 sec_allergies: "Allergies", drug_allergy: "Allergie Médicamenteuse", food_allergy: "Allergie Alimentaire",
                 sec_meds_tests: "Médicaments & Analyses", meds_photos: "Photos des Médicaments", tests_photos: "Analyses par Date",
-                sec_emergency: "Urgences & Contacts", close_person: "Personne Proche"
+                sec_emergency: "Urgences & Contacts", close_person: "Personne Proche", select_country: "Sélectionner le Pays",
+                civil_defense: "Protection Civile", police_name: "Police", gendarmerie_name: "Gendarmerie", samu_name: "SAMU"
             },
             es: {
                 welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario", diet_plan: "Plan de dieta", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
@@ -697,7 +757,8 @@
                 sec_history: "Historial Médico y Quirúrgico", chronic_diseases: "Enfermedades Crónicas", genetic_diseases: "Enfermedades Genéticas", surgeries: "Cirugías",
                 sec_allergies: "Alergias", drug_allergy: "Alergia a Medicamentos", food_allergy: "Alergia Alimentaria",
                 sec_meds_tests: "Medicamentos y Análisis", meds_photos: "Fotos de Medicamentos", tests_photos: "Análisis por Fecha",
-                sec_emergency: "Emergencias y Contactos", close_person: "Persona Cercana"
+                sec_emergency: "Emergencias y Contactos", close_person: "Persona Cercana", select_country: "Seleccionar País",
+                civil_defense: "Protección Civil", police_name: "Policía", gendarmerie_name: "Gendarmería", samu_name: "Ambulancia SAMU"
             }
         };
 
@@ -715,6 +776,26 @@
             const details = document.getElementById("editFoodAllergyDetails");
             details.style.display = (val === 'نعم') ? 'block' : 'none';
         }
+
+        // Lightbox Zoom Logic
+        const lightboxModal = document.getElementById("lightboxModal");
+        const lightboxImg = document.getElementById("lightboxImg");
+        const lightboxClose = document.getElementById("lightboxClose");
+
+        function openLightbox(src) {
+            lightboxImg.src = src;
+            lightboxModal.style.display = "flex";
+        }
+
+        lightboxClose.addEventListener("click", () => {
+            lightboxModal.style.display = "none";
+        });
+
+        lightboxModal.addEventListener("click", (e) => {
+            if (e.target === lightboxModal) {
+                lightboxModal.style.display = "none";
+            }
+        });
 
         // Toggle Edit / View Mode
         const toggleBtn = document.getElementById("toggleEditModeBtn");
@@ -738,12 +819,42 @@
             }
         });
 
-        // دالة لجلب أحدث وزن مسجل من قياسات الصحة
+        // دالة تحديث عرض أرقام الطوارئ حسب الدولة المختارة
+        window.updateEmergencyNumbersPreview = function(countryCode) {
+            const data = emergencyData[countryCode] || emergencyData['DZ'];
+            document.getElementById("displayCountryBadge").textContent = data.name;
+            const grid = document.getElementById("viewEmergencyGrid");
+            const t = translations[currentLang] || translations['ar'];
+
+            grid.innerHTML = `
+                <a href="tel:${data.civil}" class="emergency-item">
+                    <i class="fa-solid fa-fire-extinguisher"></i>
+                    <span class="emergency-name">${t.civil_defense}</span>
+                    <span class="emergency-number">${data.civil}</span>
+                </a>
+                <a href="tel:${data.police}" class="emergency-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span class="emergency-name">${t.police_name}</span>
+                    <span class="emergency-number">${data.police}</span>
+                </a>
+                <a href="tel:${data.gendarmerie}" class="emergency-item">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <span class="emergency-name">${t.gendarmerie_name}</span>
+                    <span class="emergency-number">${data.gendarmerie}</span>
+                </a>
+                <a href="tel:${data.samu}" class="emergency-item">
+                    <i class="fa-solid fa-truck-medical"></i>
+                    <span class="emergency-name">${t.samu_name}</span>
+                    <span class="emergency-number">${data.samu}</span>
+                </a>
+            `;
+        }
+
+        // جلب أحدث وزن مسجل من القياسات الصحية
         function getLatestWeightFromMetrics() {
             try {
                 const metrics = JSON.parse(localStorage.getItem('si7aHealthMetrics')) || [];
                 if (metrics.length > 0) {
-                    // فرز حسب التاريخ أو اختيار الأحدث
                     const latest = metrics[metrics.length - 1];
                     if (latest && latest.weight) {
                         return latest.weight + " كغ";
@@ -753,45 +864,59 @@
             return null;
         }
 
-        // Handle Image Uploads
+        // Handle Multiple Meds Images Upload
         document.getElementById("editMedsFiles").addEventListener("change", function(e) {
             const files = e.target.files;
-            medsImages = [];
             const preview = document.getElementById("editMedsPreview");
-            preview.innerHTML = "";
             for (let file of files) {
                 const reader = new FileReader();
                 reader.onload = function(event) {
                     medsImages.push(event.target.result);
-                    const img = document.createElement("img");
-                    img.src = event.target.result;
-                    img.className = "thumb-img";
-                    preview.appendChild(img);
+                    renderEditPreviews();
                 }
                 reader.readAsDataURL(file);
             }
         });
 
+        // Handle Multiple Tests Images Upload
         document.getElementById("editTestsFiles").addEventListener("change", function(e) {
             const files = e.target.files;
-            testsImages = [];
-            const preview = document.getElementById("editTestsPreview");
-            preview.innerHTML = "";
             for (let file of files) {
                 const reader = new FileReader();
                 reader.onload = function(event) {
                     testsImages.push({ date: new Date().toLocaleDateString(), src: event.target.result });
-                    const img = document.createElement("img");
-                    img.src = event.target.result;
-                    img.className = "thumb-img";
-                    preview.appendChild(img);
+                    renderEditPreviews();
                 }
                 reader.readAsDataURL(file);
             }
         });
 
+        function renderEditPreviews() {
+            const medsPrev = document.getElementById("editMedsPreview");
+            medsPrev.innerHTML = "";
+            medsImages.forEach((src, idx) => {
+                const img = document.createElement("img");
+                img.src = src;
+                img.className = "thumb-img";
+                img.onclick = () => openLightbox(src);
+                medsPrev.appendChild(img);
+            });
+
+            const testsPrev = document.getElementById("editTestsPreview");
+            testsPrev.innerHTML = "";
+            testsImages.forEach((item, idx) => {
+                const img = document.createElement("img");
+                img.src = item.src;
+                img.className = "thumb-img";
+                img.onclick = () => openLightbox(item.src);
+                testsPrev.appendChild(img);
+            });
+        }
+
         function saveDocument() {
+            const countryVal = document.getElementById("editCountrySelect").value;
             const docData = {
+                country: countryVal,
                 fullName: document.getElementById("editFullName").value,
                 birthDate: document.getElementById("editBirthDate").value,
                 bloodType: document.getElementById("editBloodType").value,
@@ -822,7 +947,6 @@
         function loadDocument() {
             const saved = JSON.parse(localStorage.getItem('si7aInteractiveMedicalDoc')) || {};
             
-            // جلب الوزن من القياسات الصحية إذا لم يكن محفوظاً مسبقاً في الوثيقة
             const liveWeight = getLatestWeightFromMetrics();
             const displayWeight = saved.weight || liveWeight || '--';
 
@@ -839,6 +963,10 @@
             document.getElementById("viewDrugAllergy").textContent = saved.drugAllergyChoice === 'نعم' ? `نعم (${saved.drugAllergyDetails})` : 'لا';
             document.getElementById("viewFoodAllergy").textContent = saved.foodAllergyChoice === 'نعم' ? `نعم (${saved.foodAllergyDetails})` : 'لا';
             document.getElementById("viewClosePerson").textContent = saved.closePerson || '--';
+
+            const countryVal = saved.country || 'DZ';
+            document.getElementById("editCountrySelect").value = countryVal;
+            updateEmergencyNumbersPreview(countryVal);
 
             // Populate edit fields
             document.getElementById("editFullName").value = saved.fullName || '';
@@ -867,14 +995,16 @@
 
             medsImages = saved.medsImages || [];
             testsImages = saved.testsImages || [];
+            renderEditPreviews();
 
-            // Render view images
+            // Render view images with click to zoom
             const medsView = document.getElementById("viewMedsContainer");
             medsView.innerHTML = medsImages.length > 0 ? "" : "لا توجد صور مضافة";
             medsImages.forEach(src => {
                 const img = document.createElement("img");
                 img.src = src;
                 img.className = "thumb-img";
+                img.onclick = () => openLightbox(src);
                 medsView.appendChild(img);
             });
 
@@ -888,6 +1018,7 @@
                 const img = document.createElement("img");
                 img.src = item.src;
                 img.className = "thumb-img";
+                img.onclick = () => openLightbox(item.src);
                 const span = document.createElement("span");
                 span.style.fontSize = "9px";
                 span.style.color = "#1E3A8A";
@@ -920,6 +1051,8 @@
 
             const langSelect = document.getElementById("languageSelect");
             if (langSelect) langSelect.value = lang;
+
+            updateEmergencyNumbersPreview(document.getElementById("editCountrySelect").value);
         }
 
         document.getElementById("languageSelect").addEventListener("change", (e) => {
