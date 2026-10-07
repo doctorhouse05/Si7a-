@@ -164,10 +164,9 @@
             transition: stroke-dasharray 0.5s ease;
         }
 
-        .segment-menstruation { stroke: #EC4899; } /* الوردي: فترة الحيض */
-        .segment-follicular { stroke: #3B82F6; }   /* الأزرق: المرحلة الجريبية */
-        .segment-ovulation { stroke: #8B5CF6; }    /* البنفسجي: يوم التبويض */
-        .segment-luteal { stroke: #10B981; }       /* الأخضر: المرحلة اللوتينجية */
+        .segment-menstruation { stroke: #EC4899; } /* وردي: مرحلة الحيض */
+        .segment-ovulation { stroke: #8B5CF6; }    /* بنفجسي: فترة تبويض */
+        .segment-safe { stroke: #10B981; }          /* أخضر: فترة عدم حدوث الحمل */
 
         /* Central Circle Info Display */
         .wheel-center-info {
@@ -221,10 +220,10 @@
 
         /* Color Legend */
         .phases-legend {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 10px;
             background: rgba(30, 58, 138, 0.05);
             border-radius: 14px;
             margin-top: 4px;
@@ -233,8 +232,8 @@
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 11px;
+            gap: 8px;
+            font-size: 11.5px;
             font-weight: bold;
             color: #334155;
         }
@@ -502,9 +501,9 @@
                 <div class="cycle-wheel-container">
                     <svg class="cycle-svg-wheel" viewBox="0 0 100 100">
                         <circle class="wheel-segment segment-menstruation" id="arcMenstruation" cx="50" cy="50" r="38" stroke-dasharray="0 238.76" stroke-dashoffset="0" />
-                        <circle class="wheel-segment segment-follicular" id="arcFollicular" cx="50" cy="50" r="38" stroke-dasharray="0 238.76" stroke-dashoffset="0" />
+                        <circle class="wheel-segment segment-safe" id="arcSafeBefore" cx="50" cy="50" r="38" stroke-dasharray="0 238.76" stroke-dashoffset="0" />
                         <circle class="wheel-segment segment-ovulation" id="arcOvulation" cx="50" cy="50" r="38" stroke-dasharray="0 238.76" stroke-dashoffset="0" />
-                        <circle class="wheel-segment segment-luteal" id="arcLuteal" cx="50" cy="50" r="38" stroke-dasharray="0 238.76" stroke-dashoffset="0" />
+                        <circle class="wheel-segment segment-safe" id="arcSafeAfter" cx="50" cy="50" r="38" stroke-dasharray="0 238.76" stroke-dashoffset="0" />
                     </svg>
 
                     <!-- Center Display Info -->
@@ -522,19 +521,15 @@
                 <div class="phases-legend">
                     <div class="legend-item">
                         <div class="legend-color" style="background: #EC4899;"></div>
-                        <span data-i18n="phase_menstrual">Menstrual Phase</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: #3B82F6;"></div>
-                        <span data-i18n="phase_follicular">Follicular Phase</span>
+                        <span data-i18n="phase_menstrual">مرحلة الحيض</span>
                     </div>
                     <div class="legend-item">
                         <div class="legend-color" style="background: #8B5CF6;"></div>
-                        <span data-i18n="phase_ovulation">Ovulation Day</span>
+                        <span data-i18n="phase_ovulation">فترة تبويض</span>
                     </div>
                     <div class="legend-item">
                         <div class="legend-color" style="background: #10B981;"></div>
-                        <span data-i18n="phase_luteal">Luteal Phase</span>
+                        <span data-i18n="phase_safe">فترة عدم حدوث الحمل</span>
                     </div>
                 </div>
 
@@ -663,7 +658,7 @@
                 save_data: "Save & Calculate", home: "Home", challenge: "Challenge", health_file: "Health File",
                 settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge",
                 diet_plan: "Diet Plan", pregnancy_calc: "Pregnancy Calculator",
-                phase_menstrual: "Menstrual Phase", phase_follicular: "Follicular Phase", phase_ovulation: "Ovulation Phase", phase_luteal: "Luteal Phase"
+                phase_menstrual: "Menstrual Phase", phase_ovulation: "Ovulation Period", phase_safe: "Infertile Period (Safe)"
             },
             ar: {
                 welcome: "أهلاً بك", period_tracker: "دورتي الشهرية", day: "اليوم", days_left: "أيام متبقية",
@@ -672,7 +667,7 @@
                 save_data: "حفظ وحساب", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي",
                 settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي",
                 diet_plan: "نظامي الغذائي", pregnancy_calc: "حاسبة الحمل",
-                phase_menstrual: "مرحلة الحيض", phase_follicular: "المرحلة الجريبية", phase_ovulation: "مرحلة التبويض", phase_luteal: "المرحلة اللوتينجية"
+                phase_menstrual: "مرحلة الحيض", phase_ovulation: "فترة تبويض", phase_safe: "فترة عدم حدوث الحمل"
             },
             fr: {
                 welcome: "Bienvenue", period_tracker: "Suivi des règles", day: "Jour", days_left: "jours restants",
@@ -681,7 +676,7 @@
                 save_data: "Enregistrer et Calculer", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé",
                 settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien",
                 diet_plan: "Régime alimentaire", pregnancy_calc: "Calculateur de grossesse",
-                phase_menstrual: "Phase menstruelle", phase_follicular: "Phase folliculaire", phase_ovulation: "Phase d'ovulation", phase_luteal: "Phase lutéale"
+                phase_menstrual: "Phase menstruelle", phase_ovulation: "Période d'ovulation", phase_safe: "Période non fertile"
             },
             es: {
                 welcome: "Bienvenido", period_tracker: "Control del periodo", day: "Día", days_left: "días restantes",
@@ -690,7 +685,7 @@
                 save_data: "Guardar y Calcular", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud",
                 settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario",
                 diet_plan: "Plan de dieta", pregnancy_calc: "Calculadora de embarazo",
-                phase_menstrual: "Fase menstrual", phase_follicular: "Fase folicular", phase_ovulation: "Fase de ovulación", phase_luteal: "Fase lútea"
+                phase_menstrual: "Fase menstrual", phase_ovulation: "Periodo de ovulación", phase_safe: "Periodo infértil"
             }
         };
 
@@ -698,44 +693,39 @@
         function updateCycleWheelArcs(cycleLength, periodDuration, currentCycleDay) {
             const circumference = 2 * Math.PI * 38; // ~ 238.76
 
-            // Calculate days per phase
-            const mDays = periodDuration; // Menstrual
-            const oDay = 1; // Ovulation exact day (~ Day 14 for 28-day cycle)
-            const ovulationDayNum = Math.round(cycleLength - 14);
-            const fDays = Math.max(1, ovulationDayNum - mDays - 1); // Follicular
-            const lDays = Math.max(1, cycleLength - (mDays + fDays + oDay)); // Luteal
+            const mDays = periodDuration; // مرحلة الحيض
+            const fertileDays = 6; // فترة التبويض (عادة 5 أيام قبل الإباضة ويوم الإباضة)
+            const safeDays = Math.max(1, cycleLength - (mDays + fertileDays)); // فترة عدم حدوث الحمل
 
-            // Arc lengths
             const mLen = (mDays / cycleLength) * circumference;
-            const fLen = (fDays / cycleLength) * circumference;
-            const oLen = (oDay / cycleLength) * circumference;
-            const lLen = (lDays / cycleLength) * circumference;
+            const safeBeforeLen = (Math.floor(safeDays / 2) / cycleLength) * circumference;
+            const oLen = (fertileDays / cycleLength) * circumference;
+            const safeAfterLen = (Math.ceil(safeDays / 2) / cycleLength) * circumference;
 
-            // Apply SVG Arc properties
             const arcM = document.getElementById("arcMenstruation");
-            const arcF = document.getElementById("arcFollicular");
+            const arcSafeBefore = document.getElementById("arcSafeBefore");
             const arcO = document.getElementById("arcOvulation");
-            const arcL = document.getElementById("arcLuteal");
+            const arcSafeAfter = document.getElementById("arcSafeAfter");
 
             let offset = 0;
             arcM.setAttribute("stroke-dasharray", `${mLen} ${circumference - mLen}`);
             arcM.setAttribute("stroke-dashoffset", `-${offset}`);
             offset += mLen;
 
-            arcF.setAttribute("stroke-dasharray", `${fLen} ${circumference - fLen}`);
-            arcF.setAttribute("stroke-dashoffset", `-${offset}`);
-            offset += fLen;
+            arcSafeBefore.setAttribute("stroke-dasharray", `${safeBeforeLen} ${circumference - safeBeforeLen}`);
+            arcSafeBefore.setAttribute("stroke-dashoffset", `-${offset}`);
+            offset += safeBeforeLen;
 
             arcO.setAttribute("stroke-dasharray", `${oLen} ${circumference - oLen}`);
             arcO.setAttribute("stroke-dashoffset", `-${offset}`);
             offset += oLen;
 
-            arcL.setAttribute("stroke-dasharray", `${lLen} ${circumference - lLen}`);
-            arcL.setAttribute("stroke-dashoffset", `-${offset}`);
+            arcSafeAfter.setAttribute("stroke-dasharray", `${safeAfterLen} ${circumference - safeAfterLen}`);
+            arcSafeAfter.setAttribute("stroke-dashoffset", `-${offset}`);
 
-            // Update Pointer Angle
+            // Pointer Angle
             const pointerAngle = ((currentCycleDay - 1) / cycleLength) * 360 - 90;
-            const radius = 93; // Pointer orbit radius in px
+            const radius = 93;
             const angleRad = (pointerAngle * Math.PI) / 180;
             const x = 105 + radius * Math.cos(angleRad) - 7;
             const y = 105 + radius * Math.sin(angleRad) - 7;
@@ -755,15 +745,12 @@
             const lastDate = new Date(lastDateVal);
             const today = new Date();
 
-            // Next Period Date
             const nextPeriod = new Date(lastDate);
             nextPeriod.setDate(lastDate.getDate() + cycleLength);
 
-            // Ovulation Date = Next Period - 14 Days
             const ovulation = new Date(nextPeriod);
             ovulation.setDate(nextPeriod.getDate() - 14);
 
-            // Days Calculation
             const diffTime = today - lastDate;
             let currentCycleDay = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
             
@@ -778,8 +765,8 @@
 
             const t = translations[currentLang] || translations['en'];
 
-            // Determine Phase Name
-            let phaseKey = 'phase_luteal';
+            // Determine Phase Name & Color
+            let phaseKey = 'phase_safe';
             let phaseColor = '#10B981';
 
             const ovulationDayNum = Math.round(cycleLength - 14);
@@ -787,10 +774,7 @@
             if (currentCycleDay <= periodDuration) {
                 phaseKey = 'phase_menstrual';
                 phaseColor = '#EC4899';
-            } else if (currentCycleDay < ovulationDayNum) {
-                phaseKey = 'phase_follicular';
-                phaseColor = '#3B82F6';
-            } else if (currentCycleDay === ovulationDayNum) {
+            } else if (currentCycleDay >= ovulationDayNum - 3 && currentCycleDay <= ovulationDayNum + 2) {
                 phaseKey = 'phase_ovulation';
                 phaseColor = '#8B5CF6';
             }
@@ -808,10 +792,8 @@
             document.getElementById("nextPeriodDate").textContent = nextPeriod.toLocaleDateString(langCode, options);
             document.getElementById("ovulationDate").textContent = ovulation.toLocaleDateString(langCode, options);
 
-            // Draw SVG Arc Wheel & Pointer
             updateCycleWheelArcs(cycleLength, periodDuration, currentCycleDay);
 
-            // Save Data to LocalStorage
             const periodData = {
                 lastDate: lastDateVal,
                 cycleLength: cycleLength,
@@ -820,7 +802,6 @@
             localStorage.setItem('periodData', JSON.stringify(periodData));
         }
 
-        // Load Saved Data
         function loadSavedData() {
             const saved = JSON.parse(localStorage.getItem('periodData'));
             if (saved) {
@@ -837,7 +818,6 @@
 
         document.getElementById("saveCycleBtn").addEventListener("click", calculateCycle);
 
-        // Language Switcher Function
         function setLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('appLanguage', lang);
@@ -866,7 +846,6 @@
             setLanguage(e.target.value);
         });
 
-        // Sidebar Actions
         const sidebar = document.getElementById("sidebar");
         const overlay = document.getElementById("sidebarOverlay");
 
@@ -880,7 +859,6 @@
             overlay.style.display = "none";
         });
 
-        // Initialize App
         setLanguage(currentLang);
         loadSavedData();
     </script>
