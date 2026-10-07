@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#2563EB">
-    <title>Si7a | قياساتي الصحية</title>
+    <title>Si7a | Health Metrics</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- Chart.js لرسم المخططات البيانية -->
@@ -410,7 +410,7 @@
                     <button class="btn-toggle-view" onclick="toggleView('weightView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">عرض</span></button>
                 </div>
                 <div class="input-row">
-                    <input type="number" step="0.1" id="inputWeight" class="input-mini" placeholder="أدخل الوزن (كجم)">
+                    <input type="number" step="0.1" id="inputWeight" class="input-mini" data-i18n-placeholder="weight_placeholder" placeholder="أدخل الوزن (كجم)">
                     <button class="btn-action" onclick="addRecord('weight')"><i class="fa-solid fa-plus"></i> <span data-i18n="add">إضافة</span></button>
                 </div>
                 <div class="view-panel" id="weightView">
@@ -431,7 +431,7 @@
                     <button class="btn-toggle-view" onclick="toggleView('heightView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">عرض</span></button>
                 </div>
                 <div class="input-row">
-                    <input type="number" step="0.1" id="inputHeight" class="input-mini" placeholder="أدخل الطول (سم)">
+                    <input type="number" step="0.1" id="inputHeight" class="input-mini" data-i18n-placeholder="height_placeholder" placeholder="أدخل الطول (سم)">
                     <button class="btn-action" onclick="addRecord('height')" style="background: #059669;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">إضافة</span></button>
                 </div>
                 <div class="view-panel" id="heightView">
@@ -453,7 +453,7 @@
                 <div class="bmi-box">
                     <div style="font-size: 12px; color: #64748B;" data-i18n="bmi_score">النتيجة الحالية</div>
                     <div style="font-size: 22px; font-weight: bold; color: #1E3A8A;" id="bmiValue">--</div>
-                    <div id="bmiBadge" class="bmi-badge" style="background: #94A3B8;">أدخل الوزن والطول لحساب المؤشر</div>
+                    <div id="bmiBadge" class="bmi-badge" style="background: #94A3B8;" data-i18n="bmi_hint_default">أدخل الوزن والطول لحساب المؤشر</div>
                 </div>
             </div>
 
@@ -464,7 +464,7 @@
                     <button class="btn-toggle-view" onclick="toggleView('waistView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">عرض</span></button>
                 </div>
                 <div class="input-row">
-                    <input type="number" step="0.1" id="inputWaist" class="input-mini" placeholder="محيط الخصر (سم)">
+                    <input type="number" step="0.1" id="inputWaist" class="input-mini" data-i18n-placeholder="waist_placeholder" placeholder="محيط الخصر (سم)">
                     <button class="btn-action" onclick="addRecord('waist')" style="background: #EC4899;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">إضافة</span></button>
                 </div>
                 <div class="view-panel" id="waistView">
@@ -485,9 +485,9 @@
                     <button class="btn-toggle-view" onclick="toggleView('bpView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">عرض</span></button>
                 </div>
                 <div class="input-row">
-                    <input type="number" id="inputSys" class="input-mini" placeholder="الانقباضي (120)">
-                    <input type="number" id="inputDia" class="input-mini" placeholder="الانبساطي (80)">
-                    <input type="number" id="inputPulse" class="input-mini" placeholder="النبض/د">
+                    <input type="number" id="inputSys" class="input-mini" data-i18n-placeholder="sys_placeholder" placeholder="الانقباضي (120)">
+                    <input type="number" id="inputDia" class="input-mini" data-i18n-placeholder="dia_placeholder" placeholder="الانبساطي (80)">
+                    <input type="number" id="inputPulse" class="input-mini" data-i18n-placeholder="pulse_placeholder" placeholder="النبض/د">
                     <button class="btn-action" onclick="addBPRecord()" style="background: #DC2626; width: 100%; margin-top: 4px;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">إضافة القراءة</span></button>
                 </div>
                 <div class="view-panel" id="bpView">
@@ -516,7 +516,7 @@
                     <button class="btn-toggle-view" onclick="toggleView('sugarView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">عرض</span></button>
                 </div>
                 <div class="input-row">
-                    <input type="number" step="0.01" id="inputSugar" class="input-mini" placeholder="القيمة g/L">
+                    <input type="number" step="0.01" id="inputSugar" class="input-mini" data-i18n-placeholder="sugar_placeholder" placeholder="القيمة g/L">
                     <select id="inputSugarTiming" class="select-mini">
                         <option value="fasting" data-i18n="fasting">صيام</option>
                         <option value="after_bf" data-i18n="after_bf">بعد الفطور (2h)</option>
@@ -551,7 +551,7 @@
                     <button class="btn-toggle-view" onclick="toggleView('tempView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">عرض</span></button>
                 </div>
                 <div class="input-row">
-                    <input type="number" step="0.1" id="inputTemp" class="input-mini" placeholder="درجة الحرارة (°C)">
+                    <input type="number" step="0.1" id="inputTemp" class="input-mini" data-i18n-placeholder="temp_placeholder" placeholder="درجة الحرارة (°C)">
                     <button class="btn-action" onclick="addRecord('temp')" style="background: #EA580C;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">إضافة</span></button>
                 </div>
                 <div class="view-panel" id="tempView">
@@ -572,7 +572,7 @@
                     <button class="btn-toggle-view" onclick="toggleView('oxyView')"><i class="fa-solid fa-chart-line"></i> <span data-i18n="view">عرض</span></button>
                 </div>
                 <div class="input-row">
-                    <input type="number" id="inputOxy" class="input-mini" placeholder="نسبة الأكسجين (%)">
+                    <input type="number" id="inputOxy" class="input-mini" data-i18n-placeholder="oxy_placeholder" placeholder="نسبة الأكسجين (%)">
                     <button class="btn-action" onclick="addRecord('oxy')" style="background: #0284C7;"><i class="fa-solid fa-plus"></i> <span data-i18n="add">إضافة</span></button>
                 </div>
                 <div class="view-panel" id="oxyView">
@@ -618,10 +618,10 @@
             <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">الرئيسية</span></a></li>
             <li><a href="health-metrics.html" class="active"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">قياساتي الصحية</span></a></li>
             <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">التحدي اليومي</span></a></li>
-            <li><a href="#"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">نظامي الغذائي</span></a></li>
-            <li><a href="health-metrics.html"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">ملفي الصحي</span></a></li>
-            <li><a href="#"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">دورتي الشهرية</span></a></li>
-            <li><a href="#"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">حاسبة الحمل</span></a></li>
+            <li><a href="diet-plan.html"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">نظامي الغذائي</span></a></li>
+            <li><a href="health-file.html"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">ملفي الصحي</span></a></li>
+            <li><a href="period-tracker.html"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">دورتي الشهرية</span></a></li>
+            <li><a href="pregnancy-calculator.html"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">حاسبة الحمل</span></a></li>
             <li><a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">الإعدادات</span></a></li>
         </ul>
     </aside>
@@ -633,12 +633,41 @@
         let currentLang = localStorage.getItem('appLanguage') || 'ar';
         let charts = {};
 
-        // Auth Listener
+        // Sync Profile & Settings
+        function syncSettingsAndProfile(user = null) {
+            const storedName = localStorage.getItem('userDisplayName');
+            const storedAvatar = localStorage.getItem('userPhotoURL');
+
+            if (storedName) {
+                document.getElementById("userName").textContent = storedName;
+            } else if (user && user.displayName) {
+                document.getElementById("userName").textContent = user.displayName;
+            }
+
+            if (storedAvatar) {
+                document.getElementById("userAvatar").src = storedAvatar;
+            } else if (user && user.photoURL) {
+                document.getElementById("userAvatar").src = user.photoURL;
+            }
+
+            const savedLang = localStorage.getItem('appLanguage') || 'ar';
+            if (savedLang !== currentLang) {
+                setLanguage(savedLang);
+            }
+        }
+
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                if (user.displayName) document.getElementById("userName").textContent = user.displayName;
-                if (user.photoURL) document.getElementById("userAvatar").src = user.photoURL;
+                syncSettingsAndProfile(user);
             }
+        });
+
+        window.addEventListener('storage', () => {
+            syncSettingsAndProfile(auth.currentUser);
+        });
+
+        window.addEventListener('focus', () => {
+            syncSettingsAndProfile(auth.currentUser);
         });
 
         const translations = {
@@ -646,29 +675,37 @@
                 welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
                 weight_measurement: "قياس الوزن", height_measurement: "قياس الطول", bmi_calculator: "حاسبة مؤشر كتلة الجسم (BMI)", waist_measurement: "محيط الخصر", blood_pressure: "ضغط الدم ونبضات القلب", blood_sugar: "قياس السكر في الدم", temperature: "درجة الحرارة", oxygen: "نسبة الأكسجين (SpO2)",
                 view: "عرض", add: "إضافة", action: "إجراء", date: "التاريخ", time: "التوقيت", weight: "الوزن (كجم)", height: "الطول (سم)", waist: "الخصر (سم)", temp: "الحرارة (°م)", systolic: "الانقباضي", diastolic: "الانبساطي", pulse: "النبض", timing: "التوقيت", value: "القيمة",
-                bmi_score: "النتيجة الحالية", underweight: "نحافة", normal: "وزن مثالي", overweight: "زيادة وزن", mod_obesity: "سمنة معتدلة", sev_obesity: "سمنة مفرطة",
-                fasting: "صيام", after_bf: "بعد الفطور (2h)", before_lunch: "قبل الغداء", after_lunch: "بعد الغداء (2h)", before_dinner: "قبل العشاء", after_dinner: "بعد العشاء (2h)"
+                bmi_score: "النتيجة الحالية", underweight: "نحافة", normal: "وزن مثالي", overweight: "زيادة وزن", mod_obesity: "سمنة معتدلة", sev_obesity: "سمنة مفرطة", bmi_hint_default: "أدخل الوزن والطول لحساب المؤشر",
+                fasting: "صيام", after_bf: "بعد الفطور (2h)", before_lunch: "قبل الغداء", after_lunch: "بعد الغداء (2h)", before_dinner: "قبل العشاء", after_dinner: "بعد العشاء (2h)",
+                weight_placeholder: "أدخل الوزن (كجم)", height_placeholder: "أدخل الطول (سم)", waist_placeholder: "محيط الخصر (سم)", temp_placeholder: "درجة الحرارة (°C)", oxy_placeholder: "نسبة الأكسجين (%)",
+                sys_placeholder: "الانقباضي (120)", dia_placeholder: "الانبساطي (80)", pulse_placeholder: "النبض/د", sugar_placeholder: "القيمة g/L"
             },
             en: {
                 welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
                 weight_measurement: "Weight Tracking", height_measurement: "Height Tracking", bmi_calculator: "BMI Calculator", waist_measurement: "Waist Circumference", blood_pressure: "Blood Pressure & Pulse", blood_sugar: "Blood Sugar", temperature: "Body Temperature", oxygen: "Oxygen Saturation (SpO2)",
                 view: "View", add: "Add", action: "Action", date: "Date", time: "Time", weight: "Weight (kg)", height: "Height (cm)", waist: "Waist (cm)", temp: "Temp (°C)", systolic: "Sys", diastolic: "Dia", pulse: "Pulse", timing: "Timing", value: "Value",
-                bmi_score: "Body Mass Index", underweight: "Underweight", normal: "Normal Weight", overweight: "Overweight", mod_obesity: "Moderate Obesity", sev_obesity: "Severe Obesity",
-                fasting: "Fasting", after_bf: "2h After Breakfast", before_lunch: "Before Lunch", after_lunch: "2h After Lunch", before_dinner: "Before Dinner", after_dinner: "2h After Dinner"
+                bmi_score: "Body Mass Index", underweight: "Underweight", normal: "Normal Weight", overweight: "Overweight", mod_obesity: "Moderate Obesity", sev_obesity: "Severe Obesity", bmi_hint_default: "Enter weight & height to calculate BMI",
+                fasting: "Fasting", after_bf: "2h After Breakfast", before_lunch: "Before Lunch", after_lunch: "2h After Lunch", before_dinner: "Before Dinner", after_dinner: "2h After Dinner",
+                weight_placeholder: "Enter weight (kg)", height_placeholder: "Enter height (cm)", waist_placeholder: "Waist (cm)", temp_placeholder: "Temperature (°C)", oxy_placeholder: "Oxygen (%)",
+                sys_placeholder: "Systolic (120)", dia_placeholder: "Diastolic (80)", pulse_placeholder: "Pulse/m", sugar_placeholder: "Value g/L"
             },
             fr: {
                 welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
                 weight_measurement: "Suivi du poids", height_measurement: "Suivi de la taille", bmi_calculator: "Calculateur IMC", waist_measurement: "Tour de taille", blood_pressure: "Pression artérielle & Pouls", blood_sugar: "Glycémie", temperature: "Température corporel", oxygen: "Saturation en oxygène (SpO2)",
                 view: "Voir", add: "Ajouter", action: "Action", date: "Date", time: "Heure", weight: "Poids (kg)", height: "Taille (cm)", waist: "Taille (cm)", temp: "Temp (°C)", systolic: "Sys", diastolic: "Dia", pulse: "Pouls", timing: "Moment", value: "Valeur",
-                bmi_score: "Indice de masse corporelle", underweight: "Insuffisance pondérale", normal: "Poids normal", overweight: "Surpoids", mod_obesity: "Obésité modérée", sev_obesity: "Obésité sévère",
-                fasting: "À jeun", after_bf: "2h Après Petit-déjeuner", before_lunch: "Avant Déjeuner", after_lunch: "2h Après Déjeuner", before_dinner: "Avant Dîner", after_dinner: "2h Après Dîner"
+                bmi_score: "Indice de masse corporelle", underweight: "Insuffisance pondérale", normal: "Poids normal", overweight: "Surpoids", mod_obesity: "Obésité modérée", sev_obesity: "Obésité sévère", bmi_hint_default: "Entrez poids et taille pour l'IMC",
+                fasting: "À jeun", after_bf: "2h Après Petit-déjeuner", before_lunch: "Avant Déjeuner", after_lunch: "2h Après Déjeuner", before_dinner: "Avant Dîner", after_dinner: "2h Après Dîner",
+                weight_placeholder: "Entrez le poids (kg)", height_placeholder: "Entrez la taille (cm)", waist_placeholder: "Tour de taille (cm)", temp_placeholder: "Température (°C)", oxy_placeholder: "Oxygène (%)",
+                sys_placeholder: "Systolique (120)", dia_placeholder: "Diastolique (80)", pulse_placeholder: "Pouls/min", sugar_placeholder: "Valeur g/L"
             },
             es: {
                 welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario", diet_plan: "Plan de dieta", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
                 weight_measurement: "Control de peso", height_measurement: "Control de altura", bmi_calculator: "Calculadora IMC", waist_measurement: "Perímetro de cintura", blood_pressure: "Presión arterial y Pulso", blood_sugar: "Glucosa en sangre", temperature: "Temperatura corporal", oxygen: "Saturación de oxígeno (SpO2)",
                 view: "Ver", add: "Añadir", action: "Acción", date: "Fecha", time: "Hora", weight: "Peso (kg)", height: "Altura (cm)", waist: "Cintura (cm)", temp: "Temp (°C)", systolic: "Sys", diastolic: "Dia", pulse: "Pulso", timing: "Momento", value: "Valor",
-                bmi_score: "Índice de Masa Corporal", underweight: "Bajo peso", normal: "Peso normal", overweight: "Sobrepeso", mod_obesity: "Obesidad moderada", sev_obesity: "Obesidad severa",
-                fasting: "Ayunas", after_bf: "2h Después del desayuno", before_lunch: "Antes del almuerzo", after_lunch: "2h Después del almuerzo", before_dinner: "Antes de la cena", after_dinner: "2h Después de la cena"
+                bmi_score: "Índice de Masa Corporal", underweight: "Bajo peso", normal: "Peso normal", overweight: "Sobrepeso", mod_obesity: "Obesidad moderada", sev_obesity: "Obesidad severa", bmi_hint_default: "Ingrese peso y altura para el IMC",
+                fasting: "Ayunas", after_bf: "2h Después del desayuno", before_lunch: "Antes del almuerzo", after_lunch: "2h Después del almuerzo", before_dinner: "Antes de la cena", after_dinner: "2h Después de la cena",
+                weight_placeholder: "Ingrese peso (kg)", height_placeholder: "Ingrese altura (cm)", waist_placeholder: "Cintura (cm)", temp_placeholder: "Temperatura (°C)", oxy_placeholder: "Oxígeno (%)",
+                sys_placeholder: "Sistólica (120)", dia_placeholder: "Diastólica (80)", pulse_placeholder: "Pulso/m", sugar_placeholder: "Valor g/L"
             }
         };
 
@@ -734,7 +771,6 @@
             saveMetrics();
         }
 
-        // Delete Row Functions
         window.deleteRecord = function(type, index) {
             if (metricsData[type] && metricsData[type][index] !== undefined) {
                 metricsData[type].splice(index, 1);
@@ -773,7 +809,7 @@
                 }
             } else {
                 bmiValueEl.textContent = '--';
-                bmiBadgeEl.textContent = 'أدخل الوزن والطول لحساب المؤشر';
+                bmiBadgeEl.textContent = t.bmi_hint_default;
                 bmiBadgeEl.style.background = '#94A3B8';
             }
         }
@@ -894,6 +930,13 @@
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang] && translations[lang][key]) {
                     element.textContent = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-i18n-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    element.placeholder = translations[lang][key];
                 }
             });
 
