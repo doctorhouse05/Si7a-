@@ -140,33 +140,109 @@
             border-bottom: 1px solid rgba(30, 58, 138, 0.12);
         }
 
-        /* Cycle Highlight Circle */
-        .cycle-status-ring {
-            width: 150px;
-            height: 150px;
+        /* Cycle Wheel Diagram Wrapper */
+        .cycle-wheel-container {
+            position: relative;
+            width: 210px;
+            height: 210px;
+            margin: 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* SVG Multi-phase Wheel */
+        .cycle-svg-wheel {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .wheel-segment {
+            fill: none;
+            stroke-width: 22;
+            transition: stroke-dasharray 0.5s ease;
+        }
+
+        .segment-menstruation { stroke: #EC4899; } /* الوردي: فترة الحيض */
+        .segment-follicular { stroke: #3B82F6; }   /* الأزرق: المرحلة الجريبية */
+        .segment-ovulation { stroke: #8B5CF6; }    /* البنفسجي: يوم التبويض */
+        .segment-luteal { stroke: #10B981; }       /* الأخضر: المرحلة اللوتينجية */
+
+        /* Central Circle Info Display */
+        .wheel-center-info {
+            position: absolute;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #EC4899, #DB2777);
-            color: #fff;
+            background: #ffffff;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.08), 0 4px 15px rgba(0,0,0,0.06);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin: 10px auto;
-            box-shadow: 0 8px 20px rgba(236, 72, 153, 0.35);
             text-align: center;
             padding: 10px;
+            z-index: 2;
         }
 
-        .cycle-days-num {
-            font-size: 28px;
+        .cycle-day-current {
+            font-size: 26px;
             font-weight: bold;
+            color: #1E3A8A;
             line-height: 1;
         }
 
-        .cycle-status-label {
+        .cycle-phase-title {
             font-size: 11px;
+            font-weight: bold;
+            color: #EC4899;
             margin-top: 4px;
-            opacity: 0.9;
+        }
+
+        .cycle-sub-text {
+            font-size: 10px;
+            color: #64748B;
+            margin-top: 2px;
+        }
+
+        /* Pointer Dot on Wheel */
+        .wheel-pointer {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: #ffffff;
+            border: 3px solid #1E3A8A;
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            z-index: 3;
+            transition: all 0.5s ease;
+        }
+
+        /* Color Legend */
+        .phases-legend {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            padding: 8px;
+            background: rgba(30, 58, 138, 0.05);
+            border-radius: 14px;
+            margin-top: 4px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #334155;
+        }
+
+        .legend-color {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
         }
 
         /* Form Controls */
@@ -415,18 +491,54 @@
         <!-- Main Content -->
         <main class="tracker-content">
 
-            <!-- Cycle Status Circle Card -->
+            <!-- Interactive Cycle Wheel Diagram Card -->
             <div class="glass-card">
                 <div class="card-header-title">
                     <i class="fa-solid fa-droplet" style="color: #EC4899;"></i>
                     <span data-i18n="period_tracker">Period Tracker</span>
                 </div>
 
-                <div class="cycle-status-ring">
-                    <div class="cycle-days-num" id="daysLeftNum">--</div>
-                    <div class="cycle-status-label" id="statusTextLabel" data-i18n="days_left">Days Left</div>
+                <!-- Multi-Phase SVG Cycle Wheel -->
+                <div class="cycle-wheel-container">
+                    <svg class="cycle-svg-wheel" viewBox="0 0 100 100">
+                        <circle class="wheel-segment segment-menstruation" id="arcMenstruation" cx="50" cy="50" r="38" stroke-dasharray="0 238.76" stroke-dashoffset="0" />
+                        <circle class="wheel-segment segment-follicular" id="arcFollicular" cx="50" cy="50" r="38" stroke-dasharray="0 238.76" stroke-dashoffset="0" />
+                        <circle class="wheel-segment segment-ovulation" id="arcOvulation" cx="50" cy="50" r="38" stroke-dasharray="0 238.76" stroke-dashoffset="0" />
+                        <circle class="wheel-segment segment-luteal" id="arcLuteal" cx="50" cy="50" r="38" stroke-dasharray="0 238.76" stroke-dashoffset="0" />
+                    </svg>
+
+                    <!-- Center Display Info -->
+                    <div class="wheel-center-info">
+                        <div class="cycle-day-current" id="dayCurrentDisplay">Day --</div>
+                        <div class="cycle-phase-title" id="phaseTitleDisplay">--</div>
+                        <div class="cycle-sub-text" id="daysLeftSubText">--</div>
+                    </div>
+
+                    <!-- Current Day Pointer -->
+                    <div class="wheel-pointer" id="wheelPointer"></div>
                 </div>
 
+                <!-- Phases Legend -->
+                <div class="phases-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #EC4899;"></div>
+                        <span data-i18n="phase_menstrual">Menstrual Phase</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #3B82F6;"></div>
+                        <span data-i18n="phase_follicular">Follicular Phase</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #8B5CF6;"></div>
+                        <span data-i18n="phase_ovulation">Ovulation Day</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #10B981;"></div>
+                        <span data-i18n="phase_luteal">Luteal Phase</span>
+                    </div>
+                </div>
+
+                <!-- Predictions List -->
                 <div class="predict-list">
                     <div class="predict-item">
                         <span class="predict-title" data-i18n="next_period">Next Period:</span>
@@ -545,49 +657,105 @@
         // Language Dictionary
         const translations = {
             en: {
-                welcome: "Welcome", period_tracker: "Period Tracker", days_left: "Days Left",
+                welcome: "Welcome", period_tracker: "Period Tracker", day: "Day", days_left: "days left",
                 next_period: "Next Period:", ovulation_day: "Ovulation Day:", cycle_settings: "Cycle Settings",
                 last_period_date: "Last Period Start Date", cycle_length: "Cycle Length (Days)", period_duration: "Period Duration (Days)",
                 save_data: "Save & Calculate", home: "Home", challenge: "Challenge", health_file: "Health File",
                 settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge",
-                diet_plan: "Diet Plan", pregnancy_calc: "Pregnancy Calculator"
+                diet_plan: "Diet Plan", pregnancy_calc: "Pregnancy Calculator",
+                phase_menstrual: "Menstrual Phase", phase_follicular: "Follicular Phase", phase_ovulation: "Ovulation Phase", phase_luteal: "Luteal Phase"
             },
             ar: {
-                welcome: "أهلاً بك", period_tracker: "دورتي الشهرية", days_left: "يوم متتبقي",
+                welcome: "أهلاً بك", period_tracker: "دورتي الشهرية", day: "اليوم", days_left: "أيام متبقية",
                 next_period: "الدورة القادمة:", ovulation_day: "يوم التبويض:", cycle_settings: "إعدادات الدورة",
                 last_period_date: "تاريخ بداية آخر دورة", cycle_length: "طول الدورة (أيام)", period_duration: "مدة الدورة (أيام)",
                 save_data: "حفظ وحساب", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي",
                 settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي",
-                diet_plan: "نظامي الغذائي", pregnancy_calc: "حاسبة الحمل"
+                diet_plan: "نظامي الغذائي", pregnancy_calc: "حاسبة الحمل",
+                phase_menstrual: "مرحلة الحيض", phase_follicular: "المرحلة الجريبية", phase_ovulation: "مرحلة التبويض", phase_luteal: "المرحلة اللوتينجية"
             },
             fr: {
-                welcome: "Bienvenue", period_tracker: "Suivi des règles", days_left: "Jours restants",
+                welcome: "Bienvenue", period_tracker: "Suivi des règles", day: "Jour", days_left: "jours restants",
                 next_period: "Prochaines règles:", ovulation_day: "Jour d'ovulation:", cycle_settings: "Paramètres du cycle",
                 last_period_date: "Date des dernières règles", cycle_length: "Durée du cycle (Jours)", period_duration: "Durée des règles (Jours)",
                 save_data: "Enregistrer et Calculer", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé",
                 settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien",
-                diet_plan: "Régime alimentaire", pregnancy_calc: "Calculateur de grossesse"
+                diet_plan: "Régime alimentaire", pregnancy_calc: "Calculateur de grossesse",
+                phase_menstrual: "Phase menstruelle", phase_follicular: "Phase folliculaire", phase_ovulation: "Phase d'ovulation", phase_luteal: "Phase lutéale"
             },
             es: {
-                welcome: "Bienvenido", period_tracker: "Control del periodo", days_left: "Días restantes",
+                welcome: "Bienvenido", period_tracker: "Control del periodo", day: "Día", days_left: "días restantes",
                 next_period: "Próximo periodo:", ovulation_day: "Día de ovulación:", cycle_settings: "Ajustes del ciclo",
                 last_period_date: "Fecha del último periodo", cycle_length: "Duración del ciclo (Días)", period_duration: "Duración del periodo (Días)",
                 save_data: "Guardar y Calcular", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud",
                 settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario",
-                diet_plan: "Plan de dieta", pregnancy_calc: "Calculadora de embarazo"
+                diet_plan: "Plan de dieta", pregnancy_calc: "Calculadora de embarazo",
+                phase_menstrual: "Fase menstrual", phase_follicular: "Fase folicular", phase_ovulation: "Fase de ovulación", phase_luteal: "Fase lútea"
             }
         };
+
+        // Render Multi-Phase Circle SVG Arc
+        function updateCycleWheelArcs(cycleLength, periodDuration, currentCycleDay) {
+            const circumference = 2 * Math.PI * 38; // ~ 238.76
+
+            // Calculate days per phase
+            const mDays = periodDuration; // Menstrual
+            const oDay = 1; // Ovulation exact day (~ Day 14 for 28-day cycle)
+            const ovulationDayNum = Math.round(cycleLength - 14);
+            const fDays = Math.max(1, ovulationDayNum - mDays - 1); // Follicular
+            const lDays = Math.max(1, cycleLength - (mDays + fDays + oDay)); // Luteal
+
+            // Arc lengths
+            const mLen = (mDays / cycleLength) * circumference;
+            const fLen = (fDays / cycleLength) * circumference;
+            const oLen = (oDay / cycleLength) * circumference;
+            const lLen = (lDays / cycleLength) * circumference;
+
+            // Apply SVG Arc properties
+            const arcM = document.getElementById("arcMenstruation");
+            const arcF = document.getElementById("arcFollicular");
+            const arcO = document.getElementById("arcOvulation");
+            const arcL = document.getElementById("arcLuteal");
+
+            let offset = 0;
+            arcM.setAttribute("stroke-dasharray", `${mLen} ${circumference - mLen}`);
+            arcM.setAttribute("stroke-dashoffset", `-${offset}`);
+            offset += mLen;
+
+            arcF.setAttribute("stroke-dasharray", `${fLen} ${circumference - fLen}`);
+            arcF.setAttribute("stroke-dashoffset", `-${offset}`);
+            offset += fLen;
+
+            arcO.setAttribute("stroke-dasharray", `${oLen} ${circumference - oLen}`);
+            arcO.setAttribute("stroke-dashoffset", `-${offset}`);
+            offset += oLen;
+
+            arcL.setAttribute("stroke-dasharray", `${lLen} ${circumference - lLen}`);
+            arcL.setAttribute("stroke-dashoffset", `-${offset}`);
+
+            // Update Pointer Angle
+            const pointerAngle = ((currentCycleDay - 1) / cycleLength) * 360 - 90;
+            const radius = 93; // Pointer orbit radius in px
+            const angleRad = (pointerAngle * Math.PI) / 180;
+            const x = 105 + radius * Math.cos(angleRad) - 7;
+            const y = 105 + radius * Math.sin(angleRad) - 7;
+
+            const pointer = document.getElementById("wheelPointer");
+            pointer.style.left = `${x}px`;
+            pointer.style.top = `${y}px`;
+        }
 
         function calculateCycle() {
             const lastDateVal = document.getElementById("lastPeriodInput").value;
             const cycleLength = parseInt(document.getElementById("cycleLengthInput").value) || 28;
+            const periodDuration = parseInt(document.getElementById("periodDurationInput").value) || 5;
 
             if (!lastDateVal) return;
 
             const lastDate = new Date(lastDateVal);
             const today = new Date();
 
-            // Next Period Date = Last Date + Cycle Length
+            // Next Period Date
             const nextPeriod = new Date(lastDate);
             nextPeriod.setDate(lastDate.getDate() + cycleLength);
 
@@ -595,23 +763,59 @@
             const ovulation = new Date(nextPeriod);
             ovulation.setDate(nextPeriod.getDate() - 14);
 
-            // Days left calculation
-            const diffTime = nextPeriod - today;
-            const daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-            document.getElementById("daysLeftNum").textContent = daysLeft > 0 ? daysLeft : 0;
+            // Days Calculation
+            const diffTime = today - lastDate;
+            let currentCycleDay = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
             
+            if (currentCycleDay > cycleLength) {
+                currentCycleDay = ((currentCycleDay - 1) % cycleLength) + 1;
+            } else if (currentCycleDay < 1) {
+                currentCycleDay = 1;
+            }
+
+            const diffTimeNext = nextPeriod - today;
+            const daysLeft = Math.ceil(diffTimeNext / (1000 * 60 * 60 * 24));
+
+            const t = translations[currentLang] || translations['en'];
+
+            // Determine Phase Name
+            let phaseKey = 'phase_luteal';
+            let phaseColor = '#10B981';
+
+            const ovulationDayNum = Math.round(cycleLength - 14);
+
+            if (currentCycleDay <= periodDuration) {
+                phaseKey = 'phase_menstrual';
+                phaseColor = '#EC4899';
+            } else if (currentCycleDay < ovulationDayNum) {
+                phaseKey = 'phase_follicular';
+                phaseColor = '#3B82F6';
+            } else if (currentCycleDay === ovulationDayNum) {
+                phaseKey = 'phase_ovulation';
+                phaseColor = '#8B5CF6';
+            }
+
+            document.getElementById("dayCurrentDisplay").textContent = `${t.day} ${currentCycleDay}`;
+            const phaseTitleEl = document.getElementById("phaseTitleDisplay");
+            phaseTitleEl.textContent = t[phaseKey];
+            phaseTitleEl.style.color = phaseColor;
+
+            document.getElementById("daysLeftSubText").textContent = `${daysLeft > 0 ? daysLeft : 0} ${t.days_left}`;
+
             const options = { year: 'numeric', month: 'short', day: 'numeric' };
             const langCode = currentLang === 'ar' ? 'ar-EG' : (currentLang === 'fr' ? 'fr-FR' : (currentLang === 'es' ? 'es-ES' : 'en-US'));
 
             document.getElementById("nextPeriodDate").textContent = nextPeriod.toLocaleDateString(langCode, options);
             document.getElementById("ovulationDate").textContent = ovulation.toLocaleDateString(langCode, options);
 
-            // Save to localStorage
+            // Draw SVG Arc Wheel & Pointer
+            updateCycleWheelArcs(cycleLength, periodDuration, currentCycleDay);
+
+            // Save Data to LocalStorage
             const periodData = {
                 lastDate: lastDateVal,
                 cycleLength: cycleLength,
-                periodDuration: document.getElementById("periodDurationInput").value
+                periodDuration: periodDuration
             };
             localStorage.setItem('periodData', JSON.stringify(periodData));
         }
@@ -625,7 +829,6 @@
                 document.getElementById("periodDurationInput").value = saved.periodDuration || 5;
                 calculateCycle();
             } else {
-                // Set default today date if empty
                 const today = new Date().toISOString().split('T')[0];
                 document.getElementById("lastPeriodInput").value = today;
                 calculateCycle();
@@ -634,7 +837,7 @@
 
         document.getElementById("saveCycleBtn").addEventListener("click", calculateCycle);
 
-        // Language Function
+        // Language Switcher Function
         function setLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('appLanguage', lang);
@@ -677,7 +880,7 @@
             overlay.style.display = "none";
         });
 
-        // Init
+        // Initialize App
         setLanguage(currentLang);
         loadSavedData();
     </script>
