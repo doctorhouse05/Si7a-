@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2563EB">
+    <title>Si7a | Pregnancy Calculator</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(165deg, #3B82F6 0%, #2563EB 40%, #1E3A8A 100%);
+            color: #fff;
+        }
+
+        .full-screen-container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 15px 15px 85px 15px;
+        }
+
+        /* Background Shapes */
+        .wave-bg-1 {
+            position: fixed;
+            top: -80px;
+            right: -80px;
+            width: 350px;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 45%;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .wave-bg-2 {
+            position: fixed;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 40%;
+            transform: rotate(25deg);
+            pointer-events: none;
+        }
+
+        /* Header */
+        .app-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 5;
+            margin-bottom: 15px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .avatar-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .welcome-text {
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content */
+        .page-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            z-index: 2;
+        }
+
+        /* Metallic White Cards */
+        .metallic-white-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(230, 240, 255, 0.88) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 22px;
+            padding: 16px;
+            color: #1E293B;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .card-header-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #1E3A8A;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(30, 58, 138, 0.12);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-label {
+            font-size: 12px;
+            font-weight: bold;
+            color: #1E3A8A;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(30, 58, 138, 0.2);
+            font-size: 13px;
+            font-weight: bold;
+            outline: none;
+            background: #fff;
+            color: #0F172A;
+        }
+
+        .calc-btn {
+            background: #2563EB;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .calc-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* Results Display Grid */
+        .results-box {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .result-card-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 14px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-right: 4px solid #2563EB;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+        }
+
+        html[dir="ltr"] .result-card-item {
+            border-right: none;
+            border-left: 4px solid #2563EB;
+        }
+
+        .result-title {
+            font-size: 12px;
+            font-weight: bold;
+            color: #1E3A8A;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .result-value {
+            font-size: 13px;
+            font-weight: bold;
+            color: #2563EB;
+        }
+
+        /* Solid Bottom Navigation Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            height: 62px;
+            background: #1E3A8A;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .nav-item {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-item i { font-size: 18px; }
+
+        .nav-item.active { color: #ffffff; font-weight: bold; }
+
+        /* Sidebar Drawer */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 1100;
+            display: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0; width: 270px; height: 100%;
+            background: #1E3A8A;
+            z-index: 1101;
+            transition: all 0.3s ease;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        html[dir="ltr"] .sidebar { left: -280px; border-right: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="ltr"] .sidebar.active { left: 0; }
+
+        html[dir="rtl"] .sidebar { right: -280px; border-left: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="rtl"] .sidebar.active { right: 0; }
+
+        .sidebar-header {
+            display: flex; align-items: center; gap: 10px;
+            padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 12px;
+        }
+
+        .sidebar-logo {
+            width: 38px; height: 38px; background: #fff; color: #2563EB;
+            border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px;
+        }
+
+        .language-selector-top {
+            margin-bottom: 15px; padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .language-selector-top label {
+            font-size: 11px; display: flex; align-items: center; gap: 6px;
+            margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); text-transform: uppercase;
+        }
+
+        .lang-select {
+            width: 100%; padding: 8px 10px; border-radius: 10px;
+            background: rgba(255, 255, 255, 0.25); color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4); font-size: 13px; font-weight: bold; outline: none;
+        }
+
+        .lang-select option { background: #1E3A8A; color: #fff; }
+
+        .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 6px; overflow-y: auto; flex: 1; }
+        .sidebar-menu a { color: #fff; text-decoration: none; padding: 10px 12px; font-size: 13px; border-radius: 10px; display: flex; align-items: center; gap: 10px; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { background: rgba(255, 255, 255, 0.2); }
+    </style>
+</head>
+
+<body>
+
+    <div class="full-screen-container">
+        <div class="wave-bg-1"></div>
+        <div class="wave-bg-2"></div>
+
+        <!-- Header -->
+        <header class="app-header">
+            <a href="settings.html" class="user-profile">
+                <img src="https://via.placeholder.com/100" id="userAvatar" class="avatar-img" alt="User Avatar">
+                <span class="welcome-text"><span data-i18n="welcome">أهلاً بك</span>، <span id="userName">سارة</span></span>
+            </a>
+            <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="page-content">
+
+            <!-- Input Card -->
+            <div class="metallic-white-card">
+                <div class="card-header-title">
+                    <i class="fa-solid fa-baby" style="color: #2563EB;"></i>
+                    <span data-i18n="pregnancy_calc">حاسبة الحمل</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" data-i18n="last_period_date">تاريخ بداية آخر دورة شهرية</label>
+                    <input type="date" id="lastPeriodDateInput" class="input-field">
+                </div>
+
+                <button class="calc-btn" id="calculatePregnancyBtn">
+                    <i class="fa-solid fa-calculator"></i>
+                    <span data-i18n="calculate">حساب موعد الولادة</span>
+                </button>
+            </div>
+
+            <!-- Results Card -->
+            <div class="metallic-white-card" id="resultsCard" style="display: none;">
+                <div class="card-header-title">
+                    <i class="fa-solid fa-calendar-check" style="color: #059669;"></i>
+                    <span data-i18n="calculation_results">نتائج الحمل</span>
+                </div>
+
+                <div class="results-box">
+                    <div class="result-card-item">
+                        <span class="result-title"><i class="fa-solid fa-flag-checkered" style="color: #2563EB;"></i> <span data-i18n="due_date">المتوقع للولادة:</span></span>
+                        <span class="result-value" id="dueDateVal">--</span>
+                    </div>
+                    <div class="result-card-item">
+                        <span class="result-title"><i class="fa-solid fa-clock" style="color: #D97706;"></i> <span data-i18n="current_week">الأسبوع الحالي:</span></span>
+                        <span class="result-value" id="currentWeekVal">--</span>
+                    </div>
+                    <div class="result-card-item">
+                        <span class="result-title"><i class="fa-solid fa-hourglass-half" style="color: #EC4899;"></i> <span data-i18n="remaining_days">الأيام المتبقية:</span></span>
+                        <span class="result-value" id="remainingDaysVal">--</span>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="bottom-nav">
+            <a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span data-i18n="home">الرئيسية</span></a>
+            <a href="daily-challenge.html" class="nav-item"><i class="fa-solid fa-person-running"></i><span data-i18n="challenge">التحدي</span></a>
+            <a href="health-metrics.html" class="nav-item"><i class="fa-solid fa-notes-medical"></i><span data-i18n="health_file">ملفي الصحي</span></a>
+            <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i><span data-i18n="settings">الإعدادات</span></a>
+        </nav>
+    </div>
+
+    <!-- Sidebar Drawer -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div style="font-weight: bold; font-size: 18px;">Si7a</div>
+        </div>
+
+        <div class="language-selector-top">
+            <label for="languageSelect"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">اللغة</span></label>
+            <select id="languageSelect" class="lang-select">
+                <option value="ar">العربية</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">الرئيسية</span></a></li>
+            <li><a href="health-metrics.html"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">قياساتي الصحية</span></a></li>
+            <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">التحدي اليومي</span></a></li>
+            <li><a href="diet-plan.html"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">نظامي الغذائي</span></a></li>
+            <li><a href="health-file.html"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">ملفي الصحي</span></a></li>
+            <li><a href="period-tracker.html"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">دورتي الشهرية</span></a></li>
+            <li><a href="pregnancy-calculator.html" class="active"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">حاسبة الحمل</span></a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">الإعدادات</span></a></li>
+        </ul>
+    </aside>
+
+    <script type="module">
+        import { auth } from "./js/firebase.js";
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+        let currentLang = localStorage.getItem('appLanguage') || 'ar';
+
+        // Sync Profile & Settings
+        function syncSettingsAndProfile(user = null) {
+            const storedName = localStorage.getItem('userDisplayName');
+            const storedAvatar = localStorage.getItem('userPhotoURL');
+
+            if (storedName) {
+                document.getElementById("userName").textContent = storedName;
+            } else if (user && user.displayName) {
+                document.getElementById("userName").textContent = user.displayName;
+            }
+
+            if (storedAvatar) {
+                document.getElementById("userAvatar").src = storedAvatar;
+            } else if (user && user.photoURL) {
+                document.getElementById("userAvatar").src = user.photoURL;
+            }
+
+            const savedLang = localStorage.getItem('appLanguage') || 'ar';
+            if (savedLang !== currentLang) {
+                setLanguage(savedLang);
+            }
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) syncSettingsAndProfile(user);
+        });
+
+        window.addEventListener('storage', () => { syncSettingsAndProfile(auth.currentUser); });
+        window.addEventListener('focus', () => { syncSettingsAndProfile(auth.currentUser); });
+
+        const translations = {
+            ar: {
+                welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
+                last_period_date: "تاريخ بداية آخر دورة شهرية", calculate: "حساب موعد الولادة", calculation_results: "نتائج الحمل",
+                due_date: "المتوقع للولادة:", current_week: "الأسبوع الحالي:", remainingDays: "الأيام المتبقية:", week: "الأسبوع", day: "يوم"
+            },
+            en: {
+                welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
+                last_period_date: "Last Period Start Date", calculate: "Calculate Due Date", calculation_results: "Pregnancy Results",
+                due_date: "Estimated Due Date:", current_week: "Current Week:", remainingDays: "Remaining Days:", week: "Week", day: "days"
+            },
+            fr: {
+                welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
+                last_period_date: "Date des dernières règles", calculate: "Calculer la date d'accouchement", calculation_results: "Résultats de grossesse",
+                due_date: "Date d'accouchement prévue:", current_week: "Semaine actuelle:", remainingDays: "Jours restants:", week: "Semaine", day: "jours"
+            },
+            es: {
+                welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario", diet_plan: "Plan de dieta", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
+                last_period_date: "Fecha del último periodo", calculate: "Calcular fecha de parto", calculation_results: "Resultados del embarazo",
+                due_date: "Fecha estimada de parto:", current_week: "Semana actual:", remainingDays: "Días restantes:", week: "Semana", day: "días"
+            }
+        };
+
+        function calculatePregnancy() {
+            const dateVal = document.getElementById("lastPeriodDateInput").value;
+            if (!dateVal) return;
+
+            const lmpDate = new Date(dateVal);
+            const today = new Date();
+
+            // Due Date = LMP + 280 days (40 weeks)
+            const dueDate = new Date(lmpDate);
+            dueDate.setDate(lmpDate.getDate() + 280);
+
+            // Elapsed Days
+            const diffTime = today - lmpDate;
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+            if (diffDays < 0 || diffDays > 294) {
+                alert("يرجى التأكد من صحة التاريخ المدخل.");
+                return;
+            }
+
+            const currentWeek = Math.floor(diffDays / 7);
+            const currentDayOfWk = diffDays % 7;
+
+            // Remaining Days to Due Date
+            const remTime = dueDate - today;
+            const remDays = Math.max(0, Math.ceil(remTime / (1000 * 60 * 60 * 24)));
+
+            const t = translations[currentLang] || translations['ar'];
+            const langCode = currentLang === 'ar' ? 'ar-EG' : (currentLang === 'fr' ? 'fr-FR' : (currentLang === 'es' ? 'es-ES' : 'en-US'));
+
+            document.getElementById("dueDateVal").textContent = dueDate.toLocaleDateString(langCode, { year: 'numeric', month: 'short', day: 'numeric' });
+            document.getElementById("currentWeekVal").textContent = `${currentWeek} ${t.week} (${currentDayOfWk} ${t.day})`;
+            document.getElementById("remainingDaysVal").textContent = `${remDays} ${t.day}`;
+
+            document.getElementById("resultsCard").style.display = "flex";
+
+            // Save state
+            localStorage.setItem('pregnancyLastDate', dateVal);
+        }
+
+        document.getElementById("calculatePregnancyBtn").addEventListener("click", calculatePregnancy);
+
+        function loadSavedPregnancy() {
+            const savedDate = localStorage.getItem('pregnancyLastDate');
+            if (savedDate) {
+                document.getElementById("lastPeriodDateInput").value = savedDate;
+                calculatePregnancy();
+            } else {
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById("lastPeriodDateInput").value = today;
+            }
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('appLanguage', lang);
+            const html = document.documentElement;
+            
+            if (lang === 'ar') {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+            } else {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', lang);
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            const langSelect = document.getElementById("languageSelect");
+            if (langSelect) langSelect.value = lang;
+
+            if (document.getElementById("lastPeriodDateInput").value) {
+                calculatePregnancy();
+            }
+        }
+
+        document.getElementById("languageSelect").addEventListener("change", (e) => {
+            setLanguage(e.target.value);
+        });
+
+        // Sidebar
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebarOverlay");
+
+        document.getElementById("openSidebar").addEventListener("click", () => {
+            sidebar.classList.add("active");
+            overlay.style.display = "block";
+        });
+
+        overlay.addEventListener("click", () => {
+            sidebar.classList.remove("active");
+            overlay.style.display = "none";
+        });
+
+        setLanguage(currentLang);
+        loadSavedPregnancy();
+    </script>
+</body>
+
+</html>
