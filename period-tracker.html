@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2563EB">
+    <title>Si7a | Period Tracker</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(165deg, #3B82F6 0%, #2563EB 40%, #1E3A8A 100%);
+            color: #fff;
+        }
+
+        .full-screen-container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 15px 15px 85px 15px;
+        }
+
+        /* Background Shapes */
+        .wave-bg-1 {
+            position: fixed;
+            top: -80px;
+            left: -80px;
+            width: 350px;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 45%;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .wave-bg-2 {
+            position: fixed;
+            bottom: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 40%;
+            transform: rotate(25deg);
+            pointer-events: none;
+        }
+
+        /* Header */
+        .app-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 5;
+            margin-bottom: 15px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .avatar-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .welcome-text {
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content */
+        .tracker-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            z-index: 2;
+        }
+
+        /* Main Glass Card */
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(230, 240, 255, 0.88) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 22px;
+            padding: 16px;
+            color: #1E293B;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .card-header-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #1E3A8A;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(30, 58, 138, 0.12);
+        }
+
+        /* Cycle Highlight Circle */
+        .cycle-status-ring {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #EC4899, #DB2777);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 10px auto;
+            box-shadow: 0 8px 20px rgba(236, 72, 153, 0.35);
+            text-align: center;
+            padding: 10px;
+        }
+
+        .cycle-days-num {
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .cycle-status-label {
+            font-size: 11px;
+            margin-top: 4px;
+            opacity: 0.9;
+        }
+
+        /* Form Controls */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-label {
+            font-size: 12px;
+            font-weight: bold;
+            color: #1E3A8A;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(30, 58, 138, 0.2);
+            font-size: 13px;
+            font-weight: bold;
+            outline: none;
+            background: #fff;
+            color: #0F172A;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .save-btn {
+            background: #2563EB;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .save-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* Predict Badges List */
+        .predict-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .predict-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-left: 4px solid #EC4899;
+        }
+
+        html[dir="rtl"] .predict-item {
+            border-left: none;
+            border-right: 4px solid #EC4899;
+        }
+
+        .predict-title {
+            font-size: 12px;
+            font-weight: bold;
+            color: #1E3A8A;
+        }
+
+        .predict-date {
+            font-size: 12px;
+            font-weight: bold;
+            color: #DB2777;
+        }
+
+        /* Bottom Nav */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            height: 62px;
+            background: #1E3A8A;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .nav-item {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-item i { font-size: 18px; }
+
+        .nav-item.active {
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        /* Sidebar Drawer */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 1100;
+            display: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            width: 270px;
+            height: 100%;
+            background: #1E3A8A;
+            z-index: 1101;
+            transition: all 0.3s ease;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        html[dir="ltr"] .sidebar { left: -280px; border-right: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="ltr"] .sidebar.active { left: 0; }
+
+        html[dir="rtl"] .sidebar { right: -280px; border-left: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="rtl"] .sidebar.active { right: 0; }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 12px;
+        }
+
+        .sidebar-logo {
+            width: 38px;
+            height: 38px;
+            background: #fff;
+            color: #2563EB;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .language-selector-top {
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .language-selector-top label {
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+            color: rgba(255, 255, 255, 0.85);
+            text-transform: uppercase;
+        }
+
+        .lang-select {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+            font-weight: bold;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .lang-select option {
+            background: #1E3A8A;
+            color: #fff;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .sidebar-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 12px;
+            font-size: 13px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.2s;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="full-screen-container">
+        <div class="wave-bg-1"></div>
+        <div class="wave-bg-2"></div>
+
+        <!-- Header -->
+        <header class="app-header">
+            <a href="settings.html" class="user-profile">
+                <img src="https://via.placeholder.com/100" id="userAvatar" class="avatar-img" alt="User Avatar">
+                <span class="welcome-text"><span data-i18n="welcome">Welcome</span>, <span id="userName">Sarah</span></span>
+            </a>
+            <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="tracker-content">
+
+            <!-- Cycle Status Circle Card -->
+            <div class="glass-card">
+                <div class="card-header-title">
+                    <i class="fa-solid fa-droplet" style="color: #EC4899;"></i>
+                    <span data-i18n="period_tracker">Period Tracker</span>
+                </div>
+
+                <div class="cycle-status-ring">
+                    <div class="cycle-days-num" id="daysLeftNum">--</div>
+                    <div class="cycle-status-label" id="statusTextLabel" data-i18n="days_left">Days Left</div>
+                </div>
+
+                <div class="predict-list">
+                    <div class="predict-item">
+                        <span class="predict-title" data-i18n="next_period">Next Period:</span>
+                        <span class="predict-date" id="nextPeriodDate">--</span>
+                    </div>
+                    <div class="predict-item" style="border-color: #8B5CF6;">
+                        <span class="predict-title" data-i18n="ovulation_day">Ovulation Day:</span>
+                        <span class="predict-date" style="color: #8B5CF6;" id="ovulationDate">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings / Form Inputs Card -->
+            <div class="glass-card">
+                <div class="card-header-title">
+                    <i class="fa-solid fa-calendar-check" style="color: #2563EB;"></i>
+                    <span data-i18n="cycle_settings">Cycle Settings</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" data-i18n="last_period_date">Last Period Start Date</label>
+                    <input type="date" id="lastPeriodInput" class="input-field">
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="cycle_length">Cycle Length (Days)</label>
+                        <input type="number" id="cycleLengthInput" value="28" min="20" max="45" class="input-field">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="period_duration">Period Duration (Days)</label>
+                        <input type="number" id="periodDurationInput" value="5" min="2" max="10" class="input-field">
+                    </div>
+                </div>
+
+                <button class="save-btn" id="saveCycleBtn">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    <span data-i18n="save_data">Save & Calculate</span>
+                </button>
+            </div>
+
+        </main>
+
+        <!-- Navigation Bar -->
+        <nav class="bottom-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span data-i18n="home">Home</span>
+            </a>
+            <a href="daily-challenge.html" class="nav-item">
+                <i class="fa-solid fa-person-running"></i>
+                <span data-i18n="challenge">Challenge</span>
+            </a>
+            <a href="health-metrics.html" class="nav-item">
+                <i class="fa-solid fa-notes-medical"></i>
+                <span data-i18n="health_file">Health File</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fa-solid fa-gear"></i>
+                <span data-i18n="settings">Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Sidebar Drawer -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div style="font-weight: bold; font-size: 18px;">Si7a</div>
+        </div>
+
+        <div class="language-selector-top">
+            <label for="languageSelect"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">Language</span></label>
+            <select id="languageSelect" class="lang-select">
+                <option value="en">English</option>
+                <option value="ar">العربية</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">Home</span></a></li>
+            <li><a href="health-metrics.html"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">Health Metrics</span></a></li>
+            <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">Daily Challenge</span></a></li>
+            <li><a href="diet-plan.html"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">Diet Plan</span></a></li>
+            <li><a href="health-file.html"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">Health File</span></a></li>
+            <li><a href="period-tracker.html" class="active"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">Period Tracker</span></a></li>
+            <li><a href="pregnancy-calculator.html"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">Pregnancy Calculator</span></a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">Settings</span></a></li>
+        </ul>
+    </aside>
+
+    <script type="module">
+        import { auth } from "./js/firebase.js";
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+        let currentLang = localStorage.getItem('appLanguage') || 'en';
+
+        // Auth sync
+        onAuthStateChanged(auth, (user) => {
+            const storedName = localStorage.getItem('userDisplayName');
+            const storedAvatar = localStorage.getItem('userPhotoURL');
+
+            if (user) {
+                document.getElementById("userName").textContent = storedName || user.displayName || "Sarah";
+                if (storedAvatar || user.photoURL) {
+                    document.getElementById("userAvatar").src = storedAvatar || user.photoURL;
+                }
+            } else {
+                window.location.href = "login.html";
+            }
+        });
+
+        // Language Dictionary
+        const translations = {
+            en: {
+                welcome: "Welcome", period_tracker: "Period Tracker", days_left: "Days Left",
+                next_period: "Next Period:", ovulation_day: "Ovulation Day:", cycle_settings: "Cycle Settings",
+                last_period_date: "Last Period Start Date", cycle_length: "Cycle Length (Days)", period_duration: "Period Duration (Days)",
+                save_data: "Save & Calculate", home: "Home", challenge: "Challenge", health_file: "Health File",
+                settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge",
+                diet_plan: "Diet Plan", pregnancy_calc: "Pregnancy Calculator"
+            },
+            ar: {
+                welcome: "أهلاً بك", period_tracker: "دورتي الشهرية", days_left: "يوم متتبقي",
+                next_period: "الدورة القادمة:", ovulation_day: "يوم التبويض:", cycle_settings: "إعدادات الدورة",
+                last_period_date: "تاريخ بداية آخر دورة", cycle_length: "طول الدورة (أيام)", period_duration: "مدة الدورة (أيام)",
+                save_data: "حفظ وحساب", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي",
+                settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي",
+                diet_plan: "نظامي الغذائي", pregnancy_calc: "حاسبة الحمل"
+            },
+            fr: {
+                welcome: "Bienvenue", period_tracker: "Suivi des règles", days_left: "Jours restants",
+                next_period: "Prochaines règles:", ovulation_day: "Jour d'ovulation:", cycle_settings: "Paramètres du cycle",
+                last_period_date: "Date des dernières règles", cycle_length: "Durée du cycle (Jours)", period_duration: "Durée des règles (Jours)",
+                save_data: "Enregistrer et Calculer", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé",
+                settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien",
+                diet_plan: "Régime alimentaire", pregnancy_calc: "Calculateur de grossesse"
+            },
+            es: {
+                welcome: "Bienvenido", period_tracker: "Control del periodo", days_left: "Días restantes",
+                next_period: "Próximo periodo:", ovulation_day: "Día de ovulación:", cycle_settings: "Ajustes del ciclo",
+                last_period_date: "Fecha del último periodo", cycle_length: "Duración del ciclo (Días)", period_duration: "Duración del periodo (Días)",
+                save_data: "Guardar y Calcular", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud",
+                settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario",
+                diet_plan: "Plan de dieta", pregnancy_calc: "Calculadora de embarazo"
+            }
+        };
+
+        function calculateCycle() {
+            const lastDateVal = document.getElementById("lastPeriodInput").value;
+            const cycleLength = parseInt(document.getElementById("cycleLengthInput").value) || 28;
+
+            if (!lastDateVal) return;
+
+            const lastDate = new Date(lastDateVal);
+            const today = new Date();
+
+            // Next Period Date = Last Date + Cycle Length
+            const nextPeriod = new Date(lastDate);
+            nextPeriod.setDate(lastDate.getDate() + cycleLength);
+
+            // Ovulation Date = Next Period - 14 Days
+            const ovulation = new Date(nextPeriod);
+            ovulation.setDate(nextPeriod.getDate() - 14);
+
+            // Days left calculation
+            const diffTime = nextPeriod - today;
+            const daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            document.getElementById("daysLeftNum").textContent = daysLeft > 0 ? daysLeft : 0;
+            
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            const langCode = currentLang === 'ar' ? 'ar-EG' : (currentLang === 'fr' ? 'fr-FR' : (currentLang === 'es' ? 'es-ES' : 'en-US'));
+
+            document.getElementById("nextPeriodDate").textContent = nextPeriod.toLocaleDateString(langCode, options);
+            document.getElementById("ovulationDate").textContent = ovulation.toLocaleDateString(langCode, options);
+
+            // Save to localStorage
+            const periodData = {
+                lastDate: lastDateVal,
+                cycleLength: cycleLength,
+                periodDuration: document.getElementById("periodDurationInput").value
+            };
+            localStorage.setItem('periodData', JSON.stringify(periodData));
+        }
+
+        // Load Saved Data
+        function loadSavedData() {
+            const saved = JSON.parse(localStorage.getItem('periodData'));
+            if (saved) {
+                document.getElementById("lastPeriodInput").value = saved.lastDate || '';
+                document.getElementById("cycleLengthInput").value = saved.cycleLength || 28;
+                document.getElementById("periodDurationInput").value = saved.periodDuration || 5;
+                calculateCycle();
+            } else {
+                // Set default today date if empty
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById("lastPeriodInput").value = today;
+                calculateCycle();
+            }
+        }
+
+        document.getElementById("saveCycleBtn").addEventListener("click", calculateCycle);
+
+        // Language Function
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('appLanguage', lang);
+            const html = document.documentElement;
+
+            if (lang === 'ar') {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+            } else {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', lang);
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            document.getElementById("languageSelect").value = lang;
+            calculateCycle();
+        }
+
+        document.getElementById("languageSelect").addEventListener("change", (e) => {
+            setLanguage(e.target.value);
+        });
+
+        // Sidebar Actions
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebarOverlay");
+
+        document.getElementById("openSidebar").addEventListener("click", () => {
+            sidebar.classList.add("active");
+            overlay.style.display = "block";
+        });
+
+        overlay.addEventListener("click", () => {
+            sidebar.classList.remove("active");
+            overlay.style.display = "none";
+        });
+
+        // Init
+        setLanguage(currentLang);
+        loadSavedData();
+    </script>
+</body>
+
+</html>
