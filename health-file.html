@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2563EB">
+    <title>Si7a | Health File</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(165deg, #3B82F6 0%, #2563EB 40%, #1E3A8A 100%);
+            color: #fff;
+        }
+
+        .full-screen-container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 15px 15px 85px 15px;
+        }
+
+        /* Background Shapes */
+        .wave-bg-1 {
+            position: fixed;
+            top: -80px;
+            right: -80px;
+            width: 350px;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 45%;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .wave-bg-2 {
+            position: fixed;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 40%;
+            transform: rotate(25deg);
+            pointer-events: none;
+        }
+
+        /* Header */
+        .app-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 5;
+            margin-bottom: 15px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .avatar-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .welcome-text {
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content */
+        .page-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            z-index: 2;
+        }
+
+        /* Metallic White Cards */
+        .metallic-white-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(230, 240, 255, 0.88) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 22px;
+            padding: 16px;
+            color: #1E293B;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card-header-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #1E3A8A;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(30, 58, 138, 0.12);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-label {
+            font-size: 12px;
+            font-weight: bold;
+            color: #1E3A8A;
+        }
+
+        .input-field, .select-field, .textarea-field {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(30, 58, 138, 0.2);
+            font-size: 13px;
+            font-weight: bold;
+            outline: none;
+            background: #fff;
+            color: #0F172A;
+        }
+
+        .textarea-field {
+            resize: vertical;
+            min-height: 70px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .save-btn {
+            background: #2563EB;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .save-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* Solid Bottom Navigation Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            height: 62px;
+            background: #1E3A8A;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .nav-item {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-item i { font-size: 18px; }
+
+        .nav-item.active { color: #ffffff; font-weight: bold; }
+
+        /* Sidebar Drawer */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 1100;
+            display: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0; width: 270px; height: 100%;
+            background: #1E3A8A;
+            z-index: 1101;
+            transition: all 0.3s ease;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        html[dir="ltr"] .sidebar { left: -280px; border-right: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="ltr"] .sidebar.active { left: 0; }
+
+        html[dir="rtl"] .sidebar { right: -280px; border-left: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="rtl"] .sidebar.active { right: 0; }
+
+        .sidebar-header {
+            display: flex; align-items: center; gap: 10px;
+            padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 12px;
+        }
+
+        .sidebar-logo {
+            width: 38px; height: 38px; background: #fff; color: #2563EB;
+            border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px;
+        }
+
+        .language-selector-top {
+            margin-bottom: 15px; padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .language-selector-top label {
+            font-size: 11px; display: flex; align-items: center; gap: 6px;
+            margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); text-transform: uppercase;
+        }
+
+        .lang-select {
+            width: 100%; padding: 8px 10px; border-radius: 10px;
+            background: rgba(255, 255, 255, 0.25); color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4); font-size: 13px; font-weight: bold; outline: none;
+        }
+
+        .lang-select option { background: #1E3A8A; color: #fff; }
+
+        .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 6px; overflow-y: auto; flex: 1; }
+        .sidebar-menu a { color: #fff; text-decoration: none; padding: 10px 12px; font-size: 13px; border-radius: 10px; display: flex; align-items: center; gap: 10px; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { background: rgba(255, 255, 255, 0.2); }
+    </style>
+</head>
+
+<body>
+
+    <div class="full-screen-container">
+        <div class="wave-bg-1"></div>
+        <div class="wave-bg-2"></div>
+
+        <!-- Header -->
+        <header class="app-header">
+            <a href="settings.html" class="user-profile">
+                <img src="https://via.placeholder.com/100" id="userAvatar" class="avatar-img" alt="User Avatar">
+                <span class="welcome-text"><span data-i18n="welcome">أهلاً بك</span>، <span id="userName">سارة</span></span>
+            </a>
+            <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="page-content">
+
+            <!-- Health File Card -->
+            <div class="metallic-white-card">
+                <div class="card-header-title">
+                    <i class="fa-solid fa-notes-medical" style="color: #2563EB;"></i>
+                    <span data-i18n="health_file_title">الملف الصحي الشخصي</span>
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="blood_type">فصيلة الدم</label>
+                        <select id="bloodTypeInput" class="select-field">
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="birth_date">تاريخ الميلاد</label>
+                        <input type="date" id="birthDateInput" class="input-field">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" data-i18n="chronic_diseases">الأمراض المزمنة (إن وجدت)</label>
+                    <textarea id="chronicInput" class="textarea-field" data-i18n-placeholder="chronic_placeholder" placeholder="مثال: ضغط الدم، السكري..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" data-i18n="allergies">الحساسية (أدوية، أطعمة...)</label>
+                    <textarea id="allergiesInput" class="textarea-field" data-i18n-placeholder="allergies_placeholder" placeholder="مثال: حساسية البنسلين..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" data-i18n="surgeries">العمليات الجراحية السابقة</label>
+                    <textarea id="surgeriesInput" class="textarea-field" data-i18n-placeholder="surgeries_placeholder" placeholder="مثال: استئصال الزائدة..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" data-i18n="emergency_contact">جهة الاتصال للطوارئ</label>
+                    <input type="text" id="emergencyInput" class="input-field" data-i18n-placeholder="emergency_placeholder" placeholder="اسم ورقم هاتف الشخص المقرب">
+                </div>
+
+                <button class="save-btn" id="saveHealthFileBtn">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    <span data-i18n="save_file">حفظ الملف الصحي</span>
+                </button>
+            </div>
+
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="bottom-nav">
+            <a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span data-i18n="home">الرئيسية</span></a>
+            <a href="daily-challenge.html" class="nav-item"><i class="fa-solid fa-person-running"></i><span data-i18n="challenge">التحدي</span></a>
+            <a href="health-file.html" class="nav-item active"><i class="fa-solid fa-notes-medical"></i><span data-i18n="health_file">ملفي الصحي</span></a>
+            <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i><span data-i18n="settings">الإعدادات</span></a>
+        </nav>
+    </div>
+
+    <!-- Sidebar Drawer -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div style="font-weight: bold; font-size: 18px;">Si7a</div>
+        </div>
+
+        <div class="language-selector-top">
+            <label for="languageSelect"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">اللغة</span></label>
+            <select id="languageSelect" class="lang-select">
+                <option value="ar">العربية</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">الرئيسية</span></a></li>
+            <li><a href="health-metrics.html"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">قياساتي الصحية</span></a></li>
+            <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">التحدي اليومي</span></a></li>
+            <li><a href="diet-plan.html"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">نظامي الغذائي</span></a></li>
+            <li><a href="health-file.html" class="active"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">ملفي الصحي</span></a></li>
+            <li><a href="period-tracker.html"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">دورتي الشهرية</span></a></li>
+            <li><a href="pregnancy-calculator.html"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">حاسبة الحمل</span></a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">الإعدادات</span></a></li>
+        </ul>
+    </aside>
+
+    <script type="module">
+        import { auth } from "./js/firebase.js";
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+        let currentLang = localStorage.getItem('appLanguage') || 'ar';
+
+        function syncSettingsAndProfile(user = null) {
+            const storedName = localStorage.getItem('userDisplayName');
+            const storedAvatar = localStorage.getItem('userPhotoURL');
+
+            if (storedName) {
+                document.getElementById("userName").textContent = storedName;
+            } else if (user && user.displayName) {
+                document.getElementById("userName").textContent = user.displayName;
+            }
+
+            if (storedAvatar) {
+                document.getElementById("userAvatar").src = storedAvatar;
+            } else if (user && user.photoURL) {
+                document.getElementById("userAvatar").src = user.photoURL;
+            }
+
+            const savedLang = localStorage.getItem('appLanguage') || 'ar';
+            if (savedLang !== currentLang) {
+                setLanguage(savedLang);
+            }
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) syncSettingsAndProfile(user);
+        });
+
+        window.addEventListener('storage', () => { syncSettingsAndProfile(auth.currentUser); });
+        window.addEventListener('focus', () => { syncSettingsAndProfile(auth.currentUser); });
+
+        const translations = {
+            ar: {
+                welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
+                health_file_title: "الملف الصحي الشخصي", blood_type: "فصيلة الدم", birth_date: "تاريخ الميلاد", chronic_diseases: "الأمراض المزمنة (إن وجدت)",
+                allergies: "الحساسية (أدوية، أطعمة...)", surgeries: "العمليات الجراحية السابقة", emergency_contact: "جهة الاتصال للطوارئ", save_file: "حفظ الملف الصحي",
+                chronic_placeholder: "مثال: ضغط الدم، السكري...", allergies_placeholder: "مثال: حساسية البنسلين...", surgeries_placeholder: "مثال: استئصال الزائدة...", emergency_placeholder: "اسم ورقم هاتف الشخص المقرب"
+            },
+            en: {
+                welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
+                health_file_title: "Personal Health File", blood_type: "Blood Type", birth_date: "Date of Birth", chronic_diseases: "Chronic Diseases",
+                allergies: "Allergies (Medications, Foods...)", surgeries: "Previous Surgeries", emergency_contact: "Emergency Contact", save_file: "Save Health File",
+                chronic_placeholder: "e.g., Hypertension, Diabetes...", allergies_placeholder: "e.g., Penicillin allergy...", surgeries_placeholder: "e.g., Appendectomy...", emergency_placeholder: "Name and phone number"
+            },
+            fr: {
+                welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
+                health_file_title: "Dossier Santé Personnel", blood_type: "Groupe Sanguin", birth_date: "Date de Naissance", chronic_diseases: "Maladies Chroniques",
+                allergies: "Allergies (Médicaments, Aliments...)", surgeries: "Chirurgies Antérieures", emergency_contact: "Contact d'Urgence", save_file: "Enregistrer le Dossier",
+                chronic_placeholder: "ex: Hypertension, Diabète...", allergies_placeholder: "ex: Allergie à la pénicilline...", surgeries_placeholder: "ex: Appendicectomie...", emergency_placeholder: "Nom et numéro de téléphone"
+            },
+            es: {
+                welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario", diet_plan: "Plan de dieta", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
+                health_file_title: "Perfil de Salud Personal", blood_type: "Tipo de Sangre", birth_date: "Fecha de Nacimiento", chronic_diseases: "Enfermedades Crónicas",
+                allergies: "Alergias (Medicamentos, Alimentos...)", surgeries: "Cirugías Previas", emergency_contact: "Contacto de Emergencia", save_file: "Guardar Perfil de Salud",
+                chronic_placeholder: "ej., Hipertensión, Diabetes...", allergies_placeholder: "ej., Alergia a la penicilina...", surgeries_placeholder: "ej., Apendicectomía...", emergency_placeholder: "Nombre y número de teléfono"
+            }
+        };
+
+        function saveHealthData() {
+            const healthData = {
+                bloodType: document.getElementById("bloodTypeInput").value,
+                birthDate: document.getElementById("birthDateInput").value,
+                chronic: document.getElementById("chronicInput").value,
+                allergies: document.getElementById("allergiesInput").value,
+                surgeries: document.getElementById("surgeriesInput").value,
+                emergency: document.getElementById("emergencyInput").value
+            };
+            localStorage.setItem('si7aPersonalHealthFile', JSON.stringify(healthData));
+            alert(currentLang === 'ar' ? "تم حفظ الملف الصحي بنجاح!" : "Health file saved successfully!");
+        }
+
+        document.getElementById("saveHealthFileBtn").addEventListener("click", saveHealthData);
+
+        function loadHealthData() {
+            const saved = JSON.parse(localStorage.getItem('si7aPersonalHealthFile'));
+            if (saved) {
+                document.getElementById("bloodTypeInput").value = saved.bloodType || 'A+';
+                document.getElementById("birthDateInput").value = saved.birthDate || '';
+                document.getElementById("chronicInput").value = saved.chronic || '';
+                document.getElementById("allergiesInput").value = saved.allergies || '';
+                document.getElementById("surgeriesInput").value = saved.surgeries || '';
+                document.getElementById("emergencyInput").value = saved.emergency || '';
+            }
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('appLanguage', lang);
+            const html = document.documentElement;
+            
+            if (lang === 'ar') {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+            } else {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', lang);
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-i18n-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    element.placeholder = translations[lang][key];
+                }
+            });
+
+            const langSelect = document.getElementById("languageSelect");
+            if (langSelect) langSelect.value = lang;
+        }
+
+        document.getElementById("languageSelect").addEventListener("change", (e) => {
+            setLanguage(e.target.value);
+        });
+
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebarOverlay");
+
+        document.getElementById("openSidebar").addEventListener("click", () => {
+            sidebar.classList.add("active");
+            overlay.style.display = "block";
+        });
+
+        overlay.addEventListener("click", () => {
+            sidebar.classList.remove("active");
+            overlay.style.display = "none";
+        });
+
+        setLanguage(currentLang);
+        loadHealthData();
+    </script>
+</body>
+
+</html>
