@@ -459,7 +459,7 @@
                 welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
                 last_period_date: "تاريخ بداية آخر دورة شهرية", calculate: "حساب تفاصيل الحمل", calculation_results: "نتائج الحمل الطبية",
                 current_month: "الشهر الحالي:", current_sa: "عمر الحمل (SA):", due_date: "المتوقع للولادة:", remaining_days: "الأيام المتبقية:", 
-                month_1: "الشهر الاول", month_2: "الشهر الثاني", month_3: "الشهر الثالث", month_4: "الشهر الرابع", month_5: "الشهر الخامس", month_6: "الشهر السادس", month_7: "الشهر السابع", month_8: "الشهر الثامن", month_9: "الشهر التاسع", full_term: "اكتمل الحمل (Terme)", day: "يوم"
+                month_1: "الشهر الأول", month_2: "الشهر الثاني", month_3: "الشهر الثالث", month_4: "الشهر الرابع", month_5: "الشهر الخامس", month_6: "الشهر السادس", month_7: "الشهر السابع", month_8: "الشهر الثامن", month_9: "الشهر التاسع", full_term: "اكتمل الحمل (Terme)", day: "يوم"
             },
             en: {
                 welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
@@ -481,18 +481,17 @@
             }
         };
 
-        // Mapping based on "Calendrier de grossesse" (Semaines d'Aménorrhée - SA)
-        function getMonthFromSA(saWeeks) {
-            if (saWeeks <= 2) return 'month_1'; // 1-2 SA
-            if (saWeeks >= 3 && saWeeks <= 6) return 'month_1'; // 3 SA to 6 SA -> 1er mois
-            if (saWeeks >= 7 && saWeeks <= 10) return 'month_2'; // 7 SA to 10 SA -> 2ème mois
-            if (saWeeks >= 11 && saWeeks <= 15) return 'month_3'; // 11 SA to 15 SA -> 3ème mois
-            if (saWeeks >= 16 && saWeeks <= 19) return 'month_4'; // 16 SA to 19 SA -> 4ème mois
-            if (saWeeks >= 20 && saWeeks <= 24) return 'month_5'; // 20 SA to 24 SA -> 5ème mois
-            if (saWeeks >= 25 && saWeeks <= 28) return 'month_6'; // 25 SA to 28 SA -> 6ème mois
-            if (saWeeks >= 29 && saWeeks <= 32) return 'month_7'; // 29 SA to 32 SA -> 7ème mois
-            if (saWeeks >= 33 && saWeeks <= 36) return 'month_8'; // 33 SA to 36 SA -> 8ème mois
-            if (saWeeks >= 37 && saWeeks <= 41) return 'month_9'; // 37 SA to 41 SA -> 9ème mois
+        // دالة مطابقة الأشهر الطبية حسب أسابيع انقطاع الطمث (SA) من الجدول المرفق
+        function getMonthFromSA(completedWeeks) {
+            if (completedWeeks <= 3) return 'month_1'; // من 0 إلى 3 أسابيع (الشهر 1)
+            if (completedWeeks >= 4 && completedWeeks <= 7) return 'month_2'; // من 4 إلى 7 أسابيع (الشهر 2)
+            if (completedWeeks >= 8 && completedWeeks <= 12) return 'month_3'; // من 8 إلى 12 أسبوع (الشهر 3)
+            if (completedWeeks >= 13 && completedWeeks <= 17) return 'month_4'; // من 13 إلى 17 أسبوع (الشهر 4)
+            if (completedWeeks >= 18 && completedWeeks <= 21) return 'month_5'; // من 18 إلى 21 أسبوع (الشهر 5)
+            if (completedWeeks >= 22 && completedWeeks <= 26) return 'month_6'; // من 22 إلى 26 أسبوع (الشهر 6)
+            if (completedWeeks >= 27 && completedWeeks <= 30) return 'month_7'; // من 27 إلى 30 أسبوع (الشهر 7)
+            if (completedWeeks >= 31 && completedWeeks <= 35) return 'month_8'; // من 31 إلى 35 أسبوع (الشهر 8)
+            if (completedWeeks >= 36) return 'month_9'; // من 36 أسبوع فما فوق (الشهر 9)
             return 'full_term';
         }
 
@@ -507,7 +506,7 @@
             const dueDate = new Date(lmpDate);
             dueDate.setDate(lmpDate.getDate() + 280);
 
-            // Elapsed Days (Semaines d'Aménorrhée based on last menstrual period)
+            // Elapsed Days (Semaines d'Aménorrhée)
             const diffTime = today - lmpDate;
             const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
@@ -516,8 +515,11 @@
                 return;
             }
 
-            const saWeeks = Math.floor(diffDays / 7);
-            const saDays = diffDays % 7;
+            const completedWeeks = Math.floor(diffDays / 7);
+            const currentDayOfWk = diffDays % 7;
+            
+            // بما أننا دخلنا الأسبوع التالي فور وجود أيام إضافية (مثلاً 32 أسبوع ويوم = دخلنا الأسبوع 33)
+            const displayWeek = currentDayOfWk > 0 ? completedWeeks + 1 : completedWeeks;
 
             // Remaining Days to Due Date
             const remTime = dueDate - today;
@@ -526,10 +528,10 @@
             const t = translations[currentLang] || translations['ar'];
             const langCode = currentLang === 'ar' ? 'ar-EG' : (currentLang === 'fr' ? 'fr-FR' : (currentLang === 'es' ? 'es-ES' : 'en-US'));
 
-            const monthKey = getMonthFromSA(saWeeks);
+            const monthKey = getMonthFromSA(completedWeeks);
 
             document.getElementById("currentMonthVal").textContent = t[monthKey] || monthKey;
-            document.getElementById("currentSaVal").textContent = `${saWeeks} SA + ${saDays} ${t.day}`;
+            document.getElementById("currentSaVal").textContent = `${displayWeek} SA (${completedWeeks} + ${currentDayOfWk} ${t.day})`;
             document.getElementById("dueDateVal").textContent = dueDate.toLocaleDateString(langCode, { year: 'numeric', month: 'short', day: 'numeric' });
             document.getElementById("remainingDaysVal").textContent = `${remDays} ${t.day}`;
 
