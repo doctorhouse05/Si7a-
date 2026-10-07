@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#2563EB">
-    <title>Si7a | Health File</title>
+    <title>Si7a | Comprehensive Health File</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -144,7 +144,7 @@
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 5px;
         }
 
         .form-label {
@@ -155,7 +155,7 @@
 
         .input-field, .select-field, .textarea-field {
             width: 100%;
-            padding: 10px;
+            padding: 9px 10px;
             border-radius: 10px;
             border: 1px solid rgba(30, 58, 138, 0.2);
             font-size: 13px;
@@ -167,7 +167,7 @@
 
         .textarea-field {
             resize: vertical;
-            min-height: 70px;
+            min-height: 60px;
         }
 
         .grid-2 {
@@ -191,6 +191,7 @@
             gap: 8px;
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
             transition: transform 0.2s;
+            margin-top: 6px;
         }
 
         .save-btn:active {
@@ -222,7 +223,6 @@
         }
 
         .nav-item i { font-size: 18px; }
-
         .nav-item.active { color: #ffffff; font-weight: bold; }
 
         /* Sidebar Drawer */
@@ -248,7 +248,6 @@
 
         html[dir="ltr"] .sidebar { left: -280px; border-right: 1px solid rgba(255, 255, 255, 0.2); }
         html[dir="ltr"] .sidebar.active { left: 0; }
-
         html[dir="rtl"] .sidebar { right: -280px; border-left: 1px solid rgba(255, 255, 255, 0.2); }
         html[dir="rtl"] .sidebar.active { right: 0; }
 
@@ -305,11 +304,11 @@
         <!-- Main Content -->
         <main class="page-content">
 
-            <!-- Health File Card -->
+            <!-- Comprehensive Health File Card -->
             <div class="metallic-white-card">
                 <div class="card-header-title">
-                    <i class="fa-solid fa-notes-medical" style="color: #2563EB;"></i>
-                    <span data-i18n="health_file_title">الملف الصحي الشخصي</span>
+                    <i class="fa-solid id-card" style="color: #2563EB;"></i>
+                    <span data-i18n="general_info">البيانات الأساسية والخصائص الحيوية</span>
                 </div>
 
                 <div class="grid-2">
@@ -332,29 +331,79 @@
                     </div>
                 </div>
 
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="height_cm">الطول (سم)</label>
+                        <input type="number" id="heightInput" class="input-field" placeholder="165">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="weight_kg">الوزن الحالي (كغ)</label>
+                        <input type="number" step="0.1" id="weightInput" class="input-field" placeholder="68">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medical History & Conditions -->
+            <div class="metallic-white-card">
+                <div class="card-header-title">
+                    <i class="fa-solid fa-stethoscope" style="color: #059669;"></i>
+                    <span data-i18n="medical_history">التاريخ المرضي والأمراض المزمنة</span>
+                </div>
+
                 <div class="form-group">
                     <label class="form-label" data-i18n="chronic_diseases">الأمراض المزمنة (إن وجدت)</label>
-                    <textarea id="chronicInput" class="textarea-field" data-i18n-placeholder="chronic_placeholder" placeholder="مثال: ضغط الدم، السكري..."></textarea>
+                    <textarea id="chronicInput" class="textarea-field" data-i18n-placeholder="chronic_placeholder" placeholder="مثال: ارتفاع ضغط الدم، السكري، الربو..."></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" data-i18n="allergies">الحساسية (أدوية، أطعمة...)</label>
-                    <textarea id="allergiesInput" class="textarea-field" data-i18n-placeholder="allergies_placeholder" placeholder="مثال: حساسية البنسلين..."></textarea>
+                    <label class="form-label" data-i18n="family_history">التاريخ العائلي الوراثي</label>
+                    <textarea id="familyHistoryInput" class="textarea-field" data-i18n-placeholder="family_placeholder" placeholder="مثال: أمراض القلب، أورام بالوراثة..."></textarea>
+                </div>
+            </div>
+
+            <!-- Allergies & Medications -->
+            <div class="metallic-white-card">
+                <div class="card-header-title">
+                    <i class="fa-solid fa-pills" style="color: #D97706;"></i>
+                    <span data-i18n="allergies_meds">الحساسية والأدوية الحالية</span>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" data-i18n="surgeries">العمليات الجراحية السابقة</label>
-                    <textarea id="surgeriesInput" class="textarea-field" data-i18n-placeholder="surgeries_placeholder" placeholder="مثال: استئصال الزائدة..."></textarea>
+                    <label class="form-label" data-i18n="allergies">الحساسية (أدوية، أطعمة، بيئة...)</label>
+                    <textarea id="allergiesInput" class="textarea-field" data-i18n-placeholder="allergies_placeholder" placeholder="مثال: حساسية البنسلين، المكسرات، الغبار..."></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" data-i18n="emergency_contact">جهة الاتصال للطوارئ</label>
-                    <input type="text" id="emergencyInput" class="input-field" data-i18n-placeholder="emergency_placeholder" placeholder="اسم ورقم هاتف الشخص المقرب">
+                    <label class="form-label" data-i18n="current_medications">الأدوية والمكملات الغذائية الحالية</label>
+                    <textarea id="medicationsInput" class="textarea-field" data-i18n-placeholder="medications_placeholder" placeholder="مثال: حمض الفوليك، أوميغا 3، أدوية ضغط..."></textarea>
+                </div>
+            </div>
+
+            <!-- Surgeries & Emergency -->
+            <div class="metallic-white-card">
+                <div class="card-header-title">
+                    <i class="fa-solid fa-kit-medical" style="color: #DC2626;"></i>
+                    <span data-i18n="surgeries_emergency">العمليات الجراحية والطوارئ</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" data-i18n="surgeries">العمليات الجراحية والعمليات السابقة</label>
+                    <textarea id="surgeriesInput" class="textarea-field" data-i18n-placeholder="surgeries_placeholder" placeholder="مثال: استئصال الزائدة الدودية، جراحة قيصرية..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" data-i18n="doctor_notes">ملاحظات الطبيب أو توصيات خاصة</label>
+                    <textarea id="doctorNotesInput" class="textarea-field" data-i18n-placeholder="notes_placeholder" placeholder="أي إرشادات أو ملاحظات طبية موصى بها..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" data-i18n="emergency_contact">جهة الاتصال للطوارئ (الاسم ورقم الهاتف)</label>
+                    <input type="text" id="emergencyInput" class="input-field" data-i18n-placeholder="emergency_placeholder" placeholder="مثال: أحمد (زوج) - 0600000000">
                 </div>
 
                 <button class="save-btn" id="saveHealthFileBtn">
                     <i class="fa-solid fa-floppy-disk"></i>
-                    <span data-i18n="save_file">حفظ الملف الصحي</span>
+                    <span data-i18n="save_file">حفظ الملف الصحي الشامل</span>
                 </button>
             </div>
 
@@ -437,27 +486,35 @@
         const translations = {
             ar: {
                 welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
-                health_file_title: "الملف الصحي الشخصي", blood_type: "فصيلة الدم", birth_date: "تاريخ الميلاد", chronic_diseases: "الأمراض المزمنة (إن وجدت)",
-                allergies: "الحساسية (أدوية، أطعمة...)", surgeries: "العمليات الجراحية السابقة", emergency_contact: "جهة الاتصال للطوارئ", save_file: "حفظ الملف الصحي",
-                chronic_placeholder: "مثال: ضغط الدم، السكري...", allergies_placeholder: "مثال: حساسية البنسلين...", surgeries_placeholder: "مثال: استئصال الزائدة...", emergency_placeholder: "اسم ورقم هاتف الشخص المقرب"
+                general_info: "البيانات الأساسية والخصائص الحيوية", blood_type: "فصيلة الدم", birth_date: "تاريخ الميلاد", height_cm: "الطول (سم)", weight_kg: "الوزن الحالي (كغ)",
+                medical_history: "التاريخ المرضي والأمراض المزمنة", chronic_diseases: "الأمراض المزمنة (إن وجدت)", family_history: "التاريخ العائلي الوراثي",
+                allergies_meds: "الحساسية والأدوية الحالية", allergies: "الحساسية (أدوية، أطعمة، بيئة...)", current_medications: "الأدوية والمكملات الغذائية الحالية",
+                surgeries_emergency: "العمليات الجراحية والطوارئ", surgeries: "العمليات الجراحية والعمليات السابقة", doctor_notes: "ملاحظات الطبيب أو توصيات خاصة", emergency_contact: "جهة الاتصال للطوارئ (الاسم ورقم الهاتف)", save_file: "حفظ الملف الصحي الشامل",
+                chronic_placeholder: "مثال: ارتفاع ضغط الدم، السكري، الربو...", family_placeholder: "مثال: أمراض القلب، أورام بالوراثة...", allergies_placeholder: "مثال: حساسية البنسلين، المكسرات، الغبار...", medications_placeholder: "مثال: حمض الفوليك، أوميغا 3، أدوية ضغط...", surgeries_placeholder: "مثال: استئصال الزائدة الدودية، جراحة قيصرية...", notes_placeholder: "أي إرشادات أو ملاحظات طبية موصى بها...", emergency_placeholder: "مثال: أحمد (زوج) - 0600000000"
             },
             en: {
                 welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
-                health_file_title: "Personal Health File", blood_type: "Blood Type", birth_date: "Date of Birth", chronic_diseases: "Chronic Diseases",
-                allergies: "Allergies (Medications, Foods...)", surgeries: "Previous Surgeries", emergency_contact: "Emergency Contact", save_file: "Save Health File",
-                chronic_placeholder: "e.g., Hypertension, Diabetes...", allergies_placeholder: "e.g., Penicillin allergy...", surgeries_placeholder: "e.g., Appendectomy...", emergency_placeholder: "Name and phone number"
+                general_info: "Basic Info & Vital Stats", blood_type: "Blood Type", birth_date: "Date of Birth", height_cm: "Height (cm)", weight_kg: "Current Weight (kg)",
+                medical_history: "Medical History & Chronic Conditions", chronic_diseases: "Chronic Diseases", family_history: "Family Genetic History",
+                allergies_meds: "Allergies & Current Medications", allergies: "Allergies (Meds, Foods...)", current_medications: "Current Medications & Supplements",
+                surgeries_emergency: "Surgeries & Emergency", surgeries: "Previous Surgeries", doctor_notes: "Doctor Notes & Recommendations", emergency_contact: "Emergency Contact (Name & Phone)", save_file: "Save Comprehensive Health File",
+                chronic_placeholder: "e.g., Hypertension, Diabetes...", family_placeholder: "e.g., Heart disease, hereditary conditions...", allergies_placeholder: "e.g., Penicillin allergy, nuts...", medications_placeholder: "e.g., Folic acid, Omega 3...", surgeries_placeholder: "e.g., Appendectomy, C-section...", notes_placeholder: "Any special medical instructions...", emergency_placeholder: "Name and phone number"
             },
             fr: {
                 welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
-                health_file_title: "Dossier Santé Personnel", blood_type: "Groupe Sanguin", birth_date: "Date de Naissance", chronic_diseases: "Maladies Chroniques",
-                allergies: "Allergies (Médicaments, Aliments...)", surgeries: "Chirurgies Antérieures", emergency_contact: "Contact d'Urgence", save_file: "Enregistrer le Dossier",
-                chronic_placeholder: "ex: Hypertension, Diabète...", allergies_placeholder: "ex: Allergie à la pénicilline...", surgeries_placeholder: "ex: Appendicectomie...", emergency_placeholder: "Nom et numéro de téléphone"
+                general_info: "Informations de Base & Statistiques", blood_type: "Groupe Sanguin", birth_date: "Date de Naissance", height_cm: "Taille (cm)", weight_kg: "Poids Actuel (kg)",
+                medical_history: "Historique Médical & Maladies Chroniques", chronic_diseases: "Maladies Chroniques", family_history: "Antécédents Familiaux",
+                allergies_meds: "Allergies & Médicaments Actuels", allergies: "Allergies (Médicaments, Aliments...)", current_medications: "Médicaments & Suppléments Actuels",
+                surgeries_emergency: "Chirurgies & Urgences", surgeries: "Chirurgies Antérieures", doctor_notes: "Notes du Médecin", emergency_contact: "Contact d'Urgence (Nom & Téléphone)", save_file: "Enregistrer le Dossier Complet",
+                chronic_placeholder: "ex: Hypertension, Diabète...", family_placeholder: "ex: Maladies cardiaques...", allergies_placeholder: "ex: Pénicilline, arachides...", medications_placeholder: "ex: Acide folique, Oméga 3...", surgeries_placeholder: "ex: Appendicectomie, césarienne...", notes_placeholder: "Instructions médicales...", emergency_placeholder: "Nom et numéro de téléphone"
             },
             es: {
                 welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario", diet_plan: "Plan de dieta", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
-                health_file_title: "Perfil de Salud Personal", blood_type: "Tipo de Sangre", birth_date: "Fecha de Nacimiento", chronic_diseases: "Enfermedades Crónicas",
-                allergies: "Alergias (Medicamentos, Alimentos...)", surgeries: "Cirugías Previas", emergency_contact: "Contacto de Emergencia", save_file: "Guardar Perfil de Salud",
-                chronic_placeholder: "ej., Hipertensión, Diabetes...", allergies_placeholder: "ej., Alergia a la penicilina...", surgeries_placeholder: "ej., Apendicectomía...", emergency_placeholder: "Nombre y número de teléfono"
+                general_info: "Información Básica y Estadísticas", blood_type: "Tipo de Sangre", birth_date: "Fecha de Nacimiento", height_cm: "Altura (cm)", weight_kg: "Peso Actual (kg)",
+                medical_history: "Historial Médico y Enfermedades Crónicas", chronic_diseases: "Enfermedades Crónicas", family_history: "Historial Familiar",
+                allergies_meds: "Alergias y Medicamentos Actuales", allergies: "Alergias (Medicamentos, Alimentos...)", current_medications: "Medicamentos y Suplementos Actuales",
+                surgeries_emergency: "Cirugías y Emergencias", surgeries: "Cirugías Previas", doctor_notes: "Notas del Médico", emergency_contact: "Contacto de Emergencia (Nombre y Teléfono)", save_file: "Guardar Perfil de Salud Completo",
+                chronic_placeholder: "ej., Hipertensión, Diabetes...", family_placeholder: "ej., Enfermedades cardíacas...", allergies_placeholder: "ej., Penicilina, frutos secos...", medications_placeholder: "ej., Ácido fólico, Omega 3...", surgeries_placeholder: "ej., Apendicectomía, cesárea...", notes_placeholder: "Instrucciones médicas...", emergency_placeholder: "Nombre y número de teléfono"
             }
         };
 
@@ -465,25 +522,35 @@
             const healthData = {
                 bloodType: document.getElementById("bloodTypeInput").value,
                 birthDate: document.getElementById("birthDateInput").value,
+                height: document.getElementById("heightInput").value,
+                weight: document.getElementById("weightInput").value,
                 chronic: document.getElementById("chronicInput").value,
+                familyHistory: document.getElementById("familyHistoryInput").value,
                 allergies: document.getElementById("allergiesInput").value,
+                medications: document.getElementById("medicationsInput").value,
                 surgeries: document.getElementById("surgeriesInput").value,
+                doctorNotes: document.getElementById("doctorNotesInput").value,
                 emergency: document.getElementById("emergencyInput").value
             };
-            localStorage.setItem('si7aPersonalHealthFile', JSON.stringify(healthData));
-            alert(currentLang === 'ar' ? "تم حفظ الملف الصحي بنجاح!" : "Health file saved successfully!");
+            localStorage.setItem('si7aComprehensiveHealthFile', JSON.stringify(healthData));
+            alert(currentLang === 'ar' ? "تم حفظ الملف الصحي الشامل بنجاح!" : "Comprehensive health file saved successfully!");
         }
 
         document.getElementById("saveHealthFileBtn").addEventListener("click", saveHealthData);
 
         function loadHealthData() {
-            const saved = JSON.parse(localStorage.getItem('si7aPersonalHealthFile'));
+            const saved = JSON.parse(localStorage.getItem('si7aComprehensiveHealthFile'));
             if (saved) {
                 document.getElementById("bloodTypeInput").value = saved.bloodType || 'A+';
                 document.getElementById("birthDateInput").value = saved.birthDate || '';
+                document.getElementById("heightInput").value = saved.height || '';
+                document.getElementById("weightInput").value = saved.weight || '';
                 document.getElementById("chronicInput").value = saved.chronic || '';
+                document.getElementById("familyHistoryInput").value = saved.familyHistory || '';
                 document.getElementById("allergiesInput").value = saved.allergies || '';
+                document.getElementById("medicationsInput").value = saved.medications || '';
                 document.getElementById("surgeriesInput").value = saved.surgeries || '';
+                document.getElementById("doctorNotesInput").value = saved.doctorNotes || '';
                 document.getElementById("emergencyInput").value = saved.emergency || '';
             }
         }
