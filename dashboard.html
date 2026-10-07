@@ -8,6 +8,8 @@
     <title>Si7a | Dashboard</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Chart.js Library for Responsive Interactive Progress Visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         * {
@@ -193,6 +195,52 @@
             transition: width 0.4s ease;
         }
 
+        /* Challenge Summary & Chart Card */
+        .summary-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(230, 240, 255, 0.88) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 22px;
+            padding: 16px;
+            color: #1E293B;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .summary-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .summary-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #1E3A8A;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .month-picker-input {
+            padding: 4px 8px;
+            border-radius: 8px;
+            border: 1px solid rgba(30, 58, 138, 0.2);
+            font-size: 11px;
+            font-weight: bold;
+            color: #1E3A8A;
+            outline: none;
+            background: #fff;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 180px;
+        }
+
         /* Active Widgets / Cards Grid */
         .widgets-grid {
             display: grid;
@@ -269,7 +317,12 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .counter-btn:active {
+        .counter-btn:disabled {
+            background: #94A3B8;
+            cursor: not-allowed;
+        }
+
+        .counter-btn:active:not(:disabled) {
             transform: scale(0.9);
         }
 
@@ -284,6 +337,12 @@
             font-weight: bold;
             outline: none;
             text-align: center;
+        }
+
+        .input-time-mini:disabled, .input-select-mini:disabled {
+            background: #F1F5F9;
+            color: #64748B;
+            cursor: not-allowed;
         }
 
         /* Toggle Buttons for Yes/No Options */
@@ -313,6 +372,11 @@
             background: #2563EB;
             color: #fff;
             box-shadow: 0 2px 5px rgba(37, 99, 235, 0.3);
+        }
+
+        .option-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
         .input-select-mini {
@@ -623,6 +687,20 @@
                 </div>
             </div>
 
+            <!-- Challenge Summary & Interactive Chart Card -->
+            <div class="summary-card">
+                <div class="summary-header">
+                    <div class="summary-title">
+                        <i class="fa-solid fa-chart-column" style="color: #2563EB;"></i>
+                        <span data-i18n="challenge_summary">Monthly Progress Summary</span>
+                    </div>
+                    <input type="month" id="summaryMonthPicker" class="month-picker-input">
+                </div>
+                <div class="chart-container">
+                    <canvas id="monthlyProgressChart"></canvas>
+                </div>
+            </div>
+
             <!-- Dynamic Active Widgets Container -->
             <div class="widgets-grid" id="challengesDisplay">
                 <!-- العناصر المحددة ستُعرض هنا تلقائياً -->
@@ -716,29 +794,140 @@
 
         let currentLang = localStorage.getItem('appLanguage') || 'en';
         
-        // ضبط التاريخ التلقائي على اليوم الحالي الحقيقي للجهاز
+        // Date Management
+        let todayDate = new Date();
         let selectedDate = new Date();
         let viewDate = new Date(selectedDate);
+        let chartInstance = null;
 
-        // Authentication state
-        onAuthStateChanged(auth, (user) => {
+        // Date Format Key Utility (YYYY-MM-DD)
+        function formatDateKey(dateObj) {
+            const year = dateObj.getFullYear();
+            const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+            const day = String(dateObj.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        // Default initial logs
+        function getDefaultLogState() {
+            return {
+                water: 0,
+                sleepHours: 0,
+                walkMins: 0,
+                phoneHours: 0,
+                mental: 'calm',
+                sleepTime: '23:00',
+                wakeTime: '07:00',
+                sugar: 'no',
+                smoking: 'no',
+                percent: 0
+            };
+        }
+
+        // Daily Auto Reset at 00:00 & Storage Data Sync
+        function checkAndResetDailyLog() {
+            const now = new Date();
+            const todayKey = formatDateKey(now);
+            const lastActiveDate = localStorage.getItem('lastActiveDate');
+
+            if (lastActiveDate !== todayKey) {
+                localStorage.setItem('lastActiveDate', todayKey);
+                
+                // Initialize today's log if not existing
+                let archive = JSON.parse(localStorage.getItem('dailyArchiveLogs')) || {};
+                if (!archive[todayKey]) {
+                    archive[todayKey] = getDefaultLogState();
+                    localStorage.setItem('dailyArchiveLogs', JSON.stringify(archive));
+                }
+            }
+            todayDate = now;
+        }
+
+        // Fetch logs for the selected date
+        function getLogForDate(dateKey) {
+            const archive = JSON.parse(localStorage.getItem('dailyArchiveLogs')) || {};
+            return archive[dateKey] || getDefaultLogState();
+        }
+
+        // Save active day log to storage
+        function saveLogForDate(dateKey, logData) {
+            let archive = JSON.parse(localStorage.getItem('dailyArchiveLogs')) || {};
+            archive[dateKey] = logData;
+            localStorage.setItem('dailyArchiveLogs', JSON.stringify(archive));
+        }
+
+        // Synchronization Function from LocalStorage & Firebase Settings
+        function syncSettingsAndProfile(user = null) {
             const storedName = localStorage.getItem('userDisplayName');
             const storedAvatar = localStorage.getItem('userPhotoURL');
 
+            if (storedName) {
+                document.getElementById("userName").textContent = storedName;
+            } else if (user && user.displayName) {
+                document.getElementById("userName").textContent = user.displayName;
+            }
+
+            if (storedAvatar) {
+                document.getElementById("userAvatar").src = storedAvatar;
+            } else if (user && user.photoURL) {
+                document.getElementById("userAvatar").src = user.photoURL;
+            }
+
+            const savedLang = localStorage.getItem('appLanguage') || 'en';
+            if (savedLang !== currentLang) {
+                setLanguage(savedLang);
+            } else {
+                renderActiveChallenges();
+            }
+        }
+
+        // Authentication State Listener
+        onAuthStateChanged(auth, (user) => {
             if (user) {
-                document.getElementById("userName").textContent = storedName || user.displayName || "Sarah";
-                if (storedAvatar || user.photoURL) {
-                    document.getElementById("userAvatar").src = storedAvatar || user.photoURL;
-                }
+                checkAndResetDailyLog();
+                syncSettingsAndProfile(user);
+                initSummaryMonthPicker();
+                renderMonthlyProgressChart();
             } else {
                 window.location.href = "login.html";
             }
         });
 
+        // Event listener for real-time setting updates
+        window.addEventListener('storage', () => {
+            checkAndResetDailyLog();
+            syncSettingsAndProfile(auth.currentUser);
+            renderMonthlyProgressChart();
+        });
+
+        window.addEventListener('focus', () => {
+            checkAndResetDailyLog();
+            syncSettingsAndProfile(auth.currentUser);
+            renderMonthlyProgressChart();
+        });
+
+        // Set midnight timer to update logs automatically at 00:00
+        function scheduleMidnightReset() {
+            const now = new Date();
+            const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 1);
+            const timeToMidnight = midnight.getTime() - now.getTime();
+
+            setTimeout(() => {
+                checkAndResetDailyLog();
+                selectedDate = new Date();
+                updateDateDisplay();
+                renderActiveChallenges();
+                renderMonthlyProgressChart();
+                scheduleMidnightReset();
+            }, timeToMidnight);
+        }
+        scheduleMidnightReset();
+
         // Translations Dictionary
         const translations = {
             en: {
                 welcome: "Welcome", calendar: "Calendar", challenge_progress: "Daily Challenge Progress",
+                challenge_summary: "Monthly Challenge Progress", day_percent: "Daily Progress (%)",
                 water_intake: "Water Intake", sleep_time: "Sleep Time", wake_time: "Wake Time", sleep_hours: "Sleep Duration", walking_time: "Walking", phone_usage: "Phone Usage", sugar_intake: "Sugar Intake", smoking: "Smoking", mental_state: "Mental State",
                 cups: "cups", hours: "hrs", mins: "mins", yes: "Yes", no: "No", add_item: "Add Item",
                 home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
@@ -748,6 +937,7 @@
             },
             ar: {
                 welcome: "أهلاً بك", calendar: "التقويم", challenge_progress: "تقدم التحدي اليومي",
+                challenge_summary: "ملخص التحدي الشهرية", day_percent: "نسبة التحدي اليومية (%)",
                 water_intake: "شرب الماء", sleep_time: "وقت النوم", wake_time: "وقت الاستيقاظ", sleep_hours: "مدة النوم", walking_time: "المشي", phone_usage: "استعمال الهاتف", sugar_intake: "تناول السكريات", smoking: "التدخين", mental_state: "الحالة النفسية",
                 cups: "أكواب", hours: "ساعة", mins: "دقيقة", yes: "نعم", no: "لا", add_item: "إضافة عنصر",
                 home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
@@ -757,6 +947,7 @@
             },
             fr: {
                 welcome: "Bienvenue", calendar: "Calendrier", challenge_progress: "Progrès du défi quotidien",
+                challenge_summary: "Résumé mensuel du défi", day_percent: "Progrès quotidien (%)",
                 water_intake: "Consommation d'eau", sleep_time: "Heure de coucher", wake_time: "Heure de réveil", sleep_hours: "Durée du sommeil", walking_time: "Marche", phone_usage: "Usage téléphone", sugar_intake: "Sucre", smoking: "Tabagisme", mental_state: "État mental",
                 cups: "verres", hours: "h", mins: "m", yes: "Oui", no: "Non", add_item: "Ajouter",
                 home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures de santé", daily_challenge: "Défi quotidien", diet_plan: "Régime alimentaire", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
@@ -766,6 +957,7 @@
             },
             es: {
                 welcome: "Bienvenido", calendar: "Calendario", challenge_progress: "Progreso del desafío diario",
+                challenge_summary: "Resumen del desafío mensual", day_percent: "Progreso diario (%)",
                 water_intake: "Consumo de agua", sleep_time: "Hora de dormir", wake_time: "Hora de despertar", sleep_hours: "Duración del sueño", walking_time: "Caminata", phone_usage: "Uso del teléfono", sugar_intake: "Azúcar", smoking: "Fumar", mental_state: "Estado de ánimo",
                 cups: "vasos", hours: "h", mins: "m", yes: "Sí", no: "No", add_item: "Añadir elemento",
                 home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas de salud", daily_challenge: "Desafío diario", diet_plan: "Plan de dieta", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
@@ -775,19 +967,6 @@
             }
         };
 
-        // State for dynamic tracking
-        let loggedValues = JSON.parse(localStorage.getItem('dashboardLogs')) || {
-            water: 0,
-            sleepHours: 0,
-            walkMins: 0,
-            phoneHours: 0,
-            mental: 'calm',
-            sleepTime: '23:00',
-            wakeTime: '07:00',
-            sugar: 'no',
-            smoking: 'no'
-        };
-
         // Render Active Challenges & Dynamic Inputs
         function renderActiveChallenges() {
             const display = document.getElementById("challengesDisplay");
@@ -795,9 +974,15 @@
 
             const savedData = JSON.parse(localStorage.getItem('userChallenges')) || {};
             const t = translations[currentLang] || translations['en'];
+            const isWaterEnabled = localStorage.getItem('waterReminderToggle') !== 'false';
+
+            const activeDateKey = formatDateKey(selectedDate);
+            const loggedValues = getLogForDate(activeDateKey);
+            const isToday = activeDateKey === formatDateKey(new Date());
+            const disabledAttr = isToday ? '' : 'disabled';
 
             // 1. Water Intake
-            if (savedData.water?.show) {
+            if (savedData.water?.show && isWaterEnabled) {
                 const target = savedData.water.value || 10;
                 display.innerHTML += `
                     <div class="dash-item-card">
@@ -806,10 +991,10 @@
                             <span class="dash-item-title">${t.water_intake}</span>
                         </div>
                         <div class="dash-item-body">
-                            <span class="dash-item-value"><span id="valWater">${loggedValues.water}</span> / ${target} ${t.cups}</span>
+                            <span class="dash-item-value"><span id="valWater">${loggedValues.water || 0}</span> / ${target} ${t.cups}</span>
                             <div class="counter-controls">
-                                <button class="counter-btn" onclick="updateWidgetVal('water', -1, 0, ${target})">-</button>
-                                <button class="counter-btn" onclick="updateWidgetVal('water', 1, 0, ${target})">+</button>
+                                <button class="counter-btn" ${disabledAttr} onclick="updateWidgetVal('water', -1, 0, ${target})">-</button>
+                                <button class="counter-btn" ${disabledAttr} onclick="updateWidgetVal('water', 1, 0, ${target})">+</button>
                             </div>
                         </div>
                     </div>
@@ -826,7 +1011,7 @@
                             <span class="dash-item-title">${t.sleep_time}</span>
                         </div>
                         <div class="dash-item-body">
-                            <input type="time" class="input-time-mini" value="${curTime}" onchange="updateTimeVal('sleepTime', this.value)">
+                            <input type="time" class="input-time-mini" ${disabledAttr} value="${curTime}" onchange="updateTimeVal('sleepTime', this.value)">
                         </div>
                     </div>
                 `;
@@ -842,7 +1027,7 @@
                             <span class="dash-item-title">${t.wake_time}</span>
                         </div>
                         <div class="dash-item-body">
-                            <input type="time" class="input-time-mini" value="${curTime}" onchange="updateTimeVal('wakeTime', this.value)">
+                            <input type="time" class="input-time-mini" ${disabledAttr} value="${curTime}" onchange="updateTimeVal('wakeTime', this.value)">
                         </div>
                     </div>
                 `;
@@ -858,10 +1043,10 @@
                             <span class="dash-item-title">${t.sleep_hours}</span>
                         </div>
                         <div class="dash-item-body">
-                            <span class="dash-item-value"><span id="valSleep">${loggedValues.sleepHours}</span> / ${target} ${t.hours}</span>
+                            <span class="dash-item-value"><span id="valSleep">${loggedValues.sleepHours || 0}</span> / ${target} ${t.hours}</span>
                             <div class="counter-controls">
-                                <button class="counter-btn" onclick="updateWidgetVal('sleepHours', -1, 0, 24)">-</button>
-                                <button class="counter-btn" onclick="updateWidgetVal('sleepHours', 1, 0, 24)">+</button>
+                                <button class="counter-btn" ${disabledAttr} onclick="updateWidgetVal('sleepHours', -1, 0, 24)">-</button>
+                                <button class="counter-btn" ${disabledAttr} onclick="updateWidgetVal('sleepHours', 1, 0, 24)">+</button>
                             </div>
                         </div>
                     </div>
@@ -878,10 +1063,10 @@
                             <span class="dash-item-title">${t.walking_time}</span>
                         </div>
                         <div class="dash-item-body">
-                            <span class="dash-item-value"><span id="valWalk">${loggedValues.walkMins}</span> / ${targetMins} ${t.mins}</span>
+                            <span class="dash-item-value"><span id="valWalk">${loggedValues.walkMins || 0}</span> / ${targetMins} ${t.mins}</span>
                             <div class="counter-controls">
-                                <button class="counter-btn" onclick="updateWidgetVal('walkMins', -10, 0, 300)">-</button>
-                                <button class="counter-btn" onclick="updateWidgetVal('walkMins', 10, 0, 300)">+</button>
+                                <button class="counter-btn" ${disabledAttr} onclick="updateWidgetVal('walkMins', -10, 0, 300)">-</button>
+                                <button class="counter-btn" ${disabledAttr} onclick="updateWidgetVal('walkMins', 10, 0, 300)">+</button>
                             </div>
                         </div>
                     </div>
@@ -898,10 +1083,10 @@
                             <span class="dash-item-title">${t.phone_usage}</span>
                         </div>
                         <div class="dash-item-body">
-                            <span class="dash-item-value"><span id="valPhone">${loggedValues.phoneHours}</span> / ${target} ${t.hours}</span>
+                            <span class="dash-item-value"><span id="valPhone">${loggedValues.phoneHours || 0}</span> / ${target} ${t.hours}</span>
                             <div class="counter-controls">
-                                <button class="counter-btn" onclick="updateWidgetVal('phoneHours', -1, 0, 24)">-</button>
-                                <button class="counter-btn" onclick="updateWidgetVal('phoneHours', 1, 0, 24)">+</button>
+                                <button class="counter-btn" ${disabledAttr} onclick="updateWidgetVal('phoneHours', -1, 0, 24)">-</button>
+                                <button class="counter-btn" ${disabledAttr} onclick="updateWidgetVal('phoneHours', 1, 0, 24)">+</button>
                             </div>
                         </div>
                     </div>
@@ -919,8 +1104,8 @@
                         </div>
                         <div class="dash-item-body">
                             <div class="option-toggle-group">
-                                <button class="option-btn ${curSugar==='yes'?'active':''}" onclick="updateToggleOption('sugar', 'yes')">${t.yes}</button>
-                                <button class="option-btn ${curSugar==='no'?'active':''}" onclick="updateToggleOption('sugar', 'no')">${t.no}</button>
+                                <button class="option-btn ${curSugar==='yes'?'active':''}" ${disabledAttr} onclick="updateToggleOption('sugar', 'yes')">${t.yes}</button>
+                                <button class="option-btn ${curSugar==='no'?'active':''}" ${disabledAttr} onclick="updateToggleOption('sugar', 'no')">${t.no}</button>
                             </div>
                         </div>
                     </div>
@@ -938,8 +1123,8 @@
                         </div>
                         <div class="dash-item-body">
                             <div class="option-toggle-group">
-                                <button class="option-btn ${curSmoke==='yes'?'active':''}" onclick="updateToggleOption('smoking', 'yes')">${t.yes}</button>
-                                <button class="option-btn ${curSmoke==='no'?'active':''}" onclick="updateToggleOption('smoking', 'no')">${t.no}</button>
+                                <button class="option-btn ${curSmoke==='yes'?'active':''}" ${disabledAttr} onclick="updateToggleOption('smoking', 'yes')">${t.yes}</button>
+                                <button class="option-btn ${curSmoke==='no'?'active':''}" ${disabledAttr} onclick="updateToggleOption('smoking', 'no')">${t.no}</button>
                             </div>
                         </div>
                     </div>
@@ -955,7 +1140,7 @@
                             <span class="dash-item-title">${t.mental_state}</span>
                         </div>
                         <div class="dash-item-body">
-                            <select class="input-select-mini" onchange="updateMentalState(this.value)">
+                            <select class="input-select-mini" ${disabledAttr} onchange="updateMentalState(this.value)">
                                 <option value="calm" ${loggedValues.mental==='calm'?'selected':''}>${t.mood_calm}</option>
                                 <option value="happy" ${loggedValues.mental==='happy'?'selected':''}>${t.mood_happy}</option>
                                 <option value="sad" ${loggedValues.mental==='sad'?'selected':''}>${t.mood_sad}</option>
@@ -980,63 +1165,166 @@
 
         // Global functions for interactive widget updates
         window.updateWidgetVal = function(key, delta, min, max) {
-            if (loggedValues[key] === undefined) loggedValues[key] = 0;
-            let newVal = loggedValues[key] + delta;
+            const dateKey = formatDateKey(selectedDate);
+            let logData = getLogForDate(dateKey);
+
+            if (logData[key] === undefined) logData[key] = 0;
+            let newVal = logData[key] + delta;
             if (newVal < min) newVal = min;
             if (newVal > max) newVal = max;
-            
-            loggedValues[key] = newVal;
-            localStorage.setItem('dashboardLogs', JSON.stringify(loggedValues));
+
+            logData[key] = newVal;
+            saveLogForDate(dateKey, logData);
             renderActiveChallenges();
+            renderMonthlyProgressChart();
         };
 
         window.updateTimeVal = function(key, value) {
-            loggedValues[key] = value;
-            localStorage.setItem('dashboardLogs', JSON.stringify(loggedValues));
+            const dateKey = formatDateKey(selectedDate);
+            let logData = getLogForDate(dateKey);
+            logData[key] = value;
+            saveLogForDate(dateKey, logData);
         };
 
         window.updateToggleOption = function(key, val) {
-            loggedValues[key] = val;
-            localStorage.setItem('dashboardLogs', JSON.stringify(loggedValues));
+            const dateKey = formatDateKey(selectedDate);
+            let logData = getLogForDate(dateKey);
+            logData[key] = val;
+            saveLogForDate(dateKey, logData);
             renderActiveChallenges();
         };
 
         window.updateMentalState = function(val) {
-            loggedValues.mental = val;
-            localStorage.setItem('dashboardLogs', JSON.stringify(loggedValues));
+            const dateKey = formatDateKey(selectedDate);
+            let logData = getLogForDate(dateKey);
+            logData.mental = val;
+            saveLogForDate(dateKey, logData);
         };
 
         // Calculate Challenge Overall Progress Percentage
         function calculateTotalProgress() {
             const savedData = JSON.parse(localStorage.getItem('userChallenges')) || {};
+            const isWaterEnabled = localStorage.getItem('waterReminderToggle') !== 'false';
+            
+            const dateKey = formatDateKey(selectedDate);
+            let logData = getLogForDate(dateKey);
+
             let totalTracked = 0;
             let completedTracked = 0;
 
-            if (savedData.water?.show) {
+            if (savedData.water?.show && isWaterEnabled) {
                 totalTracked++;
                 const target = parseInt(savedData.water.value) || 10;
-                if ((loggedValues.water || 0) >= target) completedTracked++;
-                else completedTracked += (loggedValues.water || 0) / target;
+                if ((logData.water || 0) >= target) completedTracked++;
+                else completedTracked += (logData.water || 0) / target;
             }
             if (savedData.sleepHours?.show) {
                 totalTracked++;
                 const target = parseInt(savedData.sleepHours.value) || 8;
-                if ((loggedValues.sleepHours || 0) >= target) completedTracked++;
-                else completedTracked += (loggedValues.sleepHours || 0) / target;
+                if ((logData.sleepHours || 0) >= target) completedTracked++;
+                else completedTracked += (logData.sleepHours || 0) / target;
             }
             if (savedData.walking?.show) {
                 totalTracked++;
                 const target = (parseInt(savedData.walking.hours || 0) * 60) + parseInt(savedData.walking.minutes || 30);
-                if ((loggedValues.walkMins || 0) >= target) completedTracked++;
-                else completedTracked += (loggedValues.walkMins || 0) / (target || 1);
+                if ((logData.walkMins || 0) >= target) completedTracked++;
+                else completedTracked += (logData.walkMins || 0) / (target || 1);
             }
 
             let percent = totalTracked > 0 ? Math.min(100, Math.round((completedTracked / totalTracked) * 100)) : 0;
             document.getElementById('challengePercent').textContent = percent + '%';
             document.getElementById('progressFill').style.width = percent + '%';
+
+            logData.percent = percent;
+            saveLogForDate(dateKey, logData);
         }
 
-        // Format Date to current day
+        // Initialize Month Picker for Summary Chart
+        function initSummaryMonthPicker() {
+            const picker = document.getElementById('summaryMonthPicker');
+            if (picker && !picker.value) {
+                const year = selectedDate.getFullYear();
+                const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
+                picker.value = `${year}-${month}`;
+            }
+
+            picker.addEventListener('change', () => {
+                renderMonthlyProgressChart();
+            });
+        }
+
+        // Render Monthly Completion Percentage Bar Chart
+        function renderMonthlyProgressChart() {
+            const picker = document.getElementById('summaryMonthPicker');
+            if (!picker || !picker.value) return;
+
+            const [yearStr, monthStr] = picker.value.split('-');
+            const year = parseInt(yearStr);
+            const month = parseInt(monthStr) - 1;
+
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const labels = [];
+            const dataPercentages = [];
+
+            const archive = JSON.parse(localStorage.getItem('dailyArchiveLogs')) || {};
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                labels.push(day);
+                const dayKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const log = archive[dayKey];
+                dataPercentages.push(log ? (log.percent || 0) : 0);
+            }
+
+            const ctx = document.getElementById('monthlyProgressChart').getContext('2d');
+
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            const t = translations[currentLang] || translations['en'];
+
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: t.day_percent,
+                        data: dataPercentages,
+                        backgroundColor: 'rgba(37, 99, 235, 0.85)',
+                        borderColor: '#1D4ED8',
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: value => value + '%',
+                                font: { size: 10 }
+                            }
+                        },
+                        x: {
+                            ticks: { font: { size: 9 } }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: context => `${context.raw}%`
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Format Date
         function updateDateDisplay() {
             const options = { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' };
             const langCode = currentLang === 'ar' ? 'ar-EG' : (currentLang === 'fr' ? 'fr-FR' : (currentLang === 'es' ? 'es-ES' : 'en-US'));
@@ -1082,6 +1370,7 @@
                     selectedDate = new Date(year, month, day);
                     updateDateDisplay();
                     renderCalendar();
+                    renderActiveChallenges();
                     document.getElementById("calendarModal").style.display = "none";
                 });
 
@@ -1116,6 +1405,7 @@
             updateDateDisplay();
             renderCalendar();
             renderActiveChallenges();
+            renderMonthlyProgressChart();
         }
 
         document.getElementById("languageSelect").addEventListener("change", (e) => {
