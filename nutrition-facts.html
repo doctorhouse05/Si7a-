@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2563EB">
+    <title>Si7a | Nutrition Facts</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(165deg, #3B82F6 0%, #2563EB 40%, #1E3A8A 100%);
+            color: #fff;
+        }
+
+        .full-screen-container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 15px 15px 85px 15px;
+        }
+
+        /* Background Shapes */
+        .wave-bg-1 {
+            position: fixed;
+            top: -80px;
+            right: -80px;
+            width: 350px;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 45%;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .wave-bg-2 {
+            position: fixed;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 40%;
+            transform: rotate(25deg);
+            pointer-events: none;
+        }
+
+        /* Header */
+        .app-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 5;
+            margin-bottom: 15px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .avatar-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .welcome-text {
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content */
+        .page-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            z-index: 2;
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            width: 100%;
+            height: 140px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.2) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 12px 16px;
+        }
+
+        .hero-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Guide Grid Cards */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .guide-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .guide-card:active {
+            transform: scale(0.97);
+        }
+
+        .guide-card-icon {
+            font-size: 22px;
+            color: #34D399;
+        }
+
+        .guide-card-title {
+            font-size: 13.5px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .guide-card-desc {
+            font-size: 11px;
+            color: #94A3B8;
+            line-height: 1.4;
+        }
+
+        /* Solid Bottom Navigation Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            height: 62px;
+            background: #1E3A8A;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .nav-item {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-item i { font-size: 18px; }
+        .nav-item.active { color: #ffffff; font-weight: bold; }
+
+        /* Sidebar Drawer */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 1100;
+            display: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0; width: 270px; height: 100%;
+            background: #1E3A8A;
+            z-index: 1101;
+            transition: all 0.3s ease;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        html[dir="ltr"] .sidebar { left: -280px; border-right: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="ltr"] .sidebar.active { left: 0; }
+        html[dir="rtl"] .sidebar { right: -280px; border-left: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="rtl"] .sidebar.active { right: 0; }
+
+        .sidebar-header {
+            display: flex; align-items: center; gap: 10px;
+            padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 12px;
+        }
+
+        .sidebar-logo {
+            width: 38px; height: 38px; background: #fff; color: #2563EB;
+            border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px;
+        }
+
+        .language-selector-top {
+            margin-bottom: 15px; padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .language-selector-top label {
+            font-size: 11px; display: flex; align-items: center; gap: 6px;
+            margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); text-transform: uppercase;
+        }
+
+        .lang-select {
+            width: 100%; padding: 8px 10px; border-radius: 10px;
+            background: rgba(255, 255, 255, 0.25); color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4); font-size: 13px; font-weight: bold; outline: none;
+        }
+
+        .lang-select option { background: #1E3A8A; color: #fff; }
+
+        .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 6px; overflow-y: auto; flex: 1; }
+        .sidebar-menu a { color: #fff; text-decoration: none; padding: 10px 12px; font-size: 13px; border-radius: 10px; display: flex; align-items: center; gap: 10px; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { background: rgba(255, 255, 255, 0.2); }
+    </style>
+</head>
+
+<body>
+
+    <div class="full-screen-container">
+        <div class="wave-bg-1"></div>
+        <div class="wave-bg-2"></div>
+
+        <!-- Header -->
+        <header class="app-header">
+            <a href="settings.html" class="user-profile">
+                <img src="https://via.placeholder.com/100" id="userAvatar" class="avatar-img" alt="User Avatar">
+                <span class="welcome-text"><span data-i18n="welcome">أهلاً بك</span>، <span id="userName">سارة</span></span>
+            </a>
+            <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="page-content">
+
+            <!-- Hero Banner -->
+            <div class="hero-banner">
+                <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=600&q=80" alt="Nutrition Facts">
+                <div class="hero-overlay">
+                    <span class="hero-title" data-i18n="hero_title">القيمة الغذائية ومكونات الأطعمة بالتفصيل</span>
+                </div>
+            </div>
+
+            <!-- Grid Cards -->
+            <div class="guide-grid">
+                
+                <!-- 1. الحليب ومشتقاته -->
+                <a href="#dairy" class="guide-card">
+                    <div class="guide-card-icon"><i class="fa-solid fa-cow"></i></div>
+                    <div class="guide-card-title" data-i18n="card_dairy">الحليب ومشتقاته</div>
+                    <div class="guide-card-desc" data-i18n="desc_dairy">كالسيوم وبروتينات طبيعية</div>
+                </a>
+
+                <!-- 2. البيض -->
+                <a href="#eggs" class="guide-card">
+                    <div class="guide-card-icon"><i class="fa-solid fa-egg"></i></div>
+                    <div class="guide-card-title" data-i18n="card_eggs">البيض</div>
+                    <div class="guide-card-desc" data-i18n="desc_eggs">بروتين كامل وعناصر أساسية</div>
+                </a>
+
+                <!-- 3. المكسرات -->
+                <a href="#nuts" class="guide-card">
+                    <div class="guide-card-icon"><i class="fa-solid fa-seedling"></i></div>
+                    <div class="guide-card-title" data-i18n="card_nuts">المكسرات</div>
+                    <div class="guide-card-desc" data-i18n="desc_nuts">دهون صحية وطاقة مركزة</div>
+                </a>
+
+                <!-- 4. البذور -->
+                <a href="#seeds" class="guide-card">
+                    <div class="guide-card-icon"><i class="fa-solid fa-spa"></i></div>
+                    <div class="guide-card-title" data-i18n="card_seeds">البذور</div>
+                    <div class="guide-card-desc" data-i18n="desc_seeds">ألياف ومعادن دقيقة</div>
+                </a>
+
+                <!-- 5. الزيوت والدهون -->
+                <a href="#fats" class="guide-card">
+                    <div class="guide-card-icon"><i class="fa-solid fa-oil-well"></i></div>
+                    <div class="guide-card-title" data-i18n="card_fats">الزيوت والدهون</div>
+                    <div class="guide-card-desc" data-i18n="desc_fats">الدهون النافعة والمصادر</div>
+                </a>
+
+                <!-- 6. السكريات والمحليات -->
+                <a href="#sugars" class="guide-card">
+                    <div class="guide-card-icon"><i class="fa-solid fa-cube"></i></div>
+                    <div class="guide-card-title" data-i18n="card_sugars">السكريات والمحليات</div>
+                    <div class="guide-card-desc" data-i18n="desc_sugars">الأنواع والتأثير الصحي</div>
+                </a>
+
+                <!-- 7. الأعشاب والتوابل -->
+                <a href="#spices" class="guide-card">
+                    <div class="guide-card-icon"><i class="fa-solid fa-pepper-hot"></i></div>
+                    <div class="guide-card-title" data-i18n="card_spices">الأعشاب والتوابل</div>
+                    <div class="guide-card-desc" data-i18n="desc_spices">مضادات الأكسدة والنكهات</div>
+                </a>
+
+                <!-- 8. الأطباق الجزائرية -->
+                <a href="#algerian" class="guide-card">
+                    <div class="guide-card-icon"><i class="fa-solid fa-bowl-food"></i></div>
+                    <div class="guide-card-title" data-i18n="card_algerian">الأطباق الجزائرية</div>
+                    <div class="guide-card-desc" data-i18n="desc_algerian">السعرات والقيمة التقليدية</div>
+                </a>
+
+                <!-- 9. المشروبات -->
+                <a href="#drinks" class="guide-card">
+                    <div class="guide-card-icon"><i class="fa-solid fa-mug-hot"></i></div>
+                    <div class="guide-card-title" data-i18n="card_drinks">المشروبات</div>
+                    <div class="guide-card-desc" data-i18n="desc_drinks">عصائر، سوائل ومنبهات</div>
+                </a>
+
+                <!-- 10. الحلويات والمخبوزات -->
+                <a href="#bakery" class="guide-card">
+                    <div class="guide-card-icon"><i class="fa-solid fa-bread-slice"></i></div>
+                    <div class="guide-card-title" data-i18n="card_bakery">الحلويات والمخبوزات</div>
+                    <div class="guide-card-desc" data-i18n="desc_bakery">النشويات والسكريات</div>
+                </a>
+
+                <!-- 11. الفواكه المجففة -->
+                <a href="#dried-fruits" class="guide-card">
+                    <div class="guide-card-icon"><i class="fa-solid fa-apple-whole"></i></div>
+                    <div class="guide-card-title" data-i18n="card_dried">الفواكه المجففة</div>
+                    <div class="guide-card-desc" data-i18n="desc_dried">طاقة مركزة ومعادن</div>
+                </a>
+
+                <!-- 12. الأغذية المعلبة والمصنّعة -->
+                <a href="#canned" class="guide-card">
+                    <div class="guide-card-icon"><i class="fa-solid fa-box-archive"></i></div>
+                    <div class="guide-card-title" data-i18n="card_canned">الأغذية المعلبة والمصنّعة</div>
+                    <div class="guide-card-desc" data-i18n="desc_canned">المكونات والتأثيرات الصحية</div>
+                </a>
+
+            </div>
+
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="bottom-nav">
+            <a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span data-i18n="home">الرئيسية</span></a>
+            <a href="daily-challenge.html" class="nav-item"><i class="fa-solid fa-person-running"></i><span data-i18n="challenge">التحدي</span></a>
+            <a href="health-file.html" class="nav-item"><i class="fa-solid fa-notes-medical"></i><span data-i18n="health_file">ملفي الصحي</span></a>
+            <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i><span data-i18n="settings">الإعدادات</span></a>
+        </nav>
+    </div>
+
+    <!-- Sidebar Drawer -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div style="font-weight: bold; font-size: 18px;">Si7a</div>
+        </div>
+
+        <div class="language-selector-top">
+            <label for="languageSelect"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">اللغة</span></label>
+            <select id="languageSelect" class="lang-select">
+                <option value="ar">العربية</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">الرئيسية</span></a></li>
+            <li><a href="health-metrics.html"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">قياساتي الصحية</span></a></li>
+            <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">التحدي اليومي</span></a></li>
+            <li><a href="diet-plan.html"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">نظامي الغذائي</span></a></li>
+            <li><a href="nutrition-facts.html" class="active"><i class="fa-solid fa-apple-whole"></i> <span data-i18n="nutrition_facts">القيمة الغذائية للأطعمة</span></a></li>
+            <li><a href="health-file.html"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">ملفي الصحي</span></a></li>
+            <li><a href="period-tracker.html"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">دورتي الشهرية</span></a></li>
+            <li><a href="pregnancy-calculator.html"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">حاسبة الحمل</span></a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">الإعدادات</span></a></li>
+        </ul>
+    </aside>
+
+    <script type="module">
+        import { auth } from "./js/firebase.js";
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+        let currentLang = localStorage.getItem('appLanguage') || 'ar';
+
+        function syncSettingsAndProfile(user = null) {
+            const storedName = localStorage.getItem('userDisplayName');
+            const storedAvatar = localStorage.getItem('userPhotoURL');
+
+            if (storedName) {
+                document.getElementById("userName").textContent = storedName;
+            } else if (user && user.displayName) {
+                document.getElementById("userName").textContent = user.displayName;
+            }
+
+            if (storedAvatar) {
+                document.getElementById("userAvatar").src = storedAvatar;
+            } else if (user && user.photoURL) {
+                document.getElementById("userAvatar").src = user.photoURL;
+            }
+
+            const savedLang = localStorage.getItem('appLanguage') || 'ar';
+            if (savedLang !== currentLang) {
+                setLanguage(savedLang);
+            }
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) syncSettingsAndProfile(user);
+        });
+
+        window.addEventListener('storage', () => { syncSettingsAndProfile(auth.currentUser); });
+        window.addEventListener('focus', () => { syncSettingsAndProfile(auth.currentUser); });
+
+        const translations = {
+            ar: {
+                welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", nutrition_facts: "القيمة الغذائية للأطعمة", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
+                hero_title: "القيمة الغذائية ومكونات الأطعمة بالتفصيل",
+                card_dairy: "الحليب ومشتقاته", desc_dairy: "كالسيوم وبروتينات طبيعية",
+                card_eggs: "البيض", desc_eggs: "بروتين كامل وعناصر أساسية",
+                card_nuts: "المكسرات", desc_nuts: "دهون صحية وطاقة مركزة",
+                card_seeds: "البذور", desc_seeds: "ألياف ومعادن دقيقة",
+                card_fats: "الزيوت والدهون", desc_fats: "الدهون النافعة والمصادر",
+                card_sugars: "السكريات والمحليات", desc_sugars: "الأنواع والتأثير الصحي",
+                card_spices: "الأعشاب والتوابل", desc_spices: "مضادات الأكسدة والنكهات",
+                card_algerian: "الأطباق الجزائرية", desc_algerian: "السعرات والقيمة التقليدية",
+                card_drinks: "المشروبات", desc_drinks: "عصائر، سوائل ومنبهات",
+                card_bakery: "الحلويات والمخبوزات", desc_bakery: "النشويات والسكريات",
+                card_dried: "الفواكه المجففة", desc_dried: "طاقة مركزة ومعادن",
+                card_canned: "الأغذية المعلبة والمصنّعة", desc_canned: "المكونات والتأثيرات الصحية"
+            },
+            en: {
+                welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", nutrition_facts: "Nutrition Facts", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
+                hero_title: "Nutritional values and food components in detail",
+                card_dairy: "Dairy Products", desc_dairy: "Calcium & natural proteins",
+                card_eggs: "Eggs", desc_eggs: "Complete protein & essentials",
+                card_nuts: "Nuts", desc_nuts: "Healthy fats & concentrated energy",
+                card_seeds: "Seeds", desc_seeds: "Fiber & micro minerals",
+                card_fats: "Oils & Fats", desc_fats: "Beneficial fats & sources",
+                card_sugars: "Sugars & Sweeteners", desc_sugars: "Types & health impact",
+                card_spices: "Herbs & Spices", desc_spices: "Antioxidants & flavors",
+                card_algerian: "Algerian Dishes", desc_algerian: "Calories & traditional value",
+                card_drinks: "Drinks", desc_drinks: "Juices, liquids & stimulants",
+                card_bakery: "Bakery & Sweets", desc_bakery: "Starches & sugars",
+                card_dried: "Dried Fruits", desc_dried: "Concentrated energy & minerals",
+                card_canned: "Canned & Processed Foods", desc_canned: "Ingredients & health effects"
+            },
+            fr: {
+                welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures", daily_challenge: "Défi quotidien", diet_plan: "Régime", nutrition_facts: "Valeur nutritionnelle", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
+                hero_title: "Valeurs nutritionnelles et composants en détail",
+                card_dairy: "Produits laitiers", desc_dairy: "Calcium et protéines naturelles",
+                card_eggs: "Œufs", desc_eggs: "Protéine complète et essentiels",
+                card_nuts: "Noix", desc_nuts: "Graisses saines et énergie",
+                card_seeds: "Graines", desc_seeds: "Fibres et minéraux",
+                card_fats: "Huiles et graisses", desc_fats: "Graisses bénéfiques et sources",
+                card_sugars: "Sucres et édulcorants", desc_sugars: "Types et impact sur la santé",
+                card_spices: "Herbes et épices", desc_spices: "Antioxydants et saveurs",
+                card_algerian: "Plats algériens", desc_algerian: "Calories et valeur traditionnelle",
+                card_drinks: "Boissons", desc_drinks: "Jus, liquides et stimulants",
+                card_bakery: "Boulangerie et pâtisserie", desc_bakery: "Féculents et sucres",
+                card_dried: "Fruits secs", desc_dried: "Énergie concentrée et minéraux",
+                card_canned: "Aliments en conserve", desc_canned: "Ingrédients et effets sur la santé"
+            },
+            es: {
+                welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas", daily_challenge: "Desafío diario", diet_plan: "Dieta", nutrition_facts: "Valor nutricional", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
+                hero_title: "Valores nutricionales y componentes de los alimentos en detalle",
+                card_dairy: "Lácteos", desc_dairy: "Calcio y proteínas naturales",
+                card_eggs: "Huevos", desc_eggs: "Proteína completa y esenciales",
+                card_nuts: "Frutos secos", desc_nuts: "Grasas saludables y energía",
+                card_seeds: "Semillas", desc_seeds: "Fibra y minerales",
+                card_fats: "Aceites y grasas", desc_fats: "Grasas beneficiosas",
+                card_sugars: "Azúcares y edulcorantes", desc_sugars: "Tipos e impacto en la salud",
+                card_spices: "Hierbas y especias", desc_spices: "Antioxidantes y sabores",
+                card_algerian: "Platos argelinos", desc_algerian: "Calorías y valor tradicional",
+                card_drinks: "Bebidas", desc_drinks: "Jugos, líquidos y estimulantes",
+                card_bakery: "Panadería y dulces", desc_bakery: "Almidones y azúcares",
+                card_dried: "Frutas secas", desc_dried: "Energía concentrada y minerales",
+                card_canned: "Alimentos enlatados", desc_canned: "Ingredientes y efectos en la salud"
+            }
+        };
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('appLanguage', lang);
+            const html = document.documentElement;
+            
+            if (lang === 'ar') {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+            } else {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', lang);
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            const langSelect = document.getElementById("languageSelect");
+            if (langSelect) langSelect.value = lang;
+        }
+
+        document.getElementById("languageSelect").addEventListener("change", (e) => {
+            setLanguage(e.target.value);
+        });
+
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebarOverlay");
+
+        document.getElementById("openSidebar").addEventListener("click", () => {
+            sidebar.classList.add("active");
+            overlay.style.display = "block";
+        });
+
+        overlay.addEventListener("click", () => {
+            sidebar.classList.remove("active");
+            overlay.style.display = "none";
+        });
+
+        setLanguage(currentLang);
+    </script>
+</body>
+
+</html>
