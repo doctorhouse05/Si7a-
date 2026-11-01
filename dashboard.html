@@ -830,7 +830,7 @@
         // Fetch logs for the selected date
         function getLogForDate(dateKey) {
             const archive = JSON.parse(localStorage.getItem('dailyArchiveLogs')) || {};
-            return archive[dateKey] || getDefaultLogState();
+            return archive[dateKey] ? { ...getDefaultLogState(), ...archive[dateKey] } : getDefaultLogState();
         }
 
         // Save active day log to storage
@@ -921,7 +921,7 @@
             },
             ar: {
                 welcome: "أهلاً بك", calendar: "التقويم", challenge_progress: "تقدم التحدي اليومي",
-                challenge_summary: "ملخص التحدي الشهرية", day_percent: "نسبة التحدي اليومية (%)",
+                challenge_summary: "ملخص التحدي الشهري", day_percent: "نسبة التحدي اليومية (%)",
                 water_intake: "شرب الماء", sleep_time: "وقت النوم", wake_time: "وقت الاستيقاظ", sleep_hours: "مدة النوم", walking_time: "المشي", phone_usage: "استعمال الهاتف", sugar_intake: "تناول السكريات", smoking: "التدخين", mental_state: "الحالة النفسية",
                 cups: "أكواب", hours: "ساعة", mins: "دقيقة", yes: "نعم", no: "لا", add_item: "إضافة عنصر",
                 home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
@@ -1166,6 +1166,8 @@
             let logData = getLogForDate(dateKey);
             logData[key] = value;
             saveLogForDate(dateKey, logData);
+            calculateTotalProgress();
+            renderMonthlyProgressChart();
         };
 
         window.updateToggleOption = function(key, val) {
@@ -1174,6 +1176,7 @@
             logData[key] = val;
             saveLogForDate(dateKey, logData);
             renderActiveChallenges();
+            renderMonthlyProgressChart();
         };
 
         window.updateMentalState = function(val) {
@@ -1181,6 +1184,8 @@
             let logData = getLogForDate(dateKey);
             logData.mental = val;
             saveLogForDate(dateKey, logData);
+            calculateTotalProgress();
+            renderMonthlyProgressChart();
         };
 
         // Calculate Challenge Overall Progress Percentage
@@ -1194,23 +1199,55 @@
             let totalTracked = 0;
             let completedTracked = 0;
 
+            // 1. Water
             if (savedData.water?.show && isWaterEnabled) {
                 totalTracked++;
                 const target = parseInt(savedData.water.value) || 10;
-                if ((logData.water || 0) >= target) completedTracked++;
-                else completedTracked += (logData.water || 0) / target;
+                completedTracked += Math.min(1, (logData.water || 0) / target);
             }
+            // 2. Sleep Hours
             if (savedData.sleepHours?.show) {
                 totalTracked++;
                 const target = parseInt(savedData.sleepHours.value) || 8;
-                if ((logData.sleepHours || 0) >= target) completedTracked++;
-                else completedTracked += (logData.sleepHours || 0) / target;
+                completedTracked += Math.min(1, (logData.sleepHours || 0) / target);
             }
+            // 3. Walking Mins
             if (savedData.walking?.show) {
                 totalTracked++;
                 const target = (parseInt(savedData.walking.hours || 0) * 60) + parseInt(savedData.walking.minutes || 30);
-                if ((logData.walkMins || 0) >= target) completedTracked++;
-                else completedTracked += (logData.walkMins || 0) / (target || 1);
+                if (target > 0) {
+                    completedTracked += Math.min(1, (logData.walkMins || 0) / target);
+                }
+            }
+            // 4. Phone Usage (Less or equal to target is goal)
+            if (savedData.phone?.show) {
+                totalTracked++;
+                const target = parseInt(savedData.phone.value) || 3;
+                const logged = logData.phoneHours || 0;
+                if (logged <= target) {
+                    completedTracked += 1;
+                } else {
+                    completedTracked += Math.max(0, 1 - ((logged - target) / target));
+                }
+            }
+            // 5. Sugar Intake ('no' means goal achieved)
+            if (savedData.sugar?.show) {
+                totalTracked++;
+                if (logData.sugar === 'no') completedTracked += 1;
+            }
+            // 6. Smoking ('no' means goal achieved)
+            if (savedData.smoking?.show) {
+                totalTracked++;
+                if (logData.smoking === 'no') completedTracked += 1;
+            }
+            // 7. Mental State
+            if (savedData.mental?.show) {
+                totalTracked++;
+                if (logData.mental === 'calm' || logData.mental === 'happy') {
+                    completedTracked += 1;
+                } else {
+                    completedTracked += 0.5;
+                }
             }
 
             let percent = totalTracked > 0 ? Math.min(100, Math.round((completedTracked / totalTracked) * 100)) : 0;
@@ -1353,6 +1390,15 @@
                     updateDateDisplay();
                     renderCalendar();
                     renderActiveChallenges();
+                    
+                    // Synchronize Chart Month Picker
+                    const picker = document.getElementById('summaryMonthPicker');
+                    if (picker) {
+                        const mStr = String(month + 1).padStart(2, '0');
+                        picker.value = `${year}-${mStr}`;
+                    }
+                    renderMonthlyProgressChart();
+
                     document.getElementById("calendarModal").style.display = "none";
                 });
 
