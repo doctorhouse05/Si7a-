@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#2563EB">
-    <title>Si7a | Fruits Nutrition Facts</title>
+    <title>Si7a | Grapes Nutrition Facts</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -83,9 +83,16 @@
             text-decoration: none;
         }
 
-        .page-title-top {
-            font-size: 16px;
+        .header-category {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: bold;
+            backdrop-filter: blur(8px);
         }
 
         /* Main Content */
@@ -97,79 +104,296 @@
             z-index: 2;
         }
 
-        /* Search Box */
-        .search-box {
-            width: 100%;
-            padding: 12px 15px;
-            border-radius: 14px;
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #fff;
-            font-size: 14px;
-            outline: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .search-box::placeholder {
-            color: #94A3B8;
-        }
-
-        /* Fruits List */
-        .fruits-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .fruit-item {
+        /* Item Header Card */
+        .item-header-card {
             background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
-            padding: 14px 16px;
+            border-radius: 20px;
+            padding: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            text-decoration: none;
-            color: #fff;
-        }
-
-        .fruit-item:active {
-            transform: scale(0.98);
-        }
-
-        .fruit-info {
-            display: flex;
-            align-items: center;
+            flex-direction: column;
             gap: 12px;
         }
 
-        .fruit-icon {
-            font-size: 20px;
-            color: #34D399;
-            width: 36px;
-            height: 36px;
-            background: rgba(52, 211, 153, 0.15);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .item-image-container {
+            width: 100%;
+            height: 160px;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
         }
 
-        .fruit-name {
-            font-size: 14px;
+        .item-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-titles {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .item-main-title {
+            font-size: 24px;
             font-weight: bold;
             color: #fff;
         }
 
-        .fruit-arrow {
+        .item-sub-title {
+            font-size: 13px;
             color: #94A3B8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .item-sub-title i {
+            color: #34D399;
+        }
+
+        .item-desc {
+            font-size: 12.5px;
+            color: #E2E8F0;
+            line-height: 1.5;
+        }
+
+        /* Section Title Badge */
+        .section-badge {
+            background: #4F46E5;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            margin-top: 4px;
+        }
+
+        /* Nutrition Grid Cards */
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .nutrition-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 10px 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .nutrition-icon {
+            font-size: 16px;
+            color: #34D399;
+        }
+
+        .nutrition-label {
+            font-size: 10.5px;
+            color: #94A3B8;
+        }
+
+        .nutrition-value {
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Info Cards Grid (2 columns) */
+        .info-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .info-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header-flex {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13.5px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .card-header-flex i {
+            color: #F43F5E;
+        }
+
+        .card-header-flex.green i {
+            color: #34D399;
+        }
+
+        .card-header-flex.purple i {
+            color: #A855F7;
+        }
+
+        .card-header-flex.blue i {
+            color: #38BDF8;
+        }
+
+        .card-header-flex.yellow i {
+            color: #FBBF24;
+        }
+
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .bullet-list li {
+            font-size: 11.5px;
+            color: #CBD5E1;
+            position: relative;
+            padding-right: 12px;
+            line-height: 1.4;
+        }
+
+        html[dir="ltr"] .bullet-list li {
+            padding-right: 0;
+            padding-left: 12px;
+        }
+
+        .bullet-list li::before {
+            content: "•";
+            color: #34D399;
+            position: absolute;
+            right: 0;
+            font-weight: bold;
+        }
+
+        html[dir="ltr"] .bullet-list li::before {
+            right: auto;
+            left: 0;
+        }
+
+        /* Full Width Card */
+        .info-card-full {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .warning-card {
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(244, 63, 94, 0.3);
+        }
+
+        /* Glycemic Section inside info card */
+        .glycemic-row {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glycemic-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .glycemic-title {
+            font-size: 11px;
+            color: #94A3B8;
+        }
+
+        .glycemic-desc {
+            font-size: 12px;
+            font-weight: bold;
+            color: #34D399;
+        }
+
+        /* Consumption Methods Icons Grid */
+        .consumption-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .consumption-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 10px 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 6px;
+        }
+
+        .consumption-icon-box {
+            width: 36px;
+            height: 36px;
+            background: rgba(52, 211, 153, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #34D399;
             font-size: 14px;
+        }
+
+        .consumption-text {
+            font-size: 10px;
+            color: #E2E8F0;
+            line-height: 1.3;
+        }
+
+        /* Footer Source Bar */
+        .footer-source {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(15, 23, 42, 0.75);
+            padding: 10px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 11px;
+            color: #94A3B8;
+            margin-top: 6px;
+        }
+
+        .footer-source-left {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-source-left i {
+            color: #38BDF8;
         }
 
         /* Solid Bottom Navigation Bar */
@@ -268,20 +492,188 @@
 
         <!-- Header -->
         <header class="app-header">
-            <a href="nutrition-facts.html" class="back-btn"><i class="fa-solid fa-arrow-right" id="backIcon"></i></a>
-            <div class="page-title-top" data-i18n="page_title">الفواكه</div>
+            <a href="fruits.html" class="back-btn"><i class="fa-solid fa-arrow-right" id="backIcon"></i></a>
+            <div class="header-category"><i class="fa-solid fa-apple-whole"></i> <span data-i18n="cat_fruits">الفواكه</span></div>
             <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
         </header>
 
         <!-- Main Content -->
         <main class="page-content">
-            <!-- Search Input -->
-            <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن فاكهة...">
 
-            <!-- Fruits Container Rendered Dynamically (Alphabetically Sorted) -->
-            <div class="fruits-list" id="fruitsContainer">
-                <!-- Javascript will populate sorted list items here -->
+            <!-- Item Main Header Card -->
+            <div class="item-header-card">
+                <div class="item-image-container">
+                    <img src="https://images.unsplash.com/photo-1537640538966-79f365143f8b?auto=format&fit=crop&w=600&q=80" alt="Grapes">
+                </div>
+                <div class="item-titles">
+                    <h1 class="item-main-title" data-i18n="item_title">العنب</h1>
+                    <div class="item-sub-title">
+                        <span>Raisin | Grapes</span> • <span>Vitis vinifera</span> <i class="fa-solid fa-leaf"></i>
+                    </div>
+                </div>
+                <p class="item-desc" data-i18n="item_desc">فاكهة غنية بالماء والسكريات الطبيعية ومضادات الأكسدة.</p>
             </div>
+
+            <!-- Section Badge -->
+            <div class="section-badge" data-i18n="nutrition_badge">القيمة الغذائية لكل 100 غرام</div>
+
+            <!-- Nutrition 8 Cards Grid -->
+            <div class="nutrition-grid">
+                <div class="nutrition-card">
+                    <div class="nutrition-icon"><i class="fa-solid fa-fire"></i></div>
+                    <div class="nutrition-label" data-i18n="nut_calories">السعرات الحرارية</div>
+                    <div class="nutrition-value">69 kcal</div>
+                </div>
+                <div class="nutrition-card">
+                    <div class="nutrition-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                    <div class="nutrition-label" data-i18n="nut_carbs">الكربوهيدرات</div>
+                    <div class="nutrition-value">18.1 g</div>
+                </div>
+                <div class="nutrition-card">
+                    <div class="nutrition-icon"><i class="fa-solid fa-cube"></i></div>
+                    <div class="nutrition-label" data-i18n="nut_sugars">السكريات</div>
+                    <div class="nutrition-value">15.5 g</div>
+                </div>
+                <div class="nutrition-card">
+                    <div class="nutrition-icon"><i class="fa-solid fa-seedling"></i></div>
+                    <div class="nutrition-label" data-i18n="nut_fiber">الألياف</div>
+                    <div class="nutrition-value">0.9 g</div>
+                </div>
+                <div class="nutrition-card">
+                    <div class="nutrition-icon"><i class="fa-solid fa-dna"></i></div>
+                    <div class="nutrition-label" data-i18n="nut_proteins">البروتينات</div>
+                    <div class="nutrition-value">0.7 g</div>
+                </div>
+                <div class="nutrition-card">
+                    <div class="nutrition-icon"><i class="fa-solid fa-droplet" style="color:#F43F5E;"></i></div>
+                    <div class="nutrition-label" data-i18n="nut_fats">الدهون</div>
+                    <div class="nutrition-value">0.2 g</div>
+                </div>
+                <div class="nutrition-card" style="grid-column: span 2;">
+                    <div class="nutrition-icon"><i class="fa-solid fa-water" style="color:#38BDF8;"></i></div>
+                    <div class="nutrition-label" data-i18n="nut_water">الماء</div>
+                    <div class="nutrition-value">80.5 g</div>
+                </div>
+            </div>
+
+            <!-- Row 1: Health Benefits & Vitamins -->
+            <div class="info-grid-2">
+                <!-- Health Benefits -->
+                <div class="info-card">
+                    <div class="card-header-flex"><i class="fa-solid fa-heart-pulse"></i> <span data-i18n="sec_benefits">الفوائد الصحية</span></div>
+                    <ul class="bullet-list">
+                        <li data-i18n="ben_1">يحتوي على مضادات الأكسدة مثل الريسفيراترول.</li>
+                        <li data-i18n="ben_2">يساهم في دعم صحة القلب والأوعية الدموية.</li>
+                        <li data-i18n="ben_3">يساعد في ترطيب الجسم.</li>
+                        <li data-i18n="ben_4">يوفر الطاقة بفضل السكريات الطبيعية.</li>
+                    </ul>
+                </div>
+
+                <!-- Vitamins -->
+                <div class="info-card">
+                    <div class="card-header-flex green"><i class="fa-solid fa-capsules"></i> <span data-i18n="sec_vitamins">الفيتامينات</span></div>
+                    <ul class="bullet-list">
+                        <li data-i18n="vit_c">فيتامين C</li>
+                        <li data-i18n="vit_k">فيتامين K</li>
+                        <li data-i18n="vit_b1">فيتامين B1</li>
+                        <li data-i18n="vit_b2">فيتامين B2</li>
+                        <li data-i18n="vit_b6">فيتامين B6</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Row 2: Minerals & Antioxidants -->
+            <div class="info-grid-2">
+                <!-- Minerals -->
+                <div class="info-card">
+                    <div class="card-header-flex green"><i class="fa-solid fa-atom"></i> <span data-i18n="sec_minerals">المعادن</span></div>
+                    <ul class="bullet-list">
+                        <li data-i18n="min_potassium">البوتاسيوم</li>
+                        <li data-i18n="min_copper">النحاس</li>
+                        <li data-i18n="min_manganese">المنغنيز</li>
+                    </ul>
+                </div>
+
+                <!-- Antioxidants -->
+                <div class="info-card">
+                    <div class="card-header-flex purple"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="sec_antioxidants">مضادات الأكسدة</span></div>
+                    <ul class="bullet-list">
+                        <li data-i18n="ant_resveratrol">الريسفيراترول</li>
+                        <li data-i18n="ant_anthocyanins">الأنثوسيانينات</li>
+                        <li data-i18n="ant_flavonoids">الفلافونويدات</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Row 3: Glycemic Index & Selection/Storage -->
+            <div class="info-grid-2">
+                <!-- Glycemic Index -->
+                <div class="info-card">
+                    <div class="card-header-flex blue"><i class="fa-solid fa-chart-line"></i> <span data-i18n="sec_glycemic">المؤشر الجلايسيمي</span></div>
+                    <div class="glycemic-row">
+                        <span class="glycemic-title" data-i18n="gi_index_title">المؤشر الجلايسيمي</span>
+                        <span class="glycemic-desc" data-i18n="gi_index_val">منخفض إلى متوسط (يختلف حسب الصنف)</span>
+                    </div>
+                    <div class="glycemic-row" style="margin-top: 6px;">
+                        <span class="glycemic-title" data-i18n="gl_load_title">الحمل الجلايسيمي</span>
+                        <span class="glycemic-desc" data-i18n="gl_load_val">منخفض (في الحصة المعتادة)</span>
+                    </div>
+                </div>
+
+                <!-- Selection & Storage -->
+                <div class="info-card">
+                    <div class="card-header-flex yellow"><i class="fa-solid fa-box-archive"></i> <span data-i18n="sec_storage">طريقة الاختيار والحفظ</span></div>
+                    <ul class="bullet-list">
+                        <li data-i18n="stor_1">اختر العناقيد ذات الحبات السليمة والصلبة.</li>
+                        <li data-i18n="stor_2">تجنب الحبات المتعفنة أو المتشققة.</li>
+                        <li data-i18n="stor_3">يُحفظ في الثلاجة.</li>
+                        <li data-i18n="stor_4">يُغسل جيداً قبل الاستهلاك.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Consumption Methods (Grid 4 items) -->
+            <div class="info-card-full">
+                <div class="card-header-flex blue"><i class="fa-solid fa-utensils"></i> <span data-i18n="sec_consumption">طرق الاستهلاك</span></div>
+                <div class="consumption-grid">
+                    <div class="consumption-item">
+                        <div class="consumption-icon-box"><i class="fa-solid fa-apple-whole"></i></div>
+                        <div class="consumption-text" data-i18n="cons_fresh">طازجاً (بعد الغسل)</div>
+                    </div>
+                    <div class="consumption-item">
+                        <div class="consumption-icon-box"><i class="fa-solid fa-mug-hot"></i></div>
+                        <div class="consumption-text" data-i18n="cons_juice">عصير</div>
+                    </div>
+                    <div class="consumption-item">
+                        <div class="consumption-icon-box"><i class="fa-solid fa-bowl-food"></i></div>
+                        <div class="consumption-text" data-i18n="cons_salads">في السلطات والحلويات</div>
+                    </div>
+                    <div class="consumption-item">
+                        <div class="consumption-icon-box"><i class="fa-solid fa-boxes-packing"></i></div>
+                        <div class="consumption-text" data-i18n="cons_dried">مجففاً (زبيب)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Warning / Health Notes Card -->
+            <div class="info-card-full warning-card">
+                <div class="card-header-flex" style="color:#F43F5E;"><i class="fa-solid fa-triangle-exclamation"></i> <span data-i18n="sec_notes">ملاحظات صحية</span></div>
+                <ul class="bullet-list">
+                    <li data-i18n="note_1">يحتوي على سكريات طبيعية، لذلك يُراعى حجم الحصة لدى مرضى السكري.</li>
+                    <li data-i18n="note_2">الإفراط فيه قد يسبب الانتفاخ.</li>
+                    <li data-i18n="note_3">يجب تقطيعه طولياً إلى أرباع الأطفال الصغار لتجنب الاختناق.</li>
+                </ul>
+            </div>
+
+            <!-- Footer Source -->
+            <div class="footer-source">
+                <div class="footer-source-left">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span data-i18n="approx_values">القيم الغذائية تقريبية وتختلف حسب الصنف وطريقة التحضير.</span>
+                </div>
+                <div style="font-size: 10px; color: #64748B;">USDA FoodData Central</div>
+            </div>
+
         </main>
 
         <!-- Bottom Navigation Bar -->
@@ -330,108 +722,140 @@
 
         let currentLang = localStorage.getItem('appLanguage') || 'ar';
 
-        // قائمة الفواكه بالأسماء المتعددة وأسماء الملفات الإنجليزية الدقيقة
-        const fruitsData = [
-            { id: "apple", fileName: "apple.html", ar: "التفاح", en: "Apple", fr: "Pomme", es: "Manzana" },
-            { id: "banana", fileName: "banana.html", ar: "الموز", en: "Banana", fr: "Banane", es: "Plátano" },
-            { id: "orange", fileName: "orange.html", ar: "البرتقال", en: "Orange", fr: "Orange", es: "Naranja" },
-            { id: "mandarin", fileName: "mandarin.html", ar: "اليوسفي (الماندارين)", en: "Mandarin", fr: "Mandarine", es: "Mandarina" },
-            { id: "lemon", fileName: "lemon.html", ar: "الليمون", en: "Lemon", fr: "Citron", es: "Limón" },
-            { id: "lime", fileName: "lime.html", ar: "الليمون الأخضر", en: "Lime", fr: "Citron vert", es: "Lima" },
-            { id: "pear", fileName: "pear.html", ar: "الإجاص", en: "Pear", fr: "Poire", es: "Pera" },
-            { id: "grapes", fileName: "grapes.html", ar: "العنب", en: "Grapes", fr: "Raisin", es: "Uvas" },
-            { id: "strawberry", fileName: "strawberry.html", ar: "الفراولة", en: "Strawberry", fr: "Fraise", es: "Fresa" },
-            { id: "berries", fileName: "berries.html", ar: "التوت", en: "Berries", fr: "Baies", es: "Bayas" },
-            { id: "blueberry", fileName: "blueberry.html", ar: "التوت الأزرق", en: "Blueberry", fr: "Myrtille", es: "Arándano azul" },
-            { id: "blackberry", fileName: "blackberry.html", ar: "التوت الأسود", en: "Blackberry", fr: "Mûre", es: "Mora" },
-            { id: "red_raspberry", fileName: "red-raspberry.html", ar: "التوت الأحمر", en: "Red Raspberry", fr: "Framboise rouge", es: "Frambuesa roja" },
-            { id: "cherry", fileName: "cherry.html", ar: "الكرز", en: "Cherry", fr: "Cerise", es: "Cereza" },
-            { id: "peach", fileName: "peach.html", ar: "الخوخ", en: "Peach", fr: "Pêche", es: "Melocotón" },
-            { id: "apricot", fileName: "apricot.html", ar: "المشمش", en: "Apricot", fr: "Abricot", es: "Albaricoque" },
-            { id: "plum", fileName: "plum.html", ar: "البرقوق", en: "Plum", fr: "Prune", es: "Ciruela" },
-            { id: "nectarine", fileName: "nectarine.html", ar: "النكتارين", en: "Nectarine", fr: "Nectarine", es: "Nectarina" },
-            { id: "pomegranate", fileName: "pomegranate.html", ar: "الرمان", en: "Pomegranate", fr: "Grenade", es: "Granada" },
-            { id: "fig", fileName: "fig.html", ar: "التين", en: "Fig", fr: "Figue", es: "Higo" },
-            { id: "dates", fileName: "dates.html", ar: "التمر", en: "Dates", fr: "Dattes", es: "Dátiles" },
-            { id: "watermelon", fileName: "watermelon.html", ar: "البطيخ", en: "Watermelon", fr: "Pastèque", es: "Sandía" },
-            { id: "cantaloupe", fileName: "cantaloupe.html", ar: "الشمام", en: "Cantaloupe", fr: "Cantaloup", es: "Melón cantalupo" },
-            { id: "pineapple", fileName: "pineapple.html", ar: "الأناناس", en: "Pineapple", fr: "Ananas", es: "Piña" },
-            { id: "mango", fileName: "mango.html", ar: "المانجو", en: "Mango", fr: "Mangue", es: "Mango" },
-            { id: "papaya", fileName: "papaya.html", ar: "البابايا", en: "Papaya", fr: "Papaye", es: "Papaya" },
-            { id: "kiwi", fileName: "kiwi.html", ar: "الكيوي", en: "Kiwi", fr: "Kiwi", es: "Kiwi" },
-            { id: "avocado", fileName: "avocado.html", ar: "الأفوكادو", en: "Avocado", fr: "Avocat", es: "Aguacate" },
-            { id: "coconut", fileName: "coconut.html", ar: "جوز الهند", en: "Coconut", fr: "Noix de coco", es: "Coco" },
-            { id: "guava", fileName: "guava.html", ar: "الجوافة", en: "Guava", fr: "Goyave", es: "Guayaba" },
-            { id: "prickly_pear", fileName: "prickly-pear.html", ar: "التين الشوكي", en: "Prickly Pear", fr: "Figue de barbarie", es: "Higo chumbo" },
-            { id: "quince", fileName: "quince.html", ar: "السفرجل", en: "Quince", fr: "Coing", es: "Membrillo" },
-            { id: "persimmon", fileName: "persimmon.html", ar: "الكاكي", en: "Persimmon", fr: "Kaki", es: "Caqui" },
-            { id: "grapefruit", fileName: "grapefruit.html", ar: "الكريب فروت / الجريب فروت", en: "Grapefruit", fr: "Pamplemousse", es: "Pomelo" },
-            { id: "pomelo", fileName: "pomelo.html", ar: "البوملي", en: "Pomelo", fr: "Pumelo", es: "Pomelo chino" },
-            { id: "lychee", fileName: "lychee.html", ar: "الليتشي", en: "Lychee", fr: "Litchi", es: "Lichi" },
-            { id: "dragon_fruit", fileName: "dragon-fruit.html", ar: "فاكهة التنين", en: "Dragon Fruit", fr: "Fruit du dragon", es: "Pitahaya" },
-            { id: "passion_fruit", fileName: "passion-fruit.html", ar: "فاكهة العاطفة (الباشن فروت)", en: "Passion Fruit", fr: "Fruit de la passion", es: "Maracuyá" },
-            { id: "custard_apple", fileName: "custard-apple.html", ar: "القشطة", en: "Custard Apple", fr: "Pomme cannelle", es: "Chirimoya" },
-            { id: "tamarind", fileName: "tamarind.html", ar: "التمر الهندي", en: "Tamarind", fr: "Tamarin", es: "Tamarindo" },
-            { id: "jujube", fileName: "jujube.html", ar: "العناب", en: "Jujube", fr: "Jujube", es: "Azufaifa" },
-            { id: "loquat", fileName: "loquat.html", ar: "الأسكدنيا (البشملة)", en: "Loquat", fr: "Nèfle du Japon", es: "Níspero" },
-            { id: "sour_cherry", fileName: "sour-cherry.html", ar: "الكرز الحامض", en: "Sour Cherry", fr: "Griotte", es: "Guinda" },
-            { id: "white_mulberry", fileName: "white-mulberry.html", ar: "التوت الأبيض", en: "White Mulberry", fr: "Mûre blanche", es: "Mora blanca" },
-            { id: "cranberry", fileName: "cranberry.html", ar: "التوت البري", en: "Cranberry", fr: "Canneberge", es: "Arándano rojo" },
-            { id: "durian", fileName: "durian.html", ar: "الدوريان", en: "Durian", fr: "Durian", es: "Durián" },
-            { id: "rambutan", fileName: "rambutan.html", ar: "الرامبوتان", en: "Rambutan", fr: "Ramboutan", es: "Rambután" },
-            { id: "feijoa", fileName: "feijoa.html", ar: "الفيجوا", en: "Feijoa", fr: "Feijoa", es: "Feijoa" }
-        ];
-
         const translations = {
             ar: {
-                page_title: "الفواكه", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", nutrition_facts: "القيمة الغذائية للأطعمة", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
-                search_placeholder: "ابحث عن فاكهة..."
+                cat_fruits: "الفواكه", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", nutrition_facts: "القيمة الغذائية للأطعمة", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
+                item_title: "العنب",
+                item_desc: "فاكهة غنية بالماء والسكريات الطبيعية ومضادات الأكسدة.",
+                nutrition_badge: "القيمة الغذائية لكل 100 غرام",
+                nut_calories: "السعرات الحرارية", nut_carbs: "الكربوهيدرات", nut_sugars: "السكريات", nut_fiber: "الألياف", nut_proteins: "البروتينات", nut_fats: "الدهون", nut_water: "الماء",
+                sec_benefits: "الفوائد الصحية",
+                ben_1: "يحتوي على مضادات الأكسدة مثل الريسفيراترول.",
+                ben_2: "يساهم في دعم صحة القلب والأوعية الدموية.",
+                ben_3: "يساعد في ترطيب الجسم.",
+                ben_4: "يوفر الطاقة بفضل السكريات الطبيعية.",
+                sec_vitamins: "الفيتامينات",
+                vit_c: "فيتامين C", vit_k: "فيتامين K", vit_b1: "فيتامين B1", vit_b2: "فيتامين B2", vit_b6: "فيتامين B6",
+                sec_minerals: "المعادن",
+                min_potassium: "البوتاسيوم", min_copper: "النحاس", min_manganese: "المنغنيز",
+                sec_antioxidants: "مضادات الأكسدة",
+                ant_resveratrol: "الريسفيراترول", ant_anthocyanins: "الأنثوسيانينات", ant_flavonoids: "الفلافونويدات",
+                sec_glycemic: "المؤشر الجلايسيمي",
+                gi_index_title: "المؤشر الجلايسيمي", gi_index_val: "منخفض إلى متوسط (يختلف حسب الصنف)",
+                gl_load_title: "الحمل الجلايسيمي", gl_load_val: "منخفض (في الحصة المعتادة)",
+                sec_storage: "طريقة الاختيار والحفظ",
+                stor_1: "اختر العناقيد ذات الحبات السليمة والصلبة.",
+                stor_2: "تجنب الحبات المتعفنة أو المتشققة.",
+                stor_3: "يُحفظ في الثلاجة.",
+                stor_4: "يُغسل جيداً قبل الاستهلاك.",
+                sec_consumption: "طرق الاستهلاك",
+                cons_fresh: "طازجاً (بعد الغسل)", cons_juice: "عصير", cons_salads: "في السلطات والحلويات", cons_dried: "مجففاً (زبيب)",
+                sec_notes: "ملاحظات صحية",
+                note_1: "يحتوي على سكريات طبيعية، لذلك يُراعى حجم الحصة لدى مرضى السكري.",
+                note_2: "الإفراط فيه قد يسبب الانتفاخ.",
+                note_3: "يجب تقطيعه طولياً إلى أرباع الأطفال الصغار لتجنب الاختناق.",
+                approx_values: "القيم الغذائية تقريبية وتختلف حسب الصنف وطريقة التحضير."
             },
             en: {
-                page_title: "Fruits", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", nutrition_facts: "Nutrition Facts", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
-                search_placeholder: "Search for a fruit..."
+                cat_fruits: "Fruits", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", nutrition_facts: "Nutrition Facts", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
+                item_title: "Grapes",
+                item_desc: "Fruit rich in water, natural sugars, and antioxidants.",
+                nutrition_badge: "Nutrition Facts per 100g",
+                nut_calories: "Calories", nut_carbs: "Carbs", nut_sugars: "Sugars", nut_fiber: "Fiber", nut_proteins: "Proteins", nut_fats: "Fats", nut_water: "Water",
+                sec_benefits: "Health Benefits",
+                ben_1: "Contains antioxidants like resveratrol.",
+                ben_2: "Supports cardiovascular health.",
+                ben_3: "Helps hydrate the body.",
+                ben_4: "Provides energy thanks to natural sugars.",
+                sec_vitamins: "Vitamins",
+                vit_c: "Vitamin C", vit_k: "Vitamin K", vit_b1: "Vitamin B1", vit_b2: "Vitamin B2", vit_b6: "Vitamin B6",
+                sec_minerals: "Minerals",
+                min_potassium: "Potassium", min_copper: "Copper", min_manganese: "Manganese",
+                sec_antioxidants: "Antioxidants",
+                ant_resveratrol: "Resveratrol", ant_anthocyanins: "Anthocyanins", ant_flavonoids: "Flavonoids",
+                sec_glycemic: "Glycemic Index",
+                gi_index_title: "Glycemic Index", gi_index_val: "Low to moderate (varies by variety)",
+                gl_load_title: "Glycemic Load", gl_load_val: "Low (in regular serving)",
+                sec_storage: "Selection & Storage",
+                stor_1: "Choose firm, intact clusters.",
+                stor_2: "Avoid moldy or cracked berries.",
+                stor_3: "Store in the refrigerator.",
+                stor_4: "Wash thoroughly before consumption.",
+                sec_consumption: "Consumption Methods",
+                cons_fresh: "Fresh (washed)", cons_juice: "Juice", cons_salads: "In salads & desserts", cons_dried: "Dried (Raisins)",
+                sec_notes: "Health Notes",
+                note_1: "Contains natural sugars; diabetics should monitor portion size.",
+                note_2: "Excessive consumption may cause bloating.",
+                note_3: "Cut lengthwise into quarters for toddlers to prevent choking.",
+                approx_values: "Nutritional values are approximate and vary by variety and preparation."
             },
             fr: {
-                page_title: "Fruits", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures", daily_challenge: "Défi quotidien", diet_plan: "Régime", nutrition_facts: "Valeur nutritionnelle", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
-                search_placeholder: "Rechercher un fruit..."
+                cat_fruits: "Fruits", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures", daily_challenge: "Défi quotidien", diet_plan: "Régime", nutrition_facts: "Valeur nutritionnelle", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
+                item_title: "Raisin",
+                item_desc: "Fruit riche en eau, en sucres naturels et en antioxydants.",
+                nutrition_badge: "Valeurs nutritionnelles pour 100g",
+                nut_calories: "Calories", nut_carbs: "Glucides", nut_sugars: "Sucres", nut_fiber: "Fibres", nut_proteins: "Protéines", nut_fats: "Lipides", nut_water: "Eau",
+                sec_benefits: "Bienfaits sur la santé",
+                ben_1: "Contient des antioxydants comme le resvératrol.",
+                ben_2: "Contribue à la santé cardiovasculaire.",
+                ben_3: "Aide à hydrater le corps.",
+                ben_4: "Fournit de l'énergie grâce aux sucres naturels.",
+                sec_vitamins: "Vitamines",
+                vit_c: "Vitamine C", vit_k: "Vitamine K", vit_b1: "Vitamine B1", vit_b2: "Vitamine B2", vit_b6: "Vitamine B6",
+                sec_minerals: "Minéraux",
+                min_potassium: "Potassium", min_copper: "Cuivre", min_manganese: "Manganèse",
+                sec_antioxidants: "Antioxydants",
+                ant_resveratrol: "Resvératrol", ant_anthocyanins: "Anthocyanines", ant_flavonoids: "Flavonoïdes",
+                sec_glycemic: "Indice glycémique",
+                gi_index_title: "Indice glycémique", gi_index_val: "Faible à modéré (varie selon la variété)",
+                gl_load_title: "Charge glycémique", gl_load_val: "Faible (portion habituelle)",
+                sec_storage: "Sélection et conservation",
+                stor_1: "Choisir des grappes fermes et intactes.",
+                stor_2: "Éviter les baies abîmées ou fendues.",
+                stor_3: "Conserver au réfrigérateur.",
+                stor_4: "Laver soigneusement avant consommation.",
+                sec_consumption: "Modes de consommation",
+                cons_fresh: "Frais (lavé)", cons_juice: "Jus", cons_salads: "En salades et desserts", cons_dried: "Sec (Raisin sec)",
+                sec_notes: "Notes de santé",
+                note_1: "Contient des sucres naturels, attention à la portion pour les diabétiques.",
+                note_2: "Une consommation excessive peut causer des ballonnements.",
+                note_3: "Couper en quatre dans le sens de la longueur pour les jeunes enfants.",
+                approx_values: "Les valeurs nutritionnelles sont approximatives et varient selon la variété."
             },
             es: {
-                page_title: "Frutas", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas", daily_challenge: "Desafío diario", diet_plan: "Dieta", nutrition_facts: "Valor nutricional", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
-                search_placeholder: "Buscar una fruta..."
+                cat_fruits: "Frutas", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas", daily_challenge: "Desafío diario", diet_plan: "Dieta", nutrition_facts: "Valor nutricional", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
+                item_title: "Uvas",
+                item_desc: "Fruta rica en agua, azúcares naturales y antioxidantes.",
+                nutrition_badge: "Valor nutricional por 100g",
+                nut_calories: "Calorías", nut_carbs: "Carbohidratos", nut_sugars: "Azúcares", nut_fiber: "Fibra", nut_proteins: "Proteínas", nut_fats: "Grasas", nut_water: "Agua",
+                sec_benefits: "Beneficios de salud",
+                ben_1: "Contiene antioxidantes como el resveratrol.",
+                ben_2: "Contribuye a la salud cardiovascular.",
+                ben_3: "Ayuda a hidratar el cuerpo.",
+                ben_4: "Aporta energía gracias a sus azúcares naturales.",
+                sec_vitamins: "Vitaminas",
+                vit_c: "Vitamina C", vit_k: "Vitamina K", vit_b1: "Vitamina B1", vit_b2: "Vitamina B2", vit_b6: "Vitamina B6",
+                sec_minerals: "Minerales",
+                min_potassium: "Potasio", min_copper: "Cobre", min_manganese: "Manganeso",
+                sec_antioxidants: "Antioxidantes",
+                ant_resveratrol: "Resveratrol", ant_anthocyanins: "Antocianinas", ant_flavonoids: "Flavonoides",
+                sec_glycemic: "Índice glucémico",
+                gi_index_title: "Índice glucémico", gi_index_val: "Bajo a moderado (varía según la variedad)",
+                gl_load_title: "Carga glucémica", gl_load_val: "Baja (en porción habitual)",
+                sec_storage: "Selección y conservación",
+                stor_1: "Elija racimos firmes y enteros.",
+                stor_2: "Evite bayas dañadas o agrietadas.",
+                stor_3: "Conservar en el refrigerador.",
+                stor_4: "Lavar bien antes de consumir.",
+                sec_consumption: "Formas de consumo",
+                cons_fresh: "Fresco (lavado)", cons_juice: "Jugo", cons_salads: "En ensaladas y postres", cons_dried: "Secas (Pasas)",
+                sec_notes: "Notas de salud",
+                note_1: "Contiene azúcares naturales; los diabéticos deben vigilar el tamaño de la porción.",
+                note_2: "El consumo excesivo puede causar gases o hinchazón.",
+                note_3: "Cortar longitudinalmente en cuartos para niños pequeños para evitar atragantamientos.",
+                approx_values: "Los valores nutricionales son aproximados y varían según la variedad y preparación."
             }
         };
-
-        function renderFruits(filterText = '') {
-            const container = document.getElementById('fruitsContainer');
-            container.innerHTML = '';
-
-            // ترتيب أبجدي تلقائي حسب اللغة المختارة
-            const sortedFruits = [...fruitsData].sort((a, b) => {
-                const nameA = a[currentLang] || a['ar'];
-                const nameB = b[currentLang] || b['ar'];
-                return nameA.localeCompare(nameB, currentLang === 'ar' ? 'ar' : 'en', { sensitivity: 'base' });
-            });
-
-            const filtered = sortedFruits.filter(fruit => {
-                const name = (fruit[currentLang] || fruit['ar']).toLowerCase();
-                return name.includes(filterText.toLowerCase());
-            });
-
-            filtered.forEach(fruit => {
-                const name = fruit[currentLang] || fruit['ar'];
-                const item = document.createElement('a');
-                item.href = fruit.fileName; // التوجيه للملف الإنجليزي الخاص بالفاكهة
-                item.className = 'fruit-item';
-                item.innerHTML = `
-                    <div class="fruit-info">
-                        <div class="fruit-icon"><i class="fa-solid fa-apple-whole"></i></div>
-                        <div class="fruit-name">${name}</div>
-                    </div>
-                    <div class="fruit-arrow"><i class="fa-solid fa-chevron-left" style="${currentLang === 'ar' ? '' : 'transform: rotate(180deg);'}"></i></div>
-                `;
-                container.appendChild(item);
-            });
-        }
 
         function setLanguage(lang) {
             currentLang = lang;
@@ -448,7 +872,6 @@
                 document.getElementById('backIcon').className = "fa-solid fa-arrow-left";
             }
 
-            // تحديث جميع النصوص في الصفحة والروابط والم القوائم
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang] && translations[lang][key]) {
@@ -456,23 +879,12 @@
                 }
             });
 
-            const searchInput = document.getElementById("searchInput");
-            if (searchInput && translations[lang]) {
-                searchInput.placeholder = translations[lang].search_placeholder;
-            }
-
             const langSelect = document.getElementById("languageSelect");
             if (langSelect) langSelect.value = lang;
-
-            renderFruits(searchInput.value);
         }
 
         document.getElementById("languageSelect").addEventListener("change", (e) => {
             setLanguage(e.target.value);
-        });
-
-        document.getElementById("searchInput").addEventListener("input", (e) => {
-            renderFruits(e.target.value);
         });
 
         const sidebar = document.getElementById("sidebar");
@@ -493,4 +905,3 @@
 </body>
 
 </html>
-ك
