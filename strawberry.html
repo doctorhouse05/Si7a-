@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2563EB">
+    <title>Si7a | Strawberry Nutrition Facts</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(165deg, #3B82F6 0%, #2563EB 40%, #1E3A8A 100%);
+            color: #fff;
+        }
+
+        .full-screen-container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 15px 15px 85px 15px;
+        }
+
+        /* Background Shapes */
+        .wave-bg-1 {
+            position: fixed;
+            top: -80px;
+            right: -80px;
+            width: 350px;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 45%;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .wave-bg-2 {
+            position: fixed;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 40%;
+            transform: rotate(25deg);
+            pointer-events: none;
+        }
+
+        /* Header */
+        .app-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 5;
+            margin-bottom: 15px;
+        }
+
+        .back-btn, .menu-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .header-category {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            backdrop-filter: blur(8px);
+        }
+
+        /* Main Content */
+        .page-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            z-index: 2;
+        }
+
+        /* Item Header Card */
+        .item-header-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .item-image-container {
+            width: 100%;
+            height: 180px;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .item-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-titles {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .item-main-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .item-sub-title {
+            font-size: 13px;
+            color: #94A3B8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .item-sub-title i {
+            color: #34D399;
+        }
+
+        .item-desc {
+            font-size: 12.5px;
+            color: #E2E8F0;
+            line-height: 1.5;
+        }
+
+        /* Section Title Badge */
+        .section-badge {
+            background: #4F46E5;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            margin-top: 4px;
+        }
+
+        /* Nutrition Grid Cards */
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .nutrition-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 10px 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .nutrition-icon {
+            font-size: 16px;
+            color: #34D399;
+        }
+
+        .nutrition-label {
+            font-size: 10.5px;
+            color: #94A3B8;
+        }
+
+        .nutrition-value {
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Info Cards Grid (2 columns) */
+        .info-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .info-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header-flex {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13.5px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .card-header-flex i {
+            color: #F43F5E;
+        }
+
+        .card-header-flex.green i {
+            color: #34D399;
+        }
+
+        .card-header-flex.purple i {
+            color: #A855F7;
+        }
+
+        .card-header-flex.blue i {
+            color: #38BDF8;
+        }
+
+        .card-header-flex.yellow i {
+            color: #FBBF24;
+        }
+
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .bullet-list li {
+            font-size: 11.5px;
+            color: #CBD5E1;
+            position: relative;
+            padding-right: 12px;
+            line-height: 1.4;
+        }
+
+        html[dir="ltr"] .bullet-list li {
+            padding-right: 0;
+            padding-left: 12px;
+        }
+
+        .bullet-list li::before {
+            content: "•";
+            color: #34D399;
+            position: absolute;
+            right: 0;
+            font-weight: bold;
+        }
+
+        html[dir="ltr"] .bullet-list li::before {
+            right: auto;
+            left: 0;
+        }
+
+        /* Full Width Card */
+        .info-card-full {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .warning-card {
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(244, 63, 94, 0.3);
+        }
+
+        /* Glycemic Section inside info card */
+        .glycemic-row {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glycemic-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .glycemic-title {
+            font-size: 11px;
+            color: #94A3B8;
+        }
+
+        .glycemic-desc {
+            font-size: 12px;
+            font-weight: bold;
+            color: #34D399;
+        }
+
+        /* Consumption Methods Icons Grid */
+        .consumption-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .consumption-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 10px 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 6px;
+        }
+
+        .consumption-icon-box {
+            width: 36px;
+            height: 36px;
+            background: rgba(52, 211, 153, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #34D399;
+            font-size: 14px;
+        }
+
+        .consumption-text {
+            font-size: 10px;
+            color: #E2E8F0;
+            line-height: 1.3;
+        }
+
+        /* Footer Source Bar */
+        .footer-source {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(15, 23, 42, 0.75);
+            padding: 10px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 11px;
+            color: #94A3B8;
+            margin-top: 6px;
+        }
+
+        .footer-source-left {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-source-left i {
+            color: #38BDF8;
+        }
+
+        /* Solid Bottom Navigation Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            height: 62px;
+            background: #1E3A8A;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .nav-item {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-item i { font-size: 18px; }
+        .nav-item.active { color: #ffffff; font-weight: bold; }
+
+        /* Sidebar Drawer */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 1100;
+            display: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0; width: 270px; height: 100%;
+            background: #1E3A8A;
+            z-index: 1101;
+            transition: all 0.3s ease;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        html[dir="ltr"] .sidebar { left: -280px; border-right: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="ltr"] .sidebar.active { left: 0; }
+        html[dir="rtl"] .sidebar { right: -280px; border-left: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="rtl"] .sidebar.active { right: 0; }
+
+        .sidebar-header {
+            display: flex; align-items: center; gap: 10px;
+            padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 12px;
+        }
+
+        .sidebar-logo {
+            width: 38px; height: 38px; background: #fff; color: #2563EB;
+            border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px;
+        }
+
+        .language-selector-top {
+            margin-bottom: 15px; padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .language-selector-top label {
+            font-size: 11px; display: flex; align-items: center; gap: 6px;
+            margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); text-transform: uppercase;
+        }
+
+        .lang-select {
+            width: 100%; padding: 8px 10px; border-radius: 10px;
+            background: rgba(255, 255, 255, 0.25); color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4); font-size: 13px; font-weight: bold; outline: none;
+        }
+
+        .lang-select option { background: #1E3A8A; color: #fff; }
+
+        .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 6px; overflow-y: auto; flex: 1; }
+        .sidebar-menu a { color: #fff; text-decoration: none; padding: 10px 12px; font-size: 13px; border-radius: 10px; display: flex; align-items: center; gap: 10px; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { background: rgba(255, 255, 255, 0.2); }
+    </style>
+</head>
+
+<body>
+
+    <div class="full-screen-container">
+        <div class="wave-bg-1"></div>
+        <div class="wave-bg-2"></div>
+
+        <!-- Header -->
+        <header class="app-header">
+            <a href="fruits.html" class="back-btn"><i class="fa-solid fa-arrow-right" id="backIcon"></i></a>
+            <div class="header-category"><i class="fa-solid fa-apple-whole"></i> <span data-i18n="cat_fruits">الفواكه</span></div>
+            <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="page-content">
+
+            <!-- Item Main Header Card with Image -->
+            <div class="item-header-card">
+                <div class="item-image-container">
+                    <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=600&q=80" alt="Strawberry">
+                </div>
+                <div class="item-titles">
+                    <h1 class="item-main-title" data-i18n="item_title">الفراولة</h1>
+                    <div class="item-sub-title">
+                        <span>Fraise | Strawberry</span> • <span>Fragaria × ananassa</span> <i class="fa-solid fa-leaf"></i>
+                    </div>
+                </div>
+                <p class="item-desc" data-i18n="item_desc">فاكهة لذيذة وغنية بالعناصر المغذية ومضادات الأكسدة.</p>
+            </div>
+
+            <!-- Section Badge -->
+            <div class="section-badge" data-i18n="nutrition_badge">القيمة الغذائية لكل 100 غرام</div>
+
+            <!-- Nutrition 8 Cards Grid -->
+            <div class="nutrition-grid">
+                <div class="nutrition-card">
+                    <div class="nutrition-icon"><i class="fa-solid fa-fire"></i></div>
+                    <div class="nutrition-label" data-i18n="nut_calories">السعرات الحرارية</div>
+                    <div class="nutrition-value">32 kcal</div>
+                </div>
+                <div class="nutrition-card">
+                    <div class="nutrition-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                    <div class="nutrition-label" data-i18n="nut_carbs">الكربوهيدرات</div>
+                    <div class="nutrition-value">7.7 g</div>
+                </div>
+                <div class="nutrition-card">
+                    <div class="nutrition-icon"><i class="fa-solid fa-cube"></i></div>
+                    <div class="nutrition-label" data-i18n="nut_sugars">السكريات</div>
+                    <div class="nutrition-value">4.9 g</div>
+                </div>
+                <div class="nutrition-card">
+                    <div class="nutrition-icon"><i class="fa-solid fa-seedling"></i></div>
+                    <div class="nutrition-label" data-i18n="nut_fiber">الألياف</div>
+                    <div class="nutrition-value">2.0 g</div>
+                </div>
+                <div class="nutrition-card">
+                    <div class="nutrition-icon"><i class="fa-solid fa-dna"></i></div>
+                    <div class="nutrition-label" data-i18n="nut_proteins">البروتينات</div>
+                    <div class="nutrition-value">0.7 g</div>
+                </div>
+                <div class="nutrition-card">
+                    <div class="nutrition-icon"><i class="fa-solid fa-droplet" style="color:#F43F5E;"></i></div>
+                    <div class="nutrition-label" data-i18n="nut_fats">الدهون</div>
+                    <div class="nutrition-value">0.3 g</div>
+                </div>
+                <div class="nutrition-card" style="grid-column: span 2;">
+                    <div class="nutrition-icon"><i class="fa-solid fa-water" style="color:#38BDF8;"></i></div>
+                    <div class="nutrition-label" data-i18n="nut_water">الماء</div>
+                    <div class="nutrition-value">91.0 g</div>
+                </div>
+            </div>
+
+            <!-- Row 1: Health Benefits & Vitamins -->
+            <div class="info-grid-2">
+                <!-- Health Benefits -->
+                <div class="info-card">
+                    <div class="card-header-flex"><i class="fa-solid fa-heart-pulse"></i> <span data-i18n="sec_benefits">الفوائد الصحية</span></div>
+                    <ul class="bullet-list">
+                        <li data-i18n="ben_1">غنية بفيتامين C وتقوي جهاز المناعة.</li>
+                        <li data-i18n="ben_2">مضادات أكسدة قوية تحمي الخلايا.</li>
+                        <li data-i18n="ben_3">تساعد في صحة القلب والأوعية الدموية.</li>
+                        <li data-i18n="ben_4">تساهم في تنظيم مستوى السكر في الدم.</li>
+                        <li data-i18n="ben_5">مدرة للبول وتساعد على التخلص من السموم.</li>
+                    </ul>
+                </div>
+
+                <!-- Vitamins -->
+                <div class="info-card">
+                    <div class="card-header-flex green"><i class="fa-solid fa-capsules"></i> <span data-i18n="sec_vitamins">الفيتامينات</span></div>
+                    <ul class="bullet-list">
+                        <li data-i18n="vit_c">فيتامين C</li>
+                        <li data-i18n="vit_k">فيتامين K</li>
+                        <li data-i18n="vit_a">فيتامين A</li>
+                        <li data-i18n="vit_b9">فيتامين B9</li>
+                        <li data-i18n="vit_b1">فيتامين B1</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Row 2: Minerals & Antioxidants -->
+            <div class="info-grid-2">
+                <!-- Minerals -->
+                <div class="info-card">
+                    <div class="card-header-flex green"><i class="fa-solid fa-atom"></i> <span data-i18n="sec_minerals">المعادن</span></div>
+                    <ul class="bullet-list">
+                        <li data-i18n="min_potassium">البوتاسيوم</li>
+                        <li data-i18n="min_magnesium">المغنيسيوم</li>
+                        <li data-i18n="min_manganese">المنغنيز</li>
+                        <li data-i18n="min_iron">الحديد</li>
+                        <li data-i18n="min_calcium">الكالسيوم</li>
+                    </ul>
+                </div>
+
+                <!-- Antioxidants -->
+                <div class="info-card">
+                    <div class="card-header-flex purple"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="sec_antioxidants">مضادات الأكسدة</span></div>
+                    <ul class="bullet-list">
+                        <li data-i18n="ant_anthocyanins">الأنثوسيانينات</li>
+                        <li data-i18n="ant_ellagic">حمض الإيلاجيك</li>
+                        <li data-i18n="ant_flavonoids">الفلافونويدات</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Row 3: Glycemic Index & Selection/Storage -->
+            <div class="info-grid-2">
+                <!-- Glycemic Index -->
+                <div class="info-card">
+                    <div class="card-header-flex blue"><i class="fa-solid fa-chart-line"></i> <span data-i18n="sec_glycemic">المؤشر الجلايسيمي</span></div>
+                    <div class="glycemic-row">
+                        <span class="glycemic-title" data-i18n="gi_index_title">المؤشر الجلايسيمي</span>
+                        <span class="glycemic-desc" data-i18n="gi_index_val">منخفض (حوالي 40)</span>
+                    </div>
+                    <div class="glycemic-row" style="margin-top: 6px;">
+                        <span class="glycemic-title" data-i18n="gl_load_title">الحمل الجلايسيمي</span>
+                        <span class="glycemic-desc" data-i18n="gl_load_val">منخفض</span>
+                    </div>
+                </div>
+
+                <!-- Selection & Storage -->
+                <div class="info-card">
+                    <div class="card-header-flex yellow"><i class="fa-solid fa-box-archive"></i> <span data-i18n="sec_storage">طريقة الاختيار والحفظ</span></div>
+                    <ul class="bullet-list">
+                        <li data-i18n="stor_1">اختر حبات حمراء ناضجة وقوية الملمس.</li>
+                        <li data-i18n="stor_2">احفظها في الثلاجة لمدة 2-5 أيام.</li>
+                        <li data-i18n="stor_3">يمكن تجميدها لفترة أطول.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Consumption Methods (Grid 4 items) -->
+            <div class="info-card-full">
+                <div class="card-header-flex blue"><i class="fa-solid fa-utensils"></i> <span data-i18n="sec_consumption">طرق الاستهلاك</span></div>
+                <div class="consumption-grid">
+                    <div class="consumption-item">
+                        <div class="consumption-icon-box"><i class="fa-solid fa-apple-whole"></i></div>
+                        <div class="consumption-text" data-i18n="cons_fresh">كما هي (طازجة)</div>
+                    </div>
+                    <div class="consumption-item">
+                        <div class="consumption-icon-box"><i class="fa-solid fa-bowl-food"></i></div>
+                        <div class="consumption-text" data-i18n="cons_salad">سلطة فواكه</div>
+                    </div>
+                    <div class="consumption-item">
+                        <div class="consumption-icon-box"><i class="fa-solid fa-mug-hot"></i></div>
+                        <div class="consumption-text" data-i18n="cons_juice">عصير (طبيعي)</div>
+                    </div>
+                    <div class="consumption-item">
+                        <div class="consumption-icon-box"><i class="fa-solid fa-jar"></i></div>
+                        <div class="consumption-text" data-i18n="cons_yogurt">مع الزبادي</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Warning / Health Notes Card -->
+            <div class="info-card-full warning-card">
+                <div class="card-header-flex" style="color:#F43F5E;"><i class="fa-solid fa-triangle-exclamation"></i> <span data-i18n="sec_notes">ملاحظات صحية</span></div>
+                <ul class="bullet-list">
+                    <li data-i18n="note_1">يُفضل غسلها جيداً قبل الأكل.</li>
+                    <li data-i18n="note_2">قد تسبب حساسية لدى بعض الأشخاص.</li>
+                    <li data-i18n="note_3">الإفراط في تناولها قد يسبب اضطرابات هضمية.</li>
+                </ul>
+            </div>
+
+            <!-- Footer Source -->
+            <div class="footer-source">
+                <div class="footer-source-left">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span data-i18n="approx_values">القيم الغذائية تقريبية وقد تختلف حسب الصنف وطريقة التحضير.</span>
+                </div>
+                <div style="font-size: 10px; color: #64748B;">USDA FoodData Central</div>
+            </div>
+
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="bottom-nav">
+            <a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span data-i18n="home">الرئيسية</span></a>
+            <a href="daily-challenge.html" class="nav-item"><i class="fa-solid fa-person-running"></i><span data-i18n="challenge">التحدي</span></a>
+            <a href="health-file.html" class="nav-item"><i class="fa-solid fa-notes-medical"></i><span data-i18n="health_file">ملفي الصحي</span></a>
+            <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i><span data-i18n="settings">الإعدادات</span></a>
+        </nav>
+    </div>
+
+    <!-- Sidebar Drawer -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div style="font-weight: bold; font-size: 18px;">Si7a</div>
+        </div>
+
+        <div class="language-selector-top">
+            <label for="languageSelect"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">اللغة</span></label>
+            <select id="languageSelect" class="lang-select">
+                <option value="ar">العربية</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">الرئيسية</span></a></li>
+            <li><a href="health-metrics.html"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">قياساتي الصحية</span></a></li>
+            <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">التحدي اليومي</span></a></li>
+            <li><a href="diet-plan.html"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">نظامي الغذائي</span></a></li>
+            <li><a href="nutrition-facts.html" class="active"><i class="fa-solid fa-apple-whole"></i> <span data-i18n="nutrition_facts">القيمة الغذائية للأطعمة</span></a></li>
+            <li><a href="health-file.html"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">ملفي الصحي</span></a></li>
+            <li><a href="period-tracker.html"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">دورتي الشهرية</span></a></li>
+            <li><a href="pregnancy-calculator.html"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">حاسبة الحمل</span></a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">الإعدادات</span></a></li>
+        </ul>
+    </aside>
+
+    <script type="module">
+        import { auth } from "./js/firebase.js";
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+        let currentLang = localStorage.getItem('appLanguage') || 'ar';
+
+        const translations = {
+            ar: {
+                cat_fruits: "الفواكه", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", nutrition_facts: "القيمة الغذائية للأطعمة", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
+                item_title: "الفراولة",
+                item_desc: "فاكهة لذيذة وغنية بالعناصر المغذية ومضادات الأكسدة.",
+                nutrition_badge: "القيمة الغذائية لكل 100 غرام",
+                nut_calories: "السعرات الحرارية", nut_carbs: "الكربوهيدرات", nut_sugars: "السكريات", nut_fiber: "الألياف", nut_proteins: "البروتينات", nut_fats: "الدهون", nut_water: "الماء",
+                sec_benefits: "الفوائد الصحية",
+                ben_1: "غنية بفيتامين C وتقوي جهاز المناعة.",
+                ben_2: "مضادات أكسدة قوية تحمي الخلايا.",
+                ben_3: "تساعد في صحة القلب والأوعية الدموية.",
+                ben_4: "تساهم في تنظيم مستوى السكر في الدم.",
+                ben_5: "مدرة للبول وتساعد على التخلص من السموم.",
+                sec_vitamins: "الفيتامينات",
+                vit_c: "فيتامين C", vit_k: "فيتامين K", vit_a: "فيتامين A", vit_b9: "فيتامين B9", vit_b1: "فيتامين B1",
+                sec_minerals: "المعادن",
+                min_potassium: "البوتاسيوم", min_magnesium: "المغنيسيوم", min_manganese: "المنغنيز", min_iron: "الحديد", min_calcium: "الكالسيوم",
+                sec_antioxidants: "مضادات الأكسدة",
+                ant_anthocyanins: "الأنثوسيانينات", ant_ellagic: "حمض الإيلاجيك", ant_flavonoids: "الفلافونويدات",
+                sec_glycemic: "المؤشر الجلايسيمي",
+                gi_index_title: "المؤشر الجلايسيمي", gi_index_val: "منخفض (حوالي 40)",
+                gl_load_title: "الحمل الجلايسيمي", gl_load_val: "منخفض",
+                sec_storage: "طريقة الاختيار والحفظ",
+                stor_1: "اختر حبات حمراء ناضجة وقوية الملمس.",
+                stor_2: "احفظها في الثلاجة لمدة 2-5 أيام.",
+                stor_3: "يمكن تجميدها لفترة أطول.",
+                sec_consumption: "طرق الاستهلاك",
+                cons_fresh: "كما هي (طازجة)", cons_salad: "سلطة فواكه", cons_juice: "عصير (طبيعي)", cons_yogurt: "مع الزبادي",
+                sec_notes: "ملاحظات صحية",
+                note_1: "يُفضل غسلها جيداً قبل الأكل.",
+                note_2: "قد تسبب حساسية لدى بعض الأشخاص.",
+                note_3: "الإفراط في تناولها قد يسبب اضطرابات هضمية.",
+                approx_values: "القيم الغذائية تقريبية وقد تختلف حسب الصنف وطريقة التحضير."
+            },
+            en: {
+                cat_fruits: "Fruits", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", nutrition_facts: "Nutrition Facts", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
+                item_title: "Strawberry",
+                item_desc: "Delicious fruit rich in nutrients and antioxidants.",
+                nutrition_badge: "Nutrition Facts per 100g",
+                nut_calories: "Calories", nut_carbs: "Carbs", nut_sugars: "Sugars", nut_fiber: "Fiber", nut_proteins: "Proteins", nut_fats: "Fats", nut_water: "Water",
+                sec_benefits: "Health Benefits",
+                ben_1: "Rich in vitamin C and boosts the immune system.",
+                ben_2: "Strong antioxidants protecting cells.",
+                ben_3: "Helps support cardiovascular health.",
+                ben_4: "Contributes to blood sugar regulation.",
+                ben_5: "Diuretic and helps eliminate toxins.",
+                sec_vitamins: "Vitamins",
+                vit_c: "Vitamin C", vit_k: "Vitamin K", vit_a: "Vitamin A", vit_b9: "Vitamin B9", vit_b1: "Vitamin B1",
+                sec_minerals: "Minerals",
+                min_potassium: "Potassium", min_magnesium: "Magnesium", min_manganese: "Manganese", min_iron: "Iron", min_calcium: "Calcium",
+                sec_antioxidants: "Antioxidants",
+                ant_anthocyanins: "Anthocyanins", ant_ellagic: "Ellagic Acid", ant_flavonoids: "Flavonoids",
+                sec_glycemic: "Glycemic Index",
+                gi_index_title: "Glycemic Index", gi_index_val: "Low (approx. 40)",
+                gl_load_title: "Glycemic Load", gl_load_val: "Low",
+                sec_storage: "Selection & Storage",
+                stor_1: "Choose ripe, firm red berries.",
+                stor_2: "Store in the refrigerator for 2-5 days.",
+                stor_3: "Can be frozen for a longer period.",
+                sec_consumption: "Consumption Methods",
+                cons_fresh: "Fresh (As is)", cons_salad: "Fruit Salad", cons_juice: "Natural Juice", cons_yogurt: "With Yogurt",
+                sec_notes: "Health Notes",
+                note_1: "Best washed thoroughly before eating.",
+                note_2: "May cause allergies in some individuals.",
+                note_3: "Excessive consumption may cause digestive issues.",
+                approx_values: "Nutritional values are approximate and vary by variety and preparation."
+            },
+            fr: {
+                cat_fruits: "Fruits", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures", daily_challenge: "Défi quotidien", diet_plan: "Régime", nutrition_facts: "Valeur nutritionnelle", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
+                item_title: "Fraise",
+                item_desc: "Fruit délicieux, riche en nutriments et en antioxydants.",
+                nutrition_badge: "Valeurs nutritionnelles pour 100g",
+                nut_calories: "Calories", nut_carbs: "Glucides", nut_sugars: "Sucres", nut_fiber: "Fibres", nut_proteins: "Protéines", nut_fats: "Lipides", nut_water: "Eau",
+                sec_benefits: "Bienfaits sur la santé",
+                ben_1: "Riche en vitamine C et renforce le système immunitaire.",
+                ben_2: "Antioxydants puissants protégeant les cellules.",
+                ben_3: "Aide à soutenir la santé cardiovasculaire.",
+                ben_4: "Contribue à la régulation de la glycémie.",
+                ben_5: "Diurétique et aide à éliminer les toxines.",
+                sec_vitamins: "Vitamines",
+                vit_c: "Vitamine C", vit_k: "Vitamine K", vit_a: "Vitamine A", vit_b9: "Vitamine B9", vit_b1: "Vitamine B1",
+                sec_minerals: "Minéraux",
+                min_potassium: "Potassium", min_magnesium: "Magnésium", min_manganese: "Manganèse", min_iron: "Fer", min_calcium: "Calcium",
+                sec_antioxidants: "Antioxydants",
+                ant_anthocyanins: "Anthocyanines", ant_ellagic: "Acide ellagique", ant_flavonoids: "Flavonoïdes",
+                sec_glycemic: "Indice glycémique",
+                gi_index_title: "Indice glycémique", gi_index_val: "Faible (environ 40)",
+                gl_load_title: "Charge glycémique", gl_load_val: "Faible",
+                sec_storage: "Sélection et conservation",
+                stor_1: "Choisir des fruits rouges mûrs et fermes.",
+                stor_2: "Conserver au réfrigérateur pendant 2 à 5 jours.",
+                stor_3: "Peut être congelé pour une période plus longue.",
+                sec_consumption: "Modes de consommation",
+                cons_fresh: "Frais (tel quel)", cons_salad: "Salade de fruits", cons_juice: "Jus (naturel)", cons_yogurt: "Avec du Yaourt",
+                sec_notes: "Notes de santé",
+                note_1: "À laver soigneusement avant de consommer.",
+                note_2: "Peut provoquer des allergies chez certaines personnes.",
+                note_3: "Une consommation excessive peut causer des troubles digestifs.",
+                approx_values: "Les valeurs nutritionnelles sont approximatives et varient selon la variété."
+            },
+            es: {
+                cat_fruits: "Frutas", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas", daily_challenge: "Desafío diario", diet_plan: "Dieta", nutrition_facts: "Valor nutricional", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
+                item_title: "Fresa",
+                item_desc: "Fruta deliciosa rica en nutrientes y antioxidantes.",
+                nutrition_badge: "Valor nutricional por 100g",
+                nut_calories: "Calorías", nut_carbs: "Carbohidratos", nut_sugars: "Azúcares", nut_fiber: "Fibra", nut_proteins: "Proteínas", nut_fats: "Grasas", nut_water: "Agua",
+                sec_benefits: "Beneficios de salud",
+                ben_1: "Rica en vitamina C y refuerza el sistema inmunológico.",
+                ben_2: "Antioxidantes potentes que protegen las células.",
+                ben_3: "Ayuda a mantener la salud cardiovascular.",
+                ben_4: "Contribuye a la regulación del azúcar en sangre.",
+                ben_5: "Diurética y ayuda a eliminar toxinas.",
+                sec_vitamins: "Vitaminas",
+                vit_c: "Vitamina C", vit_k: "Vitamina K", vit_a: "Vitamina A", vit_b9: "Vitamina B9", vit_b1: "Vitamina B1",
+                sec_minerals: "Minerales",
+                min_potassium: "Potasio", min_magnesium: "Magnesio", min_manganese: "Manganeso", min_iron: "Hierro", min_calcium: "Calcio",
+                sec_antioxidants: "Antioxidantes",
+                ant_anthocyanins: "Antocianinas", ant_ellagic: "Ácido elágico", ant_flavonoids: "Flavonoides",
+                sec_glycemic: "Índice glucémico",
+                gi_index_title: "Índice glucémico", gi_index_val: "Bajo (aprox. 40)",
+                gl_load_title: "Carga glucémica", gl_load_val: "Baja",
+                sec_storage: "Selección y conservación",
+                stor_1: "Elija bayas rojas maduras y firmes.",
+                stor_2: "Guarde en el refrigerador durante 2-5 días.",
+                stor_3: "Se puede congelar por un período más largo.",
+                sec_consumption: "Formas de consumo",
+                cons_fresh: "Frescas (tal cual)", cons_salad: "Ensalada de frutas", cons_juice: "Jugo (natural)", cons_yogurt: "Con yogur",
+                sec_notes: "Notas de salud",
+                note_1: "Se prefiere lavar bien antes de comer.",
+                note_2: "Puede causar alergias en algunas personas.",
+                note_3: "El consumo excesivo puede causar problemas digestivos.",
+                approx_values: "Los valores nutricionales son aproximados y varían según la variedad y preparación."
+            }
+        };
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('appLanguage', lang);
+            const html = document.documentElement;
+            
+            if (lang === 'ar') {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+                document.getElementById('backIcon').className = "fa-solid fa-arrow-right";
+            } else {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', lang);
+                document.getElementById('backIcon').className = "fa-solid fa-arrow-left";
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            const langSelect = document.getElementById("languageSelect");
+            if (langSelect) langSelect.value = lang;
+        }
+
+        document.getElementById("languageSelect").addEventListener("change", (e) => {
+            setLanguage(e.target.value);
+        });
+
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebarOverlay");
+
+        document.getElementById("openSidebar").addEventListener("click", () => {
+            sidebar.classList.add("active");
+            overlay.style.display = "block";
+        });
+
+        overlay.addEventListener("click", () => {
+            sidebar.classList.remove("active");
+            overlay.style.display = "none";
+        });
+
+        setLanguage(currentLang);
+    </script>
+</body>
+
+</html>
