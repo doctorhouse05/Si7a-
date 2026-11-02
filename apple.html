@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2563EB">
+    <title>Si7a | Fruits - Apple</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(165deg, #3B82F6 0%, #2563EB 40%, #1E3A8A 100%);
+            color: #fff;
+        }
+
+        .full-screen-container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 15px 15px 85px 15px;
+        }
+
+        /* Background Shapes */
+        .wave-bg-1 {
+            position: fixed;
+            top: -80px;
+            right: -80px;
+            width: 350px;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 45%;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .wave-bg-2 {
+            position: fixed;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 40%;
+            transform: rotate(25deg);
+            pointer-events: none;
+        }
+
+        /* Header */
+        .app-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 5;
+            margin-bottom: 15px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .avatar-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .welcome-text {
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .menu-btn, .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        .page-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            z-index: 2;
+        }
+
+        /* Card Styles */
+        .info-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header Banner داخلية */
+        .item-hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.3) 0%, rgba(15, 23, 42, 0.6) 100%);
+            border-radius: 16px;
+            padding: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .item-title-area h1 {
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .item-title-area p {
+            font-size: 12px;
+            color: #94A3B8;
+        }
+
+        .item-badge {
+            background: rgba(52, 211, 153, 0.2);
+            color: #34D399;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: bold;
+            border: 1px solid rgba(52, 211, 153, 0.4);
+        }
+
+        /* شبكة القيم الغذائية */
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .nut-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .nut-value {
+            font-size: 13px;
+            font-weight: bold;
+            color: #34D399;
+        }
+
+        .nut-label {
+            font-size: 10px;
+            color: #94A3B8;
+        }
+
+        /* عناوين الأقسام الفرعية */
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #34D399;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 6px;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .feature-list li {
+            font-size: 12px;
+            color: #E2E8F0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-list li i {
+            color: #34D399;
+            font-size: 12px;
+        }
+
+        /* شبكة تفصيلية لجزئين */
+        .double-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .sub-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* طرق الاستهلاك */
+        .consumption-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            text-align: center;
+        }
+
+        .consumption-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .consumption-item i {
+            font-size: 18px;
+            color: #34D399;
+            margin-bottom: 2px;
+        }
+
+        .consumption-item span {
+            font-size: 11px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .footer-source {
+            text-align: center;
+            font-size: 10px;
+            color: #94A3B8;
+            margin-top: 5px;
+        }
+
+        /* Solid Bottom Navigation Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            height: 62px;
+            background: #1E3A8A;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .nav-item {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-item i { font-size: 18px; }
+        .nav-item.active { color: #ffffff; font-weight: bold; }
+
+        /* Sidebar Drawer */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 1100;
+            display: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0; width: 270px; height: 100%;
+            background: #1E3A8A;
+            z-index: 1101;
+            transition: all 0.3s ease;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        html[dir="ltr"] .sidebar { left: -280px; border-right: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="ltr"] .sidebar.active { left: 0; }
+        html[dir="rtl"] .sidebar { right: -280px; border-left: 1px solid rgba(255, 255, 255, 0.2); }
+        html[dir="rtl"] .sidebar.active { right: 0; }
+
+        .sidebar-header {
+            display: flex; align-items: center; gap: 10px;
+            padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 12px;
+        }
+
+        .sidebar-logo {
+            width: 38px; height: 38px; background: #fff; color: #2563EB;
+            border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px;
+        }
+
+        .language-selector-top {
+            margin-bottom: 15px; padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .language-selector-top label {
+            font-size: 11px; display: flex; align-items: center; gap: 6px;
+            margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); text-transform: uppercase;
+        }
+
+        .lang-select {
+            width: 100%; padding: 8px 10px; border-radius: 10px;
+            background: rgba(255, 255, 255, 0.25); color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4); font-size: 13px; font-weight: bold; outline: none;
+        }
+
+        .lang-select option { background: #1E3A8A; color: #fff; }
+
+        .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 6px; overflow-y: auto; flex: 1; }
+        .sidebar-menu a { color: #fff; text-decoration: none; padding: 10px 12px; font-size: 13px; border-radius: 10px; display: flex; align-items: center; gap: 10px; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { background: rgba(255, 255, 255, 0.2); }
+    </style>
+</head>
+
+<body>
+
+    <div class="full-screen-container">
+        <div class="wave-bg-1"></div>
+        <div class="wave-bg-2"></div>
+
+        <!-- Header -->
+        <header class="app-header">
+            <a href="nutrition-facts.html" class="back-btn"><i class="fa-solid fa-arrow-right"></i></a>
+            <a href="settings.html" class="user-profile">
+                <img src="https://via.placeholder.com/100" id="userAvatar" class="avatar-img" alt="User Avatar">
+                <span class="welcome-text"><span data-i18n="welcome">أهلاً بك</span>، <span id="userName">سارة</span></span>
+            </a>
+            <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="page-content">
+
+            <!-- Card الرئيسي -->
+            <div class="info-card">
+                <!-- عنوان وتصنيف -->
+                <div class="item-hero">
+                    <div class="item-title-area">
+                        <h1 data-i18n="apple_title">التفاح</h1>
+                        <p>Apple | Pomme - <i>Malus domestica</i></p>
+                    </div>
+                    <div class="item-badge" data-i18n="category_fruit">🍇 الفواكه</div>
+                </div>
+
+                <!-- القيمة الغذائية لكل 100 غرام -->
+                <div style="font-size: 11px; color: #94A3B8; font-weight: bold;" data-i18n="nut_per_100">القيمة الغذائية لكل 100 غرام:</div>
+                <div class="nutrition-grid">
+                    <div class="nut-item">
+                        <span class="nut-value">52 kcal</span>
+                        <span class="nut-label" data-i18n="calories">السعرات</span>
+                    </div>
+                    <div class="nut-item">
+                        <span class="nut-value">13.8 g</span>
+                        <span class="nut-label" data-i18n="carbs">كربوهيدرات</span>
+                    </div>
+                    <div class="nut-item">
+                        <span class="nut-value">10.4 g</span>
+                        <span class="nut-label" data-i18n="sugars">سكريات</span>
+                    </div>
+                    <div class="nut-item">
+                        <span class="nut-value">2.4 g</span>
+                        <span class="nut-label" data-i18n="fiber">ألياف</span>
+                    </div>
+                    <div class="nut-item">
+                        <span class="nut-value">0.3 g</span>
+                        <span class="nut-label" data-i18n="protein">بروتينات</span>
+                    </div>
+                    <div class="nut-item">
+                        <span class="nut-value">0.2 g</span>
+                        <span class="nut-label" data-i18n="fats">دهون</span>
+                    </div>
+                    <div class="nut-item" style="grid-column: span 2;">
+                        <span class="nut-value">85.6 g</span>
+                        <span class="nut-label" data-i18n="water">ماء</span>
+                    </div>
+                </div>
+
+                <!-- الفوائد الصحية -->
+                <div>
+                    <div class="section-title"><i class="fa-solid fa-heart-pulse"></i> <span data-i18n="health_benefits">الفوائد الصحية</span></div>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="b1">غني بالألياف التي تدعم الهضم؛</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="b2">يحتوي على مضادات أكسدة مثل الكيرسيتين؛</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="b3">يساهم في صحة القلب عند تناوله ضمن غذاء متوازن؛</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="b4">يساعد على الشعور بالشبع.</span></li>
+                    </ul>
+                </div>
+
+                <!-- الفيتامينات والمعادن -->
+                <div class="double-grid">
+                    <div class="sub-box">
+                        <div class="section-title" style="margin-bottom:0; border:none;"><i class="fa-solid fa-capsules"></i> <span data-i18n="vitamins">الفيتامينات</span></div>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-circle-dot"></i> فيتامين C</li>
+                            <li><i class="fa-solid fa-circle-dot"></i> فيتامين K</li>
+                            <li><i class="fa-solid fa-circle-dot"></i> فيتامين B6</li>
+                        </ul>
+                    </div>
+                    <div class="sub-box">
+                        <div class="section-title" style="margin-bottom:0; border:none;"><i class="fa-solid fa-atom"></i> <span data-i18n="minerals">المعادن</span></div>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-circle-dot"></i> البوتاسيوم</li>
+                            <li><i class="fa-solid fa-circle-dot"></i> النحاس</li>
+                            <li><i class="fa-solid fa-circle-dot"></i> المنغنيز</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- مضادات الأكسدة والمؤشر الجلايسيمي -->
+                <div class="double-grid">
+                    <div class="sub-box">
+                        <div class="section-title" style="margin-bottom:0; border:none;"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="antioxidants">مضادات الأكسدة</span></div>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-circle-dot"></i> الكيرسيتين</li>
+                            <li><i class="fa-solid fa-circle-dot"></i> الكاتيشين</li>
+                            <li><i class="fa-solid fa-circle-dot"></i> حمض الكلوروجينيك</li>
+                        </ul>
+                    </div>
+                    <div class="sub-box">
+                        <div class="section-title" style="margin-bottom:0; border:none;"><i class="fa-solid fa-droplet"></i> <span data-i18n="glycemic">المؤشر الجلايسيمي</span></div>
+                        <div style="font-size: 11px; color: #34D399; font-weight: bold;" data-i18n="gly_val">منخفض تقريباً (يختلف حسب الصنف والنضج)</div>
+                        <div style="font-size: 10px; color: #94A3B8;" data-i18n="gly_load">الحمل الجلايسيمي: منخفض في الحصة المعتادة</div>
+                    </div>
+                </div>
+
+                <!-- طريقة الاختيار والحفظ -->
+                <div>
+                    <div class="section-title"><i class="fa-solid fa-store"></i> <span data-i18n="selection_storage">طريقة الاختيار والحفظ</span></div>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="s1">اختر التفاح المتماسك والخالي من الكدمات؛</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="s2">يُحفظ في الثلاجة لإطالة مدة صلاحيته؛</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="s3">اغسله جيداً قبل تناوله.</span></li>
+                    </ul>
+                </div>
+
+                <!-- طرق الاستهلاك -->
+                <div>
+                    <div class="section-title"><i class="fa-solid fa-utensils"></i> <span data-i18n="consumption_ways">طرق الاستهلاك</span></div>
+                    <div class="consumption-grid">
+                        <div class="consumption-item">
+                            <i class="fa-solid fa-apple-whole"></i>
+                            <span data-i18n="c_fresh">طازج</span>
+                        </div>
+                        <div class="consumption-item">
+                            <i class="fa-solid fa-cookie"></i>
+                            <span data-i18n="c_slices">شرائح</span>
+                        </div>
+                        <div class="consumption-item">
+                            <i class="fa-solid fa-bowl-food"></i>
+                            <span data-i18n="c_oats">مع الشوفان</span>
+                        </div>
+                        <div class="consumption-item">
+                            <i class="fa-solid fa-plate-wheat"></i>
+                            <span data-i18n="c_salad">في السلطة</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ملاحظات صحية -->
+                <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 10px;">
+                    <div class="section-title" style="color: #F87171; border:none; margin-bottom: 4px;"><i class="fa-solid fa-triangle-exclamation"></i> <span data-i18n="health_notes">ملاحظات صحية</span></div>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-circle-exclamation" style="color:#F87171;"></i> <span data-i18n="n1">يحتوي على سكريات طبيعية؛</span></li>
+                        <li><i class="fa-solid fa-circle-exclamation" style="color:#F87171;"></i> <span data-i18n="n2">يُفضل تناول الثمرة كاملة بدل العصير للاستفادة من الألياف؛</span></li>
+                        <li><i class="fa-solid fa-circle-exclamation" style="color:#F87171;"></i> <span data-i18n="n3">قطعه إلى قطع مناسبة للأطفال الصغار لتقليل خطر الاختناق.</span></li>
+                    </ul>
+                </div>
+
+                <div class="footer-source" data-i18n="source_text">المصدر: USDA FoodData Central | القيم الغذائية تقريبية وقد تختلف حسب الصنف والحجم</div>
+            </div>
+
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="bottom-nav">
+            <a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span data-i18n="home">الرئيسية</span></a>
+            <a href="daily-challenge.html" class="nav-item"><i class="fa-solid fa-person-running"></i><span data-i18n="challenge">التحدي</span></a>
+            <a href="health-file.html" class="nav-item"><i class="fa-solid fa-notes-medical"></i><span data-i18n="health_file">ملفي الصحي</span></a>
+            <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i><span data-i18n="settings">الإعدادات</span></a>
+        </nav>
+    </div>
+
+    <!-- Sidebar Drawer -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div style="font-weight: bold; font-size: 18px;">Si7a</div>
+        </div>
+
+        <div class="language-selector-top">
+            <label for="languageSelect"><i class="fa-solid fa-globe"></i> <span data-i18n="select_language">اللغة</span></label>
+            <select id="languageSelect" class="lang-select">
+                <option value="ar">العربية</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">الرئيسية</span></a></li>
+            <li><a href="health-metrics.html"><i class="fa-solid fa-chart-line"></i> <span data-i18n="health_metrics">قياساتي الصحية</span></a></li>
+            <li><a href="daily-challenge.html"><i class="fa-solid fa-trophy"></i> <span data-i18n="daily_challenge">التحدي اليومي</span></a></li>
+            <li><a href="diet-plan.html"><i class="fa-solid fa-utensils"></i> <span data-i18n="diet_plan">نظامي الغذائي</span></a></li>
+            <li><a href="nutrition-facts.html" class="active"><i class="fa-solid fa-apple-whole"></i> <span data-i18n="nutrition_facts">القيمة الغذائية للأطعمة</span></a></li>
+            <li><a href="health-file.html"><i class="fa-solid fa-notes-medical"></i> <span data-i18n="health_file">ملفي الصحي</span></a></li>
+            <li><a href="period-tracker.html"><i class="fa-solid fa-droplet"></i> <span data-i18n="period_tracker">دورتي الشهرية</span></a></li>
+            <li><a href="pregnancy-calculator.html"><i class="fa-solid fa-baby"></i> <span data-i18n="pregnancy_calc">حاسبة الحمل</span></a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">الإعدادات</span></a></li>
+        </ul>
+    </aside>
+
+    <script type="module">
+        import { auth } from "./js/firebase.js";
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+        let currentLang = localStorage.getItem('appLanguage') || 'ar';
+
+        function syncSettingsAndProfile(user = null) {
+            const storedName = localStorage.getItem('userDisplayName');
+            const storedAvatar = localStorage.getItem('userPhotoURL');
+
+            if (storedName) {
+                document.getElementById("userName").textContent = storedName;
+            } else if (user && user.displayName) {
+                document.getElementById("userName").textContent = user.displayName;
+            }
+
+            if (storedAvatar) {
+                document.getElementById("userAvatar").src = storedAvatar;
+            } else if (user && user.photoURL) {
+                document.getElementById("userAvatar").src = user.photoURL;
+            }
+
+            const savedLang = localStorage.getItem('appLanguage') || 'ar';
+            if (savedLang !== currentLang) {
+                setLanguage(savedLang);
+            }
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) syncSettingsAndProfile(user);
+        });
+
+        window.addEventListener('storage', () => { syncSettingsAndProfile(auth.currentUser); });
+        window.addEventListener('focus', () => { syncSettingsAndProfile(auth.currentUser); });
+
+        const translations = {
+            ar: {
+                welcome: "أهلاً بك", home: "الرئيسية", challenge: "التحدي", health_file: "ملفي الصحي", settings: "الإعدادات", select_language: "اللغة", health_metrics: "قياساتي الصحية", daily_challenge: "التحدي اليومي", diet_plan: "نظامي الغذائي", nutrition_facts: "القيمة الغذائية للأطعمة", period_tracker: "دورتي الشهرية", pregnancy_calc: "حاسبة الحمل",
+                apple_title: "التفاح", category_fruit: "🍇 الفواكه", nut_per_100: "القيمة الغذائية لكل 100 غرام:",
+                calories: "السعرات", carbs: "كربوهيدرات", sugars: "سكريات", fiber: "ألياف", protein: "بروتينات", fats: "دهون", water: "ماء",
+                health_benefits: "الفوائد الصحية",
+                b1: "غني بالألياف التي تدعم الهضم؛", b2: "يحتوي على مضادات أكسدة مثل الكيرسيتين؛", b3: "يساهم في صحة القلب عند تناوله ضمن غذاء متوازن؛", b4: "يساعد على الشعور بالشبع.",
+                vitamins: "الفيتامينات", minerals: "المعادن", antioxidants: "مضادات الأكسدة", glycemic: "المؤشر الجلايسيمي",
+                gly_val: "منخفض تقريباً (يختلف حسب الصنف والنضج)", gly_load: "الحمل الجلايسيمي: منخفض في الحصة المعتادة",
+                selection_storage: "طريقة الاختيار والحفظ",
+                s1: "اختر التفاح المتماسك والخالي من الكدمات؛", s2: "يُحفظ في الثلاجة لإطالة مدة صلاحيته؛", s3: "اغسله جيداً قبل تناوله.",
+                consumption_ways: "طرق الاستهلاك",
+                c_fresh: "طازج", c_slices: "شرائح", c_oats: "مع الشوفان", c_salad: "في السلطة",
+                health_notes: "ملاحظات صحية",
+                n1: "يحتوي على سكريات طبيعية؛", n2: "يُفضل تناول الثمرة كاملة بدل العصير للاستفادة من الألياف؛", n3: "قطعه إلى قطع مناسبة للأطفال الصغار لتقليل خطر الاختناق.",
+                source_text: "المصدر: USDA FoodData Central | القيم الغذائية تقريبية وقد تختلف حسب الصنف والحجم"
+            },
+            en: {
+                welcome: "Welcome", home: "Home", challenge: "Challenge", health_file: "Health File", settings: "Settings", select_language: "Language", health_metrics: "Health Metrics", daily_challenge: "Daily Challenge", diet_plan: "Diet Plan", nutrition_facts: "Nutrition Facts", period_tracker: "Period Tracker", pregnancy_calc: "Pregnancy Calculator",
+                apple_title: "Apple", category_fruit: "🍇 Fruits", nut_per_100: "Nutritional value per 100g:",
+                calories: "Calories", carbs: "Carbs", sugars: "Sugars", fiber: "Fiber", protein: "Protein", fats: "Fats", water: "Water",
+                health_benefits: "Health Benefits",
+                b1: "Rich in fiber supporting digestion;", b2: "Contains antioxidants like quercetin;", b3: "Contributes to heart health in a balanced diet;", b4: "Helps promote satiety.",
+                vitamins: "Vitamins", minerals: "Minerals", antioxidants: "Antioxidants", glycemic: "Glycemic Index",
+                gly_val: "Low approx. (varies by variety & ripeness)", gly_load: "Glycemic Load: Low in standard serving",
+                selection_storage: "Selection & Storage",
+                s1: "Choose firm, bruise-free apples;", s2: "Store in refrigerator to prolong shelf life;", s3: "Wash thoroughly before eating.",
+                consumption_ways: "Consumption Ways",
+                c_fresh: "Fresh", c_slices: "Slices", c_oats: "With Oats", c_salad: "In Salad",
+                health_notes: "Health Notes",
+                n1: "Contains natural sugars;", n2: "Whole fruit is preferred over juice for fiber benefits;", n3: "Cut into suitable pieces for toddlers to reduce choking risk.",
+                source_text: "Source: USDA FoodData Central | Values are approximate"
+            },
+            fr: {
+                welcome: "Bienvenue", home: "Accueil", challenge: "Défi", health_file: "Dossier Santé", settings: "Paramètres", select_language: "Langue", health_metrics: "Mesures", daily_challenge: "Défi quotidien", diet_plan: "Régime", nutrition_facts: "Valeur nutritionnelle", period_tracker: "Suivi des règles", pregnancy_calc: "Calculateur de grossesse",
+                apple_title: "Pomme", category_fruit: "🍇 Fruits", nut_per_100: "Valeur nutritionnelle pour 100g:",
+                calories: "Calories", carbs: "Glucides", sugars: "Sucres", fiber: "Fibres", protein: "Protéines", fats: "Graisses", water: "Eau",
+                health_benefits: "Bienfaits Santé",
+                b1: "Riche en fibres favorisant la digestion;", b2: "Contient des antioxydants comme la quercétine;", b3: "Contribue à la santé cardiaque;", b4: "Aide à la satiété.",
+                vitamins: "Vitamines", minerals: "Minéraux", antioxidants: "Antioxydants", glycemic: "Indice Glycémique",
+                gly_val: "Faible env. (varie selon la variété)", gly_load: "Charge glycémique: Faible",
+                selection_storage: "Sélection & Conservation",
+                s1: "Choisissez des pommes fermes et sans contusions;", s2: "Conserver au réfrigérateur;", s3: "Laver soigneusement avant consommation.",
+                consumption_ways: "Modes de Consommation",
+                c_fresh: "Frais", c_slices: "Tranches", c_oats: "Avec Avoine", c_salad: "En Salade",
+                health_notes: "Notes de Santé",
+                n1: "Contient des sucres naturels;", n2: "Préférer le fruit entier au jus;", n3: "Couper en morceaux pour les jeunes enfants.",
+                source_text: "Source: USDA FoodData Central | Valeurs approximatives"
+            },
+            es: {
+                welcome: "Bienvenido", home: "Inicio", challenge: "Desafío", health_file: "Perfil de salud", settings: "Ajustes", select_language: "Idioma", health_metrics: "Métricas", daily_challenge: "Desafío diario", diet_plan: "Dieta", nutrition_facts: "Valor nutricional", period_tracker: "Control del periodo", pregnancy_calc: "Calculadora de embarazo",
+                apple_title: "Manzana", category_fruit: "🍇 Frutas", nut_per_100: "Valor nutricional por 100g:",
+                calories: "Calorías", carbs: "Carbohidratos", sugars: "Azúcares", fiber: "Fibra", protein: "Proteína", fats: "Grasas", water: "Agua",
+                health_benefits: "Beneficios de Salud",
+                b1: "Rica en fibra que apoya la digestión;", b2: "Contiene antioxidantes como quercetina;", b3: "Contribuye a la salud cardíaca;", b4: "Ayuda a la saciedad.",
+                vitamins: "Vitaminas", minerals: "Minerales", antioxidants: "Antioxidantes", glycemic: "Índice Glucémico",
+                gly_val: "Bajo aprox. (varía según la variedad)", gly_load: "Carga glucémica: Baja",
+                selection_storage: "Selección y Conservación",
+                s1: "Elija manzanas firmes y sin golpes;", s2: "Guarde en refrigeración;", s3: "Lave bien antes de comer.",
+                consumption_ways: "Formas de Consumo",
+                c_fresh: "Fresco", c_slices: "Rodajas", c_oats: "Con Avena", c_salad: "En Ensalada",
+                health_notes: "Notas de Salud",
+                n1: "Contiene azúcares naturales;", n2: "Se prefiere la fruta entera al jugo;", n3: "Corte en trozos para niños pequeños.",
+                source_text: "Fuente: USDA FoodData Central | Valores aproximados"
+            }
+        };
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('appLanguage', lang);
+            const html = document.documentElement;
+            
+            if (lang === 'ar') {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+            } else {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', lang);
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            const langSelect = document.getElementById("languageSelect");
+            if (langSelect) langSelect.value = lang;
+        }
+
+        document.getElementById("languageSelect").addEventListener("change", (e) => {
+            setLanguage(e.target.value);
+        });
+
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebarOverlay");
+
+        document.getElementById("openSidebar").addEventListener("click", () => {
+            sidebar.classList.add("active");
+            overlay.style.display = "block";
+        });
+
+        overlay.addEventListener("click", () => {
+            sidebar.classList.remove("active");
+            overlay.style.display = "none";
+        });
+
+        setLanguage(currentLang);
+    </script>
+</body>
+
+</html>
